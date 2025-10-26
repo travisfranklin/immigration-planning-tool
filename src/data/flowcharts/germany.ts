@@ -15,25 +15,23 @@ export const germanyFlowcharts: Record<string, FlowchartDefinition> = {
  successRate: '85%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> JobOffer[Secure Job Offer]
- JobOffer --> Salary{Salary >= EUR 45,300?}
- Salary -->|Yes| GatherDocs[Gather Required Documents]
+ Start([Start Process]) --> job-offer["Secure Job Offer"]
+ job-offer --> Salary{Salary >= EUR 45,300?}
+ Salary -->|Yes| gather-documents["Gather Required Documents"]
  Salary -->|No| End1([Not Eligible])
- GatherDocs --> Submit[Submit Application]
- Submit --> Wait[Wait for Processing<br/>2-3 months]
- Wait --> Decision{Decision}
- Decision -->|Approved| Visa[Receive Blue Card]
- Decision -->|Rejected| Appeal[Consider Appeal]
- Visa --> Travel[Travel to Germany]
- Travel --> Register[Register at Local Office]
- Register --> Success([Process Complete])
- Appeal --> End2([Process Ended])
- 
+ gather-documents --> submit-application["Submit Application"]
+ submit-application --> processing["Wait for Processing"]
+ processing --> decision{Decision}
+ decision -->|Approved| travel["Travel to Germany"]
+ decision -->|Rejected| End2([Process Ended])
+ travel --> registration["Register at Local Office"]
+ registration --> Success([Process Complete])
+
  style Start fill:#e1f5e1
  style Success fill:#e1f5e1
  style End1 fill:#ffe1e1
  style End2 fill:#ffe1e1
- style Visa fill:#e1e5ff
+ style travel fill:#e1e5ff
 `,
  steps: [
  {

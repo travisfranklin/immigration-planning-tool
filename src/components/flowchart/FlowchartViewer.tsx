@@ -62,21 +62,34 @@ export function FlowchartViewer({ flowchart, onExport, selectedStepId, onStepSel
         if (onStepSelect) {
           const svgElement = containerRef.current.querySelector('svg');
           if (svgElement) {
-            // Find all clickable nodes in the diagram
-            const nodes = svgElement.querySelectorAll('[id^="flowchart-"]');
-            nodes.forEach((node) => {
-              const nodeId = node.id;
-              // Extract step ID from node ID (e.g., "flowchart-job-offer-123" -> "job-offer")
-              const stepId = nodeId.replace(/^flowchart-/, '').replace(/-\d+$/, '');
+            // Find all text elements in the diagram that correspond to steps
+            const textElements = svgElement.querySelectorAll('text');
 
-              // Check if this step ID exists in our steps
-              const stepExists = flowchart.steps.some(step => step.id === stepId);
-              if (stepExists) {
-                const htmlElement = node as HTMLElement;
-                htmlElement.style.cursor = 'pointer';
-                htmlElement.addEventListener('click', () => {
-                  onStepSelect(stepId);
-                });
+            textElements.forEach((textElement) => {
+              const text = textElement.textContent?.trim() || '';
+
+              // Check if this text matches any step ID (with hyphens converted to spaces for display)
+              // For example, "job-offer" might be displayed as "job-offer" or similar
+              const matchingStep = flowchart.steps.find(
+                step => step.id === text ||
+                        step.id.replace(/-/g, ' ') === text ||
+                        step.title === text
+              );
+
+              if (matchingStep) {
+                // Find the parent group element for this text
+                let parent = textElement.parentElement;
+                while (parent && parent.tagName !== 'g') {
+                  parent = parent.parentElement;
+                }
+
+                if (parent) {
+                  const htmlElement = parent as HTMLElement;
+                  htmlElement.style.cursor = 'pointer';
+                  htmlElement.addEventListener('click', () => {
+                    onStepSelect(matchingStep.id);
+                  });
+                }
               }
             });
           }
