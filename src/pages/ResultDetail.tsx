@@ -13,6 +13,7 @@ import { RiskFactorsList } from '../components/results/RiskFactorsList';
 import { ContingenciesList } from '../components/results/ContingenciesList';
 import { Layout } from '../components/Layout';
 import { InteractiveFlowchart } from '../components/flowchart/InteractiveFlowchart';
+import { CountryCode, isValidCountryCode } from '../constants/countries';
 import { germanyFlowcharts } from '../data/flowcharts/germany';
 import { netherlandsFlowcharts } from '../data/flowcharts/netherlands';
 import { franceFlowcharts } from '../data/flowcharts/france';
@@ -42,34 +43,34 @@ import { latviaFlowcharts } from '../data/flowcharts/latvia';
 import { lithuaniaFlowcharts } from '../data/flowcharts/lithuania';
 import type { FlowchartDefinition } from '../types/flowchart';
 
-const FLOWCHARTS: Record<string, Record<string, FlowchartDefinition>> = {
-  DE: germanyFlowcharts,
-  NL: netherlandsFlowcharts,
-  FR: franceFlowcharts,
-  ES: spainFlowcharts,
-  IT: italyFlowcharts,
-  AT: austriaFlowcharts,
-  BE: belgiumFlowcharts,
-  LU: luxembourgFlowcharts,
-  IE: irelandFlowcharts,
-  SE: swedenFlowcharts,
-  DK: denmarkFlowcharts,
-  FI: finlandFlowcharts,
-  PT: portugalFlowcharts,
-  GR: greeceFlowcharts,
-  CY: cyprusFlowcharts,
-  MT: maltaFlowcharts,
-  PL: polandFlowcharts,
-  CZ: czechFlowcharts,
-  HU: hungaryFlowcharts,
-  RO: romaniaFlowcharts,
-  BG: bulgariaFlowcharts,
-  SK: slovakiaFlowcharts,
-  SI: sloveniaFlowcharts,
-  HR: croatiaFlowcharts,
-  EE: estoniaFlowcharts,
-  LV: latviaFlowcharts,
-  LT: lithuaniaFlowcharts,
+const FLOWCHARTS: Record<CountryCode, Record<string, FlowchartDefinition>> = {
+  [CountryCode.DE]: germanyFlowcharts,
+  [CountryCode.NL]: netherlandsFlowcharts,
+  [CountryCode.FR]: franceFlowcharts,
+  [CountryCode.ES]: spainFlowcharts,
+  [CountryCode.IT]: italyFlowcharts,
+  [CountryCode.AT]: austriaFlowcharts,
+  [CountryCode.BE]: belgiumFlowcharts,
+  [CountryCode.LU]: luxembourgFlowcharts,
+  [CountryCode.IE]: irelandFlowcharts,
+  [CountryCode.SE]: swedenFlowcharts,
+  [CountryCode.DK]: denmarkFlowcharts,
+  [CountryCode.FI]: finlandFlowcharts,
+  [CountryCode.PT]: portugalFlowcharts,
+  [CountryCode.GR]: greeceFlowcharts,
+  [CountryCode.CY]: cyprusFlowcharts,
+  [CountryCode.MT]: maltaFlowcharts,
+  [CountryCode.PL]: polandFlowcharts,
+  [CountryCode.CZ]: czechFlowcharts,
+  [CountryCode.HU]: hungaryFlowcharts,
+  [CountryCode.RO]: romaniaFlowcharts,
+  [CountryCode.BG]: bulgariaFlowcharts,
+  [CountryCode.SK]: slovakiaFlowcharts,
+  [CountryCode.SI]: sloveniaFlowcharts,
+  [CountryCode.HR]: croatiaFlowcharts,
+  [CountryCode.EE]: estoniaFlowcharts,
+  [CountryCode.LV]: latviaFlowcharts,
+  [CountryCode.LT]: lithuaniaFlowcharts,
 };
 
 export const ResultDetail: React.FC = () => {
@@ -89,8 +90,8 @@ export const ResultDetail: React.FC = () => {
       setIsLoading(true);
       setError(null);
 
-      if (!countryCode) {
-        setError('Country code not provided');
+      if (!countryCode || !isValidCountryCode(countryCode)) {
+        setError('Invalid country code');
         setIsLoading(false);
         return;
       }
@@ -168,7 +169,7 @@ export const ResultDetail: React.FC = () => {
     );
   }
 
-  const countryFlowcharts = countryCode ? FLOWCHARTS[countryCode] : undefined;
+  const countryFlowcharts = countryCode && isValidCountryCode(countryCode) ? FLOWCHARTS[countryCode] : undefined;
 
   const recommendedFlowchart = selectedScore.recommendedProgram && countryFlowcharts
     ? countryFlowcharts[selectedScore.recommendedProgram.programId]

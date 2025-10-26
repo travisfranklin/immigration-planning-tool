@@ -11,6 +11,7 @@ import { Breadcrumb } from '../components/layout/Breadcrumb';
 import { getUserViabilityScores } from '../services/storage/viabilityScoreStore';
 import { getAllUserProfiles } from '../services/storage/userProfileStore';
 import type { ViabilityScore } from '../types/viability';
+import { CountryCode, COUNTRY_DISPLAY_NAMES, isValidCountryCode, ALL_COUNTRY_CODES } from '../constants/countries';
 import { germanyFlowcharts } from '../data/flowcharts/germany';
 import { netherlandsFlowcharts } from '../data/flowcharts/netherlands';
 import { franceFlowcharts } from '../data/flowcharts/france';
@@ -40,64 +41,39 @@ import { latviaFlowcharts } from '../data/flowcharts/latvia';
 import { lithuaniaFlowcharts } from '../data/flowcharts/lithuania';
 import type { FlowchartDefinition } from '../types/flowchart';
 
-const COUNTRIES = [
-  { code: 'DE', name: 'Germany' },
-  { code: 'NL', name: 'Netherlands' },
-  { code: 'FR', name: 'France' },
-  { code: 'ES', name: 'Spain' },
-  { code: 'IT', name: 'Italy' },
-  { code: 'AT', name: 'Austria' },
-  { code: 'BE', name: 'Belgium' },
-  { code: 'LU', name: 'Luxembourg' },
-  { code: 'IE', name: 'Ireland' },
-  { code: 'SE', name: 'Sweden' },
-  { code: 'DK', name: 'Denmark' },
-  { code: 'FI', name: 'Finland' },
-  { code: 'PT', name: 'Portugal' },
-  { code: 'GR', name: 'Greece' },
-  { code: 'CY', name: 'Cyprus' },
-  { code: 'MT', name: 'Malta' },
-  { code: 'PL', name: 'Poland' },
-  { code: 'CZ', name: 'Czech Republic' },
-  { code: 'HU', name: 'Hungary' },
-  { code: 'RO', name: 'Romania' },
-  { code: 'BG', name: 'Bulgaria' },
-  { code: 'SK', name: 'Slovakia' },
-  { code: 'SI', name: 'Slovenia' },
-  { code: 'HR', name: 'Croatia' },
-  { code: 'EE', name: 'Estonia' },
-  { code: 'LV', name: 'Latvia' },
-  { code: 'LT', name: 'Lithuania' },
-];
+const COUNTRIES = ALL_COUNTRY_CODES.map((code) => ({
+  code,
+  name: COUNTRY_DISPLAY_NAMES[code],
+}));
 
-const FLOWCHARTS: Record<string, Record<string, FlowchartDefinition>> = {
-  DE: germanyFlowcharts,
-  NL: netherlandsFlowcharts,
-  FR: franceFlowcharts,
-  ES: spainFlowcharts,
-  IT: italyFlowcharts,
-  AT: austriaFlowcharts,
-  BE: belgiumFlowcharts,
-  LU: luxembourgFlowcharts,
-  IE: irelandFlowcharts,
-  SE: swedenFlowcharts,
-  DK: denmarkFlowcharts,
-  FI: finlandFlowcharts,
-  PT: portugalFlowcharts,
-  GR: greeceFlowcharts,
-  CY: cyprusFlowcharts,
-  MT: maltaFlowcharts,
-  PL: polandFlowcharts,
-  CZ: czechFlowcharts,
-  HU: hungaryFlowcharts,
-  RO: romaniaFlowcharts,
-  BG: bulgariaFlowcharts,
-  SK: slovakiaFlowcharts,
-  SI: sloveniaFlowcharts,
-  HR: croatiaFlowcharts,
-  EE: estoniaFlowcharts,
-  LV: latviaFlowcharts,
-  LT: lithuaniaFlowcharts,
+const FLOWCHARTS: Record<CountryCode, Record<string, FlowchartDefinition>> = {
+  [CountryCode.DE]: germanyFlowcharts,
+  [CountryCode.NL]: netherlandsFlowcharts,
+  [CountryCode.FR]: franceFlowcharts,
+  [CountryCode.ES]: spainFlowcharts,
+  [CountryCode.IT]: italyFlowcharts,
+  [CountryCode.AT]: austriaFlowcharts,
+  [CountryCode.BE]: belgiumFlowcharts,
+  [CountryCode.LU]: luxembourgFlowcharts,
+  [CountryCode.IE]: irelandFlowcharts,
+  [CountryCode.SE]: swedenFlowcharts,
+  [CountryCode.DK]: denmarkFlowcharts,
+  [CountryCode.FI]: finlandFlowcharts,
+  [CountryCode.PT]: portugalFlowcharts,
+  [CountryCode.GR]: greeceFlowcharts,
+  [CountryCode.CY]: cyprusFlowcharts,
+  [CountryCode.MT]: maltaFlowcharts,
+  [CountryCode.PL]: polandFlowcharts,
+  [CountryCode.CZ]: czechFlowcharts,
+  [CountryCode.HU]: hungaryFlowcharts,
+  [CountryCode.RO]: romaniaFlowcharts,
+  [CountryCode.BG]: bulgariaFlowcharts,
+  [CountryCode.SK]: slovakiaFlowcharts,
+  [CountryCode.SI]: sloveniaFlowcharts,
+  [CountryCode.HR]: croatiaFlowcharts,
+  [CountryCode.EE]: estoniaFlowcharts,
+  [CountryCode.LV]: latviaFlowcharts,
+  [CountryCode.LT]: lithuaniaFlowcharts,
 };
 
 export function Flowchart() {
@@ -115,11 +91,11 @@ export function Flowchart() {
   const [isLoadingScores, setIsLoadingScores] = useState(true);
 
   // Initialize state from URL params or defaults
-  const [selectedCountry, setSelectedCountry] = useState(() => {
-    if (countryParam && FLOWCHARTS[countryParam]) {
+  const [selectedCountry, setSelectedCountry] = useState<CountryCode>(() => {
+    if (countryParam && isValidCountryCode(countryParam) && FLOWCHARTS[countryParam]) {
       return countryParam;
     }
-    return 'DE';
+    return CountryCode.DE;
   });
 
   const [selectedProgram, setSelectedProgram] = useState(() => {
@@ -152,6 +128,10 @@ export function Flowchart() {
   const currentFlowchart = availablePrograms[selectedProgram];
 
   const handleCountryChange = (countryCode: string) => {
+    if (!isValidCountryCode(countryCode)) {
+      console.error(`Invalid country code: ${countryCode}`);
+      return;
+    }
     setSelectedCountry(countryCode);
     // Reset to first program in the new country
     const programs = FLOWCHARTS[countryCode];
