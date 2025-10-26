@@ -10,12 +10,21 @@ import type { FlowchartDefinition } from '../../types/flowchart';
 interface FlowchartViewerProps {
   flowchart: FlowchartDefinition;
   onExport?: (format: 'png' | 'svg') => void;
+  selectedStepId?: string | null;
+  onStepSelect?: (stepId: string) => void;
 }
 
-export function FlowchartViewer({ flowchart, onExport }: FlowchartViewerProps) {
+export function FlowchartViewer({ flowchart, onExport, selectedStepId, onStepSelect }: FlowchartViewerProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [selectedStep, setSelectedStep] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+
+  // Sync external selectedStepId with local state
+  useEffect(() => {
+    if (selectedStepId !== undefined) {
+      setSelectedStep(selectedStepId);
+    }
+  }, [selectedStepId]);
 
   useEffect(() => {
     // Initialize Mermaid
@@ -49,6 +58,30 @@ export function FlowchartViewer({ flowchart, onExport }: FlowchartViewerProps) {
         // Insert the SVG
         containerRef.current.innerHTML = svg;
 
+        // Add click handlers to flowchart nodes
+        if (onStepSelect) {
+          const svgElement = containerRef.current.querySelector('svg');
+          if (svgElement) {
+            // Find all clickable nodes in the diagram
+            const nodes = svgElement.querySelectorAll('[id^="flowchart-"]');
+            nodes.forEach((node) => {
+              const nodeId = node.id;
+              // Extract step ID from node ID (e.g., "flowchart-job-offer-123" -> "job-offer")
+              const stepId = nodeId.replace(/^flowchart-/, '').replace(/-\d+$/, '');
+
+              // Check if this step ID exists in our steps
+              const stepExists = flowchart.steps.some(step => step.id === stepId);
+              if (stepExists) {
+                const htmlElement = node as HTMLElement;
+                htmlElement.style.cursor = 'pointer';
+                htmlElement.addEventListener('click', () => {
+                  onStepSelect(stepId);
+                });
+              }
+            });
+          }
+        }
+
         setIsLoading(false);
       } catch (error) {
         console.error('Error rendering flowchart:', error);
@@ -58,7 +91,7 @@ export function FlowchartViewer({ flowchart, onExport }: FlowchartViewerProps) {
     };
 
     renderDiagram();
-  }, [flowchart]);
+  }, [flowchart, onStepSelect]);
 
   const handleExport = (format: 'png' | 'svg') => {
     if (!containerRef.current) return;

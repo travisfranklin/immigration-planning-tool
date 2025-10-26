@@ -158,8 +158,8 @@ describe('InteractiveFlowchart', () => {
     it('should display important notes', () => {
       render(<InteractiveFlowchart flowchart={mockFlowchart} />);
 
-      expect(screen.getByText(/Important Notes/i)).toBeInTheDocument();
-      expect(screen.getByText(/Salary threshold is EUR 45,300/)).toBeInTheDocument();
+      expect(screen.getAllByText(/Important Notes/i).length).toBeGreaterThan(0);
+      expect(screen.getAllByText(/Salary threshold is EUR 45,300/).length).toBeGreaterThan(0);
     });
   });
 

@@ -45,7 +45,11 @@ export function InteractiveFlowchart({ flowchart }: InteractiveFlowchartProps) {
         <div className="lg:col-span-2">
           <div className="bg-white rounded-lg shadow-md border border-gray-200 p-6">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">Process Flow</h3>
-            <FlowchartViewer flowchart={flowchart} />
+            <FlowchartViewer
+              flowchart={flowchart}
+              selectedStepId={selectedStepId}
+              onStepSelect={setSelectedStepId}
+            />
           </div>
         </div>
 
