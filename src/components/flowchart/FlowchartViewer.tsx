@@ -94,6 +94,8 @@ export function FlowchartViewer({ flowchart, onExport, selectedStepId, onStepSel
                     element.style.stroke = '#3b82f6';
                     element.style.strokeWidth = '2';
                   });
+                  // Add subtle brightness to the entire node
+                  htmlElement.style.filter = 'brightness(1.05)';
                 });
 
                 htmlElement.addEventListener('mouseleave', () => {
@@ -106,6 +108,7 @@ export function FlowchartViewer({ flowchart, onExport, selectedStepId, onStepSel
                       element.style.stroke = '';
                       element.style.strokeWidth = '';
                     });
+                    htmlElement.style.filter = '';
                   }
                 });
 
@@ -146,14 +149,16 @@ export function FlowchartViewer({ flowchart, onExport, selectedStepId, onStepSel
       const paths = htmlElement.querySelectorAll('path, rect, polygon');
 
       if (selectedStep === extractedId) {
-        // Apply selected styling
+        // Apply selected styling - preserve original fill colors
         htmlElement.classList.add('node-selected');
         paths.forEach((path) => {
           const element = path as HTMLElement;
-          element.style.stroke = '#2563eb';
+          element.style.stroke = '#1e40af';
           element.style.strokeWidth = '2.5';
-          element.style.fill = element.style.fill ? element.style.fill : '#dbeafe';
+          // Don't modify fill - preserve original semantic colors
         });
+        // Add brightness to make selected node stand out
+        htmlElement.style.filter = 'brightness(1.1)';
       } else {
         // Remove selected styling
         htmlElement.classList.remove('node-selected');
@@ -161,8 +166,8 @@ export function FlowchartViewer({ flowchart, onExport, selectedStepId, onStepSel
           const element = path as HTMLElement;
           element.style.stroke = '';
           element.style.strokeWidth = '';
-          element.style.fill = '';
         });
+        htmlElement.style.filter = '';
       }
     });
   }, [selectedStep]);
