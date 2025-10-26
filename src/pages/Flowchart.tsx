@@ -124,16 +124,8 @@ export function Flowchart() {
 
   const [selectedProgram, setSelectedProgram] = useState(() => {
     const programs = FLOWCHARTS[selectedCountry] || {};
-    if (programParam) {
-      // Try the programParam directly first
-      if (programs[programParam]) {
-        return programParam;
-      }
-      // If not found, try converting from full programId format (e.g., "de_eu_blue_card" -> "eu_blue_card")
-      const flowchartKey = programParam.replace(/^[a-z]{2}_/, '');
-      if (programs[flowchartKey]) {
-        return flowchartKey;
-      }
+    if (programParam && programs[programParam]) {
+      return programParam;
     }
     return Object.keys(programs)[0] || 'eu_blue_card';
   });

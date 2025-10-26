@@ -170,16 +170,8 @@ export const ResultDetail: React.FC = () => {
 
   const countryFlowcharts = countryCode ? FLOWCHARTS[countryCode] : undefined;
 
-  // Get flowchart key from programId
-  // Flowchart keys are the programId without the country code prefix
-  // e.g., "de_eu_blue_card" -> "eu_blue_card"
-  const getFlowchartKey = (programId: string): string => {
-    // Remove country prefix (e.g., "de_" from "de_eu_blue_card")
-    return programId.replace(/^[a-z]{2}_/, '');
-  };
-
   const recommendedFlowchart = selectedScore.recommendedProgram && countryFlowcharts
-    ? countryFlowcharts[getFlowchartKey(selectedScore.recommendedProgram.programId)]
+    ? countryFlowcharts[selectedScore.recommendedProgram.programId]
     : null;
 
   return (

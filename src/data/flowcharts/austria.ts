@@ -255,7 +255,7 @@ flowchart TD
  ],
  },
 
- 'startup': {
+ 'at_startup': {
  programId: 'at_startup',
  countryCode: 'AT',
  programName: 'Startup Visa (Start-up Founders)',
@@ -428,7 +428,7 @@ flowchart TD
  ],
  },
 
- 'self_employed': {
+ 'at_self_employed': {
  programId: 'at_self_employed',
  countryCode: 'AT',
  programName: 'Self-Employment Visa (Self-employed Key Workers)',
@@ -602,7 +602,7 @@ flowchart TD
  ],
  },
 
- 'family_reunification': {
+ 'at_family_reunification': {
  programId: 'at_family_reunification',
  countryCode: 'AT',
  programName: 'Family Reunification',
