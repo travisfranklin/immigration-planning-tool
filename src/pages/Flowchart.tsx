@@ -129,13 +129,13 @@ export function Flowchart() {
       if (programs[programParam]) {
         return programParam;
       }
-      // If not found, try converting from programId format (e.g., "de_eu_blue_card" -> "eu-blue-card")
-      const convertedKey = programParam.replace(/^[a-z]{2}_/, '').replace(/_/g, '-');
-      if (programs[convertedKey]) {
-        return convertedKey;
+      // If not found, try converting from full programId format (e.g., "de_eu_blue_card" -> "eu_blue_card")
+      const flowchartKey = programParam.replace(/^[a-z]{2}_/, '');
+      if (programs[flowchartKey]) {
+        return flowchartKey;
       }
     }
-    return Object.keys(programs)[0] || 'eu-blue-card';
+    return Object.keys(programs)[0] || 'eu_blue_card';
   });
 
   // Load user viability scores

@@ -6,7 +6,7 @@
 import type { FlowchartDefinition } from '../../types/flowchart';
 
 export const germanyFlowcharts: Record<string, FlowchartDefinition> = {
- 'eu-blue-card': {
+ 'eu_blue_card': {
  programId: 'de_eu_blue_card',
  countryCode: 'DE',
  programName: 'EU Blue Card',
@@ -150,7 +150,7 @@ flowchart TD
  ],
  },
 
- 'skilled-worker': {
+ 'work_visa': {
  programId: 'de_work_visa',
  countryCode: 'DE',
  programName: 'Skilled Worker Visa',
@@ -274,7 +274,7 @@ flowchart TD
  ],
  },
 
- 'job-seeker': {
+ 'job_seeker': {
  programId: 'de_job_seeker',
  countryCode: 'DE',
  programName: 'Job Seeker Visa',
@@ -602,7 +602,7 @@ flowchart TD
  ],
  },
 
- 'family-reunification': {
+ 'family_reunification': {
  programId: 'de_family_reunification',
  countryCode: 'DE',
  programName: 'Family Reunification Visa',

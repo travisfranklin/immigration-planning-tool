@@ -6,7 +6,7 @@
 import type { FlowchartDefinition } from '../../types/flowchart';
 
 export const franceFlowcharts: Record<string, FlowchartDefinition> = {
- 'talent-passport': {
+ 'talent_passport': {
  programId: 'fr_talent_passport',
  countryCode: 'FR',
  programName: 'Talent Passport (Passeport Talent)',
@@ -186,7 +186,7 @@ flowchart TD
  ],
  },
 
- 'skills-talents': {
+ 'skills_talents': {
  programId: 'fr_skills_talents',
  countryCode: 'FR',
  programName: 'Skills and Talents Visa',
@@ -350,7 +350,7 @@ flowchart TD
  ],
  },
 
- 'french-tech': {
+ 'french_tech': {
  programId: 'fr_french_tech',
  countryCode: 'FR',
  programName: 'French Tech Visa',
@@ -510,7 +510,7 @@ flowchart TD
  ],
  },
 
- 'work-visa': {
+ 'work_visa': {
  programId: 'fr_work_visa',
  countryCode: 'FR',
  programName: 'Standard Work Visa',
@@ -670,7 +670,7 @@ flowchart TD
  ],
  },
 
- 'family-reunification': {
+ 'family_reunification': {
  programId: 'fr_family_reunification',
  countryCode: 'FR',
  programName: 'Family Reunification Visa',

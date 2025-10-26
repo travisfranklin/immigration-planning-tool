@@ -6,7 +6,7 @@
 import type { FlowchartDefinition } from '../../types/flowchart';
 
 export const spainFlowcharts: Record<string, FlowchartDefinition> = {
- 'golden-visa': {
+ 'golden_visa': {
  programId: 'es_golden_visa',
  countryCode: 'ES',
  programName: 'Golden Visa (Investor Visa)',
@@ -176,7 +176,7 @@ flowchart TD
  ],
  },
 
- 'non-lucrative': {
+ 'non_lucrative': {
  programId: 'es_non_lucrative',
  countryCode: 'ES',
  programName: 'Non-Lucrative Visa',
@@ -323,7 +323,7 @@ flowchart TD
  ],
  },
 
- 'digital-nomad': {
+ 'digital_nomad': {
  programId: 'es_digital_nomad',
  countryCode: 'ES',
  programName: 'Digital Nomad Visa',
@@ -469,7 +469,7 @@ flowchart TD
  ],
  },
 
- 'highly-qualified': {
+ 'highly_qualified': {
  programId: 'es_highly_qualified',
  countryCode: 'ES',
  programName: 'Highly Qualified Professional Visa',
@@ -645,7 +645,7 @@ flowchart TD
  ],
  },
 
- 'family-reunification': {
+ 'family_reunification': {
  programId: 'es_family_reunification',
  countryCode: 'ES',
  programName: 'Family Reunification Visa',

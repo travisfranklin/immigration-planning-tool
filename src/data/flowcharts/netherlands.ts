@@ -203,7 +203,7 @@ flowchart TD
  ],
  },
 
- 'highly-skilled-migrant': {
+ 'highly_skilled': {
  programId: 'nl_highly_skilled',
  countryCode: 'NL',
  programName: 'Highly Skilled Migrant Visa',
@@ -366,7 +366,7 @@ flowchart TD
  ],
  },
 
- 'orientation-year': {
+ 'orientation_year': {
  programId: 'nl_orientation_year',
  countryCode: 'NL',
  programName: 'Orientation Year for Graduates',
@@ -542,7 +542,7 @@ flowchart TD
  ],
  },
 
- 'self-employment': {
+ 'self_employment': {
  programId: 'nl_self_employment',
  countryCode: 'NL',
  programName: 'Self-Employment Visa',
@@ -728,7 +728,7 @@ flowchart TD
  ],
  },
 
- 'family-reunification': {
+ 'family_reunification': {
  programId: 'nl_family_reunification',
  countryCode: 'NL',
  programName: 'Family Reunification Visa',
