@@ -264,7 +264,7 @@ flowchart TD
  ],
  },
 
- 'professional_card': {
+ 'be_professional_card': {
  programId: 'be_professional_card',
  countryCode: 'BE',
  programName: 'Professional Card (Self-Employment)',
@@ -439,7 +439,7 @@ flowchart TD
  ],
  },
 
- 'startup': {
+ 'be_startup': {
  programId: 'be_startup',
  countryCode: 'BE',
  programName: 'Startup Visa',
@@ -646,7 +646,7 @@ flowchart TD
  ],
  },
 
- 'family_reunification': {
+ 'be_family_reunification': {
  programId: 'be_family_reunification',
  countryCode: 'BE',
  programName: 'Family Reunification',

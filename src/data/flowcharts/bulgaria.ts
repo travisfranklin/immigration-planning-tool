@@ -263,7 +263,7 @@ flowchart TD
  ],
  },
 
- 'work_permit': {
+ 'bg_work_permit': {
  programId: 'bg_work_permit',
  countryCode: 'BG',
  programName: 'Work Permit (Type D Visa)',
@@ -405,7 +405,7 @@ flowchart TD
  ],
  },
 
- 'self_employment': {
+ 'bg_self_employment': {
  programId: 'bg_self_employment',
  countryCode: 'BG',
  programName: 'Self-Employment Visa',
@@ -563,7 +563,7 @@ flowchart TD
  ],
  },
 
- 'family_reunification': {
+ 'bg_family_reunification': {
  programId: 'bg_family_reunification',
  countryCode: 'BG',
  programName: 'Family Reunification',
