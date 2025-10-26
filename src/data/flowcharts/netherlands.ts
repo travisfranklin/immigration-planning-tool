@@ -15,28 +15,26 @@ export const netherlandsFlowcharts: Record<string, FlowchartDefinition> = {
  successRate: '95%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> Citizenship{US Citizen?}
- Citizenship -->|Yes| BusinessPlan[Develop Business Plan]
- Citizenship -->|No| End1([Not Eligible])
- BusinessPlan --> Capital[Secure EUR 4,500 Capital]
- Capital --> BankAccount[Open Dutch Bank Account]
- BankAccount --> KVK[Register with KVK]
- KVK --> GatherDocs[Gather Required Documents]
- GatherDocs --> Submit[Submit IND Application]
- Submit --> Wait[Wait for Processing<br/>4-8 weeks]
- Wait --> Decision{Decision}
- Decision -->|Approved| Visa[Receive Residence Permit]
- Decision -->|Rejected| Appeal[Consider Appeal]
- Visa --> Travel[Travel to Netherlands]
- Travel --> Register[Register at Municipality]
- Register --> Success([Process Complete])
- Appeal --> End2([Process Ended])
- 
+ Start([Start Process]) -->citizenship-check{US Citizen?}
+ citizenship-check -->|Yes| business-plan[Develop Business Plan]
+ citizenship-check -->|No| End1([Not Eligible])
+ business-plan --> capital[Secure EUR 4,500 Capital]
+ capital --> bank-account[Open Dutch Bank Account]
+ bank-account --> kvk-registration[Register with KVK]
+ kvk-registration --> gather-documents[Gather Required Documents]
+ gather-documents --> submit-application[Submit IND Application]
+ submit-application --> processing[Wait for Processing<br/>4-8 weeks]
+ processing --> decision{Decision}
+ decision -->|Approved| receive-permit[Receive Residence Permit]
+ decision -->|Rejected| End2([Process Ended])
+ receive-permit --> travel-register[Travel and Register]
+ travel-register --> Success([Process Complete])
+
  style Start fill:#e1f5e1
  style Success fill:#e1f5e1
  style End1 fill:#ffe1e1
  style End2 fill:#ffe1e1
- style Visa fill:#e1e5ff
+ style receive-permit fill:#e1e5ff
 `,
  steps: [
  {
@@ -214,28 +212,27 @@ flowchart TD
  successRate: '90%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> JobOffer[Secure Job Offer]
- JobOffer --> Sponsor{Recognized Sponsor?}
- Sponsor -->|Yes| Salary{Salary Meets Minimum?}
+ Start([Start Process]) -->job-offer[Secure Job Offer]
+ job-offer --> Sponsor{Recognized Sponsor?}
+ Sponsor -->|Yes| salary-verification{Salary Meets Minimum?}
  Sponsor -->|No| End1([Not Eligible])
- Salary -->|Yes| GatherDocs[Gather Required Documents]
- Salary -->|No| End2([Not Eligible])
- GatherDocs --> EmployerSubmit[Employer Submits to IND]
- EmployerSubmit --> Wait[Wait for Processing<br/>2-4 weeks]
- Wait --> Decision{Decision}
- Decision -->|Approved| Visa[Receive Residence Permit]
- Decision -->|Rejected| Appeal[Consider Appeal]
- Visa --> Travel[Travel to Netherlands]
- Travel --> Register[Register at Municipality]
- Register --> Success([Process Complete])
- Appeal --> End3([Process Ended])
- 
+ salary-verification -->|Yes| gather-documents[Gather Required Documents]
+ salary-verification -->|No| End2([Not Eligible])
+ gather-documents --> employer-submission[Employer Submits to IND]
+ employer-submission --> processing[Wait for Processing<br/>2-4 weeks]
+ processing --> decision{Decision}
+ decision -->|Approved| receive-permit[Receive Residence Permit]
+ decision -->|Rejected| End3([Process Ended])
+ receive-permit --> 30-percent-ruling[Apply for 30% Ruling]
+ 30-percent-ruling --> travel-register[Travel and Register]
+ travel-register --> Success([Process Complete])
+
  style Start fill:#e1f5e1
  style Success fill:#e1f5e1
  style End1 fill:#ffe1e1
  style End2 fill:#ffe1e1
  style End3 fill:#ffe1e1
- style Visa fill:#e1e5ff
+ style receive-permit fill:#e1e5ff
 `,
  steps: [
  {
@@ -378,23 +375,21 @@ flowchart TD
  successRate: '85%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> University{Top 200 University?}
- University -->|Yes| Graduation{Within 3 Years?}
- University -->|No| End1([Not Eligible])
- Graduation -->|Yes| Age{Under 30?}
- Graduation -->|No| End2([Not Eligible])
- Age -->|Yes| GatherDocs[Gather Required Documents]
- Age -->|No| End3([Not Eligible])
- GatherDocs --> Apostille[Get Diploma Apostille]
- Apostille --> Submit[Submit IND Application]
- Submit --> Wait[Wait for Processing<br/>4-6 weeks]
- Wait --> Decision{Decision}
- Decision -->|Approved| Visa[Receive Residence Permit]
- Decision -->|Rejected| Appeal[Consider Appeal]
- Visa --> Travel[Travel to Netherlands]
- Travel --> JobSearch[Search for Employment]
- JobSearch --> Success([Process Complete])
- Appeal --> End4([Process Ended])
+ Start([Start Process]) -->university-verification{Top 200 University?}
+ university-verification -->|Yes| timeline-check{Within 3 Years?}
+ university-verification -->|No| End1([Not Eligible])
+ timeline-check -->|Yes| age-verification{Under 30?}
+ timeline-check -->|No| End2([Not Eligible])
+ age-verification -->|Yes| gather-documents[Gather Required Documents]
+ age-verification -->|No| End3([Not Eligible])
+ gather-documents --> apostille[Get Diploma Apostille]
+ apostille --> submit-application[Submit IND Application]
+ submit-application --> processing[Wait for Processing<br/>4-6 weeks]
+ processing --> decision{Decision}
+ decision -->|Approved| receive-permit[Receive Residence Permit]
+ decision -->|Rejected| End4([Process Ended])
+ receive-permit --> job-search[Search for Employment]
+ job-search --> Success([Process Complete])
 
  style Start fill:#e1f5e1
  style Success fill:#e1f5e1
@@ -402,7 +397,7 @@ flowchart TD
  style End2 fill:#ffe1e1
  style End3 fill:#ffe1e1
  style End4 fill:#ffe1e1
- style Visa fill:#e1e5ff
+ style receive-permit fill:#e1e5ff
 `,
  steps: [
  {
@@ -556,28 +551,26 @@ flowchart TD
  successRate: '70%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> BusinessPlan[Develop Business Plan]
- BusinessPlan --> Points[Calculate Points]
- Points --> Threshold{>=30 Points?}
- Threshold -->|Yes| Capital[Secure Capital]
+ Start([Start Process]) -->business-plan[Develop Business Plan]
+ business-plan --> points-calculation[Calculate Points]
+ points-calculation --> Threshold{>=30 Points?}
+ Threshold -->|Yes| capital[Secure Capital]
  Threshold -->|No| End1([Not Eligible])
- Capital --> KVK[Register with KVK]
- KVK --> GatherDocs[Gather Required Documents]
- GatherDocs --> Submit[Submit IND Application]
- Submit --> Wait[Wait for Processing<br/>8-12 weeks]
- Wait --> Decision{Decision}
- Decision -->|Approved| Visa[Receive Residence Permit]
- Decision -->|Rejected| Appeal[Consider Appeal]
- Visa --> Travel[Travel to Netherlands]
- Travel --> Register[Register at Municipality]
- Register --> Success([Process Complete])
- Appeal --> End2([Process Ended])
+ capital --> kvk-registration[Register with KVK]
+ kvk-registration --> gather-documents[Gather Required Documents]
+ gather-documents --> submit-application[Submit IND Application]
+ submit-application --> processing[Wait for Processing<br/>8-12 weeks]
+ processing --> decision{Decision}
+ decision -->|Approved| receive-permit[Receive Residence Permit]
+ decision -->|Rejected| End2([Process Ended])
+ receive-permit --> travel-register[Travel and Start Business]
+ travel-register --> Success([Process Complete])
 
  style Start fill:#e1f5e1
  style Success fill:#e1f5e1
  style End1 fill:#ffe1e1
  style End2 fill:#ffe1e1
- style Visa fill:#e1e5ff
+ style receive-permit fill:#e1e5ff
 `,
  steps: [
  {
@@ -744,29 +737,27 @@ flowchart TD
  successRate: '80%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> Sponsor{Family in NL?}
- Sponsor -->|Yes| Income{Sponsor Meets Income?}
- Sponsor -->|No| End1([Not Eligible])
- Income -->|Yes| Relationship[Prove Relationship]
- Income -->|No| End2([Not Eligible])
- Relationship --> GatherDocs[Gather Required Documents]
- GatherDocs --> Submit[Submit MVV Application]
- Submit --> Wait[Wait for Processing<br/>8-12 weeks]
- Wait --> Decision{Decision}
- Decision -->|Approved| Visa[Receive MVV]
- Decision -->|Rejected| Appeal[Consider Appeal]
- Visa --> Travel[Travel to Netherlands]
- Travel --> ResidencePermit[Apply for Residence Permit]
- ResidencePermit --> Integration[Begin Integration Course]
- Integration --> Success([Process Complete])
- Appeal --> End3([Process Ended])
+ Start([Start Process]) -->sponsor-eligibility{Family in NL?}
+ sponsor-eligibility -->|Yes| income-verification{Sponsor Meets Income?}
+ sponsor-eligibility -->|No| End1([Not Eligible])
+ income-verification -->|Yes| relationship-proof[Prove Relationship]
+ income-verification -->|No| End2([Not Eligible])
+ relationship-proof --> gather-documents[Gather Required Documents]
+ gather-documents --> submit-mvv[Submit MVV Application]
+ submit-mvv --> processing[Wait for Processing<br/>8-12 weeks]
+ processing --> decision{Decision}
+ decision -->|Approved| receive-mvv[Receive MVV]
+ decision -->|Rejected| End3([Process Ended])
+ receive-mvv --> travel-residence-permit[Travel and Apply for Residence Permit]
+ travel-residence-permit --> integration[Begin Integration Course]
+ integration --> Success([Process Complete])
 
  style Start fill:#e1f5e1
  style Success fill:#e1f5e1
  style End1 fill:#ffe1e1
  style End2 fill:#ffe1e1
  style End3 fill:#ffe1e1
- style Visa fill:#e1e5ff
+ style receive-mvv fill:#e1e5ff
 `,
  steps: [
  {

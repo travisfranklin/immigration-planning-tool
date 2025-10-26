@@ -14,16 +14,16 @@ export const estoniaFlowcharts: Record<string, FlowchartDefinition> = {
  successRate: '95%',
  mermaidDiagram: `
 flowchart TD
- Start([Start]) --> Remote[Remote Work/Freelance]
- Remote --> Income{ EUR 3,500/month<br/>Income?}
- Income -->|Yes| Docs[Gather Documents]
+ Start([Start]) -->remote[Remote Work/Freelance]
+ remote --> Income{ EUR 3,500/month<br/>Income?}
+ Income -->|Yes| docs[Gather Documents]
  Income -->|No| End1([Not Eligible])
- Docs --> Submit[Submit Application]
- Submit --> Process[Processing 30 Days]
- Process --> Visa[Digital Nomad Visa<br/>1 Year]
- Visa --> Travel[Travel to Estonia]
- Travel --> Success([Work from Tallinn!])
- 
+ docs --> submit-application[Submit Application]
+ submit-application --> processing[Processing 30 Days]
+ processing --> Visa[Digital Nomad Visa<br/>1 Year]
+ Visa --> arrival[Travel to Estonia]
+ arrival --> Success([Work from Tallinn!])
+
  style Start fill:#e1f5e1
  style Success fill:#e1f5e1
  style End1 fill:#ffe1e1

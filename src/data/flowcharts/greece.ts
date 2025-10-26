@@ -16,21 +16,21 @@ export const greeceFlowcharts: Record<string, FlowchartDefinition> = {
  mermaidDiagram: `
 flowchart TD
  Start([Start Process]) --> Investment{Investment Type?}
- Investment -->|Real Estate EUR 250k| Property[Purchase Property<br/> EUR 250,000 minimum]
+ Investment -->|Real Estate EUR 250k| choose-property[Purchase Property<br/> EUR 250,000 minimum]
  Investment -->|Real Estate EUR 400k| Property2[Purchase Property<br/> EUR 400,000 in certain areas]
- Property --> TaxNumber[Obtain Greek Tax Number<br/>AFM]
- Property2 --> TaxNumber
- TaxNumber --> GatherDocs[Gather Required Documents]
- GatherDocs --> Submit[Submit Application to<br/>Greek Consulate or in Greece]
- Submit --> Processing[Processing<br/>60-90 Days]
- Processing --> Decision{Decision}
+ choose-property --> tax-number[Obtain Greek Tax Number<br/>AFM]
+ Property2 --> tax-number
+ tax-number --> gather-documents[Gather Required Documents]
+ gather-documents --> submit-application[Submit Application to<br/>Greek Consulate or in Greece]
+ submit-application --> processing[Processing<br/>60-90 Days]
+ processing --> Decision{Decision}
  Decision -->|Approved| GoldenVisa[Receive Golden Visa<br/>5-Year Permit]
  Decision -->|Rejected| Appeal[Consider Appeal]
- GoldenVisa --> Travel[Travel to Greece<br/>No Minimum Stay Required!]
- Travel --> Renew[Renew Every 5 Years]
- Renew --> Success([Process Complete])
+ GoldenVisa --> arrival[Travel to Greece<br/>No Minimum Stay Required!]
+ arrival --> renewal[Renew Every 5 Years]
+ renewal --> Success([Process Complete])
  Appeal --> End1([Process Ended])
- 
+
  style Start fill:#e1f5e1
  style Success fill:#e1f5e1
  style End1 fill:#ffe1e1

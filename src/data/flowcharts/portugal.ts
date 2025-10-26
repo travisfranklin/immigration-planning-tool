@@ -15,21 +15,21 @@ export const portugalFlowcharts: Record<string, FlowchartDefinition> = {
  successRate: '95%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> Income[Verify Passive Income<br/>>= EUR 760/month]
- Income --> CheckIncome{Income Sufficient?}
- CheckIncome -->|Yes| Accommodation[Secure Accommodation<br/>in Portugal]
+ Start([Start Process]) -->verify-income[Verify Passive Income<br/>>= EUR 760/month]
+ verify-income --> CheckIncome{Income Sufficient?}
+ CheckIncome -->|Yes| accommodation[Secure Accommodation<br/>in Portugal]
  CheckIncome -->|No| End1([Not Eligible])
- Accommodation --> GatherDocs[Gather Required Documents]
- GatherDocs --> Consulate[Submit Application at<br/>Portuguese Consulate]
- Consulate --> Processing[SEF Processing<br/>60-90 Days]
- Processing --> Decision{Decision}
+ accommodation --> gather-documents[Gather Required Documents]
+ gather-documents --> consulate-submission[Submit Application at<br/>Portuguese Consulate]
+ consulate-submission --> processing[SEF Processing<br/>60-90 Days]
+ processing --> Decision{Decision}
  Decision -->|Approved| Visa[Receive D7 Visa]
  Decision -->|Rejected| Appeal[Consider Appeal]
- Visa --> Travel[Travel to Portugal<br/>within 4 months]
- Travel --> Register[Register at SEF Office<br/>Get Residence Card]
- Register --> Success([Process Complete])
+ Visa --> arrival[Travel to Portugal<br/>within 4 months]
+ arrival --> registration[Register at SEF Office<br/>Get Residence Card]
+ registration --> Success([Process Complete])
  Appeal --> End2([Process Ended])
- 
+
  style Start fill:#e1f5e1
  style Success fill:#e1f5e1
  style End1 fill:#ffe1e1

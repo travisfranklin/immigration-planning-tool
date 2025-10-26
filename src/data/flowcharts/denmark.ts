@@ -15,22 +15,22 @@ export const denmarkFlowcharts: Record<string, FlowchartDefinition> = {
  successRate: '95%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> JobOffer[Secure Job Offer from<br/>Certified Fast-Track Company]
- JobOffer --> CheckSalary{Salary >= DKK 465,000<br/>or Recent Grad >= DKK 375,000?}
+ Start([Start Process]) -->job-offer[Secure Job Offer from<br/>Certified Fast-Track Company]
+ job-offer --> CheckSalary{Salary >= DKK 465,000<br/>or Recent Grad >= DKK 375,000?}
  CheckSalary -->|Yes| CheckCompany{Employer on<br/>Fast-Track List?}
  CheckSalary -->|No| End1([Not Eligible])
- CheckCompany -->|Yes| GatherDocs[Gather Required Documents]
+ CheckCompany -->|Yes| gather-documents[Gather Required Documents]
  CheckCompany -->|No| End2([Use Different Scheme])
- GatherDocs --> Submit[Submit Application Online]
- Submit --> FastProcess[Fast-Track Processing<br/><=30 Days]
- FastProcess --> Decision{Decision}
+ gather-documents --> submit-application[Submit Application Online]
+ submit-application --> processing[Fast-Track Processing<br/><=30 Days]
+ processing --> Decision{Decision}
  Decision -->|Approved| Permit[Receive Residence Permit]
  Decision -->|Rejected| Appeal[Consider Appeal]
- Permit --> Travel[Travel to Denmark]
- Travel --> Register[Register at SIRI<br/>Get CPR Number]
- Register --> Success([Process Complete])
+ Permit --> arrival[Travel to Denmark]
+ arrival --> registration[Register at SIRI<br/>Get CPR Number]
+ registration --> Success([Process Complete])
  Appeal --> End3([Process Ended])
- 
+
  style Start fill:#e1f5e1
  style Success fill:#e1f5e1
  style End1 fill:#ffe1e1

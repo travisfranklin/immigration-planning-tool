@@ -15,29 +15,25 @@ export const italyFlowcharts: Record<string, FlowchartDefinition> = {
  successRate: '90%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> Investment{Investment Type?}
- Investment -->|Company| Company[Invest EUR 500k in Company]
- Investment -->|Startup| Startup[Invest EUR 250k in Startup]
- Investment -->|Bonds| Bonds[Buy EUR 2M Government Bonds]
- Company --> NullaOsta[Obtain Nulla Osta]
- Startup --> NullaOsta
- Bonds --> NullaOsta
- NullaOsta --> GatherDocs[Gather Required Documents]
- GatherDocs --> Submit[Submit Visa Application]
- Submit --> Wait[Wait for Processing<br/>8-12 weeks]
- Wait --> Decision{Decision}
- Decision -->|Approved| Visa[Receive Investor Visa]
- Decision -->|Rejected| Appeal[Consider Appeal]
- Visa --> Travel[Travel to Italy]
- Travel --> Questura[Apply at Questura]
- Questura --> Permesso[Receive Permesso di Soggiorno]
- Permesso --> Success([Process Complete])
- Appeal --> End1([Process Ended])
- 
+ Start([Start Process]) --> investment-type{Investment Type?}
+ investment-type -->|Company| make-investment[Invest EUR 500k in Company]
+ investment-type -->|Startup| make-investment
+ investment-type -->|Bonds| make-investment
+ make-investment --> nulla-osta[Obtain Nulla Osta]
+ nulla-osta --> gather-documents[Gather Required Documents]
+ gather-documents --> submit-visa[Submit Visa Application]
+ submit-visa --> processing[Wait for Processing<br/>8-12 weeks]
+ processing --> decision{Decision}
+ decision -->|Approved| receive-visa[Receive Investor Visa]
+ decision -->|Rejected| End1([Process Ended])
+ receive-visa --> travel-questura[Travel and Apply at Questura]
+ travel-questura --> permesso-soggiorno[Receive Permesso di Soggiorno]
+ permesso-soggiorno --> Success([Process Complete])
+
  style Start fill:#e1f5e1
  style Success fill:#e1f5e1
  style End1 fill:#ffe1e1
- style Visa fill:#e1e5ff
+ style receive-visa fill:#e1e5ff
 `,
  steps: [
  {
@@ -214,28 +210,26 @@ flowchart TD
  successRate: '70%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> BusinessPlan[Develop Business Plan]
- BusinessPlan --> Capital[Secure Capital EUR 30k+]
- Capital --> NullaOsta[Obtain Nulla Osta]
- NullaOsta --> Approved{Approved?}
- Approved -->|Yes| GatherDocs[Gather Required Documents]
- Approved -->|No| End1([Not Eligible])
- GatherDocs --> Submit[Submit Visa Application]
- Submit --> Wait[Wait for Processing<br/>8-12 weeks]
- Wait --> Decision{Decision}
- Decision -->|Approved| Visa[Receive Self-Employment Visa]
- Decision -->|Rejected| Appeal[Consider Appeal]
- Visa --> Travel[Travel to Italy]
- Travel --> Questura[Apply at Questura]
- Questura --> PartitaIVA[Obtain Partita IVA]
- PartitaIVA --> Success([Process Complete])
- Appeal --> End2([Process Ended])
- 
+ Start([Start Process]) --> business-plan[Develop Business Plan]
+ business-plan --> capital[Secure Capital EUR 30k+]
+ capital --> nulla-osta[Obtain Nulla Osta]
+ nulla-osta --> approved{Approved?}
+ approved -->|Yes| gather-documents[Gather Required Documents]
+ approved -->|No| End1([Not Eligible])
+ gather-documents --> submit-visa[Submit Visa Application]
+ submit-visa --> processing[Wait for Processing<br/>8-12 weeks]
+ processing --> decision{Decision}
+ decision -->|Approved| receive-visa[Receive Self-Employment Visa]
+ decision -->|Rejected| End2([Process Ended])
+ receive-visa --> travel-questura[Travel and Apply at Questura]
+ travel-questura --> partita-iva[Obtain Partita IVA]
+ partita-iva --> Success([Process Complete])
+
  style Start fill:#e1f5e1
  style Success fill:#e1f5e1
  style End1 fill:#ffe1e1
  style End2 fill:#ffe1e1
- style Visa fill:#e1e5ff
+ style receive-visa fill:#e1e5ff
 `,
  steps: [
  {
@@ -395,29 +389,27 @@ flowchart TD
  successRate: '75%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> Quota{Quota Available?}
- Quota -->|Yes| JobOffer[Secure Job Offer]
- Quota -->|No| End1([Wait for Next Quota])
- JobOffer --> NullaOsta[Employer Obtains Nulla Osta]
- NullaOsta --> Approved{Approved?}
- Approved -->|Yes| GatherDocs[Gather Required Documents]
- Approved -->|No| End2([Not Eligible])
- GatherDocs --> Submit[Submit Visa Application]
- Submit --> Wait[Wait for Processing<br/>8-12 weeks]
- Wait --> Decision{Decision}
- Decision -->|Approved| Visa[Receive Work Visa]
- Decision -->|Rejected| Appeal[Consider Appeal]
- Visa --> Travel[Travel to Italy]
- Travel --> Questura[Apply at Questura]
- Questura --> Success([Process Complete])
- Appeal --> End3([Process Ended])
+ Start([Start Process]) --> quota-check{Quota Available?}
+ quota-check -->|Yes| job-offer[Secure Job Offer]
+ quota-check -->|No| End1([Wait for Next Quota])
+ job-offer --> nulla-osta[Employer Obtains Nulla Osta]
+ nulla-osta --> approved{Approved?}
+ approved -->|Yes| gather-documents[Gather Required Documents]
+ approved -->|No| End2([Not Eligible])
+ gather-documents --> submit-visa[Submit Visa Application]
+ submit-visa --> processing[Wait for Processing<br/>8-12 weeks]
+ processing --> decision{Decision}
+ decision -->|Approved| receive-visa[Receive Work Visa]
+ decision -->|Rejected| End3([Process Ended])
+ receive-visa --> travel-questura[Travel and Apply at Questura]
+ travel-questura --> Success([Process Complete])
 
  style Start fill:#e1f5e1
  style Success fill:#e1f5e1
  style End1 fill:#ffe1e1
  style End2 fill:#ffe1e1
  style End3 fill:#ffe1e1
- style Visa fill:#e1e5ff
+ style receive-visa fill:#e1e5ff
 `,
  steps: [
  {
@@ -561,27 +553,25 @@ flowchart TD
  successRate: '85%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> Remote{Remote Work?}
- Remote -->|Yes| Income{Income >= EUR 28,000/year?}
- Remote -->|No| End1([Not Eligible])
- Income -->|Yes| GatherDocs[Gather Required Documents]
- Income -->|No| End2([Not Eligible])
- GatherDocs --> Submit[Submit Visa Application]
- Submit --> Wait[Wait for Processing<br/>6-10 weeks]
- Wait --> Decision{Decision}
- Decision -->|Approved| Visa[Receive Digital Nomad Visa]
- Decision -->|Rejected| Appeal[Consider Appeal]
- Visa --> Travel[Travel to Italy]
- Travel --> Questura[Apply at Questura]
- Questura --> Success([Process Complete])
- Appeal --> End3([Process Ended])
+ Start([Start Process]) --> remote-work-verification{Remote Work?}
+ remote-work-verification -->|Yes| income-verification{Income >= EUR 28,000/year?}
+ remote-work-verification -->|No| End1([Not Eligible])
+ income-verification -->|Yes| gather-documents[Gather Required Documents]
+ income-verification -->|No| End2([Not Eligible])
+ gather-documents --> submit-visa[Submit Visa Application]
+ submit-visa --> processing[Wait for Processing<br/>6-10 weeks]
+ processing --> decision{Decision}
+ decision -->|Approved| receive-visa[Receive Digital Nomad Visa]
+ decision -->|Rejected| End3([Process Ended])
+ receive-visa --> travel-questura[Travel and Apply at Questura]
+ travel-questura --> Success([Process Complete])
 
  style Start fill:#e1f5e1
  style Success fill:#e1f5e1
  style End1 fill:#ffe1e1
  style End2 fill:#ffe1e1
  style End3 fill:#ffe1e1
- style Visa fill:#e1e5ff
+ style receive-visa fill:#e1e5ff
 `,
  steps: [
  {
@@ -708,29 +698,27 @@ flowchart TD
  successRate: '70%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> Sponsor{Family in Italy?}
- Sponsor -->|Yes| Income{Sponsor Meets Requirements?}
- Sponsor -->|No| End1([Not Eligible])
- Income -->|Yes| NullaOsta[Sponsor Obtains Nulla Osta]
- Income -->|No| End2([Not Eligible])
- NullaOsta --> GatherDocs[Gather Required Documents]
- GatherDocs --> Submit[Submit Visa Application]
- Submit --> Wait[Wait for Processing<br/>12-20 weeks]
- Wait --> Decision{Decision}
- Decision -->|Approved| Visa[Receive Visa]
- Decision -->|Rejected| Appeal[Consider Appeal]
- Visa --> Travel[Travel to Italy]
- Travel --> Questura[Apply at Questura]
- Questura --> Integration[Sign Integration Agreement]
- Integration --> Success([Process Complete])
- Appeal --> End3([Process Ended])
+ Start([Start Process]) --> sponsor-eligibility{Family in Italy?}
+ sponsor-eligibility -->|Yes| income-housing{Sponsor Meets Requirements?}
+ sponsor-eligibility -->|No| End1([Not Eligible])
+ income-housing -->|Yes| nulla-osta[Sponsor Obtains Nulla Osta]
+ income-housing -->|No| End2([Not Eligible])
+ nulla-osta --> gather-documents[Gather Required Documents]
+ gather-documents --> submit-visa[Submit Visa Application]
+ submit-visa --> processing[Wait for Processing<br/>12-20 weeks]
+ processing --> decision{Decision}
+ decision -->|Approved| receive-visa[Receive Visa]
+ decision -->|Rejected| End3([Process Ended])
+ receive-visa --> travel-questura[Travel and Apply at Questura]
+ travel-questura --> integration-agreement[Sign Integration Agreement]
+ integration-agreement --> Success([Process Complete])
 
  style Start fill:#e1f5e1
  style Success fill:#e1f5e1
  style End1 fill:#ffe1e1
  style End2 fill:#ffe1e1
  style End3 fill:#ffe1e1
- style Visa fill:#e1e5ff
+ style receive-visa fill:#e1e5ff
 `,
  steps: [
  {

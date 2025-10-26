@@ -15,7 +15,7 @@ export const germanyFlowcharts: Record<string, FlowchartDefinition> = {
  successRate: '85%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> job-offer["Secure Job Offer"]
+ Start([Start Process]) -->job-offer["Secure Job Offer"]
  job-offer --> Salary{Salary >= EUR 45,300?}
  Salary -->|Yes| gather-documents["Gather Required Documents"]
  Salary -->|No| End1([Not Eligible])
@@ -159,23 +159,21 @@ flowchart TD
  successRate: '80%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> JobOffer[Secure Job Offer]
- JobOffer --> Recognition[Get Degree Recognition]
- Recognition --> GatherDocs[Gather Required Documents]
- GatherDocs --> Submit[Submit Application]
- Submit --> Wait[Wait for Processing<br/>2-3 months]
- Wait --> Decision{Decision}
- Decision -->|Approved| Visa[Receive Visa]
- Decision -->|Rejected| Appeal[Consider Appeal]
- Visa --> Travel[Travel to Germany]
- Travel --> Register[Register at Local Office]
- Register --> Success([Process Complete])
- Appeal --> End([Process Ended])
- 
+ Start([Start Process]) -->job-offer[Secure Job Offer]
+ job-offer --> recognition[Get Degree Recognition]
+ recognition --> gather-documents[Gather Required Documents]
+ gather-documents --> submit-application[Submit Application]
+ submit-application --> processing[Wait for Processing<br/>2-3 months]
+ processing --> decision{Decision}
+ decision -->|Approved| travel[Receive Visa]
+ decision -->|Rejected| End([Process Ended])
+ travel --> registration[Travel to Germany]
+ registration --> Success([Process Complete])
+
  style Start fill:#e1f5e1
  style Success fill:#e1f5e1
  style End fill:#ffe1e1
- style Visa fill:#e1e5ff
+ style travel fill:#e1e5ff
 `,
  steps: [
  {
@@ -285,33 +283,31 @@ flowchart TD
  successRate: '70%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> Degree[Have Recognized Degree]
- Degree --> Funds{Sufficient Funds?}
- Funds -->|Yes| GatherDocs[Gather Required Documents]
- Funds -->|No| End1([Not Eligible])
- GatherDocs --> Submit[Submit Application]
- Submit --> Wait[Wait for Processing<br/>4-8 weeks]
- Wait --> Decision{Decision}
- Decision -->|Approved| Visa[Receive Job Seeker Visa]
- Decision -->|Rejected| Appeal[Consider Appeal]
- Visa --> Travel[Travel to Germany]
- Travel --> JobSearch[Search for Job<br/>6 months]
- JobSearch --> JobFound{Job Offer?}
- JobFound -->|Yes| Convert[Convert to Work Visa]
+ Start([Start Process]) -->degree-recognition[Have Recognized Degree]
+ degree-recognition --> financial-proof{Sufficient Funds?}
+ financial-proof -->|Yes| gather-documents[Gather Required Documents]
+ financial-proof -->|No| End1([Not Eligible])
+ gather-documents --> submit-application[Submit Application]
+ submit-application --> processing[Wait for Processing<br/>4-8 weeks]
+ processing --> decision{Decision}
+ decision -->|Approved| travel[Receive Job Seeker Visa]
+ decision -->|Rejected| End2([Process Ended])
+ travel --> job-search[Search for Job<br/>6 months]
+ job-search --> JobFound{Job Offer?}
+ JobFound -->|Yes| conversion[Convert to Work Visa]
  JobFound -->|No| Extend{Extend Visa?}
  Extend -->|Yes| Continue[Continue Search]
  Extend -->|No| Return[Return Home]
- Convert --> Success([Process Complete])
- Continue --> JobSearch
- Appeal --> End2([Process Ended])
+ conversion --> Success([Process Complete])
+ Continue --> job-search
  Return --> End2
 
  style Start fill:#e1f5e1
  style Success fill:#e1f5e1
  style End1 fill:#ffe1e1
  style End2 fill:#ffe1e1
- style Visa fill:#e1e5ff
- style Convert fill:#e1e5ff
+ style travel fill:#e1e5ff
+ style conversion fill:#e1e5ff
 `,
  steps: [
  {
@@ -442,7 +438,7 @@ flowchart TD
  successRate: '60%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> business-plan["Develop Business Plan"]
+ Start([Start Process]) -->business-plan["Develop Business Plan"]
  business-plan --> client-commitments["Secure Client Commitments"]
  client-commitments --> financial-proof{Sufficient Funds?}
  financial-proof -->|Yes| gather-documents["Gather Required Documents"]
@@ -615,34 +611,27 @@ flowchart TD
  successRate: '85%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> Sponsor{Sponsor in Germany?}
- Sponsor -->|Yes| SponsorType[Determine Sponsor Type]
- Sponsor -->|No| End1([Not Eligible])
- SponsorType --> Spouse[Spouse/Partner]
- SponsorType --> Parent[Parent]
- SponsorType --> Child[Child]
- Spouse --> Requirements[Meet Requirements]
- Parent --> Requirements
- Child --> Requirements
- Requirements --> Language{Language Required?}
- Language -->|Yes| A1[Obtain A1 Certificate]
- Language -->|No| GatherDocs[Gather Documents]
- A1 --> GatherDocs
- GatherDocs --> Submit[Submit Application]
- Submit --> Wait[Wait for Processing<br/>2-3 months]
- Wait --> Decision{Decision}
- Decision -->|Approved| Visa[Receive Visa]
- Decision -->|Rejected| Appeal[Consider Appeal]
- Visa --> Travel[Travel to Germany]
- Travel --> Register[Register at Ausländerbehörde]
- Register --> Success([Reunited in Germany])
- Appeal --> End2([Process Ended])
+ Start([Start Process]) -->verify-sponsor{Sponsor in Germany?}
+ verify-sponsor -->|Yes| relationship-proof[Determine Sponsor Type]
+ verify-sponsor -->|No| End1([Not Eligible])
+ relationship-proof --> language-requirement{Language Required?}
+ language-requirement -->|Yes| financial-requirements[Obtain A1 Certificate]
+ language-requirement -->|No| health-insurance[Arrange Insurance]
+ financial-requirements --> health-insurance
+ health-insurance --> gather-documents[Gather Documents]
+ gather-documents --> submit-application[Submit Application]
+ submit-application --> processing[Wait for Processing<br/>2-3 months]
+ processing --> decision{Decision}
+ decision -->|Approved| travel[Receive Visa]
+ decision -->|Rejected| End2([Process Ended])
+ travel --> registration[Travel to Germany]
+ registration --> Success([Reunited in Germany])
 
  style Start fill:#e1f5e1
  style Success fill:#e1f5e1
  style End1 fill:#ffe1e1
  style End2 fill:#ffe1e1
- style Visa fill:#e1e5ff
+ style travel fill:#e1e5ff
 `,
  steps: [
  {

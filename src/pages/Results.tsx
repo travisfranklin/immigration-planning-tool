@@ -38,8 +38,13 @@ export const Results: React.FC = () => {
       const existingScores = await getUserViabilityScores(profile.id);
 
       if (existingScores.length > 0) {
-        // Use existing scores
-        setScores(existingScores.sort((a: ViabilityScore, b: ViabilityScore) => b.overallScore - a.overallScore));
+        // Use existing scores - sort by score (descending), then by country name (ascending) for stable ordering
+        const sorted = [...existingScores].sort((a: ViabilityScore, b: ViabilityScore) => {
+          const scoreDiff = b.overallScore - a.overallScore;
+          if (scoreDiff !== 0) return scoreDiff;
+          return a.countryName.localeCompare(b.countryName);
+        });
+        setScores(sorted);
       } else {
         // Calculate new scores
         await calculateResults(profile.id);
@@ -74,7 +79,13 @@ export const Results: React.FC = () => {
         await saveViabilityScore(score);
       }
 
-      setScores(calculatedScores);
+      // Ensure scores are sorted by overall score (highest first), then by country name for stable ordering
+      const sortedScores = [...calculatedScores].sort((a: ViabilityScore, b: ViabilityScore) => {
+        const scoreDiff = b.overallScore - a.overallScore;
+        if (scoreDiff !== 0) return scoreDiff;
+        return a.countryName.localeCompare(b.countryName);
+      });
+      setScores(sortedScores);
       setIsCalculating(false);
     } catch (err) {
       console.error('Error calculating results:', err);

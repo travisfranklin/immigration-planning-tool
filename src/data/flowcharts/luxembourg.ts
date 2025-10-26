@@ -15,24 +15,24 @@ export const luxembourgFlowcharts: Record<string, FlowchartDefinition> = {
  successRate: '85%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> JobOffer[Secure Job Offer]
- JobOffer --> Salary{Salary >= EUR 63,408?}
- Salary -->|Yes| GatherDocs[Gather Required Documents]
+ Start([Start Process]) -->job-offer[Secure Job Offer]
+ job-offer --> Salary{Salary >= EUR 63,408?}
+ Salary -->|Yes| gather-documents[Gather Required Documents]
  Salary -->|No| End1([Not Eligible])
- GatherDocs --> WorkAuth[Apply for Work Authorization]
- WorkAuth --> WaitAuth[Wait for Authorization<br/>3-4 weeks]
+ gather-documents --> work-authorization[Apply for Work Authorization]
+ work-authorization --> WaitAuth[Wait for Authorization<br/>3-4 weeks]
  WaitAuth --> AuthDecision{Authorization Approved?}
- AuthDecision -->|Yes| VisaApp[Apply for Visa]
+ AuthDecision -->|Yes| visa-application[Apply for Visa]
  AuthDecision -->|No| End2([Application Denied])
- VisaApp --> WaitVisa[Wait for Visa<br/>4-6 weeks]
+ visa-application --> WaitVisa[Wait for Visa<br/>4-6 weeks]
  WaitVisa --> VisaDecision{Visa Approved?}
  VisaDecision -->|Approved| Visa[Receive Blue Card]
  VisaDecision -->|Rejected| Appeal[Consider Appeal]
- Visa --> Travel[Travel to Luxembourg]
- Travel --> Register[Register at Commune]
- Register --> Success([Process Complete])
+ Visa --> arrival[Travel to Luxembourg]
+ arrival --> registration[Register at Commune]
+ registration --> Success([Process Complete])
  Appeal --> End2
- 
+
  style Start fill:#e1f5e1
  style Success fill:#e1f5e1
  style End1 fill:#ffe1e1

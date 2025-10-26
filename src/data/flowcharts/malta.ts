@@ -15,22 +15,22 @@ export const maltaFlowcharts: Record<string, FlowchartDefinition> = {
  successRate: '90%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> Income[Verify Remote Income<br/>>= EUR 2,700/month]
- Income --> CheckIncome{Income Sufficient?}
+ Start([Start Process]) -->verify-income-employment[Verify Remote Income<br/>>= EUR 2,700/month]
+ verify-income-employment --> CheckIncome{Income Sufficient?}
  CheckIncome -->|Yes| Employment[Verify Remote Employment/<br/>Self-Employment]
  CheckIncome -->|No| End1([Not Eligible])
- Employment --> GatherDocs[Gather Required Documents]
- GatherDocs --> Submit[Submit Application to<br/>Residency Malta Agency]
- Submit --> Processing[Processing<br/>30-60 Days]
- Processing --> Decision{Decision}
+ Employment --> gather-documents[Gather Required Documents]
+ gather-documents --> submit-application[Submit Application to<br/>Residency Malta Agency]
+ submit-application --> processing[Processing<br/>30-60 Days]
+ processing --> Decision{Decision}
  Decision -->|Approved| Permit[Receive Nomad Residence Permit]
  Decision -->|Rejected| Appeal[Consider Appeal]
- Permit --> Travel[Travel to Malta]
- Travel --> Register[Register at Identity Malta]
- Register --> TaxBenefit[Enjoy 15% Flat Tax Rate<br/>on Foreign Income!]
+ Permit --> arrival[Travel to Malta]
+ arrival --> registration[Register at Identity Malta]
+ registration --> TaxBenefit[Enjoy 15% Flat Tax Rate<br/>on Foreign Income!]
  TaxBenefit --> Success([Process Complete])
  Appeal --> End2([Process Ended])
- 
+
  style Start fill:#e1f5e1
  style Success fill:#e1f5e1
  style End1 fill:#ffe1e1

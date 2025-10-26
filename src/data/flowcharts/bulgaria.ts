@@ -15,22 +15,22 @@ export const bulgariaFlowcharts: Record<string, FlowchartDefinition> = {
  successRate: '95%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> JobOffer[Secure Job Offer<br/>from Bulgarian Employer]
- JobOffer --> CheckSalary{Salary >= EUR 1,500/month<br/>( EUR 18,000/year)?}
+ Start([Start Process]) -->job-offer[Secure Job Offer<br/>from Bulgarian Employer]
+ job-offer --> CheckSalary{Salary >= EUR 1,500/month<br/>( EUR 18,000/year)?}
  CheckSalary -->|Yes| CheckEducation{Higher Education<br/>Degree?}
  CheckSalary -->|No| End1([Not Eligible])
- CheckEducation -->|Yes| GatherDocs[Gather Required Documents]
+ CheckEducation -->|Yes| gather-documents[Gather Required Documents]
  CheckEducation -->|No| End2([Not Eligible])
- GatherDocs --> Submit[Submit Application to<br/>Bulgarian Consulate or in Bulgaria]
- Submit --> Processing[Processing<br/>30-60 Days]
- Processing --> Decision{Decision}
+ gather-documents --> submit-application[Submit Application to<br/>Bulgarian Consulate or in Bulgaria]
+ submit-application --> processing[Processing<br/>30-60 Days]
+ processing --> Decision{Decision}
  Decision -->|Approved| BlueCard[Receive EU Blue Card<br/>3-Year Permit]
  Decision -->|Rejected| Appeal[Consider Appeal]
- BlueCard --> Travel[Travel to Bulgaria]
- Travel --> Register[Register at Migration<br/>Directorate within 3 Days]
- Register --> Success([Process Complete])
+ BlueCard --> arrival[Travel to Bulgaria]
+ arrival --> registration[Register at Migration<br/>Directorate within 3 Days]
+ registration --> Success([Process Complete])
  Appeal --> End3([Process Ended])
- 
+
  style Start fill:#e1f5e1
  style Success fill:#e1f5e1
  style End1 fill:#ffe1e1
@@ -142,22 +142,22 @@ flowchart TD
  successRate: '85%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> BusinessIdea[Develop Innovative<br/>Business Idea]
- BusinessIdea --> Funds[Verify Minimum Funds<br/> EUR 5,000 (BGN 10,000)]
+ Start([Start Process]) --> develop-business-idea[Develop Innovative<br/>Business Idea]
+ business-idea --> Funds[Verify Minimum Funds<br/> EUR 5,000 (BGN 10,000)]
  Funds --> CheckFunds{Funds Sufficient?}
- CheckFunds -->|Yes| Program[Apply to Bulgarian<br/>Startup Program]
+ CheckFunds -->|Yes| startup-program[Apply to Bulgarian<br/>Startup Program]
  CheckFunds -->|No| End1([Not Eligible])
- Program --> Acceptance{Accepted by<br/>Program?}
- Acceptance -->|Yes| GatherDocs[Gather Required Documents]
+ startup-program --> Acceptance{Accepted by<br/>Program?}
+ Acceptance -->|Yes| gather-documents[Gather Required Documents]
  Acceptance -->|No| End2([Not Eligible])
- GatherDocs --> Submit[Submit Application to<br/>Bulgarian Consulate or in Bulgaria]
- Submit --> Processing[Processing<br/>30-60 Days]
- Processing --> Decision{Decision}
+ gather-documents --> submit-application[Submit Application to<br/>Bulgarian Consulate or in Bulgaria]
+ submit-application --> processing[Processing<br/>30-60 Days]
+ processing --> Decision{Decision}
  Decision -->|Approved| Visa[Receive Startup Visa<br/>1-Year Permit]
  Decision -->|Rejected| Appeal[Consider Appeal]
- Visa --> Travel[Travel to Bulgaria]
- Travel --> Register[Register Business &<br/>at Migration Directorate]
- Register --> Success([Process Complete])
+ Visa --> arrival[Travel to Bulgaria]
+ arrival --> registration[Register Business &<br/>at Migration Directorate]
+ registration --> Success([Process Complete])
  Appeal --> End3([Process Ended])
  
  style Start fill:#e1f5e1

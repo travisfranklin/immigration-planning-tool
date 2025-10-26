@@ -15,18 +15,18 @@ export const finlandFlowcharts: Record<string, FlowchartDefinition> = {
  successRate: '90%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> JobOffer[Secure Job Offer in Finland]
- JobOffer --> CheckSalary{Salary >= 3000 EUR/month?}
- CheckSalary -->|Yes| GatherDocs[Gather Required Documents]
+ Start([Start Process]) -->job-offer[Secure Job Offer in Finland]
+ job-offer --> CheckSalary{Salary >= 3000 EUR/month?}
+ CheckSalary -->|Yes| gather-documents[Gather Required Documents]
  CheckSalary -->|No| End1([Not Eligible])
- GatherDocs --> Submit[Submit Application Online via Enter Finland]
- Submit --> Processing[Migri Processing 60-90 Days]
- Processing --> Decision{Decision}
+ gather-documents --> submit-application[Submit Application Online via Enter Finland]
+ submit-application --> processing[Migri Processing 60-90 Days]
+ processing --> Decision{Decision}
  Decision -->|Approved| Permit[Receive Residence Permit]
  Decision -->|Rejected| Appeal[Consider Appeal]
- Permit --> Travel[Travel to Finland]
- Travel --> Register[Register at Migri Office Get Finnish ID]
- Register --> Success([Process Complete])
+ Permit --> arrival[Travel to Finland]
+ arrival --> registration[Register at Migri Office Get Finnish ID]
+ registration --> Success([Process Complete])
  Appeal --> End2([Process Ended])
 
  style Start fill:#e1f5e1

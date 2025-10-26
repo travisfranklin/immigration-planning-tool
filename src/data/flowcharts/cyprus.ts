@@ -16,24 +16,24 @@ export const cyprusFlowcharts: Record<string, FlowchartDefinition> = {
  mermaidDiagram: `
 flowchart TD
  Start([Start Process]) --> Investment{Investment Type?}
- Investment -->|Real Estate EUR 300k| Property[Purchase Property<br/> EUR 300,000 minimum]
+ Investment -->|Real Estate EUR 300k| choose-investment[Purchase Property<br/> EUR 300,000 minimum]
  Investment -->|Business EUR 300k| Business[Invest in Business<br/> EUR 300,000]
  Investment -->|Combination| Combo[Combination of Investments<br/> EUR 300,000 total]
- Property --> Income[Verify Annual Income<br/> EUR 50,000 minimum]
- Business --> Income
- Combo --> Income
- Income --> CheckIncome{Income Sufficient?}
- CheckIncome -->|Yes| GatherDocs[Gather Required Documents]
+ choose-investment --> income-verification[Verify Annual Income<br/> EUR 50,000 minimum]
+ Business --> income-verification
+ Combo --> income-verification
+ income-verification --> CheckIncome{Income Sufficient?}
+ CheckIncome -->|Yes| gather-documents[Gather Required Documents]
  CheckIncome -->|No| End1([Not Eligible])
- GatherDocs --> Submit[Submit Application to<br/>Cyprus Immigration]
- Submit --> Processing[Processing<br/>60-90 Days]
- Processing --> Decision{Decision}
+ gather-documents --> submit-application[Submit Application to<br/>Cyprus Immigration]
+ submit-application --> processing[Processing<br/>60-90 Days]
+ processing --> Decision{Decision}
  Decision -->|Approved| PR[Receive Permanent Residence<br/>Immediate PR!]
  Decision -->|Rejected| Appeal[Consider Appeal]
- PR --> Travel[Travel to Cyprus]
- Travel --> Success([Process Complete])
+ PR --> arrival[Travel to Cyprus]
+ arrival --> Success([Process Complete])
  Appeal --> End2([Process Ended])
- 
+
  style Start fill:#e1f5e1
  style Success fill:#e1f5e1
  style End1 fill:#ffe1e1

@@ -14,18 +14,18 @@ export const lithuaniaFlowcharts: Record<string, FlowchartDefinition> = {
  successRate: '90%',
  mermaidDiagram: `
 flowchart TD
- Start([Start]) --> Job[Secure Job Offer<br/> EUR 1,800/month]
- Job --> Edu{Higher Ed<br/>Degree?}
- Edu -->|Yes| Docs[Gather Documents]
+ Start([Start]) -->job[Secure Job Offer<br/> EUR 1,800/month]
+ job --> Edu{Higher Ed<br/>Degree?}
+ Edu -->|Yes| docs[Gather Documents]
  Edu -->|No| End1([Not Eligible])
- Docs --> Submit[Submit Application]
- Submit --> Process[Processing 30-60 Days]
- Process --> Decision{Decision}
+ docs --> submit-application[Submit Application]
+ submit-application --> processing[Processing 30-60 Days]
+ processing --> Decision{Decision}
  Decision -->|Approved| Card[EU Blue Card<br/>2 Years]
  Decision -->|Rejected| End2([Rejected])
- Card --> Register[Register in Lithuania]
- Register --> Success([Complete])
- 
+ Card --> registration[Register in Lithuania]
+ registration --> Success([Complete])
+
  style Start fill:#e1f5e1
  style Success fill:#e1f5e1
  style End1 fill:#ffe1e1

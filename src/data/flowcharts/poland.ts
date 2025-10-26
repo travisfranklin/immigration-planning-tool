@@ -15,22 +15,22 @@ export const polandFlowcharts: Record<string, FlowchartDefinition> = {
  successRate: '90%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> JobOffer[Secure Job Offer<br/>from Polish Employer]
- JobOffer --> CheckSalary{Salary >= EUR 1,800/month<br/>( EUR 21,600/year)?}
+ Start([Start Process]) -->job-offer[Secure Job Offer<br/>from Polish Employer]
+ job-offer --> CheckSalary{Salary >= EUR 1,800/month<br/>( EUR 21,600/year)?}
  CheckSalary -->|Yes| CheckEducation{Higher Education<br/>Degree?}
  CheckSalary -->|No| End1([Not Eligible])
- CheckEducation -->|Yes| GatherDocs[Gather Required Documents]
+ CheckEducation -->|Yes| gather-documents[Gather Required Documents]
  CheckEducation -->|No| End2([Not Eligible])
- GatherDocs --> Submit[Submit Application to<br/>Polish Consulate or in Poland]
- Submit --> Processing[Processing<br/>30-60 Days]
- Processing --> Decision{Decision}
+ gather-documents --> submit-application[Submit Application to<br/>Polish Consulate or in Poland]
+ submit-application --> processing[Processing<br/>30-60 Days]
+ processing --> Decision{Decision}
  Decision -->|Approved| BlueCard[Receive EU Blue Card<br/>3-Year Permit]
  Decision -->|Rejected| Appeal[Consider Appeal]
- BlueCard --> Travel[Travel to Poland]
- Travel --> Register[Register at Local<br/>Voivodeship Office]
- Register --> Success([Process Complete])
+ BlueCard --> arrival[Travel to Poland]
+ arrival --> registration[Register at Local<br/>Voivodeship Office]
+ registration --> Success([Process Complete])
  Appeal --> End3([Process Ended])
- 
+
  style Start fill:#e1f5e1
  style Success fill:#e1f5e1
  style End1 fill:#ffe1e1

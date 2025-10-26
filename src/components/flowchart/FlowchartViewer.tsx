@@ -256,7 +256,6 @@ export function FlowchartViewer({ flowchart, onExport, selectedStepId, onStepSel
 
       {/* Flowchart Diagram */}
       <div className="bg-white rounded-lg shadow-sm p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Process Flow</h3>
         {isLoading && (
           <div className="flex items-center justify-center h-64">
             <div className="text-gray-500">Loading flowchart...</div>
@@ -267,100 +266,6 @@ export function FlowchartViewer({ flowchart, onExport, selectedStepId, onStepSel
           className="overflow-x-auto select-none"
           style={{ minHeight: '400px', userSelect: 'none' }}
         />
-      </div>
-
-      {/* Step Details */}
-      <div className="bg-white rounded-lg shadow-sm p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Step-by-Step Guide</h3>
-        <div className="space-y-4">
-          {flowchart.steps.map((step, index) => (
-            <div
-              key={step.id}
-              className={`border rounded-lg p-4 transition-colors ${
-                selectedStep === step.id
-                  ? 'border-blue-500 bg-blue-50'
-                  : 'border-gray-200'
-              }`}
-            >
-              <button
-                className="w-full text-left"
-                onClick={() => setSelectedStep(selectedStep === step.id ? null : step.id)}
-                aria-expanded={selectedStep === step.id}
-                aria-controls={`step-details-${step.id}`}
-              >
-                <div className="flex items-start justify-between">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2">
-                      <span className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-100 text-blue-700 text-sm font-semibold">
-                        {index + 1}
-                      </span>
-                      <h4 className="text-lg font-medium text-gray-900">{step.title}</h4>
-                      {step.isConditional && (
-                        <span className="px-2 py-1 text-xs font-medium text-yellow-700 bg-yellow-100 rounded conditional-badge">
-                          Conditional
-                        </span>
-                      )}
-                    </div>
-                    <p className="text-sm text-gray-600 mt-2 ml-10">{step.description}</p>
-                    <p className="text-sm text-gray-500 mt-1 ml-10">
-                      ⏱️ Estimated duration: {step.estimatedDuration}
-                    </p>
-                  </div>
-                  <span className="text-gray-400 hover:text-gray-600">
-                    {selectedStep === step.id ? '▼' : '▶'}
-                  </span>
-                </div>
-              </button>
-
-              {selectedStep === step.id && (
-                <div
-                  id={`step-details-${step.id}`}
-                  className="mt-4 ml-10 space-y-3"
-                  role="region"
-                  aria-label={`Details for ${step.title}`}
-                >
-                  {step.documents.length > 0 && (
-                    <div>
-                      <h5 className="text-sm font-semibold text-gray-900 mb-2">
-                        Required Documents:
-                      </h5>
-                      <ul className="list-disc list-inside space-y-1">
-                        {step.documents.map((doc, i) => (
-                          <li key={i} className="text-sm text-gray-700">
-                            {doc}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  {step.notes && step.notes.length > 0 && (
-                    <div>
-                      <h5 className="text-sm font-semibold text-gray-900 mb-2">
-                        Important Notes:
-                      </h5>
-                      <ul className="list-disc list-inside space-y-1">
-                        {step.notes.map((note, i) => (
-                          <li key={i} className="text-sm text-gray-700">
-                            {note}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  {step.condition && (
-                    <div className="bg-yellow-50 border border-yellow-200 rounded p-3">
-                      <p className="text-sm text-yellow-800">
-                        <strong>Condition:</strong> {step.condition}
-                      </p>
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
       </div>
     </div>
   );

@@ -326,5 +326,86 @@ describe('Flowchart Data Validation', () => {
  });
  });
  });
+
+ describe('Node ID Matching for Interactive Flowcharts', () => {
+ /**
+  * This test suite ensures that mermaid diagram node IDs can be properly
+  * extracted and matched to step IDs by the FlowchartViewer component.
+  *
+  * The FlowchartViewer uses this regex to extract step IDs from node IDs:
+  * const match = nodeId.match(/^flowchart-(.+?)-\d+$/);
+  *
+  * This means:
+  * - Mermaid node IDs must be in kebab-case (e.g., "job-offer", "gather-documents")
+  * - They must match the step.id values exactly
+  * - The FlowchartViewer will convert them to "flowchart-{stepId}-{number}" format
+  */
+
+ allFlowcharts.forEach(({ countryCode, flowchart }) => {
+ describe(`${countryCode} - ${flowchart.programName} node ID matching`, () => {
+ // Extract all node IDs from mermaid diagram
+ function extractMermaidNodeIds(diagram: string): string[] {
+ const nodeIds: string[] = [];
+ // Match patterns like: "node-id[" or "node-id{" or "node-id(" or "node-id-->"
+ const nodePattern = /\b([a-z0-9\-]+)\s*[\[\{\(]/g;
+ let match;
+ while ((match = nodePattern.exec(diagram)) !== null) {
+ const nodeId = match[1];
+ // Filter out common keywords and special nodes
+ if (!['flowchart', 'td', 'lr', 'start', 'end', 'style'].includes(nodeId.toLowerCase())) {
+ nodeIds.push(nodeId);
+ }
+ }
+ return [...new Set(nodeIds)]; // Remove duplicates
+ }
+
+ const mermaidNodeIds = extractMermaidNodeIds(flowchart.mermaidDiagram);
+ const stepIds = flowchart.steps.map(s => s.id);
+
+ it('should have mermaid nodes that match step IDs', () => {
+ const unmatchedNodes = mermaidNodeIds.filter(nodeId => !stepIds.includes(nodeId));
+
+ if (unmatchedNodes.length > 0) {
+ console.warn(
+ `\n⚠️  ${countryCode} - ${flowchart.programName}:\n` +
+ `   Unmatched mermaid nodes: ${unmatchedNodes.join(', ')}\n` +
+ `   Step IDs: ${stepIds.join(', ')}\n`
+ );
+ }
+
+ // This test documents which flowcharts need updating
+ // It will fail for all countries except Germany until they're updated
+ expect(unmatchedNodes.length).toBe(0);
+ });
+
+ it('should have all step IDs referenced in mermaid diagram', () => {
+ const unreferencedSteps = stepIds.filter(stepId => !mermaidNodeIds.includes(stepId));
+
+ if (unreferencedSteps.length > 0) {
+ console.warn(
+ `\n⚠️  ${countryCode} - ${flowchart.programName}:\n` +
+ `   Unreferenced steps: ${unreferencedSteps.join(', ')}\n`
+ );
+ }
+
+ expect(unreferencedSteps.length).toBe(0);
+ });
+
+ it('should use kebab-case for all node IDs', () => {
+ const invalidNodes = mermaidNodeIds.filter(nodeId => !/^[a-z0-9\-]+$/.test(nodeId));
+
+ if (invalidNodes.length > 0) {
+ console.warn(
+ `\n⚠️  ${countryCode} - ${flowchart.programName}:\n` +
+ `   Non-kebab-case nodes: ${invalidNodes.join(', ')}\n` +
+ `   Expected format: lowercase-with-hyphens\n`
+ );
+ }
+
+ expect(invalidNodes.length).toBe(0);
+ });
+ });
+ });
+ });
 });
 

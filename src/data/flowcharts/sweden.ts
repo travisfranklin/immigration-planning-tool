@@ -15,21 +15,21 @@ export const swedenFlowcharts: Record<string, FlowchartDefinition> = {
  successRate: '90%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> JobOffer[Secure Job Offer]
- JobOffer --> Advertise[Employer Advertises Position<br/>in EU for 10 Days]
+ Start([Start Process]) -->job-offer[Secure Job Offer]
+ job-offer --> Advertise[Employer Advertises Position<br/>in EU for 10 Days]
  Advertise --> Salary{Salary Meets<br/>Collective Agreement?}
- Salary -->|Yes| GatherDocs[Gather Required Documents]
+ Salary -->|Yes| gather-documents[Gather Required Documents]
  Salary -->|No| End1([Not Eligible])
- GatherDocs --> EmployerApply[Employer Submits Application]
- EmployerApply --> Wait[Wait for Processing<br/>2-4 months]
- Wait --> Decision{Decision}
+ gather-documents --> employer-application[Employer Submits Application]
+ employer-application --> processing[Wait for Processing<br/>2-4 months]
+ processing --> Decision{Decision}
  Decision -->|Approved| Permit[Receive Work Permit]
  Decision -->|Rejected| Appeal[Consider Appeal]
- Permit --> Travel[Travel to Sweden]
- Travel --> Register[Register at Tax Agency<br/>Get Personal Number]
- Register --> Success([Process Complete])
+ Permit --> arrival[Travel to Sweden]
+ arrival --> registration[Register at Tax Agency<br/>Get Personal Number]
+ registration --> Success([Process Complete])
  Appeal --> End2([Process Ended])
- 
+
  style Start fill:#e1f5e1
  style Success fill:#e1f5e1
  style End1 fill:#ffe1e1

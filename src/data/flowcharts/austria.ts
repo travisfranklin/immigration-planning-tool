@@ -15,20 +15,20 @@ export const austriaFlowcharts: Record<string, FlowchartDefinition> = {
  successRate: '85%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> JobOffer[Secure Job Offer]
- JobOffer --> Salary{Salary >= EUR 51,500?}
- Salary -->|Yes| GatherDocs[Gather Required Documents]
+ Start([Start Process]) -->job-offer[Secure Job Offer]
+ job-offer --> Salary{Salary >= EUR 51,500?}
+ Salary -->|Yes| gather-documents[Gather Required Documents]
  Salary -->|No| End1([Not Eligible])
- GatherDocs --> Submit[Submit Application]
- Submit --> Wait[Wait for Processing<br/>8 weeks]
- Wait --> Decision{Decision}
+ gather-documents --> submit-application[Submit Application]
+ submit-application --> processing[Wait for Processing<br/>8 weeks]
+ processing --> Decision{Decision}
  Decision -->|Approved| Visa[Receive Blue Card]
  Decision -->|Rejected| Appeal[Consider Appeal]
- Visa --> Travel[Travel to Austria]
- Travel --> Register[Register at MA35]
+ Visa --> arrival[Travel to Austria]
+ arrival --> Register[Register at MA35]
  Register --> Success([Process Complete])
  Appeal --> End2([Process Ended])
- 
+
  style Start fill:#e1f5e1
  style Success fill:#e1f5e1
  style End1 fill:#ffe1e1
@@ -129,22 +129,22 @@ flowchart TD
  mermaidDiagram: `
 flowchart TD
  Start([Start Process]) --> Category[Choose Category]
- Category --> Points{Calculate Points}
- Points -->|>= 70 points| JobOffer[Secure Job Offer]
- Points -->|< 70 points| End1([Not Eligible])
- JobOffer --> Salary{Salary >= EUR 38,700?}
- Salary -->|Yes| GatherDocs[Gather Required Documents]
+ Category -->points-calculation{Calculate Points}
+ points-calculation -->|>= 70 points| job-offer[Secure Job Offer]
+ points-calculation -->|< 70 points| End1([Not Eligible])
+ job-offer --> Salary{Salary >= EUR 38,700?}
+ Salary -->|Yes| gather-documents[Gather Required Documents]
  Salary -->|No| End1
- GatherDocs --> Submit[Submit Application]
- Submit --> Wait[Wait for Processing<br/>8 weeks]
- Wait --> Decision{Decision}
+ gather-documents --> submit-application[Submit Application]
+ submit-application --> processing[Wait for Processing<br/>8 weeks]
+ processing --> Decision{Decision}
  Decision -->|Approved| Visa[Receive RWR Card]
  Decision -->|Rejected| Appeal[Consider Appeal]
- Visa --> Travel[Travel to Austria]
- Travel --> Register[Register at MA35]
+ Visa --> arrival[Travel to Austria]
+ arrival --> Register[Register at MA35]
  Register --> Success([Process Complete])
  Appeal --> End2([Process Ended])
- 
+
  style Start fill:#e1f5e1
  style Success fill:#e1f5e1
  style End1 fill:#ffe1e1

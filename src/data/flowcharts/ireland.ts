@@ -15,23 +15,23 @@ export const irelandFlowcharts: Record<string, FlowchartDefinition> = {
  successRate: '90%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> JobOffer[Secure Job Offer]
- JobOffer --> Salary{Salary >= EUR 44,000?}
+ Start([Start Process]) -->job-offer[Secure Job Offer]
+ job-offer --> Salary{Salary >= EUR 44,000?}
  Salary -->|Yes| CriticalSkills{Critical Skills List?}
  Salary -->|No| End1([Not Eligible])
- CriticalSkills -->|Yes| GatherDocs[Gather Required Documents]
+ CriticalSkills -->|Yes| gather-documents[Gather Required Documents]
  CriticalSkills -->|No| End1
- GatherDocs --> EmployerApp[Employer Applies for Permit]
- EmployerApp --> Wait[Wait for Processing<br/>8 weeks]
- Wait --> Decision{Decision}
+ gather-documents --> employer-application[Employer Applies for Permit]
+ employer-application --> processing[Wait for Processing<br/>8 weeks]
+ processing --> Decision{Decision}
  Decision -->|Approved| Permit[Receive Employment Permit]
  Decision -->|Rejected| Appeal[Consider Appeal]
- Permit --> Visa[Apply for Entry Visa]
- Visa --> Travel[Travel to Ireland]
- Travel --> Register[Register with GNIB/IRP]
- Register --> Success([Process Complete])
+ Permit --> visa-application[Apply for Entry Visa]
+ visa-application --> arrival[Travel to Ireland]
+ arrival --> registration[Register with GNIB/IRP]
+ registration --> Success([Process Complete])
  Appeal --> End2([Process Ended])
- 
+
  style Start fill:#e1f5e1
  style Success fill:#e1f5e1
  style End1 fill:#ffe1e1

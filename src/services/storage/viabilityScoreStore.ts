@@ -144,20 +144,22 @@ export async function getUserCountryRanking(userId: string): Promise<ViabilitySc
 
 /**
  * Save or update a viability score
- * If the score already exists (by userId + countryCode), update it; otherwise create new
+ * If scores already exist (by userId + countryCode), delete them first to avoid duplicates
+ * Then save the new score
  */
 export async function saveViabilityScore(score: ViabilityScore): Promise<ViabilityScore> {
-  // Check if a score already exists for this user and country
-  const existing = await getUserCountryViabilityScore(score.userId, score.countryCode);
+  // Get all existing scores for this user and country
+  const userScores = await getUserViabilityScores(score.userId);
+  const existingScoresForCountry = userScores.filter(s => s.countryCode === score.countryCode);
 
-  if (existing) {
-    // Update existing score
-    return updateViabilityScore(existing.id, score);
-  } else {
-    // Create new score - use the provided score directly since it already has an ID
-    await addRecord(STORE_NAMES.VIABILITY_SCORES, score);
-    return score;
+  // Delete all existing scores for this country to prevent duplicates
+  for (const existingScore of existingScoresForCountry) {
+    await deleteViabilityScore(existingScore.id);
   }
+
+  // Create new score - use the provided score directly since it already has an ID
+  await addRecord(STORE_NAMES.VIABILITY_SCORES, score);
+  return score;
 }
 
 /**

@@ -15,27 +15,27 @@ export const belgiumFlowcharts: Record<string, FlowchartDefinition> = {
  successRate: '80%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> Region[Determine Region]
- Region --> JobOffer[Secure Job Offer]
- JobOffer --> Salary{Salary Threshold Met?}
- Salary -->|Brussels: EUR 66,377| GatherDocs[Gather Required Documents]
- Salary -->|Flanders: EUR 61,011| GatherDocs
- Salary -->|Wallonia: EUR 56,112| GatherDocs
+ Start([Start Process]) -->determine-region[Determine Region]
+ determine-region --> job-offer[Secure Job Offer]
+ job-offer --> Salary{Salary Threshold Met?}
+ Salary -->|Brussels: EUR 66,377| gather-documents[Gather Required Documents]
+ Salary -->|Flanders: EUR 61,011| gather-documents
+ Salary -->|Wallonia: EUR 56,112| gather-documents
  Salary -->|No| End1([Not Eligible])
- GatherDocs --> WorkPermit[Apply for Work Permit]
- WorkPermit --> WaitPermit[Wait for Permit<br/>4-6 weeks]
+ gather-documents --> work-permit[Apply for Work Permit]
+ work-permit --> WaitPermit[Wait for Permit<br/>4-6 weeks]
  WaitPermit --> PermitDecision{Permit Approved?}
- PermitDecision -->|Yes| VisaApp[Apply for Visa]
+ PermitDecision -->|Yes| visa-application[Apply for Visa]
  PermitDecision -->|No| End2([Application Denied])
- VisaApp --> WaitVisa[Wait for Visa<br/>4-6 weeks]
+ visa-application --> WaitVisa[Wait for Visa<br/>4-6 weeks]
  WaitVisa --> VisaDecision{Visa Approved?}
  VisaDecision -->|Approved| Visa[Receive Blue Card]
  VisaDecision -->|Rejected| Appeal[Consider Appeal]
- Visa --> Travel[Travel to Belgium]
- Travel --> Register[Register at Commune]
+ Visa --> arrival[Travel to Belgium]
+ arrival --> Register[Register at Commune]
  Register --> Success([Process Complete])
  Appeal --> End2
- 
+
  style Start fill:#e1f5e1
  style Success fill:#e1f5e1
  style End1 fill:#ffe1e1
@@ -161,20 +161,20 @@ flowchart TD
  successRate: '85%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> JobOffer[Secure Job Offer]
- JobOffer --> Salary{Salary >= EUR 51,613?}
- Salary -->|Yes| GatherDocs[Gather Required Documents]
+ Start([Start Process]) -->job-offer[Secure Job Offer]
+ job-offer --> Salary{Salary >= EUR 51,613?}
+ Salary -->|Yes| gather-documents[Gather Required Documents]
  Salary -->|No| End1([Not Eligible])
- GatherDocs --> FastTrack[Fast-Track Application]
- FastTrack --> Wait[Wait for Processing<br/>4 weeks]
+ gather-documents --> fast-track-application[Fast-Track Application]
+ fast-track-application --> Wait[Wait for Processing<br/>4 weeks]
  Wait --> Decision{Decision}
  Decision -->|Approved| Visa[Receive Work Permit & Visa]
  Decision -->|Rejected| Appeal[Consider Appeal]
- Visa --> Travel[Travel to Belgium]
- Travel --> Register[Register at Commune]
+ Visa --> arrival[Travel to Belgium]
+ arrival --> Register[Register at Commune]
  Register --> Success([Process Complete])
  Appeal --> End2([Process Ended])
- 
+
  style Start fill:#e1f5e1
  style Success fill:#e1f5e1
  style End1 fill:#ffe1e1
