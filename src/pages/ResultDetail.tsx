@@ -170,16 +170,20 @@ export const ResultDetail: React.FC = () => {
 
   const countryFlowcharts = countryCode ? FLOWCHARTS[countryCode] : undefined;
 
-  // Convert programId from format like "de_eu_blue_card" to "eu-blue-card"
+  // Get flowchart key from programId
+  // Flowcharts can use either underscore format (e.g., "bg_startup_visa") or hyphen format (e.g., "eu-blue-card")
   const getFlowchartKey = (programId: string): string => {
     // Remove country prefix (e.g., "de_" from "de_eu_blue_card")
     const withoutCountry = programId.replace(/^[a-z]{2}_/, '');
-    // Replace underscores with hyphens
+
+    // Try both formats: original with underscores and converted with hyphens
+    // This handles both old hyphen-based keys and new underscore-based keys
     return withoutCountry.replace(/_/g, '-');
   };
 
   const recommendedFlowchart = selectedScore.recommendedProgram && countryFlowcharts
-    ? countryFlowcharts[getFlowchartKey(selectedScore.recommendedProgram.programId)]
+    ? countryFlowcharts[getFlowchartKey(selectedScore.recommendedProgram.programId)] ||
+      countryFlowcharts[selectedScore.recommendedProgram.programId]
     : null;
 
   return (
