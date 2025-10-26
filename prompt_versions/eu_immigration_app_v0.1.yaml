@@ -1,0 +1,136 @@
+project: EU Immigration Planning Application
+version: 0.1.0
+phase: MVP
+created: 2025-10-18
+
+user_stories:
+  - id: US001
+    title: User Profile Creation
+    description: As a US citizen, I want to create a profile with my personal, financial, educational, and career information so that the app can calculate my immigration viability.
+    acceptance_criteria:
+      - User can enter personal information (name, DOB, citizenship)
+      - User can enter financial information (income, savings, assets)
+      - User can enter education details (level, field of study)
+      - User can enter career information (occupation, years of experience)
+      - User can select target countries (multi-select)
+      - User can select immigration path (work visa, permanent residency, citizenship)
+      - All data is saved locally to IndexedDB
+      - User can see a confirmation message after saving
+    priority: P0
+    story_points: 8
+
+  - id: US002
+    title: Family Information Collection
+    description: As a user with dependents, I want to provide family information so that the app considers family factors in viability calculations.
+    acceptance_criteria:
+      - User can enter marital status
+      - User can specify number of dependents
+      - User can enter spouse education and occupation (if applicable)
+      - Family information is saved locally
+    priority: P0
+    story_points: 5
+
+  - id: US003
+    title: Language Skills Input
+    description: As a multilingual user, I want to specify my language proficiency levels so that the app can assess language readiness for target countries.
+    acceptance_criteria:
+      - User can add multiple languages
+      - User can select proficiency level (A1-C2 CEFR scale)
+      - User can remove languages
+      - Language data is saved locally
+    priority: P0
+    story_points: 4
+
+  - id: US004
+    title: Viability Score Calculation
+    description: As a user, I want the app to calculate my viability score for each target country so that I can understand my immigration prospects.
+    acceptance_criteria:
+      - App calculates financial score based on income and country requirements
+      - App calculates education score based on education level
+      - App calculates career score based on occupation demand
+      - App calculates language score based on proficiency
+      - App calculates family score based on family situation
+      - Overall score is weighted average of component scores
+      - Scores are calculated in real-time as user updates profile
+    priority: P0
+    story_points: 13
+
+  - id: US005
+    title: Country Ranking Dashboard
+    description: As a user, I want to see my target countries ranked by viability score so that I can prioritize my immigration options.
+    acceptance_criteria:
+      - Dashboard displays countries sorted by overall viability score (highest first)
+      - Each country shows overall score and component scores
+      - Dashboard updates in real-time as user updates profile
+      - User can click on a country to see detailed information
+    priority: P0
+    story_points: 8
+
+  - id: US006
+    title: Risk Factor Display
+    description: As a user, I want to see risk factors for each country so that I can understand potential challenges.
+    acceptance_criteria:
+      - Risk factors are displayed for each country
+      - Risk factors show severity level (low, medium, high)
+      - Risk factors include description and context
+      - Risk factors update based on user profile changes
+    priority: P1
+    story_points: 5
+
+  - id: US007
+    title: Contingency Scenarios
+    description: As a user, I want to see contingency scenarios (e.g., job loss, family separation) so that I can plan for potential challenges.
+    acceptance_criteria:
+      - Contingency scenarios are displayed for each country
+      - Scenarios show probability and mitigation strategies
+      - Scenarios are relevant to user's profile
+    priority: P1
+    story_points: 8
+
+  - id: US008
+    title: Data Export
+    description: As a user, I want to export my profile and viability scores so that I can share them or back them up.
+    acceptance_criteria:
+      - User can export profile as JSON
+      - User can export viability scores as CSV
+      - User can export all data as a single file
+      - Export includes timestamp
+    priority: P1
+    story_points: 5
+
+  - id: US009
+    title: Data Import
+    description: As a user, I want to import previously exported data so that I can restore my profile.
+    acceptance_criteria:
+      - User can import JSON profile data
+      - User can import CSV viability scores
+      - App validates imported data
+      - User sees confirmation of successful import
+    priority: P2
+    story_points: 5
+
+  - id: US010
+    title: Country-Specific Flowchart
+    description: As a user, I want to see a flowchart for each country's immigration process so that I understand the steps and timeline.
+    acceptance_criteria:
+      - Flowchart shows immigration process steps
+      - Flowchart includes decision points and contingency paths
+      - Flowchart shows estimated timeline for each step
+      - Flowchart is interactive and can be exported
+    priority: P1
+    story_points: 13
+
+mvp_scope:
+  - US001: User Profile Creation
+  - US002: Family Information Collection
+  - US003: Language Skills Input
+  - US004: Viability Score Calculation
+  - US005: Country Ranking Dashboard
+  - US006: Risk Factor Display
+
+future_scope:
+  - US007: Contingency Scenarios
+  - US008: Data Export
+  - US009: Data Import
+  - US010: Country-Specific Flowchart
+
