@@ -259,8 +259,8 @@ export function FlowchartViewer({ flowchart, onExport, selectedStepId, onStepSel
         )}
         <div
           ref={containerRef}
-          className="overflow-x-auto"
-          style={{ minHeight: '400px' }}
+          className="overflow-x-auto select-none"
+          style={{ minHeight: '400px', userSelect: 'none' }}
         />
       </div>
 
