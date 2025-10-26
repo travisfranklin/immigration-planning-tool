@@ -58,7 +58,7 @@ export function FlowchartViewer({ flowchart, onExport, selectedStepId, onStepSel
         // Insert the SVG
         containerRef.current.innerHTML = svg;
 
-        // Add click handlers and styling to flowchart nodes
+        // Add click handlers to flowchart nodes
         if (onStepSelect) {
           const svgElement = containerRef.current.querySelector('svg');
           if (svgElement) {
@@ -87,10 +87,12 @@ export function FlowchartViewer({ flowchart, onExport, selectedStepId, onStepSel
                 // Add hover effect
                 htmlElement.addEventListener('mouseenter', () => {
                   htmlElement.classList.add('node-hover');
-                  // Find all child elements and add opacity/filter effect
+                  // Find all child elements and update styling
                   const paths = htmlElement.querySelectorAll('path, rect, polygon');
                   paths.forEach((path) => {
-                    (path as HTMLElement).style.filter = 'drop-shadow(0 0 8px rgba(59, 130, 246, 0.5))';
+                    const element = path as HTMLElement;
+                    element.style.stroke = '#3b82f6';
+                    element.style.strokeWidth = '2';
                   });
                 });
 
@@ -100,7 +102,9 @@ export function FlowchartViewer({ flowchart, onExport, selectedStepId, onStepSel
                   if (selectedStep !== matchingStep.id) {
                     const paths = htmlElement.querySelectorAll('path, rect, polygon');
                     paths.forEach((path) => {
-                      (path as HTMLElement).style.filter = '';
+                      const element = path as HTMLElement;
+                      element.style.stroke = '';
+                      element.style.strokeWidth = '';
                     });
                   }
                 });
@@ -115,41 +119,6 @@ export function FlowchartViewer({ flowchart, onExport, selectedStepId, onStepSel
           }
         }
 
-        // Update selected node styling
-        const updateSelectedNodeStyling = () => {
-          const svgElement = containerRef.current?.querySelector('svg');
-          if (!svgElement) return;
-
-          const nodeGroups = svgElement.querySelectorAll('g.node');
-          nodeGroups.forEach((nodeGroup) => {
-            const nodeId = nodeGroup.getAttribute('id') || '';
-            const match = nodeId.match(/^flowchart-(.+?)-\d+$/);
-            if (!match) return;
-
-            const extractedId = match[1];
-            const htmlElement = nodeGroup as HTMLElement;
-            const paths = htmlElement.querySelectorAll('path, rect, polygon');
-
-            if (selectedStep === extractedId) {
-              // Apply selected styling
-              htmlElement.classList.add('node-selected');
-              paths.forEach((path) => {
-                (path as HTMLElement).style.filter = 'drop-shadow(0 0 12px rgba(59, 130, 246, 1)) brightness(1.1)';
-                (path as HTMLElement).style.strokeWidth = '2.5';
-              });
-            } else {
-              // Remove selected styling
-              htmlElement.classList.remove('node-selected');
-              paths.forEach((path) => {
-                (path as HTMLElement).style.filter = '';
-                (path as HTMLElement).style.strokeWidth = '';
-              });
-            }
-          });
-        };
-
-        updateSelectedNodeStyling();
-
         setIsLoading(false);
       } catch (error) {
         console.error('Error rendering flowchart:', error);
@@ -159,7 +128,44 @@ export function FlowchartViewer({ flowchart, onExport, selectedStepId, onStepSel
     };
 
     renderDiagram();
-  }, [flowchart, onStepSelect, selectedStep]);
+  }, [flowchart, onStepSelect]);
+
+  // Update selected node styling without re-rendering the diagram
+  useEffect(() => {
+    const svgElement = containerRef.current?.querySelector('svg');
+    if (!svgElement) return;
+
+    const nodeGroups = svgElement.querySelectorAll('g.node');
+    nodeGroups.forEach((nodeGroup) => {
+      const nodeId = nodeGroup.getAttribute('id') || '';
+      const match = nodeId.match(/^flowchart-(.+?)-\d+$/);
+      if (!match) return;
+
+      const extractedId = match[1];
+      const htmlElement = nodeGroup as HTMLElement;
+      const paths = htmlElement.querySelectorAll('path, rect, polygon');
+
+      if (selectedStep === extractedId) {
+        // Apply selected styling
+        htmlElement.classList.add('node-selected');
+        paths.forEach((path) => {
+          const element = path as HTMLElement;
+          element.style.stroke = '#2563eb';
+          element.style.strokeWidth = '2.5';
+          element.style.fill = element.style.fill ? element.style.fill : '#dbeafe';
+        });
+      } else {
+        // Remove selected styling
+        htmlElement.classList.remove('node-selected');
+        paths.forEach((path) => {
+          const element = path as HTMLElement;
+          element.style.stroke = '';
+          element.style.strokeWidth = '';
+          element.style.fill = '';
+        });
+      }
+    });
+  }, [selectedStep]);
 
   const handleExport = (format: 'png' | 'svg') => {
     if (!containerRef.current) return;
