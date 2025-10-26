@@ -21,7 +21,7 @@ flowchart TD
  CheckSalary -->|No| End1([Not Eligible])
  CheckEducation -->|Yes| gather-documents[Gather Required Documents]
  CheckEducation -->|No| End2([Not Eligible])
- gather-documents --> submit-application[Submit Application to<br/>Czech Consulate or in Czech]
+ gather-documents -->submit-application[Submit Application to<br/>Czech Consulate or in Czech]
  submit-application --> processing[Processing<br/>60-90 Days]
  processing --> Decision{Decision}
  Decision -->|Approved| BlueCard[Receive EU Blue Card<br/>2-Year Permit]

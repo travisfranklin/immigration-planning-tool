@@ -19,9 +19,9 @@ flowchart TD
  verify-income-employment --> CheckIncome{Income Sufficient?}
  CheckIncome -->|Yes| Employment[Verify Remote Employment/<br/>Self-Employment]
  CheckIncome -->|No| End1([Not Eligible])
- Employment --> gather-documents[Gather Required Documents]
- gather-documents --> submit-application[Submit Application to<br/>Residency Malta Agency]
- submit-application --> processing[Processing<br/>30-60 Days]
+ Employment -->gather-documents[Gather Required Documents]
+ gather-documents -->submit-application[Submit Application to<br/>Residency Malta Agency]
+ submit-application -->processing[Processing<br/>30-60 Days]
  processing --> Decision{Decision}
  Decision -->|Approved| Permit[Receive Nomad Residence Permit]
  Decision -->|Rejected| Appeal[Consider Appeal]

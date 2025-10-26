@@ -20,9 +20,9 @@ flowchart TD
  Investment -->|Real Estate EUR 400k| Property2[Purchase Property<br/> EUR 400,000 in certain areas]
  choose-property --> tax-number[Obtain Greek Tax Number<br/>AFM]
  Property2 --> tax-number
- tax-number --> gather-documents[Gather Required Documents]
- gather-documents --> submit-application[Submit Application to<br/>Greek Consulate or in Greece]
- submit-application --> processing[Processing<br/>60-90 Days]
+ tax-number -->gather-documents[Gather Required Documents]
+ gather-documents -->submit-application[Submit Application to<br/>Greek Consulate or in Greece]
+ submit-application -->processing-decision-decision[Processing<br/>60-90 Days]
  processing --> Decision{Decision}
  Decision -->|Approved| GoldenVisa[Receive Golden Visa<br/>5-Year Permit]
  Decision -->|Rejected| Appeal[Consider Appeal]

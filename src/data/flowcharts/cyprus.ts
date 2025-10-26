@@ -19,14 +19,14 @@ flowchart TD
  Investment -->|Real Estate EUR 300k| choose-investment[Purchase Property<br/> EUR 300,000 minimum]
  Investment -->|Business EUR 300k| Business[Invest in Business<br/> EUR 300,000]
  Investment -->|Combination| Combo[Combination of Investments<br/> EUR 300,000 total]
- choose-investment --> income-verification[Verify Annual Income<br/> EUR 50,000 minimum]
- Business --> income-verification
- Combo --> income-verification
+ choose-investment --> verify-income[Verify Annual Income<br/> EUR 50,000 minimum]
+ Business -->verify-income
+ Combo -->verify-income
  income-verification --> CheckIncome{Income Sufficient?}
  CheckIncome -->|Yes| gather-documents[Gather Required Documents]
  CheckIncome -->|No| End1([Not Eligible])
- gather-documents --> submit-application[Submit Application to<br/>Cyprus Immigration]
- submit-application --> processing[Processing<br/>60-90 Days]
+ gather-documents -->submit-application[Submit Application to<br/>Cyprus Immigration]
+ submit-application --> receive-pr[Processing<br/>60-90 Days]
  processing --> Decision{Decision}
  Decision -->|Approved| PR[Receive Permanent Residence<br/>Immediate PR!]
  Decision -->|Rejected| Appeal[Consider Appeal]

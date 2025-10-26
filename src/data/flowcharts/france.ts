@@ -16,19 +16,19 @@ export const franceFlowcharts: Record<string, FlowchartDefinition> = {
  mermaidDiagram: `
 flowchart TD
  Start([Start Process]) -->choose-category[Choose Category]
- choose-category --> job-offer{Job Offer or Investor?}
+ choose-category -->job-offer{Job Offer or Investor?}
  job-offer -->|Skilled Worker| Salary{Salary >= EUR 53,836?}
  job-offer -->|Investor/Researcher| gather-documents[Gather Required Documents]
  Salary -->|Yes| gather-documents
  Salary -->|No| End1([Not Eligible])
- gather-documents --> submit-application[Submit Application]
- submit-application --> processing[Wait for Processing<br/>6-8 weeks]
+ gather-documents -->submit-application[Submit Application]
+ submit-application -->processing[Wait for Processing<br/>6-8 weeks]
  processing --> decision{Decision}
  decision -->|Approved| receive-visa[Receive Talent Passport]
  decision -->|Rejected| End2([Process Ended])
- receive-visa --> travel[Travel to France]
- travel --> prefecture[Register at Prefecture]
- prefecture --> ofii[Complete OFII Process]
+ receive-visa -->travel[Travel to France]
+ travel -->prefecture[Register at Prefecture]
+ prefecture -->ofii[Complete OFII Process]
  ofii --> Success([Process Complete])
 
  style Start fill:#e1f5e1
@@ -196,16 +196,16 @@ flowchart TD
  mermaidDiagram: `
 flowchart TD
  Start([Start Process]) -->achievements[Document Achievements]
- achievements --> project-plan[Develop Project Plan]
- project-plan --> experience-verification{5+ Years Experience?}
+ achievements -->project-plan[Develop Project Plan]
+ project-plan -->experience-verification{5+ Years Experience?}
  experience-verification -->|Yes| gather-documents[Gather Required Documents]
  experience-verification -->|No| End1([Not Eligible])
- gather-documents --> submit-application[Submit Application]
- submit-application --> processing[Wait for Processing<br/>8-12 weeks]
+ gather-documents -->submit-application[Submit Application]
+ submit-application -->processing[Wait for Processing<br/>8-12 weeks]
  processing --> decision{Decision}
  decision -->|Approved| receive-visa[Receive Visa]
  decision -->|Rejected| End2([Process Ended])
- receive-visa --> travel-register[Travel and Register]
+ receive-visa -->travel-register[Travel and Register]
  travel-register --> Success([Process Complete])
 
  style Start fill:#e1f5e1
@@ -359,18 +359,18 @@ flowchart TD
  successRate: '80%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> ecosystem[Join French Tech Ecosystem]
+ Start([Start Process]) -->ecosystem[Join French Tech Ecosystem]
  ecosystem --> category{Founder or Employee?}
  category -->|Founder| founder-or-employee[Determine Your Path]
  category -->|Employee| founder-or-employee
- founder-or-employee --> incubator-support[Get Incubator Support]
- incubator-support --> gather-documents[Gather Required Documents]
- gather-documents --> submit-application[Submit Application]
- submit-application --> processing[Wait for Processing<br/>4-8 weeks]
+ founder-or-employee -->incubator-support[Get Incubator Support]
+ incubator-support -->gather-documents[Gather Required Documents]
+ gather-documents -->submit-application[Submit Application]
+ submit-application -->processing[Wait for Processing<br/>4-8 weeks]
  processing --> decision{Decision}
  decision -->|Approved| receive-visa[Receive French Tech Visa]
  decision -->|Rejected| End1([Process Ended])
- receive-visa --> travel-register[Travel and Launch]
+ receive-visa -->travel-register[Travel and Launch]
  travel-register --> Success([Process Complete])
 
  style Start fill:#e1f5e1
@@ -519,18 +519,18 @@ flowchart TD
  successRate: '70%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> job-offer[Secure Job Offer]
- job-offer --> labor-market-test[Labor Market Test]
- labor-market-test --> direccte-approval[DIRECCTE Approval]
+ Start([Start Process]) -->job-offer[Secure Job Offer]
+ job-offer -->labor-market-test[Labor Market Test]
+ labor-market-test -->direccte-approval[DIRECCTE Approval]
  direccte-approval --> approved{Approved?}
  approved -->|Yes| gather-documents[Gather Required Documents]
  approved -->|No| End1([Not Eligible])
- gather-documents --> submit-application[Submit Visa Application]
- submit-application --> processing[Wait for Processing<br/>8-12 weeks]
+ gather-documents -->submit-application[Submit Visa Application]
+ submit-application -->processing[Wait for Processing<br/>8-12 weeks]
  processing --> decision{Decision}
  decision -->|Approved| receive-visa[Receive Work Visa]
  decision -->|Rejected| End2([Process Ended])
- receive-visa --> travel-register[Travel and Register]
+ receive-visa -->travel-register[Travel and Register]
  travel-register --> Success([Process Complete])
 
  style Start fill:#e1f5e1
@@ -679,19 +679,19 @@ flowchart TD
  successRate: '75%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> sponsor-eligibility{Family in France?}
+ Start([Start Process]) -->sponsor-eligibility{Family in France?}
  sponsor-eligibility -->|Yes| income-housing{Sponsor Meets Requirements?}
  sponsor-eligibility -->|No| End1([Not Eligible])
  income-housing -->|Yes| language-test[Pass French Language Test]
  income-housing -->|No| End2([Not Eligible])
- language-test --> gather-documents[Gather Required Documents]
- gather-documents --> submit-application[Submit Application]
- submit-application --> processing[Wait for Processing<br/>12-16 weeks]
+ language-test -->gather-documents[Gather Required Documents]
+ gather-documents -->submit-application[Submit Application]
+ submit-application -->processing[Wait for Processing<br/>12-16 weeks]
  processing --> decision{Decision}
  decision -->|Approved| receive-visa[Receive Visa]
  decision -->|Rejected| End3([Process Ended])
- receive-visa --> travel[Travel to France]
- travel --> ofii-integration[Complete OFII Integration]
+ receive-visa -->travel[Travel to France]
+ travel -->ofii-integration[Complete OFII Integration]
  ofii-integration --> Success([Process Complete])
 
  style Start fill:#e1f5e1

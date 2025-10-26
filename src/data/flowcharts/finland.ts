@@ -19,12 +19,12 @@ flowchart TD
  job-offer --> CheckSalary{Salary >= 3000 EUR/month?}
  CheckSalary -->|Yes| gather-documents[Gather Required Documents]
  CheckSalary -->|No| End1([Not Eligible])
- gather-documents --> submit-application[Submit Application Online via Enter Finland]
- submit-application --> processing[Migri Processing 60-90 Days]
+ gather-documents -->submit-application[Submit Application Online via Enter Finland]
+ submit-application -->processing[Migri Processing 60-90 Days]
  processing --> Decision{Decision}
  Decision -->|Approved| Permit[Receive Residence Permit]
  Decision -->|Rejected| Appeal[Consider Appeal]
- Permit --> arrival[Travel to Finland]
+ Permit -->arrival-registration-registration[Travel to Finland]
  arrival --> registration[Register at Migri Office Get Finnish ID]
  registration --> Success([Process Complete])
  Appeal --> End2([Process Ended])

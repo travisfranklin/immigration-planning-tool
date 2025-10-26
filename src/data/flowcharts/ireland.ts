@@ -21,13 +21,13 @@ flowchart TD
  Salary -->|No| End1([Not Eligible])
  CriticalSkills -->|Yes| gather-documents[Gather Required Documents]
  CriticalSkills -->|No| End1
- gather-documents --> employer-application[Employer Applies for Permit]
- employer-application --> processing[Wait for Processing<br/>8 weeks]
+ gather-documents -->employer-application[Employer Applies for Permit]
+ employer-application -->processing[Wait for Processing<br/>8 weeks]
  processing --> Decision{Decision}
  Decision -->|Approved| Permit[Receive Employment Permit]
  Decision -->|Rejected| Appeal[Consider Appeal]
- Permit --> visa-application[Apply for Entry Visa]
- visa-application --> arrival[Travel to Ireland]
+ Permit --> entry-visa[Apply for Entry Visa]
+ visa-application -->arrival[Travel to Ireland]
  arrival --> registration[Register with GNIB/IRP]
  registration --> Success([Process Complete])
  Appeal --> End2([Process Ended])

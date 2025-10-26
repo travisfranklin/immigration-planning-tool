@@ -20,8 +20,8 @@ flowchart TD
  Advertise --> Salary{Salary Meets<br/>Collective Agreement?}
  Salary -->|Yes| gather-documents[Gather Required Documents]
  Salary -->|No| End1([Not Eligible])
- gather-documents --> employer-application[Employer Submits Application]
- employer-application --> processing[Wait for Processing<br/>2-4 months]
+ gather-documents --> employer-advertises[Employer Submits Application]
+ employer-application -->processing[Wait for Processing<br/>2-4 months]
  processing --> Decision{Decision}
  Decision -->|Approved| Permit[Receive Work Permit]
  Decision -->|Rejected| Appeal[Consider Appeal]

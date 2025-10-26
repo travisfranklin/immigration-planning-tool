@@ -21,7 +21,7 @@ flowchart TD
  CheckSalary -->|No| End1([Not Eligible])
  CheckEducation -->|Yes| gather-documents[Gather Required Documents]
  CheckEducation -->|No| End2([Not Eligible])
- gather-documents --> submit-application[Submit Application to<br/>Bulgarian Consulate or in Bulgaria]
+ gather-documents -->submit-application[Submit Application to<br/>Bulgarian Consulate or in Bulgaria]
  submit-application --> processing[Processing<br/>30-60 Days]
  processing --> Decision{Decision}
  Decision -->|Approved| BlueCard[Receive EU Blue Card<br/>3-Year Permit]
@@ -142,10 +142,10 @@ flowchart TD
  successRate: '85%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> develop-business-idea[Develop Innovative<br/>Business Idea]
+ Start([Start Process]) -->develop-business-idea[Develop Innovative<br/>Business Idea]
  business-idea --> Funds[Verify Minimum Funds<br/> EUR 5,000 (BGN 10,000)]
  Funds --> CheckFunds{Funds Sufficient?}
- CheckFunds -->|Yes| startup-program[Apply to Bulgarian<br/>Startup Program]
+ CheckFunds -->|Yes| apply-program[Apply to Bulgarian<br/>Startup Program]
  CheckFunds -->|No| End1([Not Eligible])
  startup-program --> Acceptance{Accepted by<br/>Program?}
  Acceptance -->|Yes| gather-documents[Gather Required Documents]

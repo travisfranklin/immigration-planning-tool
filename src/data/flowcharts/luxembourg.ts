@@ -19,7 +19,7 @@ flowchart TD
  job-offer --> Salary{Salary >= EUR 63,408?}
  Salary -->|Yes| gather-documents[Gather Required Documents]
  Salary -->|No| End1([Not Eligible])
- gather-documents --> work-authorization[Apply for Work Authorization]
+ gather-documents -->work-authorization[Apply for Work Authorization]
  work-authorization --> WaitAuth[Wait for Authorization<br/>3-4 weeks]
  WaitAuth --> AuthDecision{Authorization Approved?}
  AuthDecision -->|Yes| visa-application[Apply for Visa]
@@ -28,7 +28,7 @@ flowchart TD
  WaitVisa --> VisaDecision{Visa Approved?}
  VisaDecision -->|Approved| Visa[Receive Blue Card]
  VisaDecision -->|Rejected| Appeal[Consider Appeal]
- Visa --> arrival[Travel to Luxembourg]
+ Visa -->arrival[Travel to Luxembourg]
  arrival --> registration[Register at Commune]
  registration --> Success([Process Complete])
  Appeal --> End2

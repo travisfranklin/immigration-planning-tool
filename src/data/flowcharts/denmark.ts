@@ -21,8 +21,8 @@ flowchart TD
  CheckSalary -->|No| End1([Not Eligible])
  CheckCompany -->|Yes| gather-documents[Gather Required Documents]
  CheckCompany -->|No| End2([Use Different Scheme])
- gather-documents --> submit-application[Submit Application Online]
- submit-application --> processing[Fast-Track Processing<br/><=30 Days]
+ gather-documents -->submit-application[Submit Application Online]
+ submit-application --> fast-processing[Fast-Track Processing<br/><=30 Days]
  processing --> Decision{Decision}
  Decision -->|Approved| Permit[Receive Residence Permit]
  Decision -->|Rejected| Appeal[Consider Appeal]

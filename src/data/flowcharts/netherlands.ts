@@ -18,16 +18,16 @@ flowchart TD
  Start([Start Process]) -->citizenship-check{US Citizen?}
  citizenship-check -->|Yes| business-plan[Develop Business Plan]
  citizenship-check -->|No| End1([Not Eligible])
- business-plan --> capital[Secure EUR 4,500 Capital]
- capital --> bank-account[Open Dutch Bank Account]
- bank-account --> kvk-registration[Register with KVK]
- kvk-registration --> gather-documents[Gather Required Documents]
- gather-documents --> submit-application[Submit IND Application]
- submit-application --> processing[Wait for Processing<br/>4-8 weeks]
+ business-plan -->capital[Secure EUR 4,500 Capital]
+ capital -->bank-account[Open Dutch Bank Account]
+ bank-account -->kvk-registration[Register with KVK]
+ kvk-registration -->gather-documents[Gather Required Documents]
+ gather-documents -->submit-application[Submit IND Application]
+ submit-application -->processing[Wait for Processing<br/>4-8 weeks]
  processing --> decision{Decision}
  decision -->|Approved| receive-permit[Receive Residence Permit]
  decision -->|Rejected| End2([Process Ended])
- receive-permit --> travel-register[Travel and Register]
+ receive-permit -->travel-register[Travel and Register]
  travel-register --> Success([Process Complete])
 
  style Start fill:#e1f5e1
@@ -218,13 +218,13 @@ flowchart TD
  Sponsor -->|No| End1([Not Eligible])
  salary-verification -->|Yes| gather-documents[Gather Required Documents]
  salary-verification -->|No| End2([Not Eligible])
- gather-documents --> employer-submission[Employer Submits to IND]
- employer-submission --> processing[Wait for Processing<br/>2-4 weeks]
+ gather-documents -->employer-submission[Employer Submits to IND]
+ employer-submission -->processing[Wait for Processing<br/>2-4 weeks]
  processing --> decision{Decision}
  decision -->|Approved| receive-permit[Receive Residence Permit]
  decision -->|Rejected| End3([Process Ended])
- receive-permit --> 30-percent-ruling[Apply for 30% Ruling]
- 30-percent-ruling --> travel-register[Travel and Register]
+ receive-permit -->30-percent-ruling[Apply for 30% Ruling]
+ 30-percent-ruling -->travel-register[Travel and Register]
  travel-register --> Success([Process Complete])
 
  style Start fill:#e1f5e1
@@ -382,13 +382,13 @@ flowchart TD
  timeline-check -->|No| End2([Not Eligible])
  age-verification -->|Yes| gather-documents[Gather Required Documents]
  age-verification -->|No| End3([Not Eligible])
- gather-documents --> apostille[Get Diploma Apostille]
- apostille --> submit-application[Submit IND Application]
- submit-application --> processing[Wait for Processing<br/>4-6 weeks]
+ gather-documents -->apostille[Get Diploma Apostille]
+ apostille -->submit-application[Submit IND Application]
+ submit-application -->processing[Wait for Processing<br/>4-6 weeks]
  processing --> decision{Decision}
  decision -->|Approved| receive-permit[Receive Residence Permit]
  decision -->|Rejected| End4([Process Ended])
- receive-permit --> job-search[Search for Employment]
+ receive-permit -->job-search[Search for Employment]
  job-search --> Success([Process Complete])
 
  style Start fill:#e1f5e1
@@ -552,18 +552,18 @@ flowchart TD
  mermaidDiagram: `
 flowchart TD
  Start([Start Process]) -->business-plan[Develop Business Plan]
- business-plan --> points-calculation[Calculate Points]
+ business-plan -->points-calculation[Calculate Points]
  points-calculation --> Threshold{>=30 Points?}
  Threshold -->|Yes| capital[Secure Capital]
  Threshold -->|No| End1([Not Eligible])
- capital --> kvk-registration[Register with KVK]
- kvk-registration --> gather-documents[Gather Required Documents]
- gather-documents --> submit-application[Submit IND Application]
- submit-application --> processing[Wait for Processing<br/>8-12 weeks]
+ capital -->kvk-registration[Register with KVK]
+ kvk-registration -->gather-documents[Gather Required Documents]
+ gather-documents -->submit-application[Submit IND Application]
+ submit-application -->processing[Wait for Processing<br/>8-12 weeks]
  processing --> decision{Decision}
  decision -->|Approved| receive-permit[Receive Residence Permit]
  decision -->|Rejected| End2([Process Ended])
- receive-permit --> travel-register[Travel and Start Business]
+ receive-permit -->travel-register[Travel and Start Business]
  travel-register --> Success([Process Complete])
 
  style Start fill:#e1f5e1
@@ -742,14 +742,14 @@ flowchart TD
  sponsor-eligibility -->|No| End1([Not Eligible])
  income-verification -->|Yes| relationship-proof[Prove Relationship]
  income-verification -->|No| End2([Not Eligible])
- relationship-proof --> gather-documents[Gather Required Documents]
- gather-documents --> submit-mvv[Submit MVV Application]
- submit-mvv --> processing[Wait for Processing<br/>8-12 weeks]
+ relationship-proof -->gather-documents[Gather Required Documents]
+ gather-documents -->submit-mvv[Submit MVV Application]
+ submit-mvv -->processing[Wait for Processing<br/>8-12 weeks]
  processing --> decision{Decision}
  decision -->|Approved| receive-mvv[Receive MVV]
  decision -->|Rejected| End3([Process Ended])
- receive-mvv --> travel-residence-permit[Travel and Apply for Residence Permit]
- travel-residence-permit --> integration[Begin Integration Course]
+ receive-mvv -->travel-residence-permit[Travel and Apply for Residence Permit]
+ travel-residence-permit -->integration[Begin Integration Course]
  integration --> Success([Process Complete])
 
  style Start fill:#e1f5e1

@@ -15,20 +15,20 @@ export const spainFlowcharts: Record<string, FlowchartDefinition> = {
  successRate: '95%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> investment-type{Investment Type?}
+ Start([Start Process]) -->investment-type{Investment Type?}
  investment-type -->|Real Estate| property-purchase[Purchase Property EUR 500k+]
  investment-type -->|Business| business-investment[Invest in Business EUR 1M+]
  investment-type -->|Bonds| government-bonds[Buy Government Bonds EUR 2M+]
- property-purchase --> nie-number[Obtain NIE Number]
- business-investment --> nie-number
- government-bonds --> nie-number
- nie-number --> gather-documents[Gather Required Documents]
- gather-documents --> submit-application[Submit Application]
- submit-application --> processing[Wait for Processing<br/>4-8 weeks]
+ property-purchase -->nie-number[Obtain NIE Number]
+ business-investment -->nie-number
+ government-bonds -->nie-number
+ nie-number -->gather-documents[Gather Required Documents]
+ gather-documents -->submit-application[Submit Application]
+ submit-application -->processing[Wait for Processing<br/>4-8 weeks]
  processing --> decision{Decision}
  decision -->|Approved| receive-visa[Receive Golden Visa]
  decision -->|Rejected| End1([Process Ended])
- receive-visa --> travel-register[Travel and Register]
+ receive-visa -->travel-register[Travel and Register]
  travel-register --> Success([Process Complete])
 
  style Start fill:#e1f5e1
@@ -185,17 +185,17 @@ flowchart TD
  successRate: '85%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> income-verification{Passive Income >= EUR 28,800/year?}
+ Start([Start Process]) -->income-verification{Passive Income >= EUR 28,800/year?}
  income-verification -->|Yes| savings-verification{Savings >= EUR 30,000?}
  income-verification -->|No| End1([Not Eligible])
  savings-verification -->|Yes| gather-documents[Gather Required Documents]
  savings-verification -->|No| End2([Not Eligible])
- gather-documents --> submit-application[Submit Application]
- submit-application --> processing[Wait for Processing<br/>8-12 weeks]
+ gather-documents -->submit-application[Submit Application]
+ submit-application -->processing[Wait for Processing<br/>8-12 weeks]
  processing --> decision{Decision}
  decision -->|Approved| receive-visa[Receive Non-Lucrative Visa]
  decision -->|Rejected| End3([Process Ended])
- receive-visa --> travel-register[Travel and Register]
+ receive-visa -->travel-register[Travel and Register]
  travel-register --> Success([Process Complete])
 
  style Start fill:#e1f5e1
@@ -332,17 +332,17 @@ flowchart TD
  successRate: '90%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> remote-work-verification{Remote Work?}
+ Start([Start Process]) -->remote-work-verification{Remote Work?}
  remote-work-verification -->|Yes| income-verification{Income >= EUR 2,400/month?}
  remote-work-verification -->|No| End1([Not Eligible])
  income-verification -->|Yes| gather-documents[Gather Required Documents]
  income-verification -->|No| End2([Not Eligible])
- gather-documents --> submit-application[Submit Application]
- submit-application --> processing[Wait for Processing<br/>4-8 weeks]
+ gather-documents -->submit-application[Submit Application]
+ submit-application -->processing[Wait for Processing<br/>4-8 weeks]
  processing --> decision{Decision}
  decision -->|Approved| receive-visa[Receive Digital Nomad Visa]
  decision -->|Rejected| End3([Process Ended])
- receive-visa --> travel-register[Travel and Register]
+ receive-visa -->travel-register[Travel and Register]
  travel-register --> Success([Process Complete])
 
  style Start fill:#e1f5e1
@@ -478,19 +478,19 @@ flowchart TD
  successRate: '80%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> job-offer[Secure Job Offer]
- job-offer --> degree-verification{Bachelor's Degree?}
+ Start([Start Process]) -->job-offer[Secure Job Offer]
+ job-offer -->degree-verification{Bachelor's Degree?}
  degree-verification -->|Yes| salary-verification{Salary >= EUR 30,000?}
  degree-verification -->|No| End1([Not Eligible])
  salary-verification -->|Yes| gather-documents[Gather Required Documents]
  salary-verification -->|No| End2([Not Eligible])
- gather-documents --> submit-application[Submit Application]
- submit-application --> processing[Wait for Processing<br/>6-10 weeks]
+ gather-documents -->submit-application[Submit Application]
+ submit-application -->processing[Wait for Processing<br/>6-10 weeks]
  processing --> decision{Decision}
  decision -->|Approved| receive-visa[Receive Work Visa]
  decision -->|Rejected| End3([Process Ended])
- receive-visa --> travel-register[Travel and Register]
- travel-register --> social-security[Register for Social Security]
+ receive-visa -->travel-register[Travel and Register]
+ travel-register -->social-security[Register for Social Security]
  social-security --> Success([Process Complete])
 
  style Start fill:#e1f5e1
@@ -654,19 +654,19 @@ flowchart TD
  successRate: '75%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> sponsor-eligibility{Family in Spain?}
+ Start([Start Process]) -->sponsor-eligibility{Family in Spain?}
  sponsor-eligibility -->|Yes| income-housing{Sponsor Meets Requirements?}
  sponsor-eligibility -->|No| End1([Not Eligible])
  income-housing -->|Yes| relationship-proof[Prove Relationship]
  income-housing -->|No| End2([Not Eligible])
- relationship-proof --> gather-documents[Gather Required Documents]
- gather-documents --> submit-application[Submit Application]
- submit-application --> processing[Wait for Processing<br/>12-16 weeks]
+ relationship-proof -->gather-documents[Gather Required Documents]
+ gather-documents -->submit-application[Submit Application]
+ submit-application -->processing[Wait for Processing<br/>12-16 weeks]
  processing --> decision{Decision}
  decision -->|Approved| receive-visa[Receive Visa]
  decision -->|Rejected| End3([Process Ended])
- receive-visa --> travel-register[Travel and Register]
- travel-register --> empadronamiento[Complete Empadronamiento]
+ receive-visa -->travel-register[Travel and Register]
+ travel-register -->empadronamiento[Complete Empadronamiento]
  empadronamiento --> Success([Process Complete])
 
  style Start fill:#e1f5e1

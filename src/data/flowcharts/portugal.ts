@@ -17,11 +17,11 @@ export const portugalFlowcharts: Record<string, FlowchartDefinition> = {
 flowchart TD
  Start([Start Process]) -->verify-income[Verify Passive Income<br/>>= EUR 760/month]
  verify-income --> CheckIncome{Income Sufficient?}
- CheckIncome -->|Yes| accommodation[Secure Accommodation<br/>in Portugal]
+ CheckIncome -->|Yes| secure-accommodation[Secure Accommodation<br/>in Portugal]
  CheckIncome -->|No| End1([Not Eligible])
- accommodation --> gather-documents[Gather Required Documents]
+ accommodation -->gather-documents[Gather Required Documents]
  gather-documents --> consulate-submission[Submit Application at<br/>Portuguese Consulate]
- consulate-submission --> processing[SEF Processing<br/>60-90 Days]
+ consulate-submission --> sef-processing[SEF Processing<br/>60-90 Days]
  processing --> Decision{Decision}
  Decision -->|Approved| Visa[Receive D7 Visa]
  Decision -->|Rejected| Appeal[Consider Appeal]
