@@ -262,5 +262,483 @@ flowchart TD
  },
  ],
  },
+
+ 'work_permit': {
+ programId: 'bg_work_permit',
+ countryCode: 'BG',
+ programName: 'Work Permit (Type D Visa)',
+ totalEstimatedDuration: '2-4 months',
+ complexity: 'medium',
+ successRate: '80%',
+ mermaidDiagram: `
+flowchart TD
+ Start([Start Process]) --> job-offer[Secure Job Offer]
+ job-offer --> Salary{Salary >= EUR 9,000/year?}
+ Salary -->|Yes| gather-documents[Gather Required Documents]
+ Salary -->|No| End1([Not Eligible])
+ gather-documents --> submit-application[Submit Application]
+ submit-application --> processing[Wait for Processing<br/>6-10 weeks]
+ processing --> decision{Decision}
+ decision -->|Approved| receive-visa[Receive Work Permit Visa]
+ decision -->|Rejected| End2([Application Denied])
+ receive-visa --> travel[Travel to Bulgaria]
+ travel --> registration[Register at Immigration Office]
+ registration --> Success([Process Complete])
+
+ style Start fill:#e1f5e1
+ style Success fill:#e1f5e1
+ style End1 fill:#ffe1e1
+ style End2 fill:#ffe1e1
+ style receive-visa fill:#e1e5ff
+`,
+ steps: [
+ {
+ id: 'job-offer',
+ title: 'Secure Job Offer',
+ description: 'Obtain a binding job offer from a Bulgarian employer',
+ estimatedDuration: '1-3 months',
+ documents: [
+ 'Signed employment contract',
+ 'Job description',
+ 'Salary confirmation (minimum EUR 9,000/year)',
+ ],
+ notes: [
+ 'Employer must be registered in Bulgaria',
+ 'Contract must be for at least 12 months',
+ 'Very low salary threshold (€750/month)',
+ 'Employer must prove no suitable Bulgarian/EU candidate',
+ ],
+ },
+ {
+ id: 'gather-documents',
+ title: 'Gather Required Documents',
+ description: 'Collect all necessary documentation',
+ estimatedDuration: '2-3 weeks',
+ documents: [
+ 'Valid passport',
+ 'Completed application form',
+ 'Employment contract',
+ 'Proof of qualifications',
+ 'Criminal background check',
+ 'Medical certificate',
+ 'Proof of accommodation',
+ ],
+ notes: [
+ 'All documents must be certified copies',
+ 'Non-Bulgarian documents need translation',
+ 'Apostille required for foreign documents',
+ ],
+ },
+ {
+ id: 'submit-application',
+ title: 'Submit Application',
+ description: 'Submit your work permit visa application',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'All gathered documents',
+ 'Application fee',
+ ],
+ notes: [
+ 'Submit to Bulgarian embassy/consulate',
+ 'Book appointment in advance',
+ 'Bring original documents and copies',
+ ],
+ },
+ {
+ id: 'processing',
+ title: 'Wait for Processing',
+ description: 'Embassy processes your application',
+ estimatedDuration: '6-10 weeks',
+ documents: [],
+ notes: [
+ 'Processing time varies by location',
+ 'May be contacted for additional information',
+ 'Background checks conducted',
+ ],
+ },
+ {
+ id: 'receive-visa',
+ title: 'Receive Work Permit Visa',
+ description: 'Receive your approved work permit visa',
+ estimatedDuration: '1 week',
+ documents: [
+ 'Passport with visa stamp',
+ ],
+ notes: [
+ 'Visa valid for 1 year',
+ 'Can be renewed if employment continues',
+ 'Leads to permanent residency',
+ ],
+ },
+ {
+ id: 'travel',
+ title: 'Travel to Bulgaria',
+ description: 'Travel to Bulgaria with your work permit visa',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'Passport with visa',
+ 'Employment contract',
+ 'Proof of accommodation',
+ 'Travel documents',
+ ],
+ notes: [
+ 'Must enter Bulgaria within 6 months of visa issuance',
+ 'Keep all documents for registration',
+ ],
+ },
+ {
+ id: 'registration',
+ title: 'Register at Immigration Office',
+ description: 'Complete registration at local immigration office',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'Passport with visa',
+ 'Employment contract',
+ 'Proof of accommodation',
+ ],
+ notes: [
+ 'Must register within 3 days of arrival',
+ 'Receive residence permit card',
+ 'Can then start employment',
+ ],
+ },
+ ],
+ },
+
+ 'self_employment': {
+ programId: 'bg_self_employment',
+ countryCode: 'BG',
+ programName: 'Self-Employment Visa',
+ totalEstimatedDuration: '2-4 months',
+ complexity: 'high',
+ successRate: '70%',
+ mermaidDiagram: `
+flowchart TD
+ Start([Start Process]) --> business-plan[Create Business Plan]
+ business-plan --> capital[Secure Capital EUR 30,000+]
+ capital --> gather-documents[Gather Required Documents]
+ gather-documents --> submit-application[Submit Application]
+ submit-application --> processing[Wait for Processing<br/>8-12 weeks]
+ processing --> decision{Decision}
+ decision -->|Approved| receive-visa[Receive Self-Employment Visa]
+ decision -->|Rejected| End1([Application Denied])
+ receive-visa --> travel[Travel to Bulgaria]
+ travel --> registration[Register at Immigration Office]
+ registration --> Success([Process Complete])
+
+ style Start fill:#e1f5e1
+ style Success fill:#e1f5e1
+ style End1 fill:#ffe1e1
+ style receive-visa fill:#e1e5ff
+`,
+ steps: [
+ {
+ id: 'business-plan',
+ title: 'Create Business Plan',
+ description: 'Develop a comprehensive business plan for your self-employment',
+ estimatedDuration: '2-4 weeks',
+ documents: [
+ 'Executive summary',
+ 'Financial projections (3 years)',
+ 'Service/product description',
+ 'Market analysis',
+ 'Marketing strategy',
+ ],
+ notes: [
+ 'Plan must demonstrate economic benefit to Bulgaria',
+ 'Include realistic financial forecasts',
+ 'Show market demand for services',
+ ],
+ },
+ {
+ id: 'capital',
+ title: 'Secure Capital',
+ description: 'Obtain minimum EUR 30,000 in startup capital',
+ estimatedDuration: '4-8 weeks',
+ documents: [
+ 'Bank statements',
+ 'Proof of capital source',
+ 'Investment agreements (if applicable)',
+ ],
+ notes: [
+ 'Minimum EUR 30,000 required',
+ 'Funds must be available in Bulgaria',
+ 'Can be personal savings or investment',
+ 'Bulgaria has LOWEST cost of living in EU!',
+ ],
+ },
+ {
+ id: 'gather-documents',
+ title: 'Gather Required Documents',
+ description: 'Collect all necessary documentation',
+ estimatedDuration: '2-3 weeks',
+ documents: [
+ 'Valid passport',
+ 'Completed application form',
+ 'Business plan',
+ 'Proof of capital',
+ 'CV/Resume',
+ 'Proof of accommodation',
+ 'Health insurance',
+ 'Criminal background check',
+ ],
+ notes: [
+ 'All documents must be certified copies',
+ 'Non-Bulgarian documents need translation',
+ 'Apostille required for foreign documents',
+ ],
+ },
+ {
+ id: 'submit-application',
+ title: 'Submit Application',
+ description: 'Submit your self-employment visa application',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'All gathered documents',
+ 'Application fee',
+ ],
+ notes: [
+ 'Submit to Bulgarian embassy/consulate',
+ 'Book appointment in advance',
+ 'Bring original documents and copies',
+ ],
+ },
+ {
+ id: 'processing',
+ title: 'Wait for Processing',
+ description: 'Embassy processes your application',
+ estimatedDuration: '8-12 weeks',
+ documents: [],
+ notes: [
+ 'Processing time varies by location',
+ 'May be contacted for additional information',
+ 'Background checks conducted',
+ ],
+ },
+ {
+ id: 'receive-visa',
+ title: 'Receive Self-Employment Visa',
+ description: 'Receive your approved self-employment visa',
+ estimatedDuration: '1 week',
+ documents: [
+ 'Passport with visa stamp',
+ ],
+ notes: [
+ 'Visa valid for 1 year',
+ 'Can be renewed if business is progressing',
+ 'Leads to permanent residency',
+ ],
+ },
+ {
+ id: 'travel',
+ title: 'Travel to Bulgaria',
+ description: 'Travel to Bulgaria with your visa',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'Passport with visa',
+ 'Proof of accommodation',
+ 'Travel documents',
+ ],
+ notes: [
+ 'Must enter Bulgaria within 6 months of visa issuance',
+ 'Keep all documents for registration',
+ ],
+ },
+ {
+ id: 'registration',
+ title: 'Register at Immigration Office',
+ description: 'Complete registration at local immigration office',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'Passport with visa',
+ 'Proof of accommodation',
+ 'Health insurance',
+ ],
+ notes: [
+ 'Must register within 3 days of arrival',
+ 'Receive residence permit card',
+ 'Can then register business',
+ ],
+ },
+ ],
+ },
+
+ 'family_reunification': {
+ programId: 'bg_family_reunification',
+ countryCode: 'BG',
+ programName: 'Family Reunification',
+ totalEstimatedDuration: '3-6 months',
+ complexity: 'medium',
+ successRate: '75%',
+ mermaidDiagram: `
+flowchart TD
+ Start([Start Process]) --> sponsor-check[Verify Sponsor Eligibility]
+ sponsor-check --> income-check{Sponsor Income Sufficient?}
+ income-check -->|Yes| housing-check[Verify Housing Requirements]
+ income-check -->|No| End1([Not Eligible])
+ housing-check --> housing-ok{Housing Adequate?}
+ housing-ok -->|Yes| gather-documents[Gather Required Documents]
+ housing-ok -->|No| End2([Not Eligible])
+ gather-documents --> submit-application[Submit Application]
+ submit-application --> processing[Wait for Processing<br/>10 weeks]
+ processing --> decision{Decision}
+ decision -->|Approved| receive-visa[Receive Family Reunification Visa]
+ decision -->|Rejected| End3([Application Denied])
+ receive-visa --> travel[Travel to Bulgaria]
+ travel --> registration[Register at Immigration Office]
+ registration --> Success([Process Complete])
+
+ style Start fill:#e1f5e1
+ style Success fill:#e1f5e1
+ style End1 fill:#ffe1e1
+ style End2 fill:#ffe1e1
+ style End3 fill:#ffe1e1
+ style receive-visa fill:#e1e5ff
+`,
+ steps: [
+ {
+ id: 'sponsor-check',
+ title: 'Verify Sponsor Eligibility',
+ description: 'Confirm that your family member in Bulgaria meets sponsorship requirements',
+ estimatedDuration: '1 week',
+ documents: [
+ 'Sponsor\'s residence permit or citizenship certificate',
+ 'Proof of relationship (birth certificate, marriage certificate)',
+ 'Sponsor\'s employment contract or income documentation',
+ ],
+ notes: [
+ 'Sponsor must be Bulgarian resident or citizen',
+ 'Sponsor must have stable income',
+ 'Relationship must be documented',
+ ],
+ },
+ {
+ id: 'income-check',
+ title: 'Verify Sponsor Income',
+ description: 'Ensure sponsor has adequate income to support family member',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'Last 3 months of pay stubs',
+ 'Employment contract',
+ 'Tax returns (last 2 years)',
+ 'Bank statements',
+ ],
+ notes: [
+ 'Income must be above minimum threshold',
+ 'Threshold varies by family size',
+ 'Self-employed must show business registration',
+ ],
+ },
+ {
+ id: 'housing-check',
+ title: 'Verify Housing Requirements',
+ description: 'Confirm adequate housing for family member',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'Lease or property ownership document',
+ 'Proof of housing size (floor plan)',
+ 'Utility bills showing residence',
+ ],
+ notes: [
+ 'Housing must meet minimum size requirements',
+ 'Typically 1 room per person',
+ 'Must be in sponsor\'s name or with permission',
+ ],
+ },
+ {
+ id: 'gather-documents',
+ title: 'Gather Required Documents',
+ description: 'Collect all necessary documentation',
+ estimatedDuration: '2-3 weeks',
+ documents: [
+ 'Valid passport',
+ 'Completed application form',
+ 'Proof of relationship',
+ 'Sponsor\'s residence permit/citizenship',
+ 'Sponsor\'s income documentation',
+ 'Housing documentation',
+ 'Health insurance',
+ 'Police clearance certificate',
+ ],
+ notes: [
+ 'All documents must be certified copies',
+ 'Non-Bulgarian documents need translation',
+ 'Apostille required for foreign documents',
+ ],
+ },
+ {
+ id: 'submit-application',
+ title: 'Submit Application',
+ description: 'Submit your family reunification visa application',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'All gathered documents',
+ 'Application fee',
+ ],
+ notes: [
+ 'Submit to Bulgarian embassy/consulate in home country',
+ 'Book appointment in advance',
+ 'Bring original documents and copies',
+ ],
+ },
+ {
+ id: 'processing',
+ title: 'Wait for Processing',
+ description: 'Embassy processes your application',
+ estimatedDuration: '10 weeks',
+ documents: [],
+ notes: [
+ 'Processing time typically 10 weeks',
+ 'May be contacted for additional information',
+ 'Background checks conducted',
+ ],
+ },
+ {
+ id: 'receive-visa',
+ title: 'Receive Family Reunification Visa',
+ description: 'Receive your approved family reunification visa',
+ estimatedDuration: '1 week',
+ documents: [
+ 'Passport with visa stamp',
+ ],
+ notes: [
+ 'Visa valid for 1 year',
+ 'Can be renewed if family situation remains',
+ 'Leads to permanent residency',
+ ],
+ },
+ {
+ id: 'travel',
+ title: 'Travel to Bulgaria',
+ description: 'Travel to Bulgaria to join your family',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'Passport with visa',
+ 'Sponsor\'s contact information',
+ 'Travel documents',
+ ],
+ notes: [
+ 'Must enter Bulgaria within 6 months of visa issuance',
+ 'Sponsor should arrange accommodation',
+ ],
+ },
+ {
+ id: 'registration',
+ title: 'Register at Immigration Office',
+ description: 'Complete registration at local immigration office',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'Passport with visa',
+ 'Proof of accommodation',
+ 'Sponsor\'s residence permit',
+ ],
+ notes: [
+ 'Must register within 3 days of arrival',
+ 'Receive residence permit card',
+ 'Can then access social services',
+ ],
+ },
+ ],
+ },
 };
 

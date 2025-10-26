@@ -263,5 +263,565 @@ flowchart TD
  },
  ],
  },
+
+ 'professional_card': {
+ programId: 'be_professional_card',
+ countryCode: 'BE',
+ programName: 'Professional Card (Self-Employment)',
+ totalEstimatedDuration: '3-5 months',
+ complexity: 'high',
+ successRate: '70%',
+ mermaidDiagram: `
+flowchart TD
+ Start([Start Process]) --> business-plan[Create Business Plan]
+ business-plan --> capital[Secure Capital EUR 18,600+]
+ capital --> gather-documents[Gather Required Documents]
+ gather-documents --> regional-approval[Obtain Regional Approval]
+ regional-approval --> submit-application[Submit Application]
+ submit-application --> processing[Wait for Processing<br/>10-14 weeks]
+ processing --> decision{Decision}
+ decision -->|Approved| receive-card[Receive Professional Card]
+ decision -->|Rejected| End1([Application Denied])
+ receive-card --> travel[Travel to Belgium]
+ travel --> registration[Register at Commune]
+ registration --> Success([Process Complete])
+
+ style Start fill:#e1f5e1
+ style Success fill:#e1f5e1
+ style End1 fill:#ffe1e1
+ style receive-card fill:#e1e5ff
+`,
+ steps: [
+ {
+ id: 'business-plan',
+ title: 'Create Business Plan',
+ description: 'Develop a comprehensive business plan for your self-employment',
+ estimatedDuration: '2-4 weeks',
+ documents: [
+ 'Executive summary',
+ 'Financial projections (3 years)',
+ 'Service/product description',
+ 'Market analysis',
+ 'Marketing strategy',
+ ],
+ notes: [
+ 'Plan must demonstrate economic benefit to Belgium',
+ 'Include realistic financial forecasts',
+ 'Show market demand for services',
+ ],
+ },
+ {
+ id: 'capital',
+ title: 'Secure Capital',
+ description: 'Obtain minimum EUR 18,600 in startup capital',
+ estimatedDuration: '4-8 weeks',
+ documents: [
+ 'Bank statements',
+ 'Proof of capital source',
+ 'Investment agreements (if applicable)',
+ ],
+ notes: [
+ 'Minimum EUR 18,600 required (3 months living expenses)',
+ 'Funds must be available in Belgium',
+ 'Can be personal savings or investment',
+ ],
+ },
+ {
+ id: 'gather-documents',
+ title: 'Gather Required Documents',
+ description: 'Collect all necessary documentation',
+ estimatedDuration: '2-3 weeks',
+ documents: [
+ 'Valid passport',
+ 'Completed application form',
+ 'Business plan',
+ 'Proof of capital',
+ 'CV/Resume',
+ 'Proof of accommodation',
+ 'Health insurance',
+ 'Criminal background check',
+ ],
+ notes: [
+ 'All documents must be certified copies',
+ 'Non-Dutch/French/German documents need translation',
+ 'Apostille required for foreign documents',
+ ],
+ },
+ {
+ id: 'regional-approval',
+ title: 'Obtain Regional Approval',
+ description: 'Get approval from the appropriate Belgian region',
+ estimatedDuration: '2-4 weeks',
+ documents: [
+ 'Business plan',
+ 'Proof of capital',
+ 'Regional application form',
+ ],
+ notes: [
+ 'Regional approval required before visa application',
+ 'Different regions may have different requirements',
+ 'Contact regional economic development office',
+ ],
+ },
+ {
+ id: 'submit-application',
+ title: 'Submit Application',
+ description: 'Submit your professional card application',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'All gathered documents',
+ 'Regional approval letter',
+ 'Application fee',
+ ],
+ notes: [
+ 'Submit to Belgian embassy/consulate',
+ 'Book appointment in advance',
+ 'Bring original documents and copies',
+ ],
+ },
+ {
+ id: 'processing',
+ title: 'Wait for Processing',
+ description: 'Embassy processes your application',
+ estimatedDuration: '10-14 weeks',
+ documents: [],
+ notes: [
+ 'Processing time varies by location',
+ 'May be contacted for additional information',
+ 'Background checks conducted',
+ ],
+ },
+ {
+ id: 'receive-card',
+ title: 'Receive Professional Card',
+ description: 'Receive your approved professional card',
+ estimatedDuration: '1 week',
+ documents: [
+ 'Passport with visa stamp',
+ ],
+ notes: [
+ 'Card valid for 1 year',
+ 'Can be renewed if business is progressing',
+ 'Leads to permanent residency',
+ ],
+ },
+ {
+ id: 'travel',
+ title: 'Travel to Belgium',
+ description: 'Travel to Belgium with your professional card',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'Passport with visa',
+ 'Proof of accommodation',
+ 'Travel documents',
+ ],
+ notes: [
+ 'Must enter Belgium within 6 months of visa issuance',
+ 'Keep all documents for registration',
+ ],
+ },
+ {
+ id: 'registration',
+ title: 'Register at Commune',
+ description: 'Complete registration at local commune',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'Passport with visa',
+ 'Proof of accommodation',
+ 'Health insurance',
+ ],
+ notes: [
+ 'Must register within 8 days of arrival',
+ 'Receive residence permit card',
+ 'Can then register business',
+ ],
+ },
+ ],
+ },
+
+ 'startup': {
+ programId: 'be_startup',
+ countryCode: 'BE',
+ programName: 'Startup Visa',
+ totalEstimatedDuration: '2-4 months',
+ complexity: 'high',
+ successRate: '65%',
+ mermaidDiagram: `
+flowchart TD
+ Start([Start Process]) --> business-idea[Develop Innovative Business Idea]
+ business-idea --> accelerator-search[Find Approved Accelerator/Incubator]
+ accelerator-search --> business-plan[Create Detailed Business Plan]
+ business-plan --> capital[Secure Funding EUR 50,000+]
+ capital --> accelerator-approval[Get Accelerator Recognition]
+ accelerator-approval --> gather-documents[Gather Required Documents]
+ gather-documents --> submit-application[Submit Application]
+ submit-application --> processing[Wait for Processing<br/>8-12 weeks]
+ processing --> decision{Decision}
+ decision -->|Approved| receive-visa[Receive Startup Visa]
+ decision -->|Rejected| End1([Application Denied])
+ receive-visa --> travel[Travel to Belgium]
+ travel --> registration[Register at Commune]
+ registration --> Success([Process Complete])
+
+ style Start fill:#e1f5e1
+ style Success fill:#e1f5e1
+ style End1 fill:#ffe1e1
+ style receive-visa fill:#e1e5ff
+`,
+ steps: [
+ {
+ id: 'business-idea',
+ title: 'Develop Innovative Business Idea',
+ description: 'Develop an innovative business concept',
+ estimatedDuration: '2-4 weeks',
+ documents: [
+ 'Business concept description',
+ 'Market analysis',
+ 'Competitive analysis',
+ ],
+ notes: [
+ 'Idea must be innovative and viable',
+ 'Should address a market need',
+ 'Consider scalability potential',
+ ],
+ },
+ {
+ id: 'accelerator-search',
+ title: 'Find Approved Accelerator/Incubator',
+ description: 'Identify and contact approved Belgian accelerators or incubators',
+ estimatedDuration: '2-4 weeks',
+ documents: [
+ 'List of approved accelerators',
+ 'Accelerator contact information',
+ ],
+ notes: [
+ 'Must be recognized by Belgian authorities',
+ 'Accelerator must provide mentorship and support',
+ 'Check official list of approved programs',
+ ],
+ },
+ {
+ id: 'business-plan',
+ title: 'Create Detailed Business Plan',
+ description: 'Prepare a comprehensive business plan',
+ estimatedDuration: '2-4 weeks',
+ documents: [
+ 'Executive summary',
+ 'Financial projections (3-5 years)',
+ 'Marketing strategy',
+ 'Organizational structure',
+ 'Risk analysis',
+ ],
+ notes: [
+ 'Plan must be in Dutch, French, or English',
+ 'Include realistic financial forecasts',
+ 'Show understanding of target market',
+ ],
+ },
+ {
+ id: 'capital',
+ title: 'Secure Funding',
+ description: 'Obtain minimum EUR 50,000 in startup capital',
+ estimatedDuration: '4-8 weeks',
+ documents: [
+ 'Bank statements showing funds',
+ 'Investment agreements (if applicable)',
+ 'Proof of capital source',
+ ],
+ notes: [
+ 'Minimum EUR 50,000 required',
+ 'Funds must be available in Belgium',
+ 'Can be personal savings or investment',
+ ],
+ },
+ {
+ id: 'accelerator-approval',
+ title: 'Get Accelerator Recognition',
+ description: 'Obtain formal recognition from approved accelerator/incubator',
+ estimatedDuration: '2-4 weeks',
+ documents: [
+ 'Business plan',
+ 'Accelerator application',
+ 'Proof of funding',
+ ],
+ notes: [
+ 'Accelerator must provide letter of support',
+ 'Recognition is required for visa approval',
+ 'Accelerator provides mentorship and resources',
+ ],
+ },
+ {
+ id: 'gather-documents',
+ title: 'Gather Required Documents',
+ description: 'Collect all necessary documentation',
+ estimatedDuration: '2-3 weeks',
+ documents: [
+ 'Valid passport',
+ 'Completed application form',
+ 'Business plan',
+ 'Accelerator recognition letter',
+ 'Proof of funding',
+ 'CV/Resume',
+ 'Proof of accommodation',
+ 'Health insurance',
+ ],
+ notes: [
+ 'All documents must be certified copies',
+ 'Non-Dutch/French/German documents need translation',
+ 'Apostille required for foreign documents',
+ ],
+ },
+ {
+ id: 'submit-application',
+ title: 'Submit Application',
+ description: 'Submit your startup visa application',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'All gathered documents',
+ 'Application fee',
+ ],
+ notes: [
+ 'Submit to Belgian embassy/consulate',
+ 'Book appointment in advance',
+ 'Bring original documents and copies',
+ ],
+ },
+ {
+ id: 'processing',
+ title: 'Wait for Processing',
+ description: 'Embassy processes your application',
+ estimatedDuration: '8-12 weeks',
+ documents: [],
+ notes: [
+ 'Processing time varies by location',
+ 'May be contacted for additional information',
+ 'Background checks conducted',
+ ],
+ },
+ {
+ id: 'receive-visa',
+ title: 'Receive Startup Visa',
+ description: 'Receive your approved startup visa',
+ estimatedDuration: '1 week',
+ documents: [
+ 'Passport with visa stamp',
+ ],
+ notes: [
+ 'Visa valid for 1 year',
+ 'Can be renewed if business is progressing',
+ 'Leads to permanent residency',
+ ],
+ },
+ {
+ id: 'travel',
+ title: 'Travel to Belgium',
+ description: 'Travel to Belgium with your startup visa',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'Passport with visa',
+ 'Proof of accommodation',
+ 'Travel documents',
+ ],
+ notes: [
+ 'Must enter Belgium within 6 months of visa issuance',
+ 'Keep all documents for registration',
+ ],
+ },
+ {
+ id: 'registration',
+ title: 'Register at Commune',
+ description: 'Complete registration at local commune',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'Passport with visa',
+ 'Proof of accommodation',
+ 'Health insurance',
+ ],
+ notes: [
+ 'Must register within 8 days of arrival',
+ 'Receive residence permit card',
+ 'Can then register business',
+ ],
+ },
+ ],
+ },
+
+ 'family_reunification': {
+ programId: 'be_family_reunification',
+ countryCode: 'BE',
+ programName: 'Family Reunification',
+ totalEstimatedDuration: '3-6 months',
+ complexity: 'medium',
+ successRate: '75%',
+ mermaidDiagram: `
+flowchart TD
+ Start([Start Process]) --> sponsor-check[Verify Sponsor Eligibility]
+ sponsor-check --> income-check{Sponsor Income Sufficient?}
+ income-check -->|Yes| housing-check[Verify Housing Requirements]
+ income-check -->|No| End1([Not Eligible])
+ housing-check --> housing-ok{Housing Adequate?}
+ housing-ok -->|Yes| gather-documents[Gather Required Documents]
+ housing-ok -->|No| End2([Not Eligible])
+ gather-documents --> submit-application[Submit Application]
+ submit-application --> processing[Wait for Processing<br/>12 weeks]
+ processing --> decision{Decision}
+ decision -->|Approved| receive-visa[Receive Family Reunification Visa]
+ decision -->|Rejected| End3([Application Denied])
+ receive-visa --> travel[Travel to Belgium]
+ travel --> registration[Register at Commune]
+ registration --> Success([Process Complete])
+
+ style Start fill:#e1f5e1
+ style Success fill:#e1f5e1
+ style End1 fill:#ffe1e1
+ style End2 fill:#ffe1e1
+ style End3 fill:#ffe1e1
+ style receive-visa fill:#e1e5ff
+`,
+ steps: [
+ {
+ id: 'sponsor-check',
+ title: 'Verify Sponsor Eligibility',
+ description: 'Confirm that your family member in Belgium meets sponsorship requirements',
+ estimatedDuration: '1 week',
+ documents: [
+ 'Sponsor\'s residence permit or citizenship certificate',
+ 'Proof of relationship (birth certificate, marriage certificate)',
+ 'Sponsor\'s employment contract or income documentation',
+ ],
+ notes: [
+ 'Sponsor must be Belgian resident or citizen',
+ 'Sponsor must have stable income',
+ 'Relationship must be documented',
+ ],
+ },
+ {
+ id: 'income-check',
+ title: 'Verify Sponsor Income',
+ description: 'Ensure sponsor has adequate income to support family member',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'Last 3 months of pay stubs',
+ 'Employment contract',
+ 'Tax returns (last 2 years)',
+ 'Bank statements',
+ ],
+ notes: [
+ 'Income must be above minimum threshold',
+ 'Threshold varies by family size',
+ 'Fast-track available for Single Permit holders earning €5,000+/month',
+ ],
+ },
+ {
+ id: 'housing-check',
+ title: 'Verify Housing Requirements',
+ description: 'Confirm adequate housing for family member',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'Lease or property ownership document',
+ 'Proof of housing size (floor plan)',
+ 'Utility bills showing residence',
+ ],
+ notes: [
+ 'Housing must meet minimum size requirements',
+ 'Typically 1 room per person',
+ 'Must be in sponsor\'s name or with permission',
+ ],
+ },
+ {
+ id: 'gather-documents',
+ title: 'Gather Required Documents',
+ description: 'Collect all necessary documentation',
+ estimatedDuration: '2-3 weeks',
+ documents: [
+ 'Valid passport',
+ 'Completed application form',
+ 'Proof of relationship',
+ 'Sponsor\'s residence permit/citizenship',
+ 'Sponsor\'s income documentation',
+ 'Housing documentation',
+ 'Health insurance',
+ 'Police clearance certificate',
+ ],
+ notes: [
+ 'All documents must be certified copies',
+ 'Non-Dutch/French/German documents need translation',
+ 'Apostille required for foreign documents',
+ ],
+ },
+ {
+ id: 'submit-application',
+ title: 'Submit Application',
+ description: 'Submit your family reunification visa application',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'All gathered documents',
+ 'Application fee',
+ ],
+ notes: [
+ 'Submit to Belgian embassy/consulate in home country',
+ 'Book appointment in advance',
+ 'Bring original documents and copies',
+ ],
+ },
+ {
+ id: 'processing',
+ title: 'Wait for Processing',
+ description: 'Embassy processes your application',
+ estimatedDuration: '12 weeks',
+ documents: [],
+ notes: [
+ 'Processing time typically 12 weeks',
+ 'May be contacted for additional information',
+ 'Background checks conducted',
+ ],
+ },
+ {
+ id: 'receive-visa',
+ title: 'Receive Family Reunification Visa',
+ description: 'Receive your approved family reunification visa',
+ estimatedDuration: '1 week',
+ documents: [
+ 'Passport with visa stamp',
+ ],
+ notes: [
+ 'Visa valid for 1 year',
+ 'Can be renewed if family situation remains',
+ 'Leads to permanent residency',
+ ],
+ },
+ {
+ id: 'travel',
+ title: 'Travel to Belgium',
+ description: 'Travel to Belgium to join your family',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'Passport with visa',
+ 'Sponsor\'s contact information',
+ 'Travel documents',
+ ],
+ notes: [
+ 'Must enter Belgium within 6 months of visa issuance',
+ 'Sponsor should arrange accommodation',
+ ],
+ },
+ {
+ id: 'registration',
+ title: 'Register at Commune',
+ description: 'Complete registration at local commune',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'Passport with visa',
+ 'Proof of accommodation',
+ 'Sponsor\'s residence permit',
+ ],
+ notes: [
+ 'Must register within 8 days of arrival',
+ 'Receive residence permit card',
+ 'Can then access social services',
+ ],
+ },
+ ],
+ },
 };
 
