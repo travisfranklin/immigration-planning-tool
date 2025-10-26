@@ -7,7 +7,7 @@ import type { FlowchartDefinition } from '../../types/flowchart';
 
 export const netherlandsFlowcharts: Record<string, FlowchartDefinition> = {
  'daft': {
- programId: 'daft',
+ programId: 'nl_daft',
  countryCode: 'NL',
  programName: 'DAFT (Dutch-American Friendship Treaty)',
  totalEstimatedDuration: '2-4 months',
@@ -206,7 +206,7 @@ flowchart TD
  },
 
  'highly-skilled-migrant': {
- programId: 'highly-skilled-migrant',
+ programId: 'nl_highly_skilled',
  countryCode: 'NL',
  programName: 'Highly Skilled Migrant Visa',
  totalEstimatedDuration: '1-3 months',
@@ -370,7 +370,7 @@ flowchart TD
  },
 
  'orientation-year': {
- programId: 'orientation-year',
+ programId: 'nl_orientation_year',
  countryCode: 'NL',
  programName: 'Orientation Year for Graduates',
  totalEstimatedDuration: '2-3 months',
@@ -548,7 +548,7 @@ flowchart TD
  },
 
  'self-employment': {
- programId: 'self-employment',
+ programId: 'nl_self_employment',
  countryCode: 'NL',
  programName: 'Self-Employment Visa',
  totalEstimatedDuration: '3-6 months',
@@ -736,7 +736,7 @@ flowchart TD
  },
 
  'family-reunification': {
- programId: 'family-reunification',
+ programId: 'nl_family_reunification',
  countryCode: 'NL',
  programName: 'Family Reunification Visa',
  totalEstimatedDuration: '3-6 months',

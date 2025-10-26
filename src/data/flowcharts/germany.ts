@@ -7,7 +7,7 @@ import type { FlowchartDefinition } from '../../types/flowchart';
 
 export const germanyFlowcharts: Record<string, FlowchartDefinition> = {
  'eu-blue-card': {
- programId: 'eu-blue-card',
+ programId: 'de_eu_blue_card',
  countryCode: 'DE',
  programName: 'EU Blue Card',
  totalEstimatedDuration: '3-6 months',
@@ -151,7 +151,7 @@ flowchart TD
  },
 
  'skilled-worker': {
- programId: 'skilled-worker',
+ programId: 'de_work_visa',
  countryCode: 'DE',
  programName: 'Skilled Worker Visa',
  totalEstimatedDuration: '3-6 months',
@@ -277,7 +277,7 @@ flowchart TD
  },
 
  'job-seeker': {
- programId: 'job-seeker',
+ programId: 'de_job_seeker',
  countryCode: 'DE',
  programName: 'Job Seeker Visa',
  totalEstimatedDuration: '6-12 months',
@@ -434,7 +434,7 @@ flowchart TD
  },
 
  'freelance': {
- programId: 'freelance',
+ programId: 'de_freelance',
  countryCode: 'DE',
  programName: 'Freelance Visa (Freiberufler)',
  totalEstimatedDuration: '3-6 months',
@@ -442,27 +442,25 @@ flowchart TD
  successRate: '60%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> Business[Develop Business Plan]
- Business --> Clients[Secure Client Commitments]
- Clients --> Funds{Sufficient Funds?}
- Funds -->|Yes| GatherDocs[Gather Required Documents]
- Funds -->|No| End1([Not Eligible])
- GatherDocs --> Submit[Submit Application]
- Submit --> Interview[Attend Interview]
- Interview --> Wait[Wait for Decision<br/>2-3 months]
- Wait --> Decision{Decision}
- Decision -->|Approved| Visa[Receive Freelance Visa]
- Decision -->|Rejected| Appeal[Consider Appeal]
- Visa --> Travel[Travel to Germany]
- Travel --> Register[Register Business]
- Register --> Success([Start Freelancing])
- Appeal --> End2([Process Ended])
+ Start([Start Process]) --> business-plan["Develop Business Plan"]
+ business-plan --> client-commitments["Secure Client Commitments"]
+ client-commitments --> financial-proof{Sufficient Funds?}
+ financial-proof -->|Yes| gather-documents["Gather Required Documents"]
+ financial-proof -->|No| End1([Not Eligible])
+ gather-documents --> submit-application["Submit Application"]
+ submit-application --> interview["Attend Interview"]
+ interview --> processing["Wait for Decision"]
+ processing --> decision{Decision}
+ decision -->|Approved| travel["Travel to Germany"]
+ decision -->|Rejected| End2([Process Ended])
+ travel --> registration["Register Business"]
+ registration --> Success([Start Freelancing])
 
  style Start fill:#e1f5e1
  style Success fill:#e1f5e1
  style End1 fill:#ffe1e1
  style End2 fill:#ffe1e1
- style Visa fill:#e1e5ff
+ style travel fill:#e1e5ff
 `,
  steps: [
  {
@@ -609,7 +607,7 @@ flowchart TD
  },
 
  'family-reunification': {
- programId: 'family-reunification',
+ programId: 'de_family_reunification',
  countryCode: 'DE',
  programName: 'Family Reunification Visa',
  totalEstimatedDuration: '3-6 months',

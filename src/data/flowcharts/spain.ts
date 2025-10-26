@@ -7,7 +7,7 @@ import type { FlowchartDefinition } from '../../types/flowchart';
 
 export const spainFlowcharts: Record<string, FlowchartDefinition> = {
  'golden-visa': {
- programId: 'golden-visa',
+ programId: 'es_golden_visa',
  countryCode: 'ES',
  programName: 'Golden Visa (Investor Visa)',
  totalEstimatedDuration: '2-4 months',
@@ -179,7 +179,7 @@ flowchart TD
  },
 
  'non-lucrative': {
- programId: 'non-lucrative',
+ programId: 'es_non_lucrative',
  countryCode: 'ES',
  programName: 'Non-Lucrative Visa',
  totalEstimatedDuration: '3-5 months',
@@ -328,7 +328,7 @@ flowchart TD
  },
 
  'digital-nomad': {
- programId: 'digital-nomad',
+ programId: 'es_digital_nomad',
  countryCode: 'ES',
  programName: 'Digital Nomad Visa',
  totalEstimatedDuration: '2-3 months',
@@ -476,7 +476,7 @@ flowchart TD
  },
 
  'highly-qualified': {
- programId: 'highly-qualified',
+ programId: 'es_highly_qualified',
  countryCode: 'ES',
  programName: 'Highly Qualified Professional Visa',
  totalEstimatedDuration: '2-4 months',
@@ -654,7 +654,7 @@ flowchart TD
  },
 
  'family-reunification': {
- programId: 'family-reunification',
+ programId: 'es_family_reunification',
  countryCode: 'ES',
  programName: 'Family Reunification Visa',
  totalEstimatedDuration: '4-6 months',

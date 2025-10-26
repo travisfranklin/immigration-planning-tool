@@ -7,7 +7,7 @@ import type { FlowchartDefinition } from '../../types/flowchart';
 
 export const franceFlowcharts: Record<string, FlowchartDefinition> = {
  'talent-passport': {
- programId: 'talent-passport',
+ programId: 'fr_talent_passport',
  countryCode: 'FR',
  programName: 'Talent Passport (Passeport Talent)',
  totalEstimatedDuration: '2-4 months',
@@ -188,7 +188,7 @@ flowchart TD
  },
 
  'skills-talents': {
- programId: 'skills-talents',
+ programId: 'fr_skills_talents',
  countryCode: 'FR',
  programName: 'Skills and Talents Visa',
  totalEstimatedDuration: '3-5 months',
@@ -354,7 +354,7 @@ flowchart TD
  },
 
  'french-tech': {
- programId: 'french-tech',
+ programId: 'fr_french_tech',
  countryCode: 'FR',
  programName: 'French Tech Visa',
  totalEstimatedDuration: '2-3 months',
@@ -517,7 +517,7 @@ flowchart TD
  },
 
  'work-visa': {
- programId: 'work-visa',
+ programId: 'fr_work_visa',
  countryCode: 'FR',
  programName: 'Standard Work Visa',
  totalEstimatedDuration: '3-5 months',
@@ -679,7 +679,7 @@ flowchart TD
  },
 
  'family-reunification': {
- programId: 'family-reunification',
+ programId: 'fr_family_reunification',
  countryCode: 'FR',
  programName: 'Family Reunification Visa',
  totalEstimatedDuration: '4-8 months',
