@@ -6,6 +6,7 @@ import { saveViabilityScore, getUserViabilityScores } from '../services/storage/
 import type { ViabilityScore } from '../types/viability';
 import { CountryResultsTable } from '../components/results/CountryResultsTable';
 import { Layout } from '../components/Layout';
+import { Button } from '../components/Button';
 
 export const Results: React.FC = () => {
   const navigate = useNavigate();
@@ -138,12 +139,12 @@ export const Results: React.FC = () => {
           <div className="text-red-600 text-5xl mb-4 text-center">⚠️</div>
           <h2 className="text-xl font-bold text-gray-900 mb-2 text-center">Error</h2>
           <p className="text-gray-600 mb-4 text-center">{error}</p>
-          <button
+          <Button
             onClick={() => navigate('/profile')}
-            className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            className="w-full"
           >
             Go to Profile
-          </button>
+          </Button>
         </div>
       </div>
     );
@@ -175,35 +176,36 @@ export const Results: React.FC = () => {
 
         {/* Actions */}
         <div className="flex flex-wrap gap-4 mb-6">
-          <button
+          <Button
             onClick={handleRecalculate}
-            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+            variant="primary"
           >
             🔄 Recalculate Scores
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={handleExportResults}
-            className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium"
+            variant="success"
           >
             📥 Export Results
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={() => navigate('/profile')}
-            className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors font-medium"
+            variant="secondary"
           >
             ← Back to Profile
-          </button>
+          </Button>
         </div>
 
         {scores.length === 0 && (
           <div className="bg-white rounded-lg shadow-md border border-gray-200 p-8 text-center">
             <p className="text-gray-600 mb-4">No results available yet.</p>
-            <button
+            <Button
               onClick={handleRecalculate}
-              className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+              variant="primary"
+              size="lg"
             >
               Calculate Viability Scores
-            </button>
+            </Button>
           </div>
         )}
 

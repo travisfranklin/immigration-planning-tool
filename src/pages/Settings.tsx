@@ -13,6 +13,7 @@ import { clearDatabase } from '../services/storage/indexedDB';
 import type { UserProfile } from '../types/user';
 import type { ViabilityScore } from '../types/viability';
 import { Layout } from '../components/Layout';
+import { Button } from '../components/Button';
 
 export function Settings() {
   const navigate = useNavigate();
@@ -188,27 +189,27 @@ export function Settings() {
             Download your profile and viability scores in various formats
           </p>
           <div className="flex flex-wrap gap-3">
-            <button
+            <Button
               onClick={handleExportJSON}
               disabled={!profile && viabilityScores.length === 0}
-              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed"
+              variant="primary"
             >
               Export as JSON
-            </button>
-            <button
+            </Button>
+            <Button
               onClick={handleExportCSV}
               disabled={viabilityScores.length === 0}
-              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed"
+              variant="primary"
             >
               Export Scores as CSV
-            </button>
-            <button
+            </Button>
+            <Button
               onClick={handleExportText}
               disabled={!profile && viabilityScores.length === 0}
-              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed"
+              variant="primary"
             >
               Export Report as Text
-            </button>
+            </Button>
           </div>
         </div>
 
@@ -240,13 +241,13 @@ export function Settings() {
           <h2 className="text-xl font-semibold text-gray-900 mb-4">Clear Data</h2>
           <p className="text-gray-600 mb-4">Remove specific data from your device</p>
           <div className="flex flex-wrap gap-3">
-            <button
+            <Button
               onClick={handleClearScores}
               disabled={viabilityScores.length === 0}
-              className="px-4 py-2 bg-yellow-600 text-white rounded-md hover:bg-yellow-700 disabled:bg-gray-300 disabled:cursor-not-allowed"
+              variant="warning"
             >
               Clear Viability Scores
-            </button>
+            </Button>
           </div>
         </div>
 
@@ -257,30 +258,30 @@ export function Settings() {
             Permanently delete all your data from this device
           </p>
           {!showDeleteConfirm ? (
-            <button
+            <Button
               onClick={() => setShowDeleteConfirm(true)}
-              className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700"
+              variant="danger"
             >
               Delete All Data
-            </button>
+            </Button>
           ) : (
             <div className="space-y-3">
               <p className="text-red-700 font-semibold">
                 Are you sure? This action cannot be undone!
               </p>
               <div className="flex gap-3">
-                <button
+                <Button
                   onClick={handleDeleteAll}
-                  className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700"
+                  variant="danger"
                 >
                   Yes, Delete Everything
-                </button>
-                <button
+                </Button>
+                <Button
                   onClick={() => setShowDeleteConfirm(false)}
-                  className="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400"
+                  variant="secondary"
                 >
                   Cancel
-                </button>
+                </Button>
               </div>
             </div>
           )}

@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import type { UserProfile } from '@/types/user';
 import { ProfileFormAccordion } from '@/components/ProfileFormAccordion';
 import { Layout } from '@/components/Layout';
+import { Button } from '@/components/Button';
 import { createUserProfile, getLatestUserProfile, updateUserProfile } from '@/services/storage/userProfileStore';
 
 export function Profile() {
@@ -97,12 +98,14 @@ export function Profile() {
         {/* View Results Button */}
         {initialData && (
           <div className="mt-6 sm:mt-8 px-4 sm:px-6">
-            <button
+            <Button
               onClick={() => navigate('/results')}
-              className="w-full px-6 py-4 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-semibold text-lg shadow-md"
+              variant="success"
+              size="lg"
+              className="w-full shadow-md"
             >
               📊 View Immigration Viability Results
-            </button>
+            </Button>
           </div>
         )}
 

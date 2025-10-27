@@ -3,7 +3,7 @@
  */
 
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
 import { FlowchartViewer } from './FlowchartViewer';
 import type { FlowchartDefinition } from '../../types/flowchart';
 
@@ -12,6 +12,12 @@ vi.mock('mermaid', () => ({
   default: {
     initialize: vi.fn(),
     run: vi.fn(),
+    render: vi.fn(async () => {
+      // Return a promise that resolves with SVG content
+      return Promise.resolve({
+        svg: '<svg><g class="node" id="step-1"><text>Step 1</text></g></svg>',
+      });
+    }),
   },
 }));
 
@@ -67,53 +73,67 @@ flowchart TD
   });
 
   describe('Rendering', () => {
-    it('should render flowchart program name', () => {
+    it('should render flowchart program name', async () => {
       render(<FlowchartViewer flowchart={mockFlowchart} />);
 
-      expect(screen.getByText('EU Blue Card')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText('EU Blue Card')).toBeInTheDocument();
+      });
     });
 
-    it('should render program details', () => {
+    it('should render program details', async () => {
       render(<FlowchartViewer flowchart={mockFlowchart} />);
 
-      expect(screen.getByText(/3-6 months/)).toBeInTheDocument();
-      expect(screen.getByText(/medium/i)).toBeInTheDocument();
-      expect(screen.getByText(/85%/)).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText(/3-6 months/)).toBeInTheDocument();
+        expect(screen.getByText(/medium/i)).toBeInTheDocument();
+        expect(screen.getByText(/85%/)).toBeInTheDocument();
+      });
     });
 
-    it('should render all steps', () => {
+    it('should render all steps', async () => {
       render(<FlowchartViewer flowchart={mockFlowchart} />);
 
-      expect(screen.getByText('Gather Documents')).toBeInTheDocument();
-      expect(screen.getByText('Submit Application')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText('Gather Documents')).toBeInTheDocument();
+        expect(screen.getByText('Submit Application')).toBeInTheDocument();
+      });
     });
 
-    it('should render step numbers', () => {
+    it('should render step numbers', async () => {
       render(<FlowchartViewer flowchart={mockFlowchart} />);
 
-      expect(screen.getByText('1')).toBeInTheDocument();
-      expect(screen.getByText('2')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText('1')).toBeInTheDocument();
+        expect(screen.getByText('2')).toBeInTheDocument();
+      });
     });
 
-    it('should render estimated durations', () => {
+    it('should render estimated durations', async () => {
       render(<FlowchartViewer flowchart={mockFlowchart} />);
 
-      expect(screen.getByText(/2-4 weeks/)).toBeInTheDocument();
-      expect(screen.getByText(/1 week/)).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText(/2-4 weeks/)).toBeInTheDocument();
+        expect(screen.getByText(/1 week/)).toBeInTheDocument();
+      });
     });
 
-    it('should render conditional badge for conditional steps', () => {
+    it('should render conditional badge for conditional steps', async () => {
       render(<FlowchartViewer flowchart={mockFlowchart} />);
 
-      expect(screen.getByText('Conditional')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText('Conditional')).toBeInTheDocument();
+      });
     });
 
-    it('should not render conditional badge for non-conditional steps', () => {
+    it('should not render conditional badge for non-conditional steps', async () => {
       const { container } = render(<FlowchartViewer flowchart={mockFlowchart} />);
-      const conditionalBadges = container.querySelectorAll('[class*="conditional"]');
 
-      // Should only have one conditional badge (for step 2)
-      expect(conditionalBadges.length).toBeGreaterThan(0);
+      await waitFor(() => {
+        const conditionalBadges = container.querySelectorAll('[class*="conditional"]');
+        // Should only have one conditional badge (for step 2)
+        expect(conditionalBadges.length).toBeGreaterThan(0);
+      });
     });
   });
 
@@ -124,7 +144,9 @@ flowchart TD
       const stepButton = screen.getByText('Gather Documents').closest('button');
       expect(stepButton).toBeInTheDocument();
 
-      fireEvent.click(stepButton!);
+      await act(async () => {
+        fireEvent.click(stepButton!);
+      });
 
       await waitFor(() => {
         expect(screen.getByText('Collect all required documents')).toBeInTheDocument();
@@ -135,7 +157,9 @@ flowchart TD
       render(<FlowchartViewer flowchart={mockFlowchart} />);
 
       const stepButton = screen.getByText('Gather Documents').closest('button');
-      fireEvent.click(stepButton!);
+      await act(async () => {
+        fireEvent.click(stepButton!);
+      });
 
       await waitFor(() => {
         expect(screen.getByText('Passport')).toBeInTheDocument();
@@ -148,7 +172,9 @@ flowchart TD
       render(<FlowchartViewer flowchart={mockFlowchart} />);
 
       const stepButton = screen.getByText('Gather Documents').closest('button');
-      fireEvent.click(stepButton!);
+      await act(async () => {
+        fireEvent.click(stepButton!);
+      });
 
       await waitFor(() => {
         expect(screen.getByText(/All documents must be apostilled/)).toBeInTheDocument();
@@ -160,7 +186,9 @@ flowchart TD
       render(<FlowchartViewer flowchart={mockFlowchart} />);
 
       const stepButton = screen.getByText('Submit Application').closest('button');
-      fireEvent.click(stepButton!);
+      await act(async () => {
+        fireEvent.click(stepButton!);
+      });
 
       await waitFor(() => {
         expect(screen.getByText(/If applying from outside Germany/)).toBeInTheDocument();
@@ -173,13 +201,17 @@ flowchart TD
       const stepButton = screen.getByText('Gather Documents').closest('button');
 
       // Expand
-      fireEvent.click(stepButton!);
+      await act(async () => {
+        fireEvent.click(stepButton!);
+      });
       await waitFor(() => {
         expect(screen.getByText('Passport')).toBeInTheDocument();
       });
 
       // Collapse
-      fireEvent.click(stepButton!);
+      await act(async () => {
+        fireEvent.click(stepButton!);
+      });
       await waitFor(() => {
         expect(screen.queryByText('Passport')).not.toBeInTheDocument();
       });
@@ -187,26 +219,30 @@ flowchart TD
   });
 
   describe('Export Functionality', () => {
-    it('should render export buttons', () => {
+    it('should render export buttons', async () => {
       render(<FlowchartViewer flowchart={mockFlowchart} />);
 
-      expect(screen.getByText(/Export SVG/)).toBeInTheDocument();
-      expect(screen.getByText(/Export PNG/)).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText(/Export SVG/)).toBeInTheDocument();
+        expect(screen.getByText(/Export PNG/)).toBeInTheDocument();
+      });
     });
 
-    it('should have export buttons enabled', () => {
+    it('should have export buttons enabled', async () => {
       render(<FlowchartViewer flowchart={mockFlowchart} />);
 
-      const svgButton = screen.getByText(/Export SVG/).closest('button');
-      const pngButton = screen.getByText(/Export PNG/).closest('button');
+      await waitFor(() => {
+        const svgButton = screen.getByText(/Export SVG/).closest('button');
+        const pngButton = screen.getByText(/Export PNG/).closest('button');
 
-      expect(svgButton).not.toBeDisabled();
-      expect(pngButton).not.toBeDisabled();
+        expect(svgButton).not.toBeDisabled();
+        expect(pngButton).not.toBeDisabled();
+      });
     });
   });
 
   describe('Edge Cases', () => {
-    it('should handle flowchart with no steps', () => {
+    it('should handle flowchart with no steps', async () => {
       const emptyFlowchart: FlowchartDefinition = {
         ...mockFlowchart,
         steps: [],
@@ -214,10 +250,12 @@ flowchart TD
 
       render(<FlowchartViewer flowchart={emptyFlowchart} />);
 
-      expect(screen.getByText('EU Blue Card')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText('EU Blue Card')).toBeInTheDocument();
+      });
     });
 
-    it('should handle step with no documents', () => {
+    it('should handle step with no documents', async () => {
       const flowchartNoDocuments: FlowchartDefinition = {
         ...mockFlowchart,
         steps: [
@@ -234,13 +272,17 @@ flowchart TD
       render(<FlowchartViewer flowchart={flowchartNoDocuments} />);
 
       const stepButton = screen.getByText('Wait for Processing').closest('button');
-      fireEvent.click(stepButton!);
+      await act(async () => {
+        fireEvent.click(stepButton!);
+      });
 
       // Should not crash
-      expect(screen.getByText('Wait for application to be processed')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText('Wait for application to be processed')).toBeInTheDocument();
+      });
     });
 
-    it('should handle step with no notes', () => {
+    it('should handle step with no notes', async () => {
       const flowchartNoNotes: FlowchartDefinition = {
         ...mockFlowchart,
         steps: [
@@ -257,13 +299,17 @@ flowchart TD
       render(<FlowchartViewer flowchart={flowchartNoNotes} />);
 
       const stepButton = screen.getByText('Simple Step').closest('button');
-      fireEvent.click(stepButton!);
+      await act(async () => {
+        fireEvent.click(stepButton!);
+      });
 
       // Should not crash
-      expect(screen.getByText('A simple step')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText('A simple step')).toBeInTheDocument();
+      });
     });
 
-    it('should handle flowchart without success rate', () => {
+    it('should handle flowchart without success rate', async () => {
       const flowchartNoSuccessRate: FlowchartDefinition = {
         ...mockFlowchart,
         successRate: undefined,
@@ -271,10 +317,12 @@ flowchart TD
 
       render(<FlowchartViewer flowchart={flowchartNoSuccessRate} />);
 
-      expect(screen.getByText('EU Blue Card')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText('EU Blue Card')).toBeInTheDocument();
+      });
     });
 
-    it('should handle very long step titles', () => {
+    it('should handle very long step titles', async () => {
       const flowchartLongTitle: FlowchartDefinition = {
         ...mockFlowchart,
         steps: [
@@ -290,7 +338,9 @@ flowchart TD
 
       render(<FlowchartViewer flowchart={flowchartLongTitle} />);
 
-      expect(screen.getByText(/This is a very long step title/)).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText(/This is a very long step title/)).toBeInTheDocument();
+      });
     });
 
     it('should handle many steps', () => {

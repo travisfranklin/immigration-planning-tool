@@ -7,74 +7,18 @@ import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { FlowchartViewer } from '../components/flowchart/FlowchartViewer';
 import { Layout } from '../components/Layout';
+import { Button } from '../components/Button';
 import { Breadcrumb } from '../components/layout/Breadcrumb';
 import { getUserViabilityScores } from '../services/storage/viabilityScoreStore';
 import { getAllUserProfiles } from '../services/storage/userProfileStore';
 import type { ViabilityScore } from '../types/viability';
 import { CountryCode, COUNTRY_DISPLAY_NAMES, isValidCountryCode, ALL_COUNTRY_CODES } from '../constants/countries';
-import { germanyFlowcharts } from '../data/flowcharts/germany';
-import { netherlandsFlowcharts } from '../data/flowcharts/netherlands';
-import { franceFlowcharts } from '../data/flowcharts/france';
-import { spainFlowcharts } from '../data/flowcharts/spain';
-import { italyFlowcharts } from '../data/flowcharts/italy';
-import { austriaFlowcharts } from '../data/flowcharts/austria';
-import { belgiumFlowcharts } from '../data/flowcharts/belgium';
-import { luxembourgFlowcharts } from '../data/flowcharts/luxembourg';
-import { irelandFlowcharts } from '../data/flowcharts/ireland';
-import { swedenFlowcharts } from '../data/flowcharts/sweden';
-import { denmarkFlowcharts } from '../data/flowcharts/denmark';
-import { finlandFlowcharts } from '../data/flowcharts/finland';
-import { portugalFlowcharts } from '../data/flowcharts/portugal';
-import { greeceFlowcharts } from '../data/flowcharts/greece';
-import { cyprusFlowcharts } from '../data/flowcharts/cyprus';
-import { maltaFlowcharts } from '../data/flowcharts/malta';
-import { polandFlowcharts } from '../data/flowcharts/poland';
-import { czechFlowcharts } from '../data/flowcharts/czech-republic';
-import { hungaryFlowcharts } from '../data/flowcharts/hungary';
-import { romaniaFlowcharts } from '../data/flowcharts/romania';
-import { bulgariaFlowcharts } from '../data/flowcharts/bulgaria';
-import { slovakiaFlowcharts } from '../data/flowcharts/slovakia';
-import { sloveniaFlowcharts } from '../data/flowcharts/slovenia';
-import { croatiaFlowcharts } from '../data/flowcharts/croatia';
-import { estoniaFlowcharts } from '../data/flowcharts/estonia';
-import { latviaFlowcharts } from '../data/flowcharts/latvia';
-import { lithuaniaFlowcharts } from '../data/flowcharts/lithuania';
-import type { FlowchartDefinition } from '../types/flowchart';
+import { ALL_FLOWCHARTS } from '../data/flowcharts';
 
 const COUNTRIES = ALL_COUNTRY_CODES.map((code) => ({
   code,
   name: COUNTRY_DISPLAY_NAMES[code],
 }));
-
-const FLOWCHARTS: Record<CountryCode, Record<string, FlowchartDefinition>> = {
-  [CountryCode.DE]: germanyFlowcharts,
-  [CountryCode.NL]: netherlandsFlowcharts,
-  [CountryCode.FR]: franceFlowcharts,
-  [CountryCode.ES]: spainFlowcharts,
-  [CountryCode.IT]: italyFlowcharts,
-  [CountryCode.AT]: austriaFlowcharts,
-  [CountryCode.BE]: belgiumFlowcharts,
-  [CountryCode.LU]: luxembourgFlowcharts,
-  [CountryCode.IE]: irelandFlowcharts,
-  [CountryCode.SE]: swedenFlowcharts,
-  [CountryCode.DK]: denmarkFlowcharts,
-  [CountryCode.FI]: finlandFlowcharts,
-  [CountryCode.PT]: portugalFlowcharts,
-  [CountryCode.GR]: greeceFlowcharts,
-  [CountryCode.CY]: cyprusFlowcharts,
-  [CountryCode.MT]: maltaFlowcharts,
-  [CountryCode.PL]: polandFlowcharts,
-  [CountryCode.CZ]: czechFlowcharts,
-  [CountryCode.HU]: hungaryFlowcharts,
-  [CountryCode.RO]: romaniaFlowcharts,
-  [CountryCode.BG]: bulgariaFlowcharts,
-  [CountryCode.SK]: slovakiaFlowcharts,
-  [CountryCode.SI]: sloveniaFlowcharts,
-  [CountryCode.HR]: croatiaFlowcharts,
-  [CountryCode.EE]: estoniaFlowcharts,
-  [CountryCode.LV]: latviaFlowcharts,
-  [CountryCode.LT]: lithuaniaFlowcharts,
-};
 
 export function Flowchart() {
   const location = useLocation();
@@ -92,14 +36,14 @@ export function Flowchart() {
 
   // Initialize state from URL params or defaults
   const [selectedCountry, setSelectedCountry] = useState<CountryCode>(() => {
-    if (countryParam && isValidCountryCode(countryParam) && FLOWCHARTS[countryParam]) {
+    if (countryParam && isValidCountryCode(countryParam) && ALL_FLOWCHARTS[countryParam]) {
       return countryParam;
     }
     return CountryCode.DE;
   });
 
   const [selectedProgram, setSelectedProgram] = useState(() => {
-    const programs = FLOWCHARTS[selectedCountry] || {};
+    const programs = ALL_FLOWCHARTS[selectedCountry] || {};
     if (programParam && programs[programParam]) {
       return programParam;
     }
@@ -124,7 +68,7 @@ export function Flowchart() {
     loadScores();
   }, []);
 
-  const availablePrograms = FLOWCHARTS[selectedCountry] || {};
+  const availablePrograms = ALL_FLOWCHARTS[selectedCountry] || {};
   const currentFlowchart = availablePrograms[selectedProgram];
 
   const handleCountryChange = (countryCode: string) => {
@@ -134,7 +78,7 @@ export function Flowchart() {
     }
     setSelectedCountry(countryCode);
     // Reset to first program in the new country
-    const programs = FLOWCHARTS[countryCode];
+    const programs = ALL_FLOWCHARTS[countryCode];
     if (programs) {
       const firstProgram = Object.keys(programs)[0];
       setSelectedProgram(firstProgram);
@@ -279,35 +223,35 @@ export function Flowchart() {
         <div className="mt-6 flex items-center justify-between">
           <div>
             {fromResults && (
-              <button
+              <Button
                 onClick={() => navigate('/results')}
-                className="px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2"
+                variant="ghost"
               >
                 <span>←</span>
                 <span>Back to Results</span>
-              </button>
+              </Button>
             )}
           </div>
 
           {userScores.length > 0 && (hasPrevious || hasNext) && (
             <div className="flex gap-3">
               {hasPrevious && previousCountry && (
-                <button
+                <Button
                   onClick={() => handleCountryChange(previousCountry.countryCode)}
-                  className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors flex items-center gap-2"
+                  variant="secondary"
                 >
                   <span>←</span>
                   <span>Previous: {previousCountry.countryName}</span>
-                </button>
+                </Button>
               )}
               {hasNext && nextCountry && (
-                <button
+                <Button
                   onClick={() => handleCountryChange(nextCountry.countryCode)}
-                  className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2"
+                  variant="primary"
                 >
                   <span>Next: {nextCountry.countryName}</span>
                   <span>→</span>
-                </button>
+                </Button>
               )}
             </div>
           )}

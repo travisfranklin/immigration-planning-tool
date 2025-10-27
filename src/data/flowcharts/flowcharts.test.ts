@@ -6,66 +6,8 @@
 import { describe, it, expect } from 'vitest';
 import type { FlowchartDefinition } from '../../types/flowchart';
 import { ALL_VISA_PROGRAMS } from '../visaPrograms';
-
-// Import all flowchart files
-import { germanyFlowcharts } from './germany';
-import { netherlandsFlowcharts } from './netherlands';
-import { franceFlowcharts } from './france';
-import { spainFlowcharts } from './spain';
-import { italyFlowcharts } from './italy';
-import { austriaFlowcharts } from './austria';
-import { belgiumFlowcharts } from './belgium';
-import { luxembourgFlowcharts } from './luxembourg';
-import { irelandFlowcharts } from './ireland';
-import { swedenFlowcharts } from './sweden';
-import { denmarkFlowcharts } from './denmark';
-import { finlandFlowcharts } from './finland';
-import { portugalFlowcharts } from './portugal';
-import { greeceFlowcharts } from './greece';
-import { cyprusFlowcharts } from './cyprus';
-import { maltaFlowcharts } from './malta';
-import { polandFlowcharts } from './poland';
-import { czechFlowcharts } from './czech-republic';
-import { hungaryFlowcharts } from './hungary';
-import { romaniaFlowcharts } from './romania';
-import { bulgariaFlowcharts } from './bulgaria';
-import { slovakiaFlowcharts } from './slovakia';
-import { sloveniaFlowcharts } from './slovenia';
-import { croatiaFlowcharts } from './croatia';
-import { estoniaFlowcharts } from './estonia';
-import { latviaFlowcharts } from './latvia';
-import { lithuaniaFlowcharts } from './lithuania';
-
-// Aggregate all flowcharts
-const ALL_FLOWCHARTS: Record<string, Record<string, FlowchartDefinition>> = {
- DE: germanyFlowcharts,
- NL: netherlandsFlowcharts,
- FR: franceFlowcharts,
- ES: spainFlowcharts,
- IT: italyFlowcharts,
- AT: austriaFlowcharts,
- BE: belgiumFlowcharts,
- LU: luxembourgFlowcharts,
- IE: irelandFlowcharts,
- SE: swedenFlowcharts,
- DK: denmarkFlowcharts,
- FI: finlandFlowcharts,
- PT: portugalFlowcharts,
- GR: greeceFlowcharts,
- CY: cyprusFlowcharts,
- MT: maltaFlowcharts,
- PL: polandFlowcharts,
- CZ: czechFlowcharts,
- HU: hungaryFlowcharts,
- RO: romaniaFlowcharts,
- BG: bulgariaFlowcharts,
- SK: slovakiaFlowcharts,
- SI: sloveniaFlowcharts,
- HR: croatiaFlowcharts,
- EE: estoniaFlowcharts,
- LV: latviaFlowcharts,
- LT: lithuaniaFlowcharts,
-};
+import { ALL_FLOWCHARTS } from './index';
+import { CountryCode } from '../../constants/countries';
 
 // Helper to get all flowcharts as a flat array
 function getAllFlowchartsArray(): Array<{ countryCode: string; flowchart: FlowchartDefinition }> {
@@ -178,10 +120,10 @@ describe('Flowchart Data Validation', () => {
  'PL', 'CZ', 'HU', 'RO', 'BG', // Phase 11
  'SK', 'SI', 'HR', 'EE', 'LV', 'LT', // Phase 12
  ];
- 
+
  expectedCountries.forEach(countryCode => {
- expect(ALL_FLOWCHARTS[countryCode]).toBeDefined();
- expect(Object.keys(ALL_FLOWCHARTS[countryCode]).length).toBeGreaterThan(0);
+ expect(ALL_FLOWCHARTS[countryCode as CountryCode]).toBeDefined();
+ expect(Object.keys(ALL_FLOWCHARTS[countryCode as CountryCode]).length).toBeGreaterThan(0);
  });
  });
  });

@@ -3,7 +3,7 @@
  */
 
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
 import { InteractiveFlowchart } from './InteractiveFlowchart';
 import type { FlowchartDefinition } from '../../types/flowchart';
 
@@ -66,105 +66,133 @@ flowchart TD
 
 describe('InteractiveFlowchart', () => {
   describe('Rendering', () => {
-    it('should render flowchart header with program name', () => {
+    it('should render flowchart header with program name', async () => {
       render(<InteractiveFlowchart flowchart={mockFlowchart} />);
 
-      const headings = screen.getAllByText('EU Blue Card');
-      expect(headings.length).toBeGreaterThan(0);
+      await waitFor(() => {
+        const headings = screen.getAllByText('EU Blue Card');
+        expect(headings.length).toBeGreaterThan(0);
+      });
     });
 
-    it('should render flowchart metadata', () => {
+    it('should render flowchart metadata', async () => {
       render(<InteractiveFlowchart flowchart={mockFlowchart} />);
 
-      expect(screen.getAllByText(/3-6 months/).length).toBeGreaterThan(0);
-      expect(screen.getAllByText(/medium/i).length).toBeGreaterThan(0);
-      expect(screen.getAllByText(/85%/).length).toBeGreaterThan(0);
+      await waitFor(() => {
+        expect(screen.getAllByText(/3-6 months/).length).toBeGreaterThan(0);
+        expect(screen.getAllByText(/medium/i).length).toBeGreaterThan(0);
+        expect(screen.getAllByText(/85%/).length).toBeGreaterThan(0);
+      });
     });
 
-    it('should render all steps in the steps list', () => {
+    it('should render all steps in the steps list', async () => {
       render(<InteractiveFlowchart flowchart={mockFlowchart} />);
 
-      expect(screen.getAllByText('Secure Job Offer').length).toBeGreaterThan(0);
-      expect(screen.getAllByText('Gather Documents').length).toBeGreaterThan(0);
-      expect(screen.getAllByText('Submit Application').length).toBeGreaterThan(0);
+      await waitFor(() => {
+        expect(screen.getAllByText('Secure Job Offer').length).toBeGreaterThan(0);
+        expect(screen.getAllByText('Gather Documents').length).toBeGreaterThan(0);
+        expect(screen.getAllByText('Submit Application').length).toBeGreaterThan(0);
+      });
     });
 
-    it('should render step descriptions', () => {
+    it('should render step descriptions', async () => {
       render(<InteractiveFlowchart flowchart={mockFlowchart} />);
 
-      expect(screen.getAllByText(/Obtain a binding job offer/i).length).toBeGreaterThan(0);
-      expect(screen.getAllByText(/Collect all required documents/i).length).toBeGreaterThan(0);
+      await waitFor(() => {
+        expect(screen.getAllByText(/Obtain a binding job offer/i).length).toBeGreaterThan(0);
+        expect(screen.getAllByText(/Collect all required documents/i).length).toBeGreaterThan(0);
+      });
     });
 
-    it('should render steps section', () => {
+    it('should render steps section', async () => {
       render(<InteractiveFlowchart flowchart={mockFlowchart} />);
 
-      expect(screen.getByText(/Steps/i)).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText(/Steps/i)).toBeInTheDocument();
+      });
     });
   });
 
   describe('Step Selection', () => {
-    it('should render first step as selected initially', () => {
+    it('should render first step as selected initially', async () => {
       render(<InteractiveFlowchart flowchart={mockFlowchart} />);
 
-      expect(screen.getAllByText('Secure Job Offer').length).toBeGreaterThan(0);
+      await waitFor(() => {
+        expect(screen.getAllByText('Secure Job Offer').length).toBeGreaterThan(0);
+      });
     });
 
-    it('should allow clicking on steps', () => {
+    it('should allow clicking on steps', async () => {
       render(<InteractiveFlowchart flowchart={mockFlowchart} />);
 
-      const stepButtons = screen.getAllByRole('button');
-      expect(stepButtons.length).toBeGreaterThan(0);
+      await waitFor(() => {
+        const stepButtons = screen.getAllByRole('button');
+        expect(stepButtons.length).toBeGreaterThan(0);
+      });
 
-      // Click on a step button
-      fireEvent.click(stepButtons[1]);
+      const stepButtons = screen.getAllByRole('button');
+      await act(async () => {
+        fireEvent.click(stepButtons[1]);
+      });
       expect(stepButtons[1]).toBeInTheDocument();
     });
 
-    it('should render step with conditional information', () => {
+    it('should render step with conditional information', async () => {
       render(<InteractiveFlowchart flowchart={mockFlowchart} />);
 
-      expect(screen.getAllByText('Submit Application').length).toBeGreaterThan(0);
+      await waitFor(() => {
+        expect(screen.getAllByText('Submit Application').length).toBeGreaterThan(0);
+      });
     });
   });
 
   describe('Step Details Panel', () => {
-    it('should display step title in details panel', () => {
+    it('should display step title in details panel', async () => {
       render(<InteractiveFlowchart flowchart={mockFlowchart} />);
 
-      expect(screen.getAllByText('Secure Job Offer').length).toBeGreaterThan(0);
+      await waitFor(() => {
+        expect(screen.getAllByText('Secure Job Offer').length).toBeGreaterThan(0);
+      });
     });
 
-    it('should display step description in details panel', () => {
+    it('should display step description in details panel', async () => {
       render(<InteractiveFlowchart flowchart={mockFlowchart} />);
 
-      expect(screen.getAllByText(/Obtain a binding job offer/i).length).toBeGreaterThan(0);
+      await waitFor(() => {
+        expect(screen.getAllByText(/Obtain a binding job offer/i).length).toBeGreaterThan(0);
+      });
     });
 
-    it('should display estimated duration', () => {
+    it('should display estimated duration', async () => {
       render(<InteractiveFlowchart flowchart={mockFlowchart} />);
 
-      expect(screen.getAllByText(/Estimated Duration/i).length).toBeGreaterThan(0);
-      expect(screen.getAllByText(/1-3 months/).length).toBeGreaterThan(0);
+      await waitFor(() => {
+        expect(screen.getAllByText(/Estimated Duration/i).length).toBeGreaterThan(0);
+        expect(screen.getAllByText(/1-3 months/).length).toBeGreaterThan(0);
+      });
     });
 
-    it('should display required documents', () => {
+    it('should display required documents', async () => {
       render(<InteractiveFlowchart flowchart={mockFlowchart} />);
 
-      expect(screen.getAllByText(/Required Documents/i).length).toBeGreaterThan(0);
-      expect(screen.getAllByText('Signed employment contract').length).toBeGreaterThan(0);
+      await waitFor(() => {
+        expect(screen.getAllByText(/Required Documents/i).length).toBeGreaterThan(0);
+        expect(screen.getAllByText('Signed employment contract').length).toBeGreaterThan(0);
+      });
     });
 
-    it('should display important notes', () => {
+    it('should display important notes', async () => {
       render(<InteractiveFlowchart flowchart={mockFlowchart} />);
 
-      expect(screen.getAllByText(/Important Notes/i).length).toBeGreaterThan(0);
-      expect(screen.getAllByText(/Salary threshold is EUR 45,300/).length).toBeGreaterThan(0);
+      await waitFor(() => {
+        expect(screen.getAllByText(/Important Notes/i).length).toBeGreaterThan(0);
+        expect(screen.getAllByText(/Salary threshold is EUR 45,300/).length).toBeGreaterThan(0);
+      });
     });
   });
 
   describe('Edge Cases', () => {
-    it('should handle flowchart with no steps', () => {
+    it('should handle flowchart with no steps', async () => {
       const emptyFlowchart: FlowchartDefinition = {
         ...mockFlowchart,
         steps: [],
@@ -172,10 +200,12 @@ describe('InteractiveFlowchart', () => {
 
       render(<InteractiveFlowchart flowchart={emptyFlowchart} />);
 
-      expect(screen.getAllByText('EU Blue Card').length).toBeGreaterThan(0);
+      await waitFor(() => {
+        expect(screen.getAllByText('EU Blue Card').length).toBeGreaterThan(0);
+      });
     });
 
-    it('should handle step with no documents', () => {
+    it('should handle step with no documents', async () => {
       const flowchartNoDocuments: FlowchartDefinition = {
         ...mockFlowchart,
         steps: [
@@ -191,10 +221,12 @@ describe('InteractiveFlowchart', () => {
 
       render(<InteractiveFlowchart flowchart={flowchartNoDocuments} />);
 
-      expect(screen.getAllByText('No Docs Step').length).toBeGreaterThan(0);
+      await waitFor(() => {
+        expect(screen.getAllByText('No Docs Step').length).toBeGreaterThan(0);
+      });
     });
 
-    it('should handle step with no notes', () => {
+    it('should handle step with no notes', async () => {
       const flowchartNoNotes: FlowchartDefinition = {
         ...mockFlowchart,
         steps: [
@@ -210,7 +242,9 @@ describe('InteractiveFlowchart', () => {
 
       render(<InteractiveFlowchart flowchart={flowchartNoNotes} />);
 
-      expect(screen.getAllByText('No Notes Step').length).toBeGreaterThan(0);
+      await waitFor(() => {
+        expect(screen.getAllByText('No Notes Step').length).toBeGreaterThan(0);
+      });
     });
   });
 });

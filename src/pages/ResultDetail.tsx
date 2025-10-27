@@ -4,7 +4,7 @@
  */
 
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import { getUserViabilityScores } from '../services/storage/viabilityScoreStore';
 import { getAllUserProfiles } from '../services/storage/userProfileStore';
 import type { ViabilityScore } from '../types/viability';
@@ -12,84 +12,61 @@ import { ScoreBreakdown } from '../components/results/ScoreBreakdown';
 import { RiskFactorsList } from '../components/results/RiskFactorsList';
 import { ContingenciesList } from '../components/results/ContingenciesList';
 import { Layout } from '../components/Layout';
+import { Button } from '../components/Button';
 import { InteractiveFlowchart } from '../components/flowchart/InteractiveFlowchart';
-import { CountryCode, isValidCountryCode } from '../constants/countries';
-import { germanyFlowcharts } from '../data/flowcharts/germany';
-import { netherlandsFlowcharts } from '../data/flowcharts/netherlands';
-import { franceFlowcharts } from '../data/flowcharts/france';
-import { spainFlowcharts } from '../data/flowcharts/spain';
-import { italyFlowcharts } from '../data/flowcharts/italy';
-import { austriaFlowcharts } from '../data/flowcharts/austria';
-import { belgiumFlowcharts } from '../data/flowcharts/belgium';
-import { luxembourgFlowcharts } from '../data/flowcharts/luxembourg';
-import { irelandFlowcharts } from '../data/flowcharts/ireland';
-import { swedenFlowcharts } from '../data/flowcharts/sweden';
-import { denmarkFlowcharts } from '../data/flowcharts/denmark';
-import { finlandFlowcharts } from '../data/flowcharts/finland';
-import { portugalFlowcharts } from '../data/flowcharts/portugal';
-import { greeceFlowcharts } from '../data/flowcharts/greece';
-import { cyprusFlowcharts } from '../data/flowcharts/cyprus';
-import { maltaFlowcharts } from '../data/flowcharts/malta';
-import { polandFlowcharts } from '../data/flowcharts/poland';
-import { czechFlowcharts } from '../data/flowcharts/czech-republic';
-import { hungaryFlowcharts } from '../data/flowcharts/hungary';
-import { romaniaFlowcharts } from '../data/flowcharts/romania';
-import { bulgariaFlowcharts } from '../data/flowcharts/bulgaria';
-import { slovakiaFlowcharts } from '../data/flowcharts/slovakia';
-import { sloveniaFlowcharts } from '../data/flowcharts/slovenia';
-import { croatiaFlowcharts } from '../data/flowcharts/croatia';
-import { estoniaFlowcharts } from '../data/flowcharts/estonia';
-import { latviaFlowcharts } from '../data/flowcharts/latvia';
-import { lithuaniaFlowcharts } from '../data/flowcharts/lithuania';
-import type { FlowchartDefinition } from '../types/flowchart';
-
-const FLOWCHARTS: Record<CountryCode, Record<string, FlowchartDefinition>> = {
-  [CountryCode.DE]: germanyFlowcharts,
-  [CountryCode.NL]: netherlandsFlowcharts,
-  [CountryCode.FR]: franceFlowcharts,
-  [CountryCode.ES]: spainFlowcharts,
-  [CountryCode.IT]: italyFlowcharts,
-  [CountryCode.AT]: austriaFlowcharts,
-  [CountryCode.BE]: belgiumFlowcharts,
-  [CountryCode.LU]: luxembourgFlowcharts,
-  [CountryCode.IE]: irelandFlowcharts,
-  [CountryCode.SE]: swedenFlowcharts,
-  [CountryCode.DK]: denmarkFlowcharts,
-  [CountryCode.FI]: finlandFlowcharts,
-  [CountryCode.PT]: portugalFlowcharts,
-  [CountryCode.GR]: greeceFlowcharts,
-  [CountryCode.CY]: cyprusFlowcharts,
-  [CountryCode.MT]: maltaFlowcharts,
-  [CountryCode.PL]: polandFlowcharts,
-  [CountryCode.CZ]: czechFlowcharts,
-  [CountryCode.HU]: hungaryFlowcharts,
-  [CountryCode.RO]: romaniaFlowcharts,
-  [CountryCode.BG]: bulgariaFlowcharts,
-  [CountryCode.SK]: slovakiaFlowcharts,
-  [CountryCode.SI]: sloveniaFlowcharts,
-  [CountryCode.HR]: croatiaFlowcharts,
-  [CountryCode.EE]: estoniaFlowcharts,
-  [CountryCode.LV]: latviaFlowcharts,
-  [CountryCode.LT]: lithuaniaFlowcharts,
-};
+import { isValidCountryCode } from '../constants/countries';
+import {
+  decodeResultsFromUrl,
+  isValidViabilityScore,
+  generateShareUrl,
+  copyToClipboard,
+} from '../utils/shareableResults';
+import { ALL_FLOWCHARTS } from '../data/flowcharts';
 
 export const ResultDetail: React.FC = () => {
   const { countryCode } = useParams<{ countryCode: string }>();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [selectedScore, setSelectedScore] = useState<ViabilityScore | null>(null);
+  const [isSharedView, setIsSharedView] = useState(false);
+  const [copySuccess, setCopySuccess] = useState(false);
 
   useEffect(() => {
     loadResultDetail();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [countryCode]);
+  }, [countryCode, searchParams]);
 
   const loadResultDetail = async () => {
     try {
       setIsLoading(true);
       setError(null);
 
+      // Check for encoded results in URL first (shared view)
+      const encodedResults = searchParams.get('results');
+
+      if (encodedResults) {
+        try {
+          const decodedScore = decodeResultsFromUrl(encodedResults);
+
+          if (!isValidViabilityScore(decodedScore)) {
+            throw new Error('Invalid viability score data');
+          }
+
+          setSelectedScore(decodedScore);
+          setIsSharedView(true);
+          setIsLoading(false);
+          return;
+        } catch (err) {
+          console.error('Failed to load shared results:', err);
+          setError('Invalid or corrupted shared results. Please request a new share link.');
+          setIsLoading(false);
+          return;
+        }
+      }
+
+      // Original logic: Load from IndexedDB
       if (!countryCode || !isValidCountryCode(countryCode)) {
         setError('Invalid country code');
         setIsLoading(false);
@@ -123,6 +100,26 @@ export const ResultDetail: React.FC = () => {
     }
   };
 
+  const handleShareResults = async () => {
+    if (!selectedScore) return;
+
+    try {
+      const shareUrl = generateShareUrl(selectedScore);
+      const copied = await copyToClipboard(shareUrl);
+
+      if (copied) {
+        setCopySuccess(true);
+        // Reset success message after 2 seconds
+        setTimeout(() => setCopySuccess(false), 2000);
+      } else {
+        alert('Failed to copy link. Please try again.');
+      }
+    } catch (error) {
+      console.error('Share error:', error);
+      alert('Failed to generate share link. Please try again.');
+    }
+  };
+
   if (isLoading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -141,12 +138,12 @@ export const ResultDetail: React.FC = () => {
           <div className="text-red-600 text-5xl mb-4 text-center">⚠️</div>
           <h2 className="text-xl font-bold text-gray-900 mb-2 text-center">Error</h2>
           <p className="text-gray-600 mb-4 text-center">{error}</p>
-          <button
+          <Button
             onClick={() => navigate('/results')}
-            className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            className="w-full"
           >
             Back to Results
-          </button>
+          </Button>
         </div>
       </div>
     );
@@ -158,18 +155,18 @@ export const ResultDetail: React.FC = () => {
         <div className="bg-white rounded-lg shadow-md border border-gray-200 p-8 max-w-md">
           <h2 className="text-xl font-bold text-gray-900 mb-2 text-center">Not Found</h2>
           <p className="text-gray-600 mb-4 text-center">Result details not found</p>
-          <button
+          <Button
             onClick={() => navigate('/results')}
-            className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            className="w-full"
           >
             Back to Results
-          </button>
+          </Button>
         </div>
       </div>
     );
   }
 
-  const countryFlowcharts = countryCode && isValidCountryCode(countryCode) ? FLOWCHARTS[countryCode] : undefined;
+  const countryFlowcharts = countryCode && isValidCountryCode(countryCode) ? ALL_FLOWCHARTS[countryCode] : undefined;
 
   const recommendedFlowchart = selectedScore.recommendedProgram && countryFlowcharts
     ? countryFlowcharts[selectedScore.recommendedProgram.programId]
@@ -178,13 +175,41 @@ export const ResultDetail: React.FC = () => {
   return (
     <Layout currentPage="results">
       <div className="max-w-7xl mx-auto">
-        {/* Back Button */}
-        <button
-          onClick={() => navigate('/results')}
-          className="mb-6 flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium"
-        >
-          ← Back to Rankings
-        </button>
+        {/* Shared View Banner */}
+        {isSharedView && (
+          <div className="mb-6 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg p-4">
+            <div className="flex items-center gap-3">
+              <span className="text-2xl">📤</span>
+              <div>
+                <p className="font-semibold text-blue-900">Shared View</p>
+                <p className="text-sm text-blue-700">
+                  This result was shared with you. To save your own results, create a profile and calculate your viability scores.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Back Button and Share Button Row */}
+        <div className="mb-6 flex items-center justify-between gap-4">
+          <Button
+            onClick={() => navigate('/results')}
+            variant="ghost"
+          >
+            ← Back to Rankings
+          </Button>
+
+          {/* Share Button (only show in non-shared view) */}
+          {!isSharedView && selectedScore && (
+            <Button
+              onClick={handleShareResults}
+              variant="primary"
+            >
+              <span>{copySuccess ? '✓' : '📤'}</span>
+              <span>{copySuccess ? 'Link Copied!' : 'Share Results'}</span>
+            </Button>
+          )}
+        </div>
 
         {/* Country Header */}
         <div className="bg-white rounded-lg shadow-md border border-gray-200 p-6 mb-6">
