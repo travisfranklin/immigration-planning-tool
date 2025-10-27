@@ -6,6 +6,7 @@
 import { useEffect, useRef, useState, memo } from 'react';
 import mermaid from 'mermaid';
 import type { FlowchartDefinition } from '../../types/flowchart';
+import { mermaidConfig } from '../../config/mermaid.config';
 
 interface FlowchartViewerProps {
   flowchart: FlowchartDefinition;
@@ -29,17 +30,8 @@ function FlowchartViewerComponent({ flowchart, onExport, selectedStepId, onStepS
   }, [selectedStepId]);
 
   useEffect(() => {
-    // Initialize Mermaid
-    mermaid.initialize({
-      startOnLoad: true,
-      theme: 'default',
-      securityLevel: 'loose',
-      flowchart: {
-        useMaxWidth: true,
-        htmlLabels: true,
-        curve: 'basis',
-      },
-    });
+    // Initialize Mermaid with centralized configuration
+    mermaid.initialize(mermaidConfig);
   }, []);
 
   useEffect(() => {

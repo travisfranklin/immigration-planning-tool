@@ -50,3 +50,58 @@ body {
 .animate-slide-in {
   animation: slideIn 0.3s ease-out;
 }
+
+/* Mermaid Flowchart Styling */
+/* Global styles for all Mermaid flowcharts */
+
+/* Decision nodes (diamonds) - Flat yellow background */
+/* In Mermaid flowcharts, decision nodes are rendered as <polygon> elements */
+/* This targets ALL polygon elements, which are exclusively used for diamond/decision shapes */
+.mermaid polygon {
+  fill: #fff4cc !important;
+  stroke: #f59e0b !important;
+  stroke-width: 2px !important;
+}
+
+/* Ensure decision node text is readable */
+.mermaid .node text {
+  fill: #1f2937;
+}
+
+/* Start/Success nodes - Light green (keep existing style commands in diagrams) */
+.mermaid .node-success rect,
+.mermaid .node-success path {
+  fill: #e1f5e1;
+  stroke: #10b981;
+  stroke-width: 2px;
+}
+
+/* End/Error nodes - Light red (keep existing style commands in diagrams) */
+.mermaid .node-error rect,
+.mermaid .node-error path {
+  fill: #ffe1e1;
+  stroke: #ef4444;
+  stroke-width: 2px;
+}
+
+/* Important nodes (permits, visas) - Light blue (keep existing style commands in diagrams) */
+.mermaid .node-primary rect,
+.mermaid .node-primary path {
+  fill: #e1e5ff;
+  stroke: #6366f1;
+  stroke-width: 2px;
+}
+
+/* Hover effect for interactive nodes */
+.mermaid .node:hover {
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+/* Selected node highlight */
+.mermaid .node.selected rect,
+.mermaid .node.selected polygon,
+.mermaid .node.selected path {
+  stroke-width: 3px !important;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
