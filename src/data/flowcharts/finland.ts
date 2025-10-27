@@ -25,7 +25,7 @@ flowchart TD
  Decision -->|Approved| Permit[Receive Residence Permit]
  Decision -->|Rejected| Appeal[Consider Appeal]
  Permit -->arrival-registration[Travel to Finland]
- arrival --> registration[Register at Migri Office Get Finnish ID]
+ arrival-registration --> registration[Register at Migri Office Get Finnish ID]
  registration --> Success([Process Complete])
  Appeal --> End2([Process Ended])
 

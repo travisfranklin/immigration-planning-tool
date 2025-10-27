@@ -23,7 +23,7 @@ flowchart TD
  tax-number -->gather-documents[Gather Required Documents]
  gather-documents -->submit-application[Submit Application to<br/>Greek Consulate or in Greece]
  submit-application -->processing-decision[Processing<br/>60-90 Days]
- processing --> Decision{Decision}
+ processing-decision --> Decision{Decision}
  Decision -->|Approved| GoldenVisa[Receive Golden Visa<br/>5-Year Permit]
  Decision -->|Rejected| Appeal[Consider Appeal]
  GoldenVisa --> arrival[Travel to Greece<br/>No Minimum Stay Required!]

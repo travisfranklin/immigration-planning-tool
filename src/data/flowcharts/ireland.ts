@@ -27,7 +27,7 @@ flowchart TD
  Decision -->|Approved| Permit[Receive Employment Permit]
  Decision -->|Rejected| Appeal[Consider Appeal]
  Permit -->entry-visa[Apply for Entry Visa]
- visa-application -->arrival[Travel to Ireland]
+ entry-visa -->arrival[Travel to Ireland]
  arrival --> registration[Register with GNIB/IRP]
  registration --> Success([Process Complete])
  Appeal --> End2([Process Ended])

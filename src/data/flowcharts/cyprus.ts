@@ -22,12 +22,12 @@ flowchart TD
  choose-investment --> verify-income[Verify Annual Income<br/> EUR 50,000 minimum]
  Business -->verify-income
  Combo -->verify-income
- income-verification --> CheckIncome{Income Sufficient?}
+ verify-income --> CheckIncome{Income Sufficient?}
  CheckIncome -->|Yes| gather-documents[Gather Required Documents]
  CheckIncome -->|No| End1([Not Eligible])
  gather-documents -->submit-application[Submit Application to<br/>Cyprus Immigration]
  submit-application --> receive-pr[Processing<br/>60-90 Days]
- processing --> Decision{Decision}
+ receive-pr --> Decision{Decision}
  Decision -->|Approved| PR[Receive Permanent Residence<br/>Immediate PR!]
  Decision -->|Rejected| Appeal[Consider Appeal]
  PR --> arrival[Travel to Cyprus]

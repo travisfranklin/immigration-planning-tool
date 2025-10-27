@@ -154,22 +154,22 @@ flowchart TD
  mermaidDiagram: `
 flowchart TD
  Start([Start Process]) --> develop-business-idea[Develop Innovative<br/>Business Idea]
- BusinessIdea --> verify-funds[Verify Minimum Funds<br/> EUR 4,500 (PLN 20,000)]
- Funds --> check-funds{Funds Sufficient?}
- CheckFunds -->|Yes| apply-to-accelerator[Apply to Polish<br/>Startup Accelerator]
- CheckFunds -->|No| End1([Not Eligible])
- Accelerator --> program-acceptance{Accepted by<br/>Accelerator?}
- Acceptance -->|Yes| gather-documents[Gather Required Documents]
- Acceptance -->|No| End2([Not Eligible])
- GatherDocs --> submit-application[Submit Application to<br/>Polish Consulate or in Poland]
- Submit --> processing[Processing<br/>30-60 Days]
- Processing --> decision{Decision}
- Decision -->|Approved| receive-visa[Receive Startup Visa<br/>1-Year Permit]
- Decision -->|Rejected| consider-appeal[Consider Appeal]
- Visa --> travel[Travel to Poland]
- Travel --> register-business[Register Business &<br/>at Voivodeship Office]
- Register --> Success([Process Complete])
- Appeal --> End3([Process Ended])
+ develop-business-idea --> verify-funds[Verify Minimum Funds<br/> EUR 4,500 (PLN 20,000)]
+ verify-funds --> check-funds{Funds Sufficient?}
+ check-funds -->|Yes| apply-to-accelerator[Apply to Polish<br/>Startup Accelerator]
+ check-funds -->|No| End1([Not Eligible])
+ apply-to-accelerator --> program-acceptance{Accepted by<br/>Accelerator?}
+ program-acceptance -->|Yes| gather-documents[Gather Required Documents]
+ program-acceptance -->|No| End2([Not Eligible])
+ gather-documents --> submit-application[Submit Application to<br/>Polish Consulate or in Poland]
+ submit-application --> processing[Processing<br/>30-60 Days]
+ processing --> decision{Decision}
+ decision -->|Approved| receive-visa[Receive Startup Visa<br/>1-Year Permit]
+ decision -->|Rejected| consider-appeal[Consider Appeal]
+ receive-visa --> travel[Travel to Poland]
+ travel --> register-business[Register Business &<br/>at Voivodeship Office]
+ register-business --> Success([Process Complete])
+ consider-appeal --> End3([Process Ended])
  
  style Start fill:#e1f5e1
  style Success fill:#e1f5e1

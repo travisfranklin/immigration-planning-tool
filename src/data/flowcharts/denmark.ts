@@ -23,7 +23,7 @@ flowchart TD
  CheckCompany -->|No| End2([Use Different Scheme])
  gather-documents -->submit-application[Submit Application Online]
  submit-application -->fast-processing[Fast-Track Processing<br/><=30 Days]
- processing --> Decision{Decision}
+ fast-processing --> Decision{Decision}
  Decision -->|Approved| Permit[Receive Residence Permit]
  Decision -->|Rejected| Appeal[Consider Appeal]
  Permit --> arrival[Travel to Denmark]

@@ -19,10 +19,10 @@ flowchart TD
  verify-income --> CheckIncome{Income Sufficient?}
  CheckIncome -->|Yes| secure-accommodation[Secure Accommodation<br/>in Portugal]
  CheckIncome -->|No| End1([Not Eligible])
- accommodation -->gather-documents[Gather Required Documents]
+ secure-accommodation -->gather-documents[Gather Required Documents]
  gather-documents --> consulate-submission[Submit Application at<br/>Portuguese Consulate]
  consulate-submission -->sef-processing[SEF Processing<br/>60-90 Days]
- processing --> Decision{Decision}
+ sef-processing --> Decision{Decision}
  Decision -->|Approved| Visa[Receive D7 Visa]
  Decision -->|Rejected| Appeal[Consider Appeal]
  Visa --> arrival[Travel to Portugal<br/>within 4 months]

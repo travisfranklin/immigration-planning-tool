@@ -19,7 +19,7 @@ flowchart TD
  Edu -->|Yes| docs[Gather Documents]
  Edu -->|No| End1([Not Eligible])
  docs -->submit[Submit Application]
- submit-application --> processing[Processing 30-60 Days]
+ submit --> processing[Processing 30-60 Days]
  processing --> Decision{Decision}
  Decision -->|Approved| Card[EU Blue Card<br/>2 Years]
  Decision -->|Rejected| End2([Rejected])
