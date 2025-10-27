@@ -50,7 +50,7 @@ describe('ProfileFormContainer', () => {
     await user.click(nextButton);
 
     // Should show step 2
-    expect(screen.getByText((content, element) => {
+    expect(screen.getByText((_content, element) => {
       const hasText = element?.textContent?.replace(/\s+/g, ' ').trim().toLowerCase() === 'step 2 of 7';
       const isSpan = element?.tagName.toLowerCase() === 'span';
       return hasText && isSpan;
@@ -163,7 +163,7 @@ describe('ProfileFormContainer', () => {
     await user.selectOptions(screen.getByLabelText(/citizenship/i), 'US');
     await user.click(screen.getByRole('button', { name: /next/i }));
 
-    expect(screen.getByText((content, element) => {
+    expect(screen.getByText((_content, element) => {
       const hasText = element?.textContent?.replace(/\s+/g, ' ').trim().toLowerCase() === 'step 2 of 7';
       const isSpan = element?.tagName.toLowerCase() === 'span';
       return hasText && isSpan;
