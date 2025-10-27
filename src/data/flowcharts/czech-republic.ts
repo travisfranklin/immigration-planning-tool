@@ -523,5 +523,102 @@ flowchart TD
     },
   ],
  },
+
+ 'cz_self_employment': {
+ programId: 'cz_self_employment',
+ countryCode: 'CZ',
+ programName: 'Self-Employment Visa (živnostenský list)',
+ totalEstimatedDuration: '2-4 months',
+ complexity: 'medium',
+ successRate: '75%',
+ mermaidDiagram: `
+flowchart TD
+ Start([Start]) --> plan[Develop Business Plan]
+ plan --> funds{EUR 10,000<br/>Investment?}
+ funds -->|Yes| docs[Gather Documents]
+ funds -->|No| End1([Not Eligible])
+ docs --> submit[Submit Application]
+ submit --> process[Processing 60-90 Days]
+ process --> decision{Decision}
+ decision -->|Approved| permit[Receive Permit]
+ decision -->|Rejected| appeal[Consider Appeal]
+ permit --> travel[Travel to Czech Republic]
+ travel --> register[Register Business]
+ register --> Success([Complete])
+ appeal --> End2([Process Ended])
+
+ style Start fill:#e1f5e1
+ style Success fill:#e1f5e1
+ style End1 fill:#ffe1e1
+ style End2 fill:#ffe1e1
+ style permit fill:#e1e5ff
+`,
+ steps: [
+ {
+ id: 'plan',
+ title: 'Develop Business Plan',
+ description: 'Create comprehensive business plan',
+ estimatedDuration: '2-4 weeks',
+ documents: ['Business plan', 'Market analysis', 'Financial projections'],
+ notes: ['EUR 10,000 minimum investment', 'Prague is major tech hub', 'PR in 5 years'],
+ },
+ {
+ id: 'docs',
+ title: 'Gather Documents',
+ description: 'Collect required documents',
+ estimatedDuration: '2-3 weeks',
+ documents: ['Passport', 'Business plan', 'Proof of funds', 'Criminal check', 'Health insurance'],
+ notes: ['All documents must be apostilled', 'Translations to Czech required'],
+ },
+ {
+ id: 'submit',
+ title: 'Submit Application',
+ description: 'Submit to Czech authorities',
+ estimatedDuration: '1 day',
+ documents: ['All documents', 'Application fee (EUR 100)'],
+ notes: ['Processing: 60-90 days'],
+ },
+ {
+ id: 'process',
+ title: 'Processing',
+ description: 'Czech Immigration reviews application',
+ estimatedDuration: '60-90 days',
+ documents: [],
+ notes: ['Business viability assessed'],
+ },
+ {
+ id: 'permit',
+ title: 'Receive Permit',
+ description: 'Receive self-employment permit',
+ estimatedDuration: '1 week',
+ documents: ['Residence permit'],
+ notes: ['Valid for 2 years, renewable'],
+ },
+ {
+ id: 'travel',
+ title: 'Travel to Czech Republic',
+ description: 'Travel with permit',
+ estimatedDuration: '1-3 days',
+ documents: ['Passport with permit'],
+ notes: ['Main airport: Prague (PRG)'],
+ },
+ {
+ id: 'register',
+ title: 'Register Business',
+ description: 'Register business and at Foreign Police',
+ estimatedDuration: '2-4 weeks',
+ documents: ['Business registration', 'Proof of address'],
+ notes: ['Register at Trade Licensing Office', 'Register at Foreign Police within 3 days', 'PR in 5 years'],
+ },
+ {
+ id: 'appeal',
+ title: 'Consider Appeal',
+ description: 'If rejected, evaluate options',
+ estimatedDuration: '1-2 months',
+ documents: ['Rejection decision', 'Appeal form'],
+ notes: ['Can reapply with stronger plan'],
+ },
+ ],
+ },
 };
 

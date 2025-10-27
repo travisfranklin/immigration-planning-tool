@@ -306,5 +306,102 @@ flowchart TD
  },
  ],
  },
+
+ 'se_self_employment': {
+ programId: 'se_self_employment',
+ countryCode: 'SE',
+ programName: 'Self-Employment Permit',
+ totalEstimatedDuration: '3-5 months',
+ complexity: 'medium',
+ successRate: '70%',
+ mermaidDiagram: `
+flowchart TD
+ Start([Start]) --> plan[Develop Business Plan]
+ plan --> funds{EUR 20,000<br/>Savings?}
+ funds -->|Yes| docs[Gather Documents]
+ funds -->|No| End1([Not Eligible])
+ docs --> submit[Submit Application]
+ submit --> process[Processing 2-4 Months]
+ process --> decision{Decision}
+ decision -->|Approved| permit[Receive Permit]
+ decision -->|Rejected| appeal[Consider Appeal]
+ permit --> travel[Travel to Sweden]
+ travel --> register[Register Business]
+ register --> Success([Complete])
+ appeal --> End2([Process Ended])
+
+ style Start fill:#e1f5e1
+ style Success fill:#e1f5e1
+ style End1 fill:#ffe1e1
+ style End2 fill:#ffe1e1
+ style permit fill:#e1e5ff
+`,
+ steps: [
+ {
+ id: 'plan',
+ title: 'Develop Business Plan',
+ description: 'Create comprehensive business plan',
+ estimatedDuration: '2-4 weeks',
+ documents: ['Business plan', 'Market analysis', 'Financial projections'],
+ notes: ['Must demonstrate viability', 'EUR 20,000 minimum savings', 'PR in 5 years'],
+ },
+ {
+ id: 'docs',
+ title: 'Gather Documents',
+ description: 'Collect required documents',
+ estimatedDuration: '2-3 weeks',
+ documents: ['Passport', 'Business plan', 'Proof of funds', 'Qualifications'],
+ notes: ['Documents in Swedish or English'],
+ },
+ {
+ id: 'submit',
+ title: 'Submit Application',
+ description: 'Submit to Swedish Migration Agency',
+ estimatedDuration: '1 week',
+ documents: ['All documents', 'Application fee'],
+ notes: ['Processing: 2-4 months'],
+ },
+ {
+ id: 'process',
+ title: 'Processing',
+ description: 'Migration Agency reviews application',
+ estimatedDuration: '2-4 months',
+ documents: [],
+ notes: ['Business viability assessed'],
+ },
+ {
+ id: 'permit',
+ title: 'Receive Permit',
+ description: 'Receive self-employment permit',
+ estimatedDuration: '1 week',
+ documents: ['Residence permit'],
+ notes: ['Valid for 2 years, renewable'],
+ },
+ {
+ id: 'travel',
+ title: 'Travel to Sweden',
+ description: 'Travel with permit',
+ estimatedDuration: '1-2 days',
+ documents: ['Passport with permit'],
+ notes: ['Main airports: Stockholm (ARN), Gothenburg (GOT)'],
+ },
+ {
+ id: 'register',
+ title: 'Register Business',
+ description: 'Register business and get personal number',
+ estimatedDuration: '2-4 weeks',
+ documents: ['Business registration', 'Proof of address'],
+ notes: ['Register at Tax Agency', 'Get personnummer', 'PR in 5 years'],
+ },
+ {
+ id: 'appeal',
+ title: 'Consider Appeal',
+ description: 'If rejected, evaluate options',
+ estimatedDuration: '1-2 months',
+ documents: ['Rejection decision', 'Appeal form'],
+ notes: ['Can reapply with stronger plan'],
+ },
+ ],
+ },
 };
 
