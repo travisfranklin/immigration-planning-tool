@@ -276,5 +276,277 @@ flowchart TD
  },
  ],
  },
+
+ 'mt_startup_visa': {
+ programId: 'mt_startup_visa',
+ countryCode: 'MT',
+ programName: 'Startup Visa',
+ totalEstimatedDuration: '3-5 months',
+ complexity: 'medium',
+ successRate: '75%',
+ mermaidDiagram: `
+flowchart TD
+ Start([Start Process]) --> business-idea[Develop Innovative<br/>Startup Idea]
+ business-idea --> check-funds{Have EUR 15,000-25,000<br/>minimum capital?}
+ check-funds -->|Yes| prepare-business-plan[Prepare Detailed<br/>Business Plan]
+ check-funds -->|No| End1([Not Eligible])
+ prepare-business-plan --> submit-to-malta-enterprise[Submit to Malta Enterprise]
+ submit-to-malta-enterprise --> enterprise-review[Malta Enterprise Review<br/>30-60 Days]
+ enterprise-review --> decision1{Approved?}
+ decision1 -->|Yes| gather-documents[Gather Required Documents]
+ decision1 -->|Rejected| consider-resubmission[Consider Resubmission]
+ consider-resubmission --> End2([Process Ended])
+ gather-documents --> submit-visa[Submit Visa Application<br/>to Identity Malta]
+ submit-visa --> visa-processing[Processing<br/>60-90 Days]
+ visa-processing --> decision2{Decision}
+ decision2 -->|Approved| receive-permit[Receive Residence Permit]
+ decision2 -->|Rejected| consider-appeal[Consider Appeal]
+ receive-permit --> travel-to-malta[Travel to Malta]
+ travel-to-malta --> register-business[Register Business<br/>and Get ID Card]
+ register-business --> Success([Process Complete])
+ consider-appeal --> End3([Process Ended])
+
+ style Start fill:#e1f5e1
+ style Success fill:#e1f5e1
+ style End1 fill:#ffe1e1
+ style End2 fill:#ffe1e1
+ style End3 fill:#ffe1e1
+ style receive-permit fill:#e1e5ff
+`,
+ steps: [
+ {
+ id: 'business-idea',
+ title: 'Develop Innovative Startup Idea',
+ description: 'Create an innovative, scalable business concept suitable for Malta\'s business ecosystem',
+ estimatedDuration: '1-2 months',
+ documents: [
+ 'Business concept description',
+ 'Market research and analysis',
+ 'Competitive landscape overview',
+ 'Innovation and scalability potential',
+ ],
+ notes: [
+ 'English is official language - easy to do business!',
+ 'Focus on tech, gaming (iGaming hub of Europe), fintech, or other innovation sectors',
+ 'Malta has growing startup ecosystem',
+ 'EU market access from Malta',
+ 'Tax incentives for startups available',
+ 'Business must be innovative and have growth potential',
+ 'Small but well-connected business community',
+ ],
+ },
+ {
+ id: 'prepare-business-plan',
+ title: 'Prepare Detailed Business Plan',
+ description: 'Create comprehensive business plan for Malta Enterprise approval',
+ estimatedDuration: '2-4 weeks',
+ documents: [
+ 'Executive summary',
+ 'Detailed business plan (15-30 pages)',
+ 'Financial projections (3-5 years)',
+ 'Proof of EUR 15,000-25,000 minimum capital (bank statements)',
+ 'Team information (if co-founders)',
+ 'Market analysis and go-to-market strategy',
+ ],
+ notes: [
+ 'Minimum EUR 15,000-25,000 in capital recommended',
+ 'Business plan must demonstrate innovation and scalability',
+ 'Include clear revenue model and growth strategy',
+ 'Show understanding of Maltese/EU market',
+ 'Can include co-founders (each needs separate visa)',
+ 'Highlight how you\'ll leverage Malta\'s strategic location',
+ 'English is official language - no translation needed!',
+ ],
+ },
+ {
+ id: 'submit-to-malta-enterprise',
+ title: 'Submit to Malta Enterprise',
+ description: 'Apply to Malta Enterprise for startup approval',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'Completed Malta Enterprise application form',
+ 'Business plan',
+ 'Financial projections',
+ 'Proof of funds',
+ 'Team CVs and background',
+ 'Pitch deck (optional but recommended)',
+ ],
+ notes: [
+ 'Malta Enterprise is the national development agency',
+ 'Evaluates all startup visa applications',
+ 'Application submitted online or in person',
+ 'May include pitch presentation',
+ 'Malta Enterprise website: https://www.maltaenterprise.com/',
+ 'English is official language - easy process!',
+ ],
+ },
+ {
+ id: 'enterprise-review',
+ title: 'Malta Enterprise Review (30-60 Days)',
+ description: 'Malta Enterprise evaluates your startup business plan',
+ estimatedDuration: '30-60 days',
+ documents: [],
+ notes: [
+ 'Review typically takes 30-60 days',
+ 'May include interview or pitch session',
+ 'Malta Enterprise assesses innovation, scalability, team, and market potential',
+ 'Approval letter required for visa application',
+ 'Can reapply if rejected (with improved plan)',
+ 'English is official language - easy communication!',
+ ],
+ },
+ {
+ id: 'gather-documents',
+ title: 'Gather Required Documents',
+ description: 'Collect all necessary documents for residence permit application',
+ estimatedDuration: '2-3 weeks',
+ documents: [
+ 'Valid passport (valid for at least 6 months)',
+ 'Malta Enterprise approval letter',
+ 'Business plan',
+ 'Proof of EUR 15,000-25,000 minimum capital',
+ 'Passport-style photographs',
+ 'Proof of health insurance (minimum EUR 30,000 coverage)',
+ 'Proof of accommodation in Malta',
+ 'Criminal record certificate (from country of residence)',
+ ],
+ notes: [
+ 'All documents must be apostilled',
+ 'English translations accepted (English is official language!)',
+ 'Criminal background check must be recent (within 6 months)',
+ 'Keep originals for potential verification',
+ ],
+ },
+ {
+ id: 'submit-visa',
+ title: 'Submit Visa Application to Identity Malta',
+ description: 'Complete and submit residence permit application to Identity Malta',
+ estimatedDuration: '1-2 days',
+ documents: [
+ 'Completed application form',
+ 'All supporting documents',
+ 'Application fee payment (EUR 300 approximately)',
+ ],
+ notes: [
+ 'Apply at Identity Malta office',
+ 'Application fee: approximately EUR 300 (2025)',
+ 'Biometrics collected at office',
+ 'May need to attend interview',
+ 'English is official language - easy process!',
+ ],
+ },
+ {
+ id: 'visa-processing',
+ title: 'Processing (60-90 Days)',
+ description: 'Identity Malta reviews your application',
+ estimatedDuration: '60-90 days',
+ documents: [],
+ notes: [
+ 'Processing time: typically 60-90 days',
+ 'Identity Malta may request additional documents',
+ 'Malta Enterprise approval is key factor',
+ 'Financial sufficiency verified',
+ 'Background check conducted',
+ ],
+ },
+ {
+ id: 'receive-permit',
+ title: 'Receive Residence Permit',
+ description: 'Collect your approved startup residence permit',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'Decision letter from Identity Malta',
+ 'Residence permit card',
+ ],
+ notes: [
+ 'Initial permit valid for 1 year',
+ 'Renewable annually if business is progressing',
+ 'Can bring family members',
+ 'Permit allows you to work on your startup',
+ 'Can also work for other employers',
+ 'English is official language!',
+ ],
+ },
+ {
+ id: 'travel-to-malta',
+ title: 'Travel to Malta',
+ description: 'Enter Malta with your residence permit',
+ estimatedDuration: '1-2 days',
+ documents: [
+ 'Passport with residence permit',
+ 'Malta Enterprise approval letter',
+ 'Business plan',
+ 'Proof of accommodation',
+ ],
+ notes: [
+ 'Main airport: Malta International Airport (MLA)',
+ 'No visa required for Schengen area travel',
+ 'Can enter Malta immediately upon receiving permit',
+ 'Register at Identity Malta within 3 days of arrival',
+ 'English is official language - easy to settle!',
+ ],
+ },
+ {
+ id: 'register-business',
+ title: 'Register Business and Get ID Card',
+ description: 'Complete business registration and obtain Maltese ID card',
+ estimatedDuration: '2-4 weeks',
+ documents: [
+ 'Business registration form',
+ 'Company articles of association',
+ 'Proof of business address',
+ 'Bank account information',
+ ],
+ notes: [
+ 'Register business with Malta Business Registry',
+ 'Get Maltese ID card from Identity Malta',
+ 'Open Maltese business bank account',
+ 'Register with Malta Tax Authority',
+ 'Join Malta startup community and networks',
+ 'Access to EU market from Malta',
+ 'Tax incentives for startups available',
+ 'PR eligible after 5 years, citizenship after 5 years',
+ 'English is official language - easy business operations!',
+ ],
+ },
+ {
+ id: 'consider-resubmission',
+ title: 'Consider Resubmission',
+ description: 'If rejected by Malta Enterprise, evaluate options for reapplication',
+ estimatedDuration: '1-2 months',
+ documents: [
+ 'Rejection feedback from Malta Enterprise',
+ 'Revised business plan',
+ ],
+ notes: [
+ 'Review rejection reasons carefully',
+ 'Improve business plan based on feedback',
+ 'Strengthen financial projections and market analysis',
+ 'May need to pivot business model',
+ 'Can reapply after improvements',
+ 'Consider Malta Enterprise mentorship programs',
+ ],
+ },
+ {
+ id: 'consider-appeal',
+ title: 'Consider Appeal',
+ description: 'If visa rejected, evaluate appeal options',
+ estimatedDuration: '1-2 months',
+ documents: [
+ 'Rejection decision from Identity Malta',
+ 'Appeal form',
+ 'Additional supporting evidence',
+ ],
+ notes: [
+ 'Appeal deadline: 30 days from decision',
+ 'Submit appeal to appropriate authority',
+ 'Provide additional evidence or clarifications',
+ 'Consider legal consultation',
+ 'Can reapply with stronger application',
+ 'Alternative: consider Malta Nomad Residence or MPRP',
+ ],
+ },
+ ],
+ },
 };
 
