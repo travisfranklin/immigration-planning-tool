@@ -154,7 +154,7 @@ flowchart TD
  mermaidDiagram: `
 flowchart TD
  Start([Start Process]) --> BusinessIdea[Develop Innovative<br/>Business Idea]
- BusinessIdea --> Funds[Verify Minimum Funds<br/> EUR 5,000 (HUF 2,000,000)]
+ BusinessIdea --> Funds[Verify Minimum Funds<br/>EUR 5,000 / HUF 2,000,000]
  Funds --> CheckFunds{Funds Sufficient?}
  CheckFunds -->|Yes| Program[Apply to Hungarian<br/>Startup Program]
  CheckFunds -->|No| End1([Not Eligible])
