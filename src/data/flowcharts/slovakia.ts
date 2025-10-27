@@ -15,28 +15,28 @@ export const slovakiaFlowcharts: Record<string, FlowchartDefinition> = {
  successRate: '90%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) -->job-offer[Secure Job Offer<br/>from Slovak Employer]
- job-offer --> CheckSalary{Salary >= EUR 1,500/month<br/>( EUR 18,000/year)?}
- CheckSalary -->|Yes| CheckEducation{Higher Education<br/>Degree?}
- CheckSalary -->|No| End1([Not Eligible])
- CheckEducation -->|Yes| gather-documents[Gather Required Documents]
- CheckEducation -->|No| End2([Not Eligible])
- gather-documents -->submit-application[Submit Application to<br/>Slovak Embassy or in Slovakia]
+ Start([Start Process]) --> job-offer[Secure Job Offer<br/>from Slovak Employer]
+ job-offer --> check-salary{Salary >= EUR 1,500/month<br/>( EUR 18,000/year)?}
+ check-salary -->|Yes| check-education{Higher Education<br/>Degree?}
+ check-salary -->|No| End1([Not Eligible])
+ check-education -->|Yes| gather-documents[Gather Required Documents]
+ check-education -->|No| End2([Not Eligible])
+ gather-documents --> submit-application[Submit Application to<br/>Slovak Embassy or in Slovakia]
  submit-application --> processing[Processing<br/>30-60 Days]
- processing --> Decision{Decision}
- Decision -->|Approved| BlueCard[Receive EU Blue Card<br/>2-Year Permit]
- Decision -->|Rejected| Appeal[Consider Appeal]
- BlueCard --> arrival[Travel to Slovakia]
- arrival --> registration[Register at Foreign Police<br/>within 3 Days]
- registration --> Success([Process Complete])
- Appeal --> End3([Process Ended])
+ processing --> decision{Decision}
+ decision -->|Approved| receive-blue-card[Receive EU Blue Card<br/>2-Year Permit]
+ decision -->|Rejected| consider-appeal[Consider Appeal]
+ receive-blue-card --> travel[Travel to Slovakia]
+ travel --> register[Register at Foreign Police<br/>within 3 Days]
+ register --> Success([Process Complete])
+ consider-appeal --> End3([Process Ended])
 
  style Start fill:#e1f5e1
  style Success fill:#e1f5e1
  style End1 fill:#ffe1e1
  style End2 fill:#ffe1e1
  style End3 fill:#ffe1e1
- style BlueCard fill:#e1e5ff
+ style receive-blue-card fill:#e1e5ff
 `,
  steps: [
  {
@@ -59,76 +59,88 @@ flowchart TD
  ],
  },
  {
- id: 'verify-education',
+ id: 'check-salary',
+ title: 'Verify Salary Requirement',
+ description: 'Ensure the job offer meets minimum salary threshold',
+ estimatedDuration: '1 day',
+ documents: ['Employment contract with salary details'],
+ notes: ['Minimum salary: EUR 1,500/month (EUR 18,000/year)'],
+ isConditional: true,
+ condition: 'Salary must be >= EUR 1,500/month',
+ },
+ {
+ id: 'check-education',
  title: 'Verify Higher Education Requirement',
  description: 'Ensure you have a higher education degree (Bachelor\'s or higher)',
  estimatedDuration: '1-2 weeks',
- documents: [
- 'University degree (Bachelor\'s, Master\'s, or PhD)',
- 'Diploma translation (if not in Slovak or English)',
- 'Diploma apostille (Hague Convention)',
- ],
- notes: [
- 'Bachelor\'s degree minimum',
- 'Master\'s or PhD preferred',
- 'Degree must be recognized in Slovakia',
- ],
+ documents: ['University degree (Bachelor\'s, Master\'s, or PhD)', 'Diploma translation', 'Diploma apostille'],
+ notes: ['Bachelor\'s degree minimum', 'Master\'s or PhD preferred', 'Degree must be recognized in Slovakia'],
+ isConditional: true,
+ condition: 'Must have higher education degree',
  },
  {
  id: 'gather-documents',
  title: 'Gather Required Documents',
  description: 'Collect all necessary documents for the EU Blue Card application',
  estimatedDuration: '2-3 weeks',
- documents: [
- 'Valid passport (valid for at least 6 months)',
- 'Employment contract',
- 'Higher education degree',
- 'Criminal background check (FBI check for US citizens)',
- 'Health insurance (valid in Slovakia)',
- 'Proof of accommodation in Slovakia',
- 'Passport-style photographs (2)',
- ],
- notes: [
- 'All documents must be apostilled',
- 'Translations to Slovak required for non-English documents',
- 'Criminal background check must be recent (within 6 months)',
- ],
+ documents: ['Valid passport', 'Employment contract', 'Higher education degree', 'Criminal background check', 'Health insurance', 'Proof of accommodation', 'Passport photographs'],
+ notes: ['All documents must be apostilled', 'Translations to Slovak required'],
  },
  {
  id: 'submit-application',
  title: 'Submit Application',
  description: 'Submit your EU Blue Card application to Slovak authorities',
  estimatedDuration: '1 day',
- documents: [
- 'All gathered documents',
- 'Application fee payment (~ EUR 100)',
- 'Appointment confirmation',
- ],
- notes: [
- 'Can submit at Slovak Embassy in US or in Slovakia',
- 'Appointment required',
- 'Bring original documents and copies',
- ],
+ documents: ['All gathered documents', 'Application fee payment (~EUR 100)', 'Appointment confirmation'],
+ notes: ['Can submit at Slovak Embassy in US or in Slovakia', 'Appointment required'],
  },
  {
- id: 'receive-card-register',
- title: 'Receive EU Blue Card and Register in Slovakia',
- description: 'Receive your EU Blue Card, travel to Slovakia, and complete registration',
+ id: 'processing',
+ title: 'Processing Period',
+ description: 'Wait for Slovak authorities to process your application',
  estimatedDuration: '30-60 days',
- documents: [
- 'EU Blue Card',
- 'All original documents',
- 'Proof of accommodation',
- ],
- notes: [
- 'Processing time: typically 30-60 days',
- 'EU Blue Card valid for 2 years initially',
- 'Register at Foreign Police within 3 days',
- 'Bratislava proximity to Vienna',
- 'Low cost of living',
- 'Central European location',
- 'PR after 5 years, citizenship after 8 years',
- ],
+ documents: [],
+ notes: ['Processing time: typically 30-60 days'],
+ },
+ {
+ id: 'decision',
+ title: 'Application Decision',
+ description: 'Wait for decision on your EU Blue Card application',
+ estimatedDuration: '1 week',
+ documents: [],
+ notes: ['Decision notification sent by email or post'],
+ },
+ {
+ id: 'receive-blue-card',
+ title: 'Receive EU Blue Card',
+ description: 'Collect your approved EU Blue Card',
+ estimatedDuration: '1 week',
+ documents: ['Passport', 'Approval notification'],
+ notes: ['EU Blue Card valid for 2 years initially', 'Renewable'],
+ },
+ {
+ id: 'consider-appeal',
+ title: 'Consider Appeal',
+ description: 'If rejected, consider appealing the decision',
+ estimatedDuration: 'Varies',
+ documents: ['Rejection letter', 'Additional supporting documents'],
+ notes: ['Consult immigration lawyer'],
+ },
+ {
+ id: 'travel',
+ title: 'Travel to Slovakia',
+ description: 'Book travel and relocate to Slovakia',
+ estimatedDuration: '1-2 weeks',
+ documents: ['Valid passport', 'EU Blue Card', 'Proof of accommodation'],
+ notes: ['Bratislava proximity to Vienna', 'Low cost of living', 'Central European location'],
+ },
+ {
+ id: 'register',
+ title: 'Register at Foreign Police',
+ description: 'Complete registration formalities in Slovakia',
+ estimatedDuration: '1 day',
+ documents: ['EU Blue Card', 'All original documents', 'Proof of accommodation'],
+ notes: ['Register at Foreign Police within 3 days', 'PR after 5 years, citizenship after 8 years'],
  },
  ],
  },

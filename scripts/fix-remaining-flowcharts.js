@@ -32,6 +32,31 @@ const STARTUP_NODE_MAPPING = {
   'Register': 'register-business',
 };
 
+// Mapping for EU Blue Card flowcharts
+const EU_BLUE_CARD_MAPPING = {
+  'CheckSalary': 'check-salary',
+  'CheckEducation': 'check-education',
+  'Decision': 'decision',
+  'BlueCard': 'receive-blue-card',
+  'Appeal': 'consider-appeal',
+  'arrival': 'travel',
+  'registration': 'register',
+};
+
+// Mapping for Work Permit flowcharts
+const WORK_PERMIT_MAPPING = {
+  'JobOffer': 'job-offer',
+  'CheckSalary': 'check-salary',
+  'GatherDocs': 'gather-documents',
+  'Submit': 'submit-application',
+  'Processing': 'processing',
+  'Decision': 'decision',
+  'Permit': 'receive-permit',
+  'Appeal': 'consider-appeal',
+  'Travel': 'travel',
+  'Register': 'register',
+};
+
 function replaceMermaidNodeIds(diagram, mapping) {
   let updated = diagram;
   
@@ -83,16 +108,90 @@ function fixFlowchart(filePath, flowchartId) {
   }
 }
 
+function fixEUBlueCard(filePath, flowchartId) {
+  console.log(`\nFixing ${flowchartId} in ${path.basename(filePath)}...`);
+
+  let content = fs.readFileSync(filePath, 'utf-8');
+
+  const flowchartStart = content.indexOf(`'${flowchartId}':`);
+  if (flowchartStart === -1) {
+    console.log(`  ❌ Flowchart ${flowchartId} not found`);
+    return;
+  }
+
+  const mermaidStart = content.indexOf('mermaidDiagram: `', flowchartStart);
+  const mermaidEnd = content.indexOf('`,', mermaidStart);
+
+  if (mermaidStart === -1 || mermaidEnd === -1) {
+    console.log(`  ❌ Mermaid diagram not found`);
+    return;
+  }
+
+  const oldDiagram = content.substring(mermaidStart + 17, mermaidEnd);
+  const newDiagram = replaceMermaidNodeIds(oldDiagram, EU_BLUE_CARD_MAPPING);
+
+  if (oldDiagram !== newDiagram) {
+    content = content.substring(0, mermaidStart + 17) + newDiagram + content.substring(mermaidEnd);
+    fs.writeFileSync(filePath, content, 'utf-8');
+    console.log(`  ✅ Updated Mermaid diagram`);
+  } else {
+    console.log(`  ✓ No changes needed`);
+  }
+}
+
+function fixWorkPermit(filePath, flowchartId) {
+  console.log(`\nFixing ${flowchartId} in ${path.basename(filePath)}...`);
+
+  let content = fs.readFileSync(filePath, 'utf-8');
+
+  const flowchartStart = content.indexOf(`'${flowchartId}':`);
+  if (flowchartStart === -1) {
+    console.log(`  ❌ Flowchart ${flowchartId} not found`);
+    return;
+  }
+
+  const mermaidStart = content.indexOf('mermaidDiagram: `', flowchartStart);
+  const mermaidEnd = content.indexOf('`,', mermaidStart);
+
+  if (mermaidStart === -1 || mermaidEnd === -1) {
+    console.log(`  ❌ Mermaid diagram not found`);
+    return;
+  }
+
+  const oldDiagram = content.substring(mermaidStart + 17, mermaidEnd);
+  const newDiagram = replaceMermaidNodeIds(oldDiagram, WORK_PERMIT_MAPPING);
+
+  if (oldDiagram !== newDiagram) {
+    content = content.substring(0, mermaidStart + 17) + newDiagram + content.substring(mermaidEnd);
+    fs.writeFileSync(filePath, content, 'utf-8');
+    console.log(`  ✅ Updated Mermaid diagram`);
+  } else {
+    console.log(`  ✓ No changes needed`);
+  }
+}
+
 console.log('🔧 Fixing remaining failing flowcharts...\n');
 
-// Fix hu_white_card
-fixFlowchart(path.join(FLOWCHART_DIR, 'hungary.ts'), 'hu_white_card');
+// Fix EU Blue Cards
+console.log('\n=== EU Blue Cards ===');
+fixEUBlueCard(path.join(FLOWCHART_DIR, 'slovakia.ts'), 'sk_eu_blue_card');
+fixEUBlueCard(path.join(FLOWCHART_DIR, 'czech-republic.ts'), 'cz_eu_blue_card');
+fixEUBlueCard(path.join(FLOWCHART_DIR, 'denmark.ts'), 'dk_eu_blue_card');
+fixEUBlueCard(path.join(FLOWCHART_DIR, 'estonia.ts'), 'ee_eu_blue_card');
+fixEUBlueCard(path.join(FLOWCHART_DIR, 'hungary.ts'), 'hu_eu_blue_card');
+fixEUBlueCard(path.join(FLOWCHART_DIR, 'poland.ts'), 'pl_eu_blue_card');
+fixEUBlueCard(path.join(FLOWCHART_DIR, 'romania.ts'), 'ro_eu_blue_card');
 
-// Fix pl_business_harbour
-fixFlowchart(path.join(FLOWCHART_DIR, 'poland.ts'), 'pl_business_harbour');
+// Fix Work Permits
+console.log('\n=== Work Permits ===');
+fixWorkPermit(path.join(FLOWCHART_DIR, 'greece.ts'), 'gr_work_permit');
+fixWorkPermit(path.join(FLOWCHART_DIR, 'hungary.ts'), 'hu_work_permit');
+fixWorkPermit(path.join(FLOWCHART_DIR, 'poland.ts'), 'pl_work_permit');
+fixWorkPermit(path.join(FLOWCHART_DIR, 'romania.ts'), 'ro_work_permit');
 
-// Fix ro_startup_visa
-fixFlowchart(path.join(FLOWCHART_DIR, 'romania.ts'), 'ro_startup_visa');
+// Fix Tech Visa
+console.log('\n=== Tech Visa ===');
+fixFlowchart(path.join(FLOWCHART_DIR, 'portugal.ts'), 'pt_tech_visa');
 
 console.log('\n✅ Done!');
 

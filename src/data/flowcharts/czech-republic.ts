@@ -15,28 +15,28 @@ export const czechFlowcharts: Record<string, FlowchartDefinition> = {
  successRate: '90%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) -->job-offer[Secure Job Offer<br/>from Czech Employer]
- job-offer --> CheckSalary{Salary >= EUR 1,800/month<br/>( EUR 21,600/year)?}
- CheckSalary -->|Yes| CheckEducation{Higher Education<br/>Degree?}
- CheckSalary -->|No| End1([Not Eligible])
- CheckEducation -->|Yes| gather-documents[Gather Required Documents]
- CheckEducation -->|No| End2([Not Eligible])
- gather-documents -->submit-application[Submit Application to<br/>Czech Consulate or in Czech]
+ Start([Start Process]) --> job-offer[Secure Job Offer<br/>from Czech Employer]
+ job-offer --> check-salary{Salary >= EUR 1,800/month<br/>( EUR 21,600/year)?}
+ check-salary -->|Yes| check-education{Higher Education<br/>Degree?}
+ check-salary -->|No| End1([Not Eligible])
+ check-education -->|Yes| gather-documents[Gather Required Documents]
+ check-education -->|No| End2([Not Eligible])
+ gather-documents --> submit-application[Submit Application to<br/>Czech Consulate or in Czech]
  submit-application --> processing[Processing<br/>60-90 Days]
- processing --> Decision{Decision}
- Decision -->|Approved| BlueCard[Receive EU Blue Card<br/>2-Year Permit]
- Decision -->|Rejected| Appeal[Consider Appeal]
- BlueCard --> arrival[Travel to Czech Republic]
- arrival --> registration[Register at Foreign<br/>Police within 3 Days]
- registration --> Success([Process Complete])
- Appeal --> End3([Process Ended])
+ processing --> decision{Decision}
+ decision -->|Approved| receive-blue-card[Receive EU Blue Card<br/>2-Year Permit]
+ decision -->|Rejected| consider-appeal[Consider Appeal]
+ receive-blue-card --> travel[Travel to Czech Republic]
+ travel --> register[Register at Foreign<br/>Police within 3 Days]
+ register --> Success([Process Complete])
+ consider-appeal --> End3([Process Ended])
 
  style Start fill:#e1f5e1
  style Success fill:#e1f5e1
  style End1 fill:#ffe1e1
  style End2 fill:#ffe1e1
  style End3 fill:#ffe1e1
- style BlueCard fill:#e1e5ff
+ style receive-blue-card fill:#e1e5ff
 `,
  steps: [
  {
@@ -59,81 +59,88 @@ flowchart TD
  ],
  },
  {
- id: 'verify-education',
+ id: 'check-salary',
+ title: 'Verify Salary Requirement',
+ description: 'Ensure the job offer meets minimum salary threshold',
+ estimatedDuration: '1 day',
+ documents: ['Employment contract with salary details'],
+ notes: ['Minimum salary: EUR 1,800/month (EUR 21,600/year)'],
+ isConditional: true,
+ condition: 'Salary must be >= EUR 1,800/month',
+ },
+ {
+ id: 'check-education',
  title: 'Verify Higher Education Requirement',
  description: 'Ensure you have a higher education degree (Bachelor\'s or higher)',
  estimatedDuration: '1-2 weeks',
- documents: [
- 'University degree (Bachelor\'s, Master\'s, or PhD)',
- 'Diploma translation (if not in Czech or English)',
- 'Diploma apostille (Hague Convention)',
- ],
- notes: [
- 'Bachelor\'s degree minimum',
- 'Master\'s or PhD preferred',
- 'Degree must be recognized in Czech Republic',
- 'Translation to Czech may be required',
- ],
+ documents: ['University degree (Bachelor\'s, Master\'s, or PhD)', 'Diploma translation', 'Diploma apostille'],
+ notes: ['Bachelor\'s degree minimum', 'Master\'s or PhD preferred', 'Degree must be recognized in Czech Republic'],
+ isConditional: true,
+ condition: 'Must have higher education degree',
  },
  {
  id: 'gather-documents',
  title: 'Gather Required Documents',
  description: 'Collect all necessary documents for the EU Blue Card application',
  estimatedDuration: '2-3 weeks',
- documents: [
- 'Valid passport (valid for at least 6 months)',
- 'Employment contract',
- 'Higher education degree',
- 'Criminal background check (FBI check for US citizens)',
- 'Health insurance (valid in Czech Republic)',
- 'Proof of accommodation in Czech Republic',
- 'Passport-style photographs (2)',
- ],
- notes: [
- 'All documents must be apostilled',
- 'Translations to Czech required for non-English documents',
- 'Criminal background check must be recent (within 6 months)',
- 'Health insurance must cover entire stay',
- ],
+ documents: ['Valid passport', 'Employment contract', 'Higher education degree', 'Criminal background check', 'Health insurance', 'Proof of accommodation', 'Passport photographs'],
+ notes: ['All documents must be apostilled', 'Translations to Czech required'],
  },
  {
  id: 'submit-application',
  title: 'Submit Application',
  description: 'Submit your EU Blue Card application to Czech authorities',
  estimatedDuration: '1 day',
- documents: [
- 'All gathered documents',
- 'Application fee payment (~ EUR 100)',
- 'Appointment confirmation',
- ],
- notes: [
- 'Can submit at Czech Consulate in US or in Czech Republic',
- 'Appointment required (book 2-4 weeks in advance)',
- 'Bring original documents and copies',
- 'Biometrics collected at appointment',
- ],
+ documents: ['All gathered documents', 'Application fee payment (~EUR 100)', 'Appointment confirmation'],
+ notes: ['Can submit at Czech Consulate in US or in Czech Republic', 'Appointment required', 'Biometrics collected'],
  },
  {
- id: 'receive-card-register',
- title: 'Receive EU Blue Card and Register in Czech Republic',
- description: 'Receive your EU Blue Card, travel to Czech Republic, and complete registration',
+ id: 'processing',
+ title: 'Processing Period',
+ description: 'Wait for Czech authorities to process your application',
  estimatedDuration: '60-90 days',
- documents: [
- 'EU Blue Card',
- 'All original documents',
- 'Proof of accommodation',
- ],
- notes: [
- 'Processing time: typically 60-90 days',
- 'EU Blue Card valid for 2 years initially',
- 'Register at Foreign Police within 3 days of arrival',
- 'Can work throughout EU after 18 months',
- 'Family members can join',
- 'PR after 5 years, citizenship after 5 years',
- 'Prague is major tech hub',
- 'High quality of life',
- 'Central European location',
- ],
+ documents: [],
+ notes: ['Processing time: typically 60-90 days'],
+ },
+ {
+ id: 'decision',
+ title: 'Application Decision',
+ description: 'Wait for decision on your EU Blue Card application',
+ estimatedDuration: '1 week',
+ documents: [],
+ notes: ['Decision notification sent by email or post'],
+ },
+ {
+ id: 'receive-blue-card',
+ title: 'Receive EU Blue Card',
+ description: 'Collect your approved EU Blue Card',
+ estimatedDuration: '1 week',
+ documents: ['Passport', 'Approval notification'],
+ notes: ['EU Blue Card valid for 2 years initially', 'Renewable', 'Can work throughout EU after 18 months'],
+ },
+ {
+ id: 'consider-appeal',
+ title: 'Consider Appeal',
+ description: 'If rejected, consider appealing the decision',
+ estimatedDuration: 'Varies',
+ documents: ['Rejection letter', 'Additional supporting documents'],
+ notes: ['Consult immigration lawyer'],
+ },
+ {
+ id: 'travel',
+ title: 'Travel to Czech Republic',
+ description: 'Book travel and relocate to Czech Republic',
+ estimatedDuration: '1-2 weeks',
+ documents: ['Valid passport', 'EU Blue Card', 'Proof of accommodation'],
+ notes: ['Prague is major tech hub', 'High quality of life', 'Central European location'],
+ },
+ {
+ id: 'register',
+ title: 'Register at Foreign Police',
+ description: 'Complete registration formalities in Czech Republic',
+ estimatedDuration: '1 day',
+ documents: ['EU Blue Card', 'All original documents', 'Proof of accommodation'],
+ notes: ['Register at Foreign Police within 3 days', 'Family members can join', 'PR after 5 years, citizenship after 5 years'],
  },
  ],
  },
