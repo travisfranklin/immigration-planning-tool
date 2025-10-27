@@ -131,7 +131,7 @@ export function FlowchartViewer({ flowchart, onExport, selectedStepId, onStepSel
     };
 
     renderDiagram();
-  }, [flowchart, onStepSelect]);
+  }, [flowchart, onStepSelect, selectedStep]);
 
   // Update selected node styling without re-rendering the diagram
   useEffect(() => {

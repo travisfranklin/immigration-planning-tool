@@ -289,7 +289,7 @@ describe('Flowchart Data Validation', () => {
  function extractMermaidNodeIds(diagram: string): string[] {
  const nodeIds: string[] = [];
  // Match patterns like: "node-id[" or "node-id{" or "node-id(" or "node-id-->"
- const nodePattern = /\b([a-z0-9\-]+)\s*[\[\{\(]/g;
+ const nodePattern = /\b([a-z0-9-]+)\s*[[{(]/g;
  let match;
  while ((match = nodePattern.exec(diagram)) !== null) {
  const nodeId = match[1];
@@ -345,7 +345,7 @@ describe('Flowchart Data Validation', () => {
  });
 
  it('should use kebab-case for all node IDs', () => {
- const invalidNodes = mermaidNodeIds.filter(nodeId => !/^[a-z0-9\-]+$/.test(nodeId));
+ const invalidNodes = mermaidNodeIds.filter(nodeId => !/^[a-z0-9-]+$/.test(nodeId));
 
  if (invalidNodes.length > 0) {
  console.warn(

@@ -5,7 +5,6 @@ import { ToastProvider } from './contexts/ToastContext';
 import { Home, Profile } from './pages';
 import { Results } from './pages/Results';
 import { ResultDetail } from './pages/ResultDetail';
-import { Flowchart } from './pages/Flowchart';
 import { Settings } from './pages/Settings';
 
 function App() {
@@ -48,7 +47,6 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/results" element={<Results />} />
           <Route path="/result-detail/:countryCode" element={<ResultDetail />} />
-          <Route path="/flowchart" element={<Flowchart />} />
           <Route path="/settings" element={<Settings />} />
         </Routes>
       </Router>
