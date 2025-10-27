@@ -271,5 +271,189 @@ flowchart TD
  },
  ],
  },
+ 'cy_startup_visa': {
+  programId: 'cy_startup_visa',
+  countryCode: 'CY',
+  programName: 'Startup Visa',
+  totalEstimatedDuration: '3-5 months',
+  complexity: 'medium',
+  successRate: '80%',
+  mermaidDiagram: `
+flowchart TD
+  Start([Start Process]) --> BusinessIdea[Develop Innovative<br/>Business Idea]
+  BusinessIdea --> CheckFunds{Have EUR 20,000<br/>minimum funds?}
+  CheckFunds -->|Yes| PrepareBusinessPlan[Prepare Detailed<br/>Business Plan]
+  CheckFunds -->|No| End1([Not Eligible])
+  PrepareBusinessPlan --> SubmitToMinistry[Submit to Cyprus Deputy<br/>Ministry of Research]
+  SubmitToMinistry --> MinistryReview[Ministry Review<br/>30-60 Days]
+  MinistryReview --> Decision1{Approved?}
+  Decision1 -->|Yes| GatherDocs[Gather Required Documents]
+  Decision1 -->|Rejected| Appeal1[Consider Resubmission]
+  Appeal1 --> End2([Process Ended])
+  GatherDocs --> SubmitVisa[Submit Visa Application]
+  SubmitVisa --> Processing[Processing<br/>60-90 Days]
+  Processing --> Decision2{Decision}
+  Decision2 -->|Approved| Visa[Receive Startup Visa]
+  Decision2 -->|Rejected| Appeal2[Consider Appeal]
+  Visa --> Travel[Travel to Cyprus]
+  Travel --> RegisterBusiness[Register Business<br/>in Cyprus]
+  RegisterBusiness --> Success([Process Complete])
+  Appeal2 --> End3([Process Ended])
+
+  style Start fill:#e1f5e1
+  style Success fill:#e1f5e1
+  style End1 fill:#ffe1e1
+  style End2 fill:#ffe1e1
+  style End3 fill:#ffe1e1
+  style Visa fill:#e1e5ff
+`,
+  steps: [
+    {
+      id: 'business-idea',
+      title: 'Develop Innovative Business Idea',
+      description: 'Create an innovative, scalable business concept suitable for Cyprus startup ecosystem',
+      estimatedDuration: '1-2 months',
+      documents: [
+        'Business concept description',
+        'Market research',
+        'Competitive analysis',
+        'Innovation statement',
+      ],
+      notes: [
+        'Must be innovative and scalable',
+        'Technology, digital services, or innovative products preferred',
+        'Should demonstrate EU market potential',
+        'English is official language - major advantage!',
+        'Cyprus offers access to EU, Middle East, and African markets',
+      ],
+    },
+    {
+      id: 'prepare-business-plan',
+      title: 'Prepare Detailed Business Plan',
+      description: 'Create comprehensive business plan for Ministry approval',
+      estimatedDuration: '3-4 weeks',
+      documents: [
+        'Executive summary',
+        'Detailed business plan (20-30 pages)',
+        'Financial projections (3-5 years)',
+        'Market analysis',
+        'Team composition and CVs',
+        'Proof of funds (EUR 20,000 minimum)',
+        'Innovation and scalability statement',
+      ],
+      notes: [
+        'Minimum EUR 20,000 in available funds required',
+        'Must demonstrate job creation potential',
+        'Should show clear path to profitability',
+        'Highlight innovation and competitive advantage',
+        'English language plan accepted (official language!)',
+        'Consider Cyprus tax benefits (12.5% corporate tax)',
+      ],
+    },
+    {
+      id: 'submit-to-ministry',
+      title: 'Submit to Cyprus Deputy Ministry of Research',
+      description: 'Submit business plan for evaluation and approval',
+      estimatedDuration: '1 week',
+      documents: [
+        'Complete business plan',
+        'Application form',
+        'Proof of funds',
+        'Team member CVs and qualifications',
+        'Letters of support (if any)',
+      ],
+      notes: [
+        'Submit to Deputy Ministry of Research, Innovation and Digital Policy',
+        'Application fee may apply',
+        'Ministry evaluates innovation, scalability, and economic impact',
+        'Processing time: 30-60 days',
+        'May request additional information or presentation',
+      ],
+    },
+    {
+      id: 'ministry-approval',
+      title: 'Receive Ministry Approval',
+      description: 'Wait for Ministry evaluation and approval decision',
+      estimatedDuration: '30-60 days',
+      documents: [],
+      notes: [
+        'Ministry evaluates innovation and economic potential',
+        'May be invited for interview or presentation',
+        'Approval letter required for visa application',
+        'If rejected, can revise and resubmit',
+        'Success rate approximately 80% for well-prepared applications',
+      ],
+    },
+    {
+      id: 'gather-documents',
+      title: 'Gather Required Documents for Visa',
+      description: 'Collect all necessary documents for startup visa application',
+      estimatedDuration: '2-3 weeks',
+      documents: [
+        'Valid passport (valid for at least 6 months)',
+        'Ministry approval letter',
+        'Business plan',
+        'Proof of funds (EUR 20,000+)',
+        'Criminal background check (FBI check for US citizens)',
+        'Health insurance (valid in Cyprus)',
+        'Proof of accommodation in Cyprus',
+        'Passport-style photographs',
+        'Educational certificates',
+      ],
+      notes: [
+        'All documents must be apostilled',
+        'English or Greek translations accepted (English is official!)',
+        'Criminal background check must be recent (within 6 months)',
+        'Health insurance must cover entire stay',
+        'Accommodation can be rental or hotel initially',
+        'Can include co-founders in application',
+      ],
+    },
+    {
+      id: 'submit-visa',
+      title: 'Submit Visa Application',
+      description: 'Submit startup visa application to Cyprus Immigration',
+      estimatedDuration: '1 day',
+      documents: [
+        'All gathered documents',
+        'Ministry approval letter',
+        'Application fee payment (~EUR 150)',
+        'Appointment confirmation',
+      ],
+      notes: [
+        'Can submit at Cyprus Embassy or in Cyprus',
+        'Appointment may be required',
+        'Biometrics collected',
+        'English is official language - easy process!',
+        'Processing time: 60-90 days',
+      ],
+    },
+    {
+      id: 'receive-visa-register',
+      title: 'Receive Visa and Register Business',
+      description: 'Receive startup visa, travel to Cyprus, and register your business',
+      estimatedDuration: '2-4 weeks',
+      documents: [
+        'Startup visa',
+        'All original documents',
+        'Business registration documents',
+        'Proof of accommodation',
+      ],
+      notes: [
+        'Visa initially valid for 1 year',
+        'Renewable based on business progress',
+        'Register business within 30 days of arrival',
+        'Register at local immigration office within 7 days',
+        'Family members can join',
+        'English is official language',
+        'Low corporate tax (12.5%)',
+        'Access to EU market',
+        'Growing startup ecosystem (Nicosia, Limassol)',
+        'PR in 5 years, citizenship in 7 years',
+        'Tax benefits for startups and R&D',
+      ],
+    },
+  ],
+ },
 };
 
