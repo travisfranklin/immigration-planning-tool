@@ -260,5 +260,99 @@ flowchart TD
  },
  ],
  },
+
+ 'sk_work_permit': {
+ programId: 'sk_work_permit',
+ countryCode: 'SK',
+ programName: 'Work Permit (Employee Card)',
+ totalEstimatedDuration: '2-4 months',
+ complexity: 'low',
+ successRate: '85%',
+ mermaidDiagram: `
+flowchart TD
+ Start([Start]) --> job[Secure Job Offer<br/>EUR 800/month]
+ job --> docs[Gather Documents]
+ docs --> submit[Submit Application]
+ submit --> process[Processing 30-90 Days]
+ process --> decision{Decision}
+ decision -->|Approved| permit[Receive Work Permit]
+ decision -->|Rejected| appeal[Consider Appeal]
+ permit --> travel[Travel to Slovakia]
+ travel --> register[Register]
+ register --> Success([Complete])
+ appeal --> End([Process Ended])
+
+ style Start fill:#e1f5e1
+ style Success fill:#e1f5e1
+ style End fill:#ffe1e1
+ style permit fill:#e1e5ff
+`,
+ steps: [
+ {
+ id: 'job',
+ title: 'Secure Job Offer',
+ description: 'Get job offer from Slovak employer (EUR 800/month minimum)',
+ estimatedDuration: '1-2 months',
+ documents: ['Employment contract', 'Job description', 'Salary confirmation'],
+ notes: ['Very low salary threshold', 'Bratislava proximity to Vienna', 'Low cost of living', 'PR in 5 years, citizenship in 8 years'],
+ },
+ {
+ id: 'docs',
+ title: 'Gather Documents',
+ description: 'Collect all required documents',
+ estimatedDuration: '2-3 weeks',
+ documents: ['Passport', 'Employment contract', 'Criminal check', 'Health insurance', 'Accommodation proof'],
+ notes: ['All documents must be apostilled'],
+ },
+ {
+ id: 'submit',
+ title: 'Submit Application',
+ description: 'Submit work permit application',
+ estimatedDuration: '1 week',
+ documents: ['All documents', 'Application fee'],
+ notes: ['Processing: 30-90 days'],
+ },
+ {
+ id: 'process',
+ title: 'Processing',
+ description: 'Wait for processing',
+ estimatedDuration: '30-90 days',
+ documents: [],
+ notes: ['Track application status online'],
+ },
+ {
+ id: 'permit',
+ title: 'Receive Work Permit',
+ description: 'Receive approved work permit',
+ estimatedDuration: '1 week',
+ documents: ['Work permit approval'],
+ notes: ['Valid for 1-2 years, renewable'],
+ },
+ {
+ id: 'travel',
+ title: 'Travel to Slovakia',
+ description: 'Travel with work permit',
+ estimatedDuration: '1-3 days',
+ documents: ['Passport with permit'],
+ notes: ['Main airport: Bratislava (BTS)'],
+ },
+ {
+ id: 'register',
+ title: 'Register',
+ description: 'Complete registration',
+ estimatedDuration: '2-4 weeks',
+ documents: ['Passport', 'Proof of accommodation'],
+ notes: ['Register at Foreign Police within 3 days', 'Bratislava proximity to Vienna', 'PR in 5 years'],
+ },
+ {
+ id: 'appeal',
+ title: 'Consider Appeal',
+ description: 'If rejected, evaluate options',
+ estimatedDuration: '1-2 months',
+ documents: ['Rejection decision', 'Appeal form'],
+ notes: ['Can reapply', 'Alternative: Slovakia EU Blue Card or Startup Visa'],
+ },
+ ],
+ },
 };
 
