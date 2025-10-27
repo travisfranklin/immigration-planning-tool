@@ -6,6 +6,7 @@ import { Home, Profile } from './pages';
 import { Results } from './pages/Results';
 import { ResultDetail } from './pages/ResultDetail';
 import { Settings } from './pages/Settings';
+import { AllFlowcharts } from './pages/AllFlowcharts';
 
 function App() {
   const [dbInitialized, setDbInitialized] = useState(false);
@@ -48,6 +49,7 @@ function App() {
           <Route path="/results" element={<Results />} />
           <Route path="/result-detail/:countryCode" element={<ResultDetail />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/all-flowcharts" element={<AllFlowcharts />} />
         </Routes>
       </Router>
     </ToastProvider>
