@@ -256,5 +256,119 @@ flowchart TD
  },
  ],
  },
+
+ 'lu_investor': {
+ programId: 'lu_investor',
+ countryCode: 'LU',
+ programName: 'Investor Visa (Business Investor Permit)',
+ totalEstimatedDuration: '3-6 months',
+ complexity: 'high',
+ successRate: '75%',
+ mermaidDiagram: `
+flowchart TD
+ Start([Start]) --> funds{EUR 500K<br/>Investment Funds?}
+ funds -->|Yes| plan[Develop Business Plan]
+ funds -->|No| End1([Not Eligible])
+ plan --> docs[Gather Documents]
+ docs --> submit[Submit Application]
+ submit --> process[Processing 3-6 Months]
+ process --> decision{Decision}
+ decision -->|Approved| invest[Make Investment]
+ decision -->|Rejected| appeal[Consider Appeal]
+ invest --> permit[Receive Residence Permit]
+ permit --> travel[Travel to Luxembourg]
+ travel --> register[Register at Commune]
+ register --> Success([Complete])
+ appeal --> End2([Process Ended])
+
+ style Start fill:#e1f5e1
+ style Success fill:#e1f5e1
+ style End1 fill:#ffe1e1
+ style End2 fill:#ffe1e1
+ style permit fill:#e1e5ff
+`,
+ steps: [
+ {
+ id: 'funds',
+ title: 'Verify Investment Funds',
+ description: 'Confirm EUR 500K investment funds available',
+ estimatedDuration: '2-4 weeks',
+ documents: ['Bank statements', 'Asset valuations', 'Source of funds documentation'],
+ notes: ['EUR 500K minimum investment', 'Must invest in Luxembourg business', 'Highest GDP per capita in world!', 'PR in 5 years'],
+ },
+ {
+ id: 'plan',
+ title: 'Develop Business Plan',
+ description: 'Create comprehensive business plan',
+ estimatedDuration: '4-8 weeks',
+ documents: ['Business plan', 'Market analysis', 'Financial projections', 'Job creation plan'],
+ notes: ['Must create jobs in Luxembourg', 'Finance sector opportunities', 'Strategic EU location'],
+ },
+ {
+ id: 'docs',
+ title: 'Gather Documents',
+ description: 'Collect all required documents',
+ estimatedDuration: '4-6 weeks',
+ documents: ['Passport', 'Proof of funds', 'Business plan', 'Criminal background check', 'CV', 'Proof of business experience'],
+ notes: ['Documents in French, German, or Luxembourgish', 'Certified translations required'],
+ },
+ {
+ id: 'submit',
+ title: 'Submit Application',
+ description: 'Submit to Ministry of Foreign Affairs',
+ estimatedDuration: '1 week',
+ documents: ['All documents', 'Application fee'],
+ notes: ['Comprehensive review process', 'Economic benefit assessment'],
+ },
+ {
+ id: 'process',
+ title: 'Processing',
+ description: 'Wait for evaluation',
+ estimatedDuration: '3-6 months',
+ documents: [],
+ notes: ['Thorough due diligence', 'Business viability assessment'],
+ },
+ {
+ id: 'invest',
+ title: 'Make Investment',
+ description: 'Complete approved investment',
+ estimatedDuration: '4-8 weeks',
+ documents: ['Investment confirmation', 'Business registration', 'Transfer documentation'],
+ notes: ['Must complete investment before permit', 'Register business in Luxembourg'],
+ },
+ {
+ id: 'permit',
+ title: 'Receive Residence Permit',
+ description: 'Receive investor residence permit',
+ estimatedDuration: '2-4 weeks',
+ documents: ['Residence permit approval'],
+ notes: ['Initial permit for 3 years', 'Renewable', 'Family included', 'PR in 5 years'],
+ },
+ {
+ id: 'travel',
+ title: 'Travel to Luxembourg',
+ description: 'Travel with permit',
+ estimatedDuration: '1-3 days',
+ documents: ['Passport with permit'],
+ notes: ['Highest GDP per capita in world!', 'Strategic EU location'],
+ },
+ {
+ id: 'register',
+ title: 'Register at Commune',
+ description: 'Complete registration',
+ estimatedDuration: '2-4 weeks',
+ documents: ['Passport', 'Residence permit', 'Proof of address', 'Business registration'],
+ notes: ['Register within 8 days', 'Get social security number', 'PR in 5 years'],
+ },
+ {
+ id: 'appeal',
+ title: 'Consider Appeal',
+ description: 'If rejected, evaluate options',
+ estimatedDuration: '2-4 months',
+ documents: ['Rejection decision', 'Additional evidence'],
+ notes: ['Can reapply with stronger plan', 'Legal consultation recommended'],
+ },
+ ],
+ },
 };
 

@@ -515,5 +515,119 @@ flowchart TD
  },
  ],
  },
+
+ 'ie_investor': {
+ programId: 'ie_investor',
+ countryCode: 'IE',
+ programName: 'Investor Programme',
+ totalEstimatedDuration: '4-6 months',
+ complexity: 'high',
+ successRate: '80%',
+ mermaidDiagram: `
+flowchart TD
+ Start([Start]) --> funds{EUR 2M Net Worth<br/>+ EUR 1M Investment?}
+ funds -->|Yes| choose[Choose Investment Option]
+ funds -->|No| End1([Not Eligible])
+ choose --> docs[Gather Documents]
+ docs --> submit[Submit Application]
+ submit --> process[Processing 4-6 Months]
+ process --> decision{Decision}
+ decision -->|Approved| invest[Make Investment]
+ decision -->|Rejected| appeal[Consider Appeal]
+ invest --> permit[Receive Stamp 4 Permit]
+ permit --> travel[Travel to Ireland]
+ travel --> register[Register with GNIB/IRP]
+ register --> Success([Complete])
+ appeal --> End2([Process Ended])
+
+ style Start fill:#e1f5e1
+ style Success fill:#e1f5e1
+ style End1 fill:#ffe1e1
+ style End2 fill:#ffe1e1
+ style permit fill:#e1e5ff
+`,
+ steps: [
+ {
+ id: 'funds',
+ title: 'Verify Financial Requirements',
+ description: 'Confirm EUR 2M net worth and EUR 1M investment funds',
+ estimatedDuration: '2-4 weeks',
+ documents: ['Bank statements', 'Asset valuations', 'Source of funds documentation'],
+ notes: ['EUR 2M net worth required', 'EUR 1M investment in Irish enterprise', 'Fastest path to PR in EU (immediate Stamp 4!)', 'Citizenship in 5 years'],
+ },
+ {
+ id: 'choose',
+ title: 'Choose Investment Option',
+ description: 'Select investment type',
+ estimatedDuration: '2-4 weeks',
+ documents: ['Investment proposal', 'Due diligence reports'],
+ notes: ['Enterprise Investment: EUR 1M in Irish business (3+ years)', 'Investment Fund: EUR 1M in approved fund', 'REIT: EUR 2M in Irish REIT', 'Endowment: EUR 500K donation (arts/sports/culture)'],
+ },
+ {
+ id: 'docs',
+ title: 'Gather Documents',
+ description: 'Collect all required documents',
+ estimatedDuration: '4-6 weeks',
+ documents: ['Passport', 'Proof of net worth', 'Source of funds', 'Investment plan', 'Criminal background check', 'CV'],
+ notes: ['Comprehensive due diligence required', 'All funds must be legally sourced'],
+ },
+ {
+ id: 'submit',
+ title: 'Submit Application',
+ description: 'Submit to Irish Naturalisation and Immigration Service',
+ estimatedDuration: '1 week',
+ documents: ['All documents', 'Application fee (EUR 1,500)'],
+ notes: ['Applications reviewed quarterly', 'Competitive process'],
+ },
+ {
+ id: 'process',
+ title: 'Processing',
+ description: 'Wait for evaluation',
+ estimatedDuration: '4-6 months',
+ documents: [],
+ notes: ['Thorough due diligence', 'May request additional information'],
+ },
+ {
+ id: 'invest',
+ title: 'Make Investment',
+ description: 'Complete approved investment',
+ estimatedDuration: '4-8 weeks',
+ documents: ['Investment confirmation', 'Transfer documentation'],
+ notes: ['Must complete investment before permit issued', 'Investment held for minimum 3 years'],
+ },
+ {
+ id: 'permit',
+ title: 'Receive Stamp 4 Permit',
+ description: 'Receive residence permit',
+ estimatedDuration: '2-4 weeks',
+ documents: ['Stamp 4 approval'],
+ notes: ['Immediate Stamp 4 (equivalent to PR!)', 'Can work without restriction', 'Family included', 'Citizenship in 5 years'],
+ },
+ {
+ id: 'travel',
+ title: 'Travel to Ireland',
+ description: 'Travel with permit',
+ estimatedDuration: '1-3 days',
+ documents: ['Passport with Stamp 4'],
+ notes: ['English-speaking country!', 'EU member state'],
+ },
+ {
+ id: 'register',
+ title: 'Register with GNIB/IRP',
+ description: 'Complete registration',
+ estimatedDuration: '2-4 weeks',
+ documents: ['Passport', 'Proof of address', 'Investment confirmation'],
+ notes: ['Get IRP card', 'Immediate work rights', 'Citizenship in 5 years', 'English-speaking!'],
+ },
+ {
+ id: 'appeal',
+ title: 'Consider Appeal',
+ description: 'If rejected, evaluate options',
+ estimatedDuration: '2-4 months',
+ documents: ['Rejection decision', 'Additional evidence'],
+ notes: ['Can reapply with stronger application', 'Legal consultation recommended'],
+ },
+ ],
+ },
 };
 
