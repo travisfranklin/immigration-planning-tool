@@ -11,4 +11,5 @@ export { Select } from './Select';
 export { Combobox } from './Combobox';
 export { Badge } from './Badge';
 export type { BadgeVariant } from './Badge';
+export { LoadingSpinner } from './LoadingSpinner';
 

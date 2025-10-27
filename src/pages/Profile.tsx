@@ -9,6 +9,7 @@ import type { UserProfile } from '@/types/user';
 import { ProfileFormAccordion } from '@/components/ProfileFormAccordion';
 import { Layout } from '@/components/Layout';
 import { Button } from '@/components/Button';
+import { LoadingSpinner } from '@/components/LoadingSpinner';
 import { createUserProfile, getLatestUserProfile, updateUserProfile } from '@/services/storage/userProfileStore';
 
 export function Profile() {
@@ -69,10 +70,7 @@ export function Profile() {
       <Layout>
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center justify-center py-12">
-            <div className="text-center">
-              <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600 mb-4"></div>
-              <p className="text-gray-600">Loading your profile...</p>
-            </div>
+            <LoadingSpinner message="Loading your profile..." />
           </div>
         </div>
       </Layout>

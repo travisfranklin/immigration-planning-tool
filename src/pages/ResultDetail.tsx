@@ -13,6 +13,7 @@ import { RiskFactorsList } from '../components/results/RiskFactorsList';
 import { ContingenciesList } from '../components/results/ContingenciesList';
 import { Layout } from '../components/Layout';
 import { Button } from '../components/Button';
+import { LoadingSpinner } from '../components/LoadingSpinner';
 import { InteractiveFlowchart } from '../components/flowchart/InteractiveFlowchart';
 import { isValidCountryCode } from '../constants/countries';
 import {
@@ -121,14 +122,7 @@ export const ResultDetail: React.FC = () => {
   };
 
   if (isLoading) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading result details...</p>
-        </div>
-      </div>
-    );
+    return <LoadingSpinner fullScreen size="lg" message="Loading result details..." />;
   }
 
   if (error) {

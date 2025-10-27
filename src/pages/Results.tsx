@@ -7,6 +7,7 @@ import type { ViabilityScore } from '../types/viability';
 import { CountryResultsTable } from '../components/results/CountryResultsTable';
 import { Layout } from '../components/Layout';
 import { Button } from '../components/Button';
+import { LoadingSpinner } from '../components/LoadingSpinner';
 
 export const Results: React.FC = () => {
   const navigate = useNavigate();
@@ -122,14 +123,7 @@ export const Results: React.FC = () => {
   };
 
   if (isLoading) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading results...</p>
-        </div>
-      </div>
-    );
+    return <LoadingSpinner fullScreen size="lg" message="Loading results..." />;
   }
 
   if (error) {
@@ -152,13 +146,12 @@ export const Results: React.FC = () => {
 
   if (isCalculating) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600 text-lg font-semibold">Calculating viability scores...</p>
-          <p className="text-gray-500 text-sm mt-2">This may take a moment</p>
-        </div>
-      </div>
+      <LoadingSpinner
+        fullScreen
+        size="lg"
+        message="Calculating viability scores..."
+        secondaryMessage="This may take a moment"
+      />
     );
   }
 
