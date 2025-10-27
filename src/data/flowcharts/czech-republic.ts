@@ -249,5 +249,279 @@ flowchart TD
  },
  ],
  },
+ 'cz_startup_visa': {
+  programId: 'cz_startup_visa',
+  countryCode: 'CZ',
+  programName: 'Startup Visa',
+  totalEstimatedDuration: '2-4 months',
+  complexity: 'medium',
+  successRate: '75%',
+  mermaidDiagram: `
+flowchart TD
+  Start([Start Process]) --> business-idea[Develop Innovative<br/>Business Idea]
+  business-idea --> check-funds{Have EUR 8,000<br/>minimum funds?}
+  check-funds -->|Yes| prepare-business-plan[Prepare Detailed<br/>Business Plan]
+  check-funds -->|No| End1([Not Eligible])
+  prepare-business-plan --> submit-to-czechinvest[Submit to CzechInvest<br/>or Startup Accelerator]
+  submit-to-czechinvest --> czechinvest-review[CzechInvest Review<br/>30-45 Days]
+  czechinvest-review --> decision1{Approved?}
+  decision1 -->|Yes| gather-documents[Gather Required Documents]
+  decision1 -->|Rejected| consider-resubmission[Consider Resubmission]
+  consider-resubmission --> End2([Process Ended])
+  gather-documents --> submit-visa[Submit Visa Application]
+  submit-visa --> visa-processing[Processing<br/>30-60 Days]
+  visa-processing --> decision2{Decision}
+  decision2 -->|Approved| receive-visa[Receive Startup Visa]
+  decision2 -->|Rejected| consider-appeal[Consider Appeal]
+  receive-visa --> travel-to-czech[Travel to Czech Republic]
+  travel-to-czech --> register-business[Register Business<br/>and at Foreign Police]
+  register-business --> Success([Process Complete])
+  consider-appeal --> End3([Process Ended])
+
+  style Start fill:#e1f5e1
+  style Success fill:#e1f5e1
+  style End1 fill:#ffe1e1
+  style End2 fill:#ffe1e1
+  style End3 fill:#ffe1e1
+  style receive-visa fill:#e1e5ff
+`,
+  steps: [
+    {
+      id: 'business-idea',
+      title: 'Develop Innovative Business Idea',
+      description: 'Create an innovative, scalable business concept suitable for Czech startup ecosystem',
+      estimatedDuration: '1-2 months',
+      documents: [
+        'Business concept description',
+        'Market research',
+        'Competitive analysis',
+        'Innovation statement',
+      ],
+      notes: [
+        'Must be innovative and scalable',
+        'Technology, digital services, or innovative products preferred',
+        'Prague has vibrant startup scene',
+        'English widely spoken in business',
+        'Access to EU market',
+        'Lower costs than Western Europe',
+      ],
+    },
+    {
+      id: 'prepare-business-plan',
+      title: 'Prepare Detailed Business Plan',
+      description: 'Create comprehensive business plan for CzechInvest approval',
+      estimatedDuration: '3-4 weeks',
+      documents: [
+        'Executive summary',
+        'Detailed business plan (15-25 pages)',
+        'Financial projections (3-5 years)',
+        'Market analysis',
+        'Team composition and CVs',
+        'Proof of funds (EUR 8,000 minimum)',
+        'Innovation and scalability statement',
+      ],
+      notes: [
+        'Minimum EUR 8,000 in available funds required (CZK 200,000)',
+        'Must demonstrate job creation potential',
+        'Should show clear path to profitability',
+        'Highlight innovation and competitive advantage',
+        'English language plan accepted',
+        'Prague is major tech hub in Central Europe',
+      ],
+    },
+    {
+      id: 'submit-to-czechinvest',
+      title: 'Submit to CzechInvest or Startup Accelerator',
+      description: 'Submit business plan for evaluation and approval',
+      estimatedDuration: '1 week',
+      documents: [
+        'Complete business plan',
+        'Application form',
+        'Proof of funds',
+        'Team member CVs and qualifications',
+        'Letters of support (if any)',
+      ],
+      notes: [
+        'Submit to CzechInvest or authorized startup accelerator',
+        'Application fee may apply',
+        'CzechInvest evaluates innovation, scalability, and economic impact',
+        'Processing time: 30-45 days',
+        'May request additional information or presentation',
+      ],
+    },
+    {
+      id: 'czechinvest-review',
+      title: 'CzechInvest Review and Approval',
+      description: 'Wait for CzechInvest evaluation and approval decision',
+      estimatedDuration: '30-45 days',
+      documents: [],
+      notes: [
+        'CzechInvest evaluates innovation and economic potential',
+        'May be invited for interview or presentation',
+        'Approval letter required for visa application',
+        'If rejected, can revise and resubmit',
+        'Success rate approximately 75% for well-prepared applications',
+      ],
+    },
+    {
+      id: 'gather-documents',
+      title: 'Gather Required Documents for Visa',
+      description: 'Collect all necessary documents for startup visa application',
+      estimatedDuration: '2-3 weeks',
+      documents: [
+        'Valid passport (valid for at least 6 months)',
+        'CzechInvest approval letter',
+        'Business plan',
+        'Proof of funds (EUR 8,000+)',
+        'Criminal background check (FBI check for US citizens)',
+        'Health insurance (valid in Czech Republic)',
+        'Proof of accommodation in Czech Republic',
+        'Passport-style photographs (2)',
+        'Educational certificates',
+      ],
+      notes: [
+        'All documents must be apostilled',
+        'Translations to Czech required for non-English documents',
+        'Criminal background check must be recent (within 6 months)',
+        'Health insurance must cover entire stay',
+        'Accommodation can be rental or hotel initially',
+        'Can include co-founders in application',
+      ],
+    },
+    {
+      id: 'submit-visa',
+      title: 'Submit Visa Application',
+      description: 'Submit startup visa application to Czech authorities',
+      estimatedDuration: '1 day',
+      documents: [
+        'All gathered documents',
+        'CzechInvest approval letter',
+        'Application fee payment (~EUR 100)',
+        'Appointment confirmation',
+      ],
+      notes: [
+        'Can submit at Czech Consulate or in Czech Republic',
+        'Appointment required (book 2-4 weeks in advance)',
+        'Biometrics collected',
+        'English widely spoken at consulates',
+        'Processing time: 30-60 days',
+      ],
+    },
+    {
+      id: 'visa-processing',
+      title: 'Visa Application Processing',
+      description: 'Wait for Czech Immigration to process your startup visa application',
+      estimatedDuration: '30-60 days',
+      documents: [],
+      notes: [
+        'Processing time typically 30-60 days',
+        'May be contacted for additional information',
+        'Track application status online',
+        'Biometrics already collected at submission',
+        'Decision communicated via email and/or mail',
+      ],
+    },
+    {
+      id: 'receive-visa',
+      title: 'Receive Startup Visa',
+      description: 'Receive approval and collect your Czech Startup Visa',
+      estimatedDuration: '1 week',
+      documents: [
+        'Approval notification',
+        'Passport for visa stamping',
+        'Visa fee payment receipt',
+      ],
+      notes: [
+        'Visa initially valid for 1 year',
+        'Renewable based on business progress',
+        'Multiple entry visa',
+        'Family members can apply for dependent visas',
+        'Visa allows you to work for your own startup',
+      ],
+    },
+    {
+      id: 'travel-to-czech',
+      title: 'Travel to Czech Republic',
+      description: 'Travel to Czech Republic with your startup visa',
+      estimatedDuration: '1-3 days',
+      documents: [
+        'Valid passport with startup visa',
+        'Proof of accommodation',
+        'Travel insurance',
+        'CzechInvest approval letter (copy)',
+      ],
+      notes: [
+        'Must register at Foreign Police within 3 days of arrival',
+        'Bring all original documents',
+        'English widely spoken in Prague',
+        'Main airport: Václav Havel Airport Prague (PRG)',
+        'EU member state - Schengen benefits',
+      ],
+    },
+    {
+      id: 'register-business',
+      title: 'Register Business and Complete Formalities',
+      description: 'Complete business registration and immigration formalities',
+      estimatedDuration: '2-4 weeks',
+      documents: [
+        'Business registration application',
+        'Company articles of association',
+        'Proof of registered office address',
+        'Director/shareholder details',
+        'Business bank account',
+        'Tax registration (IČO number)',
+      ],
+      notes: [
+        'Register business within 30 days of arrival',
+        'Register at Foreign Police within 3 days of arrival',
+        'Register with Trade Licensing Office',
+        'Open business bank account',
+        'Corporate tax rate: 19%',
+        'Access to EU market',
+        'Prague is major tech hub in Central Europe',
+        'PR eligible after 5 years, citizenship after 5 years',
+        'Lower operating costs than Western Europe',
+        'English widely spoken in business',
+      ],
+    },
+    {
+      id: 'consider-resubmission',
+      title: 'Consider Resubmission',
+      description: 'Review rejection reasons and decide whether to revise and resubmit',
+      estimatedDuration: '1-2 weeks',
+      documents: [
+        'Rejection letter with reasons',
+        'Original application materials',
+      ],
+      notes: [
+        'Review rejection reasons carefully',
+        'Common issues: insufficient innovation, weak business plan, inadequate funding',
+        'Can revise business plan and resubmit',
+        'Consider consulting with Czech startup advisors',
+        'Address all concerns raised by CzechInvest',
+        'No limit on resubmissions, but improve application first',
+      ],
+    },
+    {
+      id: 'consider-appeal',
+      title: 'Consider Appeal',
+      description: 'Review visa rejection and consider appeal options',
+      estimatedDuration: '1-2 weeks',
+      documents: [
+        'Visa rejection letter',
+        'Original application documents',
+        'CzechInvest approval letter',
+      ],
+      notes: [
+        'Review rejection reasons carefully',
+        'Appeal rights may be limited',
+        'Consider reapplying with stronger documentation',
+        'Consult with immigration lawyer if needed',
+        'Common issues: incomplete documents, concerns about funds',
+        'Having CzechInvest approval is strong foundation for reapplication',
+      ],
+    },
+  ],
+ },
 };
 
