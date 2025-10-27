@@ -141,21 +141,21 @@ flowchart TD
  successRate: '85%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> BusinessIdea[Develop Innovative<br/>Business Idea]
- BusinessIdea --> Funds[Verify Minimum Funds<br/> EUR 4,000 (RON 20,000)]
- Funds --> CheckFunds{Funds Sufficient?}
- CheckFunds -->|Yes| Program[Apply to Romanian<br/>Startup Program]
+ Start([Start Process]) --> develop-business-idea[Develop Innovative<br/>Business Idea]
+ BusinessIdea --> verify-funds[Verify Minimum Funds<br/> EUR 4,000 (RON 20,000)]
+ Funds --> check-funds{Funds Sufficient?}
+ CheckFunds -->|Yes| apply-to-program[Apply to Romanian<br/>Startup Program]
  CheckFunds -->|No| End1([Not Eligible])
- Program --> Acceptance{Accepted by<br/>Program?}
- Acceptance -->|Yes| GatherDocs[Gather Required Documents]
+ Program --> program-acceptance{Accepted by<br/>Program?}
+ Acceptance -->|Yes| gather-documents[Gather Required Documents]
  Acceptance -->|No| End2([Not Eligible])
- GatherDocs --> Submit[Submit Application to<br/>Romanian Consulate or in Romania]
- Submit --> Processing[Processing<br/>30-60 Days]
- Processing --> Decision{Decision}
- Decision -->|Approved| Visa[Receive Startup Visa<br/>1-Year Permit]
- Decision -->|Rejected| Appeal[Consider Appeal]
- Visa --> Travel[Travel to Romania]
- Travel --> Register[Register Business &<br/>at Immigration Office]
+ GatherDocs --> submit-application[Submit Application to<br/>Romanian Consulate or in Romania]
+ Submit --> processing[Processing<br/>30-60 Days]
+ Processing --> decision{Decision}
+ Decision -->|Approved| receive-visa[Receive Startup Visa<br/>1-Year Permit]
+ Decision -->|Rejected| consider-appeal[Consider Appeal]
+ Visa --> travel[Travel to Romania]
+ Travel --> register-business[Register Business &<br/>at Immigration Office]
  Register --> Success([Process Complete])
  Appeal --> End3([Process Ended])
  
@@ -164,7 +164,7 @@ flowchart TD
  style End1 fill:#ffe1e1
  style End2 fill:#ffe1e1
  style End3 fill:#ffe1e1
- style Visa fill:#e1e5ff
+ style receive-visa fill:#e1e5ff
 `,
  steps: [
  {
@@ -201,62 +201,96 @@ flowchart TD
  ],
  },
  {
- id: 'apply-program',
+ id: 'check-funds',
+ title: 'Check Funds Sufficiency',
+ description: 'Verify you have minimum EUR 4,000 (RON 20,000)',
+ estimatedDuration: '1 day',
+ documents: ['Bank statements'],
+ notes: ['Minimum EUR 4,000 required - LOWEST in EU!'],
+ isConditional: true,
+ condition: 'Funds must be >= EUR 4,000',
+ },
+ {
+ id: 'apply-to-program',
  title: 'Apply to Romanian Startup Program',
  description: 'Get accepted by a Romanian startup program or incubator',
  estimatedDuration: '2-4 weeks',
- documents: [
- 'Business plan',
- 'Pitch deck',
- 'Team information',
- 'Program application',
- ],
- notes: [
- 'Bucharest startup ecosystem growing',
- 'Very low operating costs',
- 'Fastest internet in EU!',
- ],
+ documents: ['Business plan', 'Pitch deck', 'Team information', 'Program application'],
+ notes: ['Bucharest startup ecosystem growing', 'Very low operating costs', 'Fastest internet in EU!'],
+ },
+ {
+ id: 'program-acceptance',
+ title: 'Program Acceptance Decision',
+ description: 'Wait for acceptance decision from startup program',
+ estimatedDuration: '2-4 weeks',
+ documents: [],
+ notes: ['Acceptance letter required for visa application'],
+ isConditional: true,
+ condition: 'Must be accepted by program',
  },
  {
  id: 'gather-documents',
  title: 'Gather Required Documents',
  description: 'Collect all necessary documents for the startup visa application',
  estimatedDuration: '2-3 weeks',
- documents: [
- 'Valid passport (valid for at least 6 months)',
- 'Business plan',
- 'Proof of funds ( EUR 4,000)',
- 'Program acceptance letter',
- 'Criminal background check (FBI check for US citizens)',
- 'Health insurance (valid in Romania)',
- 'Proof of accommodation in Romania',
- 'Passport-style photographs (2)',
- ],
- notes: [
- 'All documents must be apostilled',
- 'Can bring co-founders',
- ],
+ documents: ['Valid passport', 'Business plan', 'Proof of funds (EUR 4,000)', 'Program acceptance letter', 'Criminal background check', 'Health insurance', 'Proof of accommodation', 'Passport photographs'],
+ notes: ['All documents must be apostilled', 'Can bring co-founders'],
  },
  {
- id: 'receive-visa-register',
- title: 'Receive Visa and Register Business in Romania',
- description: 'Receive your startup visa, travel to Romania, and register your business',
+ id: 'submit-application',
+ title: 'Submit Application',
+ description: 'Submit startup visa application to Romanian authorities',
+ estimatedDuration: '1 day',
+ documents: ['All gathered documents', 'Application fee payment'],
+ notes: ['Can submit at Romanian Consulate or in Romania'],
+ },
+ {
+ id: 'processing',
+ title: 'Processing Period',
+ description: 'Wait for Romanian authorities to process your application',
  estimatedDuration: '30-60 days',
- documents: [
- 'Startup visa',
- 'All original documents',
- 'Business registration documents',
- ],
- notes: [
- 'Processing time: typically 30-60 days',
- 'Visa valid for 1 year initially',
- 'Renewable',
- 'Bucharest startup ecosystem growing',
- 'Fastest internet in EU!',
- 'Very low cost of living',
- '16% flat tax',
- 'PR after 5 years, citizenship after 8 years',
- ],
+ documents: [],
+ notes: ['Processing time: typically 30-60 days'],
+ },
+ {
+ id: 'decision',
+ title: 'Application Decision',
+ description: 'Wait for decision on your startup visa application',
+ estimatedDuration: '1 week',
+ documents: [],
+ notes: ['Decision notification sent by email or post'],
+ },
+ {
+ id: 'receive-visa',
+ title: 'Receive Startup Visa',
+ description: 'Collect your approved startup visa',
+ estimatedDuration: '1 week',
+ documents: ['Passport', 'Approval notification'],
+ notes: ['Visa valid for 1 year initially', 'Renewable'],
+ },
+ {
+ id: 'consider-appeal',
+ title: 'Consider Appeal',
+ description: 'If rejected, consider appealing the decision',
+ estimatedDuration: 'Varies',
+ documents: ['Rejection letter', 'Additional supporting documents'],
+ notes: ['Consult immigration lawyer'],
+ },
+ {
+ id: 'travel',
+ title: 'Travel to Romania',
+ description: 'Book travel and relocate to Romania',
+ estimatedDuration: '1-2 weeks',
+ documents: ['Valid passport', 'Startup visa', 'Proof of accommodation'],
+ notes: ['Bucharest startup ecosystem growing', 'Fastest internet in EU!', 'Very low cost of living'],
+ },
+ {
+ id: 'register-business',
+ title: 'Register Business and at Immigration Office',
+ description: 'Complete business registration and immigration formalities',
+ estimatedDuration: '1-2 weeks',
+ documents: ['Startup visa', 'Business registration documents', 'All original documents'],
+ notes: ['Register business within 30 days of arrival', '16% flat tax', 'PR after 5 years, citizenship after 8 years'],
  },
  ],
  },

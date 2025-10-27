@@ -145,21 +145,21 @@ flowchart TD
  successRate: '85%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> BusinessIdea[Develop Innovative<br/>Business Idea]
- BusinessIdea --> Funds[Verify Minimum Funds<br/> EUR 4,500 (PLN 20,000)]
- Funds --> CheckFunds{Funds Sufficient?}
- CheckFunds -->|Yes| Accelerator[Apply to Polish<br/>Startup Accelerator]
+ Start([Start Process]) --> develop-business-idea[Develop Innovative<br/>Business Idea]
+ BusinessIdea --> verify-funds[Verify Minimum Funds<br/> EUR 4,500 (PLN 20,000)]
+ Funds --> check-funds{Funds Sufficient?}
+ CheckFunds -->|Yes| apply-to-accelerator[Apply to Polish<br/>Startup Accelerator]
  CheckFunds -->|No| End1([Not Eligible])
- Accelerator --> Acceptance{Accepted by<br/>Accelerator?}
- Acceptance -->|Yes| GatherDocs[Gather Required Documents]
+ Accelerator --> program-acceptance{Accepted by<br/>Accelerator?}
+ Acceptance -->|Yes| gather-documents[Gather Required Documents]
  Acceptance -->|No| End2([Not Eligible])
- GatherDocs --> Submit[Submit Application to<br/>Polish Consulate or in Poland]
- Submit --> Processing[Processing<br/>30-60 Days]
- Processing --> Decision{Decision}
- Decision -->|Approved| Visa[Receive Startup Visa<br/>1-Year Permit]
- Decision -->|Rejected| Appeal[Consider Appeal]
- Visa --> Travel[Travel to Poland]
- Travel --> Register[Register Business &<br/>at Voivodeship Office]
+ GatherDocs --> submit-application[Submit Application to<br/>Polish Consulate or in Poland]
+ Submit --> processing[Processing<br/>30-60 Days]
+ Processing --> decision{Decision}
+ Decision -->|Approved| receive-visa[Receive Startup Visa<br/>1-Year Permit]
+ Decision -->|Rejected| consider-appeal[Consider Appeal]
+ Visa --> travel[Travel to Poland]
+ Travel --> register-business[Register Business &<br/>at Voivodeship Office]
  Register --> Success([Process Complete])
  Appeal --> End3([Process Ended])
  
@@ -168,7 +168,7 @@ flowchart TD
  style End1 fill:#ffe1e1
  style End2 fill:#ffe1e1
  style End3 fill:#ffe1e1
- style Visa fill:#e1e5ff
+ style receive-visa fill:#e1e5ff
 `,
  steps: [
  {
@@ -207,67 +207,96 @@ flowchart TD
  ],
  },
  {
- id: 'apply-accelerator',
+ id: 'check-funds',
+ title: 'Check Funds Sufficiency',
+ description: 'Verify you have minimum EUR 4,500 (PLN 20,000)',
+ estimatedDuration: '1 day',
+ documents: ['Bank statements'],
+ notes: ['Minimum EUR 4,500 required'],
+ isConditional: true,
+ condition: 'Funds must be >= EUR 4,500',
+ },
+ {
+ id: 'apply-to-accelerator',
  title: 'Apply to Polish Startup Accelerator',
  description: 'Get accepted by a Polish startup accelerator or incubator',
  estimatedDuration: '2-4 weeks',
- documents: [
- 'Business plan',
- 'Pitch deck',
- 'Team information',
- 'Accelerator application',
- ],
- notes: [
- 'Must be accepted by recognized Polish accelerator',
- 'Poland Business Harbour program partners with accelerators',
- 'Growing startup ecosystem in Warsaw, Kraków',
- 'Access to mentorship and networking',
- ],
+ documents: ['Business plan', 'Pitch deck', 'Team information', 'Accelerator application'],
+ notes: ['Must be accepted by recognized Polish accelerator', 'Poland Business Harbour program partners with accelerators', 'Growing startup ecosystem in Warsaw, Kraków'],
+ },
+ {
+ id: 'program-acceptance',
+ title: 'Accelerator Acceptance Decision',
+ description: 'Wait for acceptance decision from accelerator',
+ estimatedDuration: '2-4 weeks',
+ documents: [],
+ notes: ['Acceptance letter required for visa application'],
+ isConditional: true,
+ condition: 'Must be accepted by accelerator',
  },
  {
  id: 'gather-documents',
  title: 'Gather Required Documents',
  description: 'Collect all necessary documents for the startup visa application',
  estimatedDuration: '2-3 weeks',
- documents: [
- 'Valid passport (valid for at least 6 months)',
- 'Business plan',
- 'Proof of funds ( EUR 4,500)',
- 'Accelerator acceptance letter',
- 'Criminal background check (FBI check for US citizens)',
- 'Health insurance (valid in Poland)',
- 'Proof of accommodation in Poland',
- 'Passport-style photographs (2)',
- ],
- notes: [
- 'All documents must be apostilled',
- 'Translations to Polish required for non-English documents',
- 'Criminal background check must be recent (within 6 months)',
- 'Can bring co-founders',
- ],
+ documents: ['Valid passport', 'Business plan', 'Proof of funds (EUR 4,500)', 'Accelerator acceptance letter', 'Criminal background check', 'Health insurance', 'Proof of accommodation', 'Passport photographs'],
+ notes: ['All documents must be apostilled', 'Translations to Polish required'],
  },
  {
- id: 'receive-visa-register',
- title: 'Receive Visa and Register Business in Poland',
- description: 'Receive your startup visa, travel to Poland, and register your business',
+ id: 'submit-application',
+ title: 'Submit Application',
+ description: 'Submit startup visa application to Polish authorities',
+ estimatedDuration: '1 day',
+ documents: ['All gathered documents', 'Application fee payment'],
+ notes: ['Can submit at Polish Consulate or in Poland'],
+ },
+ {
+ id: 'processing',
+ title: 'Processing Period',
+ description: 'Wait for Polish authorities to process your application',
  estimatedDuration: '30-60 days',
- documents: [
- 'Startup visa',
- 'All original documents',
- 'Business registration documents',
- ],
- notes: [
- 'Processing time: typically 30-60 days',
- 'Visa valid for 1 year initially',
- 'Renewable for additional periods',
- 'Register business within 30 days of arrival',
- 'Register at local Voivodeship Office',
- 'Access to accelerator resources',
- 'Growing startup ecosystem',
- 'Low cost of living',
- 'Large market (38M people)',
- 'PR after 5 years, citizenship after 5 years',
- ],
+ documents: [],
+ notes: ['Processing time: typically 30-60 days'],
+ },
+ {
+ id: 'decision',
+ title: 'Application Decision',
+ description: 'Wait for decision on your startup visa application',
+ estimatedDuration: '1 week',
+ documents: [],
+ notes: ['Decision notification sent by email or post'],
+ },
+ {
+ id: 'receive-visa',
+ title: 'Receive Startup Visa',
+ description: 'Collect your approved startup visa',
+ estimatedDuration: '1 week',
+ documents: ['Passport', 'Approval notification'],
+ notes: ['Visa valid for 1 year initially', 'Renewable'],
+ },
+ {
+ id: 'consider-appeal',
+ title: 'Consider Appeal',
+ description: 'If rejected, consider appealing the decision',
+ estimatedDuration: 'Varies',
+ documents: ['Rejection letter', 'Additional supporting documents'],
+ notes: ['Consult immigration lawyer'],
+ },
+ {
+ id: 'travel',
+ title: 'Travel to Poland',
+ description: 'Book travel and relocate to Poland',
+ estimatedDuration: '1-2 weeks',
+ documents: ['Valid passport', 'Startup visa', 'Proof of accommodation'],
+ notes: ['Growing startup ecosystem', 'Low cost of living', 'Large market (38M people)'],
+ },
+ {
+ id: 'register-business',
+ title: 'Register Business and at Voivodeship Office',
+ description: 'Complete business registration and immigration formalities',
+ estimatedDuration: '1-2 weeks',
+ documents: ['Startup visa', 'Business registration documents', 'All original documents'],
+ notes: ['Register business within 30 days of arrival', 'Register at local Voivodeship Office', 'PR after 5 years, citizenship after 5 years'],
  },
  ],
  },
