@@ -288,5 +288,265 @@ flowchart TD
  },
  ],
  },
+
+ 'fi_startup': {
+ programId: 'fi_startup',
+ countryCode: 'FI',
+ programName: 'Startup Entrepreneur Permit',
+ totalEstimatedDuration: '3-5 months',
+ complexity: 'medium',
+ successRate: '75%',
+ mermaidDiagram: `
+flowchart TD
+ Start([Start Process]) --> business-idea[Develop Innovative<br/>Startup Idea]
+ business-idea --> check-funds{Have EUR 12,000<br/>minimum savings?}
+ check-funds -->|Yes| prepare-business-plan[Prepare Detailed<br/>Business Plan]
+ check-funds -->|No| End1([Not Eligible])
+ prepare-business-plan --> submit-to-accelerator[Submit to Authorized<br/>Accelerator/Incubator]
+ submit-to-accelerator --> accelerator-review[Accelerator Review<br/>30-60 Days]
+ accelerator-review --> decision1{Approved?}
+ decision1 -->|Yes| gather-documents[Gather Required Documents]
+ decision1 -->|Rejected| consider-resubmission[Consider Resubmission]
+ consider-resubmission --> End2([Process Ended])
+ gather-documents --> submit-visa[Submit Visa Application<br/>to Migri]
+ submit-visa --> visa-processing[Processing<br/>60-90 Days]
+ visa-processing --> decision2{Decision}
+ decision2 -->|Approved| receive-permit[Receive Residence Permit]
+ decision2 -->|Rejected| consider-appeal[Consider Appeal]
+ receive-permit --> travel-to-finland[Travel to Finland]
+ travel-to-finland --> register-business[Register Business<br/>and Get Finnish ID]
+ register-business --> Success([Process Complete])
+ consider-appeal --> End3([Process Ended])
+
+ style Start fill:#e1f5e1
+ style Success fill:#e1f5e1
+ style End1 fill:#ffe1e1
+ style End2 fill:#ffe1e1
+ style End3 fill:#ffe1e1
+ style receive-permit fill:#e1e5ff
+`,
+ steps: [
+ {
+ id: 'business-idea',
+ title: 'Develop Innovative Startup Idea',
+ description: 'Create an innovative, scalable business concept suitable for the Finnish startup ecosystem',
+ estimatedDuration: '1-2 months',
+ documents: [
+ 'Business concept description',
+ 'Market research and analysis',
+ 'Competitive landscape overview',
+ 'Innovation and scalability potential',
+ ],
+ notes: [
+ 'Focus on tech, cleantech, health tech, or other innovation sectors',
+ 'Helsinki and Espoo have vibrant startup ecosystems',
+ 'Consider joining startup events and networking',
+ 'Research Finnish market opportunities',
+ 'Business must be innovative and have growth potential',
+ ],
+ },
+ {
+ id: 'prepare-business-plan',
+ title: 'Prepare Detailed Business Plan',
+ description: 'Create comprehensive business plan for accelerator approval',
+ estimatedDuration: '2-4 weeks',
+ documents: [
+ 'Executive summary',
+ 'Detailed business plan (15-30 pages)',
+ 'Financial projections (3-5 years)',
+ 'Proof of EUR 12,000 minimum savings (bank statements)',
+ 'Team information (if co-founders)',
+ 'Market analysis and go-to-market strategy',
+ ],
+ notes: [
+ 'Minimum EUR 12,000 in savings required (EUR 1,000/month for 1 year)',
+ 'Business plan must demonstrate innovation and scalability',
+ 'Include clear revenue model and growth strategy',
+ 'Show understanding of Finnish market',
+ 'Can include co-founders (each needs separate permit)',
+ ],
+ },
+ {
+ id: 'submit-to-accelerator',
+ title: 'Submit to Authorized Accelerator/Incubator',
+ description: 'Apply to Business Finland or authorized startup accelerator for approval',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'Completed accelerator application form',
+ 'Business plan',
+ 'Financial projections',
+ 'Proof of funds',
+ 'Team CVs and background',
+ ],
+ notes: [
+ 'Authorized accelerators include: NewCo Helsinki, Startup Sauna, Maria 01',
+ 'Business Finland also provides approvals',
+ 'Each accelerator has own application process',
+ 'Some accelerators offer mentorship and resources',
+ 'Application may include pitch presentation',
+ ],
+ },
+ {
+ id: 'accelerator-review',
+ title: 'Accelerator Review (30-60 Days)',
+ description: 'Authorized accelerator evaluates your startup business plan',
+ estimatedDuration: '30-60 days',
+ documents: [],
+ notes: [
+ 'Review typically takes 30-60 days',
+ 'May include interview or pitch session',
+ 'Accelerator assesses innovation, scalability, and team',
+ 'Approval letter required for visa application',
+ 'Can reapply if rejected (with improved plan)',
+ ],
+ },
+ {
+ id: 'gather-documents',
+ title: 'Gather Required Documents',
+ description: 'Collect all necessary documents for residence permit application',
+ estimatedDuration: '2-3 weeks',
+ documents: [
+ 'Valid passport (valid for at least 3 months)',
+ 'Accelerator approval letter',
+ 'Business plan',
+ 'Proof of EUR 12,000 minimum savings',
+ 'Passport-style photograph',
+ 'Proof of health insurance',
+ 'Proof of accommodation in Finland',
+ ],
+ notes: [
+ 'All documents must be in Finnish, Swedish, or English',
+ 'Certified translations required for other languages',
+ 'Digital copies acceptable for online application',
+ 'Keep originals for potential verification',
+ ],
+ },
+ {
+ id: 'submit-visa',
+ title: 'Submit Visa Application to Migri',
+ description: 'Complete and submit residence permit application through Enter Finland portal',
+ estimatedDuration: '1-2 days',
+ documents: [
+ 'Completed online application form',
+ 'All supporting documents uploaded',
+ 'Application fee payment (520 EUR in 2025)',
+ ],
+ notes: [
+ 'Use Enter Finland portal: https://enterfinland.fi/',
+ 'Select "Startup Entrepreneur" as permit type',
+ 'Application fee: 520 EUR (2025)',
+ 'Pay online via credit card or bank transfer',
+ 'May need to visit Finnish embassy/consulate for biometrics',
+ ],
+ },
+ {
+ id: 'visa-processing',
+ title: 'Processing (60-90 Days)',
+ description: 'Finnish Immigration Service (Migri) reviews your application',
+ estimatedDuration: '60-90 days',
+ documents: [],
+ notes: [
+ 'Processing time: typically 60-90 days',
+ 'Migri may request additional documents',
+ 'Check application status online via Enter Finland',
+ 'Accelerator approval is key factor',
+ 'Financial sufficiency verified',
+ ],
+ },
+ {
+ id: 'receive-permit',
+ title: 'Receive Residence Permit',
+ description: 'Collect your approved startup entrepreneur residence permit',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'Decision letter from Migri',
+ 'Residence permit card',
+ ],
+ notes: [
+ 'Initial permit valid for 2 years',
+ 'Renewable if business is progressing',
+ 'Can bring family members',
+ 'Permit allows you to work on your startup',
+ 'Can also work for other employers part-time',
+ ],
+ },
+ {
+ id: 'travel-to-finland',
+ title: 'Travel to Finland',
+ description: 'Enter Finland with your residence permit',
+ estimatedDuration: '1-2 days',
+ documents: [
+ 'Passport with residence permit',
+ 'Accelerator approval letter',
+ 'Business plan',
+ 'Proof of accommodation',
+ ],
+ notes: [
+ 'Main airports: Helsinki-Vantaa (HEL), Tampere, Turku',
+ 'No visa required for Schengen area travel',
+ 'Can enter Finland immediately upon receiving permit',
+ 'Register at local Migri office within 3 months',
+ ],
+ },
+ {
+ id: 'register-business',
+ title: 'Register Business and Get Finnish ID',
+ description: 'Complete business registration and obtain Finnish personal identity code',
+ estimatedDuration: '2-4 weeks',
+ documents: [
+ 'Business registration form',
+ 'Company articles of association',
+ 'Proof of business address',
+ 'Bank account information',
+ ],
+ notes: [
+ 'Register business with Finnish Patent and Registration Office (PRH)',
+ 'Get Finnish personal identity code (henkilötunnus) from Migri',
+ 'Open Finnish business bank account',
+ 'Register with Finnish Tax Administration',
+ 'Join startup accelerator programs and networks',
+ 'Access to Finnish startup ecosystem and funding',
+ 'PR eligible after 4 years, citizenship after 5 years',
+ ],
+ },
+ {
+ id: 'consider-resubmission',
+ title: 'Consider Resubmission',
+ description: 'If rejected by accelerator, evaluate options for reapplication',
+ estimatedDuration: '1-2 months',
+ documents: [
+ 'Rejection feedback from accelerator',
+ 'Revised business plan',
+ ],
+ notes: [
+ 'Review rejection reasons carefully',
+ 'Improve business plan based on feedback',
+ 'Consider applying to different accelerator',
+ 'Strengthen financial projections and market analysis',
+ 'May need to pivot business model',
+ 'Can reapply after improvements',
+ ],
+ },
+ {
+ id: 'consider-appeal',
+ title: 'Consider Appeal',
+ description: 'If visa rejected, evaluate appeal options',
+ estimatedDuration: '1-2 months',
+ documents: [
+ 'Rejection decision from Migri',
+ 'Appeal form',
+ 'Additional supporting evidence',
+ ],
+ notes: [
+ 'Appeal deadline: 30 days from decision',
+ 'Submit appeal to Administrative Court',
+ 'Provide additional evidence or clarifications',
+ 'Consider legal consultation',
+ 'Can reapply with stronger application',
+ 'Alternative: consider other Finnish visa programs',
+ ],
+ },
+ ],
+ },
 };
 
