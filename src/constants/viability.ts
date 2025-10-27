@@ -154,3 +154,27 @@ export const getAllViabilityLevels = (): ViabilityLevel[] => {
   ];
 };
 
+/**
+ * Get Tailwind background color class for a score (0-100)
+ * Used for progress bars and score indicators
+ */
+export const getScoreColorClass = (score: number): string => {
+  if (score >= 80) return 'bg-green-500';
+  if (score >= 60) return 'bg-blue-500';
+  if (score >= 40) return 'bg-yellow-500';
+  if (score >= 20) return 'bg-orange-500';
+  return 'bg-red-500';
+};
+
+/**
+ * Get Tailwind text color class for a score (0-100)
+ * Used for score text display
+ */
+export const getScoreTextColorClass = (score: number): string => {
+  if (score >= 80) return 'text-green-600';
+  if (score >= 60) return 'text-blue-600';
+  if (score >= 40) return 'text-yellow-600';
+  if (score >= 20) return 'text-orange-600';
+  return 'text-red-600';
+};
+

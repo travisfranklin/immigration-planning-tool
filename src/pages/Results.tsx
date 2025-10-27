@@ -162,25 +162,29 @@ export const Results: React.FC = () => {
         </div>
 
         {/* Actions */}
-        <div className="flex flex-wrap gap-4 mb-6">
-          <Button
-            onClick={handleRecalculate}
-            variant="primary"
-          >
-            🔄 Recalculate Scores
-          </Button>
-          <Button
-            onClick={handleExportResults}
-            variant="success"
-          >
-            📥 Export Results
-          </Button>
-          <Button
-            onClick={() => navigate('/profile')}
-            variant="secondary"
-          >
-            ← Back to Profile
-          </Button>
+        <div className="flex flex-wrap justify-between gap-4 mb-6">
+          <div className="flex gap-4">
+            <Button
+              onClick={() => navigate('/profile')}
+              variant="ghost"
+            >
+              ← Back to Profile
+            </Button>
+          </div>
+          <div className="flex gap-4">
+            <Button
+              onClick={handleExportResults}
+              variant="secondary"
+            >
+              Export Results
+            </Button>
+            <Button
+              onClick={handleRecalculate}
+              variant="primary"
+            >
+              Recalculate Scores
+            </Button>
+          </div>
         </div>
 
         {scores.length === 0 && (
