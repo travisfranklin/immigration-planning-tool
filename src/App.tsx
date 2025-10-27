@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { initializeDatabase } from './services/storage/indexedDB';
+import { ToastProvider } from './contexts/ToastContext';
 import { Home, Profile } from './pages';
 import { Results } from './pages/Results';
 import { ResultDetail } from './pages/ResultDetail';
@@ -40,16 +41,18 @@ function App() {
   }
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/results" element={<Results />} />
-        <Route path="/result-detail/:countryCode" element={<ResultDetail />} />
-        <Route path="/flowchart" element={<Flowchart />} />
-        <Route path="/settings" element={<Settings />} />
-      </Routes>
-    </Router>
+    <ToastProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/results" element={<Results />} />
+          <Route path="/result-detail/:countryCode" element={<ResultDetail />} />
+          <Route path="/flowchart" element={<Flowchart />} />
+          <Route path="/settings" element={<Settings />} />
+        </Routes>
+      </Router>
+    </ToastProvider>
   );
 }
 

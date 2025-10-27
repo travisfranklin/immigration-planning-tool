@@ -14,13 +14,14 @@ import type { UserProfile } from '../types/user';
 import type { ViabilityScore } from '../types/viability';
 import { Layout } from '../components/Layout';
 import { Button } from '../components/Button';
+import { useToast } from '../contexts/ToastContext';
 
 export function Settings() {
   const navigate = useNavigate();
+  const { showSuccess, showError } = useToast();
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [viabilityScores, setViabilityScores] = useState<ViabilityScore[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
   useEffect(() => {
@@ -40,45 +41,40 @@ export function Settings() {
       setViabilityScores(scores);
     } catch (error) {
       console.error('Error loading data:', error);
-      showMessage('error', 'Failed to load data');
+      showError('Failed to load data');
     } finally {
       setIsLoading(false);
     }
   };
 
-  const showMessage = (type: 'success' | 'error', text: string) => {
-    setMessage({ type, text });
-    setTimeout(() => setMessage(null), 5000);
-  };
-
   const handleExportJSON = async () => {
     try {
       await exportAsJSON(profile, viabilityScores);
-      showMessage('success', 'Data exported as JSON');
+      showSuccess('Data exported as JSON');
     } catch {
-      showMessage('error', 'Failed to export data');
+      showError('Failed to export data');
     }
   };
 
   const handleExportCSV = async () => {
     try {
       if (viabilityScores.length === 0) {
-        showMessage('error', 'No viability scores to export');
+        showError('No viability scores to export');
         return;
       }
       await exportAsCSV(viabilityScores);
-      showMessage('success', 'Viability scores exported as CSV');
+      showSuccess('Viability scores exported as CSV');
     } catch {
-      showMessage('error', 'Failed to export CSV');
+      showError('Failed to export CSV');
     }
   };
 
   const handleExportText = async () => {
     try {
       await exportAsText(profile, viabilityScores);
-      showMessage('success', 'Report exported as text');
+      showSuccess('Report exported as text');
     } catch {
-      showMessage('error', 'Failed to export report');
+      showError('Failed to export report');
     }
   };
 
@@ -88,25 +84,25 @@ export function Settings() {
 
     // Validate file
     if (!validateFileType(file, ['application/json', '.json'])) {
-      showMessage('error', 'Please select a JSON file');
+      showError('Please select a JSON file');
       return;
     }
 
     if (!validateFileSize(file, 10)) {
-      showMessage('error', 'File size must be less than 10MB');
+      showError('File size must be less than 10MB');
       return;
     }
 
     try {
       const result = await importFromJSON(file);
       if (result.success) {
-        showMessage('success', result.message);
+        showSuccess(result.message);
         await loadData(); // Reload data
       } else {
-        showMessage('error', result.message + (result.errors ? ': ' + result.errors.join(', ') : ''));
+        showError(result.message + (result.errors ? ': ' + result.errors.join(', ') : ''));
       }
     } catch {
-      showMessage('error', 'Failed to import data');
+      showError('Failed to import data');
     }
 
     // Reset input
@@ -117,9 +113,9 @@ export function Settings() {
     try {
       await clearAllViabilityScores();
       setViabilityScores([]);
-      showMessage('success', 'All viability scores cleared');
+      showSuccess('All viability scores cleared');
     } catch {
-      showMessage('error', 'Failed to clear scores');
+      showError('Failed to clear scores');
     }
   };
 
@@ -129,10 +125,10 @@ export function Settings() {
       setProfile(null);
       setViabilityScores([]);
       setShowDeleteConfirm(false);
-      showMessage('success', 'All data deleted');
+      showSuccess('All data deleted');
       setTimeout(() => navigate('/'), 2000);
     } catch {
-      showMessage('error', 'Failed to delete data');
+      showError('Failed to delete data');
     }
   };
 
@@ -152,17 +148,6 @@ export function Settings() {
           <h1 className="text-3xl font-bold text-gray-900">Settings</h1>
           <p className="mt-2 text-gray-600">Manage your data and preferences</p>
         </div>
-
-        {/* Message */}
-        {message && (
-          <div
-            className={`mb-6 p-4 rounded-lg ${
-              message.type === 'success' ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'
-            }`}
-          >
-            {message.text}
-          </div>
-        )}
 
         {/* Data Overview */}
         <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
