@@ -552,5 +552,198 @@ flowchart TD
  },
  ],
  },
+
+ 'pt_tech_visa': {
+ programId: 'pt_tech_visa',
+ countryCode: 'PT',
+ programName: 'Tech Visa',
+ totalEstimatedDuration: '2-3 months',
+ complexity: 'low',
+ successRate: '90%',
+ mermaidDiagram: `
+flowchart TD
+ Start([Start Process]) --> job-offer[Secure Job Offer from<br/>IAPMEI-Certified Tech Company]
+ job-offer --> check-salary{Salary >= EUR 1,330/month<br/>(EUR 15,960/year)?}
+ check-salary -->|Yes| check-company{Company IAPMEI<br/>Certified?}
+ check-salary -->|No| End1([Not Eligible])
+ check-company -->|Yes| gather-documents[Gather Required Documents]
+ check-company -->|No| End2([Company Must Get Certified])
+ gather-documents --> submit-visa[Submit Visa Application<br/>at Consulate]
+ submit-visa --> visa-processing[SEF Processing<br/>30-60 Days]
+ visa-processing --> decision{Decision}
+ decision -->|Approved| receive-visa[Receive Tech Visa]
+ decision -->|Rejected| consider-appeal[Consider Appeal]
+ receive-visa --> travel-to-portugal[Travel to Portugal]
+ travel-to-portugal --> register-sef[Register at SEF<br/>Get Residence Card]
+ register-sef --> Success([Process Complete])
+ consider-appeal --> End3([Process Ended])
+
+ style Start fill:#e1f5e1
+ style Success fill:#e1f5e1
+ style End1 fill:#ffe1e1
+ style End2 fill:#ffe1e1
+ style End3 fill:#ffe1e1
+ style receive-visa fill:#e1e5ff
+`,
+ steps: [
+ {
+ id: 'job-offer',
+ title: 'Secure Job Offer from IAPMEI-Certified Tech Company',
+ description: 'Obtain a binding job offer from an IAPMEI-certified Portuguese tech company',
+ estimatedDuration: '1-2 months',
+ documents: [
+ 'Signed employment contract',
+ 'Job description for tech position',
+ 'Salary confirmation (minimum EUR 1,330/month = EUR 15,960/year)',
+ 'Company IAPMEI certification proof',
+ 'Employer information',
+ ],
+ notes: [
+ 'Company MUST be certified by IAPMEI (Portuguese SME Agency)',
+ 'Lower salary threshold than most EU tech visas (EUR 15,960/year)',
+ 'Growing tech scene in Lisbon and Porto',
+ 'Popular for software engineers, data scientists, product managers',
+ 'Fast processing (30-60 days) compared to other EU countries',
+ 'List of certified companies: https://www.iapmei.pt/techvisa',
+ ],
+ },
+ {
+ id: 'gather-documents',
+ title: 'Gather Required Documents',
+ description: 'Collect all necessary documents for Tech Visa application',
+ estimatedDuration: '2-3 weeks',
+ documents: [
+ 'Valid passport (valid for at least 3 months beyond intended stay)',
+ 'Employment contract from IAPMEI-certified company',
+ 'Company IAPMEI certification',
+ 'Passport-style photographs',
+ 'Proof of health insurance',
+ 'Proof of accommodation in Portugal',
+ 'Criminal record certificate (from country of residence)',
+ 'Educational qualifications (diplomas, certificates)',
+ ],
+ notes: [
+ 'All documents must be in Portuguese or English',
+ 'Certified translations required for other languages',
+ 'Apostille required for documents from non-EU countries',
+ 'Keep originals for consulate appointment',
+ 'Educational qualifications helpful but not strictly required',
+ ],
+ },
+ {
+ id: 'submit-visa',
+ title: 'Submit Visa Application at Consulate',
+ description: 'Submit application at Portuguese consulate in your country',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'Completed visa application form',
+ 'All supporting documents',
+ 'Application fee payment (EUR 90 for visa)',
+ ],
+ notes: [
+ 'Book appointment at Portuguese consulate',
+ 'Application fee: EUR 90 for visa (2025)',
+ 'Biometrics collected at consulate',
+ 'May need to attend interview',
+ 'Processing starts after consulate submission',
+ 'Fast-track processing for Tech Visa',
+ ],
+ },
+ {
+ id: 'visa-processing',
+ title: 'SEF Processing (30-60 Days)',
+ description: 'Portuguese Immigration Service (SEF) reviews your application',
+ estimatedDuration: '30-60 days',
+ documents: [],
+ notes: [
+ 'Processing time: typically 30-60 days (FAST!)',
+ 'Much faster than standard work visas',
+ 'SEF may request additional documents',
+ 'IAPMEI certification is key factor',
+ 'Background check conducted',
+ 'Employer may be contacted for verification',
+ ],
+ },
+ {
+ id: 'receive-visa',
+ title: 'Receive Tech Visa',
+ description: 'Collect your approved Tech Visa',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'Decision letter from SEF',
+ 'Tech visa in passport',
+ ],
+ notes: [
+ 'Initial visa valid for 4 months (entry visa)',
+ 'Must enter Portugal within 4 months',
+ 'Exchange for residence permit after arrival',
+ 'Can bring family members',
+ 'Residence permit initially for 2 years, renewable',
+ ],
+ },
+ {
+ id: 'travel-to-portugal',
+ title: 'Travel to Portugal',
+ description: 'Enter Portugal with your Tech Visa',
+ estimatedDuration: '1-2 days',
+ documents: [
+ 'Passport with Tech Visa',
+ 'Employment contract',
+ 'Company IAPMEI certification',
+ 'Proof of accommodation',
+ ],
+ notes: [
+ 'Main airports: Lisbon (LIS), Porto (OPO), Faro (FAO)',
+ 'Must enter within 4 months of visa issuance',
+ 'Register at SEF office within 3 months of arrival',
+ 'Bring all original documents',
+ 'Can start working immediately upon arrival',
+ ],
+ },
+ {
+ id: 'register-sef',
+ title: 'Register at SEF and Get Residence Card',
+ description: 'Complete registration at SEF and obtain residence permit card',
+ estimatedDuration: '2-4 weeks',
+ documents: [
+ 'Passport with visa',
+ 'Employment contract',
+ 'Proof of accommodation',
+ 'NIF (tax identification number)',
+ ],
+ notes: [
+ 'Register at SEF office within 3 months of arrival',
+ 'Get NIF (Número de Identificação Fiscal) from Finanças',
+ 'Get residence permit card (Título de Residência)',
+ 'Open Portuguese bank account',
+ 'Register with Social Security',
+ 'Can work immediately',
+ 'Access to Portuguese healthcare system',
+ 'PR eligible after 5 years, citizenship after 5 years (with A2 Portuguese)',
+ 'Non-habitual resident tax regime available (reduced tax for 10 years)',
+ ],
+ },
+ {
+ id: 'consider-appeal',
+ title: 'Consider Appeal',
+ description: 'If visa rejected, evaluate appeal options',
+ estimatedDuration: '1-2 months',
+ documents: [
+ 'Rejection decision from SEF',
+ 'Appeal form',
+ 'Additional supporting evidence',
+ ],
+ notes: [
+ 'Appeal deadline: 30 days from decision',
+ 'Submit appeal to SEF',
+ 'Provide additional evidence or clarifications',
+ 'Consider legal consultation',
+ 'Can reapply with stronger application',
+ 'Alternative: consider Portugal Startup Visa or D7 Visa',
+ 'Verify company IAPMEI certification is valid',
+ ],
+ },
+ ],
+ },
 };
 
