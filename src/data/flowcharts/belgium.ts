@@ -786,6 +786,25 @@ flowchart TD
  ],
  },
  {
+ id: 'housing-ok',
+ title: 'Assess Housing Adequacy',
+ description: 'Determine if housing meets Belgian family reunification standards',
+ estimatedDuration: '1 week',
+ documents: [
+ 'Housing inspection report (if required)',
+ 'Floor plan with room measurements',
+ 'Lease agreement or property deed',
+ ],
+ notes: [
+ 'Minimum housing standards apply based on family size',
+ 'Generally requires at least 12-14 m² per person',
+ 'Must have adequate sanitation and heating',
+ 'Housing must be suitable for long-term residence',
+ 'Local commune may conduct inspection',
+ 'If inadequate, sponsor must find larger accommodation before proceeding',
+ ],
+ },
+ {
  id: 'gather-documents',
  title: 'Gather Required Documents',
  description: 'Collect all necessary documentation',
