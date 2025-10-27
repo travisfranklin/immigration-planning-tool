@@ -16,6 +16,7 @@ import { Layout } from '../components/Layout';
 import { Button } from '../components/Button';
 import { useToast } from '../contexts/ToastContext';
 import { APP_VERSION } from '../constants/app';
+import { UI_CONTAINER } from '../constants/uiStyles';
 
 export function Settings() {
   const navigate = useNavigate();
@@ -143,7 +144,7 @@ export function Settings() {
 
   return (
     <Layout currentPage="settings">
-      <div className="max-w-4xl mx-auto">
+      <div className={UI_CONTAINER.sm}>
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900">Settings</h1>

@@ -10,6 +10,7 @@ import { Button } from '../components/Button';
 import { LoadingSpinner } from '../components/LoadingSpinner';
 import { ErrorState } from '../components/ErrorState';
 import { EmptyState } from '../components/EmptyState';
+import { UI_CONTAINER } from '../constants/uiStyles';
 
 export const Results: React.FC = () => {
   const navigate = useNavigate();
@@ -148,7 +149,7 @@ export const Results: React.FC = () => {
   // Rankings View
   return (
     <Layout currentPage="results">
-      <div className="max-w-7xl mx-auto">
+      <div className={UI_CONTAINER.lg}>
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-2">Immigration Viability Results</h1>

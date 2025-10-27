@@ -15,6 +15,7 @@ import { getAllUserProfiles } from '../services/storage/userProfileStore';
 import type { ViabilityScore } from '../types/viability';
 import { CountryCode, COUNTRY_DISPLAY_NAMES, isValidCountryCode, ALL_COUNTRY_CODES } from '../constants/countries';
 import { ALL_FLOWCHARTS } from '../data/flowcharts';
+import { UI_CONTAINER } from '../constants/uiStyles';
 
 const COUNTRIES = ALL_COUNTRY_CODES.map((code) => ({
   code,
@@ -107,7 +108,7 @@ export function Flowchart() {
 
   return (
     <Layout currentPage="flowchart">
-      <div className="max-w-7xl mx-auto">
+      <div className={UI_CONTAINER.lg}>
         {/* Breadcrumb */}
         <Breadcrumb
           items={

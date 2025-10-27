@@ -5,6 +5,7 @@
 
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { UI_CONTAINER } from '../../constants/uiStyles';
 
 export type PageType = 'home' | 'profile' | 'results' | 'flowchart' | 'settings';
 
@@ -45,7 +46,7 @@ export function Header({ currentPage }: HeaderProps) {
     <>
       {/* Desktop Header */}
       <header className="bg-white shadow-sm border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className={`${UI_CONTAINER.lg} px-4 sm:px-6 lg:px-8`}>
           <div className="flex items-center justify-between h-16">
             {/* Logo/Title */}
             <button

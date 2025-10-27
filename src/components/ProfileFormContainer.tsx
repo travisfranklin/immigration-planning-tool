@@ -21,6 +21,7 @@ import {
   mergeFormData,
   calculateFormProgress,
 } from '@/utils/formState';
+import { UI_CONTAINER } from '@/constants/uiStyles';
 import { validateFormStep } from '@/utils/validation';
 
 interface ProfileFormContainerProps {
@@ -135,7 +136,7 @@ export function ProfileFormContainer({
   }, [formData, totalSteps, onSave]);
 
   return (
-    <div className="w-full max-w-2xl mx-auto p-4 sm:p-6 space-y-6 sm:space-y-8">
+    <div className={`w-full ${UI_CONTAINER.xs} p-4 sm:p-6 space-y-6 sm:space-y-8`}>
       {/* Save Status Indicator */}
       <div className="flex justify-end">
         <SaveStatusIndicator

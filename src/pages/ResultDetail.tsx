@@ -15,6 +15,7 @@ import { Layout } from '../components/Layout';
 import { Button } from '../components/Button';
 import { LoadingSpinner } from '../components/LoadingSpinner';
 import { ErrorState } from '../components/ErrorState';
+import { UI_CONTAINER } from '../constants/uiStyles';
 import { InteractiveFlowchart } from '../components/flowchart/InteractiveFlowchart';
 import { isValidCountryCode } from '../constants/countries';
 import {
@@ -161,7 +162,7 @@ export const ResultDetail: React.FC = () => {
 
   return (
     <Layout currentPage="results">
-      <div className="max-w-7xl mx-auto">
+      <div className={UI_CONTAINER.lg}>
         {/* Shared View Banner */}
         {isSharedView && (
           <div className="mb-6 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg p-4">

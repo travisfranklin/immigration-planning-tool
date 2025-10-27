@@ -5,13 +5,14 @@
 
 import { useNavigate } from 'react-router-dom';
 import { Layout, Button, Card } from '../components';
+import { UI_CONTAINER } from '../constants/uiStyles';
 
 export function Home() {
   const navigate = useNavigate();
 
   return (
     <Layout currentPage="home">
-      <div className="max-w-4xl mx-auto">
+      <div className={UI_CONTAINER.sm}>
         {/* Hero Section */}
         <div className="mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">

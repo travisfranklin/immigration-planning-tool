@@ -7,6 +7,8 @@
  * Container widths and centering
  */
 export const UI_CONTAINER = {
+  /** Extra small container: max-w-2xl mx-auto */
+  xs: 'max-w-2xl mx-auto',
   /** Small container: max-w-4xl mx-auto */
   sm: 'max-w-4xl mx-auto',
   /** Medium container: max-w-5xl mx-auto */

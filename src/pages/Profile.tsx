@@ -11,6 +11,7 @@ import { Layout } from '@/components/Layout';
 import { Button } from '@/components/Button';
 import { LoadingSpinner } from '@/components/LoadingSpinner';
 import { createUserProfile, getLatestUserProfile, updateUserProfile } from '@/services/storage/userProfileStore';
+import { UI_CONTAINER } from '@/constants/uiStyles';
 
 export function Profile() {
   const navigate = useNavigate();
@@ -68,7 +69,7 @@ export function Profile() {
   if (isLoading) {
     return (
       <Layout>
-        <div className="max-w-4xl mx-auto">
+        <div className={UI_CONTAINER.sm}>
           <div className="flex items-center justify-center py-12">
             <LoadingSpinner message="Loading your profile..." />
           </div>
@@ -79,7 +80,7 @@ export function Profile() {
 
   return (
     <Layout currentPage="profile">
-      <div className="max-w-5xl mx-auto">
+      <div className={UI_CONTAINER.md}>
         {/* Page Header */}
         <div className="mb-6 sm:mb-8 px-4 sm:px-6">
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">
