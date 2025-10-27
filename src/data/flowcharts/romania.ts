@@ -260,5 +260,102 @@ flowchart TD
  },
  ],
  },
+
+ 'ro_work_permit': {
+ programId: 'ro_work_permit',
+ countryCode: 'RO',
+ programName: 'Work Permit',
+ totalEstimatedDuration: '2-4 months',
+ complexity: 'low',
+ successRate: '85%',
+ mermaidDiagram: `
+flowchart TD
+ Start([Start Process]) --> job-offer[Secure Job Offer<br/>from Romanian Employer]
+ job-offer --> check-salary{Salary >= RON 4,000/month<br/>(EUR 800)?}
+ check-salary -->|Yes| gather-documents[Gather Required Documents]
+ check-salary -->|No| End1([Not Eligible])
+ gather-documents --> submit-application[Submit Application]
+ submit-application --> processing[Processing<br/>30-90 Days]
+ processing --> decision{Decision}
+ decision -->|Approved| receive-permit[Receive Work Permit]
+ decision -->|Rejected| consider-appeal[Consider Appeal]
+ receive-permit --> travel-to-romania[Travel to Romania]
+ travel-to-romania --> register[Register at<br/>Immigration Office]
+ register --> Success([Process Complete])
+ consider-appeal --> End2([Process Ended])
+
+ style Start fill:#e1f5e1
+ style Success fill:#e1f5e1
+ style End1 fill:#ffe1e1
+ style End2 fill:#ffe1e1
+ style receive-permit fill:#e1e5ff
+`,
+ steps: [
+ {
+ id: 'job-offer',
+ title: 'Secure Job Offer from Romanian Employer',
+ description: 'Obtain a binding job offer from a Romanian employer',
+ estimatedDuration: '1-2 months',
+ documents: ['Signed employment contract', 'Job description', 'Salary confirmation (minimum RON 4,000/month = EUR 800)', 'Employer information'],
+ notes: ['Very low salary threshold (EUR 800/month)', 'Bucharest is major tech hub', 'Fastest internet in EU!', 'Very low cost of living', 'PR after 5 years, citizenship after 8 years'],
+ },
+ {
+ id: 'gather-documents',
+ title: 'Gather Required Documents',
+ description: 'Collect all necessary documents for work permit application',
+ estimatedDuration: '2-3 weeks',
+ documents: ['Valid passport', 'Employment contract', 'Educational qualifications', 'Criminal record certificate', 'Health insurance', 'Proof of accommodation', 'Passport photographs'],
+ notes: ['Documents must be apostilled', 'Translations to Romanian required', 'Criminal background check must be recent'],
+ },
+ {
+ id: 'submit-application',
+ title: 'Submit Application',
+ description: 'Submit work permit application to Romanian authorities',
+ estimatedDuration: '1 week',
+ documents: ['All gathered documents', 'Application fee payment (approximately EUR 100)'],
+ notes: ['Submit at Romanian consulate or in Romania', 'Appointment required', 'Processing time: 30-90 days'],
+ },
+ {
+ id: 'processing',
+ title: 'Processing (30-90 Days)',
+ description: 'Wait for authorities to process application',
+ estimatedDuration: '30-90 days',
+ documents: [],
+ notes: ['Processing time: typically 30-90 days', 'May request additional information'],
+ },
+ {
+ id: 'receive-permit',
+ title: 'Receive Work Permit',
+ description: 'Receive approved work permit',
+ estimatedDuration: '1 week',
+ documents: ['Work permit approval'],
+ notes: ['Permit initially valid for 1 year', 'Renewable if employment continues', 'Family members can join'],
+ },
+ {
+ id: 'travel-to-romania',
+ title: 'Travel to Romania',
+ description: 'Travel to Romania with work permit',
+ estimatedDuration: '1-3 days',
+ documents: ['Passport with work permit', 'Employment contract'],
+ notes: ['Main airport: Bucharest (OTP)', 'Register within 3 days of arrival'],
+ },
+ {
+ id: 'register',
+ title: 'Register at Immigration Office',
+ description: 'Complete registration and get residence card',
+ estimatedDuration: '2-4 weeks',
+ documents: ['Passport with work permit', 'Proof of accommodation', 'Employment contract'],
+ notes: ['Register at Immigration Office within 3 days', 'Get residence card', 'Open Romanian bank account', 'Bucharest is major tech hub', 'Fastest internet in EU!', 'Very low cost of living', '16% flat tax', 'PR after 5 years, citizenship after 8 years'],
+ },
+ {
+ id: 'consider-appeal',
+ title: 'Consider Appeal',
+ description: 'If rejected, evaluate appeal options',
+ estimatedDuration: '1-2 months',
+ documents: ['Rejection decision', 'Appeal form', 'Additional evidence'],
+ notes: ['Review rejection reasons', 'Can reapply with stronger application', 'Alternative: Romania EU Blue Card or Startup Visa'],
+ },
+ ],
+ },
 };
 

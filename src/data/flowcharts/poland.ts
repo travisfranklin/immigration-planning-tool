@@ -271,5 +271,174 @@ flowchart TD
  },
  ],
  },
+
+ 'pl_work_permit': {
+ programId: 'pl_work_permit',
+ countryCode: 'PL',
+ programName: 'Work Permit',
+ totalEstimatedDuration: '2-4 months',
+ complexity: 'low',
+ successRate: '85%',
+ mermaidDiagram: `
+flowchart TD
+ Start([Start Process]) --> job-offer[Secure Job Offer<br/>from Polish Employer]
+ job-offer --> check-salary{Salary >= PLN 4,000/month<br/>(EUR 900)?}
+ check-salary -->|Yes| gather-documents[Gather Required Documents]
+ check-salary -->|No| End1([Not Eligible])
+ gather-documents --> submit-application[Submit Application<br/>to Voivodeship Office]
+ submit-application --> processing[Processing<br/>30-90 Days]
+ processing --> decision{Decision}
+ decision -->|Approved| receive-permit[Receive Work Permit]
+ decision -->|Rejected| consider-appeal[Consider Appeal]
+ receive-permit --> travel-to-poland[Travel to Poland]
+ travel-to-poland --> register[Register at<br/>Voivodeship Office]
+ register --> Success([Process Complete])
+ consider-appeal --> End2([Process Ended])
+
+ style Start fill:#e1f5e1
+ style Success fill:#e1f5e1
+ style End1 fill:#ffe1e1
+ style End2 fill:#ffe1e1
+ style receive-permit fill:#e1e5ff
+`,
+ steps: [
+ {
+ id: 'job-offer',
+ title: 'Secure Job Offer from Polish Employer',
+ description: 'Obtain a binding job offer from a Polish employer',
+ estimatedDuration: '1-2 months',
+ documents: [
+ 'Signed employment contract',
+ 'Job description',
+ 'Salary confirmation (minimum PLN 4,000/month = EUR 900)',
+ 'Employer information',
+ ],
+ notes: [
+ 'Very low salary threshold (EUR 900/month)',
+ 'Most common work visa in Poland',
+ 'Growing tech sector in Warsaw, Kraków, Wrocław',
+ 'Lower cost of living than Western Europe',
+ 'English common in tech companies',
+ 'PR after 5 years, citizenship after 5 years (with Polish B1)',
+ ],
+ },
+ {
+ id: 'gather-documents',
+ title: 'Gather Required Documents',
+ description: 'Collect all necessary documents for work permit application',
+ estimatedDuration: '2-3 weeks',
+ documents: [
+ 'Valid passport (valid for at least 6 months)',
+ 'Employment contract',
+ 'Educational qualifications',
+ 'Criminal record certificate',
+ 'Health insurance',
+ 'Proof of accommodation in Poland',
+ 'Passport photographs',
+ ],
+ notes: [
+ 'Documents must be apostilled',
+ 'Translations to Polish required',
+ 'Criminal background check must be recent',
+ 'Health insurance must cover entire stay',
+ ],
+ },
+ {
+ id: 'submit-application',
+ title: 'Submit Application to Voivodeship Office',
+ description: 'Submit work permit application to Polish authorities',
+ estimatedDuration: '1 week',
+ documents: [
+ 'All gathered documents',
+ 'Application fee payment (approximately EUR 100)',
+ ],
+ notes: [
+ 'Submit at Voivodeship Office in Poland or Polish consulate',
+ 'Appointment required',
+ 'Processing time: 30-90 days',
+ ],
+ },
+ {
+ id: 'processing',
+ title: 'Processing (30-90 Days)',
+ description: 'Wait for authorities to process application',
+ estimatedDuration: '30-90 days',
+ documents: [],
+ notes: [
+ 'Processing time: typically 30-90 days',
+ 'May request additional information',
+ 'Track application status online',
+ ],
+ },
+ {
+ id: 'receive-permit',
+ title: 'Receive Work Permit',
+ description: 'Receive approved work permit',
+ estimatedDuration: '1 week',
+ documents: [
+ 'Work permit approval',
+ ],
+ notes: [
+ 'Permit initially valid for 3 years',
+ 'Renewable if employment continues',
+ 'Family members can join',
+ 'PR eligible after 5 years',
+ ],
+ },
+ {
+ id: 'travel-to-poland',
+ title: 'Travel to Poland',
+ description: 'Travel to Poland with work permit',
+ estimatedDuration: '1-3 days',
+ documents: [
+ 'Passport with work permit',
+ 'Employment contract',
+ ],
+ notes: [
+ 'Main airports: Warsaw (WAW), Kraków (KRK)',
+ 'Register within 30 days of arrival',
+ 'EU member state',
+ ],
+ },
+ {
+ id: 'register',
+ title: 'Register at Voivodeship Office',
+ description: 'Complete registration and get residence card',
+ estimatedDuration: '2-4 weeks',
+ documents: [
+ 'Passport with work permit',
+ 'Proof of accommodation',
+ 'Employment contract',
+ ],
+ notes: [
+ 'Register at local Voivodeship Office within 30 days',
+ 'Get residence card',
+ 'Get PESEL number (Polish ID number)',
+ 'Open Polish bank account',
+ 'Access to Polish healthcare',
+ 'Growing tech sector',
+ 'PR after 5 years, citizenship after 5 years (with Polish B1)',
+ 'Lower cost of living than Western Europe',
+ ],
+ },
+ {
+ id: 'consider-appeal',
+ title: 'Consider Appeal',
+ description: 'If rejected, evaluate appeal options',
+ estimatedDuration: '1-2 months',
+ documents: [
+ 'Rejection decision',
+ 'Appeal form',
+ 'Additional evidence',
+ ],
+ notes: [
+ 'Review rejection reasons',
+ 'Can reapply with stronger application',
+ 'Consider legal consultation',
+ 'Alternative: Poland EU Blue Card or Business Harbour',
+ ],
+ },
+ ],
+ },
 };
 

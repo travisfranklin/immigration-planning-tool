@@ -272,5 +272,102 @@ flowchart TD
  },
  ],
  },
+
+ 'hu_work_permit': {
+ programId: 'hu_work_permit',
+ countryCode: 'HU',
+ programName: 'Work Permit',
+ totalEstimatedDuration: '2-4 months',
+ complexity: 'low',
+ successRate: '85%',
+ mermaidDiagram: `
+flowchart TD
+ Start([Start Process]) --> job-offer[Secure Job Offer<br/>from Hungarian Employer]
+ job-offer --> check-salary{Salary >= HUF 300,000/month<br/>(EUR 750)?}
+ check-salary -->|Yes| gather-documents[Gather Required Documents]
+ check-salary -->|No| End1([Not Eligible])
+ gather-documents --> submit-application[Submit Application]
+ submit-application --> processing[Processing<br/>30-90 Days]
+ processing --> decision{Decision}
+ decision -->|Approved| receive-permit[Receive Work Permit]
+ decision -->|Rejected| consider-appeal[Consider Appeal]
+ receive-permit --> travel-to-hungary[Travel to Hungary]
+ travel-to-hungary --> register[Register at<br/>Immigration Office]
+ register --> Success([Process Complete])
+ consider-appeal --> End2([Process Ended])
+
+ style Start fill:#e1f5e1
+ style Success fill:#e1f5e1
+ style End1 fill:#ffe1e1
+ style End2 fill:#ffe1e1
+ style receive-permit fill:#e1e5ff
+`,
+ steps: [
+ {
+ id: 'job-offer',
+ title: 'Secure Job Offer from Hungarian Employer',
+ description: 'Obtain a binding job offer from a Hungarian employer',
+ estimatedDuration: '1-2 months',
+ documents: ['Signed employment contract', 'Job description', 'Salary confirmation (minimum HUF 300,000/month = EUR 750)', 'Employer information'],
+ notes: ['Very low salary threshold (EUR 750/month)', 'Budapest has growing tech scene', 'Very low cost of living', '9% corporate tax', 'PR after 5 years, citizenship after 8 years'],
+ },
+ {
+ id: 'gather-documents',
+ title: 'Gather Required Documents',
+ description: 'Collect all necessary documents for work permit application',
+ estimatedDuration: '2-3 weeks',
+ documents: ['Valid passport', 'Employment contract', 'Educational qualifications', 'Criminal record certificate', 'Health insurance', 'Proof of accommodation', 'Passport photographs'],
+ notes: ['Documents must be apostilled', 'Translations to Hungarian required'],
+ },
+ {
+ id: 'submit-application',
+ title: 'Submit Application',
+ description: 'Submit work permit application to Hungarian authorities',
+ estimatedDuration: '1 week',
+ documents: ['All gathered documents', 'Application fee payment'],
+ notes: ['Submit at Hungarian consulate or in Hungary', 'Processing time: 30-90 days'],
+ },
+ {
+ id: 'processing',
+ title: 'Processing (30-90 Days)',
+ description: 'Wait for authorities to process application',
+ estimatedDuration: '30-90 days',
+ documents: [],
+ notes: ['Processing time: typically 30-90 days'],
+ },
+ {
+ id: 'receive-permit',
+ title: 'Receive Work Permit',
+ description: 'Receive approved work permit',
+ estimatedDuration: '1 week',
+ documents: ['Work permit approval'],
+ notes: ['Permit initially valid for 2 years', 'Renewable if employment continues'],
+ },
+ {
+ id: 'travel-to-hungary',
+ title: 'Travel to Hungary',
+ description: 'Travel to Hungary with work permit',
+ estimatedDuration: '1-3 days',
+ documents: ['Passport with work permit', 'Employment contract'],
+ notes: ['Main airport: Budapest (BUD)'],
+ },
+ {
+ id: 'register',
+ title: 'Register at Immigration Office',
+ description: 'Complete registration',
+ estimatedDuration: '2-4 weeks',
+ documents: ['Passport with work permit', 'Proof of accommodation'],
+ notes: ['Register at Immigration Office within 3 days', 'Budapest has growing tech scene', 'Very low cost of living', '9% corporate tax', 'PR after 5 years, citizenship after 8 years'],
+ },
+ {
+ id: 'consider-appeal',
+ title: 'Consider Appeal',
+ description: 'If rejected, evaluate appeal options',
+ estimatedDuration: '1-2 months',
+ documents: ['Rejection decision', 'Appeal form'],
+ notes: ['Can reapply with stronger application', 'Alternative: Hungary EU Blue Card or White Card'],
+ },
+ ],
+ },
 };
 
