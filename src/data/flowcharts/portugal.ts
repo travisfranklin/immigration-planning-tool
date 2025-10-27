@@ -285,5 +285,272 @@ flowchart TD
  },
  ],
  },
+
+ 'pt_startup_visa': {
+ programId: 'pt_startup_visa',
+ countryCode: 'PT',
+ programName: 'Startup Visa',
+ totalEstimatedDuration: '3-5 months',
+ complexity: 'medium',
+ successRate: '75%',
+ mermaidDiagram: `
+flowchart TD
+ Start([Start Process]) --> business-idea[Develop Innovative<br/>Startup Idea]
+ business-idea --> check-funds{Have EUR 5,000-10,000<br/>minimum capital?}
+ check-funds -->|Yes| prepare-business-plan[Prepare Detailed<br/>Business Plan]
+ check-funds -->|No| End1([Not Eligible])
+ prepare-business-plan --> submit-to-incubator[Submit to IAPMEI-Certified<br/>Incubator]
+ submit-to-incubator --> incubator-review[Incubator Review<br/>30-60 Days]
+ incubator-review --> decision1{Approved?}
+ decision1 -->|Yes| gather-documents[Gather Required Documents]
+ decision1 -->|Rejected| consider-resubmission[Consider Resubmission]
+ consider-resubmission --> End2([Process Ended])
+ gather-documents --> submit-visa[Submit Visa Application<br/>at Consulate]
+ submit-visa --> visa-processing[SEF Processing<br/>60-90 Days]
+ visa-processing --> decision2{Decision}
+ decision2 -->|Approved| receive-visa[Receive Startup Visa]
+ decision2 -->|Rejected| consider-appeal[Consider Appeal]
+ receive-visa --> travel-to-portugal[Travel to Portugal]
+ travel-to-portugal --> register-business[Register Business<br/>and Get Residence Card]
+ register-business --> Success([Process Complete])
+ consider-appeal --> End3([Process Ended])
+
+ style Start fill:#e1f5e1
+ style Success fill:#e1f5e1
+ style End1 fill:#ffe1e1
+ style End2 fill:#ffe1e1
+ style End3 fill:#ffe1e1
+ style receive-visa fill:#e1e5ff
+`,
+ steps: [
+ {
+ id: 'business-idea',
+ title: 'Develop Innovative Startup Idea',
+ description: 'Create an innovative, scalable business concept suitable for the Portuguese startup ecosystem',
+ estimatedDuration: '1-2 months',
+ documents: [
+ 'Business concept description',
+ 'Market research and analysis',
+ 'Competitive landscape overview',
+ 'Innovation and scalability potential',
+ ],
+ notes: [
+ 'Focus on tech, tourism tech, fintech, or other innovation sectors',
+ 'Lisbon and Porto have vibrant startup ecosystems',
+ 'Consider joining startup events and networking',
+ 'Research Portuguese market opportunities',
+ 'Business must be innovative and have growth potential',
+ 'Portugal ranked #1 for quality of life for expats',
+ ],
+ },
+ {
+ id: 'prepare-business-plan',
+ title: 'Prepare Detailed Business Plan',
+ description: 'Create comprehensive business plan for incubator approval',
+ estimatedDuration: '2-4 weeks',
+ documents: [
+ 'Executive summary',
+ 'Detailed business plan (15-30 pages)',
+ 'Financial projections (3-5 years)',
+ 'Proof of EUR 5,000-10,000 minimum capital (bank statements)',
+ 'Team information (if co-founders)',
+ 'Market analysis and go-to-market strategy',
+ ],
+ notes: [
+ 'Minimum EUR 5,000-10,000 in capital recommended',
+ 'Business plan must demonstrate innovation and scalability',
+ 'Include clear revenue model and growth strategy',
+ 'Show understanding of Portuguese market',
+ 'Can include co-founders (each needs separate visa)',
+ 'Lower capital requirement than most EU startup visas',
+ ],
+ },
+ {
+ id: 'submit-to-incubator',
+ title: 'Submit to IAPMEI-Certified Incubator',
+ description: 'Apply to IAPMEI-certified startup incubator for approval',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'Completed incubator application form',
+ 'Business plan',
+ 'Financial projections',
+ 'Proof of funds',
+ 'Team CVs and background',
+ ],
+ notes: [
+ 'IAPMEI (Portuguese SME Agency) certifies incubators',
+ 'Certified incubators include: Beta-i, Startup Lisboa, Porto i/o',
+ 'Each incubator has own application process',
+ 'Some incubators offer mentorship and resources',
+ 'Application may include pitch presentation',
+ 'List of certified incubators: https://startupportugal.com/',
+ ],
+ },
+ {
+ id: 'incubator-review',
+ title: 'Incubator Review (30-60 Days)',
+ description: 'IAPMEI-certified incubator evaluates your startup business plan',
+ estimatedDuration: '30-60 days',
+ documents: [],
+ notes: [
+ 'Review typically takes 30-60 days',
+ 'May include interview or pitch session',
+ 'Incubator assesses innovation, scalability, and team',
+ 'Approval letter required for visa application',
+ 'Can reapply if rejected (with improved plan)',
+ 'Incubator may offer workspace and mentorship',
+ ],
+ },
+ {
+ id: 'gather-documents',
+ title: 'Gather Required Documents',
+ description: 'Collect all necessary documents for visa application',
+ estimatedDuration: '2-3 weeks',
+ documents: [
+ 'Valid passport (valid for at least 3 months beyond intended stay)',
+ 'Incubator approval letter',
+ 'Business plan',
+ 'Proof of EUR 5,000-10,000 minimum capital',
+ 'Passport-style photographs',
+ 'Proof of health insurance',
+ 'Proof of accommodation in Portugal',
+ 'Criminal record certificate (from country of residence)',
+ ],
+ notes: [
+ 'All documents must be in Portuguese or English',
+ 'Certified translations required for other languages',
+ 'Apostille required for documents from non-EU countries',
+ 'Keep originals for consulate appointment',
+ ],
+ },
+ {
+ id: 'submit-visa',
+ title: 'Submit Visa Application at Consulate',
+ description: 'Submit application at Portuguese consulate in your country',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'Completed visa application form',
+ 'All supporting documents',
+ 'Application fee payment (EUR 90 for visa)',
+ ],
+ notes: [
+ 'Book appointment at Portuguese consulate',
+ 'Application fee: EUR 90 for visa (2025)',
+ 'Biometrics collected at consulate',
+ 'May need to attend interview',
+ 'Processing starts after consulate submission',
+ ],
+ },
+ {
+ id: 'visa-processing',
+ title: 'SEF Processing (60-90 Days)',
+ description: 'Portuguese Immigration Service (SEF) reviews your application',
+ estimatedDuration: '60-90 days',
+ documents: [],
+ notes: [
+ 'Processing time: typically 60-90 days',
+ 'SEF may request additional documents',
+ 'Incubator approval is key factor',
+ 'Financial sufficiency verified',
+ 'Background check conducted',
+ ],
+ },
+ {
+ id: 'receive-visa',
+ title: 'Receive Startup Visa',
+ description: 'Collect your approved startup visa',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'Decision letter from SEF',
+ 'Startup visa in passport',
+ ],
+ notes: [
+ 'Initial visa valid for 4 months (entry visa)',
+ 'Must enter Portugal within 4 months',
+ 'Exchange for residence permit after arrival',
+ 'Can bring family members',
+ 'Residence permit initially for 1 year, renewable for 2-year periods',
+ ],
+ },
+ {
+ id: 'travel-to-portugal',
+ title: 'Travel to Portugal',
+ description: 'Enter Portugal with your startup visa',
+ estimatedDuration: '1-2 days',
+ documents: [
+ 'Passport with startup visa',
+ 'Incubator approval letter',
+ 'Business plan',
+ 'Proof of accommodation',
+ ],
+ notes: [
+ 'Main airports: Lisbon (LIS), Porto (OPO), Faro (FAO)',
+ 'Must enter within 4 months of visa issuance',
+ 'Register at SEF office within 3 months of arrival',
+ 'Bring all original documents',
+ ],
+ },
+ {
+ id: 'register-business',
+ title: 'Register Business and Get Residence Card',
+ description: 'Complete business registration and obtain residence permit card',
+ estimatedDuration: '2-4 weeks',
+ documents: [
+ 'Business registration form',
+ 'Company articles of association',
+ 'Proof of business address',
+ 'Bank account information',
+ 'NIF (tax identification number)',
+ ],
+ notes: [
+ 'Register business with Conservatória do Registo Comercial',
+ 'Get NIF (Número de Identificação Fiscal) from Finanças',
+ 'Open Portuguese business bank account',
+ 'Register at SEF office for residence card',
+ 'Get residence permit card (Título de Residência)',
+ 'Join startup incubator programs and networks',
+ 'Access to Portuguese startup ecosystem and EU funding',
+ 'PR eligible after 5 years, citizenship after 5 years (with A2 Portuguese)',
+ ],
+ },
+ {
+ id: 'consider-resubmission',
+ title: 'Consider Resubmission',
+ description: 'If rejected by incubator, evaluate options for reapplication',
+ estimatedDuration: '1-2 months',
+ documents: [
+ 'Rejection feedback from incubator',
+ 'Revised business plan',
+ ],
+ notes: [
+ 'Review rejection reasons carefully',
+ 'Improve business plan based on feedback',
+ 'Consider applying to different certified incubator',
+ 'Strengthen financial projections and market analysis',
+ 'May need to pivot business model',
+ 'Can reapply after improvements',
+ ],
+ },
+ {
+ id: 'consider-appeal',
+ title: 'Consider Appeal',
+ description: 'If visa rejected, evaluate appeal options',
+ estimatedDuration: '1-2 months',
+ documents: [
+ 'Rejection decision from SEF',
+ 'Appeal form',
+ 'Additional supporting evidence',
+ ],
+ notes: [
+ 'Appeal deadline: 30 days from decision',
+ 'Submit appeal to SEF',
+ 'Provide additional evidence or clarifications',
+ 'Consider legal consultation',
+ 'Can reapply with stronger application',
+ 'Alternative: consider Portugal Tech Visa or D7 Visa',
+ ],
+ },
+ ],
+ },
 };
 
