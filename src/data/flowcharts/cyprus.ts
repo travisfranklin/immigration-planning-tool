@@ -280,22 +280,22 @@ flowchart TD
   successRate: '80%',
   mermaidDiagram: `
 flowchart TD
-  Start([Start Process]) --> BusinessIdea[Develop Innovative<br/>Business Idea]
-  BusinessIdea --> CheckFunds{Have EUR 20,000<br/>minimum funds?}
-  CheckFunds -->|Yes| PrepareBusinessPlan[Prepare Detailed<br/>Business Plan]
+  Start([Start Process]) --> business-idea[Develop Innovative<br/>Business Idea]
+  business-idea --> CheckFunds{Have EUR 20,000<br/>minimum funds?}
+  CheckFunds -->|Yes| prepare-business-plan[Prepare Detailed<br/>Business Plan]
   CheckFunds -->|No| End1([Not Eligible])
-  PrepareBusinessPlan --> SubmitToMinistry[Submit to Cyprus Deputy<br/>Ministry of Research]
-  SubmitToMinistry --> MinistryReview[Ministry Review<br/>30-60 Days]
-  MinistryReview --> Decision1{Approved?}
-  Decision1 -->|Yes| GatherDocs[Gather Required Documents]
+  prepare-business-plan --> submit-to-ministry[Submit to Cyprus Deputy<br/>Ministry of Research]
+  submit-to-ministry --> ministry-approval[Ministry Review<br/>30-60 Days]
+  ministry-approval --> Decision1{Approved?}
+  Decision1 -->|Yes| gather-documents[Gather Required Documents]
   Decision1 -->|Rejected| Appeal1[Consider Resubmission]
   Appeal1 --> End2([Process Ended])
-  GatherDocs --> SubmitVisa[Submit Visa Application]
-  SubmitVisa --> Processing[Processing<br/>60-90 Days]
+  gather-documents --> submit-visa[Submit Visa Application]
+  submit-visa --> Processing[Processing<br/>60-90 Days]
   Processing --> Decision2{Decision}
-  Decision2 -->|Approved| Visa[Receive Startup Visa]
+  Decision2 -->|Approved| receive-visa-register[Receive Startup Visa]
   Decision2 -->|Rejected| Appeal2[Consider Appeal]
-  Visa --> Travel[Travel to Cyprus]
+  receive-visa-register --> Travel[Travel to Cyprus]
   Travel --> RegisterBusiness[Register Business<br/>in Cyprus]
   RegisterBusiness --> Success([Process Complete])
   Appeal2 --> End3([Process Ended])
@@ -305,7 +305,7 @@ flowchart TD
   style End1 fill:#ffe1e1
   style End2 fill:#ffe1e1
   style End3 fill:#ffe1e1
-  style Visa fill:#e1e5ff
+  style receive-visa-register fill:#e1e5ff
 `,
   steps: [
     {
