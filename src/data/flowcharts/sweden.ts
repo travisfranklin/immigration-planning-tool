@@ -403,5 +403,199 @@ flowchart TD
  },
  ],
  },
+
+ 'se_family_reunification': {
+ programId: 'se_family_reunification',
+ countryCode: 'SE',
+ programName: 'Family Reunification',
+ totalEstimatedDuration: '3-6 months',
+ complexity: 'medium',
+ successRate: '85%',
+ mermaidDiagram: `
+flowchart TD
+ Start([Start]) --> check[Check Eligibility]
+ check --> eligible{Sponsor<br/>Eligible?}
+ eligible -->|Yes| docs[Gather Documents]
+ eligible -->|No| End1([Not Eligible])
+ docs --> submit[Submit Application]
+ submit --> process[Processing 3-6 Months]
+ process --> decision{Decision}
+ decision -->|Approved| permit[Receive Permit]
+ decision -->|Rejected| appeal[Consider Appeal]
+ permit --> travel[Travel to Sweden]
+ travel --> register[Register at Tax Agency]
+ register --> Success([Complete])
+ appeal --> End2([Process Ended])
+
+ style Start fill:#e1f5e1
+ style Success fill:#e1f5e1
+ style End1 fill:#ffe1e1
+ style End2 fill:#ffe1e1
+ style permit fill:#e1e5ff
+`,
+ steps: [
+ {
+ id: 'check',
+ title: 'Check Eligibility',
+ description: 'Verify sponsor has valid residence permit',
+ estimatedDuration: '1-2 weeks',
+ documents: ['Sponsor residence permit', 'Proof of relationship'],
+ notes: ['Sponsor must have valid permit', 'Spouse, children eligible', 'Income requirement applies'],
+ },
+ {
+ id: 'docs',
+ title: 'Gather Documents',
+ description: 'Collect required documents',
+ estimatedDuration: '3-4 weeks',
+ documents: ['Passport', 'Marriage/birth certificate', 'Proof of accommodation', 'Proof of income', 'Health insurance'],
+ notes: ['All documents must be apostilled', 'Translations to Swedish or English'],
+ },
+ {
+ id: 'submit',
+ title: 'Submit Application',
+ description: 'Submit to Swedish Migration Agency',
+ estimatedDuration: '1-2 weeks',
+ documents: ['All documents', 'Application fee (SEK 1,500)'],
+ notes: ['Processing: 3-6 months'],
+ },
+ {
+ id: 'process',
+ title: 'Processing',
+ description: 'Migration Agency reviews application',
+ estimatedDuration: '3-6 months',
+ documents: [],
+ notes: ['Relationship verified', 'Income requirement checked'],
+ },
+ {
+ id: 'permit',
+ title: 'Receive Permit',
+ description: 'Receive family reunification permit',
+ estimatedDuration: '2-4 weeks',
+ documents: ['Residence permit'],
+ notes: ['Valid for 2 years, renewable'],
+ },
+ {
+ id: 'travel',
+ title: 'Travel to Sweden',
+ description: 'Travel with permit',
+ estimatedDuration: '1-3 days',
+ documents: ['Passport with permit'],
+ notes: ['Main airports: Stockholm (ARN), Gothenburg (GOT)'],
+ },
+ {
+ id: 'register',
+ title: 'Register at Tax Agency',
+ description: 'Register and get personnummer',
+ estimatedDuration: '2-4 weeks',
+ documents: ['Proof of address'],
+ notes: ['Get personnummer', 'PR in 5 years'],
+ },
+ {
+ id: 'appeal',
+ title: 'Consider Appeal',
+ description: 'If rejected, evaluate options',
+ estimatedDuration: '2-4 months',
+ documents: ['Rejection decision', 'Appeal form'],
+ notes: ['Can reapply with additional evidence'],
+ },
+ ],
+ },
+
+ 'se_researcher': {
+ programId: 'se_researcher',
+ countryCode: 'SE',
+ programName: 'Researcher Visa',
+ totalEstimatedDuration: '2-4 months',
+ complexity: 'medium',
+ successRate: '90%',
+ mermaidDiagram: `
+flowchart TD
+ Start([Start]) --> check[Check Eligibility]
+ check --> hosting{Hosting<br/>Agreement?}
+ hosting -->|Yes| docs[Gather Documents]
+ hosting -->|No| End1([Not Eligible])
+ docs --> submit[Submit Application]
+ submit --> process[Processing 60-90 Days]
+ process --> decision{Decision}
+ decision -->|Approved| permit[Receive Permit]
+ decision -->|Rejected| appeal[Consider Appeal]
+ permit --> travel[Travel to Sweden]
+ travel --> register[Register and Start Research]
+ register --> Success([Complete])
+ appeal --> End2([Process Ended])
+
+ style Start fill:#e1f5e1
+ style Success fill:#e1f5e1
+ style End1 fill:#ffe1e1
+ style End2 fill:#ffe1e1
+ style permit fill:#e1e5ff
+`,
+ steps: [
+ {
+ id: 'check',
+ title: 'Check Eligibility',
+ description: 'Verify hosting agreement with Swedish research institution',
+ estimatedDuration: '2-4 weeks',
+ documents: ['Hosting agreement', 'PhD or equivalent'],
+ notes: ['Must have PhD or equivalent', 'Hosting agreement with approved institution', 'World-class research environment'],
+ },
+ {
+ id: 'docs',
+ title: 'Gather Documents',
+ description: 'Collect required documents',
+ estimatedDuration: '2-3 weeks',
+ documents: ['Passport', 'Hosting agreement', 'PhD certificate', 'CV', 'Research plan', 'Health insurance'],
+ notes: ['Documents in Swedish or English'],
+ },
+ {
+ id: 'submit',
+ title: 'Submit Application',
+ description: 'Submit to Swedish Migration Agency',
+ estimatedDuration: '1 week',
+ documents: ['All documents', 'Application fee (SEK 2,000)'],
+ notes: ['Processing: 60-90 days'],
+ },
+ {
+ id: 'process',
+ title: 'Processing',
+ description: 'Migration Agency reviews application',
+ estimatedDuration: '60-90 days',
+ documents: [],
+ notes: ['Qualifications verified', 'Hosting agreement checked'],
+ },
+ {
+ id: 'permit',
+ title: 'Receive Permit',
+ description: 'Receive researcher permit',
+ estimatedDuration: '1-2 weeks',
+ documents: ['Residence permit'],
+ notes: ['Valid for duration of research (up to 2 years), renewable'],
+ },
+ {
+ id: 'travel',
+ title: 'Travel to Sweden',
+ description: 'Travel with permit',
+ estimatedDuration: '1-3 days',
+ documents: ['Passport with permit'],
+ notes: ['Main airports: Stockholm (ARN), Gothenburg (GOT)', 'Nobel Prize country'],
+ },
+ {
+ id: 'register',
+ title: 'Register and Start Research',
+ description: 'Register at Tax Agency and begin research',
+ estimatedDuration: '2-4 weeks',
+ documents: ['Proof of address', 'Hosting agreement'],
+ notes: ['Get personnummer', 'Access to world-class facilities', 'PR in 5 years'],
+ },
+ {
+ id: 'appeal',
+ title: 'Consider Appeal',
+ description: 'If rejected, evaluate options',
+ estimatedDuration: '1-2 months',
+ documents: ['Rejection decision', 'Appeal form'],
+ notes: ['Can reapply with additional evidence'],
+ },
+ ],
+ },
 };
 

@@ -544,5 +544,199 @@ flowchart TD
     },
   ],
  },
+
+ 'cy_family_reunification': {
+ programId: 'cy_family_reunification',
+ countryCode: 'CY',
+ programName: 'Family Reunification',
+ totalEstimatedDuration: '2-4 months',
+ complexity: 'low',
+ successRate: '85%',
+ mermaidDiagram: `
+flowchart TD
+ Start([Start]) --> check[Check Eligibility]
+ check --> eligible{Sponsor<br/>Eligible?}
+ eligible -->|Yes| docs[Gather Documents]
+ eligible -->|No| End1([Not Eligible])
+ docs --> submit[Submit Application]
+ submit --> process[Processing 60-90 Days]
+ process --> decision{Decision}
+ decision -->|Approved| permit[Receive Permit]
+ decision -->|Rejected| appeal[Consider Appeal]
+ permit --> travel[Travel to Cyprus]
+ travel --> register[Register at Immigration]
+ register --> Success([Complete])
+ appeal --> End2([Process Ended])
+
+ style Start fill:#e1f5e1
+ style Success fill:#e1f5e1
+ style End1 fill:#ffe1e1
+ style End2 fill:#ffe1e1
+ style permit fill:#e1e5ff
+`,
+ steps: [
+ {
+ id: 'check',
+ title: 'Check Eligibility',
+ description: 'Verify sponsor has valid residence permit',
+ estimatedDuration: '1 week',
+ documents: ['Sponsor residence permit', 'Proof of relationship'],
+ notes: ['Sponsor must have valid permit', 'Spouse, children, parents eligible'],
+ },
+ {
+ id: 'docs',
+ title: 'Gather Documents',
+ description: 'Collect required documents',
+ estimatedDuration: '2-3 weeks',
+ documents: ['Passport', 'Marriage/birth certificate', 'Proof of accommodation', 'Proof of income', 'Health insurance'],
+ notes: ['All documents must be apostilled', 'Translations to Greek or English'],
+ },
+ {
+ id: 'submit',
+ title: 'Submit Application',
+ description: 'Submit to Cyprus Immigration',
+ estimatedDuration: '1 week',
+ documents: ['All documents', 'Application fee'],
+ notes: ['Processing: 60-90 days'],
+ },
+ {
+ id: 'process',
+ title: 'Processing',
+ description: 'Immigration reviews application',
+ estimatedDuration: '60-90 days',
+ documents: [],
+ notes: ['Relationship verified'],
+ },
+ {
+ id: 'permit',
+ title: 'Receive Permit',
+ description: 'Receive family reunification permit',
+ estimatedDuration: '1 week',
+ documents: ['Residence permit'],
+ notes: ['Same validity as sponsor permit'],
+ },
+ {
+ id: 'travel',
+ title: 'Travel to Cyprus',
+ description: 'Travel with permit',
+ estimatedDuration: '1-3 days',
+ documents: ['Passport with permit'],
+ notes: ['Main airports: Larnaca (LCA), Paphos (PFO)'],
+ },
+ {
+ id: 'register',
+ title: 'Register at Immigration',
+ description: 'Register within 7 days',
+ estimatedDuration: '1 week',
+ documents: ['Proof of address'],
+ notes: ['Register within 7 days', 'PR in 5 years'],
+ },
+ {
+ id: 'appeal',
+ title: 'Consider Appeal',
+ description: 'If rejected, evaluate options',
+ estimatedDuration: '1-2 months',
+ documents: ['Rejection decision', 'Appeal form'],
+ notes: ['Can reapply with additional evidence'],
+ },
+ ],
+ },
+
+ 'cy_digital_nomad': {
+ programId: 'cy_digital_nomad',
+ countryCode: 'CY',
+ programName: 'Digital Nomad Visa',
+ totalEstimatedDuration: '1-2 months',
+ complexity: 'low',
+ successRate: '90%',
+ mermaidDiagram: `
+flowchart TD
+ Start([Start]) --> check[Check Eligibility]
+ check --> income{EUR 3,500/mo<br/>Income?}
+ income -->|Yes| docs[Gather Documents]
+ income -->|No| End1([Not Eligible])
+ docs --> submit[Submit Application]
+ submit --> process[Processing 30-60 Days]
+ process --> decision{Decision}
+ decision -->|Approved| permit[Receive Permit]
+ decision -->|Rejected| appeal[Consider Appeal]
+ permit --> travel[Travel to Cyprus]
+ travel --> register[Register at Immigration]
+ register --> Success([Complete])
+ appeal --> End2([Process Ended])
+
+ style Start fill:#e1f5e1
+ style Success fill:#e1f5e1
+ style End1 fill:#ffe1e1
+ style End2 fill:#ffe1e1
+ style permit fill:#e1e5ff
+`,
+ steps: [
+ {
+ id: 'check',
+ title: 'Check Eligibility',
+ description: 'Verify remote work and income',
+ estimatedDuration: '1 week',
+ documents: ['Employment contract', 'Proof of income'],
+ notes: ['EUR 3,500/month minimum', 'Work for non-Cyprus company', 'Mediterranean lifestyle'],
+ },
+ {
+ id: 'docs',
+ title: 'Gather Documents',
+ description: 'Collect required documents',
+ estimatedDuration: '2-3 weeks',
+ documents: ['Passport', 'Employment contract', 'Bank statements (6 months)', 'Health insurance', 'Criminal check'],
+ notes: ['All documents in English or Greek'],
+ },
+ {
+ id: 'submit',
+ title: 'Submit Application',
+ description: 'Submit online to Cyprus authorities',
+ estimatedDuration: '1 week',
+ documents: ['All documents', 'Application fee (EUR 70)'],
+ notes: ['Processing: 30-60 days'],
+ },
+ {
+ id: 'process',
+ title: 'Processing',
+ description: 'Immigration reviews application',
+ estimatedDuration: '30-60 days',
+ documents: [],
+ notes: ['Income and employment verified'],
+ },
+ {
+ id: 'permit',
+ title: 'Receive Permit',
+ description: 'Receive digital nomad permit',
+ estimatedDuration: '1 week',
+ documents: ['Residence permit'],
+ notes: ['Valid for 1 year, renewable up to 3 years'],
+ },
+ {
+ id: 'travel',
+ title: 'Travel to Cyprus',
+ description: 'Travel with permit',
+ estimatedDuration: '1-3 days',
+ documents: ['Passport with permit'],
+ notes: ['Main airports: Larnaca (LCA), Paphos (PFO)', '300+ days of sunshine'],
+ },
+ {
+ id: 'register',
+ title: 'Register at Immigration',
+ description: 'Register within 7 days',
+ estimatedDuration: '1 week',
+ documents: ['Proof of address'],
+ notes: ['Register within 7 days', 'No local taxation on foreign income'],
+ },
+ {
+ id: 'appeal',
+ title: 'Consider Appeal',
+ description: 'If rejected, evaluate options',
+ estimatedDuration: '1-2 months',
+ documents: ['Rejection decision', 'Appeal form'],
+ notes: ['Can reapply with additional evidence'],
+ },
+ ],
+ },
 };
 

@@ -645,5 +645,102 @@ flowchart TD
  },
  ],
  },
+
+ 'fi_family_reunification': {
+ programId: 'fi_family_reunification',
+ countryCode: 'FI',
+ programName: 'Family Reunification',
+ totalEstimatedDuration: '3-6 months',
+ complexity: 'medium',
+ successRate: '85%',
+ mermaidDiagram: `
+flowchart TD
+ Start([Start]) --> check[Check Eligibility]
+ check --> eligible{Sponsor<br/>Eligible?}
+ eligible -->|Yes| docs[Gather Documents]
+ eligible -->|No| End1([Not Eligible])
+ docs --> submit[Submit Application]
+ submit --> process[Processing 3-6 Months]
+ process --> decision{Decision}
+ decision -->|Approved| permit[Receive Permit]
+ decision -->|Rejected| appeal[Consider Appeal]
+ permit --> travel[Travel to Finland]
+ travel --> register[Register at Maistraatti]
+ register --> Success([Complete])
+ appeal --> End2([Process Ended])
+
+ style Start fill:#e1f5e1
+ style Success fill:#e1f5e1
+ style End1 fill:#ffe1e1
+ style End2 fill:#ffe1e1
+ style permit fill:#e1e5ff
+`,
+ steps: [
+ {
+ id: 'check',
+ title: 'Check Eligibility',
+ description: 'Verify sponsor has valid residence permit',
+ estimatedDuration: '1-2 weeks',
+ documents: ['Sponsor residence permit', 'Proof of relationship'],
+ notes: ['Sponsor must have valid permit', 'Spouse, children eligible', 'Income requirement applies'],
+ },
+ {
+ id: 'docs',
+ title: 'Gather Documents',
+ description: 'Collect required documents',
+ estimatedDuration: '3-4 weeks',
+ documents: ['Passport', 'Marriage/birth certificate', 'Proof of accommodation', 'Proof of income (EUR 1,400/month)', 'Health insurance'],
+ notes: ['All documents must be apostilled', 'Translations to Finnish or Swedish'],
+ },
+ {
+ id: 'submit',
+ title: 'Submit Application',
+ description: 'Submit to Finnish Immigration Service',
+ estimatedDuration: '1 week',
+ documents: ['All documents', 'Application fee (EUR 520)'],
+ notes: ['Processing: 3-6 months'],
+ },
+ {
+ id: 'process',
+ title: 'Processing',
+ description: 'Immigration Service reviews application',
+ estimatedDuration: '3-6 months',
+ documents: [],
+ notes: ['Relationship verified', 'Income requirement checked'],
+ },
+ {
+ id: 'permit',
+ title: 'Receive Permit',
+ description: 'Receive family reunification permit',
+ estimatedDuration: '1-2 weeks',
+ documents: ['Residence permit'],
+ notes: ['Valid for 1 year, renewable'],
+ },
+ {
+ id: 'travel',
+ title: 'Travel to Finland',
+ description: 'Travel with permit',
+ estimatedDuration: '1-3 days',
+ documents: ['Passport with permit'],
+ notes: ['Main airport: Helsinki (HEL)'],
+ },
+ {
+ id: 'register',
+ title: 'Register at Maistraatti',
+ description: 'Register and get personal identity code',
+ estimatedDuration: '1-2 weeks',
+ documents: ['Proof of address'],
+ notes: ['Get henkilötunnus', 'PR in 4 years'],
+ },
+ {
+ id: 'appeal',
+ title: 'Consider Appeal',
+ description: 'If rejected, evaluate options',
+ estimatedDuration: '2-4 months',
+ documents: ['Rejection decision', 'Appeal form'],
+ notes: ['Can reapply with additional evidence'],
+ },
+ ],
+ },
 };
 

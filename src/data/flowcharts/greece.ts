@@ -458,5 +458,199 @@ flowchart TD
  },
  ],
  },
+
+ 'gr_family_reunification': {
+ programId: 'gr_family_reunification',
+ countryCode: 'GR',
+ programName: 'Family Reunification',
+ totalEstimatedDuration: '2-4 months',
+ complexity: 'low',
+ successRate: '85%',
+ mermaidDiagram: `
+flowchart TD
+ Start([Start]) --> check[Check Eligibility]
+ check --> eligible{Sponsor<br/>Eligible?}
+ eligible -->|Yes| docs[Gather Documents]
+ eligible -->|No| End1([Not Eligible])
+ docs --> submit[Submit Application]
+ submit --> process[Processing 60-90 Days]
+ process --> decision{Decision}
+ decision -->|Approved| permit[Receive Permit]
+ decision -->|Rejected| appeal[Consider Appeal]
+ permit --> travel[Travel to Greece]
+ travel --> register[Register at Immigration]
+ register --> Success([Complete])
+ appeal --> End2([Process Ended])
+
+ style Start fill:#e1f5e1
+ style Success fill:#e1f5e1
+ style End1 fill:#ffe1e1
+ style End2 fill:#ffe1e1
+ style permit fill:#e1e5ff
+`,
+ steps: [
+ {
+ id: 'check',
+ title: 'Check Eligibility',
+ description: 'Verify sponsor has valid residence permit',
+ estimatedDuration: '1 week',
+ documents: ['Sponsor residence permit', 'Proof of relationship'],
+ notes: ['Sponsor must have valid permit', 'Spouse, children, parents eligible'],
+ },
+ {
+ id: 'docs',
+ title: 'Gather Documents',
+ description: 'Collect required documents',
+ estimatedDuration: '2-3 weeks',
+ documents: ['Passport', 'Marriage/birth certificate', 'Proof of accommodation', 'Proof of income', 'Health insurance'],
+ notes: ['All documents must be apostilled', 'Translations to Greek required'],
+ },
+ {
+ id: 'submit',
+ title: 'Submit Application',
+ description: 'Submit to Greek Immigration',
+ estimatedDuration: '1 week',
+ documents: ['All documents', 'Application fee'],
+ notes: ['Processing: 60-90 days'],
+ },
+ {
+ id: 'process',
+ title: 'Processing',
+ description: 'Immigration reviews application',
+ estimatedDuration: '60-90 days',
+ documents: [],
+ notes: ['Relationship verified'],
+ },
+ {
+ id: 'permit',
+ title: 'Receive Permit',
+ description: 'Receive family reunification permit',
+ estimatedDuration: '1 week',
+ documents: ['Residence permit'],
+ notes: ['Same validity as sponsor permit'],
+ },
+ {
+ id: 'travel',
+ title: 'Travel to Greece',
+ description: 'Travel with permit',
+ estimatedDuration: '1-3 days',
+ documents: ['Passport with permit'],
+ notes: ['Main airport: Athens (ATH)'],
+ },
+ {
+ id: 'register',
+ title: 'Register at Immigration',
+ description: 'Register within 8 days',
+ estimatedDuration: '1 week',
+ documents: ['Proof of address'],
+ notes: ['Register within 8 days', 'PR in 7 years'],
+ },
+ {
+ id: 'appeal',
+ title: 'Consider Appeal',
+ description: 'If rejected, evaluate options',
+ estimatedDuration: '1-2 months',
+ documents: ['Rejection decision', 'Appeal form'],
+ notes: ['Can reapply with additional evidence'],
+ },
+ ],
+ },
+
+ 'gr_independent_means': {
+ programId: 'gr_independent_means',
+ countryCode: 'GR',
+ programName: 'Independent Means (Financially Independent)',
+ totalEstimatedDuration: '2-4 months',
+ complexity: 'low',
+ successRate: '90%',
+ mermaidDiagram: `
+flowchart TD
+ Start([Start]) --> check[Check Eligibility]
+ check --> income{EUR 2,000/mo<br/>Income?}
+ income -->|Yes| docs[Gather Documents]
+ income -->|No| End1([Not Eligible])
+ docs --> submit[Submit Application]
+ submit --> process[Processing 60-90 Days]
+ process --> decision{Decision}
+ decision -->|Approved| permit[Receive Permit]
+ decision -->|Rejected| appeal[Consider Appeal]
+ permit --> travel[Travel to Greece]
+ travel --> register[Register at Immigration]
+ register --> Success([Complete])
+ appeal --> End2([Process Ended])
+
+ style Start fill:#e1f5e1
+ style Success fill:#e1f5e1
+ style End1 fill:#ffe1e1
+ style End2 fill:#ffe1e1
+ style permit fill:#e1e5ff
+`,
+ steps: [
+ {
+ id: 'check',
+ title: 'Check Eligibility',
+ description: 'Verify sufficient passive income',
+ estimatedDuration: '1 week',
+ documents: ['Bank statements', 'Proof of passive income'],
+ notes: ['EUR 2,000/month minimum', 'Pension, investments, rental income', 'Mediterranean lifestyle'],
+ },
+ {
+ id: 'docs',
+ title: 'Gather Documents',
+ description: 'Collect required documents',
+ estimatedDuration: '2-3 weeks',
+ documents: ['Passport', 'Bank statements (12 months)', 'Proof of passive income', 'Health insurance', 'Criminal check', 'Proof of accommodation'],
+ notes: ['All documents must be apostilled', 'Translations to Greek required'],
+ },
+ {
+ id: 'submit',
+ title: 'Submit Application',
+ description: 'Submit to Greek Consulate',
+ estimatedDuration: '1 week',
+ documents: ['All documents', 'Application fee'],
+ notes: ['Processing: 60-90 days'],
+ },
+ {
+ id: 'process',
+ title: 'Processing',
+ description: 'Consulate reviews application',
+ estimatedDuration: '60-90 days',
+ documents: [],
+ notes: ['Financial means verified'],
+ },
+ {
+ id: 'permit',
+ title: 'Receive Permit',
+ description: 'Receive independent means permit',
+ estimatedDuration: '1 week',
+ documents: ['Residence permit'],
+ notes: ['Valid for 2 years, renewable'],
+ },
+ {
+ id: 'travel',
+ title: 'Travel to Greece',
+ description: 'Travel with permit',
+ estimatedDuration: '1-3 days',
+ documents: ['Passport with permit'],
+ notes: ['Main airport: Athens (ATH)', 'Islands: Santorini, Mykonos, Crete'],
+ },
+ {
+ id: 'register',
+ title: 'Register at Immigration',
+ description: 'Register within 8 days',
+ estimatedDuration: '1 week',
+ documents: ['Proof of address'],
+ notes: ['Register within 8 days', 'PR in 7 years', 'No work allowed'],
+ },
+ {
+ id: 'appeal',
+ title: 'Consider Appeal',
+ description: 'If rejected, evaluate options',
+ estimatedDuration: '1-2 months',
+ documents: ['Rejection decision', 'Appeal form'],
+ notes: ['Can reapply with additional evidence'],
+ },
+ ],
+ },
 };
 

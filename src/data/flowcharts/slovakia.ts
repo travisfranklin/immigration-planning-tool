@@ -451,5 +451,102 @@ flowchart TD
  },
  ],
  },
+
+ 'sk_family_reunification': {
+ programId: 'sk_family_reunification',
+ countryCode: 'SK',
+ programName: 'Family Reunification',
+ totalEstimatedDuration: '2-3 months',
+ complexity: 'low',
+ successRate: '85%',
+ mermaidDiagram: `
+flowchart TD
+ Start([Start]) --> check[Check Eligibility]
+ check --> eligible{Sponsor<br/>Eligible?}
+ eligible -->|Yes| docs[Gather Documents]
+ eligible -->|No| End1([Not Eligible])
+ docs --> submit[Submit Application]
+ submit --> process[Processing 30-60 Days]
+ process --> decision{Decision}
+ decision -->|Approved| permit[Receive Permit]
+ decision -->|Rejected| appeal[Consider Appeal]
+ permit --> travel[Travel to Slovakia]
+ travel --> register[Register at Foreign Police]
+ register --> Success([Complete])
+ appeal --> End2([Process Ended])
+
+ style Start fill:#e1f5e1
+ style Success fill:#e1f5e1
+ style End1 fill:#ffe1e1
+ style End2 fill:#ffe1e1
+ style permit fill:#e1e5ff
+`,
+ steps: [
+ {
+ id: 'check',
+ title: 'Check Eligibility',
+ description: 'Verify sponsor has valid residence permit',
+ estimatedDuration: '1 week',
+ documents: ['Sponsor residence permit', 'Proof of relationship'],
+ notes: ['Sponsor must have valid permit', 'Spouse, children, parents eligible'],
+ },
+ {
+ id: 'docs',
+ title: 'Gather Documents',
+ description: 'Collect required documents',
+ estimatedDuration: '2-3 weeks',
+ documents: ['Passport', 'Marriage/birth certificate', 'Proof of accommodation', 'Proof of income', 'Health insurance'],
+ notes: ['All documents must be apostilled', 'Translations to Slovak required'],
+ },
+ {
+ id: 'submit',
+ title: 'Submit Application',
+ description: 'Submit to Slovak authorities',
+ estimatedDuration: '1 week',
+ documents: ['All documents', 'Application fee'],
+ notes: ['Processing: 30-60 days'],
+ },
+ {
+ id: 'process',
+ title: 'Processing',
+ description: 'Immigration reviews application',
+ estimatedDuration: '30-60 days',
+ documents: [],
+ notes: ['Relationship verified'],
+ },
+ {
+ id: 'permit',
+ title: 'Receive Permit',
+ description: 'Receive family reunification permit',
+ estimatedDuration: '1 week',
+ documents: ['Residence permit'],
+ notes: ['Same validity as sponsor permit'],
+ },
+ {
+ id: 'travel',
+ title: 'Travel to Slovakia',
+ description: 'Travel with permit',
+ estimatedDuration: '1-3 days',
+ documents: ['Passport with permit'],
+ notes: ['Main airport: Bratislava (BTS)'],
+ },
+ {
+ id: 'register',
+ title: 'Register at Foreign Police',
+ description: 'Register within 3 days',
+ estimatedDuration: '1 week',
+ documents: ['Proof of address'],
+ notes: ['Register at Foreign Police within 3 days', 'PR in 5 years'],
+ },
+ {
+ id: 'appeal',
+ title: 'Consider Appeal',
+ description: 'If rejected, evaluate options',
+ estimatedDuration: '1-2 months',
+ documents: ['Rejection decision', 'Appeal form'],
+ notes: ['Can reapply with additional evidence'],
+ },
+ ],
+ },
 };
 

@@ -548,5 +548,199 @@ flowchart TD
  },
  ],
  },
+
+ 'mt_family_reunification': {
+ programId: 'mt_family_reunification',
+ countryCode: 'MT',
+ programName: 'Family Reunification',
+ totalEstimatedDuration: '3-6 months',
+ complexity: 'medium',
+ successRate: '85%',
+ mermaidDiagram: `
+flowchart TD
+ Start([Start]) --> check[Check Eligibility]
+ check --> eligible{Sponsor<br/>Eligible?}
+ eligible -->|Yes| docs[Gather Documents]
+ eligible -->|No| End1([Not Eligible])
+ docs --> submit[Submit Application]
+ submit --> process[Processing 3-6 Months]
+ process --> decision{Decision}
+ decision -->|Approved| permit[Receive Permit]
+ decision -->|Rejected| appeal[Consider Appeal]
+ permit --> travel[Travel to Malta]
+ travel --> register[Register at Identity Malta]
+ register --> Success([Complete])
+ appeal --> End2([Process Ended])
+
+ style Start fill:#e1f5e1
+ style Success fill:#e1f5e1
+ style End1 fill:#ffe1e1
+ style End2 fill:#ffe1e1
+ style permit fill:#e1e5ff
+`,
+ steps: [
+ {
+ id: 'check',
+ title: 'Check Eligibility',
+ description: 'Verify sponsor has valid residence permit',
+ estimatedDuration: '1-2 weeks',
+ documents: ['Sponsor residence permit', 'Proof of relationship'],
+ notes: ['Sponsor must have valid permit', 'Spouse, children eligible'],
+ },
+ {
+ id: 'docs',
+ title: 'Gather Documents',
+ description: 'Collect required documents',
+ estimatedDuration: '3-4 weeks',
+ documents: ['Passport', 'Marriage/birth certificate', 'Proof of accommodation', 'Proof of income', 'Health insurance'],
+ notes: ['All documents must be apostilled', 'Translations to English or Maltese'],
+ },
+ {
+ id: 'submit',
+ title: 'Submit Application',
+ description: 'Submit to Identity Malta',
+ estimatedDuration: '1-2 weeks',
+ documents: ['All documents', 'Application fee (EUR 280)'],
+ notes: ['Processing: 3-6 months'],
+ },
+ {
+ id: 'process',
+ title: 'Processing',
+ description: 'Identity Malta reviews application',
+ estimatedDuration: '3-6 months',
+ documents: [],
+ notes: ['Relationship verified'],
+ },
+ {
+ id: 'permit',
+ title: 'Receive Permit',
+ description: 'Receive family reunification permit',
+ estimatedDuration: '2-4 weeks',
+ documents: ['Residence permit'],
+ notes: ['Same validity as sponsor permit'],
+ },
+ {
+ id: 'travel',
+ title: 'Travel to Malta',
+ description: 'Travel with permit',
+ estimatedDuration: '1-3 days',
+ documents: ['Passport with permit'],
+ notes: ['Main airport: Malta (MLA)'],
+ },
+ {
+ id: 'register',
+ title: 'Register at Identity Malta',
+ description: 'Register and get eResidence card',
+ estimatedDuration: '2-4 weeks',
+ documents: ['Proof of address'],
+ notes: ['Get eResidence card', 'PR in 5 years'],
+ },
+ {
+ id: 'appeal',
+ title: 'Consider Appeal',
+ description: 'If rejected, evaluate options',
+ estimatedDuration: '2-4 months',
+ documents: ['Rejection decision', 'Appeal form'],
+ notes: ['Can reapply with additional evidence'],
+ },
+ ],
+ },
+
+ 'mt_highly_skilled': {
+ programId: 'mt_highly_skilled',
+ countryCode: 'MT',
+ programName: 'Highly Skilled Worker',
+ totalEstimatedDuration: '2-3 months',
+ complexity: 'medium',
+ successRate: '85%',
+ mermaidDiagram: `
+flowchart TD
+ Start([Start]) --> check[Check Eligibility]
+ check --> salary{EUR 45,000/yr<br/>Salary?}
+ salary -->|Yes| docs[Gather Documents]
+ salary -->|No| End1([Not Eligible])
+ docs --> submit[Submit Application]
+ submit --> process[Processing 60-90 Days]
+ process --> decision{Decision}
+ decision -->|Approved| permit[Receive Permit]
+ decision -->|Rejected| appeal[Consider Appeal]
+ permit --> travel[Travel to Malta]
+ travel --> register[Register at Identity Malta]
+ register --> Success([Complete])
+ appeal --> End2([Process Ended])
+
+ style Start fill:#e1f5e1
+ style Success fill:#e1f5e1
+ style End1 fill:#ffe1e1
+ style End2 fill:#ffe1e1
+ style permit fill:#e1e5ff
+`,
+ steps: [
+ {
+ id: 'check',
+ title: 'Check Eligibility',
+ description: 'Verify job offer and qualifications',
+ estimatedDuration: '1-2 weeks',
+ documents: ['Job offer', 'Qualifications'],
+ notes: ['EUR 45,000/year minimum', 'Degree or 5+ years experience', 'English-speaking island'],
+ },
+ {
+ id: 'docs',
+ title: 'Gather Documents',
+ description: 'Collect required documents',
+ estimatedDuration: '2-3 weeks',
+ documents: ['Passport', 'Job offer', 'Degree/qualifications', 'CV', 'Criminal check', 'Health insurance'],
+ notes: ['All documents in English or Maltese'],
+ },
+ {
+ id: 'submit',
+ title: 'Submit Application',
+ description: 'Submit to Jobsplus',
+ estimatedDuration: '1 week',
+ documents: ['All documents', 'Application fee (EUR 230)'],
+ notes: ['Processing: 60-90 days'],
+ },
+ {
+ id: 'process',
+ title: 'Processing',
+ description: 'Jobsplus reviews application',
+ estimatedDuration: '60-90 days',
+ documents: [],
+ notes: ['Qualifications verified'],
+ },
+ {
+ id: 'permit',
+ title: 'Receive Permit',
+ description: 'Receive highly skilled worker permit',
+ estimatedDuration: '1-2 weeks',
+ documents: ['Residence permit'],
+ notes: ['Valid for 3 years, renewable'],
+ },
+ {
+ id: 'travel',
+ title: 'Travel to Malta',
+ description: 'Travel with permit',
+ estimatedDuration: '1-3 days',
+ documents: ['Passport with permit'],
+ notes: ['Main airport: Malta (MLA)', 'Mediterranean island', '300+ days of sunshine'],
+ },
+ {
+ id: 'register',
+ title: 'Register at Identity Malta',
+ description: 'Register and get eResidence card',
+ estimatedDuration: '2-4 weeks',
+ documents: ['Proof of address', 'Employment contract'],
+ notes: ['Get eResidence card', 'PR in 5 years', 'Citizenship in 5 years'],
+ },
+ {
+ id: 'appeal',
+ title: 'Consider Appeal',
+ description: 'If rejected, evaluate options',
+ estimatedDuration: '1-2 months',
+ documents: ['Rejection decision', 'Appeal form'],
+ notes: ['Can reapply with additional evidence'],
+ },
+ ],
+ },
 };
 

@@ -745,5 +745,102 @@ flowchart TD
  },
  ],
  },
+
+ 'pt_family_reunification': {
+ programId: 'pt_family_reunification',
+ countryCode: 'PT',
+ programName: 'Family Reunification',
+ totalEstimatedDuration: '3-6 months',
+ complexity: 'medium',
+ successRate: '85%',
+ mermaidDiagram: `
+flowchart TD
+ Start([Start]) --> check[Check Eligibility]
+ check --> eligible{Sponsor<br/>Eligible?}
+ eligible -->|Yes| docs[Gather Documents]
+ eligible -->|No| End1([Not Eligible])
+ docs --> submit[Submit Application]
+ submit --> process[Processing 3-6 Months]
+ process --> decision{Decision}
+ decision -->|Approved| permit[Receive Permit]
+ decision -->|Rejected| appeal[Consider Appeal]
+ permit --> travel[Travel to Portugal]
+ travel --> register[Register at SEF]
+ register --> Success([Complete])
+ appeal --> End2([Process Ended])
+
+ style Start fill:#e1f5e1
+ style Success fill:#e1f5e1
+ style End1 fill:#ffe1e1
+ style End2 fill:#ffe1e1
+ style permit fill:#e1e5ff
+`,
+ steps: [
+ {
+ id: 'check',
+ title: 'Check Eligibility',
+ description: 'Verify sponsor has valid residence permit',
+ estimatedDuration: '1-2 weeks',
+ documents: ['Sponsor residence permit', 'Proof of relationship'],
+ notes: ['Sponsor must have valid permit', 'Spouse, children eligible', 'Income requirement applies'],
+ },
+ {
+ id: 'docs',
+ title: 'Gather Documents',
+ description: 'Collect required documents',
+ estimatedDuration: '3-4 weeks',
+ documents: ['Passport', 'Marriage/birth certificate', 'Proof of accommodation', 'Proof of income', 'Health insurance'],
+ notes: ['All documents must be apostilled', 'Translations to Portuguese'],
+ },
+ {
+ id: 'submit',
+ title: 'Submit Application',
+ description: 'Submit to SEF (Immigration Service)',
+ estimatedDuration: '1-2 weeks',
+ documents: ['All documents', 'Application fee (EUR 170)'],
+ notes: ['Processing: 3-6 months'],
+ },
+ {
+ id: 'process',
+ title: 'Processing',
+ description: 'SEF reviews application',
+ estimatedDuration: '3-6 months',
+ documents: [],
+ notes: ['Relationship verified', 'Income requirement checked'],
+ },
+ {
+ id: 'permit',
+ title: 'Receive Permit',
+ description: 'Receive family reunification permit',
+ estimatedDuration: '2-4 weeks',
+ documents: ['Residence permit'],
+ notes: ['Valid for 2 years, renewable'],
+ },
+ {
+ id: 'travel',
+ title: 'Travel to Portugal',
+ description: 'Travel with permit',
+ estimatedDuration: '1-3 days',
+ documents: ['Passport with permit'],
+ notes: ['Main airports: Lisbon (LIS), Porto (OPO)'],
+ },
+ {
+ id: 'register',
+ title: 'Register at SEF',
+ description: 'Register and get residence card',
+ estimatedDuration: '2-4 weeks',
+ documents: ['Proof of address'],
+ notes: ['Get residence card', 'PR in 5 years', 'Citizenship in 5 years (with A2 Portuguese)'],
+ },
+ {
+ id: 'appeal',
+ title: 'Consider Appeal',
+ description: 'If rejected, evaluate options',
+ estimatedDuration: '2-4 months',
+ documents: ['Rejection decision', 'Appeal form'],
+ notes: ['Can reapply with additional evidence'],
+ },
+ ],
+ },
 };
 
