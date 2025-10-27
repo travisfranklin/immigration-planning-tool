@@ -52,6 +52,7 @@ const getRiskColor = (level: string): string => {
 export const CountryResultsTable: React.FC<CountryResultsTableProps> = ({
   scores,
   onViewDetails,
+  onViewFlowchart,
 }) => {
   const [expandedRow, setExpandedRow] = useState<string | null>(null);
 
@@ -166,6 +167,18 @@ export const CountryResultsTable: React.FC<CountryResultsTableProps> = ({
                         >
                           Details
                         </button>
+                        {onViewFlowchart && score.recommendedProgram && (
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              onViewFlowchart(score.countryCode, score.recommendedProgram!.programId);
+                            }}
+                            className="px-2 py-1.5 text-xs font-medium text-gray-600 bg-gray-50 rounded-md hover:bg-gray-100 transition-colors"
+                            title="View Flowchart"
+                          >
+                            📋
+                          </button>
+                        )}
                       </div>
                     </td>
 
@@ -338,6 +351,15 @@ export const CountryResultsTable: React.FC<CountryResultsTableProps> = ({
                 >
                   View Details
                 </button>
+                {onViewFlowchart && score.recommendedProgram && (
+                  <button
+                    onClick={() => onViewFlowchart(score.countryCode, score.recommendedProgram!.programId)}
+                    className="px-4 py-2 text-sm font-medium text-gray-600 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+                    title="View Flowchart"
+                  >
+                    📋
+                  </button>
+                )}
               </div>
 
               {/* Expanded Details */}
