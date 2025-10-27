@@ -288,24 +288,24 @@ flowchart TD
   submit-to-ministry --> ministry-approval[Ministry Review<br/>30-60 Days]
   ministry-approval --> Decision1{Approved?}
   Decision1 -->|Yes| gather-documents[Gather Required Documents]
-  Decision1 -->|Rejected| Appeal1[Consider Resubmission]
-  Appeal1 --> End2([Process Ended])
+  Decision1 -->|Rejected| consider-resubmission[Consider Resubmission]
+  consider-resubmission --> End2([Process Ended])
   gather-documents --> submit-visa[Submit Visa Application]
-  submit-visa --> Processing[Processing<br/>60-90 Days]
-  Processing --> Decision2{Decision}
-  Decision2 -->|Approved| receive-visa-register[Receive Startup Visa]
-  Decision2 -->|Rejected| Appeal2[Consider Appeal]
-  receive-visa-register --> Travel[Travel to Cyprus]
-  Travel --> RegisterBusiness[Register Business<br/>in Cyprus]
-  RegisterBusiness --> Success([Process Complete])
-  Appeal2 --> End3([Process Ended])
+  submit-visa --> visa-processing[Processing<br/>60-90 Days]
+  visa-processing --> Decision2{Decision}
+  Decision2 -->|Approved| receive-visa[Receive Startup Visa]
+  Decision2 -->|Rejected| consider-appeal[Consider Appeal]
+  receive-visa --> travel-to-cyprus[Travel to Cyprus]
+  travel-to-cyprus --> register-business[Register Business<br/>in Cyprus]
+  register-business --> Success([Process Complete])
+  consider-appeal --> End3([Process Ended])
 
   style Start fill:#e1f5e1
   style Success fill:#e1f5e1
   style End1 fill:#ffe1e1
   style End2 fill:#ffe1e1
   style End3 fill:#ffe1e1
-  style receive-visa-register fill:#e1e5ff
+  style receive-visa fill:#e1e5ff
 `,
   steps: [
     {
@@ -429,28 +429,117 @@ flowchart TD
       ],
     },
     {
-      id: 'receive-visa-register',
-      title: 'Receive Visa and Register Business',
-      description: 'Receive startup visa, travel to Cyprus, and register your business',
-      estimatedDuration: '2-4 weeks',
+      id: 'visa-processing',
+      title: 'Visa Application Processing',
+      description: 'Wait for Cyprus Immigration to process your startup visa application',
+      estimatedDuration: '60-90 days',
+      documents: [],
+      notes: [
+        'Processing time typically 60-90 days',
+        'May be contacted for additional information',
+        'Track application status online',
+        'Biometrics already collected at submission',
+        'Decision communicated via email and/or mail',
+      ],
+    },
+    {
+      id: 'receive-visa',
+      title: 'Receive Startup Visa',
+      description: 'Receive approval and collect your Cyprus Startup Visa',
+      estimatedDuration: '1 week',
       documents: [
-        'Startup visa',
-        'All original documents',
-        'Business registration documents',
-        'Proof of accommodation',
+        'Approval notification',
+        'Passport for visa stamping',
+        'Visa fee payment receipt',
       ],
       notes: [
         'Visa initially valid for 1 year',
         'Renewable based on business progress',
+        'Multiple entry visa',
+        'Family members can apply for dependent visas',
+        'Visa allows you to work for your own startup',
+      ],
+    },
+    {
+      id: 'travel-to-cyprus',
+      title: 'Travel to Cyprus',
+      description: 'Travel to Cyprus with your startup visa',
+      estimatedDuration: '1-3 days',
+      documents: [
+        'Valid passport with startup visa',
+        'Proof of accommodation',
+        'Travel insurance',
+        'Ministry approval letter (copy)',
+      ],
+      notes: [
+        'Must register at immigration office within 7 days of arrival',
+        'Bring all original documents',
+        'English is official language - easy communication!',
+        'Major airports: Larnaca (LCA) and Paphos (PFO)',
+        'EU member state - Schengen-like benefits',
+      ],
+    },
+    {
+      id: 'register-business',
+      title: 'Register Business in Cyprus',
+      description: 'Complete business registration and immigration formalities',
+      estimatedDuration: '2-4 weeks',
+      documents: [
+        'Business registration application',
+        'Company articles of association',
+        'Proof of registered office address',
+        'Director/shareholder details',
+        'Business bank account',
+        'Tax registration (TIC number)',
+      ],
+      notes: [
         'Register business within 30 days of arrival',
         'Register at local immigration office within 7 days',
-        'Family members can join',
-        'English is official language',
-        'Low corporate tax (12.5%)',
+        'Register with Tax Department for TIC number',
+        'Open business bank account',
+        'Low corporate tax rate (12.5%)',
         'Access to EU market',
-        'Growing startup ecosystem (Nicosia, Limassol)',
-        'PR in 5 years, citizenship in 7 years',
-        'Tax benefits for startups and R&D',
+        'Growing startup ecosystem in Nicosia and Limassol',
+        'PR eligible after 5 years, citizenship after 7 years',
+        'Tax benefits for startups and R&D activities',
+        'English is official language - business-friendly!',
+      ],
+    },
+    {
+      id: 'consider-resubmission',
+      title: 'Consider Resubmission',
+      description: 'Review rejection reasons and decide whether to revise and resubmit',
+      estimatedDuration: '1-2 weeks',
+      documents: [
+        'Rejection letter with reasons',
+        'Original application materials',
+      ],
+      notes: [
+        'Review rejection reasons carefully',
+        'Common issues: insufficient innovation, weak business plan, inadequate funding',
+        'Can revise business plan and resubmit',
+        'Consider consulting with Cyprus startup advisors',
+        'Address all concerns raised by Ministry',
+        'No limit on resubmissions, but improve application first',
+      ],
+    },
+    {
+      id: 'consider-appeal',
+      title: 'Consider Appeal',
+      description: 'Review visa rejection and consider appeal options',
+      estimatedDuration: '1-2 weeks',
+      documents: [
+        'Visa rejection letter',
+        'Original application documents',
+        'Ministry approval letter',
+      ],
+      notes: [
+        'Review rejection reasons carefully',
+        'Appeal rights may be limited',
+        'Consider reapplying with stronger documentation',
+        'Consult with immigration lawyer if needed',
+        'Common issues: incomplete documents, concerns about funds',
+        'Having Ministry approval is strong foundation for reapplication',
       ],
     },
   ],
