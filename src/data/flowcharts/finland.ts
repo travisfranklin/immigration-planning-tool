@@ -27,14 +27,7 @@ flowchart TD
  Permit -->arrival-registration[Travel to Finland]
  arrival-registration --> registration[Register at Migri Office Get Finnish ID]
  registration --> Success([Process Complete])
- Appeal --> End2([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style Permit fill:#e1e5ff
-`,
+ Appeal --> End2([Process Ended])`,
  steps: [
  {
  id: 'job-offer',
@@ -167,15 +160,7 @@ flowchart TD
  BlueCard --> Travel[Travel to Finland]
  Travel --> Register[Register at Migri Office Get Finnish ID]
  Register --> Success([Process Complete])
- Appeal --> End3([Process Ended])
- 
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style End3 fill:#ffe1e1
- style BlueCard fill:#e1e5ff
-`,
+ Appeal --> End3([Process Ended])`,
  steps: [
  {
  id: 'job-offer',
@@ -316,15 +301,7 @@ flowchart TD
  receive-permit -->travel-to-finland[Travel to Finland]
  travel-to-finland -->register-business[Register Business<br/>and Get Finnish ID]
  register-business --> Success([Process Complete])
- consider-appeal --> End3([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style End3 fill:#ffe1e1
- style receive-permit fill:#e1e5ff
-`,
+ consider-appeal --> End3([Process Ended])`,
  steps: [
  {
  id: 'business-idea',
@@ -570,14 +547,7 @@ flowchart TD
  permit -->travel[Travel to Finland]
  travel -->register[Register Business]
  register --> Success([Complete])
- appeal --> End2([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style permit fill:#e1e5ff
-`,
+ appeal --> End2([Process Ended])`,
  steps: [
  {
  id: 'plan',
@@ -667,14 +637,7 @@ flowchart TD
  permit -->travel[Travel to Finland]
  travel -->register[Register at Maistraatti]
  register --> Success([Complete])
- appeal --> End2([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style permit fill:#e1e5ff
-`,
+ appeal --> End2([Process Ended])`,
  steps: [
  {
  id: 'check',

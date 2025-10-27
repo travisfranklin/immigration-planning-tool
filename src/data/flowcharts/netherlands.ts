@@ -28,14 +28,7 @@ flowchart TD
  decision -->|Approved| receive-permit[Receive Residence Permit]
  decision -->|Rejected| End2([Process Ended])
  receive-permit -->travel-register[Travel and Register]
- travel-register --> Success([Process Complete])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style receive-permit fill:#e1e5ff
-`,
+ travel-register --> Success([Process Complete])`,
  steps: [
  {
  id: 'citizenship-check',
@@ -225,15 +218,7 @@ flowchart TD
  decision -->|Rejected| End3([Process Ended])
  receive-permit -->30-percent-ruling[Apply for 30% Ruling]
  30-percent-ruling -->travel-register[Travel and Register]
- travel-register --> Success([Process Complete])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style End3 fill:#ffe1e1
- style receive-permit fill:#e1e5ff
-`,
+ travel-register --> Success([Process Complete])`,
  steps: [
  {
  id: 'job-offer',
@@ -389,16 +374,7 @@ flowchart TD
  decision -->|Approved| receive-permit[Receive Residence Permit]
  decision -->|Rejected| End4([Process Ended])
  receive-permit -->job-search[Search for Employment]
- job-search --> Success([Process Complete])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style End3 fill:#ffe1e1
- style End4 fill:#ffe1e1
- style receive-permit fill:#e1e5ff
-`,
+ job-search --> Success([Process Complete])`,
  steps: [
  {
  id: 'university-verification',
@@ -564,14 +540,7 @@ flowchart TD
  decision -->|Approved| receive-permit[Receive Residence Permit]
  decision -->|Rejected| End2([Process Ended])
  receive-permit -->travel-register[Travel and Start Business]
- travel-register --> Success([Process Complete])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style receive-permit fill:#e1e5ff
-`,
+ travel-register --> Success([Process Complete])`,
  steps: [
  {
  id: 'business-plan',
@@ -750,15 +719,7 @@ flowchart TD
  decision -->|Rejected| End3([Process Ended])
  receive-mvv -->travel-residence-permit[Travel and Apply for Residence Permit]
  travel-residence-permit -->integration[Begin Integration Course]
- integration --> Success([Process Complete])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style End3 fill:#ffe1e1
- style receive-mvv fill:#e1e5ff
-`,
+ integration --> Success([Process Complete])`,
  steps: [
  {
  id: 'sponsor-eligibility',

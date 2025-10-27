@@ -28,14 +28,7 @@ flowchart TD
  Visa --> arrival[Travel to Portugal<br/>within 4 months]
  arrival --> registration[Register at SEF Office<br/>Get Residence Card]
  registration --> Success([Process Complete])
- Appeal --> End2([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style Visa fill:#e1e5ff
-`,
+ Appeal --> End2([Process Ended])`,
  steps: [
  {
  id: 'verify-income',
@@ -169,13 +162,7 @@ flowchart TD
  GoldenVisa --> Travel[Travel to Portugal<br/>7 days/year minimum]
  Travel --> Renew[Renew Every 2 Years]
  Renew --> Success([Process Complete])
- Appeal --> End1([Process Ended])
- 
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style GoldenVisa fill:#e1e5ff
-`,
+ Appeal --> End1([Process Ended])`,
  steps: [
  {
  id: 'choose-investment',
@@ -313,15 +300,7 @@ flowchart TD
  receive-visa -->travel-to-portugal[Travel to Portugal]
  travel-to-portugal -->register-business[Register Business<br/>and Get Residence Card]
  register-business --> Success([Process Complete])
- consider-appeal --> End3([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style End3 fill:#ffe1e1
- style receive-visa fill:#e1e5ff
-`,
+ consider-appeal --> End3([Process Ended])`,
  steps: [
  {
  id: 'business-idea',
@@ -576,15 +555,7 @@ flowchart TD
  receive-visa -->travel-to-portugal[Travel to Portugal]
  travel-to-portugal -->register-sef[Register at SEF<br/>Get Residence Card]
  register-sef --> Success([Process Complete])
- consider-appeal --> End3([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style End3 fill:#ffe1e1
- style receive-visa fill:#e1e5ff
-`,
+ consider-appeal --> End3([Process Ended])`,
  steps: [
  {
  id: 'job-offer',
@@ -767,14 +738,7 @@ flowchart TD
  permit -->travel[Travel to Portugal]
  travel -->register[Register at SEF]
  register --> Success([Complete])
- appeal --> End2([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style permit fill:#e1e5ff
-`,
+ appeal --> End2([Process Ended])`,
  steps: [
  {
  id: 'check',

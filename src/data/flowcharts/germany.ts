@@ -25,14 +25,7 @@ flowchart TD
  decision -->|Approved| travel["Travel to Germany"]
  decision -->|Rejected| End2([Process Ended])
  travel --> registration["Register at Local Office"]
- registration --> Success([Process Complete])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style travel fill:#e1e5ff
-`,
+ registration --> Success([Process Complete])`,
  steps: [
  {
  id: 'job-offer',
@@ -168,13 +161,7 @@ flowchart TD
  decision -->|Approved| travel[Receive Visa]
  decision -->|Rejected| End([Process Ended])
  travel --> registration[Travel to Germany]
- registration --> Success([Process Complete])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End fill:#ffe1e1
- style travel fill:#e1e5ff
-`,
+ registration --> Success([Process Complete])`,
  steps: [
  {
  id: 'job-offer',
@@ -300,15 +287,7 @@ flowchart TD
  Extend -->|No| Return[Return Home]
  conversion --> Success([Process Complete])
  Continue --> job-search
- Return --> End2
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style travel fill:#e1e5ff
- style conversion fill:#e1e5ff
-`,
+ Return --> End2`,
  steps: [
  {
  id: 'degree-recognition',
@@ -450,14 +429,7 @@ flowchart TD
  decision -->|Approved| travel["Travel to Germany"]
  decision -->|Rejected| End2([Process Ended])
  travel --> registration["Register Business"]
- registration --> Success([Start Freelancing])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style travel fill:#e1e5ff
-`,
+ registration --> Success([Start Freelancing])`,
  steps: [
  {
  id: 'business-plan',
@@ -625,14 +597,7 @@ flowchart TD
  decision -->|Approved| travel[Receive Visa]
  decision -->|Rejected| End2([Process Ended])
  travel --> registration[Travel to Germany]
- registration --> Success([Reunited in Germany])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style travel fill:#e1e5ff
-`,
+ registration --> Success([Reunited in Germany])`,
  steps: [
  {
  id: 'verify-sponsor',

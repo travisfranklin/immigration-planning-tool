@@ -24,14 +24,7 @@ flowchart TD
  Decision -->|Approved| Card[EU Blue Card<br/>2 Years]
  Decision -->|Rejected| End2([Rejected])
  Card --> registration[Register in Latvia]
- registration --> Success([Complete])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style Card fill:#e1e5ff
-`,
+ registration --> Success([Complete])`,
  steps: [
  {
  id: 'job',
@@ -79,14 +72,7 @@ flowchart TD
  Submit --> Process[Processing 30-60 Days]
  Process --> Visa[Startup Visa<br/>1 Year]
  Visa --> Register[Register Business]
- Register --> Success([Complete])
- 
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style Visa fill:#e1e5ff
-`,
+ Register --> Success([Complete])`,
  steps: [
  {
  id: 'idea',
@@ -134,13 +120,7 @@ flowchart TD
  permit -->travel[Travel to Latvia]
  travel -->register[Register]
  register --> Success([Complete])
- appeal --> End([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End fill:#ffe1e1
- style permit fill:#e1e5ff
-`,
+ appeal --> End([Process Ended])`,
  steps: [
  {
  id: 'job',
@@ -230,14 +210,7 @@ flowchart TD
  permit -->travel[Travel to Latvia]
  travel -->register[Register Business]
  register --> Success([Complete])
- appeal --> End2([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style permit fill:#e1e5ff
-`,
+ appeal --> End2([Process Ended])`,
  steps: [
  {
  id: 'plan',
@@ -327,14 +300,7 @@ flowchart TD
  permit -->travel[Travel to Latvia]
  travel -->register[Register at OCMA]
  register --> Success([Complete])
- appeal --> End2([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style permit fill:#e1e5ff
-`,
+ appeal --> End2([Process Ended])`,
  steps: [
  {
  id: 'check',

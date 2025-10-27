@@ -20,12 +20,7 @@ flowchart TD
  verify-education --> gather-documents[Gather Required Documents]
  gather-documents --> submit-application[Submit Application to<br/>Bulgarian Consulate or in Bulgaria]
  submit-application --> receive-card-register[Receive EU Blue Card<br/>and Register in Bulgaria]
- receive-card-register --> Success([Process Complete])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style receive-card-register fill:#e1e5ff
-`,
+ receive-card-register --> Success([Process Complete])`,
  steps: [
  {
  id: 'job-offer',
@@ -135,12 +130,7 @@ flowchart TD
  verify-funds --> apply-program[Apply to Bulgarian<br/>Startup Program]
  apply-program --> gather-documents[Gather Required Documents]
  gather-documents --> receive-visa-register[Receive Visa and<br/>Register Business in Bulgaria]
- receive-visa-register --> Success([Process Complete])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style receive-visa-register fill:#e1e5ff
-`,
+ receive-visa-register --> Success([Process Complete])`,
  steps: [
  {
  id: 'develop-business-idea',
@@ -257,14 +247,7 @@ flowchart TD
  decision -->|Rejected| End2([Application Denied])
  receive-visa -->travel[Travel to Bulgaria]
  travel -->registration[Register at Immigration Office]
- registration --> Success([Process Complete])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style receive-visa fill:#e1e5ff
-`,
+ registration --> Success([Process Complete])`,
  steps: [
  {
  id: 'job-offer',
@@ -398,13 +381,7 @@ flowchart TD
  decision -->|Rejected| End1([Application Denied])
  receive-visa -->travel[Travel to Bulgaria]
  travel -->registration[Register at Immigration Office]
- registration --> Success([Process Complete])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style receive-visa fill:#e1e5ff
-`,
+ registration --> Success([Process Complete])`,
  steps: [
  {
  id: 'business-plan',
@@ -560,15 +537,7 @@ flowchart TD
  decision -->|Rejected| End3([Application Denied])
  receive-visa -->travel[Travel to Bulgaria]
  travel -->registration[Register at Immigration Office]
- registration --> Success([Process Complete])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style End3 fill:#ffe1e1
- style receive-visa fill:#e1e5ff
-`,
+ registration --> Success([Process Complete])`,
  steps: [
  {
  id: 'sponsor-check',

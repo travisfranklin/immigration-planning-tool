@@ -22,13 +22,7 @@ flowchart TD
  submit-application --> processing[Processing 30 Days]
  processing --> Visa[Digital Nomad Visa<br/>1 Year]
  Visa --> arrival[Travel to Estonia]
- arrival --> Success([Work from Tallinn!])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style Visa fill:#e1e5ff
-`,
+ arrival --> Success([Work from Tallinn!])`,
  steps: [
  {
  id: 'remote',
@@ -76,13 +70,7 @@ flowchart TD
  Docs --> Submit[Submit Application]
  Submit --> Process[Processing 30-90 Days]
  Process --> Permit[Residence Permit<br/>1 Year]
- Permit --> Success([Live in Estonia!])
- 
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style Remote fill:#e1e5ff
- style Permit fill:#e1e5ff
-`,
+ Permit --> Success([Live in Estonia!])`,
  steps: [
  {
  id: 'e-residency',
@@ -138,15 +126,7 @@ flowchart TD
  receive-permit -->travel-to-estonia[Travel to Estonia]
  travel-to-estonia -->register-business[Register Business<br/>and Get ID Card]
  register-business --> Success([Process Complete])
- consider-appeal --> End3([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style End3 fill:#ffe1e1
- style receive-permit fill:#e1e5ff
-`,
+ consider-appeal --> End3([Process Ended])`,
  steps: [
  {
  id: 'business-idea',
@@ -406,15 +386,7 @@ flowchart TD
  receive-permit -->travel-to-estonia[Travel to Estonia]
  travel-to-estonia -->register-police[Register and Get<br/>ID Card]
  register-police --> Success([Process Complete])
- consider-appeal --> End3([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style End3 fill:#ffe1e1
- style receive-permit fill:#e1e5ff
-`,
+ consider-appeal --> End3([Process Ended])`,
  steps: [
  {
  id: 'job-offer',
@@ -590,14 +562,7 @@ flowchart TD
  permit -->travel[Travel to Estonia]
  travel -->register[Register at Police]
  register --> Success([Complete])
- appeal --> End2([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style permit fill:#e1e5ff
-`,
+ appeal --> End2([Process Ended])`,
  steps: [
  {
  id: 'check',

@@ -29,15 +29,7 @@ flowchart TD
  receive-blue-card --> travel[Travel to Poland]
  travel --> register[Register at Local<br/>Voivodeship Office]
  register --> Success([Process Complete])
- consider-appeal --> End3([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style End3 fill:#ffe1e1
- style receive-blue-card fill:#e1e5ff
-`,
+ consider-appeal --> End3([Process Ended])`,
  steps: [
  {
  id: 'job-offer',
@@ -169,15 +161,7 @@ flowchart TD
  receive-visa --> travel[Travel to Poland]
  travel --> register-business[Register Business and<br/>at Voivodeship Office]
  register-business --> Success([Process Complete])
- consider-appeal --> End3([Process Ended])
- 
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style End3 fill:#ffe1e1
- style receive-visa fill:#e1e5ff
-`,
+ consider-appeal --> End3([Process Ended])`,
  steps: [
  {
  id: 'develop-business-idea',
@@ -330,14 +314,7 @@ flowchart TD
  receive-permit -->travel-to-poland[Travel to Poland]
  travel-to-poland -->register[Register at<br/>Voivodeship Office]
  register --> Success([Process Complete])
- consider-appeal --> End2([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style receive-permit fill:#e1e5ff
-`,
+ consider-appeal --> End2([Process Ended])`,
  steps: [
  {
  id: 'job-offer',
@@ -499,14 +476,7 @@ flowchart TD
  permit -->travel[Travel to Poland]
  travel -->register[Register Business]
  register --> Success([Complete])
- appeal --> End2([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style permit fill:#e1e5ff
-`,
+ appeal --> End2([Process Ended])`,
  steps: [
  {
  id: 'plan',
@@ -596,14 +566,7 @@ flowchart TD
  permit -->travel[Travel to Poland]
  travel -->register[Register at Voivodeship]
  register --> Success([Complete])
- appeal --> End2([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style permit fill:#e1e5ff
-`,
+ appeal --> End2([Process Ended])`,
  steps: [
  {
  id: 'check',

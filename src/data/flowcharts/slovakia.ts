@@ -29,15 +29,7 @@ flowchart TD
  receive-blue-card --> travel[Travel to Slovakia]
  travel --> register[Register at Foreign Police<br/>within 3 Days]
  register --> Success([Process Complete])
- consider-appeal --> End3([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style End3 fill:#ffe1e1
- style receive-blue-card fill:#e1e5ff
-`,
+ consider-appeal --> End3([Process Ended])`,
  steps: [
  {
  id: 'job-offer',
@@ -169,15 +161,7 @@ flowchart TD
  Visa --> Travel[Travel to Slovakia]
  Travel --> Register[Register Business and<br/>at Foreign Police]
  Register --> Success([Process Complete])
- Appeal --> End3([Process Ended])
- 
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style End3 fill:#ffe1e1
- style Visa fill:#e1e5ff
-`,
+ Appeal --> End3([Process Ended])`,
  steps: [
  {
  id: 'develop-business-idea',
@@ -292,13 +276,7 @@ flowchart TD
  permit -->travel[Travel to Slovakia]
  travel -->register[Register]
  register --> Success([Complete])
- appeal --> End([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End fill:#ffe1e1
- style permit fill:#e1e5ff
-`,
+ appeal --> End([Process Ended])`,
  steps: [
  {
  id: 'job',
@@ -388,14 +366,7 @@ flowchart TD
  permit -->travel[Travel to Slovakia]
  travel -->register[Register Business]
  register --> Success([Complete])
- appeal --> End2([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style permit fill:#e1e5ff
-`,
+ appeal --> End2([Process Ended])`,
  steps: [
  {
  id: 'plan',
@@ -485,14 +456,7 @@ flowchart TD
  permit -->travel[Travel to Slovakia]
  travel -->register[Register at Foreign Police]
  register --> Success([Complete])
- appeal --> End2([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style permit fill:#e1e5ff
-`,
+ appeal --> End2([Process Ended])`,
  steps: [
  {
  id: 'check',

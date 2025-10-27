@@ -29,15 +29,7 @@ flowchart TD
  receive-blue-card --> travel[Travel to Czech Republic]
  travel --> register[Register at Foreign<br/>Police within 3 Days]
  register --> Success([Process Complete])
- consider-appeal --> End3([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style End3 fill:#ffe1e1
- style receive-blue-card fill:#e1e5ff
-`,
+ consider-appeal --> End3([Process Ended])`,
  steps: [
  {
  id: 'job-offer',
@@ -165,14 +157,7 @@ flowchart TD
  receive-card --> travel[Travel to Czech Republic]
  travel --> register[Register at Foreign<br/>Police within 3 Days]
  register --> Success([Process Complete])
- consider-appeal --> End2([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style receive-card fill:#e1e5ff
-`,
+ consider-appeal --> End2([Process Ended])`,
  steps: [
  {
  id: 'job-offer',
@@ -318,15 +303,7 @@ flowchart TD
   receive-visa --> travel-to-czech[Travel to Czech Republic]
   travel-to-czech --> register-business[Register Business<br/>and at Foreign Police]
   register-business --> Success([Process Complete])
-  consider-appeal --> End3([Process Ended])
-
-  style Start fill:#e1f5e1
-  style Success fill:#e1f5e1
-  style End1 fill:#ffe1e1
-  style End2 fill:#ffe1e1
-  style End3 fill:#ffe1e1
-  style receive-visa fill:#e1e5ff
-`,
+  consider-appeal --> End3([Process Ended])`,
   steps: [
     {
       id: 'business-idea',
@@ -587,14 +564,7 @@ flowchart TD
  permit --> travel[Travel to Czech Republic]
  travel --> register[Register Business]
  register --> Success([Complete])
- appeal --> End2([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style permit fill:#e1e5ff
-`,
+ appeal --> End2([Process Ended])`,
  steps: [
  {
  id: 'plan',
@@ -684,14 +654,7 @@ flowchart TD
  permit --> travel[Travel to Czech Republic]
  travel --> register[Register at Foreign Police]
  register --> Success([Complete])
- appeal --> End2([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style permit fill:#e1e5ff
-`,
+ appeal --> End2([Process Ended])`,
  steps: [
  {
  id: 'check',

@@ -29,13 +29,7 @@ flowchart TD
  decision -->|Approved| receive-visa[Receive Golden Visa]
  decision -->|Rejected| End1([Process Ended])
  receive-visa -->travel-register[Travel and Register]
- travel-register --> Success([Process Complete])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style receive-visa fill:#e1e5ff
-`,
+ travel-register --> Success([Process Complete])`,
  steps: [
  {
  id: 'investment-type',
@@ -196,15 +190,7 @@ flowchart TD
  decision -->|Approved| receive-visa[Receive Non-Lucrative Visa]
  decision -->|Rejected| End3([Process Ended])
  receive-visa -->travel-register[Travel and Register]
- travel-register --> Success([Process Complete])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style End3 fill:#ffe1e1
- style receive-visa fill:#e1e5ff
-`,
+ travel-register --> Success([Process Complete])`,
  steps: [
  {
  id: 'income-verification',
@@ -343,15 +329,7 @@ flowchart TD
  decision -->|Approved| receive-visa[Receive Digital Nomad Visa]
  decision -->|Rejected| End3([Process Ended])
  receive-visa -->travel-register[Travel and Register]
- travel-register --> Success([Process Complete])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style End3 fill:#ffe1e1
- style receive-visa fill:#e1e5ff
-`,
+ travel-register --> Success([Process Complete])`,
  steps: [
  {
  id: 'remote-work-verification',
@@ -491,15 +469,7 @@ flowchart TD
  decision -->|Rejected| End3([Process Ended])
  receive-visa -->travel-register[Travel and Register]
  travel-register -->social-security[Register for Social Security]
- social-security --> Success([Process Complete])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style End3 fill:#ffe1e1
- style receive-visa fill:#e1e5ff
-`,
+ social-security --> Success([Process Complete])`,
  steps: [
  {
  id: 'job-offer',
@@ -667,15 +637,7 @@ flowchart TD
  decision -->|Rejected| End3([Process Ended])
  receive-visa -->travel-register[Travel and Register]
  travel-register -->empadronamiento[Complete Empadronamiento]
- empadronamiento --> Success([Process Complete])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style End3 fill:#ffe1e1
- style receive-visa fill:#e1e5ff
-`,
+ empadronamiento --> Success([Process Complete])`,
  steps: [
  {
  id: 'sponsor-eligibility',

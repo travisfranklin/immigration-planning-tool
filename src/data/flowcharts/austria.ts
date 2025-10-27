@@ -27,14 +27,7 @@ flowchart TD
  Visa --> arrival[Travel to Austria]
  arrival --> Register[Register at MA35]
  Register --> Success([Process Complete])
- Appeal --> End2([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style Visa fill:#e1e5ff
-`,
+ Appeal --> End2([Process Ended])`,
  steps: [
  {
  id: 'job-offer',
@@ -196,14 +189,7 @@ flowchart TD
  Visa --> arrival[Travel to Austria]
  arrival --> Register[Register at MA35]
  Register --> Success([Process Complete])
- Appeal --> End2([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style Visa fill:#e1e5ff
-`,
+ Appeal --> End2([Process Ended])`,
  steps: [
  {
  id: 'Category',
@@ -420,13 +406,7 @@ flowchart TD
  decision -->|Rejected| End1([Application Denied])
  receive-visa -->travel[Travel to Austria]
  travel -->registration[Register at MA35]
- registration --> Success([Process Complete])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style receive-visa fill:#e1e5ff
-`,
+ registration --> Success([Process Complete])`,
  steps: [
  {
  id: 'business-idea',
@@ -593,13 +573,7 @@ flowchart TD
  decision -->|Rejected| End1([Application Denied])
  receive-visa -->travel[Travel to Austria]
  travel -->registration[Register at MA35]
- registration --> Success([Process Complete])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style receive-visa fill:#e1e5ff
-`,
+ registration --> Success([Process Complete])`,
  steps: [
  {
  id: 'business-plan',
@@ -770,15 +744,7 @@ flowchart TD
  decision -->|Rejected| End3([Application Denied])
  receive-visa -->travel[Travel to Austria]
  travel -->registration[Register at MA35]
- registration --> Success([Process Complete])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style End3 fill:#ffe1e1
- style receive-visa fill:#e1e5ff
-`,
+ registration --> Success([Process Complete])`,
  steps: [
  {
  id: 'sponsor-check',

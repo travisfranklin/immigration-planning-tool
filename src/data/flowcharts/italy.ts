@@ -28,13 +28,7 @@ flowchart TD
  decision -->|Rejected| End1([Process Ended])
  receive-visa -->travel[Travel and Apply at Questura]
  travel -->permesso[Receive Permesso di Soggiorno]
- permesso --> Success([Process Complete])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style receive-visa fill:#e1e5ff
-`,
+ permesso --> Success([Process Complete])`,
  steps: [
  {
  id: 'investment-type',
@@ -223,14 +217,7 @@ flowchart TD
  decision -->|Rejected| End2([Process Ended])
  receive-visa -->travel-questura[Travel and Apply at Questura]
  travel-questura -->partita-iva[Obtain Partita IVA]
- partita-iva --> Success([Process Complete])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style receive-visa fill:#e1e5ff
-`,
+ partita-iva --> Success([Process Complete])`,
  steps: [
  {
  id: 'business-plan',
@@ -402,15 +389,7 @@ flowchart TD
  decision -->|Approved| receive-visa[Receive Work Visa]
  decision -->|Rejected| End3([Process Ended])
  receive-visa -->travel-questura[Travel and Apply at Questura]
- travel-questura --> Success([Process Complete])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style End3 fill:#ffe1e1
- style receive-visa fill:#e1e5ff
-`,
+ travel-questura --> Success([Process Complete])`,
  steps: [
  {
  id: 'quota-check',
@@ -564,15 +543,7 @@ flowchart TD
  decision -->|Approved| receive-visa[Receive Digital Nomad Visa]
  decision -->|Rejected| End3([Process Ended])
  receive-visa -->travel-questura[Travel and Apply at Questura]
- travel-questura --> Success([Process Complete])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style End3 fill:#ffe1e1
- style receive-visa fill:#e1e5ff
-`,
+ travel-questura --> Success([Process Complete])`,
  steps: [
  {
  id: 'remote-work-verification',
@@ -711,15 +682,7 @@ flowchart TD
  decision -->|Rejected| End3([Process Ended])
  receive-visa -->travel-questura[Travel and Apply at Questura]
  travel-questura -->integration-agreement[Sign Integration Agreement]
- integration-agreement --> Success([Process Complete])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style End3 fill:#ffe1e1
- style receive-visa fill:#e1e5ff
-`,
+ integration-agreement --> Success([Process Complete])`,
  steps: [
  {
  id: 'sponsor-eligibility',

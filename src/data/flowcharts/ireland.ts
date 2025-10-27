@@ -30,14 +30,7 @@ flowchart TD
  entry-visa -->arrival[Travel to Ireland]
  arrival --> registration[Register with GNIB/IRP]
  registration --> Success([Process Complete])
- Appeal --> End2([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style Permit fill:#e1e5ff
-`,
+ Appeal --> End2([Process Ended])`,
  steps: [
  {
  id: 'job-offer',
@@ -183,14 +176,7 @@ flowchart TD
  Travel --> Register[Register with GNIB/IRP]
  Register --> LaunchBusiness[Launch Business]
  LaunchBusiness --> Success([Process Complete])
- Appeal --> End2([Process Ended])
- 
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style Permit fill:#e1e5ff
-`,
+ Appeal --> End2([Process Ended])`,
  steps: [
  {
  id: 'business-plan',
@@ -325,15 +311,7 @@ flowchart TD
  entry-visa -->travel-to-ireland[Travel to Ireland]
  travel-to-ireland -->register-gnib[Register with GNIB/IRP]
  register-gnib --> Success([Process Complete])
- consider-appeal --> End3([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style End3 fill:#ffe1e1
- style receive-permit fill:#e1e5ff
-`,
+ consider-appeal --> End3([Process Ended])`,
  steps: [
  {
  id: 'job-offer',
@@ -538,14 +516,7 @@ flowchart TD
  permit -->travel[Travel to Ireland]
  travel -->register[Register with GNIB/IRP]
  register --> Success([Complete])
- appeal --> End2([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style permit fill:#e1e5ff
-`,
+ appeal --> End2([Process Ended])`,
  steps: [
  {
  id: 'funds',
@@ -651,14 +622,7 @@ flowchart TD
  permit -->travel[Travel to Ireland]
  travel -->register[Register at GNIB]
  register --> Success([Complete])
- appeal --> End2([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style permit fill:#e1e5ff
-`,
+ appeal --> End2([Process Ended])`,
  steps: [
  {
  id: 'check',

@@ -31,14 +31,7 @@ flowchart TD
  Visa -->arrival[Travel to Luxembourg]
  arrival --> registration[Register at Commune]
  registration --> Success([Process Complete])
- Appeal --> End2
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style Visa fill:#e1e5ff
-`,
+ Appeal --> End2`,
  steps: [
  {
  id: 'job-offer',
@@ -161,14 +154,7 @@ flowchart TD
  Visa --> Travel[Travel to Luxembourg]
  Travel --> Register[Register at Commune]
  Register --> Success([Process Complete])
- Appeal --> End2([Process Ended])
- 
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style Visa fill:#e1e5ff
-`,
+ Appeal --> End2([Process Ended])`,
  steps: [
  {
  id: 'job-offer',
@@ -279,14 +265,7 @@ flowchart TD
  permit -->travel[Travel to Luxembourg]
  travel -->register[Register at Commune]
  register --> Success([Complete])
- appeal --> End2([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style permit fill:#e1e5ff
-`,
+ appeal --> End2([Process Ended])`,
  steps: [
  {
  id: 'funds',
@@ -392,14 +371,7 @@ flowchart TD
  permit -->travel[Travel to Luxembourg]
  travel -->register[Register Business]
  register --> Success([Complete])
- appeal --> End2([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style permit fill:#e1e5ff
-`,
+ appeal --> End2([Process Ended])`,
  steps: [
  {
  id: 'plan',
@@ -489,14 +461,7 @@ flowchart TD
  permit -->travel[Travel to Luxembourg]
  travel -->register[Register at Commune]
  register --> Success([Complete])
- appeal --> End2([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style permit fill:#e1e5ff
-`,
+ appeal --> End2([Process Ended])`,
  steps: [
  {
  id: 'check',

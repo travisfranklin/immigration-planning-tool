@@ -29,15 +29,7 @@ flowchart TD
  Permit --> arrival[Travel to Denmark]
  arrival --> registration[Register at SIRI<br/>Get CPR Number]
  registration --> Success([Process Complete])
- Appeal --> End3([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#fff4e1
- style End3 fill:#ffe1e1
- style Permit fill:#e1e5ff
-`,
+ Appeal --> End3([Process Ended])`,
  steps: [
  {
  id: 'job-offer',
@@ -171,14 +163,7 @@ flowchart TD
  Permit --> Travel[Travel to Denmark]
  Travel --> Register[Register at SIRI<br/>Get CPR Number]
  Register --> Success([Process Complete])
- Appeal --> End2([Process Ended])
- 
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style Permit fill:#e1e5ff
-`,
+ Appeal --> End2([Process Ended])`,
  steps: [
  {
  id: 'job-offer',
@@ -320,15 +305,7 @@ flowchart TD
   receive-permit -->travel-to-denmark[Travel to Denmark]
   travel-to-denmark -->register-business[Register Business<br/>and Get CPR Number]
   register-business --> Success([Process Complete])
-  consider-appeal --> End3([Process Ended])
-
-  style Start fill:#e1f5e1
-  style Success fill:#e1f5e1
-  style End1 fill:#ffe1e1
-  style End2 fill:#ffe1e1
-  style End3 fill:#ffe1e1
-  style receive-permit fill:#e1e5ff
-`,
+  consider-appeal --> End3([Process Ended])`,
   steps: [
     {
       id: 'business-idea',
@@ -590,15 +567,7 @@ flowchart TD
  receive-permit -->travel-to-denmark[Travel to Denmark]
  travel-to-denmark -->register-siri[Register at SIRI<br/>Get CPR Number]
  register-siri --> Success([Process Complete])
- consider-appeal --> End3([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style End3 fill:#ffe1e1
- style receive-permit fill:#e1e5ff
-`,
+ consider-appeal --> End3([Process Ended])`,
  steps: [
  {
  id: 'job-offer',
@@ -771,14 +740,7 @@ flowchart TD
  permit -->travel[Travel to Denmark]
  travel -->register[Register at SIRI]
  register --> Success([Complete])
- appeal --> End2([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style permit fill:#e1e5ff
-`,
+ appeal --> End2([Process Ended])`,
  steps: [
  {
  id: 'check',

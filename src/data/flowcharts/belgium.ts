@@ -34,14 +34,7 @@ flowchart TD
  Visa --> arrival[Travel to Belgium]
  arrival --> Register[Register at Commune]
  Register --> Success([Process Complete])
- Appeal --> End2
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style Visa fill:#e1e5ff
-`,
+ Appeal --> End2`,
  steps: [
  {
  id: 'determine-region',
@@ -230,14 +223,7 @@ flowchart TD
  Visa --> arrival[Travel to Belgium]
  arrival --> Register[Register at Commune]
  Register --> Success([Process Complete])
- Appeal --> End2([Process Ended])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style Visa fill:#e1e5ff
-`,
+ Appeal --> End2([Process Ended])`,
  steps: [
  {
  id: 'job-offer',
@@ -400,13 +386,7 @@ flowchart TD
  decision -->|Rejected| End1([Application Denied])
  receive-card -->travel[Travel to Belgium]
  travel -->registration[Register at Commune]
- registration --> Success([Process Complete])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style receive-card fill:#e1e5ff
-`,
+ registration --> Success([Process Complete])`,
  steps: [
  {
  id: 'business-plan',
@@ -577,13 +557,7 @@ flowchart TD
  decision -->|Rejected| End1([Application Denied])
  receive-visa -->travel[Travel to Belgium]
  travel -->registration[Register at Commune]
- registration --> Success([Process Complete])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style receive-visa fill:#e1e5ff
-`,
+ registration --> Success([Process Complete])`,
  steps: [
  {
  id: 'business-idea',
@@ -785,15 +759,7 @@ flowchart TD
  decision -->|Rejected| End3([Application Denied])
  receive-visa -->travel[Travel to Belgium]
  travel -->registration[Register at Commune]
- registration --> Success([Process Complete])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style End3 fill:#ffe1e1
- style receive-visa fill:#e1e5ff
-`,
+ registration --> Success([Process Complete])`,
  steps: [
  {
  id: 'sponsor-check',

@@ -53,6 +53,7 @@ body {
 
 /* Mermaid Flowchart Styling */
 /* Global styles for all Mermaid flowcharts */
+/* This eliminates the need for repetitive style commands in individual diagrams */
 
 /* Decision nodes (diamonds) - Flat yellow background */
 /* In Mermaid flowcharts, decision nodes are rendered as <polygon> elements */
@@ -63,33 +64,58 @@ body {
   stroke-width: 2px !important;
 }
 
-/* Ensure decision node text is readable */
+/* Start/Success nodes - Light green */
+/* Stadium-shaped nodes (rounded rectangles with ([text])) */
+.mermaid g[id*="Start"] rect,
+.mermaid g[id*="start"] rect,
+.mermaid g[id*="Success"] rect,
+.mermaid g[id*="success"] rect,
+.mermaid g[id*="Complete"] rect,
+.mermaid g[id*="complete"] rect {
+  fill: #e1f5e1 !important;
+  stroke: #10b981 !important;
+  stroke-width: 2px !important;
+}
+
+/* End/Error nodes - Light red */
+/* Stadium-shaped nodes for endings */
+.mermaid g[id*="End"] rect,
+.mermaid g[id*="end"] rect,
+.mermaid g[id*="Ended"] rect,
+.mermaid g[id*="Denied"] rect,
+.mermaid g[id*="Eligible"] rect,
+.mermaid g[id*="Return"] rect {
+  fill: #ffe1e1 !important;
+  stroke: #ef4444 !important;
+  stroke-width: 2px !important;
+}
+
+/* Warning/Alternative end nodes - Light orange */
+.mermaid g[id*="Different"] rect,
+.mermaid g[id*="Alternative"] rect {
+  fill: #fff4e1 !important;
+  stroke: #f59e0b !important;
+  stroke-width: 2px !important;
+}
+
+/* Important nodes (permits, visas, cards) - Light blue */
+/* Regular rectangular nodes with specific keywords */
+.mermaid g[id*="Visa"] rect,
+.mermaid g[id*="visa"] rect,
+.mermaid g[id*="Permit"] rect,
+.mermaid g[id*="permit"] rect,
+.mermaid g[id*="Card"] rect,
+.mermaid g[id*="card"] rect,
+.mermaid g[id*="Blue"] rect,
+.mermaid g[id*="PR"] rect {
+  fill: #e1e5ff !important;
+  stroke: #6366f1 !important;
+  stroke-width: 2px !important;
+}
+
+/* Ensure all node text is readable */
 .mermaid .node text {
-  fill: #1f2937;
-}
-
-/* Start/Success nodes - Light green (keep existing style commands in diagrams) */
-.mermaid .node-success rect,
-.mermaid .node-success path {
-  fill: #e1f5e1;
-  stroke: #10b981;
-  stroke-width: 2px;
-}
-
-/* End/Error nodes - Light red (keep existing style commands in diagrams) */
-.mermaid .node-error rect,
-.mermaid .node-error path {
-  fill: #ffe1e1;
-  stroke: #ef4444;
-  stroke-width: 2px;
-}
-
-/* Important nodes (permits, visas) - Light blue (keep existing style commands in diagrams) */
-.mermaid .node-primary rect,
-.mermaid .node-primary path {
-  fill: #e1e5ff;
-  stroke: #6366f1;
-  stroke-width: 2px;
+  fill: #1f2937 !important;
 }
 
 /* Hover effect for interactive nodes */

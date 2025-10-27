@@ -29,14 +29,7 @@ flowchart TD
  receive-visa -->travel[Travel to France]
  travel -->prefecture[Register at Prefecture]
  prefecture -->ofii[Complete OFII Process]
- ofii --> Success([Process Complete])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style receive-visa fill:#e1e5ff
-`,
+ ofii --> Success([Process Complete])`,
  steps: [
  {
  id: 'choose-category',
@@ -206,14 +199,7 @@ flowchart TD
  decision -->|Approved| receive-visa[Receive Visa]
  decision -->|Rejected| End2([Process Ended])
  receive-visa -->travel-register[Travel and Register]
- travel-register --> Success([Process Complete])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style receive-visa fill:#e1e5ff
-`,
+ travel-register --> Success([Process Complete])`,
  steps: [
  {
  id: 'achievements',
@@ -371,13 +357,7 @@ flowchart TD
  decision -->|Approved| receive-visa[Receive French Tech Visa]
  decision -->|Rejected| End1([Process Ended])
  receive-visa -->travel-register[Travel and Launch]
- travel-register --> Success([Process Complete])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style receive-visa fill:#e1e5ff
-`,
+ travel-register --> Success([Process Complete])`,
  steps: [
  {
  id: 'ecosystem',
@@ -531,14 +511,7 @@ flowchart TD
  decision -->|Approved| receive-visa[Receive Work Visa]
  decision -->|Rejected| End2([Process Ended])
  receive-visa -->travel-register[Travel and Register]
- travel-register --> Success([Process Complete])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style receive-visa fill:#e1e5ff
-`,
+ travel-register --> Success([Process Complete])`,
  steps: [
  {
  id: 'job-offer',
@@ -692,15 +665,7 @@ flowchart TD
  decision -->|Rejected| End3([Process Ended])
  receive-visa -->travel[Travel to France]
  travel -->ofii-integration[Complete OFII Integration]
- ofii-integration --> Success([Process Complete])
-
- style Start fill:#e1f5e1
- style Success fill:#e1f5e1
- style End1 fill:#ffe1e1
- style End2 fill:#ffe1e1
- style End3 fill:#ffe1e1
- style receive-visa fill:#e1e5ff
-`,
+ ofii-integration --> Success([Process Complete])`,
  steps: [
  {
  id: 'sponsor-eligibility',
