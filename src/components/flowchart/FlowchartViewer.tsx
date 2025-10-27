@@ -3,7 +3,7 @@
  * Renders immigration process flowcharts using Mermaid.js
  */
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, memo } from 'react';
 import mermaid from 'mermaid';
 import type { FlowchartDefinition } from '../../types/flowchart';
 
@@ -14,7 +14,7 @@ interface FlowchartViewerProps {
   onStepSelect?: (stepId: string) => void;
 }
 
-export function FlowchartViewer({ flowchart, onExport, selectedStepId, onStepSelect }: FlowchartViewerProps) {
+function FlowchartViewerComponent({ flowchart, onExport, selectedStepId, onStepSelect }: FlowchartViewerProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [selectedStep, setSelectedStep] = useState<string | null>(null);
   const selectedStepRef = useRef<string | null>(null);
@@ -273,3 +273,16 @@ export function FlowchartViewer({ flowchart, onExport, selectedStepId, onStepSel
   );
 }
 
+// Memoize the component to prevent unnecessary re-renders
+// Only re-render when flowchart, selectedStepId, onStepSelect, or onExport changes
+export const FlowchartViewer = memo(FlowchartViewerComponent, (prevProps, nextProps) => {
+  // Custom comparison function for better performance
+  return (
+    prevProps.flowchart.programId === nextProps.flowchart.programId &&
+    prevProps.selectedStepId === nextProps.selectedStepId &&
+    prevProps.onStepSelect === nextProps.onStepSelect &&
+    prevProps.onExport === nextProps.onExport
+  );
+});
+
+FlowchartViewer.displayName = 'FlowchartViewer';

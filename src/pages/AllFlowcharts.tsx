@@ -3,7 +3,7 @@
  * Testing page to display all flowcharts and verify interaction with StepDetailsPanel
  */
 
-import { useState } from 'react';
+import { useState, useCallback, useMemo, memo } from 'react';
 import { Layout } from '../components';
 import { FlowchartViewer } from '../components/flowchart/FlowchartViewer';
 import { StepDetailsPanel } from '../components/flowchart/StepDetailsPanel';
@@ -11,36 +11,129 @@ import { ALL_FLOWCHARTS } from '../data/flowcharts';
 import type { FlowchartDefinition } from '../types/flowchart';
 import { UI_CONTAINER } from '../constants/uiStyles';
 
+// Memoized FlowchartItem component to prevent unnecessary re-renders
+interface FlowchartItemProps {
+  countryCode: string;
+  programId: string;
+  flowchart: FlowchartDefinition;
+  isActive: boolean;
+  selectedStepId: string | null;
+  onStepSelect: (flowchartId: string, stepId: string) => void;
+}
+
+const FlowchartItem = memo(function FlowchartItem({
+  countryCode,
+  programId,
+  flowchart,
+  isActive,
+  selectedStepId,
+  onStepSelect,
+}: FlowchartItemProps) {
+  const flowchartId = `${countryCode}-${programId}`;
+
+  // Memoize the step select handler for this specific flowchart
+  const handleStepSelect = useCallback(
+    (stepId: string) => {
+      onStepSelect(flowchartId, stepId);
+    },
+    [flowchartId, onStepSelect]
+  );
+
+  return (
+    <div
+      key={flowchartId}
+      id={flowchartId}
+      className={`bg-white rounded-lg shadow-md border-2 p-6 transition-all ${
+        isActive ? 'border-blue-500 ring-2 ring-blue-200' : 'border-gray-200'
+      }`}
+    >
+      {/* Flowchart Header */}
+      <div className="mb-4 pb-4 border-b border-gray-200">
+        <div className="flex items-start justify-between">
+          <div>
+            <h2 className="text-xl font-bold text-gray-900">
+              {countryCode} - {flowchart.programName}
+            </h2>
+            <p className="text-sm text-gray-500 mt-1">
+              Program ID: <code className="bg-gray-100 px-2 py-0.5 rounded">{programId}</code>
+            </p>
+          </div>
+          <div className="text-right">
+            <div className="text-sm text-gray-600">
+              <span className="font-medium">Duration:</span> {flowchart.totalEstimatedDuration}
+            </div>
+            <div className="text-sm text-gray-600">
+              <span className="font-medium">Complexity:</span>{' '}
+              <span
+                className={`inline-block px-2 py-0.5 rounded text-xs font-medium ${
+                  flowchart.complexity === 'low'
+                    ? 'bg-green-100 text-green-800'
+                    : flowchart.complexity === 'medium'
+                    ? 'bg-yellow-100 text-yellow-800'
+                    : 'bg-red-100 text-red-800'
+                }`}
+              >
+                {flowchart.complexity}
+              </span>
+            </div>
+            {flowchart.successRate && (
+              <div className="text-sm text-gray-600">
+                <span className="font-medium">Success Rate:</span> {flowchart.successRate}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Flowchart Viewer */}
+      <FlowchartViewer
+        flowchart={flowchart}
+        selectedStepId={isActive ? selectedStepId : null}
+        onStepSelect={handleStepSelect}
+      />
+
+      {/* Step Count */}
+      <div className="mt-4 pt-4 border-t border-gray-200 text-sm text-gray-500">
+        {flowchart.steps.length} steps defined
+      </div>
+    </div>
+  );
+});
+
 export function AllFlowcharts() {
   const [selectedStepId, setSelectedStepId] = useState<string | null>(null);
   const [currentFlowchartId, setCurrentFlowchartId] = useState<string | null>(null);
 
-  // Flatten all flowcharts into a single array with metadata
-  const allFlowcharts: Array<{
-    countryCode: string;
-    programId: string;
-    flowchart: FlowchartDefinition;
-  }> = [];
+  // Flatten all flowcharts into a single array with metadata (memoized)
+  const allFlowcharts = useMemo(() => {
+    const flowcharts: Array<{
+      countryCode: string;
+      programId: string;
+      flowchart: FlowchartDefinition;
+    }> = [];
 
-  Object.entries(ALL_FLOWCHARTS).forEach(([countryCode, flowcharts]) => {
-    Object.entries(flowcharts).forEach(([programId, flowchart]) => {
-      allFlowcharts.push({ countryCode, programId, flowchart });
+    Object.entries(ALL_FLOWCHARTS).forEach(([countryCode, flowchartsMap]) => {
+      Object.entries(flowchartsMap).forEach(([programId, flowchart]) => {
+        flowcharts.push({ countryCode, programId, flowchart });
+      });
     });
-  });
 
-  // Sort by country code, then program ID
-  allFlowcharts.sort((a, b) => {
-    if (a.countryCode !== b.countryCode) {
-      return a.countryCode.localeCompare(b.countryCode);
-    }
-    return a.programId.localeCompare(b.programId);
-  });
+    // Sort by country code, then program ID
+    flowcharts.sort((a, b) => {
+      if (a.countryCode !== b.countryCode) {
+        return a.countryCode.localeCompare(b.countryCode);
+      }
+      return a.programId.localeCompare(b.programId);
+    });
 
-  // Handle step selection
-  const handleStepSelect = (flowchartId: string, stepId: string) => {
+    return flowcharts;
+  }, []); // Empty dependency array since ALL_FLOWCHARTS is static
+
+  // Handle step selection (memoized to prevent unnecessary re-renders)
+  const handleStepSelect = useCallback((flowchartId: string, stepId: string) => {
     setCurrentFlowchartId(flowchartId);
     setSelectedStepId(stepId);
-  };
+  }, []);
 
   // Get the selected step details
   const getSelectedStep = () => {
@@ -80,63 +173,15 @@ export function AllFlowcharts() {
               const isActive = currentFlowchartId === flowchartId;
 
               return (
-                <div
+                <FlowchartItem
                   key={flowchartId}
-                  id={flowchartId}
-                  className={`bg-white rounded-lg shadow-md border-2 p-6 transition-all ${
-                    isActive ? 'border-blue-500 ring-2 ring-blue-200' : 'border-gray-200'
-                  }`}
-                >
-                  {/* Flowchart Header */}
-                  <div className="mb-4 pb-4 border-b border-gray-200">
-                    <div className="flex items-start justify-between">
-                      <div>
-                        <h2 className="text-xl font-bold text-gray-900">
-                          {countryCode} - {flowchart.programName}
-                        </h2>
-                        <p className="text-sm text-gray-500 mt-1">
-                          Program ID: <code className="bg-gray-100 px-2 py-0.5 rounded">{programId}</code>
-                        </p>
-                      </div>
-                      <div className="text-right">
-                        <div className="text-sm text-gray-600">
-                          <span className="font-medium">Duration:</span> {flowchart.totalEstimatedDuration}
-                        </div>
-                        <div className="text-sm text-gray-600">
-                          <span className="font-medium">Complexity:</span>{' '}
-                          <span
-                            className={`inline-block px-2 py-0.5 rounded text-xs font-medium ${
-                              flowchart.complexity === 'low'
-                                ? 'bg-green-100 text-green-800'
-                                : flowchart.complexity === 'medium'
-                                ? 'bg-yellow-100 text-yellow-800'
-                                : 'bg-red-100 text-red-800'
-                            }`}
-                          >
-                            {flowchart.complexity}
-                          </span>
-                        </div>
-                        {flowchart.successRate && (
-                          <div className="text-sm text-gray-600">
-                            <span className="font-medium">Success Rate:</span> {flowchart.successRate}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Flowchart Viewer */}
-                  <FlowchartViewer
-                    flowchart={flowchart}
-                    selectedStepId={isActive ? selectedStepId : null}
-                    onStepSelect={(stepId) => handleStepSelect(flowchartId, stepId)}
-                  />
-
-                  {/* Step Count */}
-                  <div className="mt-4 pt-4 border-t border-gray-200 text-sm text-gray-500">
-                    {flowchart.steps.length} steps defined
-                  </div>
-                </div>
+                  countryCode={countryCode}
+                  programId={programId}
+                  flowchart={flowchart}
+                  isActive={isActive}
+                  selectedStepId={selectedStepId}
+                  onStepSelect={handleStepSelect}
+                />
               );
             })}
           </div>
