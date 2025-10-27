@@ -8,6 +8,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { FlowchartViewer } from '../components/flowchart/FlowchartViewer';
 import { Layout } from '../components/Layout';
 import { Button } from '../components/Button';
+import { EmptyState } from '../components/EmptyState';
 import { Breadcrumb } from '../components/layout/Breadcrumb';
 import { getUserViabilityScores } from '../services/storage/viabilityScoreStore';
 import { getAllUserProfiles } from '../services/storage/userProfileStore';
@@ -214,9 +215,7 @@ export function Flowchart() {
         {currentFlowchart ? (
           <FlowchartViewer flowchart={currentFlowchart} />
         ) : (
-          <div className="bg-white rounded-lg shadow-sm p-12 text-center">
-            <p className="text-gray-500">No flowchart available for this program yet.</p>
-          </div>
+          <EmptyState message="No flowchart available for this program yet." />
         )}
 
         {/* Navigation Buttons */}

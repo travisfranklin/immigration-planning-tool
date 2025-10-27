@@ -9,6 +9,7 @@ import { Layout } from '../components/Layout';
 import { Button } from '../components/Button';
 import { LoadingSpinner } from '../components/LoadingSpinner';
 import { ErrorState } from '../components/ErrorState';
+import { EmptyState } from '../components/EmptyState';
 
 export const Results: React.FC = () => {
   const navigate = useNavigate();
@@ -183,16 +184,13 @@ export const Results: React.FC = () => {
         </div>
 
         {scores.length === 0 && (
-          <div className="bg-white rounded-lg shadow-md border border-gray-200 p-8 text-center">
-            <p className="text-gray-600 mb-4">No results available yet.</p>
-            <Button
-              onClick={handleRecalculate}
-              variant="primary"
-              size="lg"
-            >
-              Calculate Viability Scores
-            </Button>
-          </div>
+          <EmptyState
+            message="No results available yet."
+            action={{
+              label: 'Calculate Viability Scores',
+              onClick: handleRecalculate,
+            }}
+          />
         )}
 
         {scores.length > 0 && (
