@@ -168,7 +168,7 @@ flowchart TD
  gather-documents --> fast-track-application[Fast-Track Application]
  fast-track-application --> Wait[Wait for Processing<br/>4 weeks]
  Wait --> Decision{Decision}
- Decision -->|Approved| Visa[Receive Work Permit & Visa]
+ Decision -->|Approved| Visa[Receive Work Permit and Visa]
  Decision -->|Rejected| Appeal[Consider Appeal]
  Visa --> arrival[Travel to Belgium]
  arrival --> Register[Register at Commune]

@@ -156,7 +156,7 @@ flowchart TD
  GatherDocs --> WorkAuth[Apply for Work Authorization]
  WorkAuth --> Wait[Wait for Processing<br/>4-6 weeks]
  Wait --> Decision{Decision}
- Decision -->|Approved| Visa[Receive Work Permit & Visa]
+ Decision -->|Approved| Visa[Receive Work Permit and Visa]
  Decision -->|Rejected| Appeal[Consider Appeal]
  Visa --> Travel[Travel to Luxembourg]
  Travel --> Register[Register at Commune]

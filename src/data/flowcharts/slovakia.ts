@@ -167,7 +167,7 @@ flowchart TD
  Decision -->|Approved| Visa[Receive Startup Visa<br/>1-Year Permit]
  Decision -->|Rejected| Appeal[Consider Appeal]
  Visa --> Travel[Travel to Slovakia]
- Travel --> Register[Register Business &<br/>at Foreign Police]
+ Travel --> Register[Register Business and<br/>at Foreign Police]
  Register --> Success([Process Complete])
  Appeal --> End3([Process Ended])
  

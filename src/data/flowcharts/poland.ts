@@ -167,7 +167,7 @@ flowchart TD
  decision -->|Approved| receive-visa[Receive Startup Visa<br/>1-Year Permit]
  decision -->|Rejected| consider-appeal[Consider Appeal]
  receive-visa --> travel[Travel to Poland]
- travel --> register-business[Register Business &<br/>at Voivodeship Office]
+ travel --> register-business[Register Business and<br/>at Voivodeship Office]
  register-business --> Success([Process Complete])
  consider-appeal --> End3([Process Ended])
  

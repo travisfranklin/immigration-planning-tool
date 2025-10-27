@@ -167,7 +167,7 @@ flowchart TD
  Decision -->|Approved| Visa[Receive White Card<br/>1-Year Permit]
  Decision -->|Rejected| Appeal[Consider Appeal]
  Visa --> Travel[Travel to Hungary]
- Travel --> Register[Register Business &<br/>at Immigration Office]
+ Travel --> Register[Register Business and<br/>at Immigration Office]
  Register --> Success([Process Complete])
  Appeal --> End3([Process Ended])
  
