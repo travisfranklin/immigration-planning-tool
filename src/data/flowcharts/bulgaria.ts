@@ -246,17 +246,17 @@ flowchart TD
  successRate: '80%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> job-offer[Secure Job Offer]
+ Start([Start Process]) -->job-offer[Secure Job Offer]
  job-offer --> Salary{Salary >= EUR 9,000/year?}
  Salary -->|Yes| gather-documents[Gather Required Documents]
  Salary -->|No| End1([Not Eligible])
- gather-documents --> submit-application[Submit Application]
- submit-application --> processing[Wait for Processing<br/>6-10 weeks]
+ gather-documents -->submit-application[Submit Application]
+ submit-application -->processing[Wait for Processing<br/>6-10 weeks]
  processing --> decision{Decision}
  decision -->|Approved| receive-visa[Receive Work Permit Visa]
  decision -->|Rejected| End2([Application Denied])
- receive-visa --> travel[Travel to Bulgaria]
- travel --> registration[Register at Immigration Office]
+ receive-visa -->travel[Travel to Bulgaria]
+ travel -->registration[Register at Immigration Office]
  registration --> Success([Process Complete])
 
  style Start fill:#e1f5e1
@@ -388,16 +388,16 @@ flowchart TD
  successRate: '70%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> business-plan[Create Business Plan]
- business-plan --> capital[Secure Capital EUR 30,000+]
- capital --> gather-documents[Gather Required Documents]
- gather-documents --> submit-application[Submit Application]
- submit-application --> processing[Wait for Processing<br/>8-12 weeks]
+ Start([Start Process]) -->business-plan[Create Business Plan]
+ business-plan -->capital[Secure Capital EUR 30,000+]
+ capital -->gather-documents[Gather Required Documents]
+ gather-documents -->submit-application[Submit Application]
+ submit-application -->processing[Wait for Processing<br/>8-12 weeks]
  processing --> decision{Decision}
  decision -->|Approved| receive-visa[Receive Self-Employment Visa]
  decision -->|Rejected| End1([Application Denied])
- receive-visa --> travel[Travel to Bulgaria]
- travel --> registration[Register at Immigration Office]
+ receive-visa -->travel[Travel to Bulgaria]
+ travel -->registration[Register at Immigration Office]
  registration --> Success([Process Complete])
 
  style Start fill:#e1f5e1
@@ -546,20 +546,20 @@ flowchart TD
  successRate: '75%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> sponsor-check[Verify Sponsor Eligibility]
- sponsor-check --> income-check{Sponsor Income Sufficient?}
+ Start([Start Process]) -->sponsor-check[Verify Sponsor Eligibility]
+ sponsor-check -->income-check{Sponsor Income Sufficient?}
  income-check -->|Yes| housing-check[Verify Housing Requirements]
  income-check -->|No| End1([Not Eligible])
  housing-check --> housing-ok{Housing Adequate?}
  housing-ok -->|Yes| gather-documents[Gather Required Documents]
  housing-ok -->|No| End2([Not Eligible])
- gather-documents --> submit-application[Submit Application]
- submit-application --> processing[Wait for Processing<br/>10 weeks]
+ gather-documents -->submit-application[Submit Application]
+ submit-application -->processing[Wait for Processing<br/>10 weeks]
  processing --> decision{Decision}
  decision -->|Approved| receive-visa[Receive Family Reunification Visa]
  decision -->|Rejected| End3([Application Denied])
- receive-visa --> travel[Travel to Bulgaria]
- travel --> registration[Register at Immigration Office]
+ receive-visa -->travel[Travel to Bulgaria]
+ travel -->registration[Register at Immigration Office]
  registration --> Success([Process Complete])
 
  style Start fill:#e1f5e1

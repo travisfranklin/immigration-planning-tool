@@ -120,23 +120,23 @@ flowchart TD
  successRate: '80%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> business-idea[Develop Innovative<br/>Startup Idea]
+ Start([Start Process]) -->business-idea[Develop Innovative<br/>Startup Idea]
  business-idea --> check-funds{Have EUR 16,000<br/>minimum capital?}
  check-funds -->|Yes| prepare-business-plan[Prepare Detailed<br/>Business Plan]
  check-funds -->|No| End1([Not Eligible])
- prepare-business-plan --> submit-to-committee[Submit to Startup Estonia<br/>Committee]
- submit-to-committee --> committee-review[Committee Review<br/>30-45 Days]
+ prepare-business-plan -->submit-to-committee[Submit to Startup Estonia<br/>Committee]
+ submit-to-committee -->committee-review[Committee Review<br/>30-45 Days]
  committee-review --> decision1{Approved?}
  decision1 -->|Yes| gather-documents[Gather Required Documents]
  decision1 -->|Rejected| consider-resubmission[Consider Resubmission]
  consider-resubmission --> End2([Process Ended])
- gather-documents --> submit-visa[Submit Visa Application<br/>to Police]
- submit-visa --> visa-processing[Processing<br/>30-60 Days]
+ gather-documents -->submit-visa[Submit Visa Application<br/>to Police]
+ submit-visa -->visa-processing[Processing<br/>30-60 Days]
  visa-processing --> decision2{Decision}
  decision2 -->|Approved| receive-permit[Receive Residence Permit]
  decision2 -->|Rejected| consider-appeal[Consider Appeal]
- receive-permit --> travel-to-estonia[Travel to Estonia]
- travel-to-estonia --> register-business[Register Business<br/>and Get ID Card]
+ receive-permit -->travel-to-estonia[Travel to Estonia]
+ travel-to-estonia -->register-business[Register Business<br/>and Get ID Card]
  register-business --> Success([Process Complete])
  consider-appeal --> End3([Process Ended])
 
@@ -392,19 +392,19 @@ flowchart TD
  successRate: '90%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> job-offer[Secure Job Offer<br/>from Estonian Employer]
+ Start([Start Process]) -->job-offer[Secure Job Offer<br/>from Estonian Employer]
  job-offer --> check-salary{Salary >= EUR 2,000/month<br/>(EUR 24,000/year)?}
  check-salary -->|Yes| check-education{Higher Education<br/>Qualification?}
  check-salary -->|No| End1([Not Eligible])
  check-education -->|Yes| gather-documents[Gather Required Documents]
  check-education -->|No| End2([Not Eligible])
- gather-documents --> submit-visa[Submit Application<br/>to Police]
- submit-visa --> visa-processing[Processing<br/>30-60 Days]
+ gather-documents -->submit-visa[Submit Application<br/>to Police]
+ submit-visa -->visa-processing[Processing<br/>30-60 Days]
  visa-processing --> decision{Decision}
  decision -->|Approved| receive-permit[Receive EU Blue Card]
  decision -->|Rejected| consider-appeal[Consider Appeal]
- receive-permit --> travel-to-estonia[Travel to Estonia]
- travel-to-estonia --> register-police[Register and Get<br/>ID Card]
+ receive-permit -->travel-to-estonia[Travel to Estonia]
+ travel-to-estonia -->register-police[Register and Get<br/>ID Card]
  register-police --> Success([Process Complete])
  consider-appeal --> End3([Process Ended])
 
@@ -578,17 +578,17 @@ flowchart TD
  successRate: '85%',
  mermaidDiagram: `
 flowchart TD
- Start([Start]) --> check[Check Eligibility]
+ Start([Start]) -->check[Check Eligibility]
  check --> eligible{Sponsor<br/>Eligible?}
  eligible -->|Yes| docs[Gather Documents]
  eligible -->|No| End1([Not Eligible])
- docs --> submit[Submit Application]
- submit --> process[Processing 30-60 Days]
+ docs -->submit[Submit Application]
+ submit -->process[Processing 30-60 Days]
  process --> decision{Decision}
  decision -->|Approved| permit[Receive Permit]
  decision -->|Rejected| appeal[Consider Appeal]
- permit --> travel[Travel to Estonia]
- travel --> register[Register at Police]
+ permit -->travel[Travel to Estonia]
+ travel -->register[Register at Police]
  register --> Success([Complete])
  appeal --> End2([Process Ended])
 

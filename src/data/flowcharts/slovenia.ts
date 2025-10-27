@@ -18,7 +18,7 @@ flowchart TD
  job --> Edu{Higher Ed<br/>Degree?}
  Edu -->|Yes| docs[Gather Documents]
  Edu -->|No| End1([Not Eligible])
- docs --> submit[Submit Application]
+ docs -->submit[Submit Application]
  submit-application --> processing[Processing 30-60 Days]
  processing --> Decision{Decision}
  Decision -->|Approved| Card[EU Blue Card<br/>2 Years]
@@ -124,15 +124,15 @@ flowchart TD
  successRate: '85%',
  mermaidDiagram: `
 flowchart TD
- Start([Start]) --> job[Secure Job Offer<br/>EUR 1,200/month]
- job --> docs[Gather Documents]
- docs --> submit[Submit Application]
- submit --> process[Processing 30-90 Days]
+ Start([Start]) -->job[Secure Job Offer<br/>EUR 1,200/month]
+ job -->docs[Gather Documents]
+ docs -->submit[Submit Application]
+ submit -->process[Processing 30-90 Days]
  process --> decision{Decision}
  decision -->|Approved| permit[Receive Work Permit]
  decision -->|Rejected| appeal[Consider Appeal]
- permit --> travel[Travel to Slovenia]
- travel --> register[Register]
+ permit -->travel[Travel to Slovenia]
+ travel -->register[Register]
  register --> Success([Complete])
  appeal --> End([Process Ended])
 
@@ -218,17 +218,17 @@ flowchart TD
  successRate: '75%',
  mermaidDiagram: `
 flowchart TD
- Start([Start]) --> plan[Develop Business Plan]
+ Start([Start]) -->plan[Develop Business Plan]
  plan --> funds{EUR 8,000<br/>Funds?}
  funds -->|Yes| docs[Gather Documents]
  funds -->|No| End1([Not Eligible])
- docs --> submit[Submit Application]
- submit --> process[Processing 30-60 Days]
+ docs -->submit[Submit Application]
+ submit -->process[Processing 30-60 Days]
  process --> decision{Decision}
  decision -->|Approved| permit[Receive Permit]
  decision -->|Rejected| appeal[Consider Appeal]
- permit --> travel[Travel to Slovenia]
- travel --> register[Register Business]
+ permit -->travel[Travel to Slovenia]
+ travel -->register[Register Business]
  register --> Success([Complete])
  appeal --> End2([Process Ended])
 
@@ -315,17 +315,17 @@ flowchart TD
  successRate: '85%',
  mermaidDiagram: `
 flowchart TD
- Start([Start]) --> check[Check Eligibility]
+ Start([Start]) -->check[Check Eligibility]
  check --> eligible{Sponsor<br/>Eligible?}
  eligible -->|Yes| docs[Gather Documents]
  eligible -->|No| End1([Not Eligible])
- docs --> submit[Submit Application]
- submit --> process[Processing 30-60 Days]
+ docs -->submit[Submit Application]
+ submit -->process[Processing 30-60 Days]
  process --> decision{Decision}
  decision -->|Approved| permit[Receive Permit]
  decision -->|Rejected| appeal[Consider Appeal]
- permit --> travel[Travel to Slovenia]
- travel --> register[Register at Administrative Unit]
+ permit -->travel[Travel to Slovenia]
+ travel -->register[Register at Administrative Unit]
  register --> Success([Complete])
  appeal --> End2([Process Ended])
 

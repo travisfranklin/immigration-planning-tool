@@ -21,7 +21,7 @@ flowchart TD
  CheckIncome -->|No| End1([Not Eligible])
  accommodation -->gather-documents[Gather Required Documents]
  gather-documents --> consulate-submission[Submit Application at<br/>Portuguese Consulate]
- consulate-submission --> sef-processing[SEF Processing<br/>60-90 Days]
+ consulate-submission -->sef-processing[SEF Processing<br/>60-90 Days]
  processing --> Decision{Decision}
  Decision -->|Approved| Visa[Receive D7 Visa]
  Decision -->|Rejected| Appeal[Consider Appeal]
@@ -295,23 +295,23 @@ flowchart TD
  successRate: '75%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> business-idea[Develop Innovative<br/>Startup Idea]
+ Start([Start Process]) -->business-idea[Develop Innovative<br/>Startup Idea]
  business-idea --> check-funds{Have EUR 5,000-10,000<br/>minimum capital?}
  check-funds -->|Yes| prepare-business-plan[Prepare Detailed<br/>Business Plan]
  check-funds -->|No| End1([Not Eligible])
- prepare-business-plan --> submit-to-incubator[Submit to IAPMEI-Certified<br/>Incubator]
- submit-to-incubator --> incubator-review[Incubator Review<br/>30-60 Days]
+ prepare-business-plan -->submit-to-incubator[Submit to IAPMEI-Certified<br/>Incubator]
+ submit-to-incubator -->incubator-review[Incubator Review<br/>30-60 Days]
  incubator-review --> decision1{Approved?}
  decision1 -->|Yes| gather-documents[Gather Required Documents]
  decision1 -->|Rejected| consider-resubmission[Consider Resubmission]
  consider-resubmission --> End2([Process Ended])
- gather-documents --> submit-visa[Submit Visa Application<br/>at Consulate]
- submit-visa --> visa-processing[SEF Processing<br/>60-90 Days]
+ gather-documents -->submit-visa[Submit Visa Application<br/>at Consulate]
+ submit-visa -->visa-processing[SEF Processing<br/>60-90 Days]
  visa-processing --> decision2{Decision}
  decision2 -->|Approved| receive-visa[Receive Startup Visa]
  decision2 -->|Rejected| consider-appeal[Consider Appeal]
- receive-visa --> travel-to-portugal[Travel to Portugal]
- travel-to-portugal --> register-business[Register Business<br/>and Get Residence Card]
+ receive-visa -->travel-to-portugal[Travel to Portugal]
+ travel-to-portugal -->register-business[Register Business<br/>and Get Residence Card]
  register-business --> Success([Process Complete])
  consider-appeal --> End3([Process Ended])
 
@@ -562,19 +562,19 @@ flowchart TD
  successRate: '90%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> job-offer[Secure Job Offer from<br/>IAPMEI-Certified Tech Company]
+ Start([Start Process]) -->job-offer[Secure Job Offer from<br/>IAPMEI-Certified Tech Company]
  job-offer --> check-salary{Salary >= EUR 1,330/month<br/>(EUR 15,960/year)?}
  check-salary -->|Yes| check-company{Company IAPMEI<br/>Certified?}
  check-salary -->|No| End1([Not Eligible])
  check-company -->|Yes| gather-documents[Gather Required Documents]
  check-company -->|No| End2([Company Must Get Certified])
- gather-documents --> submit-visa[Submit Visa Application<br/>at Consulate]
- submit-visa --> visa-processing[SEF Processing<br/>30-60 Days]
+ gather-documents -->submit-visa[Submit Visa Application<br/>at Consulate]
+ submit-visa -->visa-processing[SEF Processing<br/>30-60 Days]
  visa-processing --> decision{Decision}
  decision -->|Approved| receive-visa[Receive Tech Visa]
  decision -->|Rejected| consider-appeal[Consider Appeal]
- receive-visa --> travel-to-portugal[Travel to Portugal]
- travel-to-portugal --> register-sef[Register at SEF<br/>Get Residence Card]
+ receive-visa -->travel-to-portugal[Travel to Portugal]
+ travel-to-portugal -->register-sef[Register at SEF<br/>Get Residence Card]
  register-sef --> Success([Process Complete])
  consider-appeal --> End3([Process Ended])
 
@@ -755,17 +755,17 @@ flowchart TD
  successRate: '85%',
  mermaidDiagram: `
 flowchart TD
- Start([Start]) --> check[Check Eligibility]
+ Start([Start]) -->check[Check Eligibility]
  check --> eligible{Sponsor<br/>Eligible?}
  eligible -->|Yes| docs[Gather Documents]
  eligible -->|No| End1([Not Eligible])
- docs --> submit[Submit Application]
- submit --> process[Processing 3-6 Months]
+ docs -->submit[Submit Application]
+ submit -->process[Processing 3-6 Months]
  process --> decision{Decision}
  decision -->|Approved| permit[Receive Permit]
  decision -->|Rejected| appeal[Consider Appeal]
- permit --> travel[Travel to Portugal]
- travel --> register[Register at SEF]
+ permit -->travel[Travel to Portugal]
+ travel -->register[Register at SEF]
  register --> Success([Complete])
  appeal --> End2([Process Ended])
 

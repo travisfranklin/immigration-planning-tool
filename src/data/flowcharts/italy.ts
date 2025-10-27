@@ -26,8 +26,8 @@ flowchart TD
  processing --> decision{Decision}
  decision -->|Approved| receive-visa[Receive Investor Visa]
  decision -->|Rejected| End1([Process Ended])
- receive-visa --> travel[Travel and Apply at Questura]
- travel-questura --> permesso[Receive Permesso di Soggiorno]
+ receive-visa -->travel[Travel and Apply at Questura]
+ travel-questura -->permesso[Receive Permesso di Soggiorno]
  permesso-soggiorno --> Success([Process Complete])
 
  style Start fill:#e1f5e1

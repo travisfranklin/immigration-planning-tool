@@ -22,7 +22,7 @@ flowchart TD
  Property2 --> tax-number
  tax-number -->gather-documents[Gather Required Documents]
  gather-documents -->submit-application[Submit Application to<br/>Greek Consulate or in Greece]
- submit-application -->processing-decision-decision[Processing<br/>60-90 Days]
+ submit-application -->processing-decision[Processing<br/>60-90 Days]
  processing --> Decision{Decision}
  Decision -->|Approved| GoldenVisa[Receive Golden Visa<br/>5-Year Permit]
  Decision -->|Rejected| Appeal[Consider Appeal]
@@ -267,20 +267,20 @@ flowchart TD
  successRate: '70%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> job-offer[Secure Job Offer<br/>from Greek Employer]
+ Start([Start Process]) -->job-offer[Secure Job Offer<br/>from Greek Employer]
  job-offer --> check-salary{Salary >= EUR 1,200/month<br/>(EUR 14,400/year)?}
  check-salary -->|Yes| labor-test[Employer Proves<br/>No Suitable Greek/EU Candidate]
  check-salary -->|No| End1([Not Eligible])
  labor-test --> test-result{Labor Test<br/>Passed?}
  test-result -->|Yes| gather-documents[Gather Required Documents]
  test-result -->|No| End2([Not Eligible])
- gather-documents --> submit-application[Submit Application<br/>to Greek Consulate]
- submit-application --> processing[Processing<br/>90-120 Days]
+ gather-documents -->submit-application[Submit Application<br/>to Greek Consulate]
+ submit-application -->processing[Processing<br/>90-120 Days]
  processing --> decision{Decision}
  decision -->|Approved| receive-permit[Receive Work Permit<br/>and Residence Visa]
  decision -->|Rejected| consider-appeal[Consider Appeal]
- receive-permit --> travel-to-greece[Travel to Greece]
- travel-to-greece --> register-police[Register with Police<br/>Get Residence Card]
+ receive-permit -->travel-to-greece[Travel to Greece]
+ travel-to-greece -->register-police[Register with Police<br/>Get Residence Card]
  register-police --> Success([Process Complete])
  consider-appeal --> End3([Process Ended])
 
@@ -468,17 +468,17 @@ flowchart TD
  successRate: '85%',
  mermaidDiagram: `
 flowchart TD
- Start([Start]) --> check[Check Eligibility]
+ Start([Start]) -->check[Check Eligibility]
  check --> eligible{Sponsor<br/>Eligible?}
  eligible -->|Yes| docs[Gather Documents]
  eligible -->|No| End1([Not Eligible])
- docs --> submit[Submit Application]
- submit --> process[Processing 60-90 Days]
+ docs -->submit[Submit Application]
+ submit -->process[Processing 60-90 Days]
  process --> decision{Decision}
  decision -->|Approved| permit[Receive Permit]
  decision -->|Rejected| appeal[Consider Appeal]
- permit --> travel[Travel to Greece]
- travel --> register[Register at Immigration]
+ permit -->travel[Travel to Greece]
+ travel -->register[Register at Immigration]
  register --> Success([Complete])
  appeal --> End2([Process Ended])
 
@@ -565,17 +565,17 @@ flowchart TD
  successRate: '90%',
  mermaidDiagram: `
 flowchart TD
- Start([Start]) --> check[Check Eligibility]
+ Start([Start]) -->check[Check Eligibility]
  check --> income{EUR 2,000/mo<br/>Income?}
  income -->|Yes| docs[Gather Documents]
  income -->|No| End1([Not Eligible])
- docs --> submit[Submit Application]
- submit --> process[Processing 60-90 Days]
+ docs -->submit[Submit Application]
+ submit -->process[Processing 60-90 Days]
  process --> decision{Decision}
  decision -->|Approved| permit[Receive Permit]
  decision -->|Rejected| appeal[Consider Appeal]
- permit --> travel[Travel to Greece]
- travel --> register[Register at Immigration]
+ permit -->travel[Travel to Greece]
+ travel -->register[Register at Immigration]
  register --> Success([Complete])
  appeal --> End2([Process Ended])
 

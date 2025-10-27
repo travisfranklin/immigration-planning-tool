@@ -146,25 +146,25 @@ flowchart TD
  successRate: '85%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> JobOffer[Secure Job Offer<br/>from Czech Employer]
- JobOffer --> CheckSalary{Salary >= EUR 1,000/month<br/>( EUR 12,000/year)?}
- CheckSalary -->|Yes| GatherDocs[Gather Required Documents]
- CheckSalary -->|No| End1([Not Eligible])
- GatherDocs --> Submit[Submit Application to<br/>Czech Consulate or in Czech]
- Submit --> Processing[Processing<br/>60-90 Days]
- Processing --> Decision{Decision}
- Decision -->|Approved| EmployeeCard[Receive Employee Card<br/>2-Year Permit]
- Decision -->|Rejected| Appeal[Consider Appeal]
- EmployeeCard --> Travel[Travel to Czech Republic]
- Travel --> Register[Register at Foreign<br/>Police within 3 Days]
- Register --> Success([Process Complete])
- Appeal --> End2([Process Ended])
- 
+ Start([Start Process]) --> job-offer[Secure Job Offer<br/>from Czech Employer]
+ job-offer --> check-salary{Salary >= EUR 1,000/month<br/>( EUR 12,000/year)?}
+ check-salary -->|Yes| gather-documents[Gather Required Documents]
+ check-salary -->|No| End1([Not Eligible])
+ gather-documents --> submit-application[Submit Application to<br/>Czech Consulate or in Czech]
+ submit-application --> processing[Processing<br/>60-90 Days]
+ processing --> decision{Decision}
+ decision -->|Approved| receive-card[Receive Employee Card<br/>2-Year Permit]
+ decision -->|Rejected| consider-appeal[Consider Appeal]
+ receive-card --> travel[Travel to Czech Republic]
+ travel --> register[Register at Foreign<br/>Police within 3 Days]
+ register --> Success([Process Complete])
+ consider-appeal --> End2([Process Ended])
+
  style Start fill:#e1f5e1
  style Success fill:#e1f5e1
  style End1 fill:#ffe1e1
  style End2 fill:#ffe1e1
- style EmployeeCard fill:#e1e5ff
+ style receive-card fill:#e1e5ff
 `,
  steps: [
  {
@@ -207,6 +207,16 @@ flowchart TD
  ],
  },
  {
+ id: 'check-salary',
+ title: 'Verify Salary Requirement',
+ description: 'Ensure the job offer meets minimum salary threshold',
+ estimatedDuration: '1 day',
+ documents: ['Employment contract with salary details'],
+ notes: ['Minimum salary: EUR 1,000/month (EUR 12,000/year)', 'Lower than EU Blue Card (EUR 1,800/month)'],
+ isConditional: true,
+ condition: 'Salary must be >= EUR 1,000/month',
+ },
+ {
  id: 'submit-application',
  title: 'Submit Application',
  description: 'Submit your Employee Card application to Czech authorities',
@@ -225,27 +235,52 @@ flowchart TD
  ],
  },
  {
- id: 'receive-card-register',
- title: 'Receive Employee Card and Register in Czech Republic',
- description: 'Receive your Employee Card, travel to Czech Republic, and complete registration',
+ id: 'processing',
+ title: 'Processing Period',
+ description: 'Wait for Czech authorities to process your application',
  estimatedDuration: '60-90 days',
- documents: [
- 'Employee Card',
- 'All original documents',
- 'Proof of accommodation',
- ],
- notes: [
- 'Processing time: typically 60-90 days',
- 'Employee Card valid for 2 years',
- 'Register at Foreign Police within 3 days of arrival',
- 'Combines work permit and residence permit',
- 'Faster than separate applications',
- 'Family members can join',
- 'Renewable',
- 'PR after 5 years, citizenship after 5 years',
- 'Prague is major tech hub',
- 'High quality of life',
- ],
+ documents: [],
+ notes: ['Processing time: typically 60-90 days', 'May be contacted for additional documents'],
+ },
+ {
+ id: 'decision',
+ title: 'Application Decision',
+ description: 'Wait for decision on your Employee Card application',
+ estimatedDuration: '1 week',
+ documents: [],
+ notes: ['Decision notification sent by email or post', 'If rejected, reasons will be provided'],
+ },
+ {
+ id: 'receive-card',
+ title: 'Receive Employee Card',
+ description: 'Collect your approved Employee Card',
+ estimatedDuration: '1 week',
+ documents: ['Passport', 'Approval notification'],
+ notes: ['Employee Card valid for 2 years', 'Combines work permit and residence permit', 'Renewable'],
+ },
+ {
+ id: 'consider-appeal',
+ title: 'Consider Appeal',
+ description: 'If rejected, consider appealing the decision',
+ estimatedDuration: 'Varies',
+ documents: ['Rejection letter', 'Additional supporting documents'],
+ notes: ['Appeal must be filed within 30 days', 'Consult immigration lawyer'],
+ },
+ {
+ id: 'travel',
+ title: 'Travel to Czech Republic',
+ description: 'Book travel and relocate to Czech Republic',
+ estimatedDuration: '1-2 weeks',
+ documents: ['Valid passport', 'Employee Card', 'Proof of accommodation'],
+ notes: ['Prague is major tech hub', 'High quality of life'],
+ },
+ {
+ id: 'register',
+ title: 'Register at Foreign Police',
+ description: 'Complete registration formalities in Czech Republic',
+ estimatedDuration: '1 day',
+ documents: ['Employee Card', 'All original documents', 'Proof of accommodation'],
+ notes: ['Register at Foreign Police within 3 days of arrival', 'Family members can join', 'PR after 5 years, citizenship after 5 years'],
  },
  ],
  },

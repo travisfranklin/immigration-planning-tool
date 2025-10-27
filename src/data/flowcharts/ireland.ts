@@ -26,7 +26,7 @@ flowchart TD
  processing --> Decision{Decision}
  Decision -->|Approved| Permit[Receive Employment Permit]
  Decision -->|Rejected| Appeal[Consider Appeal]
- Permit --> entry-visa[Apply for Entry Visa]
+ Permit -->entry-visa[Apply for Entry Visa]
  visa-application -->arrival[Travel to Ireland]
  arrival --> registration[Register with GNIB/IRP]
  registration --> Success([Process Complete])
@@ -309,21 +309,21 @@ flowchart TD
  successRate: '75%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> job-offer[Secure Job Offer<br/>from Irish Employer]
+ Start([Start Process]) -->job-offer[Secure Job Offer<br/>from Irish Employer]
  job-offer --> check-salary{Salary >= EUR 30,000/year?}
  check-salary -->|Yes| labor-market-test[Employer Conducts<br/>Labor Market Test]
  check-salary -->|No| End1([Not Eligible])
  labor-market-test --> test-result{No Suitable<br/>EEA Worker?}
  test-result -->|Yes| gather-documents[Gather Required Documents]
  test-result -->|No| End2([Not Eligible])
- gather-documents --> employer-application[Employer Applies<br/>for Permit]
- employer-application --> processing[Processing<br/>8-12 Weeks]
+ gather-documents -->employer-application[Employer Applies<br/>for Permit]
+ employer-application -->processing[Processing<br/>8-12 Weeks]
  processing --> decision{Decision}
  decision -->|Approved| receive-permit[Receive Employment Permit]
  decision -->|Rejected| consider-appeal[Consider Appeal]
- receive-permit --> entry-visa[Apply for Entry Visa]
- entry-visa --> travel-to-ireland[Travel to Ireland]
- travel-to-ireland --> register-gnib[Register with GNIB/IRP]
+ receive-permit -->entry-visa[Apply for Entry Visa]
+ entry-visa -->travel-to-ireland[Travel to Ireland]
+ travel-to-ireland -->register-gnib[Register with GNIB/IRP]
  register-gnib --> Success([Process Complete])
  consider-appeal --> End3([Process Ended])
 
@@ -525,18 +525,18 @@ flowchart TD
  successRate: '80%',
  mermaidDiagram: `
 flowchart TD
- Start([Start]) --> funds{EUR 2M Net Worth<br/>+ EUR 1M Investment?}
+ Start([Start]) -->funds{EUR 2M Net Worth<br/>+ EUR 1M Investment?}
  funds -->|Yes| choose[Choose Investment Option]
  funds -->|No| End1([Not Eligible])
- choose --> docs[Gather Documents]
- docs --> submit[Submit Application]
- submit --> process[Processing 4-6 Months]
+ choose -->docs[Gather Documents]
+ docs -->submit[Submit Application]
+ submit -->process[Processing 4-6 Months]
  process --> decision{Decision}
  decision -->|Approved| invest[Make Investment]
  decision -->|Rejected| appeal[Consider Appeal]
- invest --> permit[Receive Stamp 4 Permit]
- permit --> travel[Travel to Ireland]
- travel --> register[Register with GNIB/IRP]
+ invest -->permit[Receive Stamp 4 Permit]
+ permit -->travel[Travel to Ireland]
+ travel -->register[Register with GNIB/IRP]
  register --> Success([Complete])
  appeal --> End2([Process Ended])
 
@@ -639,17 +639,17 @@ flowchart TD
  successRate: '80%',
  mermaidDiagram: `
 flowchart TD
- Start([Start]) --> check[Check Eligibility]
+ Start([Start]) -->check[Check Eligibility]
  check --> eligible{Sponsor<br/>Eligible?}
  eligible -->|Yes| docs[Gather Documents]
  eligible -->|No| End1([Not Eligible])
- docs --> submit[Submit Application]
- submit --> process[Processing 6-12 Months]
+ docs -->submit[Submit Application]
+ submit -->process[Processing 6-12 Months]
  process --> decision{Decision}
  decision -->|Approved| permit[Receive Permit]
  decision -->|Rejected| appeal[Consider Appeal]
- permit --> travel[Travel to Ireland]
- travel --> register[Register at GNIB]
+ permit -->travel[Travel to Ireland]
+ travel -->register[Register at GNIB]
  register --> Success([Complete])
  appeal --> End2([Process Ended])
 

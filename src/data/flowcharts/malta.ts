@@ -286,23 +286,23 @@ flowchart TD
  successRate: '75%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> business-idea[Develop Innovative<br/>Startup Idea]
+ Start([Start Process]) -->business-idea[Develop Innovative<br/>Startup Idea]
  business-idea --> check-funds{Have EUR 15,000-25,000<br/>minimum capital?}
  check-funds -->|Yes| prepare-business-plan[Prepare Detailed<br/>Business Plan]
  check-funds -->|No| End1([Not Eligible])
- prepare-business-plan --> submit-to-malta-enterprise[Submit to Malta Enterprise]
- submit-to-malta-enterprise --> enterprise-review[Malta Enterprise Review<br/>30-60 Days]
+ prepare-business-plan -->submit-to-malta-enterprise[Submit to Malta Enterprise]
+ submit-to-malta-enterprise -->enterprise-review[Malta Enterprise Review<br/>30-60 Days]
  enterprise-review --> decision1{Approved?}
  decision1 -->|Yes| gather-documents[Gather Required Documents]
  decision1 -->|Rejected| consider-resubmission[Consider Resubmission]
  consider-resubmission --> End2([Process Ended])
- gather-documents --> submit-visa[Submit Visa Application<br/>to Identity Malta]
- submit-visa --> visa-processing[Processing<br/>60-90 Days]
+ gather-documents -->submit-visa[Submit Visa Application<br/>to Identity Malta]
+ submit-visa -->visa-processing[Processing<br/>60-90 Days]
  visa-processing --> decision2{Decision}
  decision2 -->|Approved| receive-permit[Receive Residence Permit]
  decision2 -->|Rejected| consider-appeal[Consider Appeal]
- receive-permit --> travel-to-malta[Travel to Malta]
- travel-to-malta --> register-business[Register Business<br/>and Get ID Card]
+ receive-permit -->travel-to-malta[Travel to Malta]
+ travel-to-malta -->register-business[Register Business<br/>and Get ID Card]
  register-business --> Success([Process Complete])
  consider-appeal --> End3([Process Ended])
 
@@ -558,17 +558,17 @@ flowchart TD
  successRate: '85%',
  mermaidDiagram: `
 flowchart TD
- Start([Start]) --> check[Check Eligibility]
+ Start([Start]) -->check[Check Eligibility]
  check --> eligible{Sponsor<br/>Eligible?}
  eligible -->|Yes| docs[Gather Documents]
  eligible -->|No| End1([Not Eligible])
- docs --> submit[Submit Application]
- submit --> process[Processing 3-6 Months]
+ docs -->submit[Submit Application]
+ submit -->process[Processing 3-6 Months]
  process --> decision{Decision}
  decision -->|Approved| permit[Receive Permit]
  decision -->|Rejected| appeal[Consider Appeal]
- permit --> travel[Travel to Malta]
- travel --> register[Register at Identity Malta]
+ permit -->travel[Travel to Malta]
+ travel -->register[Register at Identity Malta]
  register --> Success([Complete])
  appeal --> End2([Process Ended])
 
@@ -655,17 +655,17 @@ flowchart TD
  successRate: '85%',
  mermaidDiagram: `
 flowchart TD
- Start([Start]) --> check[Check Eligibility]
+ Start([Start]) -->check[Check Eligibility]
  check --> salary{EUR 45,000/yr<br/>Salary?}
  salary -->|Yes| docs[Gather Documents]
  salary -->|No| End1([Not Eligible])
- docs --> submit[Submit Application]
- submit --> process[Processing 60-90 Days]
+ docs -->submit[Submit Application]
+ submit -->process[Processing 60-90 Days]
  process --> decision{Decision}
  decision -->|Approved| permit[Receive Permit]
  decision -->|Rejected| appeal[Consider Appeal]
- permit --> travel[Travel to Malta]
- travel --> register[Register at Identity Malta]
+ permit -->travel[Travel to Malta]
+ travel -->register[Register at Identity Malta]
  register --> Success([Complete])
  appeal --> End2([Process Ended])
 

@@ -24,7 +24,7 @@ flowchart TD
  processing --> Decision{Decision}
  Decision -->|Approved| Permit[Receive Residence Permit]
  Decision -->|Rejected| Appeal[Consider Appeal]
- Permit -->arrival-registration-registration[Travel to Finland]
+ Permit -->arrival-registration[Travel to Finland]
  arrival --> registration[Register at Migri Office Get Finnish ID]
  registration --> Success([Process Complete])
  Appeal --> End2([Process Ended])
@@ -298,23 +298,23 @@ flowchart TD
  successRate: '75%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> business-idea[Develop Innovative<br/>Startup Idea]
+ Start([Start Process]) -->business-idea[Develop Innovative<br/>Startup Idea]
  business-idea --> check-funds{Have EUR 12,000<br/>minimum savings?}
  check-funds -->|Yes| prepare-business-plan[Prepare Detailed<br/>Business Plan]
  check-funds -->|No| End1([Not Eligible])
- prepare-business-plan --> submit-to-accelerator[Submit to Authorized<br/>Accelerator/Incubator]
- submit-to-accelerator --> accelerator-review[Accelerator Review<br/>30-60 Days]
+ prepare-business-plan -->submit-to-accelerator[Submit to Authorized<br/>Accelerator/Incubator]
+ submit-to-accelerator -->accelerator-review[Accelerator Review<br/>30-60 Days]
  accelerator-review --> decision1{Approved?}
  decision1 -->|Yes| gather-documents[Gather Required Documents]
  decision1 -->|Rejected| consider-resubmission[Consider Resubmission]
  consider-resubmission --> End2([Process Ended])
- gather-documents --> submit-visa[Submit Visa Application<br/>to Migri]
- submit-visa --> visa-processing[Processing<br/>60-90 Days]
+ gather-documents -->submit-visa[Submit Visa Application<br/>to Migri]
+ submit-visa -->visa-processing[Processing<br/>60-90 Days]
  visa-processing --> decision2{Decision}
  decision2 -->|Approved| receive-permit[Receive Residence Permit]
  decision2 -->|Rejected| consider-appeal[Consider Appeal]
- receive-permit --> travel-to-finland[Travel to Finland]
- travel-to-finland --> register-business[Register Business<br/>and Get Finnish ID]
+ receive-permit -->travel-to-finland[Travel to Finland]
+ travel-to-finland -->register-business[Register Business<br/>and Get Finnish ID]
  register-business --> Success([Process Complete])
  consider-appeal --> End3([Process Ended])
 
@@ -558,17 +558,17 @@ flowchart TD
  successRate: '70%',
  mermaidDiagram: `
 flowchart TD
- Start([Start]) --> plan[Develop Business Plan]
+ Start([Start]) -->plan[Develop Business Plan]
  plan --> funds{EUR 17,500<br/>Savings?}
  funds -->|Yes| docs[Gather Documents]
  funds -->|No| End1([Not Eligible])
- docs --> submit[Submit Application]
- submit --> process[Processing 60-90 Days]
+ docs -->submit[Submit Application]
+ submit -->process[Processing 60-90 Days]
  process --> decision{Decision}
  decision -->|Approved| permit[Receive Permit]
  decision -->|Rejected| appeal[Consider Appeal]
- permit --> travel[Travel to Finland]
- travel --> register[Register Business]
+ permit -->travel[Travel to Finland]
+ travel -->register[Register Business]
  register --> Success([Complete])
  appeal --> End2([Process Ended])
 
@@ -655,17 +655,17 @@ flowchart TD
  successRate: '85%',
  mermaidDiagram: `
 flowchart TD
- Start([Start]) --> check[Check Eligibility]
+ Start([Start]) -->check[Check Eligibility]
  check --> eligible{Sponsor<br/>Eligible?}
  eligible -->|Yes| docs[Gather Documents]
  eligible -->|No| End1([Not Eligible])
- docs --> submit[Submit Application]
- submit --> process[Processing 3-6 Months]
+ docs -->submit[Submit Application]
+ submit -->process[Processing 3-6 Months]
  process --> decision{Decision}
  decision -->|Approved| permit[Receive Permit]
  decision -->|Rejected| appeal[Consider Appeal]
- permit --> travel[Travel to Finland]
- travel --> register[Register at Maistraatti]
+ permit -->travel[Travel to Finland]
+ travel -->register[Register at Maistraatti]
  register --> Success([Complete])
  appeal --> End2([Process Ended])
 

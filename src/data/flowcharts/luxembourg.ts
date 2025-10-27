@@ -266,18 +266,18 @@ flowchart TD
  successRate: '75%',
  mermaidDiagram: `
 flowchart TD
- Start([Start]) --> funds{EUR 500K<br/>Investment Funds?}
+ Start([Start]) -->funds{EUR 500K<br/>Investment Funds?}
  funds -->|Yes| plan[Develop Business Plan]
  funds -->|No| End1([Not Eligible])
- plan --> docs[Gather Documents]
- docs --> submit[Submit Application]
- submit --> process[Processing 3-6 Months]
+ plan -->docs[Gather Documents]
+ docs -->submit[Submit Application]
+ submit -->process[Processing 3-6 Months]
  process --> decision{Decision}
  decision -->|Approved| invest[Make Investment]
  decision -->|Rejected| appeal[Consider Appeal]
- invest --> permit[Receive Residence Permit]
- permit --> travel[Travel to Luxembourg]
- travel --> register[Register at Commune]
+ invest -->permit[Receive Residence Permit]
+ permit -->travel[Travel to Luxembourg]
+ travel -->register[Register at Commune]
  register --> Success([Complete])
  appeal --> End2([Process Ended])
 
@@ -380,17 +380,17 @@ flowchart TD
  successRate: '70%',
  mermaidDiagram: `
 flowchart TD
- Start([Start]) --> plan[Develop Business Plan]
+ Start([Start]) -->plan[Develop Business Plan]
  plan --> funds{EUR 15,000<br/>Funds?}
  funds -->|Yes| docs[Gather Documents]
  funds -->|No| End1([Not Eligible])
- docs --> submit[Submit Application]
- submit --> process[Processing 3-6 Months]
+ docs -->submit[Submit Application]
+ submit -->process[Processing 3-6 Months]
  process --> decision{Decision}
  decision -->|Approved| permit[Receive Permit]
  decision -->|Rejected| appeal[Consider Appeal]
- permit --> travel[Travel to Luxembourg]
- travel --> register[Register Business]
+ permit -->travel[Travel to Luxembourg]
+ travel -->register[Register Business]
  register --> Success([Complete])
  appeal --> End2([Process Ended])
 
@@ -477,17 +477,17 @@ flowchart TD
  successRate: '85%',
  mermaidDiagram: `
 flowchart TD
- Start([Start]) --> check[Check Eligibility]
+ Start([Start]) -->check[Check Eligibility]
  check --> eligible{Sponsor<br/>Eligible?}
  eligible -->|Yes| docs[Gather Documents]
  eligible -->|No| End1([Not Eligible])
- docs --> submit[Submit Application]
- submit --> process[Processing 3-6 Months]
+ docs -->submit[Submit Application]
+ submit -->process[Processing 3-6 Months]
  process --> decision{Decision}
  decision -->|Approved| permit[Receive Permit]
  decision -->|Rejected| appeal[Consider Appeal]
- permit --> travel[Travel to Luxembourg]
- travel --> register[Register at Commune]
+ permit -->travel[Travel to Luxembourg]
+ travel -->register[Register at Commune]
  register --> Success([Complete])
  appeal --> End2([Process Ended])
 

@@ -22,7 +22,7 @@ flowchart TD
  CheckCompany -->|Yes| gather-documents[Gather Required Documents]
  CheckCompany -->|No| End2([Use Different Scheme])
  gather-documents -->submit-application[Submit Application Online]
- submit-application --> fast-processing[Fast-Track Processing<br/><=30 Days]
+ submit-application -->fast-processing[Fast-Track Processing<br/><=30 Days]
  processing --> Decision{Decision}
  Decision -->|Approved| Permit[Receive Residence Permit]
  Decision -->|Rejected| Appeal[Consider Appeal]
@@ -302,23 +302,23 @@ flowchart TD
   successRate: '70%',
   mermaidDiagram: `
 flowchart TD
-  Start([Start Process]) --> business-idea[Develop Innovative<br/>Business Idea]
+  Start([Start Process]) -->business-idea[Develop Innovative<br/>Business Idea]
   business-idea --> check-funds{Have DKK 50,000<br/>minimum savings?}
   check-funds -->|Yes| prepare-business-plan[Prepare Detailed<br/>Business Plan]
   check-funds -->|No| End1([Not Eligible])
-  prepare-business-plan --> submit-to-panel[Submit to Expert Panel]
-  submit-to-panel --> panel-review[Expert Panel Review<br/>30-60 Days]
+  prepare-business-plan -->submit-to-panel[Submit to Expert Panel]
+  submit-to-panel -->panel-review[Expert Panel Review<br/>30-60 Days]
   panel-review --> decision1{Approved?}
   decision1 -->|Yes| gather-documents[Gather Required Documents]
   decision1 -->|Rejected| consider-resubmission[Consider Resubmission]
   consider-resubmission --> End2([Process Ended])
-  gather-documents --> submit-visa[Submit Visa Application<br/>to SIRI]
-  submit-visa --> visa-processing[Processing<br/>60-90 Days]
+  gather-documents -->submit-visa[Submit Visa Application<br/>to SIRI]
+  submit-visa -->visa-processing[Processing<br/>60-90 Days]
   visa-processing --> decision2{Decision}
   decision2 -->|Approved| receive-permit[Receive Residence Permit]
   decision2 -->|Rejected| consider-appeal[Consider Appeal]
-  receive-permit --> travel-to-denmark[Travel to Denmark]
-  travel-to-denmark --> register-business[Register Business<br/>and Get CPR Number]
+  receive-permit -->travel-to-denmark[Travel to Denmark]
+  travel-to-denmark -->register-business[Register Business<br/>and Get CPR Number]
   register-business --> Success([Process Complete])
   consider-appeal --> End3([Process Ended])
 
@@ -576,19 +576,19 @@ flowchart TD
  successRate: '85%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> job-offer[Secure Job Offer<br/>from Danish Employer]
+ Start([Start Process]) -->job-offer[Secure Job Offer<br/>from Danish Employer]
  job-offer --> check-salary{Salary >= DKK 465,000/year<br/>(EUR 62,400)?}
  check-salary -->|Yes| check-education{Bachelor's Degree<br/>or Higher?}
  check-salary -->|No| End1([Not Eligible])
  check-education -->|Yes| gather-documents[Gather Required Documents]
  check-education -->|No| End2([Not Eligible])
- gather-documents --> submit-visa[Submit Application<br/>to SIRI]
- submit-visa --> visa-processing[Fast-Track Processing<br/>30-60 Days]
+ gather-documents -->submit-visa[Submit Application<br/>to SIRI]
+ submit-visa -->visa-processing[Fast-Track Processing<br/>30-60 Days]
  visa-processing --> decision{Decision}
  decision -->|Approved| receive-permit[Receive EU Blue Card]
  decision -->|Rejected| consider-appeal[Consider Appeal]
- receive-permit --> travel-to-denmark[Travel to Denmark]
- travel-to-denmark --> register-siri[Register at SIRI<br/>Get CPR Number]
+ receive-permit -->travel-to-denmark[Travel to Denmark]
+ travel-to-denmark -->register-siri[Register at SIRI<br/>Get CPR Number]
  register-siri --> Success([Process Complete])
  consider-appeal --> End3([Process Ended])
 
@@ -759,17 +759,17 @@ flowchart TD
  successRate: '80%',
  mermaidDiagram: `
 flowchart TD
- Start([Start]) --> check[Check Eligibility]
+ Start([Start]) -->check[Check Eligibility]
  check --> eligible{Sponsor<br/>Eligible?}
  eligible -->|Yes| docs[Gather Documents]
  eligible -->|No| End1([Not Eligible])
- docs --> submit[Submit Application]
- submit --> process[Processing 3-6 Months]
+ docs -->submit[Submit Application]
+ submit -->process[Processing 3-6 Months]
  process --> decision{Decision}
  decision -->|Approved| permit[Receive Permit]
  decision -->|Rejected| appeal[Consider Appeal]
- permit --> travel[Travel to Denmark]
- travel --> register[Register at SIRI]
+ permit -->travel[Travel to Denmark]
+ travel -->register[Register at SIRI]
  register --> Success([Complete])
  appeal --> End2([Process Ended])
 

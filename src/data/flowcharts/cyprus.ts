@@ -153,25 +153,25 @@ flowchart TD
  successRate: '85%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> JobOffer[Secure Job Offer<br/>from Cyprus Employer]
- JobOffer --> CheckSalary{Salary >= EUR 1,500/month<br/>( EUR 18,000/year)?}
- CheckSalary -->|Yes| GatherDocs[Gather Required Documents]
- CheckSalary -->|No| End1([Not Eligible])
- GatherDocs --> Submit[Submit Application to<br/>Cyprus Immigration]
- Submit --> Processing[Processing<br/>60-90 Days]
- Processing --> Decision{Decision}
- Decision -->|Approved| Permit[Receive Work Permit]
- Decision -->|Rejected| Appeal[Consider Appeal]
- Permit --> Travel[Travel to Cyprus]
- Travel --> Register[Register at Immigration<br/>Office]
- Register --> Success([Process Complete])
- Appeal --> End2([Process Ended])
- 
+ Start([Start Process]) --> job-offer[Secure Job Offer<br/>from Cyprus Employer]
+ job-offer --> check-salary{Salary >= EUR 1,500/month<br/>( EUR 18,000/year)?}
+ check-salary -->|Yes| gather-documents[Gather Required Documents]
+ check-salary -->|No| End1([Not Eligible])
+ gather-documents --> submit-application[Submit Application to<br/>Cyprus Immigration]
+ submit-application --> processing[Processing<br/>60-90 Days]
+ processing --> decision{Decision}
+ decision -->|Approved| receive-permit[Receive Work Permit]
+ decision -->|Rejected| consider-appeal[Consider Appeal]
+ receive-permit --> travel[Travel to Cyprus]
+ travel --> register[Register at Immigration<br/>Office]
+ register --> Success([Process Complete])
+ consider-appeal --> End2([Process Ended])
+
  style Start fill:#e1f5e1
  style Success fill:#e1f5e1
  style End1 fill:#ffe1e1
  style End2 fill:#ffe1e1
- style Permit fill:#e1e5ff
+ style receive-permit fill:#e1e5ff
 `,
  steps: [
  {
@@ -193,6 +193,22 @@ flowchart TD
  'iGaming industry hub',
  'No specific occupation list',
  ],
+ },
+ {
+ id: 'check-salary',
+ title: 'Verify Salary Requirement',
+ description: 'Ensure the job offer meets minimum salary threshold',
+ estimatedDuration: '1 day',
+ documents: [
+ 'Employment contract with salary details',
+ ],
+ notes: [
+ 'Minimum salary: EUR 1,500/month (EUR 18,000/year)',
+ 'Lower than most Western European countries',
+ 'Salary must be clearly stated in contract',
+ ],
+ isConditional: true,
+ condition: 'Salary must be >= EUR 1,500/month',
  },
  {
  id: 'gather-documents',
@@ -248,24 +264,79 @@ flowchart TD
  ],
  },
  {
- id: 'receive-permit-register',
- title: 'Receive Work Permit and Register in Cyprus',
- description: 'Receive your work permit, travel to Cyprus, and complete registration',
- estimatedDuration: '2-4 weeks',
+ id: 'decision',
+ title: 'Application Decision',
+ description: 'Wait for decision on your work permit application',
+ estimatedDuration: '1-2 weeks',
+ documents: [],
+ notes: [
+ 'Decision typically made within processing period',
+ 'Notification sent by email or post',
+ 'If rejected, reasons will be provided',
+ ],
+ },
+ {
+ id: 'receive-permit',
+ title: 'Receive Work Permit',
+ description: 'Collect your approved work permit',
+ estimatedDuration: '1 week',
+ documents: [
+ 'Passport',
+ 'Approval notification',
+ ],
+ notes: [
+ 'Work permit valid for 1-3 years',
+ 'Renewable',
+ 'Can now travel to Cyprus',
+ ],
+ },
+ {
+ id: 'consider-appeal',
+ title: 'Consider Appeal',
+ description: 'If rejected, consider appealing the decision',
+ estimatedDuration: 'Varies',
+ documents: [
+ 'Rejection letter',
+ 'Additional supporting documents',
+ ],
+ notes: [
+ 'Appeal must be filed within 30 days',
+ 'Consult immigration lawyer',
+ 'Success rate varies',
+ ],
+ },
+ {
+ id: 'travel',
+ title: 'Travel to Cyprus',
+ description: 'Book travel and relocate to Cyprus',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'Valid passport',
+ 'Work permit',
+ 'Proof of accommodation',
+ ],
+ notes: [
+ 'Major airports: Larnaca (LCA) and Paphos (PFO)',
+ 'English is official language',
+ 'Warm climate year-round',
+ 'Strategic location (Europe/Asia/Africa)',
+ ],
+ },
+ {
+ id: 'register',
+ title: 'Register at Immigration Office',
+ description: 'Complete registration formalities in Cyprus',
+ estimatedDuration: '1 day',
  documents: [
  'Work permit',
  'All original documents',
  'Proof of accommodation',
  ],
  notes: [
- 'Work permit valid for 1-3 years',
- 'Renewable',
  'Register at local immigration office within 7 days of arrival',
+ 'Bring all original documents',
  'Family members can join',
  'PR after 5 years, citizenship after 7 years',
- 'English is official language',
- 'Warm climate year-round',
- 'Strategic location (Europe/Asia/Africa)',
  'Low corporate tax (12.5%)',
  ],
  },

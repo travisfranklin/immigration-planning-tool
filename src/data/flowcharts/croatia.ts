@@ -18,7 +18,7 @@ flowchart TD
  job --> Edu{Higher Ed<br/>Degree?}
  Edu -->|Yes| docs[Gather Documents]
  Edu -->|No| End1([Not Eligible])
- docs --> submit[Submit Application]
+ docs -->submit[Submit Application]
  submit-application --> processing[Processing 30-60 Days]
  processing --> Decision{Decision}
  Decision -->|Approved| Card[EU Blue Card<br/>2 Years]
@@ -120,17 +120,17 @@ flowchart TD
  successRate: '85%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> job-offer[Secure Job Offer<br/>from Croatian Employer]
+ Start([Start Process]) -->job-offer[Secure Job Offer<br/>from Croatian Employer]
  job-offer --> check-salary{Salary >= EUR 900/month?}
  check-salary -->|Yes| gather-documents[Gather Required Documents]
  check-salary -->|No| End1([Not Eligible])
- gather-documents --> submit-application[Submit Application]
- submit-application --> processing[Processing<br/>30-90 Days]
+ gather-documents -->submit-application[Submit Application]
+ submit-application -->processing[Processing<br/>30-90 Days]
  processing --> decision{Decision}
  decision -->|Approved| receive-permit[Receive Work Permit]
  decision -->|Rejected| consider-appeal[Consider Appeal]
- receive-permit --> travel-to-croatia[Travel to Croatia]
- travel-to-croatia --> register[Register at Police]
+ receive-permit -->travel-to-croatia[Travel to Croatia]
+ travel-to-croatia -->register[Register at Police]
  register --> Success([Process Complete])
  consider-appeal --> End2([Process Ended])
 
@@ -217,17 +217,17 @@ flowchart TD
  successRate: '75%',
  mermaidDiagram: `
 flowchart TD
- Start([Start]) --> plan[Develop Business Plan]
+ Start([Start]) -->plan[Develop Business Plan]
  plan --> funds{EUR 8,000<br/>Investment?}
  funds -->|Yes| docs[Gather Documents]
  funds -->|No| End1([Not Eligible])
- docs --> submit[Submit Application]
- submit --> process[Processing 30-90 Days]
+ docs -->submit[Submit Application]
+ submit -->process[Processing 30-90 Days]
  process --> decision{Decision}
  decision -->|Approved| permit[Receive Permit]
  decision -->|Rejected| appeal[Consider Appeal]
- permit --> travel[Travel to Croatia]
- travel --> register[Register Business]
+ permit -->travel[Travel to Croatia]
+ travel -->register[Register Business]
  register --> Success([Complete])
  appeal --> End2([Process Ended])
 
@@ -314,17 +314,17 @@ flowchart TD
  successRate: '85%',
  mermaidDiagram: `
 flowchart TD
- Start([Start]) --> check[Check Eligibility]
+ Start([Start]) -->check[Check Eligibility]
  check --> eligible{Sponsor<br/>Eligible?}
  eligible -->|Yes| docs[Gather Documents]
  eligible -->|No| End1([Not Eligible])
- docs --> submit[Submit Application]
- submit --> process[Processing 30-60 Days]
+ docs -->submit[Submit Application]
+ submit -->process[Processing 30-60 Days]
  process --> decision{Decision}
  decision -->|Approved| permit[Receive Permit]
  decision -->|Rejected| appeal[Consider Appeal]
- permit --> travel[Travel to Croatia]
- travel --> register[Register at Police]
+ permit -->travel[Travel to Croatia]
+ travel -->register[Register at Police]
  register --> Success([Complete])
  appeal --> End2([Process Ended])
 

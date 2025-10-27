@@ -281,17 +281,17 @@ flowchart TD
  successRate: '85%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> job-offer[Secure Job Offer<br/>from Polish Employer]
+ Start([Start Process]) -->job-offer[Secure Job Offer<br/>from Polish Employer]
  job-offer --> check-salary{Salary >= PLN 4,000/month<br/>(EUR 900)?}
  check-salary -->|Yes| gather-documents[Gather Required Documents]
  check-salary -->|No| End1([Not Eligible])
- gather-documents --> submit-application[Submit Application<br/>to Voivodeship Office]
- submit-application --> processing[Processing<br/>30-90 Days]
+ gather-documents -->submit-application[Submit Application<br/>to Voivodeship Office]
+ submit-application -->processing[Processing<br/>30-90 Days]
  processing --> decision{Decision}
  decision -->|Approved| receive-permit[Receive Work Permit]
  decision -->|Rejected| consider-appeal[Consider Appeal]
- receive-permit --> travel-to-poland[Travel to Poland]
- travel-to-poland --> register[Register at<br/>Voivodeship Office]
+ receive-permit -->travel-to-poland[Travel to Poland]
+ travel-to-poland -->register[Register at<br/>Voivodeship Office]
  register --> Success([Process Complete])
  consider-appeal --> End2([Process Ended])
 
@@ -450,17 +450,17 @@ flowchart TD
  successRate: '75%',
  mermaidDiagram: `
 flowchart TD
- Start([Start]) --> plan[Develop Business Plan]
+ Start([Start]) -->plan[Develop Business Plan]
  plan --> funds{EUR 8,000<br/>Investment?}
  funds -->|Yes| docs[Gather Documents]
  funds -->|No| End1([Not Eligible])
- docs --> submit[Submit Application]
- submit --> process[Processing 30-90 Days]
+ docs -->submit[Submit Application]
+ submit -->process[Processing 30-90 Days]
  process --> decision{Decision}
  decision -->|Approved| permit[Receive Permit]
  decision -->|Rejected| appeal[Consider Appeal]
- permit --> travel[Travel to Poland]
- travel --> register[Register Business]
+ permit -->travel[Travel to Poland]
+ travel -->register[Register Business]
  register --> Success([Complete])
  appeal --> End2([Process Ended])
 
@@ -547,17 +547,17 @@ flowchart TD
  successRate: '85%',
  mermaidDiagram: `
 flowchart TD
- Start([Start]) --> check[Check Eligibility]
+ Start([Start]) -->check[Check Eligibility]
  check --> eligible{Sponsor<br/>Eligible?}
  eligible -->|Yes| docs[Gather Documents]
  eligible -->|No| End1([Not Eligible])
- docs --> submit[Submit Application]
- submit --> process[Processing 30-90 Days]
+ docs -->submit[Submit Application]
+ submit -->process[Processing 30-90 Days]
  process --> decision{Decision}
  decision -->|Approved| permit[Receive Permit]
  decision -->|Rejected| appeal[Consider Appeal]
- permit --> travel[Travel to Poland]
- travel --> register[Register at Voivodeship]
+ permit -->travel[Travel to Poland]
+ travel -->register[Register at Voivodeship]
  register --> Success([Complete])
  appeal --> End2([Process Ended])
 

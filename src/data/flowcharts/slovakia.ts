@@ -270,15 +270,15 @@ flowchart TD
  successRate: '85%',
  mermaidDiagram: `
 flowchart TD
- Start([Start]) --> job[Secure Job Offer<br/>EUR 800/month]
- job --> docs[Gather Documents]
- docs --> submit[Submit Application]
- submit --> process[Processing 30-90 Days]
+ Start([Start]) -->job[Secure Job Offer<br/>EUR 800/month]
+ job -->docs[Gather Documents]
+ docs -->submit[Submit Application]
+ submit -->process[Processing 30-90 Days]
  process --> decision{Decision}
  decision -->|Approved| permit[Receive Work Permit]
  decision -->|Rejected| appeal[Consider Appeal]
- permit --> travel[Travel to Slovakia]
- travel --> register[Register]
+ permit -->travel[Travel to Slovakia]
+ travel -->register[Register]
  register --> Success([Complete])
  appeal --> End([Process Ended])
 
@@ -364,17 +364,17 @@ flowchart TD
  successRate: '75%',
  mermaidDiagram: `
 flowchart TD
- Start([Start]) --> plan[Develop Business Plan]
+ Start([Start]) -->plan[Develop Business Plan]
  plan --> funds{EUR 5,000<br/>Funds?}
  funds -->|Yes| docs[Gather Documents]
  funds -->|No| End1([Not Eligible])
- docs --> submit[Submit Application]
- submit --> process[Processing 30-60 Days]
+ docs -->submit[Submit Application]
+ submit -->process[Processing 30-60 Days]
  process --> decision{Decision}
  decision -->|Approved| permit[Receive Permit]
  decision -->|Rejected| appeal[Consider Appeal]
- permit --> travel[Travel to Slovakia]
- travel --> register[Register Business]
+ permit -->travel[Travel to Slovakia]
+ travel -->register[Register Business]
  register --> Success([Complete])
  appeal --> End2([Process Ended])
 
@@ -461,17 +461,17 @@ flowchart TD
  successRate: '85%',
  mermaidDiagram: `
 flowchart TD
- Start([Start]) --> check[Check Eligibility]
+ Start([Start]) -->check[Check Eligibility]
  check --> eligible{Sponsor<br/>Eligible?}
  eligible -->|Yes| docs[Gather Documents]
  eligible -->|No| End1([Not Eligible])
- docs --> submit[Submit Application]
- submit --> process[Processing 30-60 Days]
+ docs -->submit[Submit Application]
+ submit -->process[Processing 30-60 Days]
  process --> decision{Decision}
  decision -->|Approved| permit[Receive Permit]
  decision -->|Rejected| appeal[Consider Appeal]
- permit --> travel[Travel to Slovakia]
- travel --> register[Register at Foreign Police]
+ permit -->travel[Travel to Slovakia]
+ travel -->register[Register at Foreign Police]
  register --> Success([Complete])
  appeal --> End2([Process Ended])
 
