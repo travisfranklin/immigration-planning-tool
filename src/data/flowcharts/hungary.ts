@@ -369,5 +369,102 @@ flowchart TD
  },
  ],
  },
+
+ 'hu_self_employment': {
+ programId: 'hu_self_employment',
+ countryCode: 'HU',
+ programName: 'Self-Employment Visa',
+ totalEstimatedDuration: '2-4 months',
+ complexity: 'medium',
+ successRate: '75%',
+ mermaidDiagram: `
+flowchart TD
+ Start([Start]) --> plan[Develop Business Plan]
+ plan --> funds{EUR 7,000<br/>Investment?}
+ funds -->|Yes| docs[Gather Documents]
+ funds -->|No| End1([Not Eligible])
+ docs --> submit[Submit Application]
+ submit --> process[Processing 30-90 Days]
+ process --> decision{Decision}
+ decision -->|Approved| permit[Receive Permit]
+ decision -->|Rejected| appeal[Consider Appeal]
+ permit --> travel[Travel to Hungary]
+ travel --> register[Register Business]
+ register --> Success([Complete])
+ appeal --> End2([Process Ended])
+
+ style Start fill:#e1f5e1
+ style Success fill:#e1f5e1
+ style End1 fill:#ffe1e1
+ style End2 fill:#ffe1e1
+ style permit fill:#e1e5ff
+`,
+ steps: [
+ {
+ id: 'plan',
+ title: 'Develop Business Plan',
+ description: 'Create comprehensive business plan',
+ estimatedDuration: '2-4 weeks',
+ documents: ['Business plan', 'Market analysis', 'Financial projections'],
+ notes: ['EUR 7,000 minimum investment', 'Budapest tech scene', '9% corporate tax', 'PR in 5 years'],
+ },
+ {
+ id: 'docs',
+ title: 'Gather Documents',
+ description: 'Collect required documents',
+ estimatedDuration: '2-3 weeks',
+ documents: ['Passport', 'Business plan', 'Proof of funds', 'Criminal check', 'Health insurance'],
+ notes: ['Documents must be apostilled', 'Translations to Hungarian required'],
+ },
+ {
+ id: 'submit',
+ title: 'Submit Application',
+ description: 'Submit to Hungarian authorities',
+ estimatedDuration: '1 week',
+ documents: ['All documents', 'Application fee'],
+ notes: ['Processing: 30-90 days'],
+ },
+ {
+ id: 'process',
+ title: 'Processing',
+ description: 'Hungarian Immigration reviews application',
+ estimatedDuration: '30-90 days',
+ documents: [],
+ notes: ['Business viability assessed'],
+ },
+ {
+ id: 'permit',
+ title: 'Receive Permit',
+ description: 'Receive self-employment permit',
+ estimatedDuration: '1 week',
+ documents: ['Residence permit'],
+ notes: ['Valid for 2 years, renewable'],
+ },
+ {
+ id: 'travel',
+ title: 'Travel to Hungary',
+ description: 'Travel with permit',
+ estimatedDuration: '1-3 days',
+ documents: ['Passport with permit'],
+ notes: ['Main airport: Budapest (BUD)'],
+ },
+ {
+ id: 'register',
+ title: 'Register Business',
+ description: 'Register business and at Immigration Office',
+ estimatedDuration: '2-4 weeks',
+ documents: ['Business registration', 'Proof of address'],
+ notes: ['Register within 3 days', 'Budapest tech scene', '9% corporate tax', 'PR in 5 years'],
+ },
+ {
+ id: 'appeal',
+ title: 'Consider Appeal',
+ description: 'If rejected, evaluate options',
+ estimatedDuration: '1-2 months',
+ documents: ['Rejection decision', 'Appeal form'],
+ notes: ['Can reapply with stronger plan'],
+ },
+ ],
+ },
 };
 

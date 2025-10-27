@@ -370,5 +370,102 @@ flowchart TD
  },
  ],
  },
+
+ 'lu_self_employed': {
+ programId: 'lu_self_employed',
+ countryCode: 'LU',
+ programName: 'Self-Employed Permit',
+ totalEstimatedDuration: '3-6 months',
+ complexity: 'medium',
+ successRate: '70%',
+ mermaidDiagram: `
+flowchart TD
+ Start([Start]) --> plan[Develop Business Plan]
+ plan --> funds{EUR 15,000<br/>Funds?}
+ funds -->|Yes| docs[Gather Documents]
+ funds -->|No| End1([Not Eligible])
+ docs --> submit[Submit Application]
+ submit --> process[Processing 3-6 Months]
+ process --> decision{Decision}
+ decision -->|Approved| permit[Receive Permit]
+ decision -->|Rejected| appeal[Consider Appeal]
+ permit --> travel[Travel to Luxembourg]
+ travel --> register[Register Business]
+ register --> Success([Complete])
+ appeal --> End2([Process Ended])
+
+ style Start fill:#e1f5e1
+ style Success fill:#e1f5e1
+ style End1 fill:#ffe1e1
+ style End2 fill:#ffe1e1
+ style permit fill:#e1e5ff
+`,
+ steps: [
+ {
+ id: 'plan',
+ title: 'Develop Business Plan',
+ description: 'Create comprehensive business plan',
+ estimatedDuration: '4-8 weeks',
+ documents: ['Business plan', 'Market analysis', 'Financial projections'],
+ notes: ['EUR 15,000 minimum funds', 'Highest GDP per capita in world', 'PR in 5 years'],
+ },
+ {
+ id: 'docs',
+ title: 'Gather Documents',
+ description: 'Collect required documents',
+ estimatedDuration: '4-6 weeks',
+ documents: ['Passport', 'Business plan', 'Proof of funds', 'Criminal check', 'Health insurance', 'Qualifications'],
+ notes: ['Documents in French, German, or Luxembourgish', 'Certified translations required'],
+ },
+ {
+ id: 'submit',
+ title: 'Submit Application',
+ description: 'Submit to Ministry of Foreign Affairs',
+ estimatedDuration: '1 week',
+ documents: ['All documents', 'Application fee'],
+ notes: ['Processing: 3-6 months'],
+ },
+ {
+ id: 'process',
+ title: 'Processing',
+ description: 'Ministry reviews application',
+ estimatedDuration: '3-6 months',
+ documents: [],
+ notes: ['Business viability assessed', 'Economic benefit evaluated'],
+ },
+ {
+ id: 'permit',
+ title: 'Receive Permit',
+ description: 'Receive self-employed permit',
+ estimatedDuration: '2-4 weeks',
+ documents: ['Residence permit'],
+ notes: ['Valid for 3 years, renewable'],
+ },
+ {
+ id: 'travel',
+ title: 'Travel to Luxembourg',
+ description: 'Travel with permit',
+ estimatedDuration: '1-3 days',
+ documents: ['Passport with permit'],
+ notes: ['Main airport: Luxembourg (LUX)'],
+ },
+ {
+ id: 'register',
+ title: 'Register Business',
+ description: 'Register business and at commune',
+ estimatedDuration: '2-4 weeks',
+ documents: ['Business registration', 'Proof of address'],
+ notes: ['Register at commune within 8 days', 'Highest GDP per capita', 'PR in 5 years'],
+ },
+ {
+ id: 'appeal',
+ title: 'Consider Appeal',
+ description: 'If rejected, evaluate options',
+ estimatedDuration: '2-4 months',
+ documents: ['Rejection decision', 'Appeal form'],
+ notes: ['Can reapply with stronger plan'],
+ },
+ ],
+ },
 };
 

@@ -208,5 +208,102 @@ flowchart TD
  },
  ],
  },
+
+ 'lt_self_employment': {
+ programId: 'lt_self_employment',
+ countryCode: 'LT',
+ programName: 'Self-Employment Visa',
+ totalEstimatedDuration: '2-3 months',
+ complexity: 'medium',
+ successRate: '75%',
+ mermaidDiagram: `
+flowchart TD
+ Start([Start]) --> plan[Develop Business Plan]
+ plan --> funds{EUR 6,000<br/>Funds?}
+ funds -->|Yes| docs[Gather Documents]
+ funds -->|No| End1([Not Eligible])
+ docs --> submit[Submit Application]
+ submit --> process[Processing 30-60 Days]
+ process --> decision{Decision}
+ decision -->|Approved| permit[Receive Permit]
+ decision -->|Rejected| appeal[Consider Appeal]
+ permit --> travel[Travel to Lithuania]
+ travel --> register[Register Business]
+ register --> Success([Complete])
+ appeal --> End2([Process Ended])
+
+ style Start fill:#e1f5e1
+ style Success fill:#e1f5e1
+ style End1 fill:#ffe1e1
+ style End2 fill:#ffe1e1
+ style permit fill:#e1e5ff
+`,
+ steps: [
+ {
+ id: 'plan',
+ title: 'Develop Business Plan',
+ description: 'Create comprehensive business plan',
+ estimatedDuration: '2-4 weeks',
+ documents: ['Business plan', 'Market analysis', 'Financial projections'],
+ notes: ['EUR 6,000 minimum funds', 'Vilnius tech hub', 'PR in 5 years'],
+ },
+ {
+ id: 'docs',
+ title: 'Gather Documents',
+ description: 'Collect required documents',
+ estimatedDuration: '2-3 weeks',
+ documents: ['Passport', 'Business plan', 'Proof of funds', 'Criminal check', 'Health insurance'],
+ notes: ['All documents must be apostilled'],
+ },
+ {
+ id: 'submit',
+ title: 'Submit Application',
+ description: 'Submit to Lithuanian authorities',
+ estimatedDuration: '1 week',
+ documents: ['All documents', 'Application fee'],
+ notes: ['Processing: 30-60 days'],
+ },
+ {
+ id: 'process',
+ title: 'Processing',
+ description: 'Lithuanian Immigration reviews application',
+ estimatedDuration: '30-60 days',
+ documents: [],
+ notes: ['Business viability assessed'],
+ },
+ {
+ id: 'permit',
+ title: 'Receive Permit',
+ description: 'Receive self-employment permit',
+ estimatedDuration: '1 week',
+ documents: ['Residence permit'],
+ notes: ['Valid for 1 year, renewable'],
+ },
+ {
+ id: 'travel',
+ title: 'Travel to Lithuania',
+ description: 'Travel with permit',
+ estimatedDuration: '1-3 days',
+ documents: ['Passport with permit'],
+ notes: ['Main airport: Vilnius (VNO)'],
+ },
+ {
+ id: 'register',
+ title: 'Register Business',
+ description: 'Register business',
+ estimatedDuration: '2-4 weeks',
+ documents: ['Business registration', 'Proof of address'],
+ notes: ['Register within 7 days', 'Vilnius tech hub', 'PR in 5 years'],
+ },
+ {
+ id: 'appeal',
+ title: 'Consider Appeal',
+ description: 'If rejected, evaluate options',
+ estimatedDuration: '1-2 months',
+ documents: ['Rejection decision', 'Appeal form'],
+ notes: ['Can reapply with stronger plan'],
+ },
+ ],
+ },
 };
 
