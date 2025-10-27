@@ -43,13 +43,18 @@ describe('ProfileFormContainer', () => {
     await user.type(screen.getByLabelText(/first name/i), 'John');
     await user.type(screen.getByLabelText(/last name/i), 'Doe');
     await user.type(screen.getByLabelText(/date of birth/i), '1990-01-01');
+    await user.selectOptions(screen.getByLabelText(/citizenship/i), 'US');
 
     // Click Next
     const nextButton = screen.getByRole('button', { name: /next/i });
     await user.click(nextButton);
 
     // Should show step 2
-    expect(screen.getByText(/step 2 of 7/i)).toBeInTheDocument();
+    expect(screen.getByText((content, element) => {
+      const hasText = element?.textContent?.replace(/\s+/g, ' ').trim().toLowerCase() === 'step 2 of 7';
+      const isSpan = element?.tagName.toLowerCase() === 'span';
+      return hasText && isSpan;
+    })).toBeInTheDocument();
     expect(screen.getByLabelText(/annual income/i)).toBeInTheDocument();
   });
 
@@ -155,9 +160,14 @@ describe('ProfileFormContainer', () => {
     await user.type(screen.getByLabelText(/first name/i), 'John');
     await user.type(screen.getByLabelText(/last name/i), 'Doe');
     await user.type(screen.getByLabelText(/date of birth/i), '1990-01-01');
+    await user.selectOptions(screen.getByLabelText(/citizenship/i), 'US');
     await user.click(screen.getByRole('button', { name: /next/i }));
 
-    expect(screen.getByText(/step 2 of 7/i)).toBeInTheDocument();
+    expect(screen.getByText((content, element) => {
+      const hasText = element?.textContent?.replace(/\s+/g, ' ').trim().toLowerCase() === 'step 2 of 7';
+      const isSpan = element?.tagName.toLowerCase() === 'span';
+      return hasText && isSpan;
+    })).toBeInTheDocument();
   });
 
   it('should handle form field changes', async () => {

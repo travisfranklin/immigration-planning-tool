@@ -29,7 +29,9 @@ describe('Profile Page', () => {
     renderWithRouter(<Profile />);
 
     await waitFor(() => {
-      expect(screen.getByText(/step 1 of 7/i)).toBeInTheDocument();
+      // Profile page uses accordion, not step-by-step form
+      expect(screen.getByText('Personal Information')).toBeInTheDocument();
+      expect(screen.getByText('Your Profile')).toBeInTheDocument();
     });
   });
 
@@ -97,7 +99,8 @@ describe('Profile Page', () => {
     renderWithRouter(<Profile />);
 
     await waitFor(() => {
-      expect(screen.getByText(/step 1 of 7/i)).toBeInTheDocument();
+      // Profile page shows completion percentage, not step numbers
+      expect(screen.getByText(/% complete/i)).toBeInTheDocument();
     });
   });
 
