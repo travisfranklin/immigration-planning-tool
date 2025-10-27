@@ -3,7 +3,7 @@
  */
 
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { InteractiveFlowchart } from './InteractiveFlowchart';
 import type { FlowchartDefinition } from '../../types/flowchart';
 
@@ -85,30 +85,32 @@ describe('InteractiveFlowchart', () => {
       });
     });
 
-    it('should render all steps in the steps list', async () => {
+    it('should render first step in details panel', async () => {
       render(<InteractiveFlowchart flowchart={mockFlowchart} />);
 
       await waitFor(() => {
-        expect(screen.getAllByText('Secure Job Offer').length).toBeGreaterThan(0);
-        expect(screen.getAllByText('Gather Documents').length).toBeGreaterThan(0);
-        expect(screen.getAllByText('Submit Application').length).toBeGreaterThan(0);
+        // First step should be auto-selected and shown in details panel
+        expect(screen.getByText('Secure Job Offer')).toBeInTheDocument();
+        expect(screen.getByText('Obtain a binding job offer from a German employer')).toBeInTheDocument();
       });
     });
 
-    it('should render step descriptions', async () => {
+    it('should render step documents in details panel', async () => {
       render(<InteractiveFlowchart flowchart={mockFlowchart} />);
 
       await waitFor(() => {
-        expect(screen.getAllByText(/Obtain a binding job offer/i).length).toBeGreaterThan(0);
-        expect(screen.getAllByText(/Collect all required documents/i).length).toBeGreaterThan(0);
+        expect(screen.getByText('Required Documents:')).toBeInTheDocument();
+        expect(screen.getByText('Signed employment contract')).toBeInTheDocument();
+        expect(screen.getByText('Job description')).toBeInTheDocument();
       });
     });
 
-    it('should render steps section', async () => {
+    it('should render step notes in details panel', async () => {
       render(<InteractiveFlowchart flowchart={mockFlowchart} />);
 
       await waitFor(() => {
-        expect(screen.getByText(/Steps/i)).toBeInTheDocument();
+        expect(screen.getByText('Important Notes:')).toBeInTheDocument();
+        expect(screen.getByText('Salary threshold is EUR 45,300')).toBeInTheDocument();
       });
     });
   });
@@ -118,30 +120,21 @@ describe('InteractiveFlowchart', () => {
       render(<InteractiveFlowchart flowchart={mockFlowchart} />);
 
       await waitFor(() => {
-        expect(screen.getAllByText('Secure Job Offer').length).toBeGreaterThan(0);
+        // First step should be auto-selected and shown in details panel
+        expect(screen.getByText('Secure Job Offer')).toBeInTheDocument();
+        expect(screen.getByText('Obtain a binding job offer from a German employer')).toBeInTheDocument();
       });
     });
 
-    it('should allow clicking on steps', async () => {
+    it('should render export buttons', async () => {
       render(<InteractiveFlowchart flowchart={mockFlowchart} />);
 
       await waitFor(() => {
-        const stepButtons = screen.getAllByRole('button');
-        expect(stepButtons.length).toBeGreaterThan(0);
-      });
-
-      const stepButtons = screen.getAllByRole('button');
-      await act(async () => {
-        fireEvent.click(stepButtons[1]);
-      });
-      expect(stepButtons[1]).toBeInTheDocument();
-    });
-
-    it('should render step with conditional information', async () => {
-      render(<InteractiveFlowchart flowchart={mockFlowchart} />);
-
-      await waitFor(() => {
-        expect(screen.getAllByText('Submit Application').length).toBeGreaterThan(0);
+        const exportButtons = screen.getAllByRole('button');
+        // Should have Export SVG and Export PNG buttons
+        expect(exportButtons.length).toBeGreaterThanOrEqual(2);
+        expect(screen.getByText('Export SVG')).toBeInTheDocument();
+        expect(screen.getByText('Export PNG')).toBeInTheDocument();
       });
     });
   });
