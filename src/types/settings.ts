@@ -3,6 +3,8 @@
  * Defines user preferences and application settings
  */
 
+import { APP_VERSION } from '../constants/app';
+
 export type Theme = 'light' | 'dark' | 'system';
 export type Language = 'en'; // Extensible for future languages
 export type Units = 'metric' | 'imperial';
@@ -52,6 +54,6 @@ export const DEFAULT_SETTINGS: Omit<AppSettings, 'id' | 'createdAt' | 'updatedAt
     encryptData: false,
     autoClearOnClose: false,
   },
-  version: '1.0.0',
+  version: APP_VERSION,
 };
 

@@ -15,6 +15,7 @@ import type { ViabilityScore } from '../types/viability';
 import { Layout } from '../components/Layout';
 import { Button } from '../components/Button';
 import { useToast } from '../contexts/ToastContext';
+import { APP_VERSION } from '../constants/app';
 
 export function Settings() {
   const navigate = useNavigate();
@@ -277,7 +278,7 @@ export function Settings() {
           <h2 className="text-xl font-semibold text-gray-900 mb-4">About</h2>
           <div className="space-y-2 text-gray-600">
             <p>
-              <strong>Version:</strong> 1.0.0
+              <strong>Version:</strong> {APP_VERSION}
             </p>
             <p>
               <strong>Privacy:</strong> All data is stored locally on your device

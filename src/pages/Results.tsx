@@ -109,10 +109,6 @@ export const Results: React.FC = () => {
     navigate(`/result-detail/${countryCode}`);
   };
 
-  const handleViewFlowchart = (countryCode: string, programId: string) => {
-    navigate(`/flowchart?country=${countryCode}&program=${programId}&from=results`);
-  };
-
   const handleExportResults = () => {
     const dataStr = JSON.stringify(scores, null, 2);
     const dataBlob = new Blob([dataStr], { type: 'application/json' });
@@ -201,7 +197,6 @@ export const Results: React.FC = () => {
           <CountryResultsTable
             scores={scores}
             onViewDetails={handleViewDetails}
-            onViewFlowchart={handleViewFlowchart}
           />
         )}
       </div>
