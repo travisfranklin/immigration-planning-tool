@@ -174,13 +174,13 @@ export function FlowchartViewer({ flowchart, onExport, selectedStepId, onStepSel
     });
   }, [selectedStep]);
 
-  const handleExport = (format: 'png' | 'svg') => {
+  const handleExport = (_format: 'png' | 'svg') => {
     if (!containerRef.current) return;
 
     const svgElement = containerRef.current.querySelector('svg');
     if (!svgElement) return;
 
-    if (format === 'svg') {
+    if (_format === 'svg') {
       // Export as SVG
       const svgData = new XMLSerializer().serializeToString(svgElement);
       const blob = new Blob([svgData], { type: 'image/svg+xml' });
@@ -220,7 +220,7 @@ export function FlowchartViewer({ flowchart, onExport, selectedStepId, onStepSel
       img.src = url;
     }
 
-    onExport?.(format);
+    onExport?.(_format);
   };
 
   return (
@@ -229,7 +229,7 @@ export function FlowchartViewer({ flowchart, onExport, selectedStepId, onStepSel
       <div className="bg-white rounded-lg shadow-sm p-6">
         <div className="flex items-start justify-between">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">{flowchart.programName}</h2>
+            <h4 className="text-2xl font-bold text-gray-900">{flowchart.programName}</h4>
             <p className="text-sm text-gray-600 mt-1">
               {flowchart.countryCode} • {flowchart.totalEstimatedDuration} • {flowchart.complexity} complexity
             </p>

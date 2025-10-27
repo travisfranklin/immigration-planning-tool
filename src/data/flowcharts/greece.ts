@@ -257,5 +257,206 @@ flowchart TD
  },
  ],
  },
+
+ 'gr_work_permit': {
+ programId: 'gr_work_permit',
+ countryCode: 'GR',
+ programName: 'Work Permit',
+ totalEstimatedDuration: '3-5 months',
+ complexity: 'medium',
+ successRate: '70%',
+ mermaidDiagram: `
+flowchart TD
+ Start([Start Process]) --> job-offer[Secure Job Offer<br/>from Greek Employer]
+ job-offer --> check-salary{Salary >= EUR 1,200/month<br/>(EUR 14,400/year)?}
+ check-salary -->|Yes| labor-test[Employer Proves<br/>No Suitable Greek/EU Candidate]
+ check-salary -->|No| End1([Not Eligible])
+ labor-test --> test-result{Labor Test<br/>Passed?}
+ test-result -->|Yes| gather-documents[Gather Required Documents]
+ test-result -->|No| End2([Not Eligible])
+ gather-documents --> submit-application[Submit Application<br/>to Greek Consulate]
+ submit-application --> processing[Processing<br/>90-120 Days]
+ processing --> decision{Decision}
+ decision -->|Approved| receive-permit[Receive Work Permit<br/>and Residence Visa]
+ decision -->|Rejected| consider-appeal[Consider Appeal]
+ receive-permit --> travel-to-greece[Travel to Greece]
+ travel-to-greece --> register-police[Register with Police<br/>Get Residence Card]
+ register-police --> Success([Process Complete])
+ consider-appeal --> End3([Process Ended])
+
+ style Start fill:#e1f5e1
+ style Success fill:#e1f5e1
+ style End1 fill:#ffe1e1
+ style End2 fill:#ffe1e1
+ style End3 fill:#ffe1e1
+ style receive-permit fill:#e1e5ff
+`,
+ steps: [
+ {
+ id: 'job-offer',
+ title: 'Secure Job Offer from Greek Employer',
+ description: 'Obtain a binding job offer from a Greek employer',
+ estimatedDuration: '1-2 months',
+ documents: [
+ 'Signed employment contract',
+ 'Job description',
+ 'Salary confirmation (minimum EUR 1,200/month = EUR 14,400/year)',
+ 'Employer information',
+ ],
+ notes: [
+ 'Minimum EUR 14,400/year (EUR 1,200/month)',
+ 'Growing tech sector in Athens and Thessaloniki',
+ 'Popular sectors: IT, tourism, shipping, healthcare',
+ 'Lower cost of living than Western Europe',
+ 'Employer must prove no suitable Greek/EU candidate',
+ 'PR eligible after 5 years, citizenship after 7 years',
+ ],
+ },
+ {
+ id: 'labor-test',
+ title: 'Employer Proves No Suitable Greek/EU Candidate',
+ description: 'Employer must demonstrate labor market need',
+ estimatedDuration: '4-6 weeks',
+ documents: [
+ 'Job advertisement evidence',
+ 'Summary of applications received',
+ 'Reasons for selecting non-EU candidate',
+ 'Labor market justification',
+ ],
+ notes: [
+ 'Employer must advertise position',
+ 'Must prove no suitable Greek or EU worker available',
+ 'This is key requirement for work permit',
+ 'Growing tech sector makes this easier for tech roles',
+ ],
+ },
+ {
+ id: 'gather-documents',
+ title: 'Gather Required Documents',
+ description: 'Collect all necessary documents for work permit application',
+ estimatedDuration: '3-4 weeks',
+ documents: [
+ 'Valid passport (valid for at least 6 months)',
+ 'Employment contract',
+ 'Educational qualifications',
+ 'CV/resume',
+ 'Criminal record certificate',
+ 'Health insurance',
+ 'Proof of accommodation in Greece',
+ 'Passport photographs',
+ ],
+ notes: [
+ 'Documents must be in Greek or English',
+ 'Certified translations required',
+ 'Apostille required for non-EU documents',
+ 'Criminal background check must be recent',
+ ],
+ },
+ {
+ id: 'submit-application',
+ title: 'Submit Application to Greek Consulate',
+ description: 'Submit work permit application at Greek consulate',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'All gathered documents',
+ 'Application fee payment (EUR 150 approximately)',
+ 'Appointment confirmation',
+ ],
+ notes: [
+ 'Apply at Greek consulate in your country',
+ 'Application fee: approximately EUR 150',
+ 'Appointment required',
+ 'Processing time: 90-120 days',
+ ],
+ },
+ {
+ id: 'processing',
+ title: 'Processing (90-120 Days)',
+ description: 'Wait for Greek immigration authorities to process application',
+ estimatedDuration: '90-120 days',
+ documents: [],
+ notes: [
+ 'Processing time: typically 90-120 days',
+ 'May request additional information',
+ 'Labor market justification is key factor',
+ 'Background check conducted',
+ ],
+ },
+ {
+ id: 'receive-permit',
+ title: 'Receive Work Permit and Residence Visa',
+ description: 'Receive approved work permit and residence visa',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'Work permit approval',
+ 'Residence visa in passport',
+ ],
+ notes: [
+ 'Permit initially valid for 1-2 years',
+ 'Renewable if employment continues',
+ 'Family members can join',
+ 'PR eligible after 5 years',
+ 'Citizenship after 7 years',
+ ],
+ },
+ {
+ id: 'travel-to-greece',
+ title: 'Travel to Greece',
+ description: 'Travel to Greece with work permit and visa',
+ estimatedDuration: '1-3 days',
+ documents: [
+ 'Passport with visa',
+ 'Work permit',
+ 'Employment contract',
+ ],
+ notes: [
+ 'Main airport: Athens International Airport (ATH)',
+ 'Register with police within 8 days of arrival',
+ 'EU member state',
+ 'Lower cost of living',
+ ],
+ },
+ {
+ id: 'register-police',
+ title: 'Register with Police and Get Residence Card',
+ description: 'Complete registration and receive residence card',
+ estimatedDuration: '2-4 weeks',
+ documents: [
+ 'Passport with visa',
+ 'Work permit',
+ 'Proof of accommodation',
+ 'Employment contract',
+ ],
+ notes: [
+ 'Register with local police within 8 days',
+ 'Get residence card',
+ 'Get AFM (Greek tax number)',
+ 'Open Greek bank account',
+ 'Access to Greek healthcare',
+ 'Growing tech scene in Athens and Thessaloniki',
+ 'PR after 5 years, citizenship after 7 years',
+ 'Lower cost of living than Western Europe',
+ ],
+ },
+ {
+ id: 'consider-appeal',
+ title: 'Consider Appeal',
+ description: 'If rejected, evaluate appeal options',
+ estimatedDuration: '1-2 months',
+ documents: [
+ 'Rejection decision',
+ 'Appeal form',
+ 'Additional evidence',
+ ],
+ notes: [
+ 'Review rejection reasons',
+ 'Common issue: labor market test not satisfied',
+ 'Can reapply with stronger evidence',
+ 'Consider legal consultation',
+ 'Alternative: Greece Digital Nomad Visa or Golden Visa',
+ ],
+ },
+ ],
+ },
 };
 

@@ -299,5 +299,221 @@ flowchart TD
  },
  ],
  },
+
+ 'ie_general_employment': {
+ programId: 'ie_general_employment',
+ countryCode: 'IE',
+ programName: 'General Employment Permit',
+ totalEstimatedDuration: '3-4 months',
+ complexity: 'medium',
+ successRate: '75%',
+ mermaidDiagram: `
+flowchart TD
+ Start([Start Process]) --> job-offer[Secure Job Offer<br/>from Irish Employer]
+ job-offer --> check-salary{Salary >= EUR 30,000/year?}
+ check-salary -->|Yes| labor-market-test[Employer Conducts<br/>Labor Market Test]
+ check-salary -->|No| End1([Not Eligible])
+ labor-market-test --> test-result{No Suitable<br/>EEA Worker?}
+ test-result -->|Yes| gather-documents[Gather Required Documents]
+ test-result -->|No| End2([Not Eligible])
+ gather-documents --> employer-application[Employer Applies<br/>for Permit]
+ employer-application --> processing[Processing<br/>8-12 Weeks]
+ processing --> decision{Decision}
+ decision -->|Approved| receive-permit[Receive Employment Permit]
+ decision -->|Rejected| consider-appeal[Consider Appeal]
+ receive-permit --> entry-visa[Apply for Entry Visa]
+ entry-visa --> travel-to-ireland[Travel to Ireland]
+ travel-to-ireland --> register-gnib[Register with GNIB/IRP]
+ register-gnib --> Success([Process Complete])
+ consider-appeal --> End3([Process Ended])
+
+ style Start fill:#e1f5e1
+ style Success fill:#e1f5e1
+ style End1 fill:#ffe1e1
+ style End2 fill:#ffe1e1
+ style End3 fill:#ffe1e1
+ style receive-permit fill:#e1e5ff
+`,
+ steps: [
+ {
+ id: 'job-offer',
+ title: 'Secure Job Offer from Irish Employer',
+ description: 'Obtain a binding job offer from an Irish employer',
+ estimatedDuration: '1-2 months',
+ documents: [
+ 'Signed employment contract',
+ 'Job description',
+ 'Salary confirmation (minimum EUR 30,000/year)',
+ 'Employer information',
+ ],
+ notes: [
+ 'English-speaking country - major advantage!',
+ 'Minimum EUR 30,000/year salary',
+ 'Popular sectors: IT, healthcare, finance, pharma',
+ 'Dublin and Cork are major tech hubs',
+ 'Labor market test required (employer must prove no suitable EEA worker)',
+ 'Path to PR after 5 years',
+ ],
+ },
+ {
+ id: 'labor-market-test',
+ title: 'Employer Conducts Labor Market Test',
+ description: 'Employer must advertise position and prove no suitable EEA worker available',
+ estimatedDuration: '4-6 weeks',
+ documents: [
+ 'Job advertisement on EURES portal',
+ 'Job advertisement in Irish media',
+ 'Evidence of advertising (28 days minimum)',
+ 'Summary of applications received',
+ 'Reasons for rejecting EEA candidates',
+ ],
+ notes: [
+ 'Employer must advertise for minimum 28 days',
+ 'Must advertise on EURES (EU job portal)',
+ 'Must advertise in Irish newspapers or job sites',
+ 'Must demonstrate no suitable EEA worker available',
+ 'This is the key requirement for General Employment Permit',
+ 'Critical Skills permit does NOT require labor market test',
+ ],
+ },
+ {
+ id: 'gather-documents',
+ title: 'Gather Required Documents',
+ description: 'Collect all necessary documents for employment permit application',
+ estimatedDuration: '2-3 weeks',
+ documents: [
+ 'Valid passport',
+ 'Employment contract',
+ 'Educational qualifications',
+ 'CV/resume',
+ 'Labor market test evidence',
+ 'Employer registration details',
+ ],
+ notes: [
+ 'Documents must be in English',
+ 'Educational qualifications helpful',
+ 'Employer must be registered in Ireland',
+ 'Employer applies on your behalf',
+ ],
+ },
+ {
+ id: 'employer-application',
+ title: 'Employer Applies for Permit',
+ description: 'Employer submits employment permit application to Department of Enterprise',
+ estimatedDuration: '1 week',
+ documents: [
+ 'All gathered documents',
+ 'Application fee payment (EUR 1,000)',
+ 'Labor market test evidence',
+ ],
+ notes: [
+ 'Employer submits application online',
+ 'Application fee: EUR 1,000 (paid by employer)',
+ 'Processing time: 8-12 weeks',
+ 'Employer is responsible for application',
+ ],
+ },
+ {
+ id: 'processing',
+ title: 'Processing (8-12 Weeks)',
+ description: 'Wait for Department of Enterprise to process application',
+ estimatedDuration: '8-12 weeks',
+ documents: [],
+ notes: [
+ 'Processing time: typically 8-12 weeks',
+ 'May request additional information',
+ 'Track application status online',
+ 'Labor market test is key factor',
+ ],
+ },
+ {
+ id: 'receive-permit',
+ title: 'Receive Employment Permit',
+ description: 'Receive approved employment permit',
+ estimatedDuration: '1 week',
+ documents: [
+ 'Employment permit approval',
+ ],
+ notes: [
+ 'Permit initially valid for 2 years',
+ 'Renewable if employment continues',
+ 'Family members can join',
+ 'PR eligible after 5 years',
+ 'English-speaking country!',
+ ],
+ },
+ {
+ id: 'entry-visa',
+ title: 'Apply for Entry Visa',
+ description: 'Apply for entry visa at Irish embassy/consulate',
+ estimatedDuration: '4-8 weeks',
+ documents: [
+ 'Employment permit',
+ 'Passport',
+ 'Visa application form',
+ 'Passport photographs',
+ ],
+ notes: [
+ 'Apply at Irish embassy in your country',
+ 'Visa processing: 4-8 weeks',
+ 'Some nationalities visa-exempt',
+ ],
+ },
+ {
+ id: 'travel-to-ireland',
+ title: 'Travel to Ireland',
+ description: 'Travel to Ireland with entry visa',
+ estimatedDuration: '1-3 days',
+ documents: [
+ 'Passport with visa',
+ 'Employment permit',
+ 'Employment contract',
+ ],
+ notes: [
+ 'Main airport: Dublin Airport (DUB)',
+ 'English-speaking country',
+ 'EU member state',
+ ],
+ },
+ {
+ id: 'register-gnib',
+ title: 'Register with GNIB/IRP',
+ description: 'Register with immigration authorities and get IRP card',
+ estimatedDuration: '2-4 weeks',
+ documents: [
+ 'Passport',
+ 'Employment permit',
+ 'Proof of address',
+ ],
+ notes: [
+ 'Register within 90 days of arrival',
+ 'Get Irish Residence Permit (IRP) card',
+ 'Open Irish bank account',
+ 'Get PPS number (tax number)',
+ 'Access to Irish healthcare',
+ 'PR after 5 years',
+ 'English-speaking country - easy integration!',
+ ],
+ },
+ {
+ id: 'consider-appeal',
+ title: 'Consider Appeal',
+ description: 'If rejected, evaluate appeal options',
+ estimatedDuration: '1-2 months',
+ documents: [
+ 'Rejection decision',
+ 'Appeal form',
+ 'Additional evidence',
+ ],
+ notes: [
+ 'Review rejection reasons',
+ 'Common issue: labor market test not satisfied',
+ 'Can reapply with stronger evidence',
+ 'Consider Critical Skills permit if eligible',
+ 'Legal consultation recommended',
+ ],
+ },
+ ],
+ },
 };
 
