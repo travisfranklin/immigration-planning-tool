@@ -247,7 +247,7 @@ flowchart TD
  mermaidDiagram: `
 flowchart TD
  Start([Start Process]) -->job-offer[Secure Job Offer]
- job-offer --> Salary{Salary >= EUR 9,000/year?}
+ job-offer --> Salary{"Salary >= EUR 9,000/year?"}
  Salary -->|Yes| gather-documents[Gather Required Documents]
  Salary -->|No| End1([Not Eligible])
  gather-documents -->submit-application[Submit Application]

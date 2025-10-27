@@ -185,8 +185,8 @@ flowchart TD
  successRate: '85%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) -->income-verification{Passive Income >= EUR 28,800/year?}
- income-verification -->|Yes| savings-verification{Savings >= EUR 30,000?}
+ Start([Start Process]) -->income-verification{"Passive Income >= EUR 28,800/year?"}
+ income-verification -->|Yes| savings-verification{"Savings >= EUR 30,000?"}
  income-verification -->|No| End1([Not Eligible])
  savings-verification -->|Yes| gather-documents[Gather Required Documents]
  savings-verification -->|No| End2([Not Eligible])
@@ -333,7 +333,7 @@ flowchart TD
  mermaidDiagram: `
 flowchart TD
  Start([Start Process]) -->remote-work-verification{Remote Work?}
- remote-work-verification -->|Yes| income-verification{Income >= EUR 2,400/month?}
+ remote-work-verification -->|Yes| income-verification{"Income >= EUR 2,400/month?"}
  remote-work-verification -->|No| End1([Not Eligible])
  income-verification -->|Yes| gather-documents[Gather Required Documents]
  income-verification -->|No| End2([Not Eligible])
@@ -480,7 +480,7 @@ flowchart TD
 flowchart TD
  Start([Start Process]) -->job-offer[Secure Job Offer]
  job-offer -->degree-verification{Bachelor's Degree?}
- degree-verification -->|Yes| salary-verification{Salary >= EUR 30,000?}
+ degree-verification -->|Yes| salary-verification{"Salary >= EUR 30,000?"}
  degree-verification -->|No| End1([Not Eligible])
  salary-verification -->|Yes| gather-documents[Gather Required Documents]
  salary-verification -->|No| End2([Not Eligible])

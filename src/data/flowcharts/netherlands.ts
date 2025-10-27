@@ -553,7 +553,7 @@ flowchart TD
 flowchart TD
  Start([Start Process]) -->business-plan[Develop Business Plan]
  business-plan -->points-calculation[Calculate Points]
- points-calculation --> Threshold{>=30 Points?}
+ points-calculation --> Threshold{">=30 Points?"}
  Threshold -->|Yes| capital[Secure Capital]
  Threshold -->|No| End1([Not Eligible])
  capital -->kvk-registration[Register with KVK]

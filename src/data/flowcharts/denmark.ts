@@ -16,7 +16,7 @@ export const denmarkFlowcharts: Record<string, FlowchartDefinition> = {
  mermaidDiagram: `
 flowchart TD
  Start([Start Process]) -->job-offer[Secure Job Offer from<br/>Certified Fast-Track Company]
- job-offer --> CheckSalary{Salary >= DKK 465,000<br/>or Recent Grad >= DKK 375,000?}
+ job-offer --> CheckSalary{"Salary >= DKK 465,000<br/>or Recent Grad >= DKK 375,000?"}
  CheckSalary -->|Yes| CheckCompany{Employer on<br/>Fast-Track List?}
  CheckSalary -->|No| End1([Not Eligible])
  CheckCompany -->|Yes| gather-documents[Gather Required Documents]
@@ -160,7 +160,7 @@ flowchart TD
  mermaidDiagram: `
 flowchart TD
  Start([Start Process]) --> JobOffer[Secure Job Offer]
- JobOffer --> CheckSalary{Salary >=<br/>DKK 465,000/year?}
+ JobOffer --> CheckSalary{"Salary >=<br/>DKK 465,000/year?"}
  CheckSalary -->|Yes| GatherDocs[Gather Required Documents]
  CheckSalary -->|No| End1([Not Eligible])
  GatherDocs --> Submit[Submit Application Online]
@@ -577,7 +577,7 @@ flowchart TD
  mermaidDiagram: `
 flowchart TD
  Start([Start Process]) -->job-offer[Secure Job Offer<br/>from Danish Employer]
- job-offer --> check-salary{Salary >= DKK 465,000/year<br/>(EUR 62,400)?}
+ job-offer --> check-salary{"Salary >= DKK 465,000/year<br/>(EUR 62,400)?"}
  check-salary -->|Yes| check-education{Bachelor's Degree<br/>or Higher?}
  check-salary -->|No| End1([Not Eligible])
  check-education -->|Yes| gather-documents[Gather Required Documents]

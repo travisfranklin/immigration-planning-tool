@@ -16,7 +16,7 @@ export const slovakiaFlowcharts: Record<string, FlowchartDefinition> = {
  mermaidDiagram: `
 flowchart TD
  Start([Start Process]) --> job-offer[Secure Job Offer<br/>from Slovak Employer]
- job-offer --> check-salary{Salary >= EUR 1,500/month<br/>( EUR 18,000/year)?}
+ job-offer --> check-salary{"Salary >= EUR 1,500/month<br/>( EUR 18,000/year)?"}
  check-salary -->|Yes| check-education{Higher Education<br/>Degree?}
  check-salary -->|No| End1([Not Eligible])
  check-education -->|Yes| gather-documents[Gather Required Documents]

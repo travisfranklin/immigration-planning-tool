@@ -165,7 +165,7 @@ flowchart TD
  mermaidDiagram: `
 flowchart TD
  Start([Start Process]) --> JobOffer[Secure Job Offer]
- JobOffer --> Check{Salary >= EUR 56,400<br/>& Bachelor's Degree?}
+ JobOffer --> Check{"Salary >= EUR 56,400<br/>& Bachelor's Degree?"}
  Check -->|Yes| Advertise[Employer Advertises Position<br/>in EU for 10 Days]
  Check -->|No| End1([Not Eligible])
  Advertise --> GatherDocs[Gather Required Documents]

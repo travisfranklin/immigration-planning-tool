@@ -16,7 +16,7 @@ export const czechFlowcharts: Record<string, FlowchartDefinition> = {
  mermaidDiagram: `
 flowchart TD
  Start([Start Process]) --> job-offer[Secure Job Offer<br/>from Czech Employer]
- job-offer --> check-salary{Salary >= EUR 1,800/month<br/>( EUR 21,600/year)?}
+ job-offer --> check-salary{"Salary >= EUR 1,800/month<br/>( EUR 21,600/year)?"}
  check-salary -->|Yes| check-education{Higher Education<br/>Degree?}
  check-salary -->|No| End1([Not Eligible])
  check-education -->|Yes| gather-documents[Gather Required Documents]
@@ -154,7 +154,7 @@ flowchart TD
  mermaidDiagram: `
 flowchart TD
  Start([Start Process]) --> job-offer[Secure Job Offer<br/>from Czech Employer]
- job-offer --> check-salary{Salary >= EUR 1,000/month<br/>( EUR 12,000/year)?}
+ job-offer --> check-salary{"Salary >= EUR 1,000/month<br/>( EUR 12,000/year)?"}
  check-salary -->|Yes| gather-documents[Gather Required Documents]
  check-salary -->|No| End1([Not Eligible])
  gather-documents --> submit-application[Submit Application to<br/>Czech Consulate or in Czech]

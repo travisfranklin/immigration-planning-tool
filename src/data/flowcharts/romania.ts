@@ -16,7 +16,7 @@ export const romaniaFlowcharts: Record<string, FlowchartDefinition> = {
  mermaidDiagram: `
 flowchart TD
  Start([Start Process]) --> job-offer[Secure Job Offer<br/>from Romanian Employer]
- job-offer --> check-salary{Salary >= EUR 1,600/month<br/>( EUR 19,200/year)?}
+ job-offer --> check-salary{"Salary >= EUR 1,600/month<br/>( EUR 19,200/year)?"}
  check-salary -->|Yes| check-education{Higher Education<br/>Degree?}
  check-salary -->|No| End1([Not Eligible])
  check-education -->|Yes| gather-documents[Gather Required Documents]
@@ -317,7 +317,7 @@ flowchart TD
  mermaidDiagram: `
 flowchart TD
  Start([Start Process]) -->job-offer[Secure Job Offer<br/>from Romanian Employer]
- job-offer --> check-salary{Salary >= RON 4,000/month<br/>(EUR 800)?}
+ job-offer --> check-salary{"Salary >= RON 4,000/month<br/>(EUR 800)?"}
  check-salary -->|Yes| gather-documents[Gather Required Documents]
  check-salary -->|No| End1([Not Eligible])
  gather-documents -->submit-application[Submit Application]

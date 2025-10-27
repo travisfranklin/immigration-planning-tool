@@ -17,7 +17,7 @@ export const franceFlowcharts: Record<string, FlowchartDefinition> = {
 flowchart TD
  Start([Start Process]) -->choose-category[Choose Category]
  choose-category -->job-offer{Job Offer or Investor?}
- job-offer -->|Skilled Worker| Salary{Salary >= EUR 53,836?}
+ job-offer -->|Skilled Worker| Salary{"Salary >= EUR 53,836?"}
  job-offer -->|Investor/Researcher| gather-documents[Gather Required Documents]
  Salary -->|Yes| gather-documents
  Salary -->|No| End1([Not Eligible])

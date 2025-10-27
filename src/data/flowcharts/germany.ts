@@ -16,7 +16,7 @@ export const germanyFlowcharts: Record<string, FlowchartDefinition> = {
  mermaidDiagram: `
 flowchart TD
  Start([Start Process]) -->job-offer["Secure Job Offer"]
- job-offer --> Salary{Salary >= EUR 45,300?}
+ job-offer --> Salary{"Salary >= EUR 45,300?"}
  Salary -->|Yes| gather-documents["Gather Required Documents"]
  Salary -->|No| End1([Not Eligible])
  gather-documents --> submit-application["Submit Application"]

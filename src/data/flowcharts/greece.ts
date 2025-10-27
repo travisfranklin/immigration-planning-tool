@@ -268,7 +268,7 @@ flowchart TD
  mermaidDiagram: `
 flowchart TD
  Start([Start Process]) -->job-offer[Secure Job Offer<br/>from Greek Employer]
- job-offer --> check-salary{Salary >= EUR 1,200/month<br/>(EUR 14,400/year)?}
+ job-offer --> check-salary{"Salary >= EUR 1,200/month<br/>(EUR 14,400/year)?"}
  check-salary -->|Yes| labor-test[Employer Proves<br/>No Suitable Greek/EU Candidate]
  check-salary -->|No| End1([Not Eligible])
  labor-test --> test-result{Labor Test<br/>Passed?}

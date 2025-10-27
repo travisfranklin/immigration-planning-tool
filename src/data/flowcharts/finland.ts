@@ -16,7 +16,7 @@ export const finlandFlowcharts: Record<string, FlowchartDefinition> = {
  mermaidDiagram: `
 flowchart TD
  Start([Start Process]) -->job-offer[Secure Job Offer in Finland]
- job-offer --> CheckSalary{Salary >= 3000 EUR/month?}
+ job-offer --> CheckSalary{"Salary >= 3000 EUR/month?"}
  CheckSalary -->|Yes| gather-documents[Gather Required Documents]
  CheckSalary -->|No| End1([Not Eligible])
  gather-documents -->submit-application[Submit Application Online via Enter Finland]
@@ -154,7 +154,7 @@ flowchart TD
  mermaidDiagram: `
 flowchart TD
  Start([Start Process]) --> JobOffer[Secure Highly Skilled Job Offer]
- JobOffer --> CheckSalary{Salary >= 3827 EUR/month?}
+ JobOffer --> CheckSalary{"Salary >= 3827 EUR/month?"}
  CheckSalary -->|Yes| CheckEducation{Bachelor Degree or 5 Years Experience?}
  CheckSalary -->|No| End1([Not Eligible])
  CheckEducation -->|Yes| GatherDocs[Gather Required Documents]

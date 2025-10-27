@@ -554,7 +554,7 @@ flowchart TD
  mermaidDiagram: `
 flowchart TD
  Start([Start Process]) -->remote-work-verification{Remote Work?}
- remote-work-verification -->|Yes| income-verification{Income >= EUR 28,000/year?}
+ remote-work-verification -->|Yes| income-verification{"Income >= EUR 28,000/year?"}
  remote-work-verification -->|No| End1([Not Eligible])
  income-verification -->|Yes| gather-documents[Gather Required Documents]
  income-verification -->|No| End2([Not Eligible])

@@ -563,7 +563,7 @@ flowchart TD
  mermaidDiagram: `
 flowchart TD
  Start([Start Process]) -->job-offer[Secure Job Offer from<br/>IAPMEI-Certified Tech Company]
- job-offer --> check-salary{Salary >= EUR 1,330/month<br/>(EUR 15,960/year)?}
+ job-offer --> check-salary{"Salary >= EUR 1,330/month<br/>(EUR 15,960/year)?"}
  check-salary -->|Yes| check-company{Company IAPMEI<br/>Certified?}
  check-salary -->|No| End1([Not Eligible])
  check-company -->|Yes| gather-documents[Gather Required Documents]
