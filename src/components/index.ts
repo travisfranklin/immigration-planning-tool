@@ -12,4 +12,5 @@ export { Combobox } from './Combobox';
 export { Badge } from './Badge';
 export type { BadgeVariant } from './Badge';
 export { LoadingSpinner } from './LoadingSpinner';
+export { ErrorState } from './ErrorState';
 

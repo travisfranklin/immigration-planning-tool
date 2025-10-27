@@ -8,6 +8,7 @@ import { CountryResultsTable } from '../components/results/CountryResultsTable';
 import { Layout } from '../components/Layout';
 import { Button } from '../components/Button';
 import { LoadingSpinner } from '../components/LoadingSpinner';
+import { ErrorState } from '../components/ErrorState';
 
 export const Results: React.FC = () => {
   const navigate = useNavigate();
@@ -128,19 +129,11 @@ export const Results: React.FC = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-        <div className="bg-white rounded-lg shadow-md border border-red-200 p-8 max-w-md">
-          <div className="text-red-600 text-5xl mb-4 text-center">⚠️</div>
-          <h2 className="text-xl font-bold text-gray-900 mb-2 text-center">Error</h2>
-          <p className="text-gray-600 mb-4 text-center">{error}</p>
-          <Button
-            onClick={() => navigate('/profile')}
-            className="w-full"
-          >
-            Go to Profile
-          </Button>
-        </div>
-      </div>
+      <ErrorState
+        message={error}
+        actionText="Go to Profile"
+        onAction={() => navigate('/profile')}
+      />
     );
   }
 
