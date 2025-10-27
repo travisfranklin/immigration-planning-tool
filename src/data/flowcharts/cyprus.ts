@@ -154,7 +154,7 @@ flowchart TD
  mermaidDiagram: `
 flowchart TD
  Start([Start Process]) --> job-offer[Secure Job Offer<br/>from Cyprus Employer]
- job-offer --> check-salary{Salary >= EUR 1,500/month<br/>( EUR 18,000/year)?}
+ job-offer --> check-salary{"Salary >= EUR 1,500/month<br/>( EUR 18,000/year)?"}
  check-salary -->|Yes| gather-documents[Gather Required Documents]
  check-salary -->|No| End1([Not Eligible])
  gather-documents --> submit-application[Submit Application to<br/>Cyprus Immigration]
