@@ -17,12 +17,14 @@ interface FlowchartViewerProps {
 export function FlowchartViewer({ flowchart, onExport, selectedStepId, onStepSelect }: FlowchartViewerProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [selectedStep, setSelectedStep] = useState<string | null>(null);
+  const selectedStepRef = useRef<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   // Sync external selectedStepId with local state
   useEffect(() => {
     if (selectedStepId !== undefined) {
       setSelectedStep(selectedStepId);
+      selectedStepRef.current = selectedStepId;
     }
   }, [selectedStepId]);
 
@@ -101,7 +103,7 @@ export function FlowchartViewer({ flowchart, onExport, selectedStepId, onStepSel
                 htmlElement.addEventListener('mouseleave', () => {
                   htmlElement.classList.remove('node-hover');
                   // Remove hover effect if not selected
-                  if (selectedStep !== matchingStep.id) {
+                  if (selectedStepRef.current !== matchingStep.id) {
                     const paths = htmlElement.querySelectorAll('path, rect, polygon');
                     paths.forEach((path) => {
                       const element = path as HTMLElement;
@@ -131,7 +133,7 @@ export function FlowchartViewer({ flowchart, onExport, selectedStepId, onStepSel
     };
 
     renderDiagram();
-  }, [flowchart, onStepSelect, selectedStep]);
+  }, [flowchart, onStepSelect]);
 
   // Update selected node styling without re-rendering the diagram
   useEffect(() => {

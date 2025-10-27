@@ -193,7 +193,7 @@ export const ResultDetail: React.FC = () => {
               onClick={handleShareResults}
               variant="primary"
             >
-              <span>{copySuccess ? '✓' : '📤'}</span>
+              <span>{copySuccess ? '✓' : ''}</span>{' '}
               <span>{copySuccess ? 'Link Copied!' : 'Share Results'}</span>
             </Button>
           )}
