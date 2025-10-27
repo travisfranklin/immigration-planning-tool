@@ -566,5 +566,188 @@ flowchart TD
     },
   ],
  },
+
+ 'dk_eu_blue_card': {
+ programId: 'dk_eu_blue_card',
+ countryCode: 'DK',
+ programName: 'EU Blue Card',
+ totalEstimatedDuration: '2-3 months',
+ complexity: 'low',
+ successRate: '85%',
+ mermaidDiagram: `
+flowchart TD
+ Start([Start Process]) --> job-offer[Secure Job Offer<br/>from Danish Employer]
+ job-offer --> check-salary{Salary >= DKK 465,000/year<br/>(EUR 62,400)?}
+ check-salary -->|Yes| check-education{Bachelor's Degree<br/>or Higher?}
+ check-salary -->|No| End1([Not Eligible])
+ check-education -->|Yes| gather-documents[Gather Required Documents]
+ check-education -->|No| End2([Not Eligible])
+ gather-documents --> submit-visa[Submit Application<br/>to SIRI]
+ submit-visa --> visa-processing[Fast-Track Processing<br/>30-60 Days]
+ visa-processing --> decision{Decision}
+ decision -->|Approved| receive-permit[Receive EU Blue Card]
+ decision -->|Rejected| consider-appeal[Consider Appeal]
+ receive-permit --> travel-to-denmark[Travel to Denmark]
+ travel-to-denmark --> register-siri[Register at SIRI<br/>Get CPR Number]
+ register-siri --> Success([Process Complete])
+ consider-appeal --> End3([Process Ended])
+
+ style Start fill:#e1f5e1
+ style Success fill:#e1f5e1
+ style End1 fill:#ffe1e1
+ style End2 fill:#ffe1e1
+ style End3 fill:#ffe1e1
+ style receive-permit fill:#e1e5ff
+`,
+ steps: [
+ {
+ id: 'job-offer',
+ title: 'Secure Job Offer from Danish Employer',
+ description: 'Obtain a binding job offer from a Danish employer with high salary',
+ estimatedDuration: '1-2 months',
+ documents: [
+ 'Signed employment contract',
+ 'Job description',
+ 'Salary confirmation (minimum DKK 465,000/year = EUR 62,400)',
+ 'Employer information',
+ ],
+ notes: [
+ 'Denmark has one of the highest EU Blue Card salary thresholds',
+ 'Minimum DKK 465,000/year (EUR 62,400/year)',
+ 'Fast-Track processing available for certified companies',
+ 'Popular sectors: IT, engineering, healthcare, finance',
+ 'English widely spoken in Danish workplaces',
+ 'High quality of life and work-life balance',
+ ],
+ },
+ {
+ id: 'gather-documents',
+ title: 'Gather Required Documents',
+ description: 'Collect all necessary documents for EU Blue Card application',
+ estimatedDuration: '2-3 weeks',
+ documents: [
+ 'Valid passport (valid for at least 3 months)',
+ 'Employment contract',
+ 'Bachelor\'s degree or higher (certified copy)',
+ 'Passport-style photographs (biometric)',
+ 'Proof of health insurance',
+ 'Proof of accommodation in Denmark',
+ 'Criminal record certificate',
+ ],
+ notes: [
+ 'Documents should be in Danish or English',
+ 'Educational qualifications must be recognized',
+ 'Criminal background check must be recent (within 6 months)',
+ 'Health insurance must cover entire stay',
+ 'Accommodation can be rental or hotel initially',
+ ],
+ },
+ {
+ id: 'submit-visa',
+ title: 'Submit Application to SIRI',
+ description: 'Submit EU Blue Card application to Danish Immigration Service',
+ estimatedDuration: '1 week',
+ documents: [
+ 'All gathered documents',
+ 'Application fee payment (DKK 3,655 = EUR 490)',
+ 'Appointment confirmation',
+ ],
+ notes: [
+ 'Submit online via SIRI portal',
+ 'Can submit at Danish Consulate or in Denmark',
+ 'Appointment required (book 2-4 weeks in advance)',
+ 'Biometrics collected',
+ 'Fast-Track processing available for certified companies',
+ ],
+ },
+ {
+ id: 'visa-processing',
+ title: 'Fast-Track Processing (30-60 Days)',
+ description: 'Wait for SIRI to process your EU Blue Card application',
+ estimatedDuration: '30-60 days',
+ documents: [],
+ notes: [
+ 'Processing time: 30-60 days with Fast-Track',
+ 'Faster than standard work permits',
+ 'May be contacted for additional information',
+ 'Track application status online',
+ 'Decision communicated via email',
+ ],
+ },
+ {
+ id: 'receive-permit',
+ title: 'Receive EU Blue Card',
+ description: 'Receive approval and collect your EU Blue Card',
+ estimatedDuration: '1 week',
+ documents: [
+ 'Approval notification',
+ 'EU Blue Card',
+ ],
+ notes: [
+ 'Card initially valid for 4 years',
+ 'Renewable if employment continues',
+ 'Can work throughout EU after 18 months',
+ 'Family members can join',
+ 'PR eligible after 4 years',
+ 'Citizenship after 9 years',
+ ],
+ },
+ {
+ id: 'travel-to-denmark',
+ title: 'Travel to Denmark',
+ description: 'Travel to Denmark with your EU Blue Card',
+ estimatedDuration: '1-3 days',
+ documents: [
+ 'Valid passport with EU Blue Card',
+ 'Employment contract',
+ 'Proof of accommodation',
+ ],
+ notes: [
+ 'Must register at SIRI within 5 days of arrival',
+ 'Main airport: Copenhagen Airport (CPH)',
+ 'English widely spoken',
+ 'EU member state - Schengen benefits',
+ ],
+ },
+ {
+ id: 'register-siri',
+ title: 'Register at SIRI and Get CPR Number',
+ description: 'Complete registration and receive CPR number',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'Passport with EU Blue Card',
+ 'Employment contract',
+ 'Proof of accommodation',
+ ],
+ notes: [
+ 'Register at SIRI within 5 days of arrival',
+ 'Receive CPR number (Civil Registration Number) - essential for everything',
+ 'Open Danish bank account (requires CPR)',
+ 'Register with tax authorities',
+ 'Access to Danish healthcare system',
+ 'High quality of life',
+ 'PR after 4 years, citizenship after 9 years',
+ ],
+ },
+ {
+ id: 'consider-appeal',
+ title: 'Consider Appeal',
+ description: 'If rejected, evaluate appeal options',
+ estimatedDuration: '1-2 months',
+ documents: [
+ 'Rejection decision',
+ 'Appeal form',
+ 'Additional evidence',
+ ],
+ notes: [
+ 'Appeal deadline: 8 weeks from decision',
+ 'Submit appeal to SIRI',
+ 'Consider legal consultation',
+ 'Can reapply with stronger application',
+ 'Alternative: consider Denmark Fast-Track or Pay Limit schemes',
+ ],
+ },
+ ],
+ },
 };
 

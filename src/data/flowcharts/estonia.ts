@@ -382,5 +382,191 @@ flowchart TD
  },
  ],
  },
+
+ 'ee_eu_blue_card': {
+ programId: 'ee_eu_blue_card',
+ countryCode: 'EE',
+ programName: 'EU Blue Card',
+ totalEstimatedDuration: '2-3 months',
+ complexity: 'low',
+ successRate: '90%',
+ mermaidDiagram: `
+flowchart TD
+ Start([Start Process]) --> job-offer[Secure Job Offer<br/>from Estonian Employer]
+ job-offer --> check-salary{Salary >= EUR 2,000/month<br/>(EUR 24,000/year)?}
+ check-salary -->|Yes| check-education{Higher Education<br/>Qualification?}
+ check-salary -->|No| End1([Not Eligible])
+ check-education -->|Yes| gather-documents[Gather Required Documents]
+ check-education -->|No| End2([Not Eligible])
+ gather-documents --> submit-visa[Submit Application<br/>to Police]
+ submit-visa --> visa-processing[Processing<br/>30-60 Days]
+ visa-processing --> decision{Decision}
+ decision -->|Approved| receive-permit[Receive EU Blue Card]
+ decision -->|Rejected| consider-appeal[Consider Appeal]
+ receive-permit --> travel-to-estonia[Travel to Estonia]
+ travel-to-estonia --> register-police[Register and Get<br/>ID Card]
+ register-police --> Success([Process Complete])
+ consider-appeal --> End3([Process Ended])
+
+ style Start fill:#e1f5e1
+ style Success fill:#e1f5e1
+ style End1 fill:#ffe1e1
+ style End2 fill:#ffe1e1
+ style End3 fill:#ffe1e1
+ style receive-permit fill:#e1e5ff
+`,
+ steps: [
+ {
+ id: 'job-offer',
+ title: 'Secure Job Offer from Estonian Employer',
+ description: 'Obtain a binding job offer from an Estonian employer',
+ estimatedDuration: '1-2 months',
+ documents: [
+ 'Signed employment contract',
+ 'Job description',
+ 'Salary confirmation (minimum EUR 2,000/month = EUR 24,000/year)',
+ 'Employer information',
+ ],
+ notes: [
+ 'Most tech-forward country in EU!',
+ 'Minimum EUR 24,000/year (EUR 2,000/month)',
+ 'Much lower salary threshold than most EU countries',
+ 'Tallinn has vibrant tech ecosystem (Skype, Wise, Bolt)',
+ 'Popular sectors: IT, fintech, e-government, tech',
+ 'English widely spoken in tech sector',
+ 'E-government services make everything seamless',
+ ],
+ },
+ {
+ id: 'gather-documents',
+ title: 'Gather Required Documents',
+ description: 'Collect all necessary documents for EU Blue Card application',
+ estimatedDuration: '2-3 weeks',
+ documents: [
+ 'Valid passport (valid for at least 3 months)',
+ 'Employment contract',
+ 'Higher education qualification (certified copy)',
+ 'Passport-style photographs',
+ 'Proof of health insurance',
+ 'Proof of accommodation in Estonia',
+ 'Criminal record certificate',
+ ],
+ notes: [
+ 'Documents must be in Estonian or English',
+ 'Educational qualifications must be recognized',
+ 'Apostille required for non-EU documents',
+ 'Criminal background check must be recent (within 6 months)',
+ 'Digital copies acceptable for online application',
+ ],
+ },
+ {
+ id: 'submit-visa',
+ title: 'Submit Application to Police',
+ description: 'Submit EU Blue Card application to Estonian Police and Border Guard Board',
+ estimatedDuration: '1 week',
+ documents: [
+ 'All gathered documents',
+ 'Application fee payment (EUR 160)',
+ ],
+ notes: [
+ 'Apply online via Estonian Police portal',
+ 'Application fee: EUR 160 (2025)',
+ 'May need to visit Estonian embassy for biometrics',
+ 'Processing starts after complete application',
+ 'Fast processing compared to other EU countries',
+ ],
+ },
+ {
+ id: 'visa-processing',
+ title: 'Processing (30-60 Days)',
+ description: 'Wait for Police to process your EU Blue Card application',
+ estimatedDuration: '30-60 days',
+ documents: [],
+ notes: [
+ 'Processing time: 30-60 days (fast!)',
+ 'May be contacted for additional information',
+ 'Track application status online',
+ 'E-government services make process smooth',
+ 'Decision communicated via email',
+ ],
+ },
+ {
+ id: 'receive-permit',
+ title: 'Receive EU Blue Card',
+ description: 'Receive approval and collect your EU Blue Card',
+ estimatedDuration: '1 week',
+ documents: [
+ 'Approval notification',
+ 'EU Blue Card',
+ ],
+ notes: [
+ 'Card initially valid for 2 years',
+ 'Renewable if employment continues',
+ 'Can work throughout EU after 18 months',
+ 'Family members can join',
+ 'PR eligible after 5 years',
+ 'Citizenship after 8 years',
+ 'Most tech-forward country in EU!',
+ ],
+ },
+ {
+ id: 'travel-to-estonia',
+ title: 'Travel to Estonia',
+ description: 'Travel to Estonia with your EU Blue Card',
+ estimatedDuration: '1-3 days',
+ documents: [
+ 'Valid passport with EU Blue Card',
+ 'Employment contract',
+ 'Proof of accommodation',
+ ],
+ notes: [
+ 'Main airport: Tallinn Airport (TLL)',
+ 'Register at local government within 1 month',
+ 'English widely spoken in Tallinn',
+ 'EU member state - Schengen benefits',
+ 'E-government services available immediately',
+ ],
+ },
+ {
+ id: 'register-police',
+ title: 'Register and Get Estonian ID Card',
+ description: 'Complete registration and receive Estonian ID card',
+ estimatedDuration: '2-3 weeks',
+ documents: [
+ 'Passport with EU Blue Card',
+ 'Employment contract',
+ 'Proof of accommodation',
+ ],
+ notes: [
+ 'Register at local government office within 1 month',
+ 'Get Estonian ID card (digital identity)',
+ 'Open Estonian bank account',
+ 'Register with tax authorities',
+ 'Access to e-government services (99% of services online!)',
+ 'Access to Estonian healthcare system',
+ 'Join Tallinn tech community',
+ 'PR after 5 years, citizenship after 8 years',
+ ],
+ },
+ {
+ id: 'consider-appeal',
+ title: 'Consider Appeal',
+ description: 'If rejected, evaluate appeal options',
+ estimatedDuration: '1-2 months',
+ documents: [
+ 'Rejection decision',
+ 'Appeal form',
+ 'Additional evidence',
+ ],
+ notes: [
+ 'Appeal deadline: 30 days from decision',
+ 'Submit appeal to Administrative Court',
+ 'Consider legal consultation',
+ 'Can reapply with stronger application',
+ 'Alternative: consider Estonia Startup Visa or E-Residency + Business Visa',
+ ],
+ },
+ ],
+ },
 };
 

@@ -26,19 +26,6 @@ export function InteractiveFlowchart({ flowchart }: InteractiveFlowchartProps) {
 
   return (
     <div className="space-y-6">
-      {/* Flowchart Header */}
-      <div className="bg-white rounded-lg shadow-md border border-gray-200 p-6">
-        <h2 className="text-2xl font-bold text-gray-900">{flowchart.programName}</h2>
-        <p className="text-sm text-gray-600 mt-1">
-          {flowchart.countryCode} • {flowchart.totalEstimatedDuration} • {flowchart.complexity} complexity
-        </p>
-        {flowchart.successRate && (
-          <p className="text-sm text-green-600 mt-1">
-            Success Rate: {flowchart.successRate}
-          </p>
-        )}
-      </div>
-
       {/* Two-Column Layout: Flowchart + Details */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Column: Flowchart */}
