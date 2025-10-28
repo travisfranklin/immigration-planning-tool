@@ -28,9 +28,9 @@ export function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button
+                variant="primary"
                 size="lg"
                 onClick={() => navigate('/profile')}
-                className="text-h4"
               >
                 CREATE PROFILE →
               </Button>
@@ -38,7 +38,6 @@ export function Home() {
                 variant="secondary"
                 size="lg"
                 onClick={() => navigate('/results')}
-                className="text-h4"
               >
                 VIEW RESULTS
               </Button>
@@ -47,78 +46,59 @@ export function Home() {
         </div>
       </div>
 
-      {/* Features Section - Bold Full-Width Blocks */}
-      <div className="bg-white">
+      {/* Features Section - Bold Cards with Color Blocks */}
+      <div className="bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
           <h2 className="text-h1 font-bold text-black mb-16 uppercase tracking-wide text-center">
             What You Get
           </h2>
-          <div className="space-y-0">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Feature 1 - Viability Analysis */}
-            <div className="border-t-4 border-black bg-white p-12 md:p-16">
-              <div className="max-w-4xl">
-                <div className="flex items-start gap-8">
-                  <div className="flex-shrink-0 w-16 h-16 bg-primary flex items-center justify-center">
-                    <div className="text-h2 font-bold text-white">01</div>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-h2 font-bold text-black uppercase tracking-wide mb-4">
-                      Viability Analysis
-                    </h3>
-                    <p className="text-body-lg text-gray-700 leading-relaxed">
-                      Get personalized viability scores for your target EU countries based on your profile.
-                      Our algorithm analyzes your education, work experience, language skills, and financial
-                      situation to provide accurate assessments for Germany, Netherlands, France, Spain, and Italy.
-                    </p>
-                  </div>
-                </div>
+            <div className="bg-white border-2 border-black">
+              <div className="h-4 bg-primary"></div>
+              <div className="p-8">
+                <div className="text-h1 font-bold text-primary mb-2">01</div>
+                <h3 className="text-h3 font-bold text-black uppercase tracking-wide mb-4">
+                  Viability Analysis
+                </h3>
+                <p className="text-body text-gray-700 leading-relaxed">
+                  Get personalized viability scores for your target EU countries based on your profile.
+                  Our algorithm analyzes your education, work experience, language skills, and financial
+                  situation to provide accurate assessments.
+                </p>
               </div>
             </div>
 
             {/* Feature 2 - Privacy First */}
-            <div className="border-t-4 border-black bg-white p-12 md:p-16">
-              <div className="max-w-4xl ml-auto">
-                <div className="flex items-start gap-8">
-                  <div className="flex-shrink-0 w-16 h-16 bg-success flex items-center justify-center">
-                    <div className="text-h2 font-bold text-black">02</div>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-h2 font-bold text-black uppercase tracking-wide mb-4">
-                      Privacy First
-                    </h3>
-                    <p className="text-body-lg text-gray-700 leading-relaxed">
-                      All your data is stored locally on your device using IndexedDB. No server, no cloud,
-                      no tracking, complete privacy. Your sensitive immigration information never leaves your
-                      computer, giving you full control over your personal data.
-                    </p>
-                  </div>
-                </div>
+            <div className="bg-white border-2 border-black">
+              <div className="h-4 bg-success"></div>
+              <div className="p-8">
+                <div className="text-h1 font-bold text-success mb-2">02</div>
+                <h3 className="text-h3 font-bold text-black uppercase tracking-wide mb-4">
+                  Privacy First
+                </h3>
+                <p className="text-body text-gray-700 leading-relaxed">
+                  All your data is stored locally on your device using IndexedDB. No server, no cloud,
+                  no tracking, complete privacy. Your sensitive immigration information never leaves your
+                  computer.
+                </p>
               </div>
             </div>
 
             {/* Feature 3 - Multiple Countries */}
-            <div className="border-t-4 border-black bg-white p-12 md:p-16">
-              <div className="max-w-4xl">
-                <div className="flex items-start gap-8">
-                  <div className="flex-shrink-0 w-16 h-16 bg-warning flex items-center justify-center">
-                    <div className="text-h2 font-bold text-black">03</div>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-h2 font-bold text-black uppercase tracking-wide mb-4">
-                      Multiple Countries
-                    </h3>
-                    <p className="text-body-lg text-gray-700 leading-relaxed">
-                      Compare your immigration options across five major EU destinations: Germany, Netherlands,
-                      France, Spain, and Italy. Each country has unique visa programs, requirements, and pathways—
-                      find the best fit for your situation.
-                    </p>
-                  </div>
-                </div>
+            <div className="bg-white border-2 border-black">
+              <div className="h-4 bg-warning"></div>
+              <div className="p-8">
+                <div className="text-h1 font-bold text-warning mb-2">03</div>
+                <h3 className="text-h3 font-bold text-black uppercase tracking-wide mb-4">
+                  Multiple Countries
+                </h3>
+                <p className="text-body text-gray-700 leading-relaxed">
+                  Compare your immigration options across five major EU destinations: Germany, Netherlands,
+                  France, Spain, and Italy. Each country has unique visa programs, requirements, and pathways.
+                </p>
               </div>
             </div>
-
-            {/* Bottom border */}
-            <div className="border-t-4 border-black"></div>
           </div>
         </div>
       </div>
@@ -138,7 +118,6 @@ export function Home() {
               variant="secondary"
               size="lg"
               onClick={() => navigate('/flowchart')}
-              className="text-h4"
             >
               VIEW FLOWCHARTS →
             </Button>
