@@ -1,6 +1,13 @@
+/* Import Design Tokens */
+@import './styles/tokens.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ============================================================================
+   BASE STYLES - German Functionalism + Scandinavian Minimalism
+   ============================================================================ */
 
 * {
   margin: 0;
@@ -16,9 +23,65 @@ body,
 }
 
 body {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: var(--font-primary);
+  font-size: var(--text-body-size);
+  line-height: var(--text-body-line-height);
+  font-weight: var(--text-body-weight);
+  color: var(--color-black);
+  background-color: var(--bg-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Base Styles */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-black);
+  font-weight: 700;
+  margin: 0;
+}
+
+h1 {
+  font-size: var(--text-h1-size);
+  line-height: var(--text-h1-line-height);
+}
+
+h2 {
+  font-size: var(--text-h2-size);
+  line-height: var(--text-h2-line-height);
+}
+
+h3 {
+  font-size: var(--text-h3-size);
+  line-height: var(--text-h3-line-height);
+}
+
+p {
+  margin: 0;
+}
+
+/* Remove default button styles */
+button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* Remove default input styles */
+input, select, textarea {
+  font-family: inherit;
+  border: none;
+  outline: none;
+}
+
+/* Links */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-primary-dark);
 }
 
 @keyframes fadeIn {
@@ -83,7 +146,7 @@ body {
 /* Typography - Clear, functional, readable */
 .flowchart .node text,
 .flowchart .edgeLabel text {
-  fill: #000000 !important;
+  fill: var(--color-black) !important;
   font-weight: 500 !important;
   letter-spacing: 0.01em !important;
 }
@@ -91,29 +154,29 @@ body {
 /* Edge styling - Minimal, functional */
 .flowchart .edgePath .path,
 .flowchart .flowchart-link {
-  stroke: #2c2c2c !important;
+  stroke: var(--color-gray-700) !important;
   stroke-width: 1.5px !important;
 }
 
 /* Edge labels - Clean background */
 .flowchart .edgeLabel {
-  background-color: #ffffff !important;
+  background-color: var(--color-white) !important;
 }
 
 /* ============================================================================
    NODE STYLING - Functional Color Coding
    ============================================================================ */
 
-/* Decision nodes (diamonds) - Bold Yellow
-   Principle: Decisions require attention - use warm, alerting color */
+/* Decision nodes (diamonds) - Chartreuse (High-energy)
+   Principle: Decisions require attention - use high-energy accent color */
 .flowchart polygon {
-  fill: #ffffff !important;
-  stroke: #ffc107 !important;
+  fill: var(--color-white) !important;
+  stroke: var(--color-accent) !important;
   stroke-width: 2.5px !important;
 }
 
-/* Start/Success nodes - Bold Green
-   Principle: Positive outcomes use confident green (Scandinavian forest green) */
+/* Start/Success nodes - Aquamarine (Fresh, positive)
+   Principle: Positive outcomes use fresh, confident aquamarine */
 .flowchart g[id*="Start"] rect,
 .flowchart g[id*="start"] rect,
 .flowchart g[id*="Success"] rect,
@@ -126,13 +189,13 @@ body {
 .flowchart g[id*="success"] path,
 .flowchart g[id*="Complete"] path,
 .flowchart g[id*="complete"] path {
-  fill: #ffffff !important;
-  stroke: #2e7d32 !important;
+  fill: var(--color-white) !important;
+  stroke: var(--color-success) !important;
   stroke-width: 2.5px !important;
 }
 
-/* End/Error nodes - Bold Red
-   Principle: Negative outcomes use clear, unambiguous red */
+/* End/Error nodes - Red-Orange (Clear negative)
+   Principle: Negative outcomes use clear, unambiguous red-orange */
 .flowchart g[id*="End"] rect,
 .flowchart g[id*="end"] rect,
 .flowchart g[id*="Ended"] rect,
@@ -145,24 +208,24 @@ body {
 .flowchart g[id*="Denied"] path,
 .flowchart g[id*="Eligible"] path,
 .flowchart g[id*="Return"] path {
-  fill: #ffffff !important;
-  stroke: #c62828 !important;
+  fill: var(--color-white) !important;
+  stroke: var(--color-danger) !important;
   stroke-width: 2.5px !important;
 }
 
-/* Warning/Alternative nodes - Bold Orange
-   Principle: Caution states use warm orange */
+/* Warning/Alternative nodes - Orange Peel (Vibrant attention)
+   Principle: Caution states use vibrant orange */
 .flowchart g[id*="Different"] rect,
 .flowchart g[id*="Alternative"] rect,
 .flowchart g[id*="Different"] path,
 .flowchart g[id*="Alternative"] path {
-  fill: #ffffff !important;
-  stroke: #f57c00 !important;
+  fill: var(--color-white) !important;
+  stroke: var(--color-warning) !important;
   stroke-width: 2.5px !important;
 }
 
-/* Important nodes (permits, visas, cards) - Bold Blue
-   Principle: Key milestones use confident Scandinavian blue */
+/* Important nodes (permits, visas, cards) - Electric Indigo (Bold, modern)
+   Principle: Key milestones use bold electric indigo */
 .flowchart g[id*="Visa"] rect,
 .flowchart g[id*="visa"] rect,
 .flowchart g[id*="Permit"] rect,
@@ -179,8 +242,8 @@ body {
 .flowchart g[id*="card"] path,
 .flowchart g[id*="Blue"] path,
 .flowchart g[id*="PR"] path {
-  fill: #ffffff !important;
-  stroke: #1565c0 !important;
+  fill: var(--color-white) !important;
+  stroke: var(--color-primary) !important;
   stroke-width: 2.5px !important;
 }
 
@@ -188,8 +251,8 @@ body {
    Principle: Standard steps recede, allowing important nodes to stand out */
 .flowchart .node rect,
 .flowchart .node path {
-  fill: #ffffff !important;
-  stroke: #757575 !important;
+  fill: var(--color-white) !important;
+  stroke: var(--color-gray-500) !important;
   stroke-width: 1.5px !important;
 }
 
@@ -217,7 +280,7 @@ body {
 .flowchart .node.selected polygon,
 .flowchart .node.selected path {
   stroke-width: 4px !important;
-  stroke: #1e40af !important;
+  stroke: var(--color-primary-dark) !important;
   /* No shadows - clean and functional */
 }
 
