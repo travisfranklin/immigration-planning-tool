@@ -53,48 +53,45 @@ const mockScoreNotEligible: ViabilityScore = {
 
 describe('CountryResultsTable', () => {
   describe('Rendering', () => {
-    it('renders table with all scores', () => {
+    it('renders DataCard grid with all scores', () => {
       const scores = [mockScore, mockScoreNotEligible];
       render(
         <CountryResultsTable
           scores={scores}
           onViewDetails={vi.fn()}
-          onViewFlowchart={vi.fn()}
         />
       );
 
-      // Check both countries are rendered (appear in both desktop and mobile views)
-      expect(screen.getAllByText('Germany').length).toBeGreaterThan(0);
-      expect(screen.getAllByText('France').length).toBeGreaterThan(0);
+      // Check both countries are rendered in DataCard titles
+      expect(screen.getByText(/#1 DE Germany/)).toBeInTheDocument();
+      expect(screen.getByText(/#2 FR France/)).toBeInTheDocument();
     });
 
-    it('renders rank badges correctly', () => {
+    it('renders rank badges correctly in DataCard titles', () => {
       const scores = [mockScore, mockScoreNotEligible];
       render(
         <CountryResultsTable
           scores={scores}
           onViewDetails={vi.fn()}
-          onViewFlowchart={vi.fn()}
         />
       );
 
-      // Check ranks
-      expect(screen.getAllByText('#1')[0]).toBeInTheDocument();
-      expect(screen.getAllByText('#2')[0]).toBeInTheDocument();
+      // Check ranks in titles
+      expect(screen.getByText(/#1 DE Germany/)).toBeInTheDocument();
+      expect(screen.getByText(/#2 FR France/)).toBeInTheDocument();
     });
 
-    it('renders scores with correct colors', () => {
+    it('renders scores with correct values', () => {
       render(
         <CountryResultsTable
           scores={[mockScore]}
           onViewDetails={vi.fn()}
-          onViewFlowchart={vi.fn()}
         />
       );
 
-      // Score should be rendered (85/100 for excellent) - appears in both desktop and mobile
-      expect(screen.getAllByText(/85/).length).toBeGreaterThan(0);
-      expect(screen.getAllByText(/100/).length).toBeGreaterThan(0);
+      // Score should be rendered (85/100 for excellent)
+      expect(screen.getByText('85')).toBeInTheDocument();
+      expect(screen.getByText('/100')).toBeInTheDocument();
     });
 
     it('renders viability badges', () => {
@@ -103,334 +100,193 @@ describe('CountryResultsTable', () => {
         <CountryResultsTable
           scores={scores}
           onViewDetails={vi.fn()}
-          onViewFlowchart={vi.fn()}
         />
       );
 
-      // Check viability badges (appear in both desktop and mobile)
-      expect(screen.getAllByText('excellent').length).toBeGreaterThan(0);
-      expect(screen.getAllByText('Not Eligible').length).toBeGreaterThan(0);
+      // Check viability badges
+      expect(screen.getByText('excellent')).toBeInTheDocument();
+      expect(screen.getByText('Not Eligible')).toBeInTheDocument();
     });
 
-    it('renders recommended program names', () => {
+    it('renders recommended program names as subtitles', () => {
       render(
         <CountryResultsTable
           scores={[mockScore]}
           onViewDetails={vi.fn()}
-          onViewFlowchart={vi.fn()}
         />
       );
 
-      // Program name appears in both desktop and mobile views
-      expect(screen.getAllByText('EU Blue Card').length).toBeGreaterThan(0);
+      // Program name appears as DataCard subtitle
+      expect(screen.getByText('EU Blue Card')).toBeInTheDocument();
     });
 
-    it('renders action buttons', () => {
+    it('renders View Details button', () => {
       render(
         <CountryResultsTable
           scores={[mockScore]}
           onViewDetails={vi.fn()}
-          onViewFlowchart={vi.fn()}
         />
       );
 
-      // Check for Details buttons (desktop + mobile)
-      const detailsButtons = screen.getAllByText(/Details/);
-      expect(detailsButtons.length).toBeGreaterThan(0);
+      // Check for View Details button
+      expect(screen.getByText('View Details →')).toBeInTheDocument();
     });
 
-    it('does not render expanded content initially', () => {
+    it('renders timeline and risk information', () => {
       render(
         <CountryResultsTable
           scores={[mockScore]}
           onViewDetails={vi.fn()}
-          onViewFlowchart={vi.fn()}
         />
       );
 
-      // Component scores should not be visible initially
-      expect(screen.queryByText('Component Scores')).not.toBeInTheDocument();
+      // Check quick stats
+      expect(screen.getByText('Timeline:')).toBeInTheDocument();
+      expect(screen.getByText('6 months')).toBeInTheDocument();
+      expect(screen.getByText('Risk:')).toBeInTheDocument();
+      expect(screen.getByText('low')).toBeInTheDocument();
     });
   });
 
-  describe('Expand/Collapse Interaction', () => {
-    it('expands row when expand button is clicked', () => {
+  describe('Button Interactions', () => {
+    it('calls onViewDetails when View Details button is clicked', () => {
+      const mockOnViewDetails = vi.fn();
       render(
         <CountryResultsTable
           scores={[mockScore]}
-          onViewDetails={vi.fn()}
-          onViewFlowchart={vi.fn()}
+          onViewDetails={mockOnViewDetails}
         />
       );
 
-      // Find and click expand button
-      const expandButtons = screen.getAllByLabelText(/Expand details for Germany/);
-      fireEvent.click(expandButtons[0]);
+      // Click View Details button
+      const detailsButton = screen.getByText('View Details →');
+      fireEvent.click(detailsButton);
 
-      // Component scores should now be visible
-      expect(screen.getAllByText('Component Scores').length).toBeGreaterThan(0);
+      // Should call onViewDetails with country code
+      expect(mockOnViewDetails).toHaveBeenCalledWith('DE');
     });
 
-    it('collapses row when expand button is clicked again', () => {
-      render(
-        <CountryResultsTable
-          scores={[mockScore]}
-          onViewDetails={vi.fn()}
-          onViewFlowchart={vi.fn()}
-        />
-      );
-
-      // Expand
-      const expandButtons = screen.getAllByLabelText(/Expand details for Germany/);
-      fireEvent.click(expandButtons[0]);
-      expect(screen.getAllByText('Component Scores').length).toBeGreaterThan(0);
-
-      // Collapse
-      const collapseButtons = screen.getAllByLabelText(/Collapse details for Germany/);
-      fireEvent.click(collapseButtons[0]);
-      expect(screen.queryByText('Component Scores')).not.toBeInTheDocument();
-    });
-
-    it('expands with Enter key', () => {
-      render(
-        <CountryResultsTable
-          scores={[mockScore]}
-          onViewDetails={vi.fn()}
-          onViewFlowchart={vi.fn()}
-        />
-      );
-
-      const expandButtons = screen.getAllByLabelText(/Expand details for Germany/);
-      fireEvent.keyDown(expandButtons[0], { key: 'Enter' });
-
-      expect(screen.getAllByText('Component Scores').length).toBeGreaterThan(0);
-    });
-
-    it('expands with Space key', () => {
-      render(
-        <CountryResultsTable
-          scores={[mockScore]}
-          onViewDetails={vi.fn()}
-          onViewFlowchart={vi.fn()}
-        />
-      );
-
-      const expandButtons = screen.getAllByLabelText(/Expand details for Germany/);
-      fireEvent.keyDown(expandButtons[0], { key: ' ' });
-
-      expect(screen.getAllByText('Component Scores').length).toBeGreaterThan(0);
-    });
-
-    it('collapses with Escape key when expanded', () => {
-      render(
-        <CountryResultsTable
-          scores={[mockScore]}
-          onViewDetails={vi.fn()}
-          onViewFlowchart={vi.fn()}
-        />
-      );
-
-      // Expand first
-      const expandButtons = screen.getAllByLabelText(/Expand details for Germany/);
-      fireEvent.click(expandButtons[0]);
-      expect(screen.getAllByText('Component Scores').length).toBeGreaterThan(0);
-
-      // Collapse with Escape
-      fireEvent.keyDown(expandButtons[0], { key: 'Escape' });
-      expect(screen.queryByText('Component Scores')).not.toBeInTheDocument();
-    });
-
-    it('only one row expanded at a time', () => {
+    it('calls onViewDetails with correct country code for multiple scores', () => {
+      const mockOnViewDetails = vi.fn();
       const scores = [mockScore, mockScoreNotEligible];
       render(
         <CountryResultsTable
           scores={scores}
-          onViewDetails={vi.fn()}
-          onViewFlowchart={vi.fn()}
+          onViewDetails={mockOnViewDetails}
         />
       );
 
-      // Expand first row
-      const expandButtons1 = screen.getAllByLabelText(/Expand details for Germany/);
-      fireEvent.click(expandButtons1[0]);
-      expect(screen.getAllByText('Component Scores').length).toBeGreaterThan(0);
+      // Click second View Details button (France)
+      const detailsButtons = screen.getAllByText('View Details →');
+      fireEvent.click(detailsButtons[1]);
 
-      // Expand second row
-      const expandButtons2 = screen.getAllByLabelText(/Expand details for France/);
-      fireEvent.click(expandButtons2[0]);
-
-      // Only France should be expanded now (desktop + mobile = 2 instances)
-      const componentScoresElements = screen.getAllByText('Component Scores');
-      expect(componentScoresElements.length).toBe(2); // Desktop + mobile view
+      // Should call onViewDetails with France's country code
+      expect(mockOnViewDetails).toHaveBeenCalledWith('FR');
     });
   });
 
-  describe('Expanded Content', () => {
-    it('displays component scores when expanded', () => {
+  describe('DataCard Grid Layout', () => {
+    it('renders grid container with correct classes', () => {
+      const { container } = render(
+        <CountryResultsTable
+          scores={[mockScore]}
+          onViewDetails={vi.fn()}
+        />
+      );
+
+      // Check for grid layout classes
+      const gridContainer = container.querySelector('.grid');
+      expect(gridContainer).toBeInTheDocument();
+      expect(gridContainer).toHaveClass('grid-cols-1', 'md:grid-cols-2', 'lg:grid-cols-3');
+    });
+
+    it('renders multiple DataCards in grid', () => {
+      const scores = [mockScore, mockScoreNotEligible];
+      const { container } = render(
+        <CountryResultsTable
+          scores={scores}
+          onViewDetails={vi.fn()}
+        />
+      );
+
+      // Should have 2 DataCards
+      const cards = container.querySelectorAll('.border-2');
+      expect(cards.length).toBeGreaterThanOrEqual(2);
+    });
+  });
+
+  describe('Badge Variants', () => {
+    it('renders correct badge variant for eligible country', () => {
       render(
         <CountryResultsTable
           scores={[mockScore]}
           onViewDetails={vi.fn()}
-          onViewFlowchart={vi.fn()}
         />
       );
 
-      // Expand
-      const expandButtons = screen.getAllByLabelText(/Expand details for Germany/);
-      fireEvent.click(expandButtons[0]);
-
-      // Check component scores (will appear in both desktop and mobile views)
-      expect(screen.getAllByText('Component Scores').length).toBeGreaterThan(0);
-      expect(screen.getAllByText('career').length).toBeGreaterThan(0);
-      expect(screen.getAllByText('financial').length).toBeGreaterThan(0);
-      expect(screen.getAllByText('education').length).toBeGreaterThan(0);
-      expect(screen.getAllByText('language').length).toBeGreaterThan(0);
-      expect(screen.getAllByText('family').length).toBeGreaterThan(0);
+      // Should show excellent badge with checkmark
+      expect(screen.getByText('excellent')).toBeInTheDocument();
+      expect(screen.getByText('✓')).toBeInTheDocument();
     });
 
-    it('displays risk level when expanded', () => {
-      render(
-        <CountryResultsTable
-          scores={[mockScore]}
-          onViewDetails={vi.fn()}
-          onViewFlowchart={vi.fn()}
-        />
-      );
-
-      // Expand
-      const expandButtons = screen.getAllByLabelText(/Expand details for Germany/);
-      fireEvent.click(expandButtons[0]);
-
-      expect(screen.getAllByText(/Risk:/).length).toBeGreaterThan(0);
-      expect(screen.getAllByText(/low/).length).toBeGreaterThan(0);
-    });
-
-    it('displays timeline when expanded', () => {
-      render(
-        <CountryResultsTable
-          scores={[mockScore]}
-          onViewDetails={vi.fn()}
-          onViewFlowchart={vi.fn()}
-        />
-      );
-
-      // Expand
-      const expandButtons = screen.getAllByLabelText(/Expand details for Germany/);
-      fireEvent.click(expandButtons[0]);
-
-      expect(screen.getAllByText(/Timeline:/).length).toBeGreaterThan(0);
-      expect(screen.getAllByText(/6 months/).length).toBeGreaterThan(0);
-    });
-
-    it('displays missing requirements for ineligible country', () => {
+    it('renders not-eligible badge for ineligible country', () => {
       render(
         <CountryResultsTable
           scores={[mockScoreNotEligible]}
           onViewDetails={vi.fn()}
-          onViewFlowchart={vi.fn()}
         />
       );
 
-      // Expand
-      const expandButtons = screen.getAllByLabelText(/Expand details for France/);
-      fireEvent.click(expandButtons[0]);
-
-      // Check for missing requirements (will appear in both desktop and mobile views)
-      expect(screen.getAllByText('Missing Requirements').length).toBeGreaterThan(0);
-      expect(screen.getAllByText('Bachelor degree required').length).toBeGreaterThan(0);
-      expect(screen.getAllByText('French language proficiency required').length).toBeGreaterThan(0);
+      // Should show Not Eligible badge with warning icon
+      expect(screen.getByText('Not Eligible')).toBeInTheDocument();
+      expect(screen.getByText('⚠️')).toBeInTheDocument();
     });
   });
 
-  describe('CTA Buttons', () => {
-    it('calls onViewDetails when Details button is clicked', () => {
-      const onViewDetails = vi.fn();
-      render(
-        <CountryResultsTable
-          scores={[mockScore]}
-          onViewDetails={onViewDetails}
-          onViewFlowchart={vi.fn()}
-        />
-      );
-
-      // Click Details button (get first one - desktop view)
-      const detailsButtons = screen.getAllByText(/Details/);
-      fireEvent.click(detailsButtons[0]);
-
-      expect(onViewDetails).toHaveBeenCalledWith('DE');
-    });
-
-    it('calls onViewFlowchart when Flowchart button is clicked', () => {
-      const onViewFlowchart = vi.fn();
-      render(
-        <CountryResultsTable
-          scores={[mockScore]}
-          onViewDetails={vi.fn()}
-          onViewFlowchart={onViewFlowchart}
-        />
-      );
-
-      // Find flowchart button (📋 emoji)
-      const flowchartButtons = screen.getAllByText('📋');
-      fireEvent.click(flowchartButtons[0]);
-
-      expect(onViewFlowchart).toHaveBeenCalledWith('DE', 'de-blue-card');
-    });
-
-    it('does not render flowchart button when onViewFlowchart is not provided', () => {
-      render(
+  describe('Color Coding', () => {
+    it('applies correct color variant based on score', () => {
+      const { container } = render(
         <CountryResultsTable
           scores={[mockScore]}
           onViewDetails={vi.fn()}
         />
       );
 
-      // Flowchart button should not be rendered
-      expect(screen.queryByText('📋')).not.toBeInTheDocument();
+      // Score 85 should use primary color (excellent range)
+      const primaryElements = container.querySelectorAll('.text-primary');
+      expect(primaryElements.length).toBeGreaterThan(0);
     });
   });
 
   describe('Accessibility', () => {
-    it('has proper ARIA attributes', () => {
+    it('has accessible button labels', () => {
       render(
         <CountryResultsTable
           scores={[mockScore]}
           onViewDetails={vi.fn()}
-          onViewFlowchart={vi.fn()}
         />
       );
 
-      const expandButtons = screen.getAllByLabelText(/Expand details for Germany/);
-      expect(expandButtons[0]).toHaveAttribute('aria-expanded', 'false');
-      expect(expandButtons[0]).toHaveAttribute('aria-controls');
+      // View Details button should be accessible
+      const detailsButton = screen.getByText('View Details →');
+      expect(detailsButton).toBeInTheDocument();
+      expect(detailsButton.tagName).toBe('BUTTON');
     });
 
-    it('updates aria-expanded when expanded', () => {
+    it('buttons are keyboard accessible', () => {
+      const mockOnViewDetails = vi.fn();
       render(
         <CountryResultsTable
           scores={[mockScore]}
-          onViewDetails={vi.fn()}
-          onViewFlowchart={vi.fn()}
+          onViewDetails={mockOnViewDetails}
         />
       );
 
-      const expandButtons = screen.getAllByLabelText(/Expand details for Germany/);
-      fireEvent.click(expandButtons[0]);
+      const detailsButton = screen.getByText('View Details →');
 
-      const collapseButtons = screen.getAllByLabelText(/Collapse details for Germany/);
-      expect(collapseButtons[0]).toHaveAttribute('aria-expanded', 'true');
-    });
-
-    it('has descriptive aria-label', () => {
-      render(
-        <CountryResultsTable
-          scores={[mockScore]}
-          onViewDetails={vi.fn()}
-          onViewFlowchart={vi.fn()}
-        />
-      );
-
-      expect(screen.getAllByLabelText(/Expand details for Germany/)[0]).toBeInTheDocument();
+      // Should be focusable
+      detailsButton.focus();
+      expect(document.activeElement).toBe(detailsButton);
     });
   });
 });

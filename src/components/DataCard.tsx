@@ -60,6 +60,7 @@ function getVariantClasses(variant: DataCardProps['variant']): string {
 /**
  * Automatically determine variant based on numeric value (0-100 scale)
  */
+// eslint-disable-next-line react-refresh/only-export-components
 export function getVariantFromScore(score: number): DataCardProps['variant'] {
   if (score >= 80) return 'primary';  // High scores (80-100)
   if (score >= 60) return 'success';  // Good scores (60-79)

@@ -52,7 +52,7 @@ describe('ProfileFormAccordion', () => {
       render(<ProfileFormAccordion {...getDefaultProps()} />);
 
       // Progress bar should be visible
-      const progressBar = document.querySelector('.bg-primary-600');
+      const progressBar = document.querySelector('.bg-primary');
       expect(progressBar).toBeInTheDocument();
     });
 
@@ -160,9 +160,9 @@ describe('ProfileFormAccordion', () => {
     it('should show not-started status for empty sections', () => {
       render(<ProfileFormAccordion {...getDefaultProps()} />);
 
-      // All sections should have not-started status (empty circles)
-      const circles = document.querySelectorAll('.border-gray-300');
-      expect(circles.length).toBeGreaterThan(0);
+      // All sections should have not-started status (empty squares with gray border)
+      const notStartedIndicators = document.querySelectorAll('.border-gray-400');
+      expect(notStartedIndicators.length).toBeGreaterThan(0);
     });
 
     it('should show incomplete status for partially filled sections', () => {

@@ -51,6 +51,7 @@ function getVariantClasses(variant: MetricBarProps['variant']): { text: string; 
 /**
  * Automatically determine variant based on percentage
  */
+// eslint-disable-next-line react-refresh/only-export-components
 export function getVariantFromPercentage(percentage: number): MetricBarProps['variant'] {
   if (percentage >= 80) return 'primary';
   if (percentage >= 60) return 'success';

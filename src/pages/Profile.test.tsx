@@ -104,11 +104,11 @@ describe('Profile Page', () => {
     });
   });
 
-  it('should display help text about local storage', async () => {
+  it('should display page title', async () => {
     renderWithRouter(<Profile />);
 
     await waitFor(() => {
-      expect(screen.getByText(/data is saved locally/i)).toBeInTheDocument();
+      expect(screen.getByText(/Immigration Profile/i)).toBeInTheDocument();
     });
   });
 });

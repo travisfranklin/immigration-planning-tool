@@ -159,8 +159,8 @@ describe('ResultDetail Page', () => {
       renderWithRouter(<ResultDetail />);
 
       await waitFor(() => {
-        expect(screen.getByText('Germany')).toBeInTheDocument();
-        expect(screen.getAllByText(/85\/100/).length).toBeGreaterThan(0);
+        expect(screen.getByText(/DE Germany/i)).toBeInTheDocument();
+        expect(screen.getAllByText('85').length).toBeGreaterThan(0);
       });
     });
 
