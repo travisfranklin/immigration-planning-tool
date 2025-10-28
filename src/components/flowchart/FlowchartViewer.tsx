@@ -78,32 +78,13 @@ function FlowchartViewerComponent({ flowchart, onExport, selectedStepId, onStepS
                 const htmlElement = nodeGroup as HTMLElement;
                 htmlElement.style.cursor = 'pointer';
 
-                // Add hover effect
+                // Hover effect is handled by CSS - no inline styles needed
                 htmlElement.addEventListener('mouseenter', () => {
                   htmlElement.classList.add('node-hover');
-                  // Find all child elements and update styling
-                  const paths = htmlElement.querySelectorAll('path, rect, polygon');
-                  paths.forEach((path) => {
-                    const element = path as HTMLElement;
-                    element.style.stroke = '#3b82f6';
-                    element.style.strokeWidth = '2';
-                  });
-                  // Add subtle brightness to the entire node
-                  htmlElement.style.filter = 'brightness(1.05)';
                 });
 
                 htmlElement.addEventListener('mouseleave', () => {
                   htmlElement.classList.remove('node-hover');
-                  // Remove hover effect if not selected
-                  if (selectedStepRef.current !== matchingStep.id) {
-                    const paths = htmlElement.querySelectorAll('path, rect, polygon');
-                    paths.forEach((path) => {
-                      const element = path as HTMLElement;
-                      element.style.stroke = '';
-                      element.style.strokeWidth = '';
-                    });
-                    htmlElement.style.filter = '';
-                  }
                 });
 
                 // Add click handler
@@ -143,16 +124,15 @@ function FlowchartViewerComponent({ flowchart, onExport, selectedStepId, onStepS
       const paths = htmlElement.querySelectorAll('path, rect, polygon');
 
       if (selectedStep === extractedId) {
-        // Apply selected styling - preserve original fill colors
+        // Apply selected styling - CSS handles the visual styling
         htmlElement.classList.add('node-selected');
+        // Remove any inline styles to let CSS take over
         paths.forEach((path) => {
           const element = path as HTMLElement;
-          element.style.stroke = '#1e40af';
-          element.style.strokeWidth = '2.5';
-          // Don't modify fill - preserve original semantic colors
+          element.style.stroke = '';
+          element.style.strokeWidth = '';
         });
-        // Add brightness to make selected node stand out
-        htmlElement.style.filter = 'brightness(1.1)';
+        htmlElement.style.filter = '';
       } else {
         // Remove selected styling
         htmlElement.classList.remove('node-selected');

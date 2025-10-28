@@ -208,11 +208,20 @@ body {
 }
 
 /* Selected state - Clear, bold indication
-   Principle: Selection should be obvious and unambiguous */
+   Principle: Selection should be obvious and unambiguous
+   Note: Component uses 'node-selected' class */
+.flowchart .node-selected rect,
+.flowchart .node-selected polygon,
+.flowchart .node-selected path,
 .flowchart .node.selected rect,
 .flowchart .node.selected polygon,
 .flowchart .node.selected path {
   stroke-width: 4px !important;
-  stroke-dasharray: 0 !important;
+  stroke: #1e40af !important;
   /* No shadows - clean and functional */
+}
+
+/* Remove brightness filter - use stroke weight only for selection */
+.flowchart .node-selected {
+  filter: none !important;
 }
