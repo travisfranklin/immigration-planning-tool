@@ -11,7 +11,6 @@ import { Layout } from '@/components/Layout';
 import { Button } from '@/components/Button';
 import { LoadingSpinner } from '@/components/LoadingSpinner';
 import { createUserProfile, getLatestUserProfile, updateUserProfile } from '@/services/storage/userProfileStore';
-import { UI_CONTAINER } from '@/constants/uiStyles';
 
 export function Profile() {
   const navigate = useNavigate();
@@ -69,8 +68,8 @@ export function Profile() {
   if (isLoading) {
     return (
       <Layout>
-        <div className={UI_CONTAINER.sm}>
-          <div className="flex items-center justify-center py-12">
+        <div className="bg-white min-h-screen">
+          <div className="flex items-center justify-center py-24">
             <LoadingSpinner message="Loading your profile..." />
           </div>
         </div>
@@ -80,44 +79,38 @@ export function Profile() {
 
   return (
     <Layout currentPage="profile">
-      <div className={UI_CONTAINER.md}>
-        {/* Page Header */}
-        <div className="mb-6 sm:mb-8 px-4 sm:px-6">
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">
+      {/* Page Header - Bold, Editorial */}
+      <div className="bg-white border-b-4 border-black">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <h1 className="text-h1 font-bold text-black mb-3 uppercase tracking-wide">
             Immigration Profile
           </h1>
-          <p className="text-base sm:text-lg text-gray-600">
-            Complete your profile to determine your immigration viability. All sections are accessible - click any section to expand and edit.
+          <p className="text-body-lg text-gray-700 max-w-3xl">
+            Complete your profile to determine your immigration viability. All sections are accessible—click any section to expand and edit.
           </p>
         </div>
+      </div>
 
-        {/* Accordion Form */}
+      {/* Form Content */}
+      <div className="bg-gray-50 py-12">
         <ProfileFormAccordion onSave={handleSaveProfile} initialData={initialData} />
+      </div>
 
-        {/* View Results Button */}
-        {initialData && (
-          <div className="mt-6 sm:mt-8 px-4 sm:px-6">
+      {/* View Results Button - Fixed Bottom Bar */}
+      {initialData && (
+        <div className="sticky bottom-0 bg-primary border-t-4 border-black">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <Button
               onClick={() => navigate('/results')}
-              variant="success"
+              variant="secondary"
               size="lg"
-              className="w-full shadow-md"
+              className="w-full text-h4"
             >
-              📊 View Immigration Viability Results
+              View Immigration Viability Results →
             </Button>
           </div>
-        )}
-
-        {/* Help Text */}
-        <div className="mt-6 sm:mt-8 px-4 sm:px-6 pb-8">
-          <div className="p-3 sm:p-4 bg-blue-50 border border-blue-200 rounded-lg">
-            <p className="text-xs sm:text-sm text-blue-800">
-              💡 <strong>Tip:</strong> Your data is saved locally in your browser.
-              No information is sent to any server. You can update any section at any time.
-            </p>
-          </div>
         </div>
-      </div>
+      )}
     </Layout>
   );
 }

@@ -124,11 +124,11 @@ function getSectionStatus(
 
 function StatusIcon({ status }: { status: SectionStatus }) {
   if (status === 'complete') {
-    return <CheckCircleIcon className="h-5 w-5 text-success-600" aria-label="Section complete" />;
+    return <CheckCircleIcon className="h-6 w-6 text-success" aria-label="Section complete" />;
   } else if (status === 'incomplete') {
-    return <ExclamationCircleIcon className="h-5 w-5 text-warning-600" aria-label="Section incomplete" />;
+    return <ExclamationCircleIcon className="h-6 w-6 text-warning" aria-label="Section incomplete" />;
   }
-  return <div className="h-5 w-5 rounded-full border-2 border-gray-300" aria-label="Section not started" role="img" />;
+  return <div className="h-6 w-6 border-2 border-gray-400" aria-label="Section not started" role="img" />;
 }
 
 export function ProfileFormAccordion({
@@ -257,17 +257,17 @@ export function ProfileFormAccordion({
   });
 
   return (
-    <div className="w-full max-w-3xl mx-auto p-4 pt-0 sm:p-6 sm:pt-0 space-y-6 border border-gray-200">
+    <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Header with Save Status and Progress */}
-      <div className="sticky top-0 z-10 bg-white border-b border-gray-200 py-4 -mx-4 px-4 sm:-mx-6 sm:px-6">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+      <div className="bg-white border-2 border-black mb-8 p-6">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">Your Profile</h2>
-            <p className="text-sm text-gray-600 mt-1">
+            <h2 className="text-h2 font-bold text-black uppercase tracking-wide">Your Profile</h2>
+            <p className="text-body text-gray-700 mt-2">
               {progress}% complete • {incompleteSections.length} section{incompleteSections.length !== 1 ? 's' : ''} remaining
             </p>
           </div>
-          
+
           <div className="flex items-center gap-3">
             {incompleteSections.length > 0 && (
               <Button
@@ -289,19 +289,19 @@ export function ProfileFormAccordion({
           </div>
         </div>
 
-        {/* Progress Bar */}
+        {/* Progress Bar - Bold, Stepped */}
         <div className="mt-4" role="progressbar" aria-valuenow={progress} aria-valuemin={0} aria-valuemax={100} aria-label="Profile completion progress">
-          <div className="w-full bg-gray-200 rounded-full h-2">
+          <div className="w-full bg-gray-200 h-3 border-2 border-black">
             <div
-              className="bg-primary-600 h-2 rounded-full transition-all duration-300"
+              className="bg-primary h-full transition-all duration-300"
               style={{ width: `${progress}%` }}
             />
           </div>
         </div>
       </div>
 
-      {/* Accordion Sections */}
-      <div className="space-y-3">
+      {/* Accordion Sections - Numbered, Sharp, Minimal */}
+      <div className="space-y-4">
         {FORM_SECTIONS.map((section) => {
           const SectionComponent = section.component;
           const status = getSectionStatus(section.stepNumber, formData);
@@ -311,37 +311,46 @@ export function ProfileFormAccordion({
             <div
               key={section.id}
               ref={(el) => { sectionRefs.current[section.id] = el; }}
-              className="border border-gray-200 rounded-lg overflow-hidden bg-white shadow-sm"
+              className="border-2 border-black bg-white"
             >
               <Disclosure>
                 {() => (
                   <>
                     <button
                       onClick={() => toggleSection(section.id)}
-                      className="w-full px-4 sm:px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+                      className="w-full px-6 py-5 flex items-center justify-between hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                       aria-label={`${section.title} - ${status === 'complete' ? 'Complete' : status === 'incomplete' ? 'Incomplete' : 'Not started'} - ${isOpen ? 'Expanded' : 'Collapsed'}`}
                     >
-                      <div className="flex items-center gap-3 flex-1 text-left">
-                        <StatusIcon status={status} />
-                        <div>
-                          <h3 className="text-lg font-semibold text-gray-900">
+                      <div className="flex items-center gap-4 flex-1 text-left">
+                        {/* Numbered Badge */}
+                        <div className="flex-shrink-0 w-12 h-12 border-2 border-black bg-white flex items-center justify-center">
+                          <span className="text-h4 font-bold text-black">
+                            {String(section.stepNumber).padStart(2, '0')}
+                          </span>
+                        </div>
+
+                        <div className="flex-1">
+                          <h3 className="text-h3 font-bold text-black uppercase tracking-wide">
                             {section.title}
                           </h3>
-                          <p className="text-sm text-gray-600">
+                          <p className="text-body-sm text-gray-700 mt-1">
                             {section.description}
                           </p>
                         </div>
+
+                        {/* Status Icon */}
+                        <StatusIcon status={status} />
                       </div>
-                      
+
                       <ChevronDownIcon
-                        className={`h-5 w-5 text-gray-500 transition-transform ${
+                        className={`h-6 w-6 text-black transition-transform ml-4 ${
                           isOpen ? 'transform rotate-180' : ''
                         }`}
                       />
                     </button>
 
                     {isOpen && (
-                      <div className="px-4 sm:px-6 py-4 border-t border-gray-200 bg-gray-50">
+                      <div className="px-6 py-6 border-t-2 border-black bg-gray-50">
                         <SectionComponent
                           data={formData}
                           errors={errors}
@@ -358,16 +367,16 @@ export function ProfileFormAccordion({
         })}
       </div>
 
-      {/* Footer Actions */}
-      <div className="sticky bottom-0 bg-white border-t border-gray-200 pt-4 -mx-4 px-4 sm:-mx-6 sm:px-6 pb-4">
-        <div className="flex justify-between items-center">
-          <p className="text-sm text-gray-600">
-            All changes are saved automatically
+      {/* Footer Info */}
+      <div className="mt-8 bg-white border-2 border-black p-6">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          <p className="text-body-sm text-gray-700">
+            💾 All changes are saved automatically to your browser
           </p>
           {progress === 100 && (
-            <div className="flex items-center gap-2 text-success-600">
-              <CheckCircleIcon className="h-5 w-5" />
-              <span className="text-sm font-medium">Profile Complete!</span>
+            <div className="flex items-center gap-2 text-success">
+              <CheckCircleIcon className="h-6 w-6" />
+              <span className="text-body font-bold uppercase">Profile Complete!</span>
             </div>
           )}
         </div>
