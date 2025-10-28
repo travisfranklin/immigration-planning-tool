@@ -15,7 +15,6 @@ import { Layout } from '../components/Layout';
 import { Button } from '../components/Button';
 import { LoadingSpinner } from '../components/LoadingSpinner';
 import { ErrorState } from '../components/ErrorState';
-import { UI_CONTAINER } from '../constants/uiStyles';
 import { InteractiveFlowchart } from '../components/flowchart/InteractiveFlowchart';
 import { isValidCountryCode } from '../constants/countries';
 import {
@@ -162,136 +161,153 @@ export const ResultDetail: React.FC = () => {
 
   return (
     <Layout currentPage="results">
-      <div className={UI_CONTAINER.lg}>
-        {/* Shared View Banner */}
-        {isSharedView && (
-          <div className="mb-6 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg p-4">
+      {/* Shared View Banner */}
+      {isSharedView && (
+        <div className="bg-warning border-t-4 border-b-4 border-black">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex items-center gap-3">
               <span className="text-2xl">📤</span>
               <div>
-                <p className="font-semibold text-blue-900">Shared View</p>
-                <p className="text-sm text-blue-700">
+                <p className="font-bold text-black uppercase text-label">Shared View</p>
+                <p className="text-body-sm text-black">
                   This result was shared with you. To save your own results, create a profile and calculate your viability scores.
                 </p>
               </div>
             </div>
           </div>
-        )}
-
-        {/* Back Button and Share Button Row */}
-        <div className="mb-6 flex items-center justify-between gap-4">
-          <Button
-            onClick={() => navigate('/results')}
-            variant="ghost"
-          >
-            ← Back to Rankings
-          </Button>
-
-          {/* Share Button (only show in non-shared view) */}
-          {!isSharedView && selectedScore && (
-            <Button
-              onClick={handleShareResults}
-              variant="primary"
-            >
-              <span>{copySuccess ? '✓' : ''}</span>{' '}
-              <span>{copySuccess ? 'Link Copied!' : 'Share Results'}</span>
-            </Button>
-          )}
         </div>
+      )}
 
-        {/* Country Header */}
-        <div className="bg-white rounded-lg shadow-md border border-gray-200 p-6 mb-6">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">{selectedScore.countryName}</h1>
-          <div className="flex items-center gap-4">
-            <div className="text-4xl font-bold text-blue-600">{selectedScore.overallScore}/100</div>
+      {/* Header Section - Bold, Editorial */}
+      <div className="bg-white border-b-4 border-black">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="flex items-center justify-between mb-6">
+            <Button
+              onClick={() => navigate('/results')}
+              variant="ghost"
+              size="md"
+            >
+              ← Back to Rankings
+            </Button>
+
+            {/* Share Button (only show in non-shared view) */}
+            {!isSharedView && selectedScore && (
+              <Button
+                onClick={handleShareResults}
+                variant="secondary"
+                size="md"
+              >
+                {copySuccess ? '✓ Link Copied!' : 'Share Results'}
+              </Button>
+            )}
+          </div>
+
+          {/* Country Header with Large Score */}
+          <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6">
             <div>
-              <p className="text-sm text-gray-600">Viability Level</p>
-              <p className="text-lg font-semibold text-gray-900 capitalize">
-                {selectedScore.viabilityLevel.replace('_', ' ')}
+              <h1 className="text-display font-extrabold text-black mb-2 uppercase tracking-tight">
+                {selectedScore.countryCode} {selectedScore.countryName}
+              </h1>
+              <p className="text-body-lg text-gray-700 capitalize">
+                {selectedScore.viabilityLevel.replace('_', ' ')} Viability
               </p>
             </div>
+
+            {/* Large Score Display */}
+            <div className="text-right">
+              <div className="text-data-lg font-bold text-black leading-none">
+                {selectedScore.overallScore}
+              </div>
+              <div className="text-h4 text-gray-700 uppercase tracking-wide">/100</div>
+            </div>
           </div>
         </div>
+      </div>
 
-        {/* Recommended Program */}
-        {selectedScore.recommendedProgram && (
-          <div className="bg-blue-50 border-2 border-blue-500 rounded-lg p-6 mb-6">
-            <h2 className="text-xl font-bold text-blue-900 mb-2">Recommended Visa Program</h2>
-            <h3 className="text-2xl font-bold text-blue-800 mb-2">
+      {/* Recommended Program - Bold Highlight */}
+      {selectedScore.recommendedProgram && (
+        <div className="bg-primary border-t-4 border-b-4 border-black">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <h2 className="text-label uppercase font-bold text-white mb-2">Recommended Visa Program</h2>
+            <h3 className="text-h1 font-bold text-white mb-3 uppercase tracking-wide">
               {selectedScore.recommendedProgram.programName}
             </h3>
-            <p className="text-blue-700 mb-3">{selectedScore.recommendedProgram.matchReason}</p>
-            <div className="grid grid-cols-2 gap-4 text-sm">
+            <p className="text-body-lg text-white mb-6">{selectedScore.recommendedProgram.matchReason}</p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               <div>
-                <span className="font-semibold text-blue-900">Type:</span>{' '}
-                <span className="text-blue-800 capitalize">
+                <div className="text-label-sm uppercase font-bold text-lavender mb-1">Type</div>
+                <div className="text-body font-bold text-white capitalize">
                   {selectedScore.recommendedProgram.programType.replace('_', ' ')}
-                </span>
+                </div>
               </div>
               <div>
-                <span className="font-semibold text-blue-900">Eligibility Score:</span>{' '}
-                <span className="text-blue-800">{selectedScore.recommendedProgram.eligibilityScore}/100</span>
+                <div className="text-label-sm uppercase font-bold text-lavender mb-1">Eligibility Score</div>
+                <div className="text-body font-bold text-white">{selectedScore.recommendedProgram.eligibilityScore}/100</div>
               </div>
               <div>
-                <span className="font-semibold text-blue-900">Requires Job Offer:</span>{' '}
-                <span className="text-blue-800">
+                <div className="text-label-sm uppercase font-bold text-lavender mb-1">Job Offer Required</div>
+                <div className="text-body font-bold text-white">
                   {selectedScore.recommendedProgram.requiresJobOffer ? 'Yes' : 'No'}
-                </span>
+                </div>
               </div>
               <div>
-                <span className="font-semibold text-blue-900">Timeline:</span>{' '}
-                <span className="text-blue-800">{selectedScore.estimatedTimelineMonths} months</span>
+                <div className="text-label-sm uppercase font-bold text-lavender mb-1">Timeline</div>
+                <div className="text-body font-bold text-white">{selectedScore.estimatedTimelineMonths} months</div>
               </div>
             </div>
           </div>
-        )}
+        </div>
+      )}
 
-        {/* Main Content: Two-Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Left Column: Details */}
-          <div className="lg:col-span-1 space-y-6">
-            {/* Score Breakdown */}
-            <ScoreBreakdown componentScores={selectedScore.componentScores} />
+      {/* Main Content: Data-Driven Dashboard */}
+      <div className="bg-gray-50 py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Left Column: Details */}
+            <div className="lg:col-span-1 space-y-6">
+              {/* Score Breakdown */}
+              <ScoreBreakdown componentScores={selectedScore.componentScores} />
 
-            {/* Risk Factors */}
-            <RiskFactorsList
-              riskFactors={selectedScore.riskFactors}
-              overallRiskLevel={selectedScore.overallRiskLevel}
-            />
+              {/* Risk Factors */}
+              <RiskFactorsList
+                riskFactors={selectedScore.riskFactors}
+                overallRiskLevel={selectedScore.overallRiskLevel}
+              />
 
-            {/* Contingencies */}
-            <ContingenciesList contingencies={selectedScore.contingencies} />
+              {/* Contingencies */}
+              <ContingenciesList contingencies={selectedScore.contingencies} />
 
-            {/* Alternative Programs */}
-            {selectedScore.alternativePrograms && selectedScore.alternativePrograms.length > 0 && (
-              <div className="bg-white rounded-lg shadow-md border border-gray-200 p-6">
-                <h3 className="text-lg font-bold text-gray-900 mb-4">Alternative Programs</h3>
-                <div className="space-y-3">
-                  {selectedScore.alternativePrograms.map((program) => (
-                    <div key={program.programId} className="border border-gray-200 rounded-lg p-4">
-                      <div className="flex items-center justify-between mb-2">
-                        <h4 className="font-semibold text-gray-900">{program.programName}</h4>
-                        <span className="text-sm font-semibold text-gray-600">
-                          {program.eligibilityScore}/100
-                        </span>
+              {/* Alternative Programs */}
+              {selectedScore.alternativePrograms && selectedScore.alternativePrograms.length > 0 && (
+                <div className="bg-white border-2 border-black p-6">
+                  <h3 className="text-h3 font-bold text-black mb-4 uppercase tracking-wide">Alternative Programs</h3>
+                  <div className="space-y-4">
+                    {selectedScore.alternativePrograms.map((program) => (
+                      <div key={program.programId} className="border-2 border-gray-300 p-4">
+                        <div className="flex items-center justify-between mb-2">
+                          <h4 className="font-bold text-black uppercase text-body">{program.programName}</h4>
+                          <span className="text-body font-bold text-gray-700">
+                            {program.eligibilityScore}/100
+                          </span>
+                        </div>
+                        <p className="text-body-sm text-gray-700">{program.whyNotRecommended}</p>
                       </div>
-                      <p className="text-sm text-gray-600">{program.whyNotRecommended}</p>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
-              </div>
-            )}
-          </div>
+              )}
+            </div>
 
-          {/* Right Column: Interactive Flowchart */}
-          <div className="lg:col-span-2">
-            {recommendedFlowchart ? (
-              <InteractiveFlowchart flowchart={recommendedFlowchart} />
-            ) : (
-              <div className="bg-white rounded-lg shadow-md border border-gray-200 p-12 text-center">
-                <p className="text-gray-500">No flowchart available for this program yet.</p>
-              </div>
-            )}
+            {/* Right Column: Interactive Flowchart */}
+            <div className="lg:col-span-2">
+              {recommendedFlowchart ? (
+                <InteractiveFlowchart flowchart={recommendedFlowchart} />
+              ) : (
+                <div className="bg-white border-2 border-black p-12 text-center">
+                  <p className="text-body text-gray-700">No flowchart available for this program yet.</p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

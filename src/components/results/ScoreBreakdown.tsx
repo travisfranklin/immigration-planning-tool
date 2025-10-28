@@ -44,42 +44,42 @@ export const ScoreBreakdown: React.FC<ScoreBreakdownProps> = ({
   const components = Object.entries(componentScores) as [keyof ComponentScore, number][];
 
   return (
-    <div className="bg-white rounded-lg shadow-md border border-gray-200 p-6">
-      <h3 className="text-lg font-bold text-gray-900 mb-4">Component Score Breakdown</h3>
+    <div className="bg-white border-2 border-black p-6">
+      <h3 className="text-h3 font-bold text-black mb-6 uppercase tracking-wide">Component Scores</h3>
 
-      <div className="space-y-4">
+      <div className="space-y-6">
         {components.map(([component, score]) => {
           const weight = programWeights?.[component];
           const weightedScore = weight ? score * weight : score;
 
           return (
-            <div key={component} className="border-b border-gray-200 pb-4 last:border-b-0 last:pb-0">
+            <div key={component} className="border-b-2 border-gray-200 pb-4 last:border-b-0 last:pb-0">
               {/* Component Header */}
-              <div className="flex items-center justify-between mb-2">
-                <div className="flex items-center gap-2">
-                  <span className="text-2xl">{componentIcons[component]}</span>
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-3">
+                  <span className="text-3xl">{componentIcons[component]}</span>
                   <div>
-                    <h4 className="font-semibold text-gray-900 capitalize">{component}</h4>
-                    <p className="text-xs text-gray-600">{componentDescriptions[component]}</p>
+                    <h4 className="font-bold text-black uppercase text-body tracking-wide">{component}</h4>
+                    <p className="text-body-sm text-gray-700">{componentDescriptions[component]}</p>
                   </div>
                 </div>
                 <div className="text-right">
-                  <div className={`text-2xl font-bold ${getScoreTextColorClass(score)}`}>{score}</div>
-                  <div className="text-xs text-gray-600">{getScoreLabel(score)}</div>
+                  <div className={`text-data-sm font-bold ${getScoreTextColorClass(score)}`}>{score}</div>
+                  <div className="text-label-sm text-gray-700 uppercase">{getScoreLabel(score)}</div>
                 </div>
               </div>
 
-              {/* Progress Bar */}
-              <div className="w-full bg-gray-200 rounded-full h-3 mb-2">
+              {/* Progress Bar - Bold, Sharp */}
+              <div className="w-full bg-gray-200 h-3 border-2 border-black mb-2">
                 <div
-                  className={`h-3 rounded-full ${getScoreColorClass(score)} transition-all duration-500`}
+                  className={`h-full ${getScoreColorClass(score)} transition-all duration-500`}
                   style={{ width: `${score}%` }}
                 />
               </div>
 
               {/* Weight Info */}
               {weight !== undefined && (
-                <div className="flex items-center justify-between text-xs text-gray-600">
+                <div className="flex items-center justify-between text-body-sm text-gray-700">
                   <span>Weight: {Math.round(weight * 100)}%</span>
                   <span>Weighted Score: {Math.round(weightedScore)}</span>
                 </div>
@@ -90,10 +90,10 @@ export const ScoreBreakdown: React.FC<ScoreBreakdownProps> = ({
       </div>
 
       {/* Overall Summary */}
-      <div className="mt-6 pt-4 border-t border-gray-300">
+      <div className="mt-6 pt-4 border-t-2 border-black">
         <div className="flex items-center justify-between">
-          <span className="font-semibold text-gray-700">Average Score</span>
-          <span className="text-xl font-bold text-gray-900">
+          <span className="font-bold text-black uppercase text-body tracking-wide">Average Score</span>
+          <span className="text-h2 font-bold text-black">
             {Math.round(
               components.reduce((sum, [, score]) => sum + score, 0) / components.length
             )}
