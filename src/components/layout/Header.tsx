@@ -44,30 +44,30 @@ export function Header({ currentPage }: HeaderProps) {
 
   return (
     <>
-      {/* Desktop Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
+      {/* Desktop Header - Bold, minimalist design */}
+      <header className="bg-white border-b-4 border-black">
         <div className={`${UI_CONTAINER.lg} px-4 sm:px-6 lg:px-8`}>
-          <div className="flex items-center justify-between h-16">
-            {/* Logo/Title */}
+          <div className="flex items-center justify-between h-20">
+            {/* Logo/Title - Bold, uppercase */}
             <button
               onClick={() => handleNavigation('/')}
-              className="flex items-center gap-2 text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors"
+              className="flex items-center gap-2 text-h3 font-bold uppercase tracking-wide text-black hover:text-primary transition-colors duration-fast"
             >
-              <span className="text-2xl">🇪🇺</span>
+              <span className="text-h2">🇪🇺</span>
               <span className="hidden sm:inline">EU Immigration Planner</span>
               <span className="sm:hidden">EU Planner</span>
             </button>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-1">
+            {/* Desktop Navigation - Sharp, bold */}
+            <nav className="hidden md:flex items-center gap-2">
               {NAV_LINKS.map((link) => (
                 <button
                   key={link.path}
                   onClick={() => handleNavigation(link.path)}
-                  className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                  className={`px-3 py-2 text-label uppercase font-bold tracking-wide transition-colors duration-fast border-b-4 ${
                     isActive(link.page)
-                      ? 'text-blue-600 bg-blue-50'
-                      : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                      ? 'text-primary border-primary'
+                      : 'text-black border-transparent hover:text-primary hover:border-primary'
                   }`}
                 >
                   {link.label}
@@ -75,19 +75,19 @@ export function Header({ currentPage }: HeaderProps) {
               ))}
             </nav>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Button - Sharp, bold */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors"
+              className="md:hidden p-2 text-black hover:text-primary transition-colors duration-fast border-2 border-transparent hover:border-black"
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
+                  <path strokeLinecap="square" strokeLinejoin="miter" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               ) : (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
+                  <path strokeLinecap="square" strokeLinejoin="miter" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               )}
             </button>
@@ -95,7 +95,7 @@ export function Header({ currentPage }: HeaderProps) {
         </div>
       </header>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Overlay - Bold, sharp design */}
       {isMobileMenuOpen && (
         <>
           {/* Backdrop */}
@@ -104,32 +104,32 @@ export function Header({ currentPage }: HeaderProps) {
             onClick={() => setIsMobileMenuOpen(false)}
           />
 
-          {/* Slide-out Menu */}
-          <div className="fixed top-0 left-0 bottom-0 w-64 bg-white shadow-lg z-50 md:hidden transform transition-transform duration-200 ease-out">
-            {/* Menu Header */}
-            <div className="flex items-center justify-between p-4 border-b border-gray-200">
-              <span className="text-lg font-bold text-gray-900">Menu</span>
+          {/* Slide-out Menu - Sharp corners, bold borders */}
+          <div className="fixed top-0 left-0 bottom-0 w-64 bg-white border-r-4 border-black z-50 md:hidden transform transition-transform duration-200 ease-out">
+            {/* Menu Header - Bold, uppercase */}
+            <div className="flex items-center justify-between p-4 border-b-4 border-black">
+              <span className="text-h4 font-bold uppercase tracking-wide text-black">Menu</span>
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-50"
+                className="p-2 text-black hover:text-primary transition-colors duration-fast border-2 border-transparent hover:border-black"
                 aria-label="Close menu"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
+                  <path strokeLinecap="square" strokeLinejoin="miter" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
 
-            {/* Menu Items */}
+            {/* Menu Items - Sharp, bold */}
             <nav className="p-4">
               {NAV_LINKS.map((link) => (
                 <button
                   key={link.path}
                   onClick={() => handleNavigation(link.path)}
-                  className={`w-full text-left px-4 py-3 rounded-md text-base font-medium transition-colors mb-1 ${
+                  className={`w-full text-left px-3 py-3 text-body-sm font-bold uppercase tracking-wide transition-colors duration-fast mb-2 border-l-4 ${
                     isActive(link.page)
-                      ? 'text-blue-600 bg-blue-50'
-                      : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                      ? 'text-primary border-primary bg-gray-100'
+                      : 'text-black border-transparent hover:text-primary hover:border-primary hover:bg-gray-100'
                   }`}
                 >
                   {getIconForPage(link.page)} {link.label}
