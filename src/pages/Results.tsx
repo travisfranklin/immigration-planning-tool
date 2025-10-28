@@ -10,7 +10,6 @@ import { Button } from '../components/Button';
 import { LoadingSpinner } from '../components/LoadingSpinner';
 import { ErrorState } from '../components/ErrorState';
 import { EmptyState } from '../components/EmptyState';
-import { UI_CONTAINER } from '../constants/uiStyles';
 
 export const Results: React.FC = () => {
   const navigate = useNavigate();
@@ -146,60 +145,72 @@ export const Results: React.FC = () => {
     );
   }
 
-  // Rankings View
+  // Rankings View - Data-Driven Dashboard
   return (
     <Layout currentPage="results">
-      <div className={UI_CONTAINER.lg}>
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">Immigration Viability Results</h1>
-          <p className="text-gray-600">
+      {/* Header Section - Bold, Editorial */}
+      <div className="bg-white border-b-4 border-black">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <h1 className="text-h1 font-bold text-black mb-3 uppercase tracking-wide">
+            Immigration Viability Results
+          </h1>
+          <p className="text-body-lg text-gray-700">
             All {scores.length} EU countries ranked by your viability score based on your profile
           </p>
         </div>
+      </div>
 
-        {/* Actions */}
-        <div className="flex flex-wrap justify-between gap-4 mb-6">
-          <div className="flex gap-4">
+      {/* Actions Bar */}
+      <div className="bg-gray-50 border-b-2 border-black">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div className="flex flex-wrap justify-between gap-4">
             <Button
               onClick={() => navigate('/profile')}
               variant="ghost"
+              size="md"
             >
               ← Back to Profile
             </Button>
-          </div>
-          <div className="flex gap-4">
-            <Button
-              onClick={handleExportResults}
-              variant="secondary"
-            >
-              Export Results
-            </Button>
-            <Button
-              onClick={handleRecalculate}
-              variant="primary"
-            >
-              Recalculate Scores
-            </Button>
+            <div className="flex gap-3">
+              <Button
+                onClick={handleExportResults}
+                variant="secondary"
+                size="md"
+              >
+                Export Results
+              </Button>
+              <Button
+                onClick={handleRecalculate}
+                variant="primary"
+                size="md"
+              >
+                Recalculate Scores
+              </Button>
+            </div>
           </div>
         </div>
+      </div>
 
-        {scores.length === 0 && (
-          <EmptyState
-            message="No results available yet."
-            action={{
-              label: 'Calculate Viability Scores',
-              onClick: handleRecalculate,
-            }}
-          />
-        )}
+      {/* Results Content */}
+      <div className="bg-gray-50 py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {scores.length === 0 && (
+            <EmptyState
+              message="No results available yet."
+              action={{
+                label: 'Calculate Viability Scores',
+                onClick: handleRecalculate,
+              }}
+            />
+          )}
 
-        {scores.length > 0 && (
-          <CountryResultsTable
-            scores={scores}
-            onViewDetails={handleViewDetails}
-          />
-        )}
+          {scores.length > 0 && (
+            <CountryResultsTable
+              scores={scores}
+              onViewDetails={handleViewDetails}
+            />
+          )}
+        </div>
       </div>
     </Layout>
   );
