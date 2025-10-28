@@ -118,7 +118,7 @@ describe('FinancialInfoForm', () => {
     render(<FinancialInfoForm {...getDefaultProps()} errors={errors} />);
 
     const incomeInput = screen.getByLabelText(/annual income/i);
-    expect(incomeInput).toHaveClass('border-danger-600');
+    expect(incomeInput).toHaveClass('border-danger');
   });
 });
 

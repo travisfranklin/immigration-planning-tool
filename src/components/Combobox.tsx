@@ -46,7 +46,7 @@ export function Combobox({
   const [filteredOptions, setFilteredOptions] = useState(options);
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const comboboxId = id || `combobox-${Math.random().toString(36).substr(2, 9)}`;
+  const comboboxId = id || `combobox-${Math.random().toString(36).substring(2, 11)}`;
   const optionClickedRef = useRef(false);
 
   // Update input value when prop value changes
@@ -149,9 +149,9 @@ export function Combobox({
   return (
     <div className="w-full" ref={containerRef}>
       {label && (
-        <label htmlFor={comboboxId} className="block text-sm font-medium text-gray-700 mb-2">
+        <label htmlFor={comboboxId} className="block text-label uppercase font-bold tracking-wide text-black mb-1">
           {label}
-          {required && <span className="text-danger-600 ml-1">*</span>}
+          {required && <span className="text-danger ml-1">*</span>}
         </label>
       )}
 
@@ -167,10 +167,11 @@ export function Combobox({
           onKeyDown={handleKeyDown}
           placeholder={placeholder}
           className={`
-            w-full px-3 py-2 border rounded-lg
-            focus:outline-none focus:ring-2 focus:ring-primary-500
-            transition-colors
-            ${error ? 'border-danger-600 focus:ring-danger-500' : 'border-gray-300'}
+            w-full px-3 py-2 border-2 text-body-sm
+            focus:outline-none focus:border-4 focus:border-accent
+            transition-all duration-fast
+            bg-white text-black
+            ${error ? 'border-danger focus:border-danger' : 'border-black'}
             ${className}
           `}
           aria-expanded={isOpen}
@@ -196,7 +197,7 @@ export function Combobox({
           <div
             id={`${comboboxId}-listbox`}
             role="listbox"
-            className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-lg max-h-60 overflow-auto"
+            className="absolute z-10 w-full mt-1 bg-white border-2 border-black max-h-60 overflow-auto"
           >
             {hasResults ? (
               Object.entries(groupedOptions).map(([category, categoryOptions]) => (
@@ -259,11 +260,11 @@ export function Combobox({
       </div>
 
       {error && (
-        <p className="text-sm text-danger-600 mt-1">{error}</p>
+        <p className="text-body-sm text-danger mt-1 font-medium">{error}</p>
       )}
 
       {helperText && !error && (
-        <p className="text-sm text-gray-500 mt-1">{helperText}</p>
+        <p className="text-body-sm text-gray-700 mt-1">{helperText}</p>
       )}
     </div>
   );

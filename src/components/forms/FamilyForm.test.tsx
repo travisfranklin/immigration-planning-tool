@@ -138,7 +138,7 @@ describe('FamilyForm', () => {
     render(<FamilyForm {...getDefaultProps()} errors={errors} />);
 
     const statusSelect = screen.getByLabelText(/marital status/i);
-    expect(statusSelect).toHaveClass('border-danger-600');
+    expect(statusSelect).toHaveClass('border-danger');
   });
 
   it('should have marital status options', () => {

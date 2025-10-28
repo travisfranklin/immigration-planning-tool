@@ -134,7 +134,7 @@ describe('PersonalInfoForm', () => {
     render(<PersonalInfoForm {...getDefaultProps()} errors={errors} />);
 
     const firstNameInput = screen.getByLabelText(/first name/i);
-    expect(firstNameInput).toHaveClass('border-danger-600');
+    expect(firstNameInput).toHaveClass('border-danger');
   });
 });
 

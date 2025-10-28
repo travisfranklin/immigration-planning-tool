@@ -129,7 +129,7 @@ describe('EducationForm', () => {
     render(<EducationForm {...getDefaultProps()} errors={errors} />);
 
     const fieldInput = screen.getByLabelText(/field of study/i);
-    expect(fieldInput).toHaveClass('border-danger-600');
+    expect(fieldInput).toHaveClass('border-danger');
   });
 
   it('should have education level options', () => {

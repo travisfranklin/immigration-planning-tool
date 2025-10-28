@@ -1,6 +1,16 @@
 /**
  * Select Component
- * Reusable select/dropdown component with label and error support
+ *
+ * Bold, minimalist select/dropdown following German functionalism
+ *
+ * Design Principles:
+ * - Sharp corners (no border-radius)
+ * - Thick borders (2px default, 4px focus)
+ * - Clear focus states (accent color border)
+ * - High contrast
+ * - Uppercase, bold labels
+ * - Bold, geometric dropdown icon
+ * - No decorative effects
  */
 
 import React from 'react';
@@ -28,14 +38,14 @@ export function Select({
   id,
   ...props
 }: SelectProps) {
-  const selectId = id || `select-${Math.random().toString(36).substr(2, 9)}`;
+  const selectId = id || `select-${Math.random().toString(36).substring(2, 11)}`;
 
   return (
     <div className="w-full">
       {label && (
-        <label htmlFor={selectId} className="block text-sm font-medium text-gray-700 mb-2">
+        <label htmlFor={selectId} className="block text-label uppercase font-bold tracking-wide text-black mb-1">
           {label}
-          {props.required && <span className="text-danger-600 ml-1">*</span>}
+          {props.required && <span className="text-danger ml-1">*</span>}
         </label>
       )}
 
@@ -43,11 +53,12 @@ export function Select({
         <select
           id={selectId}
           className={`
-            w-full px-3 py-2 border rounded-lg
-            focus:outline-none focus:ring-2 focus:ring-primary-500
-            transition-colors
+            w-full px-3 py-2 pr-10 border-2 text-body-sm
+            focus:outline-none focus:border-4 focus:border-accent
+            transition-all duration-fast
             appearance-none
-            ${error ? 'border-danger-600 focus:ring-danger-500' : 'border-gray-300'}
+            ${error ? 'border-danger focus:border-danger' : 'border-black'}
+            ${props.disabled ? 'bg-gray-100 text-gray-500 cursor-not-allowed' : 'bg-white text-black'}
             ${className}
           `}
           {...props}
@@ -62,25 +73,26 @@ export function Select({
           ))}
         </select>
 
-        {/* Dropdown icon */}
+        {/* Dropdown icon - Bold, geometric */}
         <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
           <svg
-            className="w-5 h-5 text-gray-400"
+            className="w-5 h-5 text-black"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
+            strokeWidth={3}
           >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            <path strokeLinecap="square" strokeLinejoin="miter" d="M19 9l-7 7-7-7" />
           </svg>
         </div>
       </div>
 
       {error && (
-        <p className="text-sm text-danger-600 mt-1">{error}</p>
+        <p className="text-body-sm text-danger mt-1 font-medium">{error}</p>
       )}
 
       {helperText && !error && (
-        <p className="text-sm text-gray-500 mt-1">{helperText}</p>
+        <p className="text-body-sm text-gray-700 mt-1">{helperText}</p>
       )}
     </div>
   );

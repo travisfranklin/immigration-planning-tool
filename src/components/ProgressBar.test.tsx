@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { ProgressBar, getVariantFromProgress } from './ProgressBar';
+import { ProgressBar } from './ProgressBar';
+import { getVariantFromProgress } from '../utils/progressHelpers';
 
 describe('ProgressBar', () => {
   describe('Basic Rendering', () => {

@@ -149,7 +149,7 @@ describe('CountrySelectionForm', () => {
     render(<CountrySelectionForm {...getDefaultProps()} errors={errors} />);
 
     const timelineInput = screen.getByLabelText(/timeline/i);
-    expect(timelineInput).toHaveClass('border-danger-600');
+    expect(timelineInput).toHaveClass('border-danger');
   });
 
   it('should have immigration path options', () => {
