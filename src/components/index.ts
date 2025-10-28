@@ -20,3 +20,9 @@ export { LoadingSpinner } from './LoadingSpinner';
 export { ErrorState } from './ErrorState';
 export { EmptyState } from './EmptyState';
 
+// Visualization Components
+export { ScoreDisplay } from './visualizations/ScoreDisplay';
+export type { ScoreDisplayProps } from './visualizations/ScoreDisplay';
+export { MetricBar, getVariantFromPercentage } from './visualizations/MetricBar';
+export type { MetricBarProps } from './visualizations/MetricBar';
+

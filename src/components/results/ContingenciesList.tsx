@@ -1,37 +1,59 @@
-import React from 'react';
+/**
+ * ContingenciesList Component
+ *
+ * Displays contingency plans with bold, minimal styling
+ *
+ * Design Principles:
+ * - Sharp corners (no border-radius)
+ * - Bold typography
+ * - High contrast colors
+ * - 2px borders
+ * - Numbered badges
+ * - Minimal, functional design
+ */
+
 import type { Contingency } from '../../types/viability';
 
 interface ContingenciesListProps {
   contingencies: Contingency[];
 }
 
+/**
+ * Get color classes based on timeframe
+ */
 const getTimeframeColor = (timeframe: string): string => {
   if (timeframe.toLowerCase().includes('before')) {
-    return 'bg-blue-100 text-blue-800';
+    return 'bg-primary border-primary text-white';
   }
   if (timeframe.toLowerCase().includes('during')) {
-    return 'bg-yellow-100 text-yellow-800';
+    return 'bg-warning border-warning text-black';
   }
   if (timeframe.toLowerCase().includes('after')) {
-    return 'bg-green-100 text-green-800';
+    return 'bg-success border-success text-black';
   }
-  return 'bg-gray-100 text-gray-800';
+  return 'bg-gray-200 border-gray-400 text-black';
 };
 
 export const ContingenciesList: React.FC<ContingenciesListProps> = ({ contingencies }) => {
   if (contingencies.length === 0) {
     return (
-      <div className="bg-white rounded-lg shadow-md border border-gray-200 p-6">
-        <h3 className="text-lg font-bold text-gray-900 mb-4">Contingency Plans</h3>
-        <p className="text-gray-600">No contingency plans needed at this time.</p>
+      <div className="bg-white border-2 border-black p-6">
+        <h3 className="text-h3 font-bold text-black mb-4 uppercase tracking-wide">Contingency Plans</h3>
+        <div className="bg-success border-2 border-success p-6 text-center">
+          <div className="text-4xl mb-2">✅</div>
+          <p className="text-black font-bold uppercase text-body">No contingency plans needed</p>
+          <p className="text-body-sm text-black mt-2">
+            Your profile is well-aligned with this immigration path
+          </p>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-md border border-gray-200 p-6">
-      <h3 className="text-lg font-bold text-gray-900 mb-4">Contingency Plans</h3>
-      <p className="text-sm text-gray-600 mb-4">
+    <div className="bg-white border-2 border-black p-6">
+      <h3 className="text-h3 font-bold text-black mb-4 uppercase tracking-wide">Contingency Plans</h3>
+      <p className="text-body-sm text-gray-700 mb-6">
         Prepare for these scenarios to ensure a smooth immigration process
       </p>
 
@@ -39,31 +61,34 @@ export const ContingenciesList: React.FC<ContingenciesListProps> = ({ contingenc
         {contingencies.map((contingency, index) => (
           <div
             key={contingency.id}
-            className="border-2 border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors"
+            className="border-2 border-black p-4"
           >
             {/* Contingency Header */}
             <div className="flex items-start gap-3 mb-3">
-              <div className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-100 text-blue-800 font-bold text-sm flex-shrink-0">
-                {index + 1}
+              {/* Numbered Badge - Sharp, Bold */}
+              <div className="flex items-center justify-center w-10 h-10 border-2 border-black bg-white font-bold text-body flex-shrink-0">
+                {String(index + 1).padStart(2, '0')}
               </div>
               <div className="flex-1">
-                <h4 className="font-semibold text-gray-900 mb-1">{contingency.scenario}</h4>
-                <p className="text-sm text-gray-600">{contingency.description}</p>
+                <h4 className="font-bold text-black mb-2 uppercase tracking-wide text-body">
+                  {contingency.scenario}
+                </h4>
+                <p className="text-body-sm text-gray-700">{contingency.description}</p>
               </div>
             </div>
 
-            {/* Action Plan */}
-            <div className="ml-11 space-y-2">
-              <div className="bg-blue-50 border-l-4 border-blue-500 p-3 rounded">
-                <p className="text-xs font-semibold text-blue-900 mb-1">Action Plan:</p>
-                <p className="text-sm text-blue-800">{contingency.action}</p>
+            {/* Action Plan - Bold Highlight */}
+            <div className="ml-13 space-y-3">
+              <div className="bg-primary border-2 border-primary p-4">
+                <p className="text-label uppercase font-bold text-white mb-2">Action Plan</p>
+                <p className="text-body-sm text-white">{contingency.action}</p>
               </div>
 
-              {/* Timeframe */}
+              {/* Timeframe Badge */}
               {contingency.timeframe && (
-                <div className="flex items-center gap-2">
-                  <span className="text-xs font-semibold text-gray-700">Timeline:</span>
-                  <span className={`text-xs px-2 py-1 rounded-full font-medium ${getTimeframeColor(contingency.timeframe)}`}>
+                <div className="flex items-center gap-3">
+                  <span className="text-label uppercase font-bold text-black">Timeline:</span>
+                  <span className={`text-label px-3 py-1 border-2 font-bold uppercase ${getTimeframeColor(contingency.timeframe)}`}>
                     {contingency.timeframe}
                   </span>
                 </div>
@@ -73,12 +98,13 @@ export const ContingenciesList: React.FC<ContingenciesListProps> = ({ contingenc
         ))}
       </div>
 
-      {/* Summary */}
-      <div className="mt-4 pt-4 border-t border-gray-300">
-        <p className="text-sm text-gray-600">
-          💡 <strong>Tip:</strong> Review these contingency plans regularly and update them as your
-          situation changes.
-        </p>
+      {/* Summary - Bold Tip */}
+      <div className="mt-6 pt-6 border-t-2 border-black">
+        <div className="bg-accent border-2 border-accent p-4">
+          <p className="text-body-sm text-black">
+            <span className="font-bold uppercase">💡 Tip:</span> Review these contingency plans regularly and update them as your situation changes.
+          </p>
+        </div>
       </div>
     </div>
   );
