@@ -15,10 +15,10 @@ interface LayoutProps {
 
 export function Layout({ children, currentPage, showHeader = true, sidebar }: LayoutProps) {
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex min-h-screen bg-white">
       {/* Sidebar */}
       {sidebar && (
-        <aside className="w-64 bg-white shadow-sm border-r border-gray-200">
+        <aside className="w-64 bg-white border-r-2 border-black">
           {sidebar}
         </aside>
       )}
@@ -28,11 +28,9 @@ export function Layout({ children, currentPage, showHeader = true, sidebar }: La
         {/* Header */}
         {showHeader && <Header currentPage={currentPage} />}
 
-        {/* Content */}
+        {/* Content - No default padding, pages handle their own layout */}
         <main className="flex-1">
-          <div className="p-6">
-            {children}
-          </div>
+          {children}
         </main>
       </div>
     </div>
