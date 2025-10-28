@@ -42,51 +42,55 @@
 
 ## Color Palette
 
-### Primary Colors (Bold & Confident)
+### Primary Colors (Bold & Modern)
 
 ```css
-/* Primary - Deep Blue (Scandinavian sea/sky) */
---color-primary: #0D47A1;        /* Deep blue */
---color-primary-light: #1565C0;  /* Medium blue */
---color-primary-dark: #01579B;   /* Darker blue */
+/* Primary - Electric Indigo (Bold, modern, energetic) */
+--color-primary: #5731F5;        /* Electric indigo */
+--color-primary-light: #7859F7;  /* Lighter indigo */
+--color-primary-dark: #3E1FD1;   /* Darker indigo */
 
-/* Success - Forest Green (Nordic forests) */
---color-success: #1B5E20;        /* Deep green */
---color-success-light: #2E7D32;  /* Medium green */
+/* Success - Aquamarine (Fresh, positive) */
+--color-success: #75E3B3;        /* Aquamarine */
+--color-success-light: #9EECC9;  /* Lighter aquamarine */
+--color-success-dark: #4FD69A;   /* Darker aquamarine */
 
-/* Warning - Bold Amber (Attention) */
---color-warning: #E65100;        /* Deep orange */
---color-warning-light: #F57C00;  /* Medium orange */
+/* Warning - Orange Peel (Vibrant attention) */
+--color-warning: #FF9B00;        /* Orange peel */
+--color-warning-light: #FFB133;  /* Lighter orange */
+--color-warning-dark: #E68A00;   /* Darker orange */
 
-/* Danger - Bold Red (Clear negative) */
---color-danger: #B71C1C;         /* Deep red */
---color-danger-light: #C62828;   /* Medium red */
+/* Accent - Chartreuse (High-energy highlight) */
+--color-accent: #E0FC2F;         /* Chartreuse */
+--color-accent-light: #E9FD66;   /* Lighter chartreuse */
+--color-accent-dark: #C8E01A;    /* Darker chartreuse */
 
-/* Accent - Bold Yellow (Decisions/highlights) */
---color-accent: #F57F17;         /* Deep yellow */
---color-accent-light: #FBC02D;   /* Medium yellow */
+/* Danger - Derived from Orange Peel (Clear negative) */
+--color-danger: #FF4D00;         /* Bold red-orange */
+--color-danger-light: #FF7033;   /* Lighter red-orange */
+--color-danger-dark: #CC3D00;    /* Darker red-orange */
 ```
 
 ### Neutral Colors (High Contrast)
 
 ```css
-/* Neutrals - Pure black and white */
---color-black: #000000;          /* Pure black - text */
---color-white: #FFFFFF;          /* Pure white - backgrounds */
---color-gray-900: #1A1A1A;       /* Near black */
---color-gray-700: #424242;       /* Dark gray */
---color-gray-500: #757575;       /* Medium gray */
---color-gray-300: #BDBDBD;       /* Light gray */
---color-gray-100: #F5F5F5;       /* Very light gray */
+/* Neutrals - Modern black and white */
+--color-black: #0F0D03;          /* Smoky black - text */
+--color-white: #FFFCFF;          /* Snow - backgrounds */
+--color-gray-900: #1A1814;       /* Near black */
+--color-gray-700: #424038;       /* Dark gray */
+--color-gray-500: #757369;       /* Medium gray */
+--color-gray-300: #BDBBB5;       /* Light gray */
+--color-gray-100: #E4E2F5;       /* Lavender web - very light */
 ```
 
 ### Background Colors
 
 ```css
 /* Backgrounds - Clean and minimal */
---bg-primary: #FFFFFF;           /* Main background */
---bg-secondary: #FAFAFA;         /* Subtle contrast */
---bg-accent: #F5F5F5;            /* Cards, panels */
+--bg-primary: #FFFCFF;           /* Snow - main background */
+--bg-secondary: #F9F7FA;         /* Subtle contrast */
+--bg-accent: #E4E2F5;            /* Lavender web - cards, panels */
 ```
 
 ---
@@ -201,11 +205,11 @@ font-family: 'JetBrains Mono', 'Courier New', monospace;
 ```
 
 **Specifications:**
-- **Background**: Pure white (#FFFFFF)
-- **Border**: 4px solid black (#000000) bottom border
-- **Logo**: 24px bold, all caps, black
-- **Nav links**: 14px semibold, uppercase, black
-- **Active state**: 4px accent underline (#F57F17)
+- **Background**: Snow (#FFFCFF)
+- **Border**: 4px solid smoky black (#0F0D03) bottom border
+- **Logo**: 24px bold, all caps, smoky black
+- **Nav links**: 14px semibold, uppercase, smoky black
+- **Active state**: 4px chartreuse underline (#E0FC2F)
 - **Height**: 80px (generous)
 - **No shadows, no rounded corners**
 
@@ -218,17 +222,18 @@ font-family: 'JetBrains Mono', 'Courier New', monospace;
 
 **New Design:**
 ```
-Primary:    [BLACK BACKGROUND, WHITE TEXT, SHARP CORNERS]
-Secondary:  [WHITE BACKGROUND, BLACK BORDER 2PX, BLACK TEXT]
-Success:    [DEEP GREEN #1B5E20, WHITE TEXT]
-Danger:     [DEEP RED #B71C1C, WHITE TEXT]
+Primary:    [ELECTRIC INDIGO #5731F5, SNOW TEXT, SHARP CORNERS]
+Secondary:  [SNOW BACKGROUND, SMOKY BLACK BORDER 2PX, SMOKY BLACK TEXT]
+Success:    [AQUAMARINE #75E3B3, SMOKY BLACK TEXT]
+Danger:     [BOLD RED-ORANGE #FF4D00, SNOW TEXT]
+Warning:    [ORANGE PEEL #FF9B00, SMOKY BLACK TEXT]
 ```
 
 **Specifications:**
 - **Border radius**: 0px (sharp corners)
 - **Padding**: 16px 32px (generous)
 - **Font**: 14px bold, uppercase
-- **Hover**: Invert colors (black→white, white→black)
+- **Hover**: Brighten primary color or invert for secondary
 - **Active**: 2px inset (pressed effect)
 - **No shadows, no gradients**
 
@@ -252,12 +257,12 @@ Danger:     [DEEP RED #B71C1C, WHITE TEXT]
 ```
 
 **Specifications:**
-- **Background**: White (#FFFFFF)
-- **Border**: 2px solid black (#000000)
+- **Background**: Snow (#FFFCFF)
+- **Border**: 2px solid smoky black (#0F0D03)
 - **Border radius**: 0px (sharp corners)
 - **Padding**: 32px
-- **Title**: 18px bold, uppercase, black
-- **Divider**: 2px solid black
+- **Title**: 18px bold, uppercase, smoky black
+- **Divider**: 2px solid smoky black
 - **No shadows**
 
 ### 4. Data Visualization Cards
@@ -283,7 +288,7 @@ Danger:     [DEEP RED #B71C1C, WHITE TEXT]
 - **Progress bars**: 8px height, solid color fills
 - **Labels**: 12px uppercase, bold
 - **Spacing**: 16px between rows
-- **Colors**: Deep blue for positive, deep red for negative
+- **Colors**: Electric indigo (#5731F5) for high scores, aquamarine (#75E3B3) for positive, orange peel (#FF9B00) for warning, red-orange (#FF4D00) for negative
 
 ---
 
