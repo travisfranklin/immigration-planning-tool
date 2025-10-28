@@ -58,7 +58,7 @@ body {
 /* Decision nodes (diamonds) - Flat yellow background */
 /* In Mermaid flowcharts, decision nodes are rendered as <polygon> elements */
 /* This targets ALL polygon elements, which are exclusively used for diamond/decision shapes */
-.mermaid polygon {
+.flowchart polygon {
   fill: #fff4cc !important;
   stroke: #f59e0b !important;
   stroke-width: 2px !important;
@@ -66,12 +66,19 @@ body {
 
 /* Start/Success nodes - Light green */
 /* Stadium-shaped nodes (rounded rectangles with ([text])) */
-.mermaid g[id*="Start"] rect,
-.mermaid g[id*="start"] rect,
-.mermaid g[id*="Success"] rect,
-.mermaid g[id*="success"] rect,
-.mermaid g[id*="Complete"] rect,
-.mermaid g[id*="complete"] rect {
+/* Target both rect and path elements since Mermaid uses path for stadium shapes */
+.flowchart g[id*="Start"] rect,
+.flowchart g[id*="start"] rect,
+.flowchart g[id*="Success"] rect,
+.flowchart g[id*="success"] rect,
+.flowchart g[id*="Complete"] rect,
+.flowchart g[id*="complete"] rect,
+.flowchart g[id*="Start"] path,
+.flowchart g[id*="start"] path,
+.flowchart g[id*="Success"] path,
+.flowchart g[id*="success"] path,
+.flowchart g[id*="Complete"] path,
+.flowchart g[id*="complete"] path {
   fill: #e1f5e1 !important;
   stroke: #10b981 !important;
   stroke-width: 2px !important;
@@ -79,20 +86,28 @@ body {
 
 /* End/Error nodes - Light red */
 /* Stadium-shaped nodes for endings */
-.mermaid g[id*="End"] rect,
-.mermaid g[id*="end"] rect,
-.mermaid g[id*="Ended"] rect,
-.mermaid g[id*="Denied"] rect,
-.mermaid g[id*="Eligible"] rect,
-.mermaid g[id*="Return"] rect {
+.flowchart g[id*="End"] rect,
+.flowchart g[id*="end"] rect,
+.flowchart g[id*="Ended"] rect,
+.flowchart g[id*="Denied"] rect,
+.flowchart g[id*="Eligible"] rect,
+.flowchart g[id*="Return"] rect,
+.flowchart g[id*="End"] path,
+.flowchart g[id*="end"] path,
+.flowchart g[id*="Ended"] path,
+.flowchart g[id*="Denied"] path,
+.flowchart g[id*="Eligible"] path,
+.flowchart g[id*="Return"] path {
   fill: #ffe1e1 !important;
   stroke: #ef4444 !important;
   stroke-width: 2px !important;
 }
 
 /* Warning/Alternative end nodes - Light orange */
-.mermaid g[id*="Different"] rect,
-.mermaid g[id*="Alternative"] rect {
+.flowchart g[id*="Different"] rect,
+.flowchart g[id*="Alternative"] rect,
+.flowchart g[id*="Different"] path,
+.flowchart g[id*="Alternative"] path {
   fill: #fff4e1 !important;
   stroke: #f59e0b !important;
   stroke-width: 2px !important;
@@ -100,34 +115,42 @@ body {
 
 /* Important nodes (permits, visas, cards) - Light blue */
 /* Regular rectangular nodes with specific keywords */
-.mermaid g[id*="Visa"] rect,
-.mermaid g[id*="visa"] rect,
-.mermaid g[id*="Permit"] rect,
-.mermaid g[id*="permit"] rect,
-.mermaid g[id*="Card"] rect,
-.mermaid g[id*="card"] rect,
-.mermaid g[id*="Blue"] rect,
-.mermaid g[id*="PR"] rect {
+.flowchart g[id*="Visa"] rect,
+.flowchart g[id*="visa"] rect,
+.flowchart g[id*="Permit"] rect,
+.flowchart g[id*="permit"] rect,
+.flowchart g[id*="Card"] rect,
+.flowchart g[id*="card"] rect,
+.flowchart g[id*="Blue"] rect,
+.flowchart g[id*="PR"] rect,
+.flowchart g[id*="Visa"] path,
+.flowchart g[id*="visa"] path,
+.flowchart g[id*="Permit"] path,
+.flowchart g[id*="permit"] path,
+.flowchart g[id*="Card"] path,
+.flowchart g[id*="card"] path,
+.flowchart g[id*="Blue"] path,
+.flowchart g[id*="PR"] path {
   fill: #e1e5ff !important;
   stroke: #6366f1 !important;
   stroke-width: 2px !important;
 }
 
 /* Ensure all node text is readable */
-.mermaid .node text {
+.flowchart .node text {
   fill: #1f2937 !important;
 }
 
 /* Hover effect for interactive nodes */
-.mermaid .node:hover {
+.flowchart .node:hover {
   cursor: pointer;
   opacity: 0.9;
 }
 
 /* Selected node highlight */
-.mermaid .node.selected rect,
-.mermaid .node.selected polygon,
-.mermaid .node.selected path {
+.flowchart .node.selected rect,
+.flowchart .node.selected polygon,
+.flowchart .node.selected path {
   stroke-width: 3px !important;
   filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
 }
