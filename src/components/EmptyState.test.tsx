@@ -86,7 +86,7 @@ describe('EmptyState', () => {
       );
 
       const button = screen.getByRole('button', { name: 'Add Item' });
-      expect(button).toHaveClass('bg-primary-600');
+      expect(button).toHaveClass('bg-primary');
     });
 
     it('should use custom variant when provided', () => {
@@ -97,9 +97,9 @@ describe('EmptyState', () => {
           action={{ label: 'Add Item', onClick: handleClick, variant: 'secondary' }}
         />
       );
-      
+
       const button = screen.getByRole('button', { name: 'Add Item' });
-      expect(button).toHaveClass('bg-gray-200');
+      expect(button).toHaveClass('bg-white');
     });
 
     it('should use lg size by default', () => {
@@ -110,9 +110,9 @@ describe('EmptyState', () => {
           action={{ label: 'Add Item', onClick: handleClick }}
         />
       );
-      
+
       const button = screen.getByRole('button', { name: 'Add Item' });
-      expect(button).toHaveClass('px-6', 'py-3');
+      expect(button).toHaveClass('px-8', 'py-3');
     });
 
     it('should use custom size when provided', () => {

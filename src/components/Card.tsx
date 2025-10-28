@@ -1,6 +1,16 @@
 /**
  * Card Component
- * Reusable card component for content containers
+ *
+ * Bold, minimalist card following German functionalism and Scandinavian design
+ *
+ * Design Principles:
+ * - Sharp corners (no border-radius)
+ * - 2px solid black border
+ * - No shadows (flat, honest design)
+ * - Generous padding (32px)
+ * - Uppercase, bold title
+ * - 2px divider line under title
+ * - High contrast
  */
 
 import React from 'react';
@@ -15,23 +25,31 @@ interface CardProps {
 
 export function Card({ children, title, subtitle, footer, className = '' }: CardProps) {
   return (
-    <div className={`bg-white rounded-lg shadow-md overflow-hidden ${className}`}>
+    <div className={`bg-white border-2 border-black ${className}`}>
       {/* Header */}
       {(title || subtitle) && (
-        <div className="px-6 py-4 border-b border-gray-200">
-          {title && <h3 className="text-lg font-semibold text-gray-900">{title}</h3>}
-          {subtitle && <p className="text-sm text-gray-600 mt-1">{subtitle}</p>}
+        <div className="px-4 py-3 border-b-2 border-black">
+          {title && (
+            <h3 className="text-h4 font-bold uppercase tracking-wide text-black">
+              {title}
+            </h3>
+          )}
+          {subtitle && (
+            <p className="text-body-sm text-gray-700 mt-1">
+              {subtitle}
+            </p>
+          )}
         </div>
       )}
 
       {/* Content */}
-      <div className="px-6 py-4">
+      <div className="p-4">
         {children}
       </div>
 
       {/* Footer */}
       {footer && (
-        <div className="px-6 py-4 bg-gray-50 border-t border-gray-200">
+        <div className="px-4 py-3 bg-gray-100 border-t-2 border-black">
           {footer}
         </div>
       )}

@@ -1,6 +1,15 @@
 /**
  * Button Component
- * Reusable button component with multiple variants
+ *
+ * Bold, minimalist button following German functionalism and Scandinavian design
+ *
+ * Design Principles:
+ * - Sharp corners (no border-radius)
+ * - Bold, uppercase text
+ * - Generous padding
+ * - High contrast colors
+ * - No shadows or decorative effects
+ * - Functional hover states (color inversion)
  */
 
 import React from 'react';
@@ -16,18 +25,30 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variantClasses: Record<ButtonVariant, string> = {
-  primary: 'bg-primary-600 text-white hover:bg-primary-700',
-  secondary: 'bg-gray-200 text-gray-900 hover:bg-gray-300',
-  danger: 'bg-danger-600 text-white hover:bg-danger-700',
-  success: 'bg-success-600 text-white hover:bg-success-700',
-  warning: 'bg-warning-600 text-white hover:bg-warning-700',
-  ghost: 'text-gray-700 hover:text-primary-600 hover:bg-gray-100',
+  // Primary - Electric Indigo background, snow text
+  primary: 'bg-primary text-white border-2 border-primary hover:bg-white hover:text-primary',
+
+  // Secondary - Snow background, black border and text
+  secondary: 'bg-white text-black border-2 border-black hover:bg-black hover:text-white',
+
+  // Danger - Red-Orange background, snow text
+  danger: 'bg-danger text-white border-2 border-danger hover:bg-white hover:text-danger',
+
+  // Success - Aquamarine background, black text
+  success: 'bg-success text-black border-2 border-success hover:bg-white hover:text-success hover:border-success',
+
+  // Warning - Orange Peel background, black text
+  warning: 'bg-warning text-black border-2 border-warning hover:bg-white hover:text-warning hover:border-warning',
+
+  // Ghost - Transparent background, black text
+  ghost: 'bg-transparent text-black border-2 border-transparent hover:border-black',
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
-  sm: 'px-3 py-1 text-sm',
-  md: 'px-4 py-2 text-base',
-  lg: 'px-6 py-3 text-lg',
+  // Generous padding following 8px spacing system
+  sm: 'px-3 py-1 text-label',      // 24px x 8px, 12px text
+  md: 'px-4 py-2 text-body-sm',    // 32px x 16px, 14px text
+  lg: 'px-8 py-3 text-body',       // 64px x 24px, 16px text
 };
 
 export function Button({
@@ -39,7 +60,8 @@ export function Button({
   className = '',
   ...props
 }: ButtonProps) {
-  const baseClasses = 'rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed';
+  // Base classes: sharp corners, bold uppercase text, no transitions
+  const baseClasses = 'font-bold uppercase tracking-wide disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-fast';
   const variantClass = variantClasses[variant];
   const sizeClass = sizeClasses[size];
 
@@ -51,7 +73,7 @@ export function Button({
     >
       {isLoading ? (
         <span className="flex items-center gap-2">
-          <span className="inline-block w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
+          <span className="inline-block w-2 h-2 border-2 border-current border-t-transparent animate-spin" />
           Loading...
         </span>
       ) : (
