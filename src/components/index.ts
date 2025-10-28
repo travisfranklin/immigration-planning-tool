@@ -6,6 +6,10 @@
 export { Layout } from './Layout';
 export { Button } from './Button';
 export { Card } from './Card';
+export { DataCard, getVariantFromScore } from './DataCard';
+export type { DataCardProps } from './DataCard';
+export { ProgressBar, getVariantFromProgress } from './ProgressBar';
+export type { ProgressBarProps } from './ProgressBar';
 export { Input } from './Input';
 export { Select } from './Select';
 export { Combobox } from './Combobox';
