@@ -6,7 +6,7 @@
 import { useCallback, useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import type { UserProfile } from '@/types/user';
-import { ProfileFormAccordion } from '@/components/ProfileFormAccordion';
+import { ProfileFormAccordion, type ProfileFormAccordionRef } from '@/components/ProfileFormAccordion';
 import { Layout } from '@/components/Layout';
 import { Button } from '@/components/Button';
 import { LoadingSpinner } from '@/components/LoadingSpinner';
@@ -19,6 +19,7 @@ export function Profile() {
   const [progress, setProgress] = useState(0);
   const currentProfileIdRef = useRef<string | null>(null);
   const profileLoadedRef = useRef(false);
+  const formRef = useRef<ProfileFormAccordionRef>(null);
 
   // Load the latest profile from storage on mount
   useEffect(() => {
@@ -65,6 +66,20 @@ export function Profile() {
       console.error('Failed to save profile:', error);
     }
   }, []);
+
+  const handleViewResults = useCallback(() => {
+    // Validate form before navigating
+    if (formRef.current) {
+      const isValid = formRef.current.validateAndScrollToFirstError();
+      if (isValid) {
+        navigate('/results');
+      }
+      // If not valid, the form will scroll to the first error and show validation messages
+    } else {
+      // Fallback if ref is not available
+      navigate('/results');
+    }
+  }, [navigate]);
 
   if (isLoading) {
     return (
@@ -115,6 +130,7 @@ export function Profile() {
       {/* Form Content */}
       <div className="bg-gray-50 py-16 md:py-20">
         <ProfileFormAccordion
+          ref={formRef}
           onSave={handleSaveProfile}
           initialData={initialData}
           onProgressChange={setProgress}
@@ -125,7 +141,7 @@ export function Profile() {
       {initialData && (
         <div className="sticky bottom-0">
           <Button
-            onClick={() => navigate('/results')}
+            onClick={handleViewResults}
             variant="primary"
             size="lg"
             className="w-full rounded-none"

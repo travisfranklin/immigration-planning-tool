@@ -4,7 +4,7 @@
  * Replaces multi-step form to enable quick field updates and scenario exploration
  */
 
-import { useState, useCallback, useEffect, useRef } from 'react';
+import { useState, useCallback, useEffect, useRef, forwardRef, useImperativeHandle } from 'react';
 import { Disclosure } from '@headlessui/react';
 import { ChevronDownIcon, CheckCircleIcon, ExclamationCircleIcon } from '@heroicons/react/24/outline';
 import type { UserProfile } from '@/types/user';
@@ -30,6 +30,10 @@ interface ProfileFormAccordionProps {
   onSave?: (profile: Partial<UserProfile>) => Promise<void>;
   initialData?: Partial<UserProfile>;
   onProgressChange?: (progress: number) => void;
+}
+
+export interface ProfileFormAccordionRef {
+  validateAndScrollToFirstError: () => boolean;
 }
 
 interface FormSection {
@@ -132,11 +136,12 @@ function StatusIcon({ status }: { status: SectionStatus }) {
   return <div className="h-6 w-6 border-2 border-gray-400" aria-label="Section not started" role="img" />;
 }
 
-export function ProfileFormAccordion({
-  onSave,
-  initialData,
-  onProgressChange,
-}: ProfileFormAccordionProps) {
+export const ProfileFormAccordion = forwardRef<ProfileFormAccordionRef, ProfileFormAccordionProps>(
+  function ProfileFormAccordion({
+    onSave,
+    initialData,
+    onProgressChange,
+  }, ref) {
   const [formData, setFormData] = useState<Partial<UserProfile>>(
     initialData || getEmptyUserProfile()
   );
@@ -264,6 +269,30 @@ export function ProfileFormAccordion({
     const status = getSectionStatus(section.stepNumber, formData);
     return status !== 'complete';
   });
+
+  // Expose validation method to parent via ref
+  useImperativeHandle(ref, () => ({
+    validateAndScrollToFirstError: () => {
+      // Find first incomplete section
+      const firstIncompleteSection = FORM_SECTIONS.find(section => {
+        const status = getSectionStatus(section.stepNumber, formData);
+        return status === 'incomplete' || status === 'not-started';
+      });
+
+      if (firstIncompleteSection) {
+        // Validate the section to generate error messages
+        const stepErrors = validateFormStep(firstIncompleteSection.stepNumber, formData);
+        setErrors(stepErrors);
+
+        // Scroll to the section
+        scrollToSection(firstIncompleteSection.id);
+
+        return false; // Validation failed
+      }
+
+      return true; // All sections complete
+    },
+  }), [formData, scrollToSection]);
 
   return (
     <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -403,5 +432,5 @@ export function ProfileFormAccordion({
       </div>
     </div>
   );
-}
+});
 
