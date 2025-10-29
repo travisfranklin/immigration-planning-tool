@@ -58,10 +58,10 @@
   --color-gray-300: #BDBBB5;
   --color-gray-100: #E4E2F5;
   
-  /* Backgrounds */
-  --bg-primary: #FFFCFF;           /* Snow - main background */
-  --bg-secondary: #F9F7FA;         /* Subtle contrast */
-  --bg-accent: #E4E2F5;            /* Lavender web - cards, panels */
+  /* Surface colors (backgrounds) */
+  --surface-0: #FFFCFF;            /* Snow - main background */
+  --surface-1: #F9F7FA;            /* Subtle contrast */
+  --surface-2: #E4E2F5;            /* Lavender web - cards, panels */
   
   /* ========================================
      TYPOGRAPHY
@@ -260,9 +260,9 @@
 }
 
 /* Color Utilities */
-.bg-primary { background-color: var(--bg-primary); }
-.bg-secondary { background-color: var(--bg-secondary); }
-.bg-accent { background-color: var(--bg-accent); }
+.bg-surface-0 { background-color: var(--surface-0); }
+.bg-surface-1 { background-color: var(--surface-1); }
+.bg-surface-2 { background-color: var(--surface-2); }
 
 .text-primary { color: var(--color-primary); }
 .text-success { color: var(--color-success); }
