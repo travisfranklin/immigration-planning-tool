@@ -140,10 +140,20 @@ export function isFormStepValid(
 
   return fields.every((field) => {
     const value = (profile as Record<string, unknown>)[field];
+
+    // Special handling for arrays
     if (Array.isArray(value)) {
       return value.length > 0;
     }
-    return value !== undefined && value !== null && value !== '';
+
+    // Check if value exists and is not empty
+    // Note: 0 is NOT a valid value for numeric fields like annualIncome, savingsAmount,
+    // yearsOfExperience, or timelineMonths - these should be positive numbers
+    if (value === undefined || value === null || value === '' || value === 0) {
+      return false;
+    }
+
+    return true;
   });
 }
 
@@ -153,7 +163,7 @@ export function isFormStepValid(
 export function getEmptyUserProfile(): UserProfile {
   const now = Date.now();
   return {
-    id: `profile_${now}_${Math.random().toString(36).substr(2, 9)}`,
+    id: `profile_${now}_${Math.random().toString(36).substring(2, 11)}`,
     createdAt: now,
     updatedAt: now,
     firstName: '',

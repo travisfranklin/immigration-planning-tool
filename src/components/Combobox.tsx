@@ -184,7 +184,7 @@ export function Combobox({
         {/* Dropdown icon - Heroicons chevron */}
         <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
           <ChevronDownIcon
-            className={`w-6 h-6 text-black transition-transform ${isOpen ? 'rotate-180' : ''}`}
+            className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`}
             strokeWidth={2.5}
           />
         </div>

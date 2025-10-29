@@ -83,7 +83,7 @@ export function Profile() {
       <div className="bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
           <div className="max-w-4xl">
-            <h1 className="text-display font-extrabold text-black mb-6 leading-tight uppercase tracking-tight">
+            <h1 className="text-7xl font-extrabold text-black mb-6 leading-tight uppercase tracking-tight">
               Immigration Profile
             </h1>
             <p className="text-h3 text-gray-700 font-normal leading-relaxed">

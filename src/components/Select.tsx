@@ -76,7 +76,7 @@ export function Select({
 
         {/* Dropdown icon - Heroicons chevron */}
         <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-          <ChevronDownIcon className="w-6 h-6 text-black" strokeWidth={2.5} />
+          <ChevronDownIcon className="w-4 h-4 text-black" strokeWidth={2.5} />
         </div>
       </div>
 
