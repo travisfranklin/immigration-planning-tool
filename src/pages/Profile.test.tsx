@@ -99,8 +99,9 @@ describe('Profile Page', () => {
     renderWithRouter(<Profile />);
 
     await waitFor(() => {
-      // Profile page shows completion percentage, not step numbers
-      expect(screen.getByText(/% complete/i)).toBeInTheDocument();
+      // Profile page shows completion percentage in separate element
+      expect(screen.getByText(/\d+%/)).toBeInTheDocument();
+      expect(screen.getByText(/sections? remaining/i)).toBeInTheDocument();
     });
   });
 

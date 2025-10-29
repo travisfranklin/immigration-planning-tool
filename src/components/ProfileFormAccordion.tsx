@@ -259,24 +259,27 @@ export function ProfileFormAccordion({
   return (
     <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Header with Save Status and Progress */}
-      <div className="bg-white border-2 border-black mb-8 p-6">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
-          <div>
-            <h2 className="text-h2 font-bold text-black uppercase tracking-wide">Your Profile</h2>
-            <p className="text-body text-gray-700 mt-2">
-              {progress}% complete • {incompleteSections.length} section{incompleteSections.length !== 1 ? 's' : ''} remaining
-            </p>
+      <div className="bg-white border-4 border-black mb-12 p-8">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 mb-8">
+          <div className="flex-1">
+            <h2 className="text-h1 font-bold text-black uppercase tracking-wide mb-3">Your Profile</h2>
+            <div className="flex items-center gap-4">
+              <div className="text-data text-primary font-bold">{progress}%</div>
+              <div className="text-body text-gray-700">
+                {incompleteSections.length} section{incompleteSections.length !== 1 ? 's' : ''} remaining
+              </div>
+            </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
             {incompleteSections.length > 0 && (
               <Button
                 variant="secondary"
-                size="sm"
+                size="md"
                 onClick={jumpToIncomplete}
                 className="whitespace-nowrap"
               >
-                Jump to Incomplete
+                JUMP TO INCOMPLETE
               </Button>
             )}
             <div aria-live="polite" aria-atomic="true">
@@ -289,9 +292,9 @@ export function ProfileFormAccordion({
           </div>
         </div>
 
-        {/* Progress Bar - Bold, Stepped */}
-        <div className="mt-4" role="progressbar" aria-valuenow={progress} aria-valuemin={0} aria-valuemax={100} aria-label="Profile completion progress">
-          <div className="w-full bg-gray-200 h-3 border-2 border-black">
+        {/* Progress Bar - Bold, High Contrast */}
+        <div className="mt-6" role="progressbar" aria-valuenow={progress} aria-valuemin={0} aria-valuemax={100} aria-label="Profile completion progress">
+          <div className="w-full bg-gray-200 h-4 border-2 border-black">
             <div
               className="bg-primary h-full transition-all duration-300"
               style={{ width: `${progress}%` }}
@@ -301,39 +304,49 @@ export function ProfileFormAccordion({
       </div>
 
       {/* Accordion Sections - Numbered, Sharp, Minimal */}
-      <div className="space-y-4">
+      <div className="space-y-6">
         {FORM_SECTIONS.map((section) => {
           const SectionComponent = section.component;
           const status = getSectionStatus(section.stepNumber, formData);
           const isOpen = openSections.has(section.id);
 
+          // Get color based on status
+          const getStatusColor = () => {
+            if (status === 'complete') return 'bg-success';
+            if (status === 'incomplete') return 'bg-warning';
+            return 'bg-gray-300';
+          };
+
           return (
             <div
               key={section.id}
               ref={(el) => { sectionRefs.current[section.id] = el; }}
-              className="border-2 border-black bg-white"
+              className="bg-white border-4 border-black"
             >
               <Disclosure>
                 {() => (
                   <>
+                    {/* Color-coded top bar */}
+                    <div className={`h-2 ${getStatusColor()}`}></div>
+
                     <button
                       onClick={() => toggleSection(section.id)}
-                      className="w-full px-6 py-5 flex items-center justify-between hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                      className="w-full px-8 py-6 flex items-center justify-between hover:bg-gray-50 transition-colors focus:outline-none focus:ring-4 focus:ring-primary focus:ring-offset-0"
                       aria-label={`${section.title} - ${status === 'complete' ? 'Complete' : status === 'incomplete' ? 'Incomplete' : 'Not started'} - ${isOpen ? 'Expanded' : 'Collapsed'}`}
                     >
-                      <div className="flex items-center gap-4 flex-1 text-left">
+                      <div className="flex items-center gap-6 flex-1 text-left">
                         {/* Numbered Badge */}
-                        <div className="flex-shrink-0 w-12 h-12 border-2 border-black bg-white flex items-center justify-center">
-                          <span className="text-h4 font-bold text-black">
+                        <div className={`flex-shrink-0 w-16 h-16 border-2 border-black flex items-center justify-center ${getStatusColor()}`}>
+                          <span className="text-h2 font-bold text-black">
                             {String(section.stepNumber).padStart(2, '0')}
                           </span>
                         </div>
 
                         <div className="flex-1">
-                          <h3 className="text-h3 font-bold text-black uppercase tracking-wide">
+                          <h3 className="text-h2 font-bold text-black uppercase tracking-wide mb-2">
                             {section.title}
                           </h3>
-                          <p className="text-body-sm text-gray-700 mt-1">
+                          <p className="text-body text-gray-700">
                             {section.description}
                           </p>
                         </div>
@@ -343,14 +356,14 @@ export function ProfileFormAccordion({
                       </div>
 
                       <ChevronDownIcon
-                        className={`h-6 w-6 text-black transition-transform ml-4 ${
+                        className={`h-8 w-8 text-black transition-transform ml-6 ${
                           isOpen ? 'transform rotate-180' : ''
                         }`}
                       />
                     </button>
 
                     {isOpen && (
-                      <div className="px-6 py-6 border-t-2 border-black bg-gray-50">
+                      <div className="px-8 py-8 border-t-4 border-black bg-gray-50">
                         <SectionComponent
                           data={formData}
                           errors={errors}
@@ -368,15 +381,23 @@ export function ProfileFormAccordion({
       </div>
 
       {/* Footer Info */}
-      <div className="mt-8 bg-white border-2 border-black p-6">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-          <p className="text-body-sm text-gray-700">
-            💾 All changes are saved automatically to your browser
-          </p>
+      <div className="mt-12 bg-white border-4 border-black p-8">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
+          <div className="flex items-start gap-4">
+            <div className="w-2 h-16 bg-primary flex-shrink-0"></div>
+            <div>
+              <p className="text-h4 font-bold text-black uppercase tracking-wide mb-2">
+                Auto-Save Enabled
+              </p>
+              <p className="text-body text-gray-700">
+                All changes are saved automatically to your browser's local storage
+              </p>
+            </div>
+          </div>
           {progress === 100 && (
-            <div className="flex items-center gap-2 text-success">
-              <CheckCircleIcon className="h-6 w-6" />
-              <span className="text-body font-bold uppercase">Profile Complete!</span>
+            <div className="flex items-center gap-3 bg-success px-6 py-4 border-2 border-black">
+              <CheckCircleIcon className="h-8 w-8 text-black" />
+              <span className="text-h3 font-bold uppercase text-black">Profile Complete!</span>
             </div>
           )}
         </div>

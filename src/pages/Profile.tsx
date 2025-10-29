@@ -79,34 +79,39 @@ export function Profile() {
 
   return (
     <Layout currentPage="profile">
-      {/* Page Header - Bold, Editorial */}
-      <div className="bg-white border-b-4 border-black">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <h1 className="text-h1 font-bold text-black mb-3 uppercase tracking-wide">
-            Immigration Profile
-          </h1>
-          <p className="text-body-lg text-gray-700 max-w-3xl">
-            Complete your profile to determine your immigration viability. All sections are accessible—click any section to expand and edit.
-          </p>
+      {/* Page Header - Bold, Clean */}
+      <div className="bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+          <div className="max-w-4xl">
+            <h1 className="text-display font-extrabold text-black mb-6 leading-tight uppercase tracking-tight">
+              Immigration Profile
+            </h1>
+            <p className="text-h3 text-gray-700 font-normal leading-relaxed">
+              Complete your profile to determine your immigration viability.
+              <span className="block mt-3 text-body-lg text-gray-500">
+                All sections are accessible—click any section to expand and edit. Your data is saved automatically.
+              </span>
+            </p>
+          </div>
         </div>
       </div>
 
       {/* Form Content */}
-      <div className="bg-gray-50 py-12">
+      <div className="bg-gray-50 py-16 md:py-20">
         <ProfileFormAccordion onSave={handleSaveProfile} initialData={initialData} />
       </div>
 
       {/* View Results Button - Fixed Bottom Bar */}
       {initialData && (
-        <div className="sticky bottom-0 bg-primary border-t-4 border-black">
+        <div className="sticky bottom-0 bg-primary">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <Button
               onClick={() => navigate('/results')}
               variant="secondary"
               size="lg"
-              className="w-full text-h4"
+              className="w-full"
             >
-              View Immigration Viability Results →
+              VIEW IMMIGRATION VIABILITY RESULTS →
             </Button>
           </div>
         </div>

@@ -59,7 +59,9 @@ describe('ProfileFormAccordion', () => {
     it('should show 0% progress for empty profile', () => {
       render(<ProfileFormAccordion {...getDefaultProps()} />);
 
-      expect(screen.getByText(/0% complete/i)).toBeInTheDocument();
+      // Progress percentage is now in a separate element
+      expect(screen.getByText('0%')).toBeInTheDocument();
+      expect(screen.getByText(/7 sections remaining/i)).toBeInTheDocument();
     });
 
     it('should show correct progress for partial profile', () => {
@@ -72,9 +74,10 @@ describe('ProfileFormAccordion', () => {
 
       render(<ProfileFormAccordion {...getDefaultProps()} initialData={partialData} />);
 
-      // Should show some progress (not 0%)
-      const progressText = screen.getByText(/\d+% complete/i);
-      expect(progressText).toBeInTheDocument();
+      // Should show some progress (not 0%) - percentage is in separate element
+      const progressElement = screen.getByText(/\d+%/);
+      expect(progressElement).toBeInTheDocument();
+      expect(progressElement.textContent).not.toBe('0%');
     });
   });
 
@@ -198,7 +201,7 @@ describe('ProfileFormAccordion', () => {
     it('should show "Jump to Incomplete" button when there are incomplete sections', () => {
       render(<ProfileFormAccordion {...getDefaultProps()} />);
 
-      expect(screen.getByText('Jump to Incomplete')).toBeInTheDocument();
+      expect(screen.getByText('JUMP TO INCOMPLETE')).toBeInTheDocument();
     });
 
     it('should show progress when profile has data', () => {
@@ -225,9 +228,10 @@ describe('ProfileFormAccordion', () => {
 
       render(<ProfileFormAccordion {...getDefaultProps()} initialData={profileData} />);
 
-      // Should show progress greater than 0%
-      const progressText = screen.getByText(/\d+% complete/i);
-      expect(progressText).toBeInTheDocument();
+      // Should show progress greater than 0% - percentage is in separate element
+      const progressElement = screen.getByText(/\d+%/);
+      expect(progressElement).toBeInTheDocument();
+      expect(progressElement.textContent).not.toBe('0%');
     });
 
     it('should scroll to first incomplete section when clicked', async () => {
@@ -239,7 +243,7 @@ describe('ProfileFormAccordion', () => {
 
       render(<ProfileFormAccordion {...getDefaultProps()} />);
 
-      const jumpButton = screen.getByText('Jump to Incomplete');
+      const jumpButton = screen.getByText('JUMP TO INCOMPLETE');
       await user.click(jumpButton);
 
       // Should have called scrollIntoView
@@ -266,7 +270,7 @@ describe('ProfileFormAccordion', () => {
 
       render(<ProfileFormAccordion {...getDefaultProps()} initialData={profileData} />);
 
-      const jumpButton = screen.getByText('Jump to Incomplete');
+      const jumpButton = screen.getByText('JUMP TO INCOMPLETE');
       await user.click(jumpButton);
 
       // Should have called scrollIntoView
@@ -350,9 +354,9 @@ describe('ProfileFormAccordion', () => {
 
       render(<ProfileFormAccordion {...getDefaultProps()} initialData={profileData} />);
 
-      // Should show a percentage
-      const progressText = screen.getByText(/\d+% complete/i);
-      expect(progressText).toBeInTheDocument();
+      // Should show a percentage - percentage is in separate element
+      const progressElement = screen.getByText(/\d+%/);
+      expect(progressElement).toBeInTheDocument();
     });
   });
 
@@ -426,8 +430,9 @@ describe('ProfileFormAccordion', () => {
       const header = screen.getByText('Your Profile');
       expect(header).toBeInTheDocument();
 
-      // Check for progress information
-      expect(screen.getByText(/\d+% complete/i)).toBeInTheDocument();
+      // Check for progress information - percentage is in separate element
+      expect(screen.getByText(/\d+%/)).toBeInTheDocument();
+      expect(screen.getByText(/sections? remaining/i)).toBeInTheDocument();
     });
 
     it('should render footer with auto-save message', () => {
