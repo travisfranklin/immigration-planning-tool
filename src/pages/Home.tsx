@@ -7,6 +7,7 @@
 
 import { useNavigate } from 'react-router-dom';
 import { Layout, Button } from '../components';
+import { UI_CONTAINER } from '@/constants/uiStyles';
 
 export function Home() {
   const navigate = useNavigate();
@@ -17,14 +18,14 @@ export function Home() {
       <div className="bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-40">
           <div className="max-w-5xl mx-auto text-center">
-            <h1 className="text-display font-extrabold text-black mb-8 leading-[0.9] tracking-tight">
-              EU IMMIGRATION<br />PLANNING
+            <h1 className="text-9xl font-extrabold text-black mb-8 leading-[0.9] tracking-tight">
+              reloca.to
             </h1>
             <p className="text-h3 text-gray-700 mb-4 leading-relaxed font-normal max-w-3xl mx-auto">
               Determine your viability for immigration to EU countries.
             </p>
-            <p className="text-body-lg text-gray-500 mb-12 max-w-2xl mx-auto">
-              All your data stays on your device—no server, no cloud, complete privacy.
+            <p className="text-body text-gray-500 mb-12 max-w-2xl mx-auto">
+              All your data stays on your device. No server, no cloud, complete privacy.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button
@@ -103,24 +104,30 @@ export function Home() {
         </div>
       </div>
 
-      {/* Process Flowcharts Section - Bold CTA Block */}
+      {/* Legalese Section */}
       <div className="bg-primary">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-h1 font-bold text-white mb-6 uppercase tracking-wide">
-              Immigration Process Flowcharts
-            </h2>
-            <p className="text-body-lg text-white mb-12 leading-relaxed opacity-90 max-w-2xl mx-auto">
-              View step-by-step visual guides for each visa program, including required documents,
-              timelines, and important notes.
-            </p>
-            <Button
-              variant="secondary"
-              size="lg"
-              onClick={() => navigate('/flowchart')}
-            >
-              VIEW FLOWCHARTS →
-            </Button>
+        <div className={`${UI_CONTAINER.lg} px-4 sm:px-6 lg:px-8 py-20 md:py-32`}>
+          <div className="max-w-4xl mx-auto">
+            <div className="space-y-6 text-body text-white opacity-90 leading-relaxed">
+              <p>
+                <strong className="font-semibold">Not Legal or Immigration Advice.</strong> This tool provides general information only and does not constitute legal advice, immigration consulting, or professional services of any kind. Immigration laws, regulations, and policies are complex, frequently change, and vary significantly by country, jurisdiction, and individual circumstances.
+              </p>
+              <p>
+                <strong className="font-semibold">No Guarantee of Accuracy.</strong> While we strive to provide accurate and up-to-date information, we make no representations or warranties regarding the completeness, accuracy, reliability, or currentness of any information provided. Immigration requirements and eligibility criteria may have changed since this information was last updated.
+              </p>
+              <p>
+                <strong className="font-semibold">Consult Qualified Professionals.</strong> Before making any immigration decisions, you should consult with a qualified immigration attorney, licensed immigration consultant, or authorized representative in the relevant jurisdiction. Individual circumstances vary greatly, and only a qualified professional can provide advice tailored to your specific situation.
+              </p>
+              <p>
+                <strong className="font-semibold">No Attorney-Client Relationship.</strong> Use of this tool does not create an attorney-client relationship or any professional relationship. Any information you provide is not protected by attorney-client privilege or any other confidentiality protections.
+              </p>
+              <p>
+                <strong className="font-semibold">Limitation of Liability.</strong> To the fullest extent permitted by law, we disclaim all liability for any damages, losses, or consequences arising from your use of this tool or reliance on any information provided, including but not limited to denied applications, missed opportunities, financial losses, or adverse immigration outcomes.
+              </p>
+              <p className="text-body-sm opacity-75 pt-4">
+                By using this tool, you acknowledge that you have read, understood, and agree to this disclaimer. If you do not agree, please do not use this tool.
+              </p>
+            </div>
           </div>
         </div>
       </div>

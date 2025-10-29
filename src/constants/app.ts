@@ -13,7 +13,7 @@ export const APP_VERSION = packageJson.version;
 /**
  * Application name
  */
-export const APP_NAME = 'EU Immigration Planning Tool';
+export const APP_NAME = 'Reloca.to - EU Immigration Planning Tool';
 
 /**
  * Application description

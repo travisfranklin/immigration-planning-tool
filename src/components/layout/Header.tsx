@@ -45,17 +45,16 @@ export function Header({ currentPage }: HeaderProps) {
   return (
     <>
       {/* Desktop Header - Bold, minimalist design */}
-      <header className="bg-white border-b-4 border-black">
+      <header className="bg-white">
         <div className={`${UI_CONTAINER.lg} px-4 sm:px-6 lg:px-8`}>
           <div className="flex items-center justify-between h-20">
             {/* Logo/Title - Bold, uppercase */}
             <button
               onClick={() => handleNavigation('/')}
-              className="flex items-center gap-2 text-h3 font-bold uppercase tracking-wide text-black hover:text-primary transition-colors duration-fast"
+              className="flex items-center gap-2 text-h3 font-bold tracking-wide text-black hover:text-primary transition-colors duration-fast"
             >
-              <span className="text-h2">🇪🇺</span>
-              <span className="hidden sm:inline">EU Immigration Planner</span>
-              <span className="sm:hidden">EU Planner</span>
+              <span className="hidden sm:inline">reloca.to</span>
+              <span className="sm:hidden">reloca.to</span>
             </button>
 
             {/* Desktop Navigation - Sharp, bold */}
