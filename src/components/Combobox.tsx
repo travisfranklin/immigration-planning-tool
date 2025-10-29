@@ -7,6 +7,7 @@
  */
 
 import React, { useState, useRef, useEffect } from 'react';
+import { ChevronDownIcon } from '@heroicons/react/24/outline';
 
 interface ComboboxOption {
   value: string;
@@ -167,10 +168,10 @@ export function Combobox({
           onKeyDown={handleKeyDown}
           placeholder={placeholder}
           className={`
-            w-full px-3 py-2 border-2 text-body-sm
-            focus:outline-none focus:border-4 focus:border-accent
+            w-full px-3 py-2 pr-10 border-2 text-body-sm
+            focus:outline-none focus:border-4 focus:border-primary
             transition-all duration-fast
-            bg-white text-black
+            bg-gray-200 text-black
             ${error ? 'border-danger focus:border-danger' : 'border-black'}
             ${className}
           `}
@@ -180,16 +181,12 @@ export function Combobox({
           autoComplete="off"
         />
 
-        {/* Dropdown icon */}
+        {/* Dropdown icon - Heroicons chevron */}
         <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-          <svg
-            className={`w-5 h-5 text-gray-400 transition-transform ${isOpen ? 'rotate-180' : ''}`}
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-          </svg>
+          <ChevronDownIcon
+            className={`w-6 h-6 text-black transition-transform ${isOpen ? 'rotate-180' : ''}`}
+            strokeWidth={2.5}
+          />
         </div>
 
         {/* Dropdown menu */}

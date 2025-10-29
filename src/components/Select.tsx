@@ -6,14 +6,15 @@
  * Design Principles:
  * - Sharp corners (no border-radius)
  * - Thick borders (2px default, 4px focus)
- * - Clear focus states (accent color border)
+ * - Clear focus states (primary color border)
  * - High contrast
  * - Uppercase, bold labels
- * - Bold, geometric dropdown icon
+ * - Bold, geometric dropdown icon from Heroicons
  * - No decorative effects
  */
 
 import React from 'react';
+import { ChevronDownIcon } from '@heroicons/react/24/outline';
 
 interface SelectOption {
   value: string | number;
@@ -54,11 +55,11 @@ export function Select({
           id={selectId}
           className={`
             w-full px-3 py-2 pr-10 border-2 text-body-sm
-            focus:outline-none focus:border-4 focus:border-accent
+            focus:outline-none focus:border-4 focus:border-primary
             transition-all duration-fast
             appearance-none
             ${error ? 'border-danger focus:border-danger' : 'border-black'}
-            ${props.disabled ? 'bg-gray-100 text-gray-500 cursor-not-allowed' : 'bg-white text-black'}
+            ${props.disabled ? 'bg-gray-100 text-gray-500 cursor-not-allowed' : 'bg-gray-200 text-black'}
             ${className}
           `}
           {...props}
@@ -73,17 +74,9 @@ export function Select({
           ))}
         </select>
 
-        {/* Dropdown icon - Bold, geometric */}
+        {/* Dropdown icon - Heroicons chevron */}
         <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-          <svg
-            className="w-5 h-5 text-black"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            strokeWidth={3}
-          >
-            <path strokeLinecap="square" strokeLinejoin="miter" d="M19 9l-7 7-7-7" />
-          </svg>
+          <ChevronDownIcon className="w-6 h-6 text-black" strokeWidth={2.5} />
         </div>
       </div>
 

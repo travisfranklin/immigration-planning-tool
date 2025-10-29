@@ -43,10 +43,10 @@ export function Input({
         id={inputId}
         className={`
           w-full px-3 py-2 border-2 text-body-sm
-          focus:outline-none focus:border-4 focus:border-accent
+          focus:outline-none focus:border-4 focus:border-primary
           transition-all duration-fast
           ${error ? 'border-danger focus:border-danger' : 'border-black'}
-          ${props.disabled ? 'bg-gray-100 text-gray-500 cursor-not-allowed' : 'bg-white text-black'}
+          ${props.disabled ? 'bg-gray-100 text-gray-500 cursor-not-allowed' : 'bg-gray-200 text-black'}
           ${className}
         `}
         {...props}
