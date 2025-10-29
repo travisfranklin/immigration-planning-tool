@@ -16,6 +16,7 @@ export function Profile() {
   const navigate = useNavigate();
   const [initialData, setInitialData] = useState<Partial<UserProfile> | undefined>(undefined);
   const [isLoading, setIsLoading] = useState(true);
+  const [progress, setProgress] = useState(0);
   const currentProfileIdRef = useRef<string | null>(null);
   const profileLoadedRef = useRef(false);
 
@@ -79,6 +80,21 @@ export function Profile() {
 
   return (
     <Layout currentPage="profile">
+      {/* Sticky Progress Bar - Full Width */}
+      <div className="sticky top-0 z-10 bg-white border-b-4 border-black">
+        <div className="w-full bg-gray-200 h-3">
+          <div
+            className="bg-primary h-full transition-all duration-300"
+            style={{ width: `${progress}%` }}
+            role="progressbar"
+            aria-valuenow={progress}
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-label="Profile completion progress"
+          />
+        </div>
+      </div>
+
       {/* Page Header - Bold, Clean */}
       <div className="bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
@@ -98,22 +114,24 @@ export function Profile() {
 
       {/* Form Content */}
       <div className="bg-gray-50 py-16 md:py-20">
-        <ProfileFormAccordion onSave={handleSaveProfile} initialData={initialData} />
+        <ProfileFormAccordion
+          onSave={handleSaveProfile}
+          initialData={initialData}
+          onProgressChange={setProgress}
+        />
       </div>
 
-      {/* View Results Button - Fixed Bottom Bar */}
+      {/* View Results Button - Flat Full-Width at Bottom */}
       {initialData && (
-        <div className="sticky bottom-0 bg-primary">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-            <Button
-              onClick={() => navigate('/results')}
-              variant="secondary"
-              size="lg"
-              className="w-full"
-            >
-              VIEW IMMIGRATION VIABILITY RESULTS →
-            </Button>
-          </div>
+        <div className="sticky bottom-0">
+          <Button
+            onClick={() => navigate('/results')}
+            variant="primary"
+            size="lg"
+            className="w-full rounded-none"
+          >
+            VIEW IMMIGRATION VIABILITY RESULTS →
+          </Button>
         </div>
       )}
     </Layout>

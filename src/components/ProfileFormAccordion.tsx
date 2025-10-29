@@ -29,6 +29,7 @@ import { validateFormStep } from '@/utils/validation';
 interface ProfileFormAccordionProps {
   onSave?: (profile: Partial<UserProfile>) => Promise<void>;
   initialData?: Partial<UserProfile>;
+  onProgressChange?: (progress: number) => void;
 }
 
 interface FormSection {
@@ -134,6 +135,7 @@ function StatusIcon({ status }: { status: SectionStatus }) {
 export function ProfileFormAccordion({
   onSave,
   initialData,
+  onProgressChange,
 }: ProfileFormAccordionProps) {
   const [formData, setFormData] = useState<Partial<UserProfile>>(
     initialData || getEmptyUserProfile()
@@ -199,6 +201,13 @@ export function ProfileFormAccordion({
 
   const progress = calculateFormProgress(formData);
 
+  // Notify parent of progress changes
+  useEffect(() => {
+    if (onProgressChange) {
+      onProgressChange(progress);
+    }
+  }, [progress, onProgressChange]);
+
   const handleFieldChange = useCallback(
     (field: string, value: unknown) => {
       setFormData((prev: Partial<UserProfile>) => mergeFormData(prev, { [field]: value }));
@@ -258,9 +267,9 @@ export function ProfileFormAccordion({
 
   return (
     <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Header with Save Status and Progress */}
+      {/* Header with Save Status */}
       <div className="bg-white border-4 border-black mb-12 p-8">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 mb-8">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
           <div className="flex-1">
             <h2 className="text-h1 font-bold text-black uppercase tracking-wide mb-3">Your Profile</h2>
             <div className="flex items-center gap-4">
@@ -289,16 +298,6 @@ export function ProfileFormAccordion({
                 error={saveError}
               />
             </div>
-          </div>
-        </div>
-
-        {/* Progress Bar - Bold, High Contrast */}
-        <div className="mt-6" role="progressbar" aria-valuenow={progress} aria-valuemin={0} aria-valuemax={100} aria-label="Profile completion progress">
-          <div className="w-full bg-gray-200 h-4 border-2 border-black">
-            <div
-              className="bg-primary h-full transition-all duration-300"
-              style={{ width: `${progress}%` }}
-            />
           </div>
         </div>
       </div>
