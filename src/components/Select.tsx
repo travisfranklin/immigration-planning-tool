@@ -6,7 +6,8 @@
  * Design Principles:
  * - Sharp corners (no border-radius)
  * - Thick borders (2px default, 4px focus)
- * - Clear focus states (primary color border)
+ * - Clear focus states (primary color border + visible focus ring)
+ * - Accessible focus ring (4px ring with 30% opacity)
  * - High contrast
  * - Uppercase, bold labels
  * - Bold, geometric dropdown icon from Heroicons
@@ -56,9 +57,10 @@ export function Select({
           className={`
             w-full px-3 py-2 pr-10 border-2 text-body-sm
             focus:outline-none focus:border-4 focus:border-primary
+            focus-visible:ring-4 focus-visible:ring-primary focus-visible:ring-opacity-30
             transition-all duration-fast
             appearance-none
-            ${error ? 'border-danger focus:border-danger' : 'border-black'}
+            ${error ? 'border-danger focus:border-danger focus-visible:ring-danger focus-visible:ring-opacity-30' : 'border-black'}
             ${props.disabled ? 'bg-gray-100 text-gray-500 cursor-not-allowed' : 'bg-gray-200 text-black'}
             ${className}
           `}
