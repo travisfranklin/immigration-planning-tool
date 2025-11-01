@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAllUserProfiles } from '../services/storage/userProfileStore';
 import { calculateAllCountryViabilities } from '../services/viability/calculator';
-import { saveViabilityScore, getUserViabilityScores } from '../services/storage/viabilityScoreStore';
+import { saveViabilityScore, getUserViabilityScores, deleteUserViabilityScores } from '../services/storage/viabilityScoreStore';
 import type { ViabilityScore } from '../types/viability';
 import { CountryResultsTable } from '../components/results/CountryResultsTable';
 import { Layout } from '../components/Layout';
@@ -41,7 +41,28 @@ export const Results: React.FC = () => {
       // Check if we have existing scores
       const existingScores = await getUserViabilityScores(profile.id);
 
-      if (existingScores.length > 0) {
+      // Determine if we need to recalculate
+      let needsRecalculation = false;
+
+      if (existingScores.length === 0) {
+        // No existing scores - need to calculate
+        needsRecalculation = true;
+      } else {
+        // Check if profile has been updated since scores were calculated
+        // Find the oldest score's createdAt timestamp
+        const oldestScoreTimestamp = Math.min(...existingScores.map(s => s.createdAt));
+
+        // If profile was updated after the scores were created, recalculate
+        if (profile.updatedAt > oldestScoreTimestamp) {
+          needsRecalculation = true;
+          console.log('Profile has changed since last calculation. Recalculating scores...');
+        }
+      }
+
+      if (needsRecalculation) {
+        // Calculate new scores (this will also delete old scores)
+        await calculateResults(profile.id);
+      } else {
         // Use existing scores - sort by score (descending), then by country name (ascending) for stable ordering
         const sorted = [...existingScores].sort((a: ViabilityScore, b: ViabilityScore) => {
           const scoreDiff = b.overallScore - a.overallScore;
@@ -49,9 +70,6 @@ export const Results: React.FC = () => {
           return a.countryName.localeCompare(b.countryName);
         });
         setScores(sorted);
-      } else {
-        // Calculate new scores
-        await calculateResults(profile.id);
       }
 
       setIsLoading(false);
@@ -74,6 +92,9 @@ export const Results: React.FC = () => {
       }
 
       const profile = profiles[0];
+
+      // Delete all existing viability scores for this user
+      await deleteUserViabilityScores(userId);
 
       // Calculate viability scores for all countries
       const calculatedScores = await calculateAllCountryViabilities(userId, profile);
