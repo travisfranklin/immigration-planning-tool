@@ -309,9 +309,10 @@ export function getBestProgramsForCountry(
   limit: number = 3
 ): ProgramMatchResult[] {
   const allMatches = matchUserToPrograms(profile);
-  
+
   return allMatches
     .filter(match => match.program.countryCode === countryCode)
+    .filter(match => match.alignsWithTimeline) // Filter out programs that don't fit user's timeline
     .slice(0, limit);
 }
 
