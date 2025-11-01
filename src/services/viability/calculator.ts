@@ -216,26 +216,32 @@ function determineOverallRiskLevel(risks: RiskFactor[]): 'low' | 'medium' | 'hig
 
 /**
  * Calculate viability score for a specific country
+ * Returns null if no programs match the user's timeline
  */
 export async function calculateCountryViability(
   userId: string,
   profile: UserProfile,
   countryCode: string
-): Promise<ViabilityScore> {
+): Promise<ViabilityScore | null> {
   // Get best matching programs for this country
   const programMatches = getBestProgramsForCountry(profile, countryCode, 5);
-  
+
+  // If no programs match the timeline, return null to exclude this country
+  if (programMatches.length === 0) {
+    return null;
+  }
+
   // Apply user preference adjustments
   const adjustedMatches = applyPreferenceAdjustments(programMatches, profile);
-  
+
   // Sort by adjusted score
   const sortedMatches = adjustedMatches.sort((a, b) => b.eligibilityScore - a.eligibilityScore);
-  
+
   // Get the best program
   const bestMatch = sortedMatches[0];
-  
+
   if (!bestMatch) {
-    throw new Error(`No programs found for country ${countryCode}`);
+    return null;
   }
   
   const bestProgram = bestMatch.program;
@@ -319,6 +325,7 @@ export async function calculateCountryViability(
 
 /**
  * Calculate viability scores for all countries
+ * Excludes countries with no programs matching the user's timeline
  */
 export async function calculateAllCountryViabilities(
   userId: string,
@@ -331,7 +338,10 @@ export async function calculateAllCountryViabilities(
 
   for (const countryCode of ALL_COUNTRIES) {
     const score = await calculateCountryViability(userId, profile, countryCode);
-    scores.push(score);
+    // Only include countries that have programs matching the user's timeline
+    if (score !== null) {
+      scores.push(score);
+    }
   }
 
   // Sort by overall score (highest first)
