@@ -26,18 +26,7 @@ export interface ScoreDisplayProps {
   className?: string;
 }
 
-import { getScoreColorClasses } from '../../constants/viability';
-
-/**
- * Get score label
- */
-function getScoreLabel(score: number): string {
-  if (score >= 80) return 'Excellent';
-  if (score >= 60) return 'Good';
-  if (score >= 40) return 'Moderate';
-  if (score >= 20) return 'Low';
-  return 'Very Low';
-}
+import { getScoreColorClasses, getScoreLabel } from '../../constants/viability';
 
 /**
  * Get size classes

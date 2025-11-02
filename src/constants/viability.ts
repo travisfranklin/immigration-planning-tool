@@ -155,6 +155,67 @@ export const getAllViabilityLevels = (): ViabilityLevel[] => {
 };
 
 /**
+ * SCORE LABELS AND THRESHOLDS
+ * Human-readable labels for score ranges (0-100 scale)
+ */
+
+/**
+ * Get human-readable label for a score (0-100)
+ * Used for displaying score quality in UI
+ */
+export const getScoreLabel = (score: number): string => {
+  if (score >= 80) return 'Excellent';
+  if (score >= 60) return 'Good';
+  if (score >= 40) return 'Moderate';
+  if (score >= 20) return 'Low';
+  return 'Very Low';
+};
+
+/**
+ * COMPONENT SCORE METADATA
+ * Labels and descriptions for the five component scores
+ */
+
+export type ComponentScoreType = 'career' | 'financial' | 'education' | 'language' | 'family';
+
+/**
+ * Display labels for component score types
+ */
+export const COMPONENT_LABELS: Record<ComponentScoreType, string> = {
+  career: 'Career',
+  financial: 'Financial',
+  education: 'Education',
+  language: 'Language',
+  family: 'Family',
+};
+
+/**
+ * Descriptions for component score types
+ * Explains what factors contribute to each component score
+ */
+export const COMPONENT_DESCRIPTIONS: Record<ComponentScoreType, string> = {
+  career: 'Work experience, occupation demand, job offer status',
+  financial: 'Income, savings, cost of living alignment',
+  education: 'Education level, field of study relevance',
+  language: 'Language proficiency and learning potential',
+  family: 'Family ties, marital status, adaptability',
+};
+
+/**
+ * Get component label by key
+ */
+export const getComponentLabel = (component: ComponentScoreType): string => {
+  return COMPONENT_LABELS[component];
+};
+
+/**
+ * Get component description by key
+ */
+export const getComponentDescription = (component: ComponentScoreType): string => {
+  return COMPONENT_DESCRIPTIONS[component];
+};
+
+/**
  * SCORE COLOR FUNCTIONS
  * Centralized color logic for all score displays (0-100 scale)
  *

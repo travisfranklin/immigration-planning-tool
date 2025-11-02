@@ -1,6 +1,12 @@
 import React from 'react';
 import type { ComponentScore } from '../../types/viability';
-import { getScoreColorClass } from '../../constants/viability';
+import {
+  getScoreColorClass,
+  getScoreLabel,
+  COMPONENT_LABELS,
+  COMPONENT_DESCRIPTIONS,
+  type ComponentScoreType
+} from '../../constants/viability';
 
 interface ScoreBreakdownProps {
   componentScores: ComponentScore;
@@ -13,30 +19,6 @@ interface ScoreBreakdownProps {
   };
 }
 
-const getScoreLabel = (score: number): string => {
-  if (score >= 80) return 'Excellent';
-  if (score >= 60) return 'Good';
-  if (score >= 40) return 'Moderate';
-  if (score >= 20) return 'Low';
-  return 'Very Low';
-};
-
-const componentLabels: Record<string, string> = {
-  career: 'Career',
-  financial: 'Financial',
-  education: 'Education',
-  language: 'Language',
-  family: 'Family',
-};
-
-const componentDescriptions: Record<string, string> = {
-  career: 'Work experience, occupation demand, job offer status',
-  financial: 'Income, savings, cost of living alignment',
-  education: 'Education level, field of study relevance',
-  language: 'Language proficiency and learning potential',
-  family: 'Family ties, marital status, adaptability',
-};
-
 export const ScoreBreakdown: React.FC<ScoreBreakdownProps> = ({
   componentScores,
   programWeights,
@@ -46,7 +28,6 @@ export const ScoreBreakdown: React.FC<ScoreBreakdownProps> = ({
 
   return (
     <div className="bg-white border-2 border-black p-6">
-      <h3 className="text-h3 font-bold text-black mb-6 uppercase tracking-wide">Component Scores</h3>
       <div className="mt-6 grid grid-cols-1">
         {components.map(([component, score]) => {
           const weight = programWeights?.[component];
@@ -63,7 +44,7 @@ export const ScoreBreakdown: React.FC<ScoreBreakdownProps> = ({
               onBlur={() => setHoveredComponent(null)}
               tabIndex={0}
               role="button"
-              aria-label={`${componentLabels[component]} score: ${score}. ${componentDescriptions[component]}`}
+              aria-label={`${COMPONENT_LABELS[component as ComponentScoreType]} score: ${score}. ${COMPONENT_DESCRIPTIONS[component as ComponentScoreType]}`}
             >
               {/* Component Header - Compact */}
               <div className="absolute top-0 left-0 w-full px-1">
@@ -71,17 +52,8 @@ export const ScoreBreakdown: React.FC<ScoreBreakdownProps> = ({
                   <div className={`text-data-xl text-6xl font-bold text-white flex gap-1 items-center tracking-tight mt-2`}>
                     {score}
                     <h4 className="font-bold uppercase text-label text-black opacity-75 tracking-wider font-sans">
-                      {componentLabels[component]}
+                      {COMPONENT_LABELS[component as ComponentScoreType]}
                     </h4>
-                    {/* Info icon for tooltip indicator */}
-                    <svg
-                      className="w-3 h-3 text-gray-500 ml-1"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      aria-hidden="true"
-                    >
-                      <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
-                    </svg>
                   </div>
                   <div className="text-label-sm uppercase mt-2">{getScoreLabel(score)}</div>
                 </div>
@@ -97,19 +69,17 @@ export const ScoreBreakdown: React.FC<ScoreBreakdownProps> = ({
 
               {/* Tooltip - Shows on hover/focus, always accessible to screen readers */}
               <div
-                className={`absolute left-0 right-0 bottom-full mb-2 px-3 py-2 bg-black text-white text-xs leading-tight border-2 border-black z-10 transition-opacity duration-200 ${
+                className={`absolute flex items-center top-0 left-0 px-2 right-0 bottom-full h-5 bg-black text-white text-xs border-2 border-black z-10 transition-opacity font-bold ${
                   isHovered ? 'opacity-100' : 'opacity-0 pointer-events-none'
                 }`}
                 role="tooltip"
                 aria-hidden={!isHovered}
               >
-                {componentDescriptions[component]}
-                {/* Tooltip arrow */}
-                <div className="absolute top-full left-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-black"></div>
+                {COMPONENT_DESCRIPTIONS[component as ComponentScoreType]}
               </div>
 
               {/* Screen reader only description */}
-              <span className="sr-only">{componentDescriptions[component]}</span>
+              <span className="sr-only">{COMPONENT_DESCRIPTIONS[component as ComponentScoreType]}</span>
 
               {/* Weight Info - Compact */}
               {weight !== undefined && (
