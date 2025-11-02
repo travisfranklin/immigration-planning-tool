@@ -155,15 +155,20 @@ export const getAllViabilityLevels = (): ViabilityLevel[] => {
 };
 
 /**
- * Get Tailwind background color class for a score (0-100)
- * Used for progress bars and score indicators
+ * SCORE COLOR FUNCTIONS
+ * Centralized color logic for all score displays (0-100 scale)
  *
- * Color mapping:
+ * Color mapping using design system palette:
  * - 80-100: Success (Aquamarine) - Excellent performance
  * - 60-79: Primary (Electric Indigo) - Good performance
  * - 40-59: Warning (Orange Peel) - Moderate performance
  * - 20-39: Danger (Red-Orange) - Low performance
  * - 0-19: Danger Dark - Very low performance
+ */
+
+/**
+ * Get Tailwind background color class for a score (0-100)
+ * Used for progress bars and score indicators
  */
 export const getScoreColorClass = (score: number): string => {
   if (score >= 80) return 'bg-success';
@@ -176,13 +181,6 @@ export const getScoreColorClass = (score: number): string => {
 /**
  * Get Tailwind text color class for a score (0-100)
  * Used for score text display
- *
- * Color mapping:
- * - 80-100: Success Dark - Excellent performance
- * - 60-79: Primary Dark - Good performance
- * - 40-59: Warning Dark - Moderate performance
- * - 20-39: Danger - Low performance
- * - 0-19: Danger Dark - Very low performance
  */
 export const getScoreTextColorClass = (score: number): string => {
   if (score >= 80) return 'text-success-dark';
@@ -190,5 +188,101 @@ export const getScoreTextColorClass = (score: number): string => {
   if (score >= 40) return 'text-warning-dark';
   if (score >= 20) return 'text-danger';
   return 'text-danger-dark';
+};
+
+/**
+ * Get Tailwind border color class for a score (0-100)
+ * Used for bordered elements
+ */
+export const getScoreBorderColorClass = (score: number): string => {
+  if (score >= 80) return 'border-success';
+  if (score >= 60) return 'border-primary';
+  if (score >= 40) return 'border-warning';
+  if (score >= 20) return 'border-danger';
+  return 'border-danger-dark';
+};
+
+/**
+ * Get all color classes for a score (bg, text, border)
+ * Convenience function for components that need multiple color classes
+ */
+export const getScoreColorClasses = (score: number): { bg: string; text: string; border: string } => {
+  return {
+    bg: getScoreColorClass(score),
+    text: getScoreTextColorClass(score),
+    border: getScoreBorderColorClass(score),
+  };
+};
+
+/**
+ * RISK LEVEL COLOR FUNCTIONS
+ * Centralized color logic for risk assessment displays
+ *
+ * Color mapping:
+ * - Low: Success (Aquamarine) - Minimal risk
+ * - Medium: Warning (Orange Peel) - Moderate risk
+ * - High: Danger (Red-Orange) - Significant risk
+ */
+
+export type RiskLevel = 'low' | 'medium' | 'high';
+
+/**
+ * Get Tailwind background color class for a risk level
+ */
+export const getRiskColorClass = (level: RiskLevel): string => {
+  switch (level) {
+    case 'low':
+      return 'bg-success';
+    case 'medium':
+      return 'bg-warning';
+    case 'high':
+      return 'bg-danger';
+    default:
+      return 'bg-gray-300';
+  }
+};
+
+/**
+ * Get Tailwind text color class for a risk level
+ */
+export const getRiskTextColorClass = (level: RiskLevel): string => {
+  switch (level) {
+    case 'low':
+      return 'text-success-dark';
+    case 'medium':
+      return 'text-warning-dark';
+    case 'high':
+      return 'text-danger';
+    default:
+      return 'text-gray-700';
+  }
+};
+
+/**
+ * Get Tailwind border color class for a risk level
+ */
+export const getRiskBorderColorClass = (level: RiskLevel): string => {
+  switch (level) {
+    case 'low':
+      return 'border-success';
+    case 'medium':
+      return 'border-warning';
+    case 'high':
+      return 'border-danger';
+    default:
+      return 'border-gray-300';
+  }
+};
+
+/**
+ * Get all color classes for a risk level (bg, text, border)
+ * Convenience function for components that need multiple color classes
+ */
+export const getRiskColorClasses = (level: RiskLevel): { bg: string; text: string; border: string } => {
+  return {
+    bg: getRiskColorClass(level),
+    text: getRiskTextColorClass(level),
+    border: getRiskBorderColorClass(level),
+  };
 };
 

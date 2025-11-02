@@ -2,6 +2,12 @@ import React from 'react';
 import type { ViabilityScore } from '../../types/viability';
 import { Badge } from '../Badge';
 import type { BadgeVariant } from '../Badge';
+import {
+  getScoreTextColorClass,
+  getScoreColorClass,
+  getRiskTextColorClass,
+  type RiskLevel
+} from '../../constants/viability';
 
 interface CountryRankingCardProps {
   score: ViabilityScore;
@@ -9,44 +15,6 @@ interface CountryRankingCardProps {
   onViewDetails: (countryCode: string) => void;
   onViewFlowchart?: (countryCode: string, programId: string) => void;
 }
-
-const getViabilityColor = (level: string): string => {
-  switch (level) {
-    case 'excellent':
-      return 'bg-green-100 border-green-500 text-green-900';
-    case 'good':
-      return 'bg-blue-100 border-blue-500 text-blue-900';
-    case 'moderate':
-      return 'bg-yellow-100 border-yellow-500 text-yellow-900';
-    case 'low':
-      return 'bg-orange-100 border-orange-500 text-orange-900';
-    case 'very_low':
-      return 'bg-red-100 border-red-500 text-red-900';
-    default:
-      return 'bg-gray-100 border-gray-500 text-gray-900';
-  }
-};
-
-const getRiskColor = (level: string): string => {
-  switch (level) {
-    case 'low':
-      return 'text-green-600';
-    case 'medium':
-      return 'text-yellow-600';
-    case 'high':
-      return 'text-red-600';
-    default:
-      return 'text-gray-600';
-  }
-};
-
-const getScoreColor = (score: number): string => {
-  if (score >= 80) return 'text-green-600';
-  if (score >= 60) return 'text-blue-600';
-  if (score >= 40) return 'text-yellow-600';
-  if (score >= 20) return 'text-orange-600';
-  return 'text-red-600';
-};
 
 const getBadgeVariant = (viabilityLevel: string, meetsRequirements: boolean): BadgeVariant => {
   if (!meetsRequirements) return 'not-eligible';
@@ -73,8 +41,9 @@ export const CountryRankingCard: React.FC<CountryRankingCardProps> = ({
   onViewDetails,
   onViewFlowchart,
 }) => {
-  const viabilityColorClass = getViabilityColor(score.viabilityLevel);
-  const riskColorClass = getRiskColor(score.overallRiskLevel);
+  const scoreColorClass = getScoreColorClass(score.overallScore);
+  const scoreTextColorClass = getScoreTextColorClass(score.overallScore);
+  const riskTextColorClass = getRiskTextColorClass(score.overallRiskLevel as RiskLevel);
 
   return (
     <div className="bg-white rounded-lg shadow-md border-2 border-gray-200 p-6 hover:shadow-lg transition-shadow">
@@ -100,7 +69,7 @@ export const CountryRankingCard: React.FC<CountryRankingCardProps> = ({
             <p className="text-sm text-gray-600">{score.recommendedProgram?.programName}</p>
           </div>
         </div>
-        <div className={`px-4 py-2 rounded-lg border-2 font-semibold ${viabilityColorClass}`}>
+        <div className={`px-4 py-2 rounded-lg border-2 font-semibold ${scoreTextColorClass}`}>
           {score.overallScore}/100
         </div>
       </div>
@@ -111,23 +80,13 @@ export const CountryRankingCard: React.FC<CountryRankingCardProps> = ({
           <span className="text-sm font-medium text-gray-700">
             {score.meetsHardRequirements ? 'Viability Level' : 'Overall Score'}
           </span>
-          <span className={`text-sm font-semibold capitalize ${getScoreColor(score.overallScore)}`}>
+          <span className={`text-sm font-semibold capitalize ${scoreTextColorClass}`}>
             {score.viabilityLevel.replace('_', ' ')}
           </span>
         </div>
         <div className="w-full bg-gray-200 rounded-full h-2">
           <div
-            className={`h-2 rounded-full ${
-              score.overallScore >= 80
-                ? 'bg-green-500'
-                : score.overallScore >= 60
-                ? 'bg-blue-500'
-                : score.overallScore >= 40
-                ? 'bg-yellow-500'
-                : score.overallScore >= 20
-                ? 'bg-orange-500'
-                : 'bg-red-500'
-            }`}
+            className={`h-2 rounded-full ${scoreColorClass}`}
             style={{ width: `${score.overallScore}%` }}
           />
         </div>
@@ -167,7 +126,7 @@ export const CountryRankingCard: React.FC<CountryRankingCardProps> = ({
         <div className="grid grid-cols-5 gap-2">
           {Object.entries(score.componentScores).map(([component, value]) => (
             <div key={component} className="text-center">
-              <div className={`text-lg font-bold ${getScoreColor(value)}`}>{value}</div>
+              <div className={`text-lg font-bold ${getScoreTextColorClass(value)}`}>{value}</div>
               <div className="text-xs text-gray-600 capitalize">{component}</div>
             </div>
           ))}
@@ -197,7 +156,7 @@ export const CountryRankingCard: React.FC<CountryRankingCardProps> = ({
       <div className="mb-4">
         <div className="flex items-center justify-between">
           <span className="text-sm font-medium text-gray-700">Overall Risk</span>
-          <span className={`text-sm font-semibold capitalize ${riskColorClass}`}>
+          <span className={`text-sm font-semibold capitalize ${riskTextColorClass}`}>
             {score.overallRiskLevel}
           </span>
         </div>

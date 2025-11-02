@@ -26,37 +26,7 @@ export interface ScoreDisplayProps {
   className?: string;
 }
 
-/**
- * Get color classes based on score (0-100 scale)
- */
-function getScoreColorClasses(score: number): { text: string; bg: string; border: string } {
-  if (score >= 80) {
-    return {
-      text: 'text-primary',
-      bg: 'bg-primary',
-      border: 'border-primary',
-    };
-  }
-  if (score >= 60) {
-    return {
-      text: 'text-success',
-      bg: 'bg-success',
-      border: 'border-success',
-    };
-  }
-  if (score >= 40) {
-    return {
-      text: 'text-warning',
-      bg: 'bg-warning',
-      border: 'border-warning',
-    };
-  }
-  return {
-    text: 'text-danger',
-    bg: 'bg-danger',
-    border: 'border-danger',
-  };
-}
+import { getScoreColorClasses } from '../../constants/viability';
 
 /**
  * Get score label

@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import type { ViabilityScore } from '../../types/viability';
 import { Badge } from '../Badge';
 import type { BadgeVariant } from '../Badge';
+import {
+  getScoreTextColorClass,
+  getRiskTextColorClass,
+  type RiskLevel
+} from '../../constants/viability';
 
 interface CompactCountryRowProps {
   score: ViabilityScore;
@@ -26,27 +31,6 @@ const getBadgeVariant = (viabilityLevel: string, meetsRequirements: boolean): Ba
       return 'very-low';
     default:
       return 'info';
-  }
-};
-
-const getScoreColor = (score: number): string => {
-  if (score >= 80) return 'text-green-600';
-  if (score >= 60) return 'text-blue-600';
-  if (score >= 40) return 'text-yellow-600';
-  if (score >= 20) return 'text-orange-600';
-  return 'text-red-600';
-};
-
-const getRiskColor = (level: string): string => {
-  switch (level) {
-    case 'low':
-      return 'text-green-600';
-    case 'medium':
-      return 'text-yellow-600';
-    case 'high':
-      return 'text-red-600';
-    default:
-      return 'text-gray-600';
   }
 };
 
@@ -116,7 +100,7 @@ export const CompactCountryRow: React.FC<CompactCountryRowProps> = ({
 
           {/* Score */}
           <div className="flex-shrink-0">
-            <div className={`text-lg sm:text-xl font-bold ${getScoreColor(score.overallScore)}`}>
+            <div className={`text-lg sm:text-xl font-bold ${getScoreTextColorClass(score.overallScore)}`}>
               {score.overallScore}/100
             </div>
           </div>
@@ -171,7 +155,7 @@ export const CompactCountryRow: React.FC<CompactCountryRowProps> = ({
               <div className="grid grid-cols-5 gap-2">
                 {Object.entries(score.componentScores).map(([component, value]) => (
                   <div key={component} className="text-center">
-                    <div className={`text-base sm:text-lg font-bold ${getScoreColor(value)}`}>
+                    <div className={`text-base sm:text-lg font-bold ${getScoreTextColorClass(value)}`}>
                       {value}
                     </div>
                     <div className="text-xs text-gray-600 capitalize">{component}</div>
@@ -184,7 +168,7 @@ export const CompactCountryRow: React.FC<CompactCountryRowProps> = ({
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium text-gray-700">Risk Level</span>
-                <span className={`text-sm font-semibold capitalize ${getRiskColor(score.overallRiskLevel)}`}>
+                <span className={`text-sm font-semibold capitalize ${getRiskTextColorClass(score.overallRiskLevel as RiskLevel)}`}>
                   {score.overallRiskLevel}
                   {score.riskFactors.length > 0 && (
                     <span className="text-gray-600 font-normal">
