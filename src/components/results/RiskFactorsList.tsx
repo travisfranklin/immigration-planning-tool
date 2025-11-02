@@ -19,33 +19,20 @@ const getSeverityColor = (severity: 'low' | 'medium' | 'high'): string => {
   }
 };
 
-const getSeverityIcon = (severity: 'low' | 'medium' | 'high'): string => {
-  switch (severity) {
-    case 'low':
-      return '⚠️';
-    case 'medium':
-      return '⚠️';
-    case 'high':
-      return '🚨';
-    default:
-      return '⚠️';
-  }
-};
-
-const getCategoryIcon = (category: string): string => {
+const getCategoryLabel = (category: string): string => {
   switch (category) {
     case 'financial':
-      return '💰';
+      return 'Financial';
     case 'language':
-      return '🗣️';
+      return 'Language';
     case 'employment':
-      return '💼';
+      return 'Employment';
     case 'legal':
-      return '📋';
+      return 'Legal';
     case 'family':
-      return '👨‍👩‍👧‍👦';
+      return 'Family';
     default:
-      return '⚠️';
+      return 'General';
   }
 };
 
@@ -71,7 +58,11 @@ export const RiskFactorsList: React.FC<RiskFactorsListProps> = ({
       <div className="bg-white border-2 border-black p-6">
         <h3 className="text-h3 font-bold text-black mb-4 uppercase tracking-wide">Risk Assessment</h3>
         <div className="bg-success border-2 border-success p-6 text-center">
-          <div className="text-4xl mb-2">✅</div>
+          <div className="w-12 h-12 bg-black mx-auto mb-3 flex items-center justify-center">
+            <svg className="w-8 h-8 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
           <p className="text-black font-bold uppercase text-body">No significant risks identified</p>
           <p className="text-body-sm text-black mt-2">
             Your profile aligns well with this immigration path
@@ -98,11 +89,9 @@ export const RiskFactorsList: React.FC<RiskFactorsListProps> = ({
           >
             {/* Risk Header */}
             <div className="flex items-start gap-3 mb-3">
-              <span className="text-3xl">{getSeverityIcon(risk.severity)}</span>
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="text-2xl">{getCategoryIcon(risk.category)}</span>
-                  <h4 className="font-bold uppercase text-body tracking-wide">{risk.category} Risk</h4>
+                  <h4 className="font-bold uppercase text-body tracking-wide">{getCategoryLabel(risk.category)} Risk</h4>
                   <span className={`text-label-sm px-2 py-1 font-bold uppercase ${
                     risk.severity === 'high'
                       ? 'bg-danger text-white border-2 border-black'
@@ -118,7 +107,7 @@ export const RiskFactorsList: React.FC<RiskFactorsListProps> = ({
             </div>
 
             {/* Mitigation */}
-            <div className="ml-11 pl-4 border-l-2 border-black">
+            <div className="pl-4 border-l-2 border-black">
               <p className="text-label-sm font-bold mb-1 uppercase">Recommended Action:</p>
               <p className="text-body-sm">{risk.mitigation}</p>
             </div>

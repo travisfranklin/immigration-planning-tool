@@ -21,12 +21,12 @@ const getScoreLabel = (score: number): string => {
   return 'Very Low';
 };
 
-const componentIcons: Record<string, string> = {
-  career: '💼',
-  financial: '💰',
-  education: '🎓',
-  language: '🗣️',
-  family: '👨‍👩‍👧‍👦',
+const componentLabels: Record<string, string> = {
+  career: 'Career',
+  financial: 'Financial',
+  education: 'Education',
+  language: 'Language',
+  family: 'Family',
 };
 
 const componentDescriptions: Record<string, string> = {
@@ -56,14 +56,11 @@ export const ScoreBreakdown: React.FC<ScoreBreakdownProps> = ({
             <div key={component} className="border-b-2 border-gray-200 pb-4 last:border-b-0 last:pb-0">
               {/* Component Header */}
               <div className="flex items-center justify-between mb-3">
-                <div className="flex items-center gap-3">
-                  <span className="text-3xl">{componentIcons[component]}</span>
-                  <div>
-                    <h4 className="font-bold text-black uppercase text-body tracking-wide">{component}</h4>
-                    <p className="text-body-sm text-gray-700">{componentDescriptions[component]}</p>
-                  </div>
+                <div className="flex-1">
+                  <h4 className="font-bold text-black uppercase text-body tracking-wide">{componentLabels[component]}</h4>
+                  <p className="text-body-sm text-gray-700">{componentDescriptions[component]}</p>
                 </div>
-                <div className="text-right">
+                <div className="text-right ml-4">
                   <div className={`text-data-sm font-bold ${getScoreTextColorClass(score)}`}>{score}</div>
                   <div className="text-label-sm text-gray-700 uppercase">{getScoreLabel(score)}</div>
                 </div>

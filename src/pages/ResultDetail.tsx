@@ -166,7 +166,11 @@ export const ResultDetail: React.FC = () => {
         <div className="bg-warning border-t-4 border-b-4 border-black">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex items-center gap-3">
-              <span className="text-2xl">📤</span>
+              <div className="w-8 h-8 bg-black flex items-center justify-center flex-shrink-0">
+                <svg className="w-5 h-5 text-warning" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z" />
+                </svg>
+              </div>
               <div>
                 <p className="font-bold text-black uppercase text-label">Shared View</p>
                 <p className="text-body-sm text-black">
@@ -197,7 +201,7 @@ export const ResultDetail: React.FC = () => {
                 variant="secondary"
                 size="md"
               >
-                {copySuccess ? '✓ Link Copied!' : 'Share Results'}
+                {copySuccess ? 'Link Copied!' : 'Share Results'}
               </Button>
             )}
           </div>
@@ -235,23 +239,23 @@ export const ResultDetail: React.FC = () => {
             <p className="text-body-lg text-white mb-6">{selectedScore.recommendedProgram.matchReason}</p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               <div>
-                <div className="text-label-sm uppercase font-bold text-lavender mb-1">Type</div>
+                <div className="text-label-sm uppercase font-bold text-primary-200 mb-1">Type</div>
                 <div className="text-body font-bold text-white capitalize">
                   {selectedScore.recommendedProgram.programType.replace('_', ' ')}
                 </div>
               </div>
               <div>
-                <div className="text-label-sm uppercase font-bold text-lavender mb-1">Eligibility Score</div>
+                <div className="text-label-sm uppercase font-bold text-primary-200 mb-1">Eligibility Score</div>
                 <div className="text-body font-bold text-white">{selectedScore.recommendedProgram.eligibilityScore}/100</div>
               </div>
               <div>
-                <div className="text-label-sm uppercase font-bold text-lavender mb-1">Job Offer Required</div>
+                <div className="text-label-sm uppercase font-bold text-primary-200 mb-1">Job Offer Required</div>
                 <div className="text-body font-bold text-white">
                   {selectedScore.recommendedProgram.requiresJobOffer ? 'Yes' : 'No'}
                 </div>
               </div>
               <div>
-                <div className="text-label-sm uppercase font-bold text-lavender mb-1">Timeline</div>
+                <div className="text-label-sm uppercase font-bold text-primary-200 mb-1">Timeline</div>
                 <div className="text-body font-bold text-white">{selectedScore.estimatedTimelineMonths} months</div>
               </div>
             </div>
@@ -261,53 +265,54 @@ export const ResultDetail: React.FC = () => {
 
       {/* Main Content: Data-Driven Dashboard */}
       <div className="bg-gray-50 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Left Column: Details */}
-            <div className="lg:col-span-1 space-y-6">
-              {/* Score Breakdown */}
-              <ScoreBreakdown componentScores={selectedScore.componentScores} />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          {/* Component Scores and Risk Assessment - Above Flowchart */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Score Breakdown */}
+            <ScoreBreakdown componentScores={selectedScore.componentScores} />
 
-              {/* Risk Factors */}
-              <RiskFactorsList
-                riskFactors={selectedScore.riskFactors}
-                overallRiskLevel={selectedScore.overallRiskLevel}
-              />
+            {/* Risk Factors */}
+            <RiskFactorsList
+              riskFactors={selectedScore.riskFactors}
+              overallRiskLevel={selectedScore.overallRiskLevel}
+            />
+          </div>
 
-              {/* Contingencies */}
-              <ContingenciesList contingencies={selectedScore.contingencies} />
+          {/* Interactive Flowchart - Center Section */}
+          <div>
+            {recommendedFlowchart ? (
+              <InteractiveFlowchart flowchart={recommendedFlowchart} />
+            ) : (
+              <div className="bg-white border-2 border-black p-12 text-center">
+                <p className="text-body text-gray-700">No flowchart available for this program yet.</p>
+              </div>
+            )}
+          </div>
 
-              {/* Alternative Programs */}
-              {selectedScore.alternativePrograms && selectedScore.alternativePrograms.length > 0 && (
-                <div className="bg-white border-2 border-black p-6">
-                  <h3 className="text-h3 font-bold text-black mb-4 uppercase tracking-wide">Alternative Programs</h3>
-                  <div className="space-y-4">
-                    {selectedScore.alternativePrograms.map((program) => (
-                      <div key={program.programId} className="border-2 border-gray-300 p-4">
-                        <div className="flex items-center justify-between mb-2">
-                          <h4 className="font-bold text-black uppercase text-body">{program.programName}</h4>
-                          <span className="text-body font-bold text-gray-700">
-                            {program.eligibilityScore}/100
-                          </span>
-                        </div>
-                        <p className="text-body-sm text-gray-700">{program.whyNotRecommended}</p>
+          {/* Contingencies and Alternatives - Below Flowchart */}
+          <div className="space-y-8">
+            {/* Contingencies Row */}
+            <ContingenciesList contingencies={selectedScore.contingencies} />
+
+            {/* Alternative Programs Row */}
+            {selectedScore.alternativePrograms && selectedScore.alternativePrograms.length > 0 && (
+              <div className="bg-white border-2 border-black p-6">
+                <h3 className="text-h3 font-bold text-black mb-4 uppercase tracking-wide">Alternative Programs</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {selectedScore.alternativePrograms.map((program) => (
+                    <div key={program.programId} className="border-2 border-gray-300 p-4">
+                      <div className="flex items-center justify-between mb-2">
+                        <h4 className="font-bold text-black uppercase text-body">{program.programName}</h4>
+                        <span className="text-body font-bold text-gray-700">
+                          {program.eligibilityScore}/100
+                        </span>
                       </div>
-                    ))}
-                  </div>
+                      <p className="text-body-sm text-gray-700">{program.whyNotRecommended}</p>
+                    </div>
+                  ))}
                 </div>
-              )}
-            </div>
-
-            {/* Right Column: Interactive Flowchart */}
-            <div className="lg:col-span-2">
-              {recommendedFlowchart ? (
-                <InteractiveFlowchart flowchart={recommendedFlowchart} />
-              ) : (
-                <div className="bg-white border-2 border-black p-12 text-center">
-                  <p className="text-body text-gray-700">No flowchart available for this program yet.</p>
-                </div>
-              )}
-            </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

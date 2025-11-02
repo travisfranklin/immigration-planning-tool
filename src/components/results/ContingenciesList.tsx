@@ -40,7 +40,11 @@ export const ContingenciesList: React.FC<ContingenciesListProps> = ({ contingenc
       <div className="bg-white border-2 border-black p-6">
         <h3 className="text-h3 font-bold text-black mb-4 uppercase tracking-wide">Contingency Plans</h3>
         <div className="bg-success border-2 border-success p-6 text-center">
-          <div className="text-4xl mb-2">✅</div>
+          <div className="w-12 h-12 bg-black mx-auto mb-3 flex items-center justify-center">
+            <svg className="w-8 h-8 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
           <p className="text-black font-bold uppercase text-body">No contingency plans needed</p>
           <p className="text-body-sm text-black mt-2">
             Your profile is well-aligned with this immigration path
@@ -102,7 +106,7 @@ export const ContingenciesList: React.FC<ContingenciesListProps> = ({ contingenc
       <div className="mt-6 pt-6 border-t-2 border-black">
         <div className="bg-accent border-2 border-accent p-4">
           <p className="text-body-sm text-black">
-            <span className="font-bold uppercase">💡 Tip:</span> Review these contingency plans regularly and update them as your situation changes.
+            <span className="font-bold uppercase">Tip:</span> Review these contingency plans regularly and update them as your situation changes.
           </p>
         </div>
       </div>
