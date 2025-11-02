@@ -2,7 +2,8 @@ import React from 'react';
 import type { ViabilityScore } from '../../types/viability';
 import { Badge } from '../Badge';
 import type { BadgeVariant } from '../Badge';
-import { DataCard, getVariantFromScore } from '../DataCard';
+import { DataCard } from '../DataCard';
+import { getDataCardVariant } from '../../constants/viability';
 
 interface CountryResultsTableProps {
   scores: ViabilityScore[];
@@ -45,7 +46,7 @@ export const CountryResultsTable: React.FC<CountryResultsTableProps> = ({
               value={score.overallScore}
               unit="/100"
               subtitle={score.recommendedProgram?.programName || 'No program available'}
-              variant={getVariantFromScore(score.overallScore)}
+              variant={getDataCardVariant(score.overallScore)}
             >
             {/* Viability Badge */}
             <div className="mb-4">

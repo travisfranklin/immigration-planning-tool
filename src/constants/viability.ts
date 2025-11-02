@@ -216,6 +216,26 @@ export const getComponentDescription = (component: ComponentScoreType): string =
 };
 
 /**
+ * DATACARD VARIANT MAPPING
+ * Maps scores to DataCard component variants
+ * Note: DataCard doesn't have 'danger-dark' variant, so 0-19 maps to 'danger'
+ */
+
+export type DataCardVariant = 'primary' | 'success' | 'warning' | 'danger' | 'neutral';
+
+/**
+ * Get DataCard variant based on score (0-100)
+ * Used for DataCard component color theming
+ */
+export const getDataCardVariant = (score: number): DataCardVariant => {
+  if (score >= 80) return 'success';   // Excellent: Aquamarine
+  if (score >= 60) return 'primary';   // Good: Electric Indigo
+  if (score >= 40) return 'warning';   // Moderate: Orange Peel
+  if (score >= 0) return 'danger';     // Low/Very Low: Red-Orange
+  return 'neutral';
+};
+
+/**
  * SCORE COLOR FUNCTIONS
  * Centralized color logic for all score displays (0-100 scale)
  *

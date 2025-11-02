@@ -58,12 +58,13 @@ function getVariantClasses(variant: DataCardProps['variant']): string {
 }
 
 /**
- * Automatically determine variant based on numeric value (0-100 scale)
+ * @deprecated Use getDataCardVariant from '../../constants/viability' instead
+ * This function has incorrect color mapping and will be removed in a future version
  */
 // eslint-disable-next-line react-refresh/only-export-components
 export function getVariantFromScore(score: number): DataCardProps['variant'] {
-  if (score >= 80) return 'primary';  // High scores (80-100)
-  if (score >= 60) return 'success';  // Good scores (60-79)
+  if (score >= 80) return 'primary';  // High scores (80-100) - INCORRECT MAPPING
+  if (score >= 60) return 'success';  // Good scores (60-79) - INCORRECT MAPPING
   if (score >= 40) return 'warning';  // Medium scores (40-59)
   if (score >= 0) return 'danger';    // Low scores (0-39)
   return 'neutral';
