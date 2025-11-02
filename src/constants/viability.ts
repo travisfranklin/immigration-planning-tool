@@ -157,24 +157,38 @@ export const getAllViabilityLevels = (): ViabilityLevel[] => {
 /**
  * Get Tailwind background color class for a score (0-100)
  * Used for progress bars and score indicators
+ *
+ * Color mapping:
+ * - 80-100: Success (Aquamarine) - Excellent performance
+ * - 60-79: Primary (Electric Indigo) - Good performance
+ * - 40-59: Warning (Orange Peel) - Moderate performance
+ * - 20-39: Danger (Red-Orange) - Low performance
+ * - 0-19: Danger Dark - Very low performance
  */
 export const getScoreColorClass = (score: number): string => {
-  if (score >= 80) return 'bg-green-500';
-  if (score >= 60) return 'bg-blue-500';
-  if (score >= 40) return 'bg-yellow-500';
-  if (score >= 20) return 'bg-orange-500';
-  return 'bg-red-500';
+  if (score >= 80) return 'bg-success';
+  if (score >= 60) return 'bg-primary';
+  if (score >= 40) return 'bg-warning';
+  if (score >= 20) return 'bg-danger';
+  return 'bg-danger-dark';
 };
 
 /**
  * Get Tailwind text color class for a score (0-100)
  * Used for score text display
+ *
+ * Color mapping:
+ * - 80-100: Success Dark - Excellent performance
+ * - 60-79: Primary Dark - Good performance
+ * - 40-59: Warning Dark - Moderate performance
+ * - 20-39: Danger - Low performance
+ * - 0-19: Danger Dark - Very low performance
  */
 export const getScoreTextColorClass = (score: number): string => {
-  if (score >= 80) return 'text-green-600';
-  if (score >= 60) return 'text-blue-600';
-  if (score >= 40) return 'text-yellow-600';
-  if (score >= 20) return 'text-orange-600';
-  return 'text-red-600';
+  if (score >= 80) return 'text-success-dark';
+  if (score >= 60) return 'text-primary-dark';
+  if (score >= 40) return 'text-warning-dark';
+  if (score >= 20) return 'text-danger';
+  return 'text-danger-dark';
 };
 
