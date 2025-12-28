@@ -130,8 +130,32 @@ export async function exportAsText(
     .sort((a, b) => b.overallScore - a.overallScore)
     .forEach((score, index) => {
       textContent += `${index + 1}. ${score.countryCode} - Score: ${score.overallScore}/100\n`;
+
+      // Eligibility Status
+      if (!score.meetsHardRequirements) {
+        textContent += `   ⚠️  ELIGIBILITY STATUS: NOT ELIGIBLE (Score capped at 25)\n`;
+        textContent += `   Competitive Score (if eligible): ${score.competitiveScore}/100\n`;
+      } else {
+        textContent += `   ✓ ELIGIBILITY STATUS: ELIGIBLE\n`;
+      }
+
       textContent += `   Recommended Program: ${score.recommendedProgram?.programName || 'N/A'}\n`;
+
+      // Show match reason (includes preference boost explanation)
+      if (score.recommendedProgram?.matchReason) {
+        textContent += `   Match: ${score.recommendedProgram.matchReason}\n`;
+      }
+
       textContent += `   Timeline: ${score.estimatedTimelineMonths ? `${score.estimatedTimelineMonths} months` : 'N/A'}\n`;
+
+      // Missing Requirements
+      if (!score.meetsHardRequirements && score.missingRequirements.length > 0) {
+        textContent += `   Missing Requirements:\n`;
+        score.missingRequirements.forEach((req) => {
+          textContent += `     ✗ ${req}\n`;
+        });
+      }
+
       textContent += `   Component Scores:\n`;
       textContent += `     - Career: ${score.componentScores.career}/100\n`;
       textContent += `     - Financial: ${score.componentScores.financial}/100\n`;

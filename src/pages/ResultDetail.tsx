@@ -228,12 +228,48 @@ export const ResultDetail: React.FC = () => {
         </div>
       </div>
 
+      {/* Missing Requirements Warning - Critical Alert */}
+      {!selectedScore.meetsHardRequirements && selectedScore.missingRequirements.length > 0 && (
+        <div className="bg-danger border-t-4 border-b-4 border-black">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div className="flex items-start gap-4">
+              <div className="flex-shrink-0 w-12 h-12 bg-white flex items-center justify-center">
+                <svg className="w-8 h-8 text-danger" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div className="flex-1">
+                <h2 className="text-h2 font-bold text-white mb-2 uppercase">Not Eligible</h2>
+                <p className="text-body-lg text-white mb-4">
+                  Your score is capped at 25 because you don't meet the following hard requirements:
+                </p>
+                <ul className="space-y-2 mb-4">
+                  {selectedScore.missingRequirements.map((req, index) => (
+                    <li key={index} className="flex items-start gap-2 text-body text-white">
+                      <span className="flex-shrink-0 mt-1">✗</span>
+                      <span>{req}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="bg-white bg-opacity-20 border-2 border-white p-4">
+                  <p className="text-label-sm uppercase font-bold text-white mb-1">Your Competitive Score (if eligible)</p>
+                  <p className="text-h1 font-bold text-white">{selectedScore.competitiveScore}/100</p>
+                  <p className="text-body-sm text-white mt-2">
+                    This is what your score would be if you met all requirements. Work on addressing the missing requirements above.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Recommended Program - Bold Highlight */}
       {selectedScore.recommendedProgram && (
         <div className="bg-primary border-t-4 border-b-4 border-black">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <h2 className="text-label uppercase font-bold text-white mb-2">Recommended Visa Program</h2>
-            <h3 className="text-h1 font-bold text-white mb-3 uppercase tracking-wide">
+            <h3 className="text-h1 font-bold text-white mb-3 uppercase tracking-wide break-words">
               {selectedScore.recommendedProgram.programName}
             </h3>
             <p className="text-body-lg text-white mb-6">{selectedScore.recommendedProgram.matchReason}</p>
@@ -267,9 +303,10 @@ export const ResultDetail: React.FC = () => {
       <div className="bg-gray-50 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           {/* Component Scores and Risk Assessment - Above Flowchart */}
+          {/* Score Breakdown */}
+          <ScoreBreakdown componentScores={selectedScore.componentScores} />
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Score Breakdown */}
-            <ScoreBreakdown componentScores={selectedScore.componentScores} />
+            
 
             {/* Risk Factors */}
             <RiskFactorsList
