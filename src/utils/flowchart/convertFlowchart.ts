@@ -25,10 +25,12 @@ export function convertMermaidFlowchartToReactFlow(
 /**
  * Get React Flow data from flowchart definition
  * Uses reactFlowData if available, otherwise converts from Mermaid
+ * Always applies dagre layout for consistent positioning
  */
 export function getReactFlowData(flowchart: FlowchartDefinition): ReactFlowData {
   if (flowchart.reactFlowData) {
-    return flowchart.reactFlowData;
+    // Re-apply dagre layout to ensure proper positioning
+    return applyDagreLayout(flowchart.reactFlowData);
   }
 
   // Fallback to converting from Mermaid

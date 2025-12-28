@@ -7,8 +7,6 @@ import { useCallback, useState, useEffect } from 'react';
 import {
   ReactFlow,
   Background,
-  Controls,
-  MiniMap,
   useNodesState,
   useEdgesState,
   type OnNodesChange,
@@ -41,6 +39,13 @@ export function ReactFlowViewer({
   // Get React Flow data (from reactFlowData or convert from Mermaid)
   const flowData = getReactFlowData(flowchart);
 
+  // Calculate height based on number of nodes (more nodes = taller flowchart)
+  const nodeCount = flowData.nodes.length;
+  const minHeight = 400;
+  const maxHeight = 800;
+  const heightPerNode = 40;
+  const calculatedHeight = Math.min(maxHeight, Math.max(minHeight, nodeCount * heightPerNode));
+
   // Apply progress status to nodes
   const nodesWithProgress = flowData.nodes.map(node => ({
     ...node,
@@ -68,8 +73,8 @@ export function ReactFlowViewer({
   // Handle node click
   const onNodeClick = useCallback(
     (_event: React.MouseEvent, node: Node) => {
-      if (onStepSelect) {
-        onStepSelect(node.id);
+      if (onStepSelect && node.data?.stepId) {
+        onStepSelect(node.data.stepId as string);
       }
     },
     [onStepSelect]
@@ -82,14 +87,14 @@ export function ReactFlowViewer({
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center h-[600px] bg-gray-50">
+      <div className="flex items-center justify-center bg-gray-50" style={{ height: `${calculatedHeight}px` }}>
         <div className="text-body text-gray-600">Loading flowchart...</div>
       </div>
     );
   }
 
   return (
-    <div className="h-[600px] bg-white border-2 border-black">
+    <div className="w-full bg-white border-2 border-black overflow-hidden" style={{ height: `${calculatedHeight}px` }}>
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -98,10 +103,21 @@ export function ReactFlowViewer({
         onConnect={onConnect}
         onNodeClick={onNodeClick}
         nodeTypes={nodeTypes}
+        nodesDraggable={false}
+        nodesConnectable={false}
+        nodesFocusable={true}
+        edgesFocusable={false}
+        elementsSelectable={true}
+        panOnDrag={false}
+        panOnScroll={false}
+        zoomOnScroll={false}
+        zoomOnPinch={false}
+        zoomOnDoubleClick={false}
+        preventScrolling={false}
         fitView
-        fitViewOptions={{ padding: 0.2 }}
-        minZoom={0.1}
-        maxZoom={1.5}
+        fitViewOptions={{ padding: 0.1, maxZoom: 1, minZoom: 1 }}
+        minZoom={1}
+        maxZoom={1}
         defaultEdgeOptions={{
           type: 'smoothstep',
           style: { stroke: '#1F2937', strokeWidth: 2 },
@@ -109,30 +125,6 @@ export function ReactFlowViewer({
         proOptions={{ hideAttribution: true }}
       >
         <Background color="#E5E7EB" gap={16} />
-        <Controls
-          showZoom
-          showFitView
-          showInteractive={false}
-          className="border-2 border-black rounded-none"
-        />
-        <MiniMap
-          nodeColor={(node) => {
-            switch (node.type) {
-              case 'start':
-                return '#75E3B3'; // Aquamarine
-              case 'end':
-                return '#FF4D00'; // Red-Orange
-              case 'decision':
-                return '#FF9B00'; // Orange Peel
-              case 'document':
-                return '#E0FC2F'; // Chartreuse
-              default:
-                return '#FFFFFF'; // White
-            }
-          }}
-          className="border-2 border-black rounded-none"
-          maskColor="rgba(0, 0, 0, 0.1)"
-        />
       </ReactFlow>
     </div>
   );
