@@ -16,6 +16,7 @@ import { Button } from '../components/Button';
 import { LoadingSpinner } from '../components/LoadingSpinner';
 import { ErrorState } from '../components/ErrorState';
 import { InteractiveFlowchart } from '../components/flowchart/InteractiveFlowchart';
+import { ErrorBoundary } from '../components/ErrorBoundary';
 import { isValidCountryCode } from '../constants/countries';
 import {
   decodeResultsFromUrl,
@@ -328,7 +329,9 @@ export const ResultDetail: React.FC = () => {
           {/* Interactive Flowchart - Center Section */}
           <div>
             {recommendedFlowchart ? (
-              <InteractiveFlowchart flowchart={recommendedFlowchart} />
+              <ErrorBoundary>
+                <InteractiveFlowchart flowchart={recommendedFlowchart} />
+              </ErrorBoundary>
             ) : (
               <div className="bg-white border-2 border-black p-12 text-center">
                 <p className="text-body text-gray-700">No flowchart available for this program yet.</p>

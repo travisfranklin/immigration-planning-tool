@@ -35,9 +35,25 @@ export function ReactFlowViewer({
   progress,
 }: ReactFlowViewerProps) {
   const [isLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   // Get React Flow data (from reactFlowData or convert from Mermaid)
-  const flowData = getReactFlowData(flowchart);
+  let flowData;
+  try {
+    flowData = getReactFlowData(flowchart);
+
+    // Validate flowData
+    if (!flowData || !flowData.nodes || !Array.isArray(flowData.nodes)) {
+      throw new Error('Invalid flowchart data structure');
+    }
+  } catch (err) {
+    console.error('Error getting React Flow data:', err);
+    if (!error) {
+      setError('Failed to load flowchart data');
+    }
+    // Set empty flowData to prevent hooks from breaking
+    flowData = { nodes: [], edges: [] };
+  }
 
   // Calculate height based on number of nodes (more nodes = taller flowchart)
   const nodeCount = flowData.nodes.length;
@@ -84,6 +100,14 @@ export function ReactFlowViewer({
   const onConnect: OnConnect = useCallback(() => {
     // Do nothing - flowchart is read-only
   }, []);
+
+  if (error) {
+    return (
+      <div className="flex items-center justify-center bg-gray-50 p-8 border-2 border-black" style={{ height: `${calculatedHeight}px` }}>
+        <div className="text-body text-danger">Error loading flowchart. Please try refreshing the page.</div>
+      </div>
+    );
+  }
 
   if (isLoading) {
     return (

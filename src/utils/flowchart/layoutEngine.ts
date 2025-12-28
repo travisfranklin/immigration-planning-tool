@@ -10,11 +10,23 @@ import type { FlowchartNode, ReactFlowData } from '../../types/flowchart';
  * Apply dagre layout algorithm to position nodes
  */
 export function applyDagreLayout(data: ReactFlowData): ReactFlowData {
-  const { nodes, edges } = data;
+  try {
+    const { nodes, edges } = data;
 
-  // Create a new directed graph
-  const dagreGraph = new dagre.graphlib.Graph();
-  dagreGraph.setDefaultEdgeLabel(() => ({}));
+    // Validate input
+    if (!nodes || !Array.isArray(nodes) || nodes.length === 0) {
+      console.warn('No nodes to layout, returning original data');
+      return data;
+    }
+
+    if (!edges || !Array.isArray(edges)) {
+      console.warn('No edges provided, using empty array');
+      data.edges = [];
+    }
+
+    // Create a new directed graph
+    const dagreGraph = new dagre.graphlib.Graph();
+    dagreGraph.setDefaultEdgeLabel(() => ({}));
 
   // Configure graph layout
   dagreGraph.setGraph({
@@ -41,25 +53,37 @@ export function applyDagreLayout(data: ReactFlowData): ReactFlowData {
   // Calculate layout
   dagre.layout(dagreGraph);
 
-  // Apply calculated positions to nodes
-  const layoutedNodes: FlowchartNode[] = nodes.map((node) => {
-    const nodeWithPosition = dagreGraph.node(node.id);
-    const width = getNodeWidth(node);
-    const height = getNodeHeight(node);
+    // Apply calculated positions to nodes
+    const layoutedNodes: FlowchartNode[] = nodes.map((node) => {
+      const nodeWithPosition = dagreGraph.node(node.id);
+
+      // If dagre didn't calculate position, use original or default
+      if (!nodeWithPosition) {
+        console.warn(`No position calculated for node ${node.id}, using original position`);
+        return node;
+      }
+
+      const width = getNodeWidth(node);
+      const height = getNodeHeight(node);
+
+      return {
+        ...node,
+        position: {
+          x: nodeWithPosition.x - width / 2,
+          y: nodeWithPosition.y - height / 2,
+        },
+      };
+    });
 
     return {
-      ...node,
-      position: {
-        x: nodeWithPosition.x - width / 2,
-        y: nodeWithPosition.y - height / 2,
-      },
+      nodes: layoutedNodes,
+      edges,
     };
-  });
-
-  return {
-    nodes: layoutedNodes,
-    edges,
-  };
+  } catch (error) {
+    console.error('Error in dagre layout:', error);
+    // Return original data if layout fails
+    return data;
+  }
 }
 
 /**
