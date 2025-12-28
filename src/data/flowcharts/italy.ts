@@ -29,7 +29,241 @@ flowchart TD
  receive-visa -->travel[Travel and Apply at Questura]
  travel -->permesso[Receive Permesso di Soggiorno]
  permesso --> Success([Process Complete])`,
- steps: [
+ reactFlowData: {
+      "nodes": [
+        {
+          "id": "Start",
+          "type": "start",
+          "position": {
+            "x": 20,
+            "y": 30
+          },
+          "data": {
+            "label": "Start Process",
+            "stepId": "Start",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "investment",
+          "type": "process",
+          "position": {
+            "x": 260,
+            "y": 20
+          },
+          "data": {
+            "label": "Invest EUR 500k in Company",
+            "stepId": "investment",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "osta",
+          "type": "process",
+          "position": {
+            "x": 540,
+            "y": 20
+          },
+          "data": {
+            "label": "Obtain Nulla Osta",
+            "stepId": "osta",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "documents",
+          "type": "document",
+          "position": {
+            "x": 820,
+            "y": 20
+          },
+          "data": {
+            "label": "Gather Required Documents",
+            "stepId": "documents",
+            "nodeType": "document"
+          }
+        },
+        {
+          "id": "visa",
+          "type": "process",
+          "position": {
+            "x": 1100,
+            "y": 20
+          },
+          "data": {
+            "label": "Receive Investor Visa",
+            "stepId": "visa",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "processing",
+          "type": "process",
+          "position": {
+            "x": 1100,
+            "y": 200
+          },
+          "data": {
+            "label": "Wait for Processing<br/>8-12 weeks",
+            "stepId": "processing",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "decision",
+          "type": "decision",
+          "position": {
+            "x": 1136,
+            "y": 380
+          },
+          "data": {
+            "label": "Decision",
+            "stepId": "decision",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "End1",
+          "type": "end",
+          "position": {
+            "x": 1120,
+            "y": 608
+          },
+          "data": {
+            "label": "Process Ended",
+            "stepId": "End1",
+            "nodeType": "end"
+          }
+        },
+        {
+          "id": "travel",
+          "type": "process",
+          "position": {
+            "x": 1380,
+            "y": 200
+          },
+          "data": {
+            "label": "Travel and Apply at Questura",
+            "stepId": "travel",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "permesso",
+          "type": "process",
+          "position": {
+            "x": 1380,
+            "y": 404
+          },
+          "data": {
+            "label": "Receive Permesso di Soggiorno",
+            "stepId": "permesso",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Success",
+          "type": "end",
+          "position": {
+            "x": 1400,
+            "y": 608
+          },
+          "data": {
+            "label": "Process Complete",
+            "stepId": "Success",
+            "nodeType": "end"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "visa-processing",
+          "source": "visa",
+          "target": "processing",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "processing-decision",
+          "source": "processing",
+          "target": "decision",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "decision-End1",
+          "source": "decision",
+          "target": "End1",
+          "type": "smoothstep",
+          "label": "Rejected",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "visa-travel",
+          "source": "visa",
+          "target": "travel",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "travel-permesso",
+          "source": "travel",
+          "target": "permesso",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "permesso-Success",
+          "source": "permesso",
+          "target": "Success",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        }
+      ]
+    },
+    steps: [
  {
  id: 'investment-type',
  title: 'Choose Investment Type',
@@ -218,7 +452,268 @@ flowchart TD
  receive-visa -->travel-questura[Travel and Apply at Questura]
  travel-questura -->partita-iva[Obtain Partita IVA]
  partita-iva --> Success([Process Complete])`,
- steps: [
+ reactFlowData: {
+      "nodes": [
+        {
+          "id": "Start",
+          "type": "start",
+          "position": {
+            "x": 20,
+            "y": 30
+          },
+          "data": {
+            "label": "Start Process",
+            "stepId": "Start",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "capital",
+          "type": "process",
+          "position": {
+            "x": 260,
+            "y": 20
+          },
+          "data": {
+            "label": "Secure Capital EUR 30k+",
+            "stepId": "capital",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "osta",
+          "type": "process",
+          "position": {
+            "x": 540,
+            "y": 20
+          },
+          "data": {
+            "label": "Obtain Nulla Osta",
+            "stepId": "osta",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "approved",
+          "type": "decision",
+          "position": {
+            "x": 576,
+            "y": 200
+          },
+          "data": {
+            "label": "Approved?",
+            "stepId": "approved",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "documents",
+          "type": "document",
+          "position": {
+            "x": 820,
+            "y": 20
+          },
+          "data": {
+            "label": "Gather Required Documents",
+            "stepId": "documents",
+            "nodeType": "document"
+          }
+        },
+        {
+          "id": "End1",
+          "type": "start",
+          "position": {
+            "x": 560,
+            "y": 462
+          },
+          "data": {
+            "label": "Not Eligible",
+            "stepId": "End1",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "visa",
+          "type": "process",
+          "position": {
+            "x": 1100,
+            "y": 20
+          },
+          "data": {
+            "label": "Receive Self-Employment Visa",
+            "stepId": "visa",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "processing",
+          "type": "process",
+          "position": {
+            "x": 1100,
+            "y": 224
+          },
+          "data": {
+            "label": "Wait for Processing<br/>8-12 weeks",
+            "stepId": "processing",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "decision",
+          "type": "decision",
+          "position": {
+            "x": 1136,
+            "y": 428
+          },
+          "data": {
+            "label": "Decision",
+            "stepId": "decision",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "End2",
+          "type": "end",
+          "position": {
+            "x": 1120,
+            "y": 656
+          },
+          "data": {
+            "label": "Process Ended",
+            "stepId": "End2",
+            "nodeType": "end"
+          }
+        },
+        {
+          "id": "questura",
+          "type": "process",
+          "position": {
+            "x": 1380,
+            "y": 20
+          },
+          "data": {
+            "label": "Travel and Apply at Questura",
+            "stepId": "questura",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "iva",
+          "type": "process",
+          "position": {
+            "x": 1660,
+            "y": 20
+          },
+          "data": {
+            "label": "Obtain Partita IVA",
+            "stepId": "iva",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Success",
+          "type": "end",
+          "position": {
+            "x": 1680,
+            "y": 234
+          },
+          "data": {
+            "label": "Process Complete",
+            "stepId": "Success",
+            "nodeType": "end"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "osta-approved",
+          "source": "osta",
+          "target": "approved",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "approved-End1",
+          "source": "approved",
+          "target": "End1",
+          "type": "smoothstep",
+          "label": "No",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "visa-processing",
+          "source": "visa",
+          "target": "processing",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "processing-decision",
+          "source": "processing",
+          "target": "decision",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "decision-End2",
+          "source": "decision",
+          "target": "End2",
+          "type": "smoothstep",
+          "label": "Rejected",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "iva-Success",
+          "source": "iva",
+          "target": "Success",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        }
+      ]
+    },
+    steps: [
  {
  id: 'business-plan',
  title: 'Develop Business Plan',
@@ -390,7 +885,268 @@ flowchart TD
  decision -->|Rejected| End3([Process Ended])
  receive-visa -->travel-questura[Travel and Apply at Questura]
  travel-questura --> Success([Process Complete])`,
- steps: [
+ reactFlowData: {
+      "nodes": [
+        {
+          "id": "Start",
+          "type": "start",
+          "position": {
+            "x": 20,
+            "y": 30
+          },
+          "data": {
+            "label": "Start Process",
+            "stepId": "Start",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "offer",
+          "type": "process",
+          "position": {
+            "x": 260,
+            "y": 20
+          },
+          "data": {
+            "label": "Secure Job Offer",
+            "stepId": "offer",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "End1",
+          "type": "start",
+          "position": {
+            "x": 540,
+            "y": 30
+          },
+          "data": {
+            "label": "Wait for Next Quota",
+            "stepId": "End1",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "osta",
+          "type": "process",
+          "position": {
+            "x": 780,
+            "y": 20
+          },
+          "data": {
+            "label": "Employer Obtains Nulla Osta",
+            "stepId": "osta",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "approved",
+          "type": "decision",
+          "position": {
+            "x": 816,
+            "y": 200
+          },
+          "data": {
+            "label": "Approved?",
+            "stepId": "approved",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "documents",
+          "type": "document",
+          "position": {
+            "x": 1060,
+            "y": 20
+          },
+          "data": {
+            "label": "Gather Required Documents",
+            "stepId": "documents",
+            "nodeType": "document"
+          }
+        },
+        {
+          "id": "End2",
+          "type": "start",
+          "position": {
+            "x": 800,
+            "y": 462
+          },
+          "data": {
+            "label": "Not Eligible",
+            "stepId": "End2",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "visa",
+          "type": "process",
+          "position": {
+            "x": 1340,
+            "y": 20
+          },
+          "data": {
+            "label": "Receive Work Visa",
+            "stepId": "visa",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "processing",
+          "type": "process",
+          "position": {
+            "x": 1340,
+            "y": 224
+          },
+          "data": {
+            "label": "Wait for Processing<br/>8-12 weeks",
+            "stepId": "processing",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "decision",
+          "type": "decision",
+          "position": {
+            "x": 1376,
+            "y": 428
+          },
+          "data": {
+            "label": "Decision",
+            "stepId": "decision",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "End3",
+          "type": "end",
+          "position": {
+            "x": 1360,
+            "y": 656
+          },
+          "data": {
+            "label": "Process Ended",
+            "stepId": "End3",
+            "nodeType": "end"
+          }
+        },
+        {
+          "id": "questura",
+          "type": "process",
+          "position": {
+            "x": 1620,
+            "y": 20
+          },
+          "data": {
+            "label": "Travel and Apply at Questura",
+            "stepId": "questura",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Success",
+          "type": "end",
+          "position": {
+            "x": 1640,
+            "y": 234
+          },
+          "data": {
+            "label": "Process Complete",
+            "stepId": "Success",
+            "nodeType": "end"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "osta-approved",
+          "source": "osta",
+          "target": "approved",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "approved-End2",
+          "source": "approved",
+          "target": "End2",
+          "type": "smoothstep",
+          "label": "No",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "visa-processing",
+          "source": "visa",
+          "target": "processing",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "processing-decision",
+          "source": "processing",
+          "target": "decision",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "decision-End3",
+          "source": "decision",
+          "target": "End3",
+          "type": "smoothstep",
+          "label": "Rejected",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "questura-Success",
+          "source": "questura",
+          "target": "Success",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        }
+      ]
+    },
+    steps: [
  {
  id: 'quota-check',
  title: 'Check Quota Availability',
@@ -544,7 +1300,243 @@ flowchart TD
  decision -->|Rejected| End3([Process Ended])
  receive-visa -->travel-questura[Travel and Apply at Questura]
  travel-questura --> Success([Process Complete])`,
- steps: [
+ reactFlowData: {
+      "nodes": [
+        {
+          "id": "Start",
+          "type": "start",
+          "position": {
+            "x": 20,
+            "y": 54
+          },
+          "data": {
+            "label": "Start Process",
+            "stepId": "Start",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "verification",
+          "type": "decision",
+          "position": {
+            "x": 260,
+            "y": 20
+          },
+          "data": {
+            "label": "Income >= EUR 28,000/year?",
+            "stepId": "verification",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "End1",
+          "type": "start",
+          "position": {
+            "x": 244,
+            "y": 258
+          },
+          "data": {
+            "label": "Not Eligible",
+            "stepId": "End1",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "documents",
+          "type": "document",
+          "position": {
+            "x": 468,
+            "y": 44
+          },
+          "data": {
+            "label": "Gather Required Documents",
+            "stepId": "documents",
+            "nodeType": "document"
+          }
+        },
+        {
+          "id": "End2",
+          "type": "start",
+          "position": {
+            "x": 508,
+            "y": 258
+          },
+          "data": {
+            "label": "Not Eligible",
+            "stepId": "End2",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "visa",
+          "type": "process",
+          "position": {
+            "x": 748,
+            "y": 44
+          },
+          "data": {
+            "label": "Receive Digital Nomad Visa",
+            "stepId": "visa",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "processing",
+          "type": "process",
+          "position": {
+            "x": 748,
+            "y": 248
+          },
+          "data": {
+            "label": "Wait for Processing<br/>6-10 weeks",
+            "stepId": "processing",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "decision",
+          "type": "decision",
+          "position": {
+            "x": 784,
+            "y": 428
+          },
+          "data": {
+            "label": "Decision",
+            "stepId": "decision",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "End3",
+          "type": "end",
+          "position": {
+            "x": 768,
+            "y": 656
+          },
+          "data": {
+            "label": "Process Ended",
+            "stepId": "End3",
+            "nodeType": "end"
+          }
+        },
+        {
+          "id": "questura",
+          "type": "process",
+          "position": {
+            "x": 1028,
+            "y": 44
+          },
+          "data": {
+            "label": "Travel and Apply at Questura",
+            "stepId": "questura",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Success",
+          "type": "end",
+          "position": {
+            "x": 1048,
+            "y": 258
+          },
+          "data": {
+            "label": "Process Complete",
+            "stepId": "Success",
+            "nodeType": "end"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "verification-End1",
+          "source": "verification",
+          "target": "End1",
+          "type": "smoothstep",
+          "label": "No",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "verification-End2",
+          "source": "verification",
+          "target": "End2",
+          "type": "smoothstep",
+          "label": "No",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "visa-processing",
+          "source": "visa",
+          "target": "processing",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "processing-decision",
+          "source": "processing",
+          "target": "decision",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "decision-End3",
+          "source": "decision",
+          "target": "End3",
+          "type": "smoothstep",
+          "label": "Rejected",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "questura-Success",
+          "source": "questura",
+          "target": "Success",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        }
+      ]
+    },
+    steps: [
  {
  id: 'remote-work-verification',
  title: 'Verify Remote Work Status',
@@ -683,7 +1675,254 @@ flowchart TD
  receive-visa -->travel-questura[Travel and Apply at Questura]
  travel-questura -->integration-agreement[Sign Integration Agreement]
  integration-agreement --> Success([Process Complete])`,
- steps: [
+ reactFlowData: {
+      "nodes": [
+        {
+          "id": "Start",
+          "type": "start",
+          "position": {
+            "x": 20,
+            "y": 54
+          },
+          "data": {
+            "label": "Start Process",
+            "stepId": "Start",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "housing",
+          "type": "decision",
+          "position": {
+            "x": 260,
+            "y": 20
+          },
+          "data": {
+            "label": "Sponsor Meets Requirements?",
+            "stepId": "housing",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "End1",
+          "type": "start",
+          "position": {
+            "x": 468,
+            "y": 54
+          },
+          "data": {
+            "label": "Not Eligible",
+            "stepId": "End1",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "osta",
+          "type": "process",
+          "position": {
+            "x": 708,
+            "y": 44
+          },
+          "data": {
+            "label": "Sponsor Obtains Nulla Osta",
+            "stepId": "osta",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "End2",
+          "type": "start",
+          "position": {
+            "x": 244,
+            "y": 258
+          },
+          "data": {
+            "label": "Not Eligible",
+            "stepId": "End2",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "documents",
+          "type": "document",
+          "position": {
+            "x": 988,
+            "y": 44
+          },
+          "data": {
+            "label": "Gather Required Documents",
+            "stepId": "documents",
+            "nodeType": "document"
+          }
+        },
+        {
+          "id": "visa",
+          "type": "process",
+          "position": {
+            "x": 1268,
+            "y": 44
+          },
+          "data": {
+            "label": "Receive Visa",
+            "stepId": "visa",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "processing",
+          "type": "process",
+          "position": {
+            "x": 1268,
+            "y": 248
+          },
+          "data": {
+            "label": "Wait for Processing<br/>12-20 weeks",
+            "stepId": "processing",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "decision",
+          "type": "decision",
+          "position": {
+            "x": 1304,
+            "y": 428
+          },
+          "data": {
+            "label": "Decision",
+            "stepId": "decision",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "End3",
+          "type": "end",
+          "position": {
+            "x": 1288,
+            "y": 656
+          },
+          "data": {
+            "label": "Process Ended",
+            "stepId": "End3",
+            "nodeType": "end"
+          }
+        },
+        {
+          "id": "questura",
+          "type": "process",
+          "position": {
+            "x": 1548,
+            "y": 44
+          },
+          "data": {
+            "label": "Travel and Apply at Questura",
+            "stepId": "questura",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "agreement",
+          "type": "process",
+          "position": {
+            "x": 1828,
+            "y": 44
+          },
+          "data": {
+            "label": "Sign Integration Agreement",
+            "stepId": "agreement",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Success",
+          "type": "end",
+          "position": {
+            "x": 1848,
+            "y": 258
+          },
+          "data": {
+            "label": "Process Complete",
+            "stepId": "Success",
+            "nodeType": "end"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "housing-End2",
+          "source": "housing",
+          "target": "End2",
+          "type": "smoothstep",
+          "label": "No",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "visa-processing",
+          "source": "visa",
+          "target": "processing",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "processing-decision",
+          "source": "processing",
+          "target": "decision",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "decision-End3",
+          "source": "decision",
+          "target": "End3",
+          "type": "smoothstep",
+          "label": "Rejected",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "agreement-Success",
+          "source": "agreement",
+          "target": "Success",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        }
+      ]
+    },
+    steps: [
  {
  id: 'sponsor-eligibility',
  title: 'Verify Sponsor Eligibility',

@@ -28,7 +28,284 @@ flowchart TD
  arrival-registration --> registration[Register at Migri Office Get Finnish ID]
  registration --> Success([Process Complete])
  Appeal --> End2([Process Ended])`,
- steps: [
+ reactFlowData: {
+      "nodes": [
+        {
+          "id": "Start",
+          "type": "start",
+          "position": {
+            "x": 20,
+            "y": 54
+          },
+          "data": {
+            "label": "Start Process",
+            "stepId": "Start",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "CheckSalary",
+          "type": "decision",
+          "position": {
+            "x": 260,
+            "y": 20
+          },
+          "data": {
+            "label": "Salary >= 3000 EUR/month?",
+            "stepId": "CheckSalary",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "documents",
+          "type": "document",
+          "position": {
+            "x": 468,
+            "y": 44
+          },
+          "data": {
+            "label": "Gather Required Documents",
+            "stepId": "documents",
+            "nodeType": "document"
+          }
+        },
+        {
+          "id": "End1",
+          "type": "start",
+          "position": {
+            "x": 244,
+            "y": 258
+          },
+          "data": {
+            "label": "Not Eligible",
+            "stepId": "End1",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "application",
+          "type": "process",
+          "position": {
+            "x": 748,
+            "y": 44
+          },
+          "data": {
+            "label": "Submit Application Online via Enter Finland",
+            "stepId": "application",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "processing",
+          "type": "process",
+          "position": {
+            "x": 748,
+            "y": 248
+          },
+          "data": {
+            "label": "Migri Processing 60-90 Days",
+            "stepId": "processing",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Decision",
+          "type": "decision",
+          "position": {
+            "x": 784,
+            "y": 428
+          },
+          "data": {
+            "label": "Decision",
+            "stepId": "Decision",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "Permit",
+          "type": "process",
+          "position": {
+            "x": 748,
+            "y": 656
+          },
+          "data": {
+            "label": "Receive Residence Permit",
+            "stepId": "Permit",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Appeal",
+          "type": "process",
+          "position": {
+            "x": 1028,
+            "y": 656
+          },
+          "data": {
+            "label": "Consider Appeal",
+            "stepId": "Appeal",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "registration",
+          "type": "process",
+          "position": {
+            "x": 1028,
+            "y": 44
+          },
+          "data": {
+            "label": "Register at Migri Office Get Finnish ID",
+            "stepId": "registration",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Success",
+          "type": "end",
+          "position": {
+            "x": 1048,
+            "y": 258
+          },
+          "data": {
+            "label": "Process Complete",
+            "stepId": "Success",
+            "nodeType": "end"
+          }
+        },
+        {
+          "id": "End2",
+          "type": "end",
+          "position": {
+            "x": 1048,
+            "y": 836
+          },
+          "data": {
+            "label": "Process Ended",
+            "stepId": "End2",
+            "nodeType": "end"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "CheckSalary-End1",
+          "source": "CheckSalary",
+          "target": "End1",
+          "type": "smoothstep",
+          "label": "No",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "application-processing",
+          "source": "application",
+          "target": "processing",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "processing-Decision",
+          "source": "processing",
+          "target": "Decision",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "Decision-Permit",
+          "source": "Decision",
+          "target": "Permit",
+          "type": "smoothstep",
+          "label": "Approved",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "Decision-Appeal",
+          "source": "Decision",
+          "target": "Appeal",
+          "type": "smoothstep",
+          "label": "Rejected",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "registration-registration",
+          "source": "registration",
+          "target": "registration",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "registration-Success",
+          "source": "registration",
+          "target": "Success",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "Appeal-End2",
+          "source": "Appeal",
+          "target": "End2",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        }
+      ]
+    },
+    steps: [
  {
  id: 'job-offer',
  title: 'Secure Job Offer in Finland',
@@ -161,7 +438,396 @@ flowchart TD
  Travel --> Register[Register at Migri Office Get Finnish ID]
  Register --> Success([Process Complete])
  Appeal --> End3([Process Ended])`,
- steps: [
+ reactFlowData: {
+      "nodes": [
+        {
+          "id": "Start",
+          "type": "start",
+          "position": {
+            "x": 20,
+            "y": 54
+          },
+          "data": {
+            "label": "Start Process",
+            "stepId": "Start",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "CheckSalary",
+          "type": "decision",
+          "position": {
+            "x": 260,
+            "y": 20
+          },
+          "data": {
+            "label": "Salary >= 3827 EUR/month?",
+            "stepId": "CheckSalary",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "CheckEducation",
+          "type": "decision",
+          "position": {
+            "x": 260,
+            "y": 248
+          },
+          "data": {
+            "label": "Bachelor Degree or 5 Years Experience?",
+            "stepId": "CheckEducation",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "End1",
+          "type": "start",
+          "position": {
+            "x": 468,
+            "y": 282
+          },
+          "data": {
+            "label": "Not Eligible",
+            "stepId": "End1",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "GatherDocs",
+          "type": "document",
+          "position": {
+            "x": 224,
+            "y": 476
+          },
+          "data": {
+            "label": "Gather Required Documents",
+            "stepId": "GatherDocs",
+            "nodeType": "document"
+          }
+        },
+        {
+          "id": "End2",
+          "type": "start",
+          "position": {
+            "x": 504,
+            "y": 486
+          },
+          "data": {
+            "label": "Not Eligible",
+            "stepId": "End2",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "Submit",
+          "type": "process",
+          "position": {
+            "x": 224,
+            "y": 656
+          },
+          "data": {
+            "label": "Submit Application Online via Enter Finland",
+            "stepId": "Submit",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Processing",
+          "type": "process",
+          "position": {
+            "x": 224,
+            "y": 836
+          },
+          "data": {
+            "label": "Migri Processing 60-90 Days",
+            "stepId": "Processing",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Decision",
+          "type": "decision",
+          "position": {
+            "x": 260,
+            "y": 1016
+          },
+          "data": {
+            "label": "Decision",
+            "stepId": "Decision",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "BlueCard",
+          "type": "process",
+          "position": {
+            "x": 224,
+            "y": 1244
+          },
+          "data": {
+            "label": "Receive EU Blue Card",
+            "stepId": "BlueCard",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Appeal",
+          "type": "process",
+          "position": {
+            "x": 504,
+            "y": 1244
+          },
+          "data": {
+            "label": "Consider Appeal",
+            "stepId": "Appeal",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Travel",
+          "type": "process",
+          "position": {
+            "x": 224,
+            "y": 1424
+          },
+          "data": {
+            "label": "Travel to Finland",
+            "stepId": "Travel",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Register",
+          "type": "process",
+          "position": {
+            "x": 224,
+            "y": 1604
+          },
+          "data": {
+            "label": "Register at Migri Office Get Finnish ID",
+            "stepId": "Register",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Success",
+          "type": "end",
+          "position": {
+            "x": 244,
+            "y": 1784
+          },
+          "data": {
+            "label": "Process Complete",
+            "stepId": "Success",
+            "nodeType": "end"
+          }
+        },
+        {
+          "id": "End3",
+          "type": "end",
+          "position": {
+            "x": 524,
+            "y": 1434
+          },
+          "data": {
+            "label": "Process Ended",
+            "stepId": "End3",
+            "nodeType": "end"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "CheckSalary-CheckEducation",
+          "source": "CheckSalary",
+          "target": "CheckEducation",
+          "type": "smoothstep",
+          "label": "Yes",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "CheckSalary-End1",
+          "source": "CheckSalary",
+          "target": "End1",
+          "type": "smoothstep",
+          "label": "No",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "CheckEducation-GatherDocs",
+          "source": "CheckEducation",
+          "target": "GatherDocs",
+          "type": "smoothstep",
+          "label": "Yes",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "CheckEducation-End2",
+          "source": "CheckEducation",
+          "target": "End2",
+          "type": "smoothstep",
+          "label": "No",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "GatherDocs-Submit",
+          "source": "GatherDocs",
+          "target": "Submit",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "Submit-Processing",
+          "source": "Submit",
+          "target": "Processing",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "Processing-Decision",
+          "source": "Processing",
+          "target": "Decision",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "Decision-BlueCard",
+          "source": "Decision",
+          "target": "BlueCard",
+          "type": "smoothstep",
+          "label": "Approved",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "Decision-Appeal",
+          "source": "Decision",
+          "target": "Appeal",
+          "type": "smoothstep",
+          "label": "Rejected",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "BlueCard-Travel",
+          "source": "BlueCard",
+          "target": "Travel",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "Travel-Register",
+          "source": "Travel",
+          "target": "Register",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "Register-Success",
+          "source": "Register",
+          "target": "Success",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "Appeal-End3",
+          "source": "Appeal",
+          "target": "End3",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        }
+      ]
+    },
+    steps: [
  {
  id: 'job-offer',
  title: 'Secure Highly Skilled Job Offer',
@@ -302,7 +968,373 @@ flowchart TD
  travel-to-finland -->register-business[Register Business<br/>and Get Finnish ID]
  register-business --> Success([Process Complete])
  consider-appeal --> End3([Process Ended])`,
- steps: [
+ reactFlowData: {
+      "nodes": [
+        {
+          "id": "Start",
+          "type": "start",
+          "position": {
+            "x": 20,
+            "y": 54
+          },
+          "data": {
+            "label": "Start Process",
+            "stepId": "Start",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "funds",
+          "type": "decision",
+          "position": {
+            "x": 260,
+            "y": 20
+          },
+          "data": {
+            "label": "Have EUR 12,000<br/>minimum savings?",
+            "stepId": "funds",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "plan",
+          "type": "process",
+          "position": {
+            "x": 468,
+            "y": 44
+          },
+          "data": {
+            "label": "Prepare Detailed<br/>Business Plan",
+            "stepId": "plan",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "End1",
+          "type": "start",
+          "position": {
+            "x": 244,
+            "y": 282
+          },
+          "data": {
+            "label": "Not Eligible",
+            "stepId": "End1",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "accelerator",
+          "type": "process",
+          "position": {
+            "x": 748,
+            "y": 44
+          },
+          "data": {
+            "label": "Submit to Authorized<br/>Accelerator/Incubator",
+            "stepId": "accelerator",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "review",
+          "type": "process",
+          "position": {
+            "x": 1058,
+            "y": 44
+          },
+          "data": {
+            "label": "Accelerator Review<br/>30-60 Days",
+            "stepId": "review",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "decision1",
+          "type": "decision",
+          "position": {
+            "x": 1094,
+            "y": 248
+          },
+          "data": {
+            "label": "Approved?",
+            "stepId": "decision1",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "documents",
+          "type": "document",
+          "position": {
+            "x": 1338,
+            "y": 44
+          },
+          "data": {
+            "label": "Gather Required Documents",
+            "stepId": "documents",
+            "nodeType": "document"
+          }
+        },
+        {
+          "id": "resubmission",
+          "type": "process",
+          "position": {
+            "x": 1618,
+            "y": 44
+          },
+          "data": {
+            "label": "Consider Resubmission",
+            "stepId": "resubmission",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "End2",
+          "type": "end",
+          "position": {
+            "x": 1638,
+            "y": 282
+          },
+          "data": {
+            "label": "Process Ended",
+            "stepId": "End2",
+            "nodeType": "end"
+          }
+        },
+        {
+          "id": "visa",
+          "type": "process",
+          "position": {
+            "x": 1898,
+            "y": 44
+          },
+          "data": {
+            "label": "Submit Visa Application<br/>to Migri",
+            "stepId": "visa",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "processing",
+          "type": "process",
+          "position": {
+            "x": 2208,
+            "y": 44
+          },
+          "data": {
+            "label": "Processing<br/>60-90 Days",
+            "stepId": "processing",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "decision2",
+          "type": "decision",
+          "position": {
+            "x": 2244,
+            "y": 248
+          },
+          "data": {
+            "label": "Decision",
+            "stepId": "decision2",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "permit",
+          "type": "process",
+          "position": {
+            "x": 2488,
+            "y": 44
+          },
+          "data": {
+            "label": "Receive Residence Permit",
+            "stepId": "permit",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "appeal",
+          "type": "process",
+          "position": {
+            "x": 2768,
+            "y": 44
+          },
+          "data": {
+            "label": "Consider Appeal",
+            "stepId": "appeal",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "finland",
+          "type": "process",
+          "position": {
+            "x": 3048,
+            "y": 44
+          },
+          "data": {
+            "label": "Travel to Finland",
+            "stepId": "finland",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "business",
+          "type": "process",
+          "position": {
+            "x": 3328,
+            "y": 44
+          },
+          "data": {
+            "label": "Register Business<br/>and Get Finnish ID",
+            "stepId": "business",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Success",
+          "type": "end",
+          "position": {
+            "x": 3348,
+            "y": 282
+          },
+          "data": {
+            "label": "Process Complete",
+            "stepId": "Success",
+            "nodeType": "end"
+          }
+        },
+        {
+          "id": "End3",
+          "type": "end",
+          "position": {
+            "x": 2788,
+            "y": 282
+          },
+          "data": {
+            "label": "Process Ended",
+            "stepId": "End3",
+            "nodeType": "end"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "funds-End1",
+          "source": "funds",
+          "target": "End1",
+          "type": "smoothstep",
+          "label": "No",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "accelerator-accelerator",
+          "source": "accelerator",
+          "target": "accelerator",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "review-decision1",
+          "source": "review",
+          "target": "decision1",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "resubmission-End2",
+          "source": "resubmission",
+          "target": "End2",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "visa-visa",
+          "source": "visa",
+          "target": "visa",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "processing-decision2",
+          "source": "processing",
+          "target": "decision2",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "business-Success",
+          "source": "business",
+          "target": "Success",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "appeal-End3",
+          "source": "appeal",
+          "target": "End3",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        }
+      ]
+    },
+    steps: [
  {
  id: 'business-idea',
  title: 'Develop Innovative Startup Idea',
@@ -548,7 +1580,340 @@ flowchart TD
  travel -->register[Register Business]
  register --> Success([Complete])
  appeal --> End2([Process Ended])`,
- steps: [
+ reactFlowData: {
+      "nodes": [
+        {
+          "id": "Start",
+          "type": "start",
+          "position": {
+            "x": 20,
+            "y": 54
+          },
+          "data": {
+            "label": "Start",
+            "stepId": "Start",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "funds",
+          "type": "decision",
+          "position": {
+            "x": 260,
+            "y": 20
+          },
+          "data": {
+            "label": "EUR 17,500<br/>Savings?",
+            "stepId": "funds",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "docs",
+          "type": "document",
+          "position": {
+            "x": 224,
+            "y": 248
+          },
+          "data": {
+            "label": "Gather Documents",
+            "stepId": "docs",
+            "nodeType": "document"
+          }
+        },
+        {
+          "id": "End1",
+          "type": "start",
+          "position": {
+            "x": 504,
+            "y": 258
+          },
+          "data": {
+            "label": "Not Eligible",
+            "stepId": "End1",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "submit",
+          "type": "process",
+          "position": {
+            "x": 224,
+            "y": 428
+          },
+          "data": {
+            "label": "Submit Application",
+            "stepId": "submit",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "process",
+          "type": "process",
+          "position": {
+            "x": 224,
+            "y": 608
+          },
+          "data": {
+            "label": "Processing 60-90 Days",
+            "stepId": "process",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "decision",
+          "type": "decision",
+          "position": {
+            "x": 260,
+            "y": 788
+          },
+          "data": {
+            "label": "Decision",
+            "stepId": "decision",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "permit",
+          "type": "process",
+          "position": {
+            "x": 224,
+            "y": 1016
+          },
+          "data": {
+            "label": "Receive Permit",
+            "stepId": "permit",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "appeal",
+          "type": "process",
+          "position": {
+            "x": 504,
+            "y": 1016
+          },
+          "data": {
+            "label": "Consider Appeal",
+            "stepId": "appeal",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "travel",
+          "type": "process",
+          "position": {
+            "x": 224,
+            "y": 1196
+          },
+          "data": {
+            "label": "Travel to Finland",
+            "stepId": "travel",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "register",
+          "type": "process",
+          "position": {
+            "x": 224,
+            "y": 1376
+          },
+          "data": {
+            "label": "Register Business",
+            "stepId": "register",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Success",
+          "type": "end",
+          "position": {
+            "x": 244,
+            "y": 1556
+          },
+          "data": {
+            "label": "Complete",
+            "stepId": "Success",
+            "nodeType": "end"
+          }
+        },
+        {
+          "id": "End2",
+          "type": "end",
+          "position": {
+            "x": 524,
+            "y": 1206
+          },
+          "data": {
+            "label": "Process Ended",
+            "stepId": "End2",
+            "nodeType": "end"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "funds-docs",
+          "source": "funds",
+          "target": "docs",
+          "type": "smoothstep",
+          "label": "Yes",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "funds-End1",
+          "source": "funds",
+          "target": "End1",
+          "type": "smoothstep",
+          "label": "No",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "docs-submit",
+          "source": "docs",
+          "target": "submit",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "submit-process",
+          "source": "submit",
+          "target": "process",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "process-decision",
+          "source": "process",
+          "target": "decision",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "decision-permit",
+          "source": "decision",
+          "target": "permit",
+          "type": "smoothstep",
+          "label": "Approved",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "decision-appeal",
+          "source": "decision",
+          "target": "appeal",
+          "type": "smoothstep",
+          "label": "Rejected",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "permit-travel",
+          "source": "permit",
+          "target": "travel",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "travel-register",
+          "source": "travel",
+          "target": "register",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "register-Success",
+          "source": "register",
+          "target": "Success",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "appeal-End2",
+          "source": "appeal",
+          "target": "End2",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        }
+      ]
+    },
+    steps: [
  {
  id: 'plan',
  title: 'Develop Business Plan',
@@ -638,7 +2003,340 @@ flowchart TD
  travel -->register[Register at Maistraatti]
  register --> Success([Complete])
  appeal --> End2([Process Ended])`,
- steps: [
+ reactFlowData: {
+      "nodes": [
+        {
+          "id": "Start",
+          "type": "start",
+          "position": {
+            "x": 20,
+            "y": 54
+          },
+          "data": {
+            "label": "Start",
+            "stepId": "Start",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "eligible",
+          "type": "decision",
+          "position": {
+            "x": 260,
+            "y": 20
+          },
+          "data": {
+            "label": "Sponsor<br/>Eligible?",
+            "stepId": "eligible",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "docs",
+          "type": "document",
+          "position": {
+            "x": 224,
+            "y": 248
+          },
+          "data": {
+            "label": "Gather Documents",
+            "stepId": "docs",
+            "nodeType": "document"
+          }
+        },
+        {
+          "id": "End1",
+          "type": "start",
+          "position": {
+            "x": 504,
+            "y": 258
+          },
+          "data": {
+            "label": "Not Eligible",
+            "stepId": "End1",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "submit",
+          "type": "process",
+          "position": {
+            "x": 224,
+            "y": 428
+          },
+          "data": {
+            "label": "Submit Application",
+            "stepId": "submit",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "process",
+          "type": "process",
+          "position": {
+            "x": 224,
+            "y": 608
+          },
+          "data": {
+            "label": "Processing 3-6 Months",
+            "stepId": "process",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "decision",
+          "type": "decision",
+          "position": {
+            "x": 260,
+            "y": 788
+          },
+          "data": {
+            "label": "Decision",
+            "stepId": "decision",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "permit",
+          "type": "process",
+          "position": {
+            "x": 224,
+            "y": 1016
+          },
+          "data": {
+            "label": "Receive Permit",
+            "stepId": "permit",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "appeal",
+          "type": "process",
+          "position": {
+            "x": 504,
+            "y": 1016
+          },
+          "data": {
+            "label": "Consider Appeal",
+            "stepId": "appeal",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "travel",
+          "type": "process",
+          "position": {
+            "x": 224,
+            "y": 1196
+          },
+          "data": {
+            "label": "Travel to Finland",
+            "stepId": "travel",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "register",
+          "type": "process",
+          "position": {
+            "x": 224,
+            "y": 1376
+          },
+          "data": {
+            "label": "Register at Maistraatti",
+            "stepId": "register",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Success",
+          "type": "end",
+          "position": {
+            "x": 244,
+            "y": 1556
+          },
+          "data": {
+            "label": "Complete",
+            "stepId": "Success",
+            "nodeType": "end"
+          }
+        },
+        {
+          "id": "End2",
+          "type": "end",
+          "position": {
+            "x": 524,
+            "y": 1206
+          },
+          "data": {
+            "label": "Process Ended",
+            "stepId": "End2",
+            "nodeType": "end"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "eligible-docs",
+          "source": "eligible",
+          "target": "docs",
+          "type": "smoothstep",
+          "label": "Yes",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "eligible-End1",
+          "source": "eligible",
+          "target": "End1",
+          "type": "smoothstep",
+          "label": "No",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "docs-submit",
+          "source": "docs",
+          "target": "submit",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "submit-process",
+          "source": "submit",
+          "target": "process",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "process-decision",
+          "source": "process",
+          "target": "decision",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "decision-permit",
+          "source": "decision",
+          "target": "permit",
+          "type": "smoothstep",
+          "label": "Approved",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "decision-appeal",
+          "source": "decision",
+          "target": "appeal",
+          "type": "smoothstep",
+          "label": "Rejected",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "permit-travel",
+          "source": "permit",
+          "target": "travel",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "travel-register",
+          "source": "travel",
+          "target": "register",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "register-Success",
+          "source": "register",
+          "target": "Success",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "appeal-End2",
+          "source": "appeal",
+          "target": "End2",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        }
+      ]
+    },
+    steps: [
  {
  id: 'check',
  title: 'Check Eligibility',

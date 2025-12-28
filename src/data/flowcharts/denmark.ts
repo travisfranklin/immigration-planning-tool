@@ -30,7 +30,353 @@ flowchart TD
  arrival --> registration[Register at SIRI<br/>Get CPR Number]
  registration --> Success([Process Complete])
  Appeal --> End3([Process Ended])`,
- steps: [
+ reactFlowData: {
+      "nodes": [
+        {
+          "id": "Start",
+          "type": "start",
+          "position": {
+            "x": 20,
+            "y": 54
+          },
+          "data": {
+            "label": "Start Process",
+            "stepId": "Start",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "CheckSalary",
+          "type": "decision",
+          "position": {
+            "x": 260,
+            "y": 20
+          },
+          "data": {
+            "label": "Salary >= DKK 465,000<br/>or Recent Grad >= DKK 375,000?",
+            "stepId": "CheckSalary",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "CheckCompany",
+          "type": "decision",
+          "position": {
+            "x": 260,
+            "y": 248
+          },
+          "data": {
+            "label": "Employer on<br/>Fast-Track List?",
+            "stepId": "CheckCompany",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "End1",
+          "type": "start",
+          "position": {
+            "x": 824,
+            "y": 282
+          },
+          "data": {
+            "label": "Not Eligible",
+            "stepId": "End1",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "documents",
+          "type": "document",
+          "position": {
+            "x": 468,
+            "y": 44
+          },
+          "data": {
+            "label": "Gather Required Documents",
+            "stepId": "documents",
+            "nodeType": "document"
+          }
+        },
+        {
+          "id": "End2",
+          "type": "start",
+          "position": {
+            "x": 244,
+            "y": 486
+          },
+          "data": {
+            "label": "Use Different Scheme",
+            "stepId": "End2",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "application",
+          "type": "process",
+          "position": {
+            "x": 748,
+            "y": 44
+          },
+          "data": {
+            "label": "Submit Application Online",
+            "stepId": "application",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "processing",
+          "type": "process",
+          "position": {
+            "x": 1028,
+            "y": 44
+          },
+          "data": {
+            "label": "Fast-Track Processing<br/><=30 Days",
+            "stepId": "processing",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Decision",
+          "type": "decision",
+          "position": {
+            "x": 1064,
+            "y": 248
+          },
+          "data": {
+            "label": "Decision",
+            "stepId": "Decision",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "Permit",
+          "type": "process",
+          "position": {
+            "x": 1028,
+            "y": 476
+          },
+          "data": {
+            "label": "Receive Residence Permit",
+            "stepId": "Permit",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Appeal",
+          "type": "process",
+          "position": {
+            "x": 1308,
+            "y": 476
+          },
+          "data": {
+            "label": "Consider Appeal",
+            "stepId": "Appeal",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "arrival",
+          "type": "process",
+          "position": {
+            "x": 1028,
+            "y": 656
+          },
+          "data": {
+            "label": "Travel to Denmark",
+            "stepId": "arrival",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "registration",
+          "type": "process",
+          "position": {
+            "x": 1028,
+            "y": 836
+          },
+          "data": {
+            "label": "Register at SIRI<br/>Get CPR Number",
+            "stepId": "registration",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Success",
+          "type": "end",
+          "position": {
+            "x": 1048,
+            "y": 1016
+          },
+          "data": {
+            "label": "Process Complete",
+            "stepId": "Success",
+            "nodeType": "end"
+          }
+        },
+        {
+          "id": "End3",
+          "type": "end",
+          "position": {
+            "x": 1328,
+            "y": 666
+          },
+          "data": {
+            "label": "Process Ended",
+            "stepId": "End3",
+            "nodeType": "end"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "CheckSalary-CheckCompany",
+          "source": "CheckSalary",
+          "target": "CheckCompany",
+          "type": "smoothstep",
+          "label": "Yes",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "CheckSalary-End1",
+          "source": "CheckSalary",
+          "target": "End1",
+          "type": "smoothstep",
+          "label": "No",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "CheckCompany-End2",
+          "source": "CheckCompany",
+          "target": "End2",
+          "type": "smoothstep",
+          "label": "No",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "processing-Decision",
+          "source": "processing",
+          "target": "Decision",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "Decision-Permit",
+          "source": "Decision",
+          "target": "Permit",
+          "type": "smoothstep",
+          "label": "Approved",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "Decision-Appeal",
+          "source": "Decision",
+          "target": "Appeal",
+          "type": "smoothstep",
+          "label": "Rejected",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "Permit-arrival",
+          "source": "Permit",
+          "target": "arrival",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "arrival-registration",
+          "source": "arrival",
+          "target": "registration",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "registration-Success",
+          "source": "registration",
+          "target": "Success",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "Appeal-End3",
+          "source": "Appeal",
+          "target": "End3",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        }
+      ]
+    },
+    steps: [
  {
  id: 'job-offer',
  title: 'Secure Job Offer from Certified Fast-Track Company',
@@ -164,7 +510,340 @@ flowchart TD
  Travel --> Register[Register at SIRI<br/>Get CPR Number]
  Register --> Success([Process Complete])
  Appeal --> End2([Process Ended])`,
- steps: [
+ reactFlowData: {
+      "nodes": [
+        {
+          "id": "Start",
+          "type": "start",
+          "position": {
+            "x": 20,
+            "y": 54
+          },
+          "data": {
+            "label": "Start Process",
+            "stepId": "Start",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "CheckSalary",
+          "type": "decision",
+          "position": {
+            "x": 260,
+            "y": 20
+          },
+          "data": {
+            "label": "Salary >=<br/>DKK 465,000/year?",
+            "stepId": "CheckSalary",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "GatherDocs",
+          "type": "document",
+          "position": {
+            "x": 224,
+            "y": 248
+          },
+          "data": {
+            "label": "Gather Required Documents",
+            "stepId": "GatherDocs",
+            "nodeType": "document"
+          }
+        },
+        {
+          "id": "End1",
+          "type": "start",
+          "position": {
+            "x": 504,
+            "y": 258
+          },
+          "data": {
+            "label": "Not Eligible",
+            "stepId": "End1",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "Submit",
+          "type": "process",
+          "position": {
+            "x": 224,
+            "y": 428
+          },
+          "data": {
+            "label": "Submit Application Online",
+            "stepId": "Submit",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Processing",
+          "type": "process",
+          "position": {
+            "x": 224,
+            "y": 608
+          },
+          "data": {
+            "label": "Standard Processing<br/>60-90 Days",
+            "stepId": "Processing",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Decision",
+          "type": "decision",
+          "position": {
+            "x": 260,
+            "y": 788
+          },
+          "data": {
+            "label": "Decision",
+            "stepId": "Decision",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "Permit",
+          "type": "process",
+          "position": {
+            "x": 224,
+            "y": 1016
+          },
+          "data": {
+            "label": "Receive Residence Permit",
+            "stepId": "Permit",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Appeal",
+          "type": "process",
+          "position": {
+            "x": 504,
+            "y": 1016
+          },
+          "data": {
+            "label": "Consider Appeal",
+            "stepId": "Appeal",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Travel",
+          "type": "process",
+          "position": {
+            "x": 224,
+            "y": 1196
+          },
+          "data": {
+            "label": "Travel to Denmark",
+            "stepId": "Travel",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Register",
+          "type": "process",
+          "position": {
+            "x": 224,
+            "y": 1376
+          },
+          "data": {
+            "label": "Register at SIRI<br/>Get CPR Number",
+            "stepId": "Register",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Success",
+          "type": "end",
+          "position": {
+            "x": 244,
+            "y": 1556
+          },
+          "data": {
+            "label": "Process Complete",
+            "stepId": "Success",
+            "nodeType": "end"
+          }
+        },
+        {
+          "id": "End2",
+          "type": "end",
+          "position": {
+            "x": 524,
+            "y": 1206
+          },
+          "data": {
+            "label": "Process Ended",
+            "stepId": "End2",
+            "nodeType": "end"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "CheckSalary-GatherDocs",
+          "source": "CheckSalary",
+          "target": "GatherDocs",
+          "type": "smoothstep",
+          "label": "Yes",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "CheckSalary-End1",
+          "source": "CheckSalary",
+          "target": "End1",
+          "type": "smoothstep",
+          "label": "No",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "GatherDocs-Submit",
+          "source": "GatherDocs",
+          "target": "Submit",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "Submit-Processing",
+          "source": "Submit",
+          "target": "Processing",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "Processing-Decision",
+          "source": "Processing",
+          "target": "Decision",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "Decision-Permit",
+          "source": "Decision",
+          "target": "Permit",
+          "type": "smoothstep",
+          "label": "Approved",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "Decision-Appeal",
+          "source": "Decision",
+          "target": "Appeal",
+          "type": "smoothstep",
+          "label": "Rejected",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "Permit-Travel",
+          "source": "Permit",
+          "target": "Travel",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "Travel-Register",
+          "source": "Travel",
+          "target": "Register",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "Register-Success",
+          "source": "Register",
+          "target": "Success",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "Appeal-End2",
+          "source": "Appeal",
+          "target": "End2",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        }
+      ]
+    },
+    steps: [
  {
  id: 'job-offer',
  title: 'Secure High-Salary Job Offer',
@@ -306,7 +985,373 @@ flowchart TD
   travel-to-denmark -->register-business[Register Business<br/>and Get CPR Number]
   register-business --> Success([Process Complete])
   consider-appeal --> End3([Process Ended])`,
-  steps: [
+  reactFlowData: {
+      "nodes": [
+        {
+          "id": "Start",
+          "type": "start",
+          "position": {
+            "x": 20,
+            "y": 54
+          },
+          "data": {
+            "label": "Start Process",
+            "stepId": "Start",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "funds",
+          "type": "decision",
+          "position": {
+            "x": 260,
+            "y": 20
+          },
+          "data": {
+            "label": "Have DKK 50,000<br/>minimum savings?",
+            "stepId": "funds",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "plan",
+          "type": "process",
+          "position": {
+            "x": 468,
+            "y": 44
+          },
+          "data": {
+            "label": "Prepare Detailed<br/>Business Plan",
+            "stepId": "plan",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "End1",
+          "type": "start",
+          "position": {
+            "x": 244,
+            "y": 282
+          },
+          "data": {
+            "label": "Not Eligible",
+            "stepId": "End1",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "panel",
+          "type": "process",
+          "position": {
+            "x": 748,
+            "y": 44
+          },
+          "data": {
+            "label": "Submit to Expert Panel",
+            "stepId": "panel",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "review",
+          "type": "process",
+          "position": {
+            "x": 1058,
+            "y": 44
+          },
+          "data": {
+            "label": "Expert Panel Review<br/>30-60 Days",
+            "stepId": "review",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "decision1",
+          "type": "decision",
+          "position": {
+            "x": 1094,
+            "y": 248
+          },
+          "data": {
+            "label": "Approved?",
+            "stepId": "decision1",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "documents",
+          "type": "document",
+          "position": {
+            "x": 1338,
+            "y": 44
+          },
+          "data": {
+            "label": "Gather Required Documents",
+            "stepId": "documents",
+            "nodeType": "document"
+          }
+        },
+        {
+          "id": "resubmission",
+          "type": "process",
+          "position": {
+            "x": 1618,
+            "y": 44
+          },
+          "data": {
+            "label": "Consider Resubmission",
+            "stepId": "resubmission",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "End2",
+          "type": "end",
+          "position": {
+            "x": 1638,
+            "y": 282
+          },
+          "data": {
+            "label": "Process Ended",
+            "stepId": "End2",
+            "nodeType": "end"
+          }
+        },
+        {
+          "id": "visa",
+          "type": "process",
+          "position": {
+            "x": 1898,
+            "y": 44
+          },
+          "data": {
+            "label": "Submit Visa Application<br/>to SIRI",
+            "stepId": "visa",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "processing",
+          "type": "process",
+          "position": {
+            "x": 2208,
+            "y": 44
+          },
+          "data": {
+            "label": "Processing<br/>60-90 Days",
+            "stepId": "processing",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "decision2",
+          "type": "decision",
+          "position": {
+            "x": 2244,
+            "y": 248
+          },
+          "data": {
+            "label": "Decision",
+            "stepId": "decision2",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "permit",
+          "type": "process",
+          "position": {
+            "x": 2488,
+            "y": 44
+          },
+          "data": {
+            "label": "Receive Residence Permit",
+            "stepId": "permit",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "appeal",
+          "type": "process",
+          "position": {
+            "x": 2768,
+            "y": 44
+          },
+          "data": {
+            "label": "Consider Appeal",
+            "stepId": "appeal",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "denmark",
+          "type": "process",
+          "position": {
+            "x": 3048,
+            "y": 44
+          },
+          "data": {
+            "label": "Travel to Denmark",
+            "stepId": "denmark",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "business",
+          "type": "process",
+          "position": {
+            "x": 3328,
+            "y": 44
+          },
+          "data": {
+            "label": "Register Business<br/>and Get CPR Number",
+            "stepId": "business",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Success",
+          "type": "end",
+          "position": {
+            "x": 3348,
+            "y": 282
+          },
+          "data": {
+            "label": "Process Complete",
+            "stepId": "Success",
+            "nodeType": "end"
+          }
+        },
+        {
+          "id": "End3",
+          "type": "end",
+          "position": {
+            "x": 2788,
+            "y": 282
+          },
+          "data": {
+            "label": "Process Ended",
+            "stepId": "End3",
+            "nodeType": "end"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "funds-End1",
+          "source": "funds",
+          "target": "End1",
+          "type": "smoothstep",
+          "label": "No",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "panel-panel",
+          "source": "panel",
+          "target": "panel",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "review-decision1",
+          "source": "review",
+          "target": "decision1",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "resubmission-End2",
+          "source": "resubmission",
+          "target": "End2",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "visa-visa",
+          "source": "visa",
+          "target": "visa",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "processing-decision2",
+          "source": "processing",
+          "target": "decision2",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "business-Success",
+          "source": "business",
+          "target": "Success",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "appeal-End3",
+          "source": "appeal",
+          "target": "End3",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        }
+      ]
+    },
+    steps: [
     {
       id: 'business-idea',
       title: 'Develop Innovative Business Idea',
@@ -568,7 +1613,294 @@ flowchart TD
  travel-to-denmark -->register-siri[Register at SIRI<br/>Get CPR Number]
  register-siri --> Success([Process Complete])
  consider-appeal --> End3([Process Ended])`,
- steps: [
+ reactFlowData: {
+      "nodes": [
+        {
+          "id": "Start",
+          "type": "start",
+          "position": {
+            "x": 20,
+            "y": 54
+          },
+          "data": {
+            "label": "Start Process",
+            "stepId": "Start",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "salary",
+          "type": "decision",
+          "position": {
+            "x": 260,
+            "y": 20
+          },
+          "data": {
+            "label": "Salary >= DKK 465,000/year<br/>EUR 62,400?",
+            "stepId": "salary",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "education",
+          "type": "decision",
+          "position": {
+            "x": 500,
+            "y": 20
+          },
+          "data": {
+            "label": "Bachelor's Degree<br/>or Higher?",
+            "stepId": "education",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "End1",
+          "type": "start",
+          "position": {
+            "x": 244,
+            "y": 282
+          },
+          "data": {
+            "label": "Not Eligible",
+            "stepId": "End1",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "documents",
+          "type": "document",
+          "position": {
+            "x": 708,
+            "y": 44
+          },
+          "data": {
+            "label": "Gather Required Documents",
+            "stepId": "documents",
+            "nodeType": "document"
+          }
+        },
+        {
+          "id": "End2",
+          "type": "start",
+          "position": {
+            "x": 484,
+            "y": 282
+          },
+          "data": {
+            "label": "Not Eligible",
+            "stepId": "End2",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "visa",
+          "type": "process",
+          "position": {
+            "x": 988,
+            "y": 44
+          },
+          "data": {
+            "label": "Submit Application<br/>to SIRI",
+            "stepId": "visa",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "processing",
+          "type": "process",
+          "position": {
+            "x": 1298,
+            "y": 44
+          },
+          "data": {
+            "label": "Fast-Track Processing<br/>30-60 Days",
+            "stepId": "processing",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "decision",
+          "type": "decision",
+          "position": {
+            "x": 1334,
+            "y": 248
+          },
+          "data": {
+            "label": "Decision",
+            "stepId": "decision",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "permit",
+          "type": "process",
+          "position": {
+            "x": 1578,
+            "y": 44
+          },
+          "data": {
+            "label": "Receive EU Blue Card",
+            "stepId": "permit",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "appeal",
+          "type": "process",
+          "position": {
+            "x": 1858,
+            "y": 44
+          },
+          "data": {
+            "label": "Consider Appeal",
+            "stepId": "appeal",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "denmark",
+          "type": "process",
+          "position": {
+            "x": 2138,
+            "y": 44
+          },
+          "data": {
+            "label": "Travel to Denmark",
+            "stepId": "denmark",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "siri",
+          "type": "process",
+          "position": {
+            "x": 2418,
+            "y": 44
+          },
+          "data": {
+            "label": "Register at SIRI<br/>Get CPR Number",
+            "stepId": "siri",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Success",
+          "type": "end",
+          "position": {
+            "x": 2438,
+            "y": 282
+          },
+          "data": {
+            "label": "Process Complete",
+            "stepId": "Success",
+            "nodeType": "end"
+          }
+        },
+        {
+          "id": "End3",
+          "type": "end",
+          "position": {
+            "x": 1878,
+            "y": 282
+          },
+          "data": {
+            "label": "Process Ended",
+            "stepId": "End3",
+            "nodeType": "end"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "salary-End1",
+          "source": "salary",
+          "target": "End1",
+          "type": "smoothstep",
+          "label": "No",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "education-End2",
+          "source": "education",
+          "target": "End2",
+          "type": "smoothstep",
+          "label": "No",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "visa-visa",
+          "source": "visa",
+          "target": "visa",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "processing-decision",
+          "source": "processing",
+          "target": "decision",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "siri-Success",
+          "source": "siri",
+          "target": "Success",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "appeal-End3",
+          "source": "appeal",
+          "target": "End3",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        }
+      ]
+    },
+    steps: [
  {
  id: 'job-offer',
  title: 'Secure Job Offer from Danish Employer',
@@ -741,7 +2073,340 @@ flowchart TD
  travel -->register[Register at SIRI]
  register --> Success([Complete])
  appeal --> End2([Process Ended])`,
- steps: [
+ reactFlowData: {
+      "nodes": [
+        {
+          "id": "Start",
+          "type": "start",
+          "position": {
+            "x": 20,
+            "y": 54
+          },
+          "data": {
+            "label": "Start",
+            "stepId": "Start",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "eligible",
+          "type": "decision",
+          "position": {
+            "x": 260,
+            "y": 20
+          },
+          "data": {
+            "label": "Sponsor<br/>Eligible?",
+            "stepId": "eligible",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "docs",
+          "type": "document",
+          "position": {
+            "x": 224,
+            "y": 248
+          },
+          "data": {
+            "label": "Gather Documents",
+            "stepId": "docs",
+            "nodeType": "document"
+          }
+        },
+        {
+          "id": "End1",
+          "type": "start",
+          "position": {
+            "x": 504,
+            "y": 258
+          },
+          "data": {
+            "label": "Not Eligible",
+            "stepId": "End1",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "submit",
+          "type": "process",
+          "position": {
+            "x": 224,
+            "y": 428
+          },
+          "data": {
+            "label": "Submit Application",
+            "stepId": "submit",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "process",
+          "type": "process",
+          "position": {
+            "x": 224,
+            "y": 608
+          },
+          "data": {
+            "label": "Processing 3-6 Months",
+            "stepId": "process",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "decision",
+          "type": "decision",
+          "position": {
+            "x": 260,
+            "y": 788
+          },
+          "data": {
+            "label": "Decision",
+            "stepId": "decision",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "permit",
+          "type": "process",
+          "position": {
+            "x": 224,
+            "y": 1016
+          },
+          "data": {
+            "label": "Receive Permit",
+            "stepId": "permit",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "appeal",
+          "type": "process",
+          "position": {
+            "x": 504,
+            "y": 1016
+          },
+          "data": {
+            "label": "Consider Appeal",
+            "stepId": "appeal",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "travel",
+          "type": "process",
+          "position": {
+            "x": 224,
+            "y": 1196
+          },
+          "data": {
+            "label": "Travel to Denmark",
+            "stepId": "travel",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "register",
+          "type": "process",
+          "position": {
+            "x": 224,
+            "y": 1376
+          },
+          "data": {
+            "label": "Register at SIRI",
+            "stepId": "register",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Success",
+          "type": "end",
+          "position": {
+            "x": 244,
+            "y": 1556
+          },
+          "data": {
+            "label": "Complete",
+            "stepId": "Success",
+            "nodeType": "end"
+          }
+        },
+        {
+          "id": "End2",
+          "type": "end",
+          "position": {
+            "x": 524,
+            "y": 1206
+          },
+          "data": {
+            "label": "Process Ended",
+            "stepId": "End2",
+            "nodeType": "end"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "eligible-docs",
+          "source": "eligible",
+          "target": "docs",
+          "type": "smoothstep",
+          "label": "Yes",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "eligible-End1",
+          "source": "eligible",
+          "target": "End1",
+          "type": "smoothstep",
+          "label": "No",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "docs-submit",
+          "source": "docs",
+          "target": "submit",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "submit-process",
+          "source": "submit",
+          "target": "process",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "process-decision",
+          "source": "process",
+          "target": "decision",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "decision-permit",
+          "source": "decision",
+          "target": "permit",
+          "type": "smoothstep",
+          "label": "Approved",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "decision-appeal",
+          "source": "decision",
+          "target": "appeal",
+          "type": "smoothstep",
+          "label": "Rejected",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "permit-travel",
+          "source": "permit",
+          "target": "travel",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "travel-register",
+          "source": "travel",
+          "target": "register",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "register-Success",
+          "source": "register",
+          "target": "Success",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "appeal-End2",
+          "source": "appeal",
+          "target": "End2",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        }
+      ]
+    },
+    steps: [
  {
  id: 'check',
  title: 'Check Eligibility',

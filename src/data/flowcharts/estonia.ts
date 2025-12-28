@@ -23,7 +23,216 @@ flowchart TD
  processing --> Visa[Digital Nomad Visa<br/>1 Year]
  Visa --> arrival[Travel to Estonia]
  arrival --> Success([Work from Tallinn!])`,
- steps: [
+ reactFlowData: {
+      "nodes": [
+        {
+          "id": "Start",
+          "type": "start",
+          "position": {
+            "x": 20,
+            "y": 54
+          },
+          "data": {
+            "label": "Start",
+            "stepId": "Start",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "Income",
+          "type": "decision",
+          "position": {
+            "x": 260,
+            "y": 20
+          },
+          "data": {
+            "label": " EUR 3,500/month<br/>Income?",
+            "stepId": "Income",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "docs",
+          "type": "document",
+          "position": {
+            "x": 224,
+            "y": 248
+          },
+          "data": {
+            "label": "Gather Documents",
+            "stepId": "docs",
+            "nodeType": "document"
+          }
+        },
+        {
+          "id": "End1",
+          "type": "start",
+          "position": {
+            "x": 504,
+            "y": 258
+          },
+          "data": {
+            "label": "Not Eligible",
+            "stepId": "End1",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "application",
+          "type": "process",
+          "position": {
+            "x": 744,
+            "y": 44
+          },
+          "data": {
+            "label": "Submit Application",
+            "stepId": "application",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "processing",
+          "type": "process",
+          "position": {
+            "x": 744,
+            "y": 248
+          },
+          "data": {
+            "label": "Processing 30 Days",
+            "stepId": "processing",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Visa",
+          "type": "process",
+          "position": {
+            "x": 744,
+            "y": 428
+          },
+          "data": {
+            "label": "Digital Nomad Visa<br/>1 Year",
+            "stepId": "Visa",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "arrival",
+          "type": "process",
+          "position": {
+            "x": 744,
+            "y": 608
+          },
+          "data": {
+            "label": "Travel to Estonia",
+            "stepId": "arrival",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Success",
+          "type": "start",
+          "position": {
+            "x": 764,
+            "y": 788
+          },
+          "data": {
+            "label": "Work from Tallinn!",
+            "stepId": "Success",
+            "nodeType": "start"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "Income-docs",
+          "source": "Income",
+          "target": "docs",
+          "type": "smoothstep",
+          "label": "Yes",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "Income-End1",
+          "source": "Income",
+          "target": "End1",
+          "type": "smoothstep",
+          "label": "No",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "application-processing",
+          "source": "application",
+          "target": "processing",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "processing-Visa",
+          "source": "processing",
+          "target": "Visa",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "Visa-arrival",
+          "source": "Visa",
+          "target": "arrival",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "arrival-Success",
+          "source": "arrival",
+          "target": "Success",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        }
+      ]
+    },
+    steps: [
  {
  id: 'remote',
  title: 'Verify Remote Work',
@@ -71,7 +280,311 @@ flowchart TD
  Submit --> Process[Processing 30-90 Days]
  Process --> Permit[Residence Permit<br/>1 Year]
  Permit --> Success([Live in Estonia!])`,
- steps: [
+ reactFlowData: {
+      "nodes": [
+        {
+          "id": "Start",
+          "type": "start",
+          "position": {
+            "x": 20,
+            "y": 30
+          },
+          "data": {
+            "label": "Start",
+            "stepId": "Start",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "Card",
+          "type": "process",
+          "position": {
+            "x": 260,
+            "y": 20
+          },
+          "data": {
+            "label": "Receive E-Residency Card",
+            "stepId": "Card",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Company",
+          "type": "process",
+          "position": {
+            "x": 260,
+            "y": 200
+          },
+          "data": {
+            "label": "Register Estonian Company",
+            "stepId": "Company",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Operate",
+          "type": "process",
+          "position": {
+            "x": 260,
+            "y": 380
+          },
+          "data": {
+            "label": "Operate Remotely",
+            "stepId": "Operate",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Relocate",
+          "type": "decision",
+          "position": {
+            "x": 296,
+            "y": 560
+          },
+          "data": {
+            "label": "Want to<br/>Relocate?",
+            "stepId": "Relocate",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "Visa",
+          "type": "process",
+          "position": {
+            "x": 260,
+            "y": 788
+          },
+          "data": {
+            "label": "Apply for Business Visa",
+            "stepId": "Visa",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Remote",
+          "type": "start",
+          "position": {
+            "x": 540,
+            "y": 798
+          },
+          "data": {
+            "label": "Stay Remote",
+            "stepId": "Remote",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "Docs",
+          "type": "document",
+          "position": {
+            "x": 260,
+            "y": 968
+          },
+          "data": {
+            "label": "Gather Documents",
+            "stepId": "Docs",
+            "nodeType": "document"
+          }
+        },
+        {
+          "id": "Submit",
+          "type": "process",
+          "position": {
+            "x": 260,
+            "y": 1148
+          },
+          "data": {
+            "label": "Submit Application",
+            "stepId": "Submit",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Process",
+          "type": "process",
+          "position": {
+            "x": 260,
+            "y": 1328
+          },
+          "data": {
+            "label": "Processing 30-90 Days",
+            "stepId": "Process",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Permit",
+          "type": "process",
+          "position": {
+            "x": 260,
+            "y": 1508
+          },
+          "data": {
+            "label": "Residence Permit<br/>1 Year",
+            "stepId": "Permit",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Success",
+          "type": "start",
+          "position": {
+            "x": 280,
+            "y": 1688
+          },
+          "data": {
+            "label": "Live in Estonia!",
+            "stepId": "Success",
+            "nodeType": "start"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "Card-Company",
+          "source": "Card",
+          "target": "Company",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "Company-Operate",
+          "source": "Company",
+          "target": "Operate",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "Operate-Relocate",
+          "source": "Operate",
+          "target": "Relocate",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "Relocate-Visa",
+          "source": "Relocate",
+          "target": "Visa",
+          "type": "smoothstep",
+          "label": "Yes",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "Relocate-Remote",
+          "source": "Relocate",
+          "target": "Remote",
+          "type": "smoothstep",
+          "label": "No",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "Visa-Docs",
+          "source": "Visa",
+          "target": "Docs",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "Docs-Submit",
+          "source": "Docs",
+          "target": "Submit",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "Submit-Process",
+          "source": "Submit",
+          "target": "Process",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "Process-Permit",
+          "source": "Process",
+          "target": "Permit",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "Permit-Success",
+          "source": "Permit",
+          "target": "Success",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        }
+      ]
+    },
+    steps: [
  {
  id: 'e-residency',
  title: 'Get E-Residency',
@@ -127,7 +640,373 @@ flowchart TD
  travel-to-estonia -->register-business[Register Business<br/>and Get ID Card]
  register-business --> Success([Process Complete])
  consider-appeal --> End3([Process Ended])`,
- steps: [
+ reactFlowData: {
+      "nodes": [
+        {
+          "id": "Start",
+          "type": "start",
+          "position": {
+            "x": 20,
+            "y": 54
+          },
+          "data": {
+            "label": "Start Process",
+            "stepId": "Start",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "funds",
+          "type": "decision",
+          "position": {
+            "x": 260,
+            "y": 20
+          },
+          "data": {
+            "label": "Have EUR 16,000<br/>minimum capital?",
+            "stepId": "funds",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "plan",
+          "type": "process",
+          "position": {
+            "x": 468,
+            "y": 44
+          },
+          "data": {
+            "label": "Prepare Detailed<br/>Business Plan",
+            "stepId": "plan",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "End1",
+          "type": "start",
+          "position": {
+            "x": 244,
+            "y": 282
+          },
+          "data": {
+            "label": "Not Eligible",
+            "stepId": "End1",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "committee",
+          "type": "process",
+          "position": {
+            "x": 748,
+            "y": 44
+          },
+          "data": {
+            "label": "Submit to Startup Estonia<br/>Committee",
+            "stepId": "committee",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "review",
+          "type": "process",
+          "position": {
+            "x": 1058,
+            "y": 44
+          },
+          "data": {
+            "label": "Committee Review<br/>30-45 Days",
+            "stepId": "review",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "decision1",
+          "type": "decision",
+          "position": {
+            "x": 1094,
+            "y": 248
+          },
+          "data": {
+            "label": "Approved?",
+            "stepId": "decision1",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "documents",
+          "type": "document",
+          "position": {
+            "x": 1338,
+            "y": 44
+          },
+          "data": {
+            "label": "Gather Required Documents",
+            "stepId": "documents",
+            "nodeType": "document"
+          }
+        },
+        {
+          "id": "resubmission",
+          "type": "process",
+          "position": {
+            "x": 1618,
+            "y": 44
+          },
+          "data": {
+            "label": "Consider Resubmission",
+            "stepId": "resubmission",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "End2",
+          "type": "end",
+          "position": {
+            "x": 1638,
+            "y": 282
+          },
+          "data": {
+            "label": "Process Ended",
+            "stepId": "End2",
+            "nodeType": "end"
+          }
+        },
+        {
+          "id": "visa",
+          "type": "process",
+          "position": {
+            "x": 1898,
+            "y": 44
+          },
+          "data": {
+            "label": "Submit Visa Application<br/>to Police",
+            "stepId": "visa",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "processing",
+          "type": "process",
+          "position": {
+            "x": 2208,
+            "y": 44
+          },
+          "data": {
+            "label": "Processing<br/>30-60 Days",
+            "stepId": "processing",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "decision2",
+          "type": "decision",
+          "position": {
+            "x": 2244,
+            "y": 248
+          },
+          "data": {
+            "label": "Decision",
+            "stepId": "decision2",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "permit",
+          "type": "process",
+          "position": {
+            "x": 2488,
+            "y": 44
+          },
+          "data": {
+            "label": "Receive Residence Permit",
+            "stepId": "permit",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "appeal",
+          "type": "process",
+          "position": {
+            "x": 2768,
+            "y": 44
+          },
+          "data": {
+            "label": "Consider Appeal",
+            "stepId": "appeal",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "estonia",
+          "type": "process",
+          "position": {
+            "x": 3048,
+            "y": 44
+          },
+          "data": {
+            "label": "Travel to Estonia",
+            "stepId": "estonia",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "business",
+          "type": "process",
+          "position": {
+            "x": 3328,
+            "y": 44
+          },
+          "data": {
+            "label": "Register Business<br/>and Get ID Card",
+            "stepId": "business",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Success",
+          "type": "end",
+          "position": {
+            "x": 3348,
+            "y": 282
+          },
+          "data": {
+            "label": "Process Complete",
+            "stepId": "Success",
+            "nodeType": "end"
+          }
+        },
+        {
+          "id": "End3",
+          "type": "end",
+          "position": {
+            "x": 2788,
+            "y": 282
+          },
+          "data": {
+            "label": "Process Ended",
+            "stepId": "End3",
+            "nodeType": "end"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "funds-End1",
+          "source": "funds",
+          "target": "End1",
+          "type": "smoothstep",
+          "label": "No",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "committee-committee",
+          "source": "committee",
+          "target": "committee",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "review-decision1",
+          "source": "review",
+          "target": "decision1",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "resubmission-End2",
+          "source": "resubmission",
+          "target": "End2",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "visa-visa",
+          "source": "visa",
+          "target": "visa",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "processing-decision2",
+          "source": "processing",
+          "target": "decision2",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "business-Success",
+          "source": "business",
+          "target": "Success",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "appeal-End3",
+          "source": "appeal",
+          "target": "End3",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        }
+      ]
+    },
+    steps: [
  {
  id: 'business-idea',
  title: 'Develop Innovative Startup Idea',
@@ -387,7 +1266,294 @@ flowchart TD
  travel-to-estonia -->register-police[Register and Get<br/>ID Card]
  register-police --> Success([Process Complete])
  consider-appeal --> End3([Process Ended])`,
- steps: [
+ reactFlowData: {
+      "nodes": [
+        {
+          "id": "Start",
+          "type": "start",
+          "position": {
+            "x": 20,
+            "y": 54
+          },
+          "data": {
+            "label": "Start Process",
+            "stepId": "Start",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "salary",
+          "type": "decision",
+          "position": {
+            "x": 260,
+            "y": 20
+          },
+          "data": {
+            "label": "Salary >= EUR 2,000/month<br/>EUR 24,000/year?",
+            "stepId": "salary",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "education",
+          "type": "decision",
+          "position": {
+            "x": 500,
+            "y": 20
+          },
+          "data": {
+            "label": "Higher Education<br/>Qualification?",
+            "stepId": "education",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "End1",
+          "type": "start",
+          "position": {
+            "x": 244,
+            "y": 282
+          },
+          "data": {
+            "label": "Not Eligible",
+            "stepId": "End1",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "documents",
+          "type": "document",
+          "position": {
+            "x": 708,
+            "y": 44
+          },
+          "data": {
+            "label": "Gather Required Documents",
+            "stepId": "documents",
+            "nodeType": "document"
+          }
+        },
+        {
+          "id": "End2",
+          "type": "start",
+          "position": {
+            "x": 484,
+            "y": 282
+          },
+          "data": {
+            "label": "Not Eligible",
+            "stepId": "End2",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "visa",
+          "type": "process",
+          "position": {
+            "x": 988,
+            "y": 44
+          },
+          "data": {
+            "label": "Submit Application<br/>to Police",
+            "stepId": "visa",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "processing",
+          "type": "process",
+          "position": {
+            "x": 1298,
+            "y": 44
+          },
+          "data": {
+            "label": "Processing<br/>30-60 Days",
+            "stepId": "processing",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "decision",
+          "type": "decision",
+          "position": {
+            "x": 1334,
+            "y": 248
+          },
+          "data": {
+            "label": "Decision",
+            "stepId": "decision",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "permit",
+          "type": "process",
+          "position": {
+            "x": 1578,
+            "y": 44
+          },
+          "data": {
+            "label": "Receive EU Blue Card",
+            "stepId": "permit",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "appeal",
+          "type": "process",
+          "position": {
+            "x": 1858,
+            "y": 44
+          },
+          "data": {
+            "label": "Consider Appeal",
+            "stepId": "appeal",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "estonia",
+          "type": "process",
+          "position": {
+            "x": 2138,
+            "y": 44
+          },
+          "data": {
+            "label": "Travel to Estonia",
+            "stepId": "estonia",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "police",
+          "type": "process",
+          "position": {
+            "x": 2418,
+            "y": 44
+          },
+          "data": {
+            "label": "Register and Get<br/>ID Card",
+            "stepId": "police",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Success",
+          "type": "end",
+          "position": {
+            "x": 2438,
+            "y": 282
+          },
+          "data": {
+            "label": "Process Complete",
+            "stepId": "Success",
+            "nodeType": "end"
+          }
+        },
+        {
+          "id": "End3",
+          "type": "end",
+          "position": {
+            "x": 1878,
+            "y": 282
+          },
+          "data": {
+            "label": "Process Ended",
+            "stepId": "End3",
+            "nodeType": "end"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "salary-End1",
+          "source": "salary",
+          "target": "End1",
+          "type": "smoothstep",
+          "label": "No",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "education-End2",
+          "source": "education",
+          "target": "End2",
+          "type": "smoothstep",
+          "label": "No",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "visa-visa",
+          "source": "visa",
+          "target": "visa",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "processing-decision",
+          "source": "processing",
+          "target": "decision",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "police-Success",
+          "source": "police",
+          "target": "Success",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "appeal-End3",
+          "source": "appeal",
+          "target": "End3",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        }
+      ]
+    },
+    steps: [
  {
  id: 'job-offer',
  title: 'Secure Job Offer from Estonian Employer',
@@ -563,7 +1729,340 @@ flowchart TD
  travel -->register[Register at Police]
  register --> Success([Complete])
  appeal --> End2([Process Ended])`,
- steps: [
+ reactFlowData: {
+      "nodes": [
+        {
+          "id": "Start",
+          "type": "start",
+          "position": {
+            "x": 20,
+            "y": 54
+          },
+          "data": {
+            "label": "Start",
+            "stepId": "Start",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "eligible",
+          "type": "decision",
+          "position": {
+            "x": 260,
+            "y": 20
+          },
+          "data": {
+            "label": "Sponsor<br/>Eligible?",
+            "stepId": "eligible",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "docs",
+          "type": "document",
+          "position": {
+            "x": 224,
+            "y": 248
+          },
+          "data": {
+            "label": "Gather Documents",
+            "stepId": "docs",
+            "nodeType": "document"
+          }
+        },
+        {
+          "id": "End1",
+          "type": "start",
+          "position": {
+            "x": 504,
+            "y": 258
+          },
+          "data": {
+            "label": "Not Eligible",
+            "stepId": "End1",
+            "nodeType": "start"
+          }
+        },
+        {
+          "id": "submit",
+          "type": "process",
+          "position": {
+            "x": 224,
+            "y": 428
+          },
+          "data": {
+            "label": "Submit Application",
+            "stepId": "submit",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "process",
+          "type": "process",
+          "position": {
+            "x": 224,
+            "y": 608
+          },
+          "data": {
+            "label": "Processing 30-60 Days",
+            "stepId": "process",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "decision",
+          "type": "decision",
+          "position": {
+            "x": 260,
+            "y": 788
+          },
+          "data": {
+            "label": "Decision",
+            "stepId": "decision",
+            "nodeType": "decision"
+          }
+        },
+        {
+          "id": "permit",
+          "type": "process",
+          "position": {
+            "x": 224,
+            "y": 1016
+          },
+          "data": {
+            "label": "Receive Permit",
+            "stepId": "permit",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "appeal",
+          "type": "process",
+          "position": {
+            "x": 504,
+            "y": 1016
+          },
+          "data": {
+            "label": "Consider Appeal",
+            "stepId": "appeal",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "travel",
+          "type": "process",
+          "position": {
+            "x": 224,
+            "y": 1196
+          },
+          "data": {
+            "label": "Travel to Estonia",
+            "stepId": "travel",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "register",
+          "type": "process",
+          "position": {
+            "x": 224,
+            "y": 1376
+          },
+          "data": {
+            "label": "Register at Police",
+            "stepId": "register",
+            "nodeType": "process"
+          }
+        },
+        {
+          "id": "Success",
+          "type": "end",
+          "position": {
+            "x": 244,
+            "y": 1556
+          },
+          "data": {
+            "label": "Complete",
+            "stepId": "Success",
+            "nodeType": "end"
+          }
+        },
+        {
+          "id": "End2",
+          "type": "end",
+          "position": {
+            "x": 524,
+            "y": 1206
+          },
+          "data": {
+            "label": "Process Ended",
+            "stepId": "End2",
+            "nodeType": "end"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "eligible-docs",
+          "source": "eligible",
+          "target": "docs",
+          "type": "smoothstep",
+          "label": "Yes",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "eligible-End1",
+          "source": "eligible",
+          "target": "End1",
+          "type": "smoothstep",
+          "label": "No",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "docs-submit",
+          "source": "docs",
+          "target": "submit",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "submit-process",
+          "source": "submit",
+          "target": "process",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "process-decision",
+          "source": "process",
+          "target": "decision",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "decision-permit",
+          "source": "decision",
+          "target": "permit",
+          "type": "smoothstep",
+          "label": "Approved",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "decision-appeal",
+          "source": "decision",
+          "target": "appeal",
+          "type": "smoothstep",
+          "label": "Rejected",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "permit-travel",
+          "source": "permit",
+          "target": "travel",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "travel-register",
+          "source": "travel",
+          "target": "register",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "register-Success",
+          "source": "register",
+          "target": "Success",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        },
+        {
+          "id": "appeal-End2",
+          "source": "appeal",
+          "target": "End2",
+          "type": "smoothstep",
+          "style": {
+            "stroke": "#1F2937",
+            "strokeWidth": 2
+          },
+          "labelStyle": {
+            "fill": "#1F2937",
+            "fontWeight": 500
+          }
+        }
+      ]
+    },
+    steps: [
  {
  id: 'check',
  title: 'Check Eligibility',
