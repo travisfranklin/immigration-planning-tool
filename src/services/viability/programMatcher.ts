@@ -237,7 +237,12 @@ export function checkEligibility(
   // Soft requirements (in 'recommended') don't affect eligibility
   const isEligible = score >= 50 && missing.length === 0;
 
-  return { isEligible, missingRequirements: missing, recommendedPreparation: recommended, score };
+  // If not eligible due to missing hard requirements, eligibility score must be 0
+  // The eligibility score represents how well you meet HARD requirements
+  // If you don't meet them, you get 0, not a partial score
+  const finalScore = isEligible ? score : 0;
+
+  return { isEligible, missingRequirements: missing, recommendedPreparation: recommended, score: finalScore };
 }
 
 /**
