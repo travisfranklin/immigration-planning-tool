@@ -31,186 +31,186 @@ flowchart TD
  receive-visa -->travel-register[Travel and Register]
  travel-register --> Success([Process Complete])`,
  reactFlowData: {
-      "nodes": [
+      nodes: [
         {
-          "id": "Start",
-          "type": "start",
-          "position": {
-            "x": 20,
-            "y": 30
+          id: "Start",
+          type: "start",
+          position: {
+            x: 20,
+            y: 30
           },
-          "data": {
-            "label": "Start Process",
-            "stepId": "Start",
-            "nodeType": "start"
+          data: {
+            label: "Start Process",
+            stepId: "Start",
+            nodeType: "start"
           }
         },
         {
-          "id": "purchase",
-          "type": "process",
-          "position": {
-            "x": 260,
-            "y": 20
+          id: "purchase",
+          type: "process",
+          position: {
+            x: 260,
+            y: 20
           },
-          "data": {
-            "label": "Purchase Property EUR 500k+",
-            "stepId": "purchase",
-            "nodeType": "process"
+          data: {
+            label: "Purchase Property EUR 500k+",
+            stepId: "purchase",
+            nodeType: "process"
           }
         },
         {
-          "id": "investment",
-          "type": "process",
-          "position": {
-            "x": 540,
-            "y": 20
+          id: "investment",
+          type: "process",
+          position: {
+            x: 540,
+            y: 20
           },
-          "data": {
-            "label": "Invest in Business EUR 1M+",
-            "stepId": "investment",
-            "nodeType": "process"
+          data: {
+            label: "Invest in Business EUR 1M+",
+            stepId: "investment",
+            nodeType: "process"
           }
         },
         {
-          "id": "bonds",
-          "type": "process",
-          "position": {
-            "x": 820,
-            "y": 20
+          id: "bonds",
+          type: "process",
+          position: {
+            x: 820,
+            y: 20
           },
-          "data": {
-            "label": "Buy Government Bonds EUR 2M+",
-            "stepId": "bonds",
-            "nodeType": "process"
+          data: {
+            label: "Buy Government Bonds EUR 2M+",
+            stepId: "bonds",
+            nodeType: "process"
           }
         },
         {
-          "id": "number",
-          "type": "process",
-          "position": {
-            "x": 1100,
-            "y": 20
+          id: "number",
+          type: "process",
+          position: {
+            x: 1100,
+            y: 20
           },
-          "data": {
-            "label": "Obtain NIE Number",
-            "stepId": "number",
-            "nodeType": "process"
+          data: {
+            label: "Obtain NIE Number",
+            stepId: "number",
+            nodeType: "process"
           }
         },
         {
-          "id": "documents",
-          "type": "document",
-          "position": {
-            "x": 1380,
-            "y": 20
+          id: "documents",
+          type: "document",
+          position: {
+            x: 1380,
+            y: 20
           },
-          "data": {
-            "label": "Gather Required Documents",
-            "stepId": "documents",
-            "nodeType": "document"
+          data: {
+            label: "Gather Required Documents",
+            stepId: "documents",
+            nodeType: "document"
           }
         },
         {
-          "id": "application",
-          "type": "process",
-          "position": {
-            "x": 1660,
-            "y": 20
+          id: "application",
+          type: "process",
+          position: {
+            x: 1660,
+            y: 20
           },
-          "data": {
-            "label": "Submit Application",
-            "stepId": "application",
-            "nodeType": "process"
+          data: {
+            label: "Submit Application",
+            stepId: "application",
+            nodeType: "process"
           }
         },
         {
-          "id": "processing",
-          "type": "process",
-          "position": {
-            "x": 1660,
-            "y": 200
+          id: "processing",
+          type: "process",
+          position: {
+            x: 1660,
+            y: 200
           },
-          "data": {
-            "label": "Wait for Processing<br/>4-8 weeks",
-            "stepId": "processing",
-            "nodeType": "process"
+          data: {
+            label: "Wait for Processing<br/>4-8 weeks",
+            stepId: "processing",
+            nodeType: "process"
           }
         },
         {
-          "id": "decision",
-          "type": "decision",
-          "position": {
-            "x": 1696,
-            "y": 380
+          id: "decision",
+          type: "decision",
+          position: {
+            x: 1696,
+            y: 380
           },
-          "data": {
-            "label": "Decision",
-            "stepId": "decision",
-            "nodeType": "decision"
+          data: {
+            label: "Decision",
+            stepId: "decision",
+            nodeType: "decision"
           }
         },
         {
-          "id": "visa",
-          "type": "process",
-          "position": {
-            "x": 1940,
-            "y": 20
+          id: "visa",
+          type: "process",
+          position: {
+            x: 1940,
+            y: 20
           },
-          "data": {
-            "label": "Receive Golden Visa",
-            "stepId": "visa",
-            "nodeType": "process"
+          data: {
+            label: "Receive Golden Visa",
+            stepId: "visa",
+            nodeType: "process"
           }
         },
         {
-          "id": "End1",
-          "type": "end",
-          "position": {
-            "x": 1680,
-            "y": 608
+          id: "End1",
+          type: "end",
+          position: {
+            x: 1680,
+            y: 608
           },
-          "data": {
-            "label": "Process Ended",
-            "stepId": "End1",
-            "nodeType": "end"
+          data: {
+            label: "Process Ended",
+            stepId: "End1",
+            nodeType: "end"
           }
         },
         {
-          "id": "register",
-          "type": "process",
-          "position": {
-            "x": 2220,
-            "y": 20
+          id: "register",
+          type: "process",
+          position: {
+            x: 2220,
+            y: 20
           },
-          "data": {
-            "label": "Travel and Register",
-            "stepId": "register",
-            "nodeType": "process"
+          data: {
+            label: "Travel and Register",
+            stepId: "register",
+            nodeType: "process"
           }
         },
         {
-          "id": "Success",
-          "type": "end",
-          "position": {
-            "x": 2240,
-            "y": 210
+          id: "Success",
+          type: "end",
+          position: {
+            x: 2240,
+            y: 210
           },
-          "data": {
-            "label": "Process Complete",
-            "stepId": "Success",
-            "nodeType": "end"
+          data: {
+            label: "Process Complete",
+            stepId: "Success",
+            nodeType: "end"
           }
         }
       ],
-      "edges": [
+      edges: [
         {
-          "id": "application-processing",
-          "source": "application",
-          "target": "processing",
-          "type": "smoothstep",
-          "style": {
-            "stroke": "#1F2937",
-            "strokeWidth": 2
+          id: "application-processing",
+          source: "application",
+          target: "processing",
+          type: "smoothstep",
+          style: {
+            stroke: "#1F2937",
+            strokeWidth: 2
           },
           "labelStyle": {
             "fill": "#1F2937",
@@ -218,13 +218,13 @@ flowchart TD
           }
         },
         {
-          "id": "processing-decision",
-          "source": "processing",
-          "target": "decision",
-          "type": "smoothstep",
-          "style": {
-            "stroke": "#1F2937",
-            "strokeWidth": 2
+          id: "processing-decision",
+          source: "processing",
+          target: "decision",
+          type: "smoothstep",
+          style: {
+            stroke: "#1F2937",
+            strokeWidth: 2
           },
           "labelStyle": {
             "fill": "#1F2937",
@@ -232,14 +232,14 @@ flowchart TD
           }
         },
         {
-          "id": "decision-End1",
-          "source": "decision",
-          "target": "End1",
-          "type": "smoothstep",
-          "label": "Rejected",
-          "style": {
-            "stroke": "#1F2937",
-            "strokeWidth": 2
+          id: "decision-End1",
+          source: "decision",
+          target: "End1",
+          type: "smoothstep",
+          label: "Rejected",
+          style: {
+            stroke: "#1F2937",
+            strokeWidth: 2
           },
           "labelStyle": {
             "fill": "#1F2937",
@@ -247,13 +247,13 @@ flowchart TD
           }
         },
         {
-          "id": "register-Success",
-          "source": "register",
-          "target": "Success",
-          "type": "smoothstep",
-          "style": {
-            "stroke": "#1F2937",
-            "strokeWidth": 2
+          id: "register-Success",
+          source: "register",
+          target: "Success",
+          type: "smoothstep",
+          style: {
+            stroke: "#1F2937",
+            strokeWidth: 2
           },
           "labelStyle": {
             "fill": "#1F2937",
@@ -424,174 +424,174 @@ flowchart TD
  receive-visa -->travel-register[Travel and Register]
  travel-register --> Success([Process Complete])`,
  reactFlowData: {
-      "nodes": [
+      nodes: [
         {
-          "id": "Start",
-          "type": "start",
-          "position": {
-            "x": 20,
-            "y": 54
+          id: "Start",
+          type: "start",
+          position: {
+            x: 20,
+            y: 54
           },
-          "data": {
-            "label": "Start Process",
-            "stepId": "Start",
-            "nodeType": "start"
+          data: {
+            label: "Start Process",
+            stepId: "Start",
+            nodeType: "start"
           }
         },
         {
-          "id": "verification",
-          "type": "decision",
-          "position": {
-            "x": 260,
-            "y": 20
+          id: "verification",
+          type: "decision",
+          position: {
+            x: 260,
+            y: 20
           },
-          "data": {
-            "label": "Savings >= EUR 30,000?",
-            "stepId": "verification",
-            "nodeType": "decision"
+          data: {
+            label: "Savings >= EUR 30,000?",
+            stepId: "verification",
+            nodeType: "decision"
           }
         },
         {
-          "id": "End1",
-          "type": "start",
-          "position": {
-            "x": 244,
-            "y": 258
+          id: "End1",
+          type: "start",
+          position: {
+            x: 244,
+            y: 258
           },
-          "data": {
-            "label": "Not Eligible",
-            "stepId": "End1",
-            "nodeType": "start"
+          data: {
+            label: "Not Eligible",
+            stepId: "End1",
+            nodeType: "start"
           }
         },
         {
-          "id": "documents",
-          "type": "document",
-          "position": {
-            "x": 468,
-            "y": 44
+          id: "documents",
+          type: "document",
+          position: {
+            x: 468,
+            y: 44
           },
-          "data": {
-            "label": "Gather Required Documents",
-            "stepId": "documents",
-            "nodeType": "document"
+          data: {
+            label: "Gather Required Documents",
+            stepId: "documents",
+            nodeType: "document"
           }
         },
         {
-          "id": "End2",
-          "type": "start",
-          "position": {
-            "x": 508,
-            "y": 258
+          id: "End2",
+          type: "start",
+          position: {
+            x: 508,
+            y: 258
           },
-          "data": {
-            "label": "Not Eligible",
-            "stepId": "End2",
-            "nodeType": "start"
+          data: {
+            label: "Not Eligible",
+            stepId: "End2",
+            nodeType: "start"
           }
         },
         {
-          "id": "application",
-          "type": "process",
-          "position": {
-            "x": 748,
-            "y": 44
+          id: "application",
+          type: "process",
+          position: {
+            x: 748,
+            y: 44
           },
-          "data": {
-            "label": "Submit Application",
-            "stepId": "application",
-            "nodeType": "process"
+          data: {
+            label: "Submit Application",
+            stepId: "application",
+            nodeType: "process"
           }
         },
         {
-          "id": "processing",
-          "type": "process",
-          "position": {
-            "x": 748,
-            "y": 248
+          id: "processing",
+          type: "process",
+          position: {
+            x: 748,
+            y: 248
           },
-          "data": {
-            "label": "Wait for Processing<br/>8-12 weeks",
-            "stepId": "processing",
-            "nodeType": "process"
+          data: {
+            label: "Wait for Processing<br/>8-12 weeks",
+            stepId: "processing",
+            nodeType: "process"
           }
         },
         {
-          "id": "decision",
-          "type": "decision",
-          "position": {
-            "x": 784,
-            "y": 428
+          id: "decision",
+          type: "decision",
+          position: {
+            x: 784,
+            y: 428
           },
-          "data": {
-            "label": "Decision",
-            "stepId": "decision",
-            "nodeType": "decision"
+          data: {
+            label: "Decision",
+            stepId: "decision",
+            nodeType: "decision"
           }
         },
         {
-          "id": "visa",
-          "type": "process",
-          "position": {
-            "x": 1028,
-            "y": 44
+          id: "visa",
+          type: "process",
+          position: {
+            x: 1028,
+            y: 44
           },
-          "data": {
-            "label": "Receive Non-Lucrative Visa",
-            "stepId": "visa",
-            "nodeType": "process"
+          data: {
+            label: "Receive Non-Lucrative Visa",
+            stepId: "visa",
+            nodeType: "process"
           }
         },
         {
-          "id": "End3",
-          "type": "end",
-          "position": {
-            "x": 768,
-            "y": 656
+          id: "End3",
+          type: "end",
+          position: {
+            x: 768,
+            y: 656
           },
-          "data": {
-            "label": "Process Ended",
-            "stepId": "End3",
-            "nodeType": "end"
+          data: {
+            label: "Process Ended",
+            stepId: "End3",
+            nodeType: "end"
           }
         },
         {
-          "id": "register",
-          "type": "process",
-          "position": {
-            "x": 1308,
-            "y": 44
+          id: "register",
+          type: "process",
+          position: {
+            x: 1308,
+            y: 44
           },
-          "data": {
-            "label": "Travel and Register",
-            "stepId": "register",
-            "nodeType": "process"
+          data: {
+            label: "Travel and Register",
+            stepId: "register",
+            nodeType: "process"
           }
         },
         {
-          "id": "Success",
-          "type": "end",
-          "position": {
-            "x": 1328,
-            "y": 258
+          id: "Success",
+          type: "end",
+          position: {
+            x: 1328,
+            y: 258
           },
-          "data": {
-            "label": "Process Complete",
-            "stepId": "Success",
-            "nodeType": "end"
+          data: {
+            label: "Process Complete",
+            stepId: "Success",
+            nodeType: "end"
           }
         }
       ],
-      "edges": [
+      edges: [
         {
-          "id": "verification-End1",
-          "source": "verification",
-          "target": "End1",
-          "type": "smoothstep",
-          "label": "No",
-          "style": {
-            "stroke": "#1F2937",
-            "strokeWidth": 2
+          id: "verification-End1",
+          source: "verification",
+          target: "End1",
+          type: "smoothstep",
+          label: "No",
+          style: {
+            stroke: "#1F2937",
+            strokeWidth: 2
           },
           "labelStyle": {
             "fill": "#1F2937",
@@ -599,14 +599,14 @@ flowchart TD
           }
         },
         {
-          "id": "verification-End2",
-          "source": "verification",
-          "target": "End2",
-          "type": "smoothstep",
-          "label": "No",
-          "style": {
-            "stroke": "#1F2937",
-            "strokeWidth": 2
+          id: "verification-End2",
+          source: "verification",
+          target: "End2",
+          type: "smoothstep",
+          label: "No",
+          style: {
+            stroke: "#1F2937",
+            strokeWidth: 2
           },
           "labelStyle": {
             "fill": "#1F2937",
@@ -614,13 +614,13 @@ flowchart TD
           }
         },
         {
-          "id": "application-processing",
-          "source": "application",
-          "target": "processing",
-          "type": "smoothstep",
-          "style": {
-            "stroke": "#1F2937",
-            "strokeWidth": 2
+          id: "application-processing",
+          source: "application",
+          target: "processing",
+          type: "smoothstep",
+          style: {
+            stroke: "#1F2937",
+            strokeWidth: 2
           },
           "labelStyle": {
             "fill": "#1F2937",
@@ -628,13 +628,13 @@ flowchart TD
           }
         },
         {
-          "id": "processing-decision",
-          "source": "processing",
-          "target": "decision",
-          "type": "smoothstep",
-          "style": {
-            "stroke": "#1F2937",
-            "strokeWidth": 2
+          id: "processing-decision",
+          source: "processing",
+          target: "decision",
+          type: "smoothstep",
+          style: {
+            stroke: "#1F2937",
+            strokeWidth: 2
           },
           "labelStyle": {
             "fill": "#1F2937",
@@ -642,14 +642,14 @@ flowchart TD
           }
         },
         {
-          "id": "decision-End3",
-          "source": "decision",
-          "target": "End3",
-          "type": "smoothstep",
-          "label": "Rejected",
-          "style": {
-            "stroke": "#1F2937",
-            "strokeWidth": 2
+          id: "decision-End3",
+          source: "decision",
+          target: "End3",
+          type: "smoothstep",
+          label: "Rejected",
+          style: {
+            stroke: "#1F2937",
+            strokeWidth: 2
           },
           "labelStyle": {
             "fill": "#1F2937",
@@ -657,13 +657,13 @@ flowchart TD
           }
         },
         {
-          "id": "register-Success",
-          "source": "register",
-          "target": "Success",
-          "type": "smoothstep",
-          "style": {
-            "stroke": "#1F2937",
-            "strokeWidth": 2
+          id: "register-Success",
+          source: "register",
+          target: "Success",
+          type: "smoothstep",
+          style: {
+            stroke: "#1F2937",
+            strokeWidth: 2
           },
           "labelStyle": {
             "fill": "#1F2937",
@@ -812,174 +812,174 @@ flowchart TD
  receive-visa -->travel-register[Travel and Register]
  travel-register --> Success([Process Complete])`,
  reactFlowData: {
-      "nodes": [
+      nodes: [
         {
-          "id": "Start",
-          "type": "start",
-          "position": {
-            "x": 20,
-            "y": 54
+          id: "Start",
+          type: "start",
+          position: {
+            x: 20,
+            y: 54
           },
-          "data": {
-            "label": "Start Process",
-            "stepId": "Start",
-            "nodeType": "start"
+          data: {
+            label: "Start Process",
+            stepId: "Start",
+            nodeType: "start"
           }
         },
         {
-          "id": "verification",
-          "type": "decision",
-          "position": {
-            "x": 260,
-            "y": 20
+          id: "verification",
+          type: "decision",
+          position: {
+            x: 260,
+            y: 20
           },
-          "data": {
-            "label": "Income >= EUR 2,400/month?",
-            "stepId": "verification",
-            "nodeType": "decision"
+          data: {
+            label: "Income >= EUR 2,400/month?",
+            stepId: "verification",
+            nodeType: "decision"
           }
         },
         {
-          "id": "End1",
-          "type": "start",
-          "position": {
-            "x": 244,
-            "y": 258
+          id: "End1",
+          type: "start",
+          position: {
+            x: 244,
+            y: 258
           },
-          "data": {
-            "label": "Not Eligible",
-            "stepId": "End1",
-            "nodeType": "start"
+          data: {
+            label: "Not Eligible",
+            stepId: "End1",
+            nodeType: "start"
           }
         },
         {
-          "id": "documents",
-          "type": "document",
-          "position": {
-            "x": 468,
-            "y": 44
+          id: "documents",
+          type: "document",
+          position: {
+            x: 468,
+            y: 44
           },
-          "data": {
-            "label": "Gather Required Documents",
-            "stepId": "documents",
-            "nodeType": "document"
+          data: {
+            label: "Gather Required Documents",
+            stepId: "documents",
+            nodeType: "document"
           }
         },
         {
-          "id": "End2",
-          "type": "start",
-          "position": {
-            "x": 508,
-            "y": 258
+          id: "End2",
+          type: "start",
+          position: {
+            x: 508,
+            y: 258
           },
-          "data": {
-            "label": "Not Eligible",
-            "stepId": "End2",
-            "nodeType": "start"
+          data: {
+            label: "Not Eligible",
+            stepId: "End2",
+            nodeType: "start"
           }
         },
         {
-          "id": "application",
-          "type": "process",
-          "position": {
-            "x": 748,
-            "y": 44
+          id: "application",
+          type: "process",
+          position: {
+            x: 748,
+            y: 44
           },
-          "data": {
-            "label": "Submit Application",
-            "stepId": "application",
-            "nodeType": "process"
+          data: {
+            label: "Submit Application",
+            stepId: "application",
+            nodeType: "process"
           }
         },
         {
-          "id": "processing",
-          "type": "process",
-          "position": {
-            "x": 748,
-            "y": 248
+          id: "processing",
+          type: "process",
+          position: {
+            x: 748,
+            y: 248
           },
-          "data": {
-            "label": "Wait for Processing<br/>4-8 weeks",
-            "stepId": "processing",
-            "nodeType": "process"
+          data: {
+            label: "Wait for Processing<br/>4-8 weeks",
+            stepId: "processing",
+            nodeType: "process"
           }
         },
         {
-          "id": "decision",
-          "type": "decision",
-          "position": {
-            "x": 784,
-            "y": 428
+          id: "decision",
+          type: "decision",
+          position: {
+            x: 784,
+            y: 428
           },
-          "data": {
-            "label": "Decision",
-            "stepId": "decision",
-            "nodeType": "decision"
+          data: {
+            label: "Decision",
+            stepId: "decision",
+            nodeType: "decision"
           }
         },
         {
-          "id": "visa",
-          "type": "process",
-          "position": {
-            "x": 1028,
-            "y": 44
+          id: "visa",
+          type: "process",
+          position: {
+            x: 1028,
+            y: 44
           },
-          "data": {
-            "label": "Receive Digital Nomad Visa",
-            "stepId": "visa",
-            "nodeType": "process"
+          data: {
+            label: "Receive Digital Nomad Visa",
+            stepId: "visa",
+            nodeType: "process"
           }
         },
         {
-          "id": "End3",
-          "type": "end",
-          "position": {
-            "x": 768,
-            "y": 656
+          id: "End3",
+          type: "end",
+          position: {
+            x: 768,
+            y: 656
           },
-          "data": {
-            "label": "Process Ended",
-            "stepId": "End3",
-            "nodeType": "end"
+          data: {
+            label: "Process Ended",
+            stepId: "End3",
+            nodeType: "end"
           }
         },
         {
-          "id": "register",
-          "type": "process",
-          "position": {
-            "x": 1308,
-            "y": 44
+          id: "register",
+          type: "process",
+          position: {
+            x: 1308,
+            y: 44
           },
-          "data": {
-            "label": "Travel and Register",
-            "stepId": "register",
-            "nodeType": "process"
+          data: {
+            label: "Travel and Register",
+            stepId: "register",
+            nodeType: "process"
           }
         },
         {
-          "id": "Success",
-          "type": "end",
-          "position": {
-            "x": 1328,
-            "y": 258
+          id: "Success",
+          type: "end",
+          position: {
+            x: 1328,
+            y: 258
           },
-          "data": {
-            "label": "Process Complete",
-            "stepId": "Success",
-            "nodeType": "end"
+          data: {
+            label: "Process Complete",
+            stepId: "Success",
+            nodeType: "end"
           }
         }
       ],
-      "edges": [
+      edges: [
         {
-          "id": "verification-End1",
-          "source": "verification",
-          "target": "End1",
-          "type": "smoothstep",
-          "label": "No",
-          "style": {
-            "stroke": "#1F2937",
-            "strokeWidth": 2
+          id: "verification-End1",
+          source: "verification",
+          target: "End1",
+          type: "smoothstep",
+          label: "No",
+          style: {
+            stroke: "#1F2937",
+            strokeWidth: 2
           },
           "labelStyle": {
             "fill": "#1F2937",
@@ -987,14 +987,14 @@ flowchart TD
           }
         },
         {
-          "id": "verification-End2",
-          "source": "verification",
-          "target": "End2",
-          "type": "smoothstep",
-          "label": "No",
-          "style": {
-            "stroke": "#1F2937",
-            "strokeWidth": 2
+          id: "verification-End2",
+          source: "verification",
+          target: "End2",
+          type: "smoothstep",
+          label: "No",
+          style: {
+            stroke: "#1F2937",
+            strokeWidth: 2
           },
           "labelStyle": {
             "fill": "#1F2937",
@@ -1002,13 +1002,13 @@ flowchart TD
           }
         },
         {
-          "id": "application-processing",
-          "source": "application",
-          "target": "processing",
-          "type": "smoothstep",
-          "style": {
-            "stroke": "#1F2937",
-            "strokeWidth": 2
+          id: "application-processing",
+          source: "application",
+          target: "processing",
+          type: "smoothstep",
+          style: {
+            stroke: "#1F2937",
+            strokeWidth: 2
           },
           "labelStyle": {
             "fill": "#1F2937",
@@ -1016,13 +1016,13 @@ flowchart TD
           }
         },
         {
-          "id": "processing-decision",
-          "source": "processing",
-          "target": "decision",
-          "type": "smoothstep",
-          "style": {
-            "stroke": "#1F2937",
-            "strokeWidth": 2
+          id: "processing-decision",
+          source: "processing",
+          target: "decision",
+          type: "smoothstep",
+          style: {
+            stroke: "#1F2937",
+            strokeWidth: 2
           },
           "labelStyle": {
             "fill": "#1F2937",
@@ -1030,14 +1030,14 @@ flowchart TD
           }
         },
         {
-          "id": "decision-End3",
-          "source": "decision",
-          "target": "End3",
-          "type": "smoothstep",
-          "label": "Rejected",
-          "style": {
-            "stroke": "#1F2937",
-            "strokeWidth": 2
+          id: "decision-End3",
+          source: "decision",
+          target: "End3",
+          type: "smoothstep",
+          label: "Rejected",
+          style: {
+            stroke: "#1F2937",
+            strokeWidth: 2
           },
           "labelStyle": {
             "fill": "#1F2937",
@@ -1045,13 +1045,13 @@ flowchart TD
           }
         },
         {
-          "id": "register-Success",
-          "source": "register",
-          "target": "Success",
-          "type": "smoothstep",
-          "style": {
-            "stroke": "#1F2937",
-            "strokeWidth": 2
+          id: "register-Success",
+          source: "register",
+          target: "Success",
+          type: "smoothstep",
+          style: {
+            stroke: "#1F2937",
+            strokeWidth: 2
           },
           "labelStyle": {
             "fill": "#1F2937",
@@ -1201,187 +1201,187 @@ flowchart TD
  travel-register -->social-security[Register for Social Security]
  social-security --> Success([Process Complete])`,
  reactFlowData: {
-      "nodes": [
+      nodes: [
         {
-          "id": "Start",
-          "type": "start",
-          "position": {
-            "x": 20,
-            "y": 54
+          id: "Start",
+          type: "start",
+          position: {
+            x: 20,
+            y: 54
           },
-          "data": {
-            "label": "Start Process",
-            "stepId": "Start",
-            "nodeType": "start"
+          data: {
+            label: "Start Process",
+            stepId: "Start",
+            nodeType: "start"
           }
         },
         {
-          "id": "verification",
-          "type": "decision",
-          "position": {
-            "x": 260,
-            "y": 20
+          id: "verification",
+          type: "decision",
+          position: {
+            x: 260,
+            y: 20
           },
-          "data": {
-            "label": "Salary >= EUR 30,000?",
-            "stepId": "verification",
-            "nodeType": "decision"
+          data: {
+            label: "Salary >= EUR 30,000?",
+            stepId: "verification",
+            nodeType: "decision"
           }
         },
         {
-          "id": "End1",
-          "type": "start",
-          "position": {
-            "x": 244,
-            "y": 258
+          id: "End1",
+          type: "start",
+          position: {
+            x: 244,
+            y: 258
           },
-          "data": {
-            "label": "Not Eligible",
-            "stepId": "End1",
-            "nodeType": "start"
+          data: {
+            label: "Not Eligible",
+            stepId: "End1",
+            nodeType: "start"
           }
         },
         {
-          "id": "documents",
-          "type": "document",
-          "position": {
-            "x": 468,
-            "y": 44
+          id: "documents",
+          type: "document",
+          position: {
+            x: 468,
+            y: 44
           },
-          "data": {
-            "label": "Gather Required Documents",
-            "stepId": "documents",
-            "nodeType": "document"
+          data: {
+            label: "Gather Required Documents",
+            stepId: "documents",
+            nodeType: "document"
           }
         },
         {
-          "id": "End2",
-          "type": "start",
-          "position": {
-            "x": 508,
-            "y": 258
+          id: "End2",
+          type: "start",
+          position: {
+            x: 508,
+            y: 258
           },
-          "data": {
-            "label": "Not Eligible",
-            "stepId": "End2",
-            "nodeType": "start"
+          data: {
+            label: "Not Eligible",
+            stepId: "End2",
+            nodeType: "start"
           }
         },
         {
-          "id": "application",
-          "type": "process",
-          "position": {
-            "x": 748,
-            "y": 44
+          id: "application",
+          type: "process",
+          position: {
+            x: 748,
+            y: 44
           },
-          "data": {
-            "label": "Submit Application",
-            "stepId": "application",
-            "nodeType": "process"
+          data: {
+            label: "Submit Application",
+            stepId: "application",
+            nodeType: "process"
           }
         },
         {
-          "id": "processing",
-          "type": "process",
-          "position": {
-            "x": 748,
-            "y": 248
+          id: "processing",
+          type: "process",
+          position: {
+            x: 748,
+            y: 248
           },
-          "data": {
-            "label": "Wait for Processing<br/>6-10 weeks",
-            "stepId": "processing",
-            "nodeType": "process"
+          data: {
+            label: "Wait for Processing<br/>6-10 weeks",
+            stepId: "processing",
+            nodeType: "process"
           }
         },
         {
-          "id": "decision",
-          "type": "decision",
-          "position": {
-            "x": 784,
-            "y": 428
+          id: "decision",
+          type: "decision",
+          position: {
+            x: 784,
+            y: 428
           },
-          "data": {
-            "label": "Decision",
-            "stepId": "decision",
-            "nodeType": "decision"
+          data: {
+            label: "Decision",
+            stepId: "decision",
+            nodeType: "decision"
           }
         },
         {
-          "id": "visa",
-          "type": "process",
-          "position": {
-            "x": 1028,
-            "y": 44
+          id: "visa",
+          type: "process",
+          position: {
+            x: 1028,
+            y: 44
           },
-          "data": {
-            "label": "Receive Work Visa",
-            "stepId": "visa",
-            "nodeType": "process"
+          data: {
+            label: "Receive Work Visa",
+            stepId: "visa",
+            nodeType: "process"
           }
         },
         {
-          "id": "End3",
-          "type": "end",
-          "position": {
-            "x": 768,
-            "y": 656
+          id: "End3",
+          type: "end",
+          position: {
+            x: 768,
+            y: 656
           },
-          "data": {
-            "label": "Process Ended",
-            "stepId": "End3",
-            "nodeType": "end"
+          data: {
+            label: "Process Ended",
+            stepId: "End3",
+            nodeType: "end"
           }
         },
         {
-          "id": "register",
-          "type": "process",
-          "position": {
-            "x": 1308,
-            "y": 44
+          id: "register",
+          type: "process",
+          position: {
+            x: 1308,
+            y: 44
           },
-          "data": {
-            "label": "Travel and Register",
-            "stepId": "register",
-            "nodeType": "process"
+          data: {
+            label: "Travel and Register",
+            stepId: "register",
+            nodeType: "process"
           }
         },
         {
-          "id": "security",
-          "type": "process",
-          "position": {
-            "x": 1588,
-            "y": 44
+          id: "security",
+          type: "process",
+          position: {
+            x: 1588,
+            y: 44
           },
-          "data": {
-            "label": "Register for Social Security",
-            "stepId": "security",
-            "nodeType": "process"
+          data: {
+            label: "Register for Social Security",
+            stepId: "security",
+            nodeType: "process"
           }
         },
         {
-          "id": "Success",
-          "type": "end",
-          "position": {
-            "x": 1608,
-            "y": 258
+          id: "Success",
+          type: "end",
+          position: {
+            x: 1608,
+            y: 258
           },
-          "data": {
-            "label": "Process Complete",
-            "stepId": "Success",
-            "nodeType": "end"
+          data: {
+            label: "Process Complete",
+            stepId: "Success",
+            nodeType: "end"
           }
         }
       ],
-      "edges": [
+      edges: [
         {
-          "id": "verification-End1",
-          "source": "verification",
-          "target": "End1",
-          "type": "smoothstep",
-          "label": "No",
-          "style": {
-            "stroke": "#1F2937",
-            "strokeWidth": 2
+          id: "verification-End1",
+          source: "verification",
+          target: "End1",
+          type: "smoothstep",
+          label: "No",
+          style: {
+            stroke: "#1F2937",
+            strokeWidth: 2
           },
           "labelStyle": {
             "fill": "#1F2937",
@@ -1389,14 +1389,14 @@ flowchart TD
           }
         },
         {
-          "id": "verification-End2",
-          "source": "verification",
-          "target": "End2",
-          "type": "smoothstep",
-          "label": "No",
-          "style": {
-            "stroke": "#1F2937",
-            "strokeWidth": 2
+          id: "verification-End2",
+          source: "verification",
+          target: "End2",
+          type: "smoothstep",
+          label: "No",
+          style: {
+            stroke: "#1F2937",
+            strokeWidth: 2
           },
           "labelStyle": {
             "fill": "#1F2937",
@@ -1404,13 +1404,13 @@ flowchart TD
           }
         },
         {
-          "id": "application-processing",
-          "source": "application",
-          "target": "processing",
-          "type": "smoothstep",
-          "style": {
-            "stroke": "#1F2937",
-            "strokeWidth": 2
+          id: "application-processing",
+          source: "application",
+          target: "processing",
+          type: "smoothstep",
+          style: {
+            stroke: "#1F2937",
+            strokeWidth: 2
           },
           "labelStyle": {
             "fill": "#1F2937",
@@ -1418,13 +1418,13 @@ flowchart TD
           }
         },
         {
-          "id": "processing-decision",
-          "source": "processing",
-          "target": "decision",
-          "type": "smoothstep",
-          "style": {
-            "stroke": "#1F2937",
-            "strokeWidth": 2
+          id: "processing-decision",
+          source: "processing",
+          target: "decision",
+          type: "smoothstep",
+          style: {
+            stroke: "#1F2937",
+            strokeWidth: 2
           },
           "labelStyle": {
             "fill": "#1F2937",
@@ -1432,14 +1432,14 @@ flowchart TD
           }
         },
         {
-          "id": "decision-End3",
-          "source": "decision",
-          "target": "End3",
-          "type": "smoothstep",
-          "label": "Rejected",
-          "style": {
-            "stroke": "#1F2937",
-            "strokeWidth": 2
+          id: "decision-End3",
+          source: "decision",
+          target: "End3",
+          type: "smoothstep",
+          label: "Rejected",
+          style: {
+            stroke: "#1F2937",
+            strokeWidth: 2
           },
           "labelStyle": {
             "fill": "#1F2937",
@@ -1447,13 +1447,13 @@ flowchart TD
           }
         },
         {
-          "id": "security-Success",
-          "source": "security",
-          "target": "Success",
-          "type": "smoothstep",
-          "style": {
-            "stroke": "#1F2937",
-            "strokeWidth": 2
+          id: "security-Success",
+          source: "security",
+          target: "Success",
+          type: "smoothstep",
+          style: {
+            stroke: "#1F2937",
+            strokeWidth: 2
           },
           "labelStyle": {
             "fill": "#1F2937",
@@ -1631,200 +1631,200 @@ flowchart TD
  travel-register -->empadronamiento[Complete Empadronamiento]
  empadronamiento --> Success([Process Complete])`,
  reactFlowData: {
-      "nodes": [
+      nodes: [
         {
-          "id": "Start",
-          "type": "start",
-          "position": {
-            "x": 20,
-            "y": 54
+          id: "Start",
+          type: "start",
+          position: {
+            x: 20,
+            y: 54
           },
-          "data": {
-            "label": "Start Process",
-            "stepId": "Start",
-            "nodeType": "start"
+          data: {
+            label: "Start Process",
+            stepId: "Start",
+            nodeType: "start"
           }
         },
         {
-          "id": "housing",
-          "type": "decision",
-          "position": {
-            "x": 260,
-            "y": 20
+          id: "housing",
+          type: "decision",
+          position: {
+            x: 260,
+            y: 20
           },
-          "data": {
-            "label": "Sponsor Meets Requirements?",
-            "stepId": "housing",
-            "nodeType": "decision"
+          data: {
+            label: "Sponsor Meets Requirements?",
+            stepId: "housing",
+            nodeType: "decision"
           }
         },
         {
-          "id": "End1",
-          "type": "start",
-          "position": {
-            "x": 468,
-            "y": 54
+          id: "End1",
+          type: "start",
+          position: {
+            x: 468,
+            y: 54
           },
-          "data": {
-            "label": "Not Eligible",
-            "stepId": "End1",
-            "nodeType": "start"
+          data: {
+            label: "Not Eligible",
+            stepId: "End1",
+            nodeType: "start"
           }
         },
         {
-          "id": "proof",
-          "type": "process",
-          "position": {
-            "x": 708,
-            "y": 44
+          id: "proof",
+          type: "process",
+          position: {
+            x: 708,
+            y: 44
           },
-          "data": {
-            "label": "Prove Relationship",
-            "stepId": "proof",
-            "nodeType": "process"
+          data: {
+            label: "Prove Relationship",
+            stepId: "proof",
+            nodeType: "process"
           }
         },
         {
-          "id": "End2",
-          "type": "start",
-          "position": {
-            "x": 244,
-            "y": 258
+          id: "End2",
+          type: "start",
+          position: {
+            x: 244,
+            y: 258
           },
-          "data": {
-            "label": "Not Eligible",
-            "stepId": "End2",
-            "nodeType": "start"
+          data: {
+            label: "Not Eligible",
+            stepId: "End2",
+            nodeType: "start"
           }
         },
         {
-          "id": "documents",
-          "type": "document",
-          "position": {
-            "x": 988,
-            "y": 44
+          id: "documents",
+          type: "document",
+          position: {
+            x: 988,
+            y: 44
           },
-          "data": {
-            "label": "Gather Required Documents",
-            "stepId": "documents",
-            "nodeType": "document"
+          data: {
+            label: "Gather Required Documents",
+            stepId: "documents",
+            nodeType: "document"
           }
         },
         {
-          "id": "application",
-          "type": "process",
-          "position": {
-            "x": 1268,
-            "y": 44
+          id: "application",
+          type: "process",
+          position: {
+            x: 1268,
+            y: 44
           },
-          "data": {
-            "label": "Submit Application",
-            "stepId": "application",
-            "nodeType": "process"
+          data: {
+            label: "Submit Application",
+            stepId: "application",
+            nodeType: "process"
           }
         },
         {
-          "id": "processing",
-          "type": "process",
-          "position": {
-            "x": 1268,
-            "y": 248
+          id: "processing",
+          type: "process",
+          position: {
+            x: 1268,
+            y: 248
           },
-          "data": {
-            "label": "Wait for Processing<br/>12-16 weeks",
-            "stepId": "processing",
-            "nodeType": "process"
+          data: {
+            label: "Wait for Processing<br/>12-16 weeks",
+            stepId: "processing",
+            nodeType: "process"
           }
         },
         {
-          "id": "decision",
-          "type": "decision",
-          "position": {
-            "x": 1304,
-            "y": 428
+          id: "decision",
+          type: "decision",
+          position: {
+            x: 1304,
+            y: 428
           },
-          "data": {
-            "label": "Decision",
-            "stepId": "decision",
-            "nodeType": "decision"
+          data: {
+            label: "Decision",
+            stepId: "decision",
+            nodeType: "decision"
           }
         },
         {
-          "id": "visa",
-          "type": "process",
-          "position": {
-            "x": 1548,
-            "y": 44
+          id: "visa",
+          type: "process",
+          position: {
+            x: 1548,
+            y: 44
           },
-          "data": {
-            "label": "Receive Visa",
-            "stepId": "visa",
-            "nodeType": "process"
+          data: {
+            label: "Receive Visa",
+            stepId: "visa",
+            nodeType: "process"
           }
         },
         {
-          "id": "End3",
-          "type": "end",
-          "position": {
-            "x": 1288,
-            "y": 656
+          id: "End3",
+          type: "end",
+          position: {
+            x: 1288,
+            y: 656
           },
-          "data": {
-            "label": "Process Ended",
-            "stepId": "End3",
-            "nodeType": "end"
+          data: {
+            label: "Process Ended",
+            stepId: "End3",
+            nodeType: "end"
           }
         },
         {
-          "id": "register",
-          "type": "process",
-          "position": {
-            "x": 1828,
-            "y": 44
+          id: "register",
+          type: "process",
+          position: {
+            x: 1828,
+            y: 44
           },
-          "data": {
-            "label": "Travel and Register",
-            "stepId": "register",
-            "nodeType": "process"
+          data: {
+            label: "Travel and Register",
+            stepId: "register",
+            nodeType: "process"
           }
         },
         {
-          "id": "empadronamiento",
-          "type": "process",
-          "position": {
-            "x": 1828,
-            "y": 248
+          id: "empadronamiento",
+          type: "process",
+          position: {
+            x: 1828,
+            y: 248
           },
-          "data": {
-            "label": "Complete Empadronamiento",
-            "stepId": "empadronamiento",
-            "nodeType": "process"
+          data: {
+            label: "Complete Empadronamiento",
+            stepId: "empadronamiento",
+            nodeType: "process"
           }
         },
         {
-          "id": "Success",
-          "type": "end",
-          "position": {
-            "x": 1848,
-            "y": 462
+          id: "Success",
+          type: "end",
+          position: {
+            x: 1848,
+            y: 462
           },
-          "data": {
-            "label": "Process Complete",
-            "stepId": "Success",
-            "nodeType": "end"
+          data: {
+            label: "Process Complete",
+            stepId: "Success",
+            nodeType: "end"
           }
         }
       ],
-      "edges": [
+      edges: [
         {
-          "id": "housing-End2",
-          "source": "housing",
-          "target": "End2",
-          "type": "smoothstep",
-          "label": "No",
-          "style": {
-            "stroke": "#1F2937",
-            "strokeWidth": 2
+          id: "housing-End2",
+          source: "housing",
+          target: "End2",
+          type: "smoothstep",
+          label: "No",
+          style: {
+            stroke: "#1F2937",
+            strokeWidth: 2
           },
           "labelStyle": {
             "fill": "#1F2937",
@@ -1832,13 +1832,13 @@ flowchart TD
           }
         },
         {
-          "id": "application-processing",
-          "source": "application",
-          "target": "processing",
-          "type": "smoothstep",
-          "style": {
-            "stroke": "#1F2937",
-            "strokeWidth": 2
+          id: "application-processing",
+          source: "application",
+          target: "processing",
+          type: "smoothstep",
+          style: {
+            stroke: "#1F2937",
+            strokeWidth: 2
           },
           "labelStyle": {
             "fill": "#1F2937",
@@ -1846,13 +1846,13 @@ flowchart TD
           }
         },
         {
-          "id": "processing-decision",
-          "source": "processing",
-          "target": "decision",
-          "type": "smoothstep",
-          "style": {
-            "stroke": "#1F2937",
-            "strokeWidth": 2
+          id: "processing-decision",
+          source: "processing",
+          target: "decision",
+          type: "smoothstep",
+          style: {
+            stroke: "#1F2937",
+            strokeWidth: 2
           },
           "labelStyle": {
             "fill": "#1F2937",
@@ -1860,14 +1860,14 @@ flowchart TD
           }
         },
         {
-          "id": "decision-End3",
-          "source": "decision",
-          "target": "End3",
-          "type": "smoothstep",
-          "label": "Rejected",
-          "style": {
-            "stroke": "#1F2937",
-            "strokeWidth": 2
+          id: "decision-End3",
+          source: "decision",
+          target: "End3",
+          type: "smoothstep",
+          label: "Rejected",
+          style: {
+            stroke: "#1F2937",
+            strokeWidth: 2
           },
           "labelStyle": {
             "fill": "#1F2937",
@@ -1875,13 +1875,13 @@ flowchart TD
           }
         },
         {
-          "id": "register-empadronamiento",
-          "source": "register",
-          "target": "empadronamiento",
-          "type": "smoothstep",
-          "style": {
-            "stroke": "#1F2937",
-            "strokeWidth": 2
+          id: "register-empadronamiento",
+          source: "register",
+          target: "empadronamiento",
+          type: "smoothstep",
+          style: {
+            stroke: "#1F2937",
+            strokeWidth: 2
           },
           "labelStyle": {
             "fill": "#1F2937",
@@ -1889,13 +1889,13 @@ flowchart TD
           }
         },
         {
-          "id": "empadronamiento-Success",
-          "source": "empadronamiento",
-          "target": "Success",
-          "type": "smoothstep",
-          "style": {
-            "stroke": "#1F2937",
-            "strokeWidth": 2
+          id: "empadronamiento-Success",
+          source: "empadronamiento",
+          target: "Success",
+          type: "smoothstep",
+          style: {
+            stroke: "#1F2937",
+            strokeWidth: 2
           },
           "labelStyle": {
             "fill": "#1F2937",
