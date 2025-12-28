@@ -26,6 +26,95 @@ flowchart TD
  decision -->|Rejected| End2([Process Ended])
  travel --> registration["Register at Local Office"]
  registration --> Success([Process Complete])`,
+ reactFlowData: {
+   nodes: [
+     {
+       id: 'Start',
+       type: 'start',
+       position: { x: 250, y: 0 },
+       data: { label: 'Start Process', stepId: 'Start', nodeType: 'start' },
+     },
+     {
+       id: 'job-offer',
+       type: 'document',
+       position: { x: 200, y: 120 },
+       data: { label: 'Secure Job Offer', stepId: 'job-offer', estimatedDuration: '1-3 months', nodeType: 'document' },
+     },
+     {
+       id: 'Salary',
+       type: 'decision',
+       position: { x: 234, y: 240 },
+       data: { label: 'Salary >= EUR 45,300?', stepId: 'Salary', nodeType: 'decision' },
+     },
+     {
+       id: 'gather-documents',
+       type: 'document',
+       position: { x: 200, y: 380 },
+       data: { label: 'Gather Required Documents', stepId: 'gather-documents', estimatedDuration: '2-4 weeks', nodeType: 'document' },
+     },
+     {
+       id: 'End1',
+       type: 'end',
+       position: { x: 450, y: 240 },
+       data: { label: 'Not Eligible', stepId: 'End1', nodeType: 'end' },
+     },
+     {
+       id: 'submit-application',
+       type: 'process',
+       position: { x: 200, y: 500 },
+       data: { label: 'Submit Application', stepId: 'submit-application', estimatedDuration: '1-2 weeks', nodeType: 'process' },
+     },
+     {
+       id: 'processing',
+       type: 'process',
+       position: { x: 200, y: 620 },
+       data: { label: 'Wait for Processing', stepId: 'processing', estimatedDuration: '2-3 months', nodeType: 'process' },
+     },
+     {
+       id: 'decision',
+       type: 'decision',
+       position: { x: 234, y: 760 },
+       data: { label: 'Decision', stepId: 'decision', nodeType: 'decision' },
+     },
+     {
+       id: 'travel',
+       type: 'process',
+       position: { x: 200, y: 900 },
+       data: { label: 'Travel to Germany', stepId: 'travel', estimatedDuration: '1-2 weeks', nodeType: 'process' },
+     },
+     {
+       id: 'End2',
+       type: 'end',
+       position: { x: 450, y: 760 },
+       data: { label: 'Process Ended', stepId: 'End2', nodeType: 'end' },
+     },
+     {
+       id: 'registration',
+       type: 'process',
+       position: { x: 200, y: 1020 },
+       data: { label: 'Register at Local Office', stepId: 'registration', estimatedDuration: '2-4 weeks', nodeType: 'process' },
+     },
+     {
+       id: 'Success',
+       type: 'end',
+       position: { x: 250, y: 1140 },
+       data: { label: 'Process Complete', stepId: 'Success', nodeType: 'end' },
+     },
+   ],
+   edges: [
+     { id: 'Start-job-offer', source: 'Start', target: 'job-offer', type: 'smoothstep', style: { stroke: '#1F2937', strokeWidth: 2 } },
+     { id: 'job-offer-Salary', source: 'job-offer', target: 'Salary', type: 'smoothstep', style: { stroke: '#1F2937', strokeWidth: 2 } },
+     { id: 'Salary-gather-documents', source: 'Salary', target: 'gather-documents', label: 'Yes', type: 'smoothstep', style: { stroke: '#1F2937', strokeWidth: 2 }, labelStyle: { fill: '#1F2937', fontWeight: 500 } },
+     { id: 'Salary-End1', source: 'Salary', target: 'End1', label: 'No', type: 'smoothstep', style: { stroke: '#1F2937', strokeWidth: 2 }, labelStyle: { fill: '#1F2937', fontWeight: 500 } },
+     { id: 'gather-documents-submit-application', source: 'gather-documents', target: 'submit-application', type: 'smoothstep', style: { stroke: '#1F2937', strokeWidth: 2 } },
+     { id: 'submit-application-processing', source: 'submit-application', target: 'processing', type: 'smoothstep', style: { stroke: '#1F2937', strokeWidth: 2 } },
+     { id: 'processing-decision', source: 'processing', target: 'decision', type: 'smoothstep', style: { stroke: '#1F2937', strokeWidth: 2 } },
+     { id: 'decision-travel', source: 'decision', target: 'travel', label: 'Approved', type: 'smoothstep', style: { stroke: '#1F2937', strokeWidth: 2 }, labelStyle: { fill: '#1F2937', fontWeight: 500 } },
+     { id: 'decision-End2', source: 'decision', target: 'End2', label: 'Rejected', type: 'smoothstep', style: { stroke: '#1F2937', strokeWidth: 2 }, labelStyle: { fill: '#1F2937', fontWeight: 500 } },
+     { id: 'travel-registration', source: 'travel', target: 'registration', type: 'smoothstep', style: { stroke: '#1F2937', strokeWidth: 2 } },
+     { id: 'registration-Success', source: 'registration', target: 'Success', type: 'smoothstep', style: { stroke: '#1F2937', strokeWidth: 2 } },
+   ],
+ },
  steps: [
  {
  id: 'job-offer',

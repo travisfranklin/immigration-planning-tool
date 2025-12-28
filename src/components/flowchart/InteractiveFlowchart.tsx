@@ -5,8 +5,10 @@
 
 import { useState, useEffect } from 'react';
 import { FlowchartViewer } from './FlowchartViewer';
+import { ReactFlowViewer } from './ReactFlowViewer';
 import { StepDetailsPanel } from './StepDetailsPanel';
 import type { FlowchartDefinition } from '../../types/flowchart';
+import { USE_REACT_FLOW } from '../../constants/featureFlags';
 
 interface InteractiveFlowchartProps {
   flowchart: FlowchartDefinition;
@@ -31,11 +33,19 @@ export function InteractiveFlowchart({ flowchart }: InteractiveFlowchartProps) {
         {/* Left Column: Flowchart */}
         <div className="lg:col-span-2">
           <div className="bg-white rounded-lg shadow-md border border-gray-200 p-6">
-            <FlowchartViewer
-              flowchart={flowchart}
-              selectedStepId={selectedStepId}
-              onStepSelect={setSelectedStepId}
-            />
+            {USE_REACT_FLOW ? (
+              <ReactFlowViewer
+                flowchart={flowchart}
+                selectedStepId={selectedStepId}
+                onStepSelect={setSelectedStepId}
+              />
+            ) : (
+              <FlowchartViewer
+                flowchart={flowchart}
+                selectedStepId={selectedStepId}
+                onStepSelect={setSelectedStepId}
+              />
+            )}
           </div>
         </div>
 
