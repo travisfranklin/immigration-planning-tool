@@ -228,42 +228,6 @@ export const ResultDetail: React.FC = () => {
         </div>
       </div>
 
-      {/* Missing Requirements Warning - Critical Alert */}
-      {!selectedScore.meetsHardRequirements && selectedScore.missingRequirements.length > 0 && (
-        <div className="bg-danger border-t-4 border-b-4 border-black">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-12 h-12 bg-white flex items-center justify-center">
-                <svg className="w-8 h-8 text-danger" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-                </svg>
-              </div>
-              <div className="flex-1">
-                <h2 className="text-h2 font-bold text-white mb-2 uppercase">Not Eligible</h2>
-                <p className="text-body-lg text-white mb-4">
-                  Your score is capped at 25 because you don't meet the following hard requirements:
-                </p>
-                <ul className="space-y-2 mb-4">
-                  {selectedScore.missingRequirements.map((req, index) => (
-                    <li key={index} className="flex items-start gap-2 text-body text-white">
-                      <span className="flex-shrink-0 mt-1">✗</span>
-                      <span>{req}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="bg-white bg-opacity-20 border-2 border-white p-4">
-                  <p className="text-label-sm uppercase font-bold text-white mb-1">Your Competitive Score (if eligible)</p>
-                  <p className="text-h1 font-bold text-white">{selectedScore.competitiveScore}/100</p>
-                  <p className="text-body-sm text-white mt-2">
-                    This is what your score would be if you met all requirements. Work on addressing the missing requirements above.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* Recommended Program - Bold Highlight */}
       {selectedScore.recommendedProgram && (
         <div className="bg-primary border-t-4 border-b-4 border-black">
@@ -294,6 +258,52 @@ export const ResultDetail: React.FC = () => {
                 <div className="text-label-sm uppercase font-bold text-primary-200 mb-1">Timeline</div>
                 <div className="text-body font-bold text-white">{selectedScore.estimatedTimelineMonths} months</div>
               </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Eligibility Receipt - Shows all requirements with checkmarks/X marks */}
+      {!selectedScore.meetsHardRequirements && selectedScore.missingRequirements.length > 0 && (
+        <div className="bg-white border-t-4 border-b-4 border-black">
+          <div className="max-w-3xl mx-auto px-8 py-8">
+            {/* Receipt Header */}
+            <div className="border-b-2 border-dashed border-gray-400 pb-4 mb-6">
+              <h2 className="text-h2 font-bold text-black uppercase tracking-tight mb-1">
+                Eligibility Check
+              </h2>
+              <p className="text-label-sm uppercase text-gray-600 font-mono">
+                {selectedScore.recommendedProgram?.programName || 'Visa Program'}
+              </p>
+            </div>
+
+            {/* Requirements List */}
+            <div className="space-y-3 mb-6">
+              {selectedScore.missingRequirements.map((req, index) => (
+                <div key={index} className="flex items-start gap-3 font-mono text-body">
+                  <span className="flex-shrink-0 text-danger font-bold text-xl leading-none">✗</span>
+                  <span className="text-gray-900 flex-1">{req}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Receipt Footer - Totals Section */}
+            <div className="border-t-2 border-dashed border-gray-400 pt-4 space-y-2">
+              <div className="flex justify-between items-baseline font-mono">
+                <span className="text-label uppercase text-gray-600">Status:</span>
+                <span className="text-body font-bold text-danger uppercase">Not Eligible</span>
+              </div>
+              <div className="flex justify-between items-baseline font-mono">
+                <span className="text-label uppercase text-gray-600">Current Score:</span>
+                <span className="text-body font-bold text-black">25/100</span>
+              </div>
+              <div className="flex justify-between items-baseline font-mono border-t-2 border-black pt-2 mt-2">
+                <span className="text-label uppercase text-gray-900 font-bold">Potential Score:</span>
+                <span className="text-h3 font-bold text-primary">{selectedScore.competitiveScore}/100</span>
+              </div>
+              <p className="text-body-sm text-gray-600 mt-3 pt-3 border-t border-gray-300">
+                Address the requirements above to unlock your potential score of {selectedScore.competitiveScore}/100
+              </p>
             </div>
           </div>
         </div>
