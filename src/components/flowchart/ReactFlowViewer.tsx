@@ -3,7 +3,7 @@
  * Renders flowcharts using React Flow library
  */
 
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 import {
   ReactFlow,
   Background,
@@ -19,26 +19,51 @@ import {
 import '@xyflow/react/dist/style.css';
 
 import type { FlowchartDefinition } from '../../types/flowchart';
+import type { FlowchartProgress } from '../../types/flowchartProgress';
 import { nodeTypes } from './nodes';
 import { getReactFlowData } from '../../utils/flowchart';
+import { getStepStatus } from '../../services/flowchartProgress';
 
 interface ReactFlowViewerProps {
   flowchart: FlowchartDefinition;
   selectedStepId?: string | null;
   onStepSelect?: (stepId: string) => void;
+  progress?: FlowchartProgress | null;
 }
 
 export function ReactFlowViewer({
   flowchart,
   onStepSelect,
+  progress,
 }: ReactFlowViewerProps) {
   const [isLoading] = useState(false);
 
   // Get React Flow data (from reactFlowData or convert from Mermaid)
   const flowData = getReactFlowData(flowchart);
 
-  const [nodes, , onNodesChange] = useNodesState(flowData.nodes);
+  // Apply progress status to nodes
+  const nodesWithProgress = flowData.nodes.map(node => ({
+    ...node,
+    data: {
+      ...node.data,
+      status: getStepStatus(progress || null, node.data.stepId),
+    },
+  }));
+
+  const [nodes, setNodes, onNodesChange] = useNodesState(nodesWithProgress);
   const [edges, , onEdgesChange] = useEdgesState(flowData.edges);
+
+  // Update nodes when progress changes
+  useEffect(() => {
+    const updatedNodes = flowData.nodes.map(node => ({
+      ...node,
+      data: {
+        ...node.data,
+        status: getStepStatus(progress || null, node.data.stepId),
+      },
+    }));
+    setNodes(updatedNodes);
+  }, [progress, flowData.nodes, setNodes]);
 
   // Handle node click
   const onNodeClick = useCallback(
