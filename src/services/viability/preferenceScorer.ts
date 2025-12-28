@@ -255,8 +255,7 @@ export function applyPreferenceAdjustments(
     let newMatchReason = match.matchReason;
     if (match.isEligible && preferenceBoost !== 0) {
       const baseScore = Math.round(match.eligibilityScore);
-      const boostText = preferenceBoost > 0 ? `+${preferenceBoost}` : `${preferenceBoost}`;
-      newMatchReason = `You meet ${baseScore}% of requirements (${boostText} preference boost)`;
+      newMatchReason = `You meet ${baseScore}% of requirements`;
     }
 
     return {

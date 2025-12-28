@@ -19,7 +19,7 @@ export function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-40">
           <div className="max-w-5xl mx-auto text-center">
             <h1 className="text-9xl font-extrabold text-black mb-8 leading-[0.9] tracking-tight">
-              reloca.to
+              eugo.live
             </h1>
             <p className="text-h3 text-gray-700 mb-4 leading-relaxed font-normal max-w-3xl mx-auto">
               Determine your viability for immigration to EU countries.

@@ -53,8 +53,8 @@ export function Header({ currentPage }: HeaderProps) {
               onClick={() => handleNavigation('/')}
               className="flex items-center gap-2 text-h3 font-bold tracking-wide text-black hover:text-primary transition-colors duration-fast"
             >
-              <span className="hidden sm:inline">reloca.to</span>
-              <span className="sm:hidden">reloca.to</span>
+              <span className="hidden sm:inline">eugo.live</span>
+              <span className="sm:hidden">eugo.live</span>
             </button>
 
             {/* Desktop Navigation - Sharp, bold */}

@@ -349,7 +349,7 @@ export const ProfileFormAccordion = forwardRef<ProfileFormAccordionRef, ProfileF
             <div
               key={section.id}
               ref={(el) => { sectionRefs.current[section.id] = el; }}
-              className="bg-white border-4 border-black"
+              className="bg-white border-4 border-black overflow-hidden"
             >
               <Disclosure>
                 {() => (
@@ -359,7 +359,7 @@ export const ProfileFormAccordion = forwardRef<ProfileFormAccordionRef, ProfileF
 
                     <button
                       onClick={() => toggleSection(section.id)}
-                      className="w-full px-8 py-6 flex items-center justify-between hover:bg-gray-50 transition-colors focus:outline-none focus:ring-4 focus:ring-primary focus:ring-offset-0"
+                      className="w-full px-8 py-6 flex items-center justify-between hover:bg-gray-50 transition-colors focus:outline-none focus:ring-4 focus:ring-primary focus:ring-offset-4"
                       aria-label={`${section.title} - ${status === 'complete' ? 'Complete' : status === 'incomplete' ? 'Incomplete' : 'Not started'} - ${isOpen ? 'Expanded' : 'Collapsed'}`}
                     >
                       <div className="flex items-center gap-6 flex-1 text-left">

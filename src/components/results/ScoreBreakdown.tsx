@@ -27,8 +27,8 @@ export const ScoreBreakdown: React.FC<ScoreBreakdownProps> = ({
   const [hoveredComponent, setHoveredComponent] = React.useState<string | null>(null);
 
   return (
-    <div className="bg-white border-2 border-black p-6">
-      <div className="mt-6 grid grid-cols-1">
+    <div>
+      <div className="grid grid-cols-1">
         {components.map(([component, score]) => {
           const weight = programWeights?.[component];
           const weightedScore = weight ? score * weight : score;
@@ -94,7 +94,7 @@ export const ScoreBreakdown: React.FC<ScoreBreakdownProps> = ({
       </div>
 
       {/* Overall Summary */}
-      <div className="mt-6 pt-4 border-t-2 border-black">
+      <div className="">
         <div className="flex items-center justify-between">
           <span className="font-bold text-black uppercase text-body tracking-wide">Average Score</span>
           <span className="text-h2 font-bold text-black">

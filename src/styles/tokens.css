@@ -110,6 +110,10 @@
   --text-data-lg-size: 64px;
   --text-data-lg-line-height: 1.0;
   --text-data-lg-weight: 700;
+
+  --text-data-xl-size: 2.25rem;
+  --text-data-xl-line-height: 1.0;
+  --text-data-xl-weight: 700;
   
   --text-data-size: 32px;
   --text-data-line-height: 1.2;
@@ -249,6 +253,13 @@
   line-height: var(--text-data-lg-line-height);
   font-weight: var(--text-data-lg-weight);
   color: var(--color-black);
+}
+
+.text-data-xl {
+  font-family: var(--font-mono);
+  font-size: var(--text-data-xl-size);
+  line-height: var(--text-data-xl-line-height);
+  font-weight: var(--text-data-xl-weight);
 }
 
 .text-data {

@@ -170,10 +170,10 @@ export function Combobox({
           className={`
             w-full px-3 py-2 pr-10 border-2 text-body-sm
             focus:outline-none focus:border-4 focus:border-primary
-            focus-visible:ring-4 focus-visible:ring-primary focus-visible:ring-opacity-30
+            focus-visible:ring-4 focus-visible:ring-primary
             transition-all duration-fast
             bg-gray-200 text-black
-            ${error ? 'border-danger focus:border-danger focus-visible:ring-danger focus-visible:ring-opacity-30' : 'border-black'}
+            ${error ? 'border-danger focus:border-danger focus-visible:ring-danger' : 'border-black'}
             ${className}
           `}
           aria-expanded={isOpen}

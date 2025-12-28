@@ -39,13 +39,13 @@ const getCategoryLabel = (category: string): string => {
 const getOverallRiskColor = (level: 'low' | 'medium' | 'high'): string => {
   switch (level) {
     case 'low':
-      return 'bg-success border-success text-black';
+      return 'text-success-dark';
     case 'medium':
-      return 'bg-warning border-warning text-black';
+      return 'text-warning';
     case 'high':
-      return 'bg-danger border-danger text-white';
+      return 'text-danger';
     default:
-      return 'bg-gray-200 border-gray-400 text-black';
+      return 'text-gray-200';
   }
 };
 
@@ -55,7 +55,7 @@ export const RiskFactorsList: React.FC<RiskFactorsListProps> = ({
 }) => {
   if (riskFactors.length === 0) {
     return (
-      <div className="bg-white border-2 border-black p-6">
+      <div className="">
         <h3 className="text-h3 font-bold text-black mb-4 uppercase tracking-wide">Risk Assessment</h3>
         <div className="bg-success border-2 border-success p-6 text-center">
           <div className="w-12 h-12 bg-black mx-auto mb-3 flex items-center justify-center">
@@ -73,56 +73,45 @@ export const RiskFactorsList: React.FC<RiskFactorsListProps> = ({
   }
 
   return (
-    <div className="bg-white border-2 border-black p-6">
-      <div className="flex items-center justify-between mb-6">
-        <h3 className="text-h3 font-bold text-black uppercase tracking-wide">Risk Assessment</h3>
-        <div className={`px-4 py-2 border-2 font-bold uppercase text-label ${getOverallRiskColor(overallRiskLevel)}`}>
-          {overallRiskLevel} Risk
-        </div>
+    <div className="">
+      <div className="flex items-center mb-6">
+        <h3 className="text-h3 font-bold text-black uppercase tracking-wide">Risk Assessment:{' '}
+          <span className={`uppercase ${getOverallRiskColor(overallRiskLevel)}`}>
+            {overallRiskLevel}
+          </span>
+        </h3>
       </div>
 
       <div className="space-y-4">
         {riskFactors.map((risk) => (
           <div
             key={risk.id}
-            className={`border-2 p-4 ${getSeverityColor(risk.severity)}`}
+            className={`border-2 border-black`}
           >
-            {/* Risk Header */}
-            <div className="flex items-start gap-3 mb-3">
-              <div className="flex-1">
-                <div className="flex items-center gap-2 mb-2">
-                  <h4 className="font-bold uppercase text-body tracking-wide">{getCategoryLabel(risk.category)} Risk</h4>
-                  <span className={`text-label-sm px-2 py-1 font-bold uppercase ${
-                    risk.severity === 'high'
-                      ? 'bg-danger text-white border-2 border-black'
-                      : risk.severity === 'medium'
-                      ? 'bg-warning text-black border-2 border-black'
-                      : 'bg-warning text-black border-2 border-black'
-                  }`}>
-                    {risk.severity}
-                  </span>
-                </div>
-                <p className="text-body-sm mb-2">{risk.description}</p>
-              </div>
+            <div className={`w-full text-right text-label-sm px-2 py-1 font-bold uppercase ${
+              getSeverityColor(risk.severity)
+            }`}>
+              {risk.severity}
             </div>
+            <div className="p-4 bg-white">
+              {/* Risk Header */}
+              <div className="flex items-start gap-3 mb-3">
+                <div className="flex-1">
+                  <div className="flex justify-between gap-2 mb-1">
+                    <h4 className="font-bold uppercase text-body tracking-wide leading-none">{getCategoryLabel(risk.category)} Risk</h4>
+                  </div>
+                  <p className="text-body-sm">{risk.description}</p>
+                </div>
+              </div>
 
-            {/* Mitigation */}
-            <div className="pl-4 border-l-2 border-black">
-              <p className="text-label-sm font-bold mb-1 uppercase">Recommended Action:</p>
-              <p className="text-body-sm">{risk.mitigation}</p>
+              {/* Mitigation */}
+              <div className="pl-2 border-l-2 border-black">
+                <p className="text-label font-bold uppercase">Recommended Action:</p>
+                <p className="text-body-sm">{risk.mitigation}</p>
+              </div>
             </div>
           </div>
         ))}
-      </div>
-
-      {/* Summary */}
-      <div className="mt-6 pt-4 border-t-2 border-black">
-        <p className="text-body-sm text-gray-700">
-          {riskFactors.filter((r) => r.severity === 'high').length} high-severity,{' '}
-          {riskFactors.filter((r) => r.severity === 'medium').length} medium-severity, and{' '}
-          {riskFactors.filter((r) => r.severity === 'low').length} low-severity risk
-          {riskFactors.length !== 1 ? 's' : ''} identified
-        </p>
       </div>
     </div>
   );
