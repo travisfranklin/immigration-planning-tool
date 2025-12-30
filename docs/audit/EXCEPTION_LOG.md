@@ -9,11 +9,11 @@
 
 | Severity | Count |
 |----------|-------|
-| 🔴 Critical | 3 |
-| 🟠 High | 16 |
-| 🟡 Medium | 19 |
-| 🔵 Low | 13 |
-| **Total** | **51** |
+| 🔴 Critical | 4 |
+| 🟠 High | 17 |
+| 🟡 Medium | 20 |
+| 🔵 Low | 15 |
+| **Total** | **56** |
 
 ---
 
@@ -603,7 +603,61 @@
 - **Date Found:** 2025-12-30
 
 ### Greece (GR)
-*Audit pending*
+
+#### [GR-001] Golden Visa Investment Threshold Critically Outdated
+- **Country:** GR
+- **Program:** Golden Visa (`gr_golden_visa`)
+- **Severity:** 🔴 Critical
+- **Field:** investmentThreshold
+- **Current Value:** €250,000 (flat)
+- **Expected Value:** Tiered: €800,000 (Athens, Thessaloniki, islands), €400,000 (other areas), €250,000 (heritage only)
+- **Source:** https://harveylawcorporation.com/greek-golden-visa-new-regulations/
+- **Recommendation:** Update to tiered investment system with location-based thresholds
+- **Date Found:** 2025-12-30
+
+#### [GR-002] EU Blue Card Program Missing
+- **Country:** GR
+- **Program:** Missing Program
+- **Severity:** 🟠 High
+- **Field:** N/A
+- **Current Value:** Program not in system
+- **Expected Value:** EU Blue Card with €31,918.83/year salary threshold
+- **Source:** https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-greece_en
+- **Recommendation:** Add EU Blue Card program for Greece
+- **Date Found:** 2025-12-30
+
+#### [GR-003] Digital Nomad Visa Missing Family Income Additions
+- **Country:** GR
+- **Program:** Digital Nomad Visa (`gr_digital_nomad`)
+- **Severity:** 🟡 Medium
+- **Field:** familyIncomeRequirements
+- **Current Value:** €3,500/month (applicant only)
+- **Expected Value:** €3,500/month + €700/spouse + €525/child
+- **Source:** https://immigrantinvest.com/blog/countries-digital-nomad-visa/
+- **Recommendation:** Add family member income additions to requirements
+- **Date Found:** 2025-12-30
+
+#### [GR-004] Golden Visa Missing Tier Details
+- **Country:** GR
+- **Program:** Golden Visa (`gr_golden_visa`)
+- **Severity:** 🔵 Low
+- **Field:** notes
+- **Current Value:** Generic €250,000 description
+- **Expected Value:** Detailed tier explanations with specific areas
+- **Source:** https://getgoldenvisa.com/ultimate-guide-to-greece-golden-visa
+- **Recommendation:** Add detailed tier information and area classifications
+- **Date Found:** 2025-12-30
+
+#### [GR-005] Digital Nomad Visa Missing Tax Exemption Info
+- **Country:** GR
+- **Program:** Digital Nomad Visa (`gr_digital_nomad`)
+- **Severity:** 🔵 Low
+- **Field:** notes
+- **Current Value:** Basic tax note
+- **Expected Value:** 7-year 50% tax reduction option for new residents
+- **Source:** https://www.marlowbray.com/resource-articles/greece-2025-residency-updated-fip-digital-nomad-rules
+- **Recommendation:** Add 7-year tax incentive information
+- **Date Found:** 2025-12-30
 
 ### Hungary (HU)
 *Audit pending*
