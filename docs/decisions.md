@@ -107,6 +107,35 @@ Phase 1 MVP includes:
 
 ---
 
+### D008: Flowchart Data Architecture Refactoring
+**Date**: 2025-12-30
+**Decision**: Implement template-based composition system for flowchart data
+**Rationale**:
+- Current architecture has 27 country files with ~30,000 lines of duplicated data
+- Common step patterns (gather-documents, submit-application, processing, travel, registration) appear in 95%+ of programs
+- Manual edits across all files are error-prone and time-consuming
+- Template system enables:
+  - Bulk updates to common steps (e.g., changing document requirements)
+  - Country-specific overrides for unique requirements
+  - Consistent data structure across all programs
+  - Reduced code duplication by ~60-70%
+
+**Architecture Components**:
+1. **Step Templates** (`src/data/flowcharts/templates/steps/`): Reusable step factory functions
+2. **Country Configs** (`src/data/flowcharts/templates/country-configs.ts`): Country-specific values (currency, authorities, processing times)
+3. **Flowchart Builder** (`src/data/flowcharts/builders/`): Composes FlowchartDefinition from templates
+4. **Program Definitions** (`src/data/flowcharts/programs/`): Minimal program definitions using templates
+
+**Migration Strategy**:
+- Phase 1: Create infrastructure (templates, configs, builders) ✓
+- Phase 2: Migrate Germany as proof of concept ✓
+- Phase 3: Migrate remaining countries incrementally
+- Phase 4: Remove deprecated reactFlowData during migration
+
+**Status**: APPROVED (Proof of concept complete with Germany)
+
+---
+
 ## Pending Decisions
 
 None at this time.
