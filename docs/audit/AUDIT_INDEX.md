@@ -24,7 +24,7 @@
 | 12 | Greece | GR | `greece.ts` | ❌ Critical Issues | 2025-12-30 |
 | 13 | Hungary | HU | `hungary.ts` | ⚠️ Complete (Issues) | 2025-12-30 |
 | 14 | Ireland | IE | `ireland.ts` | ⚠️ Complete (Issues) | 2025-12-30 |
-| 15 | Italy | IT | `italy.ts` | ⏳ Pending | — |
+| 15 | Italy | IT | `italy.ts` | ⚠️ Complete (Issues) | 2025-12-30 |
 | 16 | Latvia | LV | `latvia.ts` | ⏳ Pending | — |
 | 17 | Lithuania | LT | `lithuania.ts` | ⏳ Pending | — |
 | 18 | Luxembourg | LU | `luxembourg.ts` | ⏳ Pending | — |
@@ -80,6 +80,7 @@ Individual country audit reports are stored in `docs/audit/countries/`:
 - [Greece](./countries/GR_GREECE.md)
 - [Hungary](./countries/HU_HUNGARY.md)
 - [Ireland](./countries/IE_IRELAND.md)
+- [Italy](./countries/IT_ITALY.md)
 
 ---
 

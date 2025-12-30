@@ -10,10 +10,10 @@
 | Severity | Count |
 |----------|-------|
 | 🔴 Critical | 4 |
-| 🟠 High | 20 |
-| 🟡 Medium | 22 |
-| 🔵 Low | 19 |
-| **Total** | **65** |
+| 🟠 High | 21 |
+| 🟡 Medium | 23 |
+| 🔵 Low | 21 |
+| **Total** | **69** |
 
 ---
 
@@ -763,7 +763,50 @@
 - **Date Found:** 2025-12-30
 
 ### Italy (IT)
-*Audit pending*
+
+#### [IT-001] Missing EU Blue Card Program
+- **Country:** IT
+- **Program:** EU Blue Card (missing)
+- **Severity:** 🟠 High
+- **Field:** program
+- **Current Value:** Not in system
+- **Expected Value:** EU Blue Card with €26,000-33,500/year threshold
+- **Source:** https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-italy_en
+- **Recommendation:** Add EU Blue Card program for Italy
+- **Date Found:** 2025-12-30
+
+#### [IT-002] Decreto Flussi Quota Information
+- **Country:** IT
+- **Program:** Highly Skilled Worker (`it_highly_skilled`)
+- **Severity:** 🟡 Medium
+- **Field:** notes
+- **Current Value:** General quota information
+- **Expected Value:** Add 2025 Decreto Flussi dates and quota numbers
+- **Source:** https://www.interno.gov.it/
+- **Recommendation:** Add specific 2025 quota dates and numbers
+- **Date Found:** 2025-12-30
+
+#### [IT-003] Nulla Osta Processing Times
+- **Country:** IT
+- **Program:** All Programs
+- **Severity:** 🔵 Low
+- **Field:** processingTime
+- **Current Value:** Varies by program
+- **Expected Value:** Clarify Nulla Osta processing times
+- **Source:** https://www.esteri.it/
+- **Recommendation:** Add specific Nulla Osta processing times
+- **Date Found:** 2025-12-30
+
+#### [IT-004] Digital Nomad Family Income Requirements
+- **Country:** IT
+- **Program:** Digital Nomad Visa (`it_digital_nomad`)
+- **Severity:** 🔵 Low
+- **Field:** familyIncome
+- **Current Value:** €28,000/year (individual)
+- **Expected Value:** Add family income requirements (spouse, children)
+- **Source:** https://www.globalcitizensolutions.com/italy-digital-nomad-visa/
+- **Recommendation:** Add family income thresholds
+- **Date Found:** 2025-12-30
 
 ### Latvia (LV)
 *Audit pending*
