@@ -17,7 +17,7 @@
 | 5 | Cyprus | CY | `cyprus.ts` | ❌ Critical Issues | 2025-12-30 |
 | 6 | Czech Republic | CZ | `czech-republic.ts` | ❌ Critical Issues | 2025-12-30 |
 | 7 | Denmark | DK | `denmark.ts` | ⚠️ Complete (Issues) | 2025-12-30 |
-| 8 | Estonia | EE | `estonia.ts` | ⏳ Pending | — |
+| 8 | Estonia | EE | `estonia.ts` | ⚠️ Complete (Issues) | 2025-12-30 |
 | 9 | Finland | FI | `finland.ts` | ⏳ Pending | — |
 | 10 | France | FR | `france.ts` | ⏳ Pending | — |
 | 11 | Germany | DE | `germany.ts` | ⏳ Pending | — |
@@ -73,6 +73,7 @@ Individual country audit reports are stored in `docs/audit/countries/`:
 - [Cyprus](./countries/CY_CYPRUS.md)
 - [Czech Republic](./countries/CZ_CZECH_REPUBLIC.md)
 - [Denmark](./countries/DK_DENMARK.md)
+- [Estonia](./countries/EE_ESTONIA.md)
 
 ---
 

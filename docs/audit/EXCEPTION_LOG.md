@@ -10,10 +10,10 @@
 | Severity | Count |
 |----------|-------|
 | 🔴 Critical | 3 |
-| 🟠 High | 11 |
-| 🟡 Medium | 11 |
-| 🔵 Low | 8 |
-| **Total** | **33** |
+| 🟠 High | 13 |
+| 🟡 Medium | 12 |
+| 🔵 Low | 9 |
+| **Total** | **37** |
 
 ---
 
@@ -397,7 +397,50 @@
 - **Date Found:** 2025-12-30
 
 ### Estonia (EE)
-*Audit pending*
+
+#### [EE-001] Digital Nomad Visa Income Threshold Outdated
+- **Country:** EE
+- **Program:** Digital Nomad Visa (`ee_digital_nomad`)
+- **Severity:** 🟠 High
+- **Field:** incomeThreshold
+- **Current Value:** €3,500/month
+- **Expected Value:** €4,500/month (2025 update)
+- **Source:** https://www.jobbatical.com/blog/estonia-digital-nomad-visa-guide-remote-work
+- **Recommendation:** Update income threshold to €4,500/month
+- **Date Found:** 2025-12-30
+
+#### [EE-002] EU Blue Card Salary Threshold Outdated
+- **Country:** EE
+- **Program:** EU Blue Card (`ee_eu_blue_card`)
+- **Severity:** 🟠 High
+- **Field:** salaryThreshold
+- **Current Value:** €24,000/year (€2,000/month)
+- **Expected Value:** €30,336/year (€2,528/month) — 1.5x average gross salary
+- **Source:** https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-estonia_en
+- **Recommendation:** Update salary threshold to €30,336/year (€2,528/month)
+- **Date Found:** 2025-12-30
+
+#### [EE-003] EU Blue Card Application Fee Incorrect
+- **Country:** EE
+- **Program:** EU Blue Card (`ee_eu_blue_card`)
+- **Severity:** 🟡 Medium
+- **Field:** applicationFee
+- **Current Value:** €160
+- **Expected Value:** €125
+- **Source:** EU Immigration Portal (Apr 2025)
+- **Recommendation:** Update application fee to €125
+- **Date Found:** 2025-12-30
+
+#### [EE-004] EU Blue Card Validity Period Incorrect
+- **Country:** EE
+- **Program:** EU Blue Card (`ee_eu_blue_card`)
+- **Severity:** 🔵 Low
+- **Field:** validity
+- **Current Value:** 2 years
+- **Expected Value:** 27 months (standard period in Estonia)
+- **Source:** EU Immigration Portal (Apr 2025)
+- **Recommendation:** Update validity to 27 months
+- **Date Found:** 2025-12-30
 
 ### Finland (FI)
 *Audit pending*
