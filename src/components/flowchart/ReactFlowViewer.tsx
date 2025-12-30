@@ -3,7 +3,7 @@
  * Renders flowcharts using React Flow library
  */
 
-import { useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import {
   ReactFlow,
   Background,
@@ -35,25 +35,26 @@ export function ReactFlowViewer({
   progress,
 }: ReactFlowViewerProps) {
   const [isLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
 
   // Get React Flow data (from reactFlowData or convert from Mermaid)
-  let flowData;
-  try {
-    flowData = getReactFlowData(flowchart);
+  // Wrap in useMemo to avoid recalculating on every render
+  const flowData = React.useMemo(() => {
+    try {
+      const data = getReactFlowData(flowchart);
 
-    // Validate flowData
-    if (!flowData || !flowData.nodes || !Array.isArray(flowData.nodes)) {
-      throw new Error('Invalid flowchart data structure');
+      // Validate flowData
+      if (!data || !data.nodes || !Array.isArray(data.nodes)) {
+        console.error('Invalid flowchart data structure');
+        return { nodes: [], edges: [] };
+      }
+
+      return data;
+    } catch (err) {
+      console.error('Error getting React Flow data:', err);
+      // Return empty flowData to prevent hooks from breaking
+      return { nodes: [], edges: [] };
     }
-  } catch (err) {
-    console.error('Error getting React Flow data:', err);
-    if (!error) {
-      setError('Failed to load flowchart data');
-    }
-    // Set empty flowData to prevent hooks from breaking
-    flowData = { nodes: [], edges: [] };
-  }
+  }, [flowchart]);
 
   // Calculate height based on number of nodes (more nodes = taller flowchart)
   const nodeCount = flowData.nodes.length;
@@ -101,7 +102,8 @@ export function ReactFlowViewer({
     // Do nothing - flowchart is read-only
   }, []);
 
-  if (error) {
+  // Show error state if no nodes
+  if (flowData.nodes.length === 0) {
     return (
       <div className="flex items-center justify-center bg-gray-50 p-8 border-2 border-black" style={{ height: `${calculatedHeight}px` }}>
         <div className="text-body text-danger">Error loading flowchart. Please try refreshing the page.</div>
