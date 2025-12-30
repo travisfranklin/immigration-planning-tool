@@ -1,10 +1,11 @@
 #!/usr/bin/env tsx
+/* eslint-disable no-useless-escape */
 /**
  * Generate Missing Steps Script
- * 
+ *
  * This script generates template step definitions for nodes that don't have matching steps.
  * It creates a report that can be used to add the missing steps to each flowchart.
- * 
+ *
  * Run with: npx tsx scripts/generate-missing-steps.ts
  */
 

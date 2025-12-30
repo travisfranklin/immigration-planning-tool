@@ -947,13 +947,13 @@ export const LUXEMBOURG_PROGRAMS: VisaProgram[] = [
       language: 0.05,
       family: 0.05,
     },
-    processingTimeWeeks: 8,
-    validityYears: 2,
+    processingTimeWeeks: 12, // Up to 3 months (90 days) for work authorization + visa
+    validityYears: 4,
     pathToPermanentResidency: true,
     pathToCitizenship: true,
-    description: 'For highly skilled workers with university degree and job offer in Luxembourg',
+    description: 'EU Blue Card for highly skilled workers with university degree. One of the highest salary thresholds in EU (€63,408/year). Strong financial services sector.',
     officialUrl: 'https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/hautement-qualifie/salarie-hautement-qualifie.html',
-    notes: 'Highest salaries in EU. Strong financial services sector. Job offer must be minimum 6 months.',
+    notes: 'One of the highest salaries in EU. Strong financial services sector. Job offer must be minimum 6 months. First 12 months: valid for specific profession/sector. PR in 5 years, citizenship in 10 years.',
   },
   {
     id: 'lu_highly_qualified',

@@ -1,10 +1,11 @@
 #!/usr/bin/env tsx
+/* eslint-disable no-useless-escape */
 /**
  * Flowchart ID Fixer Script
- * 
+ *
  * This script automatically fixes ID mismatches between Mermaid diagrams and step definitions
  * by updating the Mermaid diagrams to use the correct kebab-case IDs from the steps array.
- * 
+ *
  * Run with: npx tsx scripts/fix-flowchart-ids.ts
  */
 

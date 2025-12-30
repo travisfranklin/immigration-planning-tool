@@ -23,6 +23,8 @@ export interface FlowchartDefinition {
   totalEstimatedDuration: string; // e.g., "6-12 months"
   complexity: 'low' | 'medium' | 'high';
   successRate?: string; // e.g., "85%"
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  reactFlowData?: any; // Deprecated: React Flow data (will be removed)
 }
 
 export interface FlowchartCollection {

@@ -1,12 +1,13 @@
 #!/usr/bin/env tsx
+/* eslint-disable no-useless-escape */
 /**
  * Flowchart Validation Script
- * 
+ *
  * This script validates all flowchart definitions to ensure:
  * 1. Mermaid diagram node IDs match step IDs
  * 2. All interactive nodes have corresponding steps
  * 3. No orphaned steps exist
- * 
+ *
  * Run with: npx tsx scripts/validate-flowcharts.ts
  */
 

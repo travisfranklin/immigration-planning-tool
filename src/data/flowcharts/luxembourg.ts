@@ -20,16 +20,15 @@ flowchart TD
  Salary -->|Yes| gather-documents[Gather Required Documents]
  Salary -->|No| End1([Not Eligible])
  gather-documents -->work-authorization[Apply for Work Authorization]
- work-authorization --> WaitAuth[Wait for Authorization<br/>3-4 weeks]
+ work-authorization --> WaitAuth[Wait for Authorization<br/>Up to 3 months]
  WaitAuth --> AuthDecision{Authorization Approved?}
- AuthDecision -->|Yes| visa-application[Apply for Visa]
+ AuthDecision -->|Yes| visa-application[Apply for Type D Visa]
  AuthDecision -->|No| End2([Application Denied])
  visa-application --> WaitVisa[Wait for Visa<br/>4-6 weeks]
  WaitVisa --> VisaDecision{Visa Approved?}
- VisaDecision -->|Approved| visa-application[Receive Blue Card]
- VisaDecision -->|Rejected| Appeal[Consider Appeal]
- visa-application -->arrival[Travel to Luxembourg]
- arrival --> registration[Register at Commune]
+ VisaDecision -->|Yes| arrival[Travel to Luxembourg]
+ VisaDecision -->|No| Appeal[Consider Appeal]
+ arrival --> registration[Register at Commune<br/>Receive EU Blue Card]
  registration --> Success([Process Complete])
  Appeal --> End2`,
  reactFlowData: {
@@ -107,7 +106,7 @@ flowchart TD
             y: 452
           },
           data: {
-            label: "Wait for Authorization<br/>3-4 weeks",
+            label: "Wait for Authorization<br/>Up to 3 months",
             stepId: "WaitAuth",
             nodeType: "process"
           }
@@ -133,7 +132,7 @@ flowchart TD
             y: 44
           },
           data: {
-            label: "Apply for Visa",
+            label: "Apply for Type D Visa",
             stepId: "application",
             nodeType: "process"
           }
@@ -178,19 +177,6 @@ flowchart TD
           }
         },
         {
-          id: "Visa",
-          type: "process",
-          position: {
-            x: 1044,
-            y: 680
-          },
-          data: {
-            label: "Receive Blue Card",
-            stepId: "Visa",
-            nodeType: "process"
-          }
-        },
-        {
           id: "Appeal",
           type: "process",
           position: {
@@ -208,7 +194,7 @@ flowchart TD
           type: "process",
           position: {
             x: 1044,
-            y: 884
+            y: 680
           },
           data: {
             label: "Travel to Luxembourg",
@@ -221,10 +207,10 @@ flowchart TD
           type: "process",
           position: {
             x: 1044,
-            y: 1064
+            y: 884
           },
           data: {
-            label: "Register at Commune",
+            label: "Register at Commune<br/>Receive EU Blue Card",
             stepId: "registration",
             nodeType: "process"
           }
@@ -234,7 +220,7 @@ flowchart TD
           type: "end",
           position: {
             x: 1064,
-            y: 1244
+            y: 1064
           },
           data: {
             label: "Process Complete",
@@ -331,11 +317,11 @@ flowchart TD
           }
         },
         {
-          id: "VisaDecision-Visa",
+          id: "VisaDecision-arrival",
           source: "VisaDecision",
-          target: "Visa",
+          target: "arrival",
           type: "smoothstep",
-          label: "Approved",
+          label: "Yes",
           style: {
             stroke: "#1F2937",
             strokeWidth: 2
@@ -350,21 +336,7 @@ flowchart TD
           source: "VisaDecision",
           target: "Appeal",
           type: "smoothstep",
-          label: "Rejected",
-          style: {
-            stroke: "#1F2937",
-            strokeWidth: 2
-          },
-          "labelStyle": {
-            "fill": "#1F2937",
-            "fontWeight": 500
-          }
-        },
-        {
-          id: "Visa-arrival",
-          source: "Visa",
-          target: "arrival",
-          type: "smoothstep",
+          label: "No",
           style: {
             stroke: "#1F2937",
             strokeWidth: 2
@@ -431,10 +403,11 @@ flowchart TD
  'Company registration documents',
  ],
  notes: [
- 'Highest EU Blue Card salary threshold in EU',
+ 'One of the highest EU Blue Card salary thresholds in EU',
  'Strong financial services sector',
  'Employer must be registered in Luxembourg',
- 'Contract must be for at least 12 months',
+ 'Contract must be for at least 6 months',
+ 'During first 12 months, permit valid for specific profession/sector only',
  ],
  },
  {
@@ -473,7 +446,8 @@ flowchart TD
  notes: [
  'Employer submits to Ministry of Foreign and European Affairs',
  'Authorization must be approved before visa application',
- 'Processing typically takes 3-4 weeks',
+ 'Processing can take up to 3 months (typically faster)',
+ 'Decision must be made within 90 days maximum',
  ],
  },
  {
@@ -482,7 +456,7 @@ flowchart TD
  description: 'Wait for work authorization approval from Luxembourg authorities',
  estimatedDuration: '3-4 weeks',
  documents: [],
- notes: ['Processing typically 3-4 weeks', 'Can track status with employer', 'May be contacted for additional documents'],
+ notes: ['Processing up to 3 months (typically faster)', 'Can track status with employer', 'May be contacted for additional documents', 'Decision must be made within 90 days maximum'],
  isConditional: true,
  condition: 'Authorization approved or rejected',
  },
@@ -565,8 +539,11 @@ flowchart TD
  'Registration fee ( EUR 50)',
  ],
  notes: [
- 'Register at local commune within 8 days',
- 'Receive residence permit card',
+ 'Register at local commune within 3 working days of arrival',
+ 'Receive residence permit card (EU Blue Card)',
+ 'Permit valid 4 years or contract duration + 3 months',
+ 'First 12 months: valid for specific profession/sector only',
+ 'After 12 months: can work for any employer in same sector',
  'Apply for social security number',
  'Open bank account',
  'Can apply for PR after 5 years',

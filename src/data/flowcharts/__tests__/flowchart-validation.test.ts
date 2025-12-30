@@ -4,9 +4,9 @@
  * Ensures all flowchart definitions have matching node IDs and step IDs
  */
 
-import { describe, it, expect } from 'vitest';
+import { describe, it } from 'vitest';
 import type { FlowchartDefinition } from '../../../types/flowchart';
-import { allFlowcharts } from '../index';
+import { ALL_FLOWCHARTS } from '../index';
 
 // Extract node IDs from Mermaid diagram
 function extractNodeIds(mermaidDiagram: string): string[] {
@@ -14,7 +14,7 @@ function extractNodeIds(mermaidDiagram: string): string[] {
 
   // Match process nodes: nodeId[Label] or nodeId([Label])
   // Exclude decision nodes: nodeId{Label} - these are conditional branches and don't need steps
-  const processNodePattern = /\b([a-zA-Z][\w-]*)\s*[\[\(]/g;
+  const processNodePattern = /\b([a-zA-Z][\w-]*)\s*[[(]/g;
   let match;
 
   while ((match = processNodePattern.exec(mermaidDiagram)) !== null) {
@@ -30,7 +30,7 @@ function extractNodeIds(mermaidDiagram: string): string[] {
 
 describe('Flowchart Validation', () => {
   // Get all flowcharts from all countries
-  const flowchartEntries = Object.entries(allFlowcharts).flatMap(([countryCode, programs]) =>
+  const flowchartEntries = Object.entries(ALL_FLOWCHARTS).flatMap(([countryCode, programs]) =>
     Object.entries(programs).map(([programId, flowchart]) => ({
       countryCode,
       programId,

@@ -1,10 +1,11 @@
 #!/usr/bin/env tsx
+/* eslint-disable @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any, no-useless-escape */
 /**
  * Add Missing Steps Script
- * 
+ *
  * This script automatically adds missing step definitions for nodes that don't have matching steps.
  * It uses intelligent templates based on node IDs and labels.
- * 
+ *
  * Run with: npx tsx scripts/add-missing-steps.ts
  */
 
