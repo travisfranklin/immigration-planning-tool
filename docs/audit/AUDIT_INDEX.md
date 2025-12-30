@@ -11,7 +11,7 @@
 | # | Country | Code | File | Status | Audit Date |
 |---|---------|------|------|--------|------------|
 | 1 | Austria | AT | `austria.ts` | ⚠️ Complete (Issues) | 2025-12-30 |
-| 2 | Belgium | BE | `belgium.ts` | ⏳ Pending | — |
+| 2 | Belgium | BE | `belgium.ts` | ⚠️ Complete (Issues) | 2025-12-30 |
 | 3 | Bulgaria | BG | `bulgaria.ts` | ⏳ Pending | — |
 | 4 | Croatia | HR | `croatia.ts` | ⏳ Pending | — |
 | 5 | Cyprus | CY | `cyprus.ts` | ⏳ Pending | — |
@@ -67,7 +67,7 @@
 Individual country audit reports are stored in `docs/audit/countries/`:
 
 - [Austria](./countries/AT_AUSTRIA.md)
-- (Additional countries added as audits complete)
+- [Belgium](./countries/BE_BELGIUM.md)
 
 ---
 

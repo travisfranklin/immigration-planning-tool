@@ -10,10 +10,10 @@
 | Severity | Count |
 |----------|-------|
 | 🔴 Critical | 0 |
-| 🟠 High | 2 |
-| 🟡 Medium | 3 |
-| 🔵 Low | 1 |
-| **Total** | **6** |
+| 🟠 High | 4 |
+| 🟡 Medium | 5 |
+| 🔵 Low | 2 |
+| **Total** | **11** |
 
 ---
 
@@ -88,7 +88,61 @@
 - **Date Found:** 2025-12-30
 
 ### Belgium (BE)
-*Audit pending*
+
+#### [BE-001] EU Blue Card Regional Salary Thresholds Outdated
+- **Country:** BE
+- **Program:** EU Blue Card (`be_eu_blue_card`)
+- **Severity:** 🟠 High
+- **Field:** salaryThreshold (regional)
+- **Current Value:** Brussels: €66,377, Flanders: €61,011, Wallonia: €56,112
+- **Expected Value:** Brussels/Wallonia: €66,738, Flanders: €63,586 (2025)
+- **Source:** https://kpmg.com/xx/en/our-insights/gms-flash-alert/flash-alert-2024-223.html
+- **Recommendation:** Update all regional thresholds to 2025 values
+- **Date Found:** 2025-12-30
+
+#### [BE-002] Highly Skilled Worker Missing Junior Thresholds
+- **Country:** BE
+- **Program:** Highly Skilled Worker (`be_highly_skilled`)
+- **Severity:** 🟡 Medium
+- **Field:** salaryThreshold (junior)
+- **Current Value:** Not specified
+- **Expected Value:** Wallonia: €41,290, Flanders: €39,129.60 (under 30)
+- **Source:** https://www.expatmanagementgroup.com/insights/new-2025-immigration-salary-thresholds-in-wallonia-flanders
+- **Recommendation:** Add junior (under 30) reduced salary thresholds
+- **Date Found:** 2025-12-30
+
+#### [BE-003] Highly Skilled Worker Regional Differences Not Clear
+- **Country:** BE
+- **Program:** Highly Skilled Worker (`be_highly_skilled`)
+- **Severity:** 🟡 Medium
+- **Field:** salaryThreshold
+- **Current Value:** €51,613 (single value)
+- **Expected Value:** Wallonia: €51,613, Flanders: €48,912 (regional variation)
+- **Source:** https://www.expatmanagementgroup.com/insights/new-2025-immigration-salary-thresholds-in-wallonia-flanders
+- **Recommendation:** Clarify regional threshold differences in notes
+- **Date Found:** 2025-12-30
+
+#### [BE-004] Professional Card Missing Annual Validity Fee
+- **Country:** BE
+- **Program:** Professional Card (`be_professional_card`)
+- **Severity:** 🔵 Low
+- **Field:** applicationFee
+- **Current Value:** €140
+- **Expected Value:** €140 (application) + €90/year (validity)
+- **Source:** https://be.brussels/en/employment/job-brussels/employment-conditions/professional-card-non-european-nationals
+- **Recommendation:** Add note about annual €90 validity fee
+- **Date Found:** 2025-12-30
+
+#### [BE-005] Family Reunification Missing 2025 Income Requirement
+- **Country:** BE
+- **Program:** Family Reunification (`be_family_reunification`)
+- **Severity:** 🟠 High
+- **Field:** incomeThreshold
+- **Current Value:** "Above minimum" / €5,000+ for fast-track
+- **Expected Value:** €5,000 gross/month minimum (new 2025 requirement effective August 2025)
+- **Source:** https://assets.kpmg.com/content/dam/kpmgsites/xx/pdf/2025/06/fa25-115.pdf
+- **Recommendation:** Update income requirement to reflect new 2025 rules
+- **Date Found:** 2025-12-30
 
 ### Bulgaria (BG)
 *Audit pending*
