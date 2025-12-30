@@ -1,6 +1,6 @@
 # Documentation Index
 
-**Last Updated**: October 26, 2025  
+**Last Updated**: December 30, 2025
 **Project Status**: Production Ready ✅  
 **Tests**: 3,206/3,207 Passing ✅
 
@@ -91,10 +91,11 @@ Historical documentation from completed work is organized in `/docs/archive/`:
 | **Accessibility** | `archive/accessibility/` | Accessibility audits and code quality reports |
 | **Builds** | `archive/builds/` | Build fixes and performance reports |
 | **Features** | `archive/features/` | Feature implementation summaries |
-| **Flowcharts** | `archive/flowcharts/` | Flowchart implementation work |
+| **Flowcharts** | `archive/flowcharts/` | Flowchart implementation work and tracking |
 | **Forms** | `archive/forms/` | Form field fixes and updates |
 | **Navigation** | `archive/navigation/` | Navigation implementation |
 | **Profile UX** | `archive/profile-ux/` | Profile form UX improvements |
+| **Redesign** | `archive/redesign/` | Application redesign (German/Scandinavian design) |
 | **Refactoring** | `archive/refactoring/` | Code refactoring work |
 | **Results Page** | `archive/results-page/` | Results page redesigns |
 | **Scoring** | `archive/scoring/` | Scoring system fixes |
