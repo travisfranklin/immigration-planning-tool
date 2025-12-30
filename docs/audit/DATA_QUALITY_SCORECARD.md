@@ -9,12 +9,12 @@
 
 | Metric | Score | Target |
 |--------|-------|--------|
-| **Accuracy** | 77% | 95%+ |
+| **Accuracy** | 75% | 95%+ |
 | **Completeness** | 87% | 95%+ |
 | **Consistency** | 96% | 95%+ |
-| **Overall** | 84% | 95%+ |
+| **Overall** | 83% | 95%+ |
 
-*Based on 5/27 countries audited*
+*Based on 6/27 countries audited*
 
 ---
 
@@ -27,7 +27,7 @@
 | Bulgaria | BG | 75% | 88% | 95% | 82% | ❌ |
 | Croatia | HR | 70% | 85% | 95% | 78% | ⚠️ |
 | Cyprus | CY | 75% | 85% | 95% | 80% | ❌ |
-| Czech Republic | CZ | — | — | — | — | ⏳ |
+| Czech Republic | CZ | 65% | 85% | 95% | 75% | ❌ |
 | Denmark | DK | — | — | — | — | ⏳ |
 | Estonia | EE | — | — | — | — | ⏳ |
 | Finland | FI | — | — | — | — | ⏳ |

@@ -9,11 +9,11 @@
 
 | Severity | Count |
 |----------|-------|
-| 🔴 Critical | 2 |
-| 🟠 High | 8 |
-| 🟡 Medium | 7 |
-| 🔵 Low | 6 |
-| **Total** | **23** |
+| 🔴 Critical | 3 |
+| 🟠 High | 9 |
+| 🟡 Medium | 9 |
+| 🔵 Low | 7 |
+| **Total** | **28** |
 
 ---
 
@@ -283,7 +283,61 @@
 - **Date Found:** 2025-12-30
 
 ### Czech Republic (CZ)
-*Audit pending*
+
+#### [CZ-001] EU Blue Card Salary Threshold Critically Outdated
+- **Country:** CZ
+- **Program:** EU Blue Card (`cz_eu_blue_card`)
+- **Severity:** 🔴 Critical
+- **Field:** salaryThreshold
+- **Current Value:** €21,600/year (€1,800/month)
+- **Expected Value:** CZK 69,248/month (~€2,770/month or ~€33,240/year) — effective May 1, 2025
+- **Source:** https://citizenremote.com/visas/czech-republic-blue-card/, bal.com, arlettipartners.com
+- **Recommendation:** Update salary threshold to CZK 69,248/month (~€2,770/month) — 54% increase from system value
+- **Date Found:** 2025-12-30
+
+#### [CZ-002] Application Fees Outdated Across All Programs
+- **Country:** CZ
+- **Program:** All Programs
+- **Severity:** 🟠 High
+- **Field:** applicationFee
+- **Current Value:** €100 (all programs)
+- **Expected Value:** CZK 5,000 (~€200) at embassy, CZK 2,500 (~€100) at Ministry of Interior
+- **Source:** https://citizenremote.com/visas/czech-republic-blue-card/
+- **Recommendation:** Update fees to reflect embassy vs. in-country application differences
+- **Date Found:** 2025-12-30
+
+#### [CZ-003] Self-Employment Capital Requirement Discrepancy
+- **Country:** CZ
+- **Program:** Self-Employment Visa (`cz_self_employment`)
+- **Severity:** 🟡 Medium
+- **Field:** capital
+- **Current Value:** €10,000
+- **Expected Value:** CZK 156,500 (~€6,260) proof of funds required
+- **Source:** https://citizenremote.com/visas/czech-republic-freelance-visa/
+- **Recommendation:** Update capital requirement to CZK 156,500 (~€6,260)
+- **Date Found:** 2025-12-30
+
+#### [CZ-004] Self-Employment Processing Time Range Extended
+- **Country:** CZ
+- **Program:** Self-Employment Visa (`cz_self_employment`)
+- **Severity:** 🟡 Medium
+- **Field:** processingTime
+- **Current Value:** 60-90 days
+- **Expected Value:** 60-120 days
+- **Source:** https://citizenremote.com/visas/czech-republic-freelance-visa/
+- **Recommendation:** Update processing time to 60-120 days
+- **Date Found:** 2025-12-30
+
+#### [CZ-005] Currency Consistency Issue
+- **Country:** CZ
+- **Program:** All Programs
+- **Severity:** 🔵 Low
+- **Field:** Currency
+- **Current Value:** EUR
+- **Expected Value:** CZK (Czech Koruna) — official sources use CZK
+- **Source:** Czech Ministry of Interior
+- **Recommendation:** Consider adding CZK values alongside EUR for accuracy
+- **Date Found:** 2025-12-30
 
 ### Denmark (DK)
 *Audit pending*
