@@ -1,7 +1,7 @@
 # Exception Log
 
 **Last Updated:** 2025-12-30
-**Audit Phase:** Data Collection & Verification
+**Audit Phase:** Data Collection & Verification ✅ COMPLETE
 
 ---
 
@@ -11,9 +11,9 @@
 |----------|-------|
 | 🔴 Critical | 6 |
 | 🟠 High | 36 |
-| 🟡 Medium | 33 |
-| 🔵 Low | 46 |
-| **Total** | **121** |
+| 🟡 Medium | 35 |
+| 🔵 Low | 49 |
+| **Total** | **126** |
 
 ---
 
@@ -1403,7 +1403,61 @@
 - **Date Found:** 2025-12-30
 
 ### Sweden (SE)
-*Audit pending*
+
+#### [SE-001] EU Blue Card Salary Threshold Update Needed
+- **Country:** SE
+- **Program:** EU Blue Card (`se_eu_blue_card`)
+- **Severity:** 🟡 Medium
+- **Field:** salaryThreshold
+- **Current Value:** SEK 54,000/month (SEK 648,000/year)
+- **Expected Value:** 1.25× average gross salary (~SEK 55,650/month for 2023, updated July 2025)
+- **Source:** https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-sweden_en
+- **Recommendation:** Update to 1.25× formula (lowered from 1.5× in July 2025)
+- **Date Found:** 2025-12-30
+
+#### [SE-002] EU Blue Card Missing 4-Year PR Pathway Note
+- **Country:** SE
+- **Program:** EU Blue Card (`se_eu_blue_card`)
+- **Severity:** 🟡 Medium
+- **Field:** notes
+- **Current Value:** No PR pathway mentioned
+- **Expected Value:** After 4 years, applicant may apply for permanent residence
+- **Source:** EU Immigration Portal - Sweden
+- **Recommendation:** Add 4-year permanent residence pathway note
+- **Date Found:** 2025-12-30
+
+#### [SE-003] Missing Personnummer Registration Reference
+- **Country:** SE
+- **Program:** All Programs
+- **Severity:** 🔵 Low
+- **Field:** notes
+- **Current Value:** No personnummer reference
+- **Expected Value:** Reference to Swedish personal identity number (personnummer) registration
+- **Source:** Swedish Tax Agency (Skatteverket)
+- **Recommendation:** Add personnummer registration reference
+- **Date Found:** 2025-12-30
+
+#### [SE-004] Work Permit Missing Collective Agreement Requirement
+- **Country:** SE
+- **Program:** Work Permit (`se_work_permit`)
+- **Severity:** 🔵 Low
+- **Field:** notes
+- **Current Value:** No collective agreement mentioned
+- **Expected Value:** Employment terms must be at least equal to Swedish collective agreements
+- **Source:** Swedish Migration Agency (Migrationsverket)
+- **Recommendation:** Add collective agreement requirement note
+- **Date Found:** 2025-12-30
+
+#### [SE-005] EU Blue Card Missing 24-Month Employer Lock Note
+- **Country:** SE
+- **Program:** EU Blue Card (`se_eu_blue_card`)
+- **Severity:** 🔵 Low
+- **Field:** notes
+- **Current Value:** No employer lock mentioned
+- **Expected Value:** First 24 months: EU Blue Card valid only for employer and occupation specified
+- **Source:** EU Immigration Portal - Sweden
+- **Recommendation:** Add 24-month employer lock note
+- **Date Found:** 2025-12-30
 
 ---
 

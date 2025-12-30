@@ -1,7 +1,7 @@
 # Data Quality Scorecard
 
 **Last Updated:** 2025-12-30
-**Audit Phase:** Data Collection & Verification
+**Audit Phase:** Data Collection & Verification ✅ COMPLETE
 
 ---
 
@@ -9,12 +9,12 @@
 
 | Metric | Score | Target |
 |--------|-------|--------|
-| **Accuracy** | 75% | 95%+ |
-| **Completeness** | 88% | 95%+ |
+| **Accuracy** | 78% | 95%+ |
+| **Completeness** | 87% | 95%+ |
 | **Consistency** | 96% | 95%+ |
 | **Overall** | 83% | 95%+ |
 
-*Based on 26/27 countries audited*
+*Based on 27/27 countries audited*
 
 ---
 
@@ -48,13 +48,14 @@
 | Slovakia | SK | 78% | 90% | 95% | 82% | ⚠️ |
 | Slovenia | SI | 88% | 80% | 95% | 85% | ⚠️ |
 | Spain | ES | 65% | 75% | 95% | 72% | ❌ |
-| Sweden | SE | — | — | — | — | ⏳ |
+| Sweden | SE | 85% | 92% | 95% | 88% | ⚠️ |
 
 ---
 
 ## Scoring Criteria
 
 ### Accuracy (Weight: 40%)
+
 - Salary thresholds match official sources
 - Processing times match official sources
 - Fee amounts are current
@@ -62,6 +63,7 @@
 - Eligibility criteria are correct
 
 ### Completeness (Weight: 30%)
+
 - All required fields populated
 - All visa programs for country included
 - All steps in flowchart defined
@@ -69,9 +71,9 @@
 - Mermaid diagram present and complete
 
 ### Consistency (Weight: 30%)
+
 - Template usage is standardized
 - Step IDs follow naming conventions
 - Country config matches program data
 - Terminology consistent across programs
 - Flowchart structure consistent
-

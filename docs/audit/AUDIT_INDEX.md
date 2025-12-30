@@ -2,7 +2,7 @@
 
 **Audit Start Date:** 2025-12-30
 **Audit Lead:** Program Audit Team
-**Status:** Phase 2 - Data Collection & Verification
+**Status:** Phase 2 - Data Collection & Verification ✅ COMPLETE
 
 ---
 
@@ -36,7 +36,7 @@
 | 24 | Slovakia | SK | `slovakia.ts` | ⚠️ Complete (Issues) | 2025-12-30 |
 | 25 | Slovenia | SI | `slovenia.ts` | ⚠️ Complete (Issues) | 2025-12-30 |
 | 26 | Spain | ES | `spain.ts` | ❌ Critical Issues | 2025-12-30 |
-| 27 | Sweden | SE | `sweden.ts` | ⏳ Pending | — |
+| 27 | Sweden | SE | `sweden.ts` | ⚠️ Complete (Issues) | 2025-12-30 |
 
 ---
 
@@ -45,7 +45,7 @@
 | Phase | Status | Start Date | End Date |
 |-------|--------|------------|----------|
 | Planning | ✅ Complete | 2025-12-30 | 2025-12-30 |
-| Data Collection | 🔄 In Progress | 2025-12-30 | — |
+| Data Collection | ✅ Complete | 2025-12-30 | 2025-12-30 |
 | Verification | ⏳ Pending | — | — |
 | Technical Review | ⏳ Pending | — | — |
 | Content Review | ⏳ Pending | — | — |
@@ -92,6 +92,7 @@ Individual country audit reports are stored in `docs/audit/countries/`:
 - [Slovakia](./countries/SK_SLOVAKIA.md)
 - [Slovenia](./countries/SI_SLOVENIA.md)
 - [Spain](./countries/ES_SPAIN.md)
+- [Sweden](./countries/SE_SWEDEN.md)
 
 ---
 
@@ -104,4 +105,3 @@ Individual country audit reports are stored in `docs/audit/countries/`:
 | ✅ | Complete |
 | ⚠️ | Issues Found |
 | ❌ | Critical Issues |
-
