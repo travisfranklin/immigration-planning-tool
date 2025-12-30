@@ -35,7 +35,7 @@
 | 23 | Romania | RO | `romania.ts` | ⚠️ Complete (Issues) | 2025-12-30 |
 | 24 | Slovakia | SK | `slovakia.ts` | ⚠️ Complete (Issues) | 2025-12-30 |
 | 25 | Slovenia | SI | `slovenia.ts` | ⚠️ Complete (Issues) | 2025-12-30 |
-| 26 | Spain | ES | `spain.ts` | ⏳ Pending | — |
+| 26 | Spain | ES | `spain.ts` | ❌ Critical Issues | 2025-12-30 |
 | 27 | Sweden | SE | `sweden.ts` | ⏳ Pending | — |
 
 ---
@@ -91,6 +91,7 @@ Individual country audit reports are stored in `docs/audit/countries/`:
 - [Romania](./countries/RO_ROMANIA.md)
 - [Slovakia](./countries/SK_SLOVAKIA.md)
 - [Slovenia](./countries/SI_SLOVENIA.md)
+- [Spain](./countries/ES_SPAIN.md)
 
 ---
 

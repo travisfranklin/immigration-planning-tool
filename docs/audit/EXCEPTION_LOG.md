@@ -9,11 +9,11 @@
 
 | Severity | Count |
 |----------|-------|
-| 🔴 Critical | 4 |
-| 🟠 High | 35 |
-| 🟡 Medium | 31 |
-| 🔵 Low | 44 |
-| **Total** | **114** |
+| 🔴 Critical | 6 |
+| 🟠 High | 36 |
+| 🟡 Medium | 33 |
+| 🔵 Low | 46 |
+| **Total** | **121** |
 
 ---
 
@@ -1324,7 +1324,83 @@
 - **Date Found:** 2025-12-30
 
 ### Spain (ES)
-*Audit pending*
+
+#### [ES-001] Golden Visa Program Abolished
+- **Country:** ES
+- **Program:** Golden Visa (`es_golden_visa`)
+- **Severity:** 🔴 Critical
+- **Field:** status
+- **Current Value:** Active program in system
+- **Expected Value:** Program abolished April 3, 2025
+- **Source:** Spanish Government, GetGoldenVisa.com
+- **Recommendation:** Remove or mark as discontinued
+- **Date Found:** 2025-12-30
+
+#### [ES-002] EU Blue Card Missing
+- **Country:** ES
+- **Program:** EU Blue Card
+- **Severity:** 🔴 Critical
+- **Field:** Missing program
+- **Current Value:** Not in system
+- **Expected Value:** EU Blue Card available (€38,844 salary, €73.26 fee, 3 years, 20 days)
+- **Source:** EU Immigration Portal - Spain
+- **Recommendation:** Add EU Blue Card program
+- **Date Found:** 2025-12-30
+
+#### [ES-003] Highly Qualified Salary Threshold Outdated
+- **Country:** ES
+- **Program:** Highly Qualified Professional (`es_highly_qualified`)
+- **Severity:** 🟠 High
+- **Field:** salaryThreshold
+- **Current Value:** €30,000
+- **Expected Value:** ~€40,077 (2025 Blue Card threshold)
+- **Source:** Jobbatical - Spain EU Blue Card Guide
+- **Recommendation:** Update salary threshold to 2025 value
+- **Date Found:** 2025-12-30
+
+#### [ES-004] EU Blue Card Reduced Threshold
+- **Country:** ES
+- **Program:** EU Blue Card
+- **Severity:** 🟡 Medium
+- **Field:** notes
+- **Current Value:** N/A
+- **Expected Value:** Add 0.8× reduced threshold for young workers (<3 years since graduation)
+- **Source:** EU Immigration Portal - Spain
+- **Recommendation:** Add reduced threshold note
+- **Date Found:** 2025-12-30
+
+#### [ES-005] Golden Visa Discontinuation Notice
+- **Country:** ES
+- **Program:** Golden Visa (`es_golden_visa`)
+- **Severity:** 🟡 Medium
+- **Field:** notes
+- **Current Value:** Active program notes
+- **Expected Value:** Add discontinuation notice with effective date
+- **Source:** Spanish Government
+- **Recommendation:** Add discontinuation notice
+- **Date Found:** 2025-12-30
+
+#### [ES-006] NIE/TIE Registration Reference
+- **Country:** ES
+- **Program:** All Programs
+- **Severity:** 🔵 Low
+- **Field:** notes
+- **Current Value:** General notes
+- **Expected Value:** Add NIE/TIE registration reference
+- **Source:** Spanish Immigration Portal
+- **Recommendation:** Add NIE/TIE reference
+- **Date Found:** 2025-12-30
+
+#### [ES-007] Beckham Law Tax Benefit Reference
+- **Country:** ES
+- **Program:** Digital Nomad Visa (`es_digital_nomad`)
+- **Severity:** 🔵 Low
+- **Field:** notes
+- **Current Value:** Mentions Beckham Law
+- **Expected Value:** Expand Beckham Law tax benefit details
+- **Source:** Spanish Tax Authority
+- **Recommendation:** Add Beckham Law details
+- **Date Found:** 2025-12-30
 
 ### Sweden (SE)
 *Audit pending*
