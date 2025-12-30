@@ -10,10 +10,10 @@
 | Severity | Count |
 |----------|-------|
 | 🔴 Critical | 4 |
-| 🟠 High | 33 |
-| 🟡 Medium | 27 |
-| 🔵 Low | 41 |
-| **Total** | **105** |
+| 🟠 High | 34 |
+| 🟡 Medium | 30 |
+| 🔵 Low | 42 |
+| **Total** | **110** |
 
 ---
 
@@ -1221,7 +1221,61 @@
 - **Date Found:** 2025-12-30
 
 ### Slovakia (SK)
-*Audit pending*
+
+#### [SK-001] EU Blue Card Application Fee
+- **Country:** SK
+- **Program:** EU Blue Card (`sk_eu_blue_card`)
+- **Severity:** 🟠 High
+- **Field:** applicationFee
+- **Current Value:** €165
+- **Expected Value:** €250
+- **Source:** EU Immigration Portal - Slovakia
+- **Recommendation:** Update Blue Card fee to €250
+- **Date Found:** 2025-12-30
+
+#### [SK-002] EU Blue Card Salary Threshold
+- **Country:** SK
+- **Program:** EU Blue Card (`sk_eu_blue_card`)
+- **Severity:** 🟡 Medium
+- **Field:** salaryThreshold
+- **Current Value:** €24,000/year (€2,000/month)
+- **Expected Value:** €20,592/year (€1,716/month = 1.2× avg wage)
+- **Source:** EU Immigration Portal - Slovakia
+- **Recommendation:** Update salary to 1.2× average wage
+- **Date Found:** 2025-12-30
+
+#### [SK-003] EU Blue Card Processing Time
+- **Country:** SK
+- **Program:** EU Blue Card (`sk_eu_blue_card`)
+- **Severity:** 🟡 Medium
+- **Field:** processingTime
+- **Current Value:** 30-90 days
+- **Expected Value:** 30 days
+- **Source:** EU Immigration Portal - Slovakia
+- **Recommendation:** Update processing time to 30 days
+- **Date Found:** 2025-12-30
+
+#### [SK-004] EU Blue Card Validity Period
+- **Country:** SK
+- **Program:** EU Blue Card (`sk_eu_blue_card`)
+- **Severity:** 🟡 Medium
+- **Field:** validity
+- **Current Value:** 3 years
+- **Expected Value:** 5 years
+- **Source:** EU Immigration Portal - Slovakia
+- **Recommendation:** Update validity to 5 years
+- **Date Found:** 2025-12-30
+
+#### [SK-005] Average Wage Reference
+- **Country:** SK
+- **Program:** All Programs
+- **Severity:** 🔵 Low
+- **Field:** notes
+- **Current Value:** General notes
+- **Expected Value:** Add 2023 avg wage reference (€1,430)
+- **Source:** Statistical Office of Slovak Republic
+- **Recommendation:** Add average wage reference
+- **Date Found:** 2025-12-30
 
 ### Slovenia (SI)
 *Audit pending*
