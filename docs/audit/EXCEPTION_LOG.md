@@ -10,10 +10,10 @@
 | Severity | Count |
 |----------|-------|
 | 🔴 Critical | 4 |
-| 🟠 High | 31 |
-| 🟡 Medium | 26 |
-| 🔵 Low | 39 |
-| **Total** | **100** |
+| 🟠 High | 33 |
+| 🟡 Medium | 27 |
+| 🔵 Low | 41 |
+| **Total** | **105** |
 
 ---
 
@@ -1164,7 +1164,61 @@
 - **Date Found:** 2025-12-30
 
 ### Romania (RO)
-*Audit pending*
+
+#### [RO-001] EU Blue Card Salary Threshold
+- **Country:** RO
+- **Program:** EU Blue Card (`ro_eu_blue_card`)
+- **Severity:** 🟠 High
+- **Field:** salaryThreshold
+- **Current Value:** RON 120,000/year (RON 10,000/month)
+- **Expected Value:** RON 162,936/year (RON 13,578/month or €2,743)
+- **Source:** https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-romania_en
+- **Recommendation:** Update Blue Card salary to RON 162,936/year
+- **Date Found:** 2025-12-30
+
+#### [RO-002] Missing Digital Nomad Visa
+- **Country:** RO
+- **Program:** Digital Nomad Visa
+- **Severity:** 🟠 High
+- **Field:** Program Missing
+- **Current Value:** Not in system
+- **Expected Value:** Digital Nomad visa (€3,800/month income)
+- **Source:** https://nomadsembassy.com/romania-digital-nomad-visa/
+- **Recommendation:** Add Digital Nomad visa to Romania
+- **Date Found:** 2025-12-30
+
+#### [RO-003] Work Permit Salary Clarification
+- **Country:** RO
+- **Program:** Work Permit (`ro_work_permit`)
+- **Severity:** 🟡 Medium
+- **Field:** salaryThreshold
+- **Current Value:** RON 36,000/year
+- **Expected Value:** Clarify minimum wage reference
+- **Source:** Official Romanian government sources
+- **Recommendation:** Clarify work permit salary requirements
+- **Date Found:** 2025-12-30
+
+#### [RO-004] 2025 Minimum Wage Reference
+- **Country:** RO
+- **Program:** All Programs
+- **Severity:** 🔵 Low
+- **Field:** notes
+- **Current Value:** General salary notes
+- **Expected Value:** Add 2025 minimum wage (RON 4,050)
+- **Source:** https://corporateimmigrationpartners.com/romania-minimum-salary-increases-for-2025/
+- **Recommendation:** Add 2025 minimum wage reference
+- **Date Found:** 2025-12-30
+
+#### [RO-005] Schengen Accession Note
+- **Country:** RO
+- **Program:** All Programs
+- **Severity:** 🔵 Low
+- **Field:** notes
+- **Current Value:** No Schengen note
+- **Expected Value:** Add Schengen accession note
+- **Source:** Official EU sources
+- **Recommendation:** Add Schengen accession note
+- **Date Found:** 2025-12-30
 
 ### Slovakia (SK)
 *Audit pending*

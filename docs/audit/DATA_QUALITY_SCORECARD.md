@@ -14,7 +14,7 @@
 | **Consistency** | 96% | 95%+ |
 | **Overall** | 83% | 95%+ |
 
-*Based on 22/27 countries audited*
+*Based on 23/27 countries audited*
 
 ---
 
@@ -44,7 +44,7 @@
 | Netherlands | NL | 75% | 80% | 95% | 80% | ⚠️ |
 | Poland | PL | 78% | 90% | 95% | 82% | ⚠️ |
 | Portugal | PT | 90% | 75% | 95% | 82% | ⚠️ |
-| Romania | RO | — | — | — | — | ⏳ |
+| Romania | RO | 75% | 80% | 95% | 80% | ⚠️ |
 | Slovakia | SK | — | — | — | — | ⏳ |
 | Slovenia | SI | — | — | — | — | ⏳ |
 | Spain | ES | — | — | — | — | ⏳ |

@@ -32,7 +32,7 @@
 | 20 | Netherlands | NL | `netherlands.ts` | ⚠️ Complete (Issues) | 2025-12-30 |
 | 21 | Poland | PL | `poland.ts` | ⚠️ Complete (Issues) | 2025-12-30 |
 | 22 | Portugal | PT | `portugal.ts` | ⚠️ Complete (Issues) | 2025-12-30 |
-| 23 | Romania | RO | `romania.ts` | ⏳ Pending | — |
+| 23 | Romania | RO | `romania.ts` | ⚠️ Complete (Issues) | 2025-12-30 |
 | 24 | Slovakia | SK | `slovakia.ts` | ⏳ Pending | — |
 | 25 | Slovenia | SI | `slovenia.ts` | ⏳ Pending | — |
 | 26 | Spain | ES | `spain.ts` | ⏳ Pending | — |
@@ -88,6 +88,7 @@ Individual country audit reports are stored in `docs/audit/countries/`:
 - [Netherlands](./countries/NL_NETHERLANDS.md)
 - [Poland](./countries/PL_POLAND.md)
 - [Portugal](./countries/PT_PORTUGAL.md)
+- [Romania](./countries/RO_ROMANIA.md)
 
 ---
 
