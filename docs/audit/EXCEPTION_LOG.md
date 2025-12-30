@@ -12,8 +12,8 @@
 | 🔴 Critical | 4 |
 | 🟠 High | 21 |
 | 🟡 Medium | 23 |
-| 🔵 Low | 21 |
-| **Total** | **69** |
+| 🔵 Low | 24 |
+| **Total** | **72** |
 
 ---
 
@@ -809,7 +809,39 @@
 - **Date Found:** 2025-12-30
 
 ### Latvia (LV)
-*Audit pending*
+
+#### [LV-001] EU Blue Card Salary Threshold Minor Adjustment
+- **Country:** LV
+- **Program:** EU Blue Card (`lv_eu_blue_card`)
+- **Severity:** 🔵 Low
+- **Field:** salaryThreshold
+- **Current Value:** €24,000/year
+- **Expected Value:** €24,720/year
+- **Source:** https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-latvia_en
+- **Recommendation:** Update salary threshold to €24,720/year
+- **Date Found:** 2025-12-30
+
+#### [LV-002] Expedited Fee Options Missing
+- **Country:** LV
+- **Program:** All Programs
+- **Severity:** 🔵 Low
+- **Field:** applicationFee
+- **Current Value:** €100
+- **Expected Value:** Add expedited option (€400 for 5 days)
+- **Source:** https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-latvia_en
+- **Recommendation:** Add expedited processing fee options
+- **Date Found:** 2025-12-30
+
+#### [LV-003] Registration Requirement Clarification
+- **Country:** LV
+- **Program:** All Programs
+- **Severity:** 🔵 Low
+- **Field:** registrationNotes
+- **Current Value:** Register within 3 days
+- **Expected Value:** Clarify 3-day registration requirement
+- **Source:** https://www.pmlp.gov.lv/
+- **Recommendation:** Add details about 3-day registration requirement
+- **Date Found:** 2025-12-30
 
 ### Lithuania (LT)
 *Audit pending*
