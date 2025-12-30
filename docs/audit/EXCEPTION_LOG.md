@@ -10,10 +10,10 @@
 | Severity | Count |
 |----------|-------|
 | 🔴 Critical | 4 |
-| 🟠 High | 34 |
-| 🟡 Medium | 30 |
-| 🔵 Low | 42 |
-| **Total** | **110** |
+| 🟠 High | 35 |
+| 🟡 Medium | 31 |
+| 🔵 Low | 44 |
+| **Total** | **114** |
 
 ---
 
@@ -1278,7 +1278,50 @@
 - **Date Found:** 2025-12-30
 
 ### Slovenia (SI)
-*Audit pending*
+
+#### [SI-001] Digital Nomad Visa Missing
+- **Country:** SI
+- **Program:** Digital Nomad Visa
+- **Severity:** 🟠 High
+- **Field:** Missing program
+- **Current Value:** Not in system
+- **Expected Value:** Digital Nomad visa launched November 21, 2025 (12-month permit)
+- **Source:** GOV.SI, Euronews
+- **Recommendation:** Add Digital Nomad visa program
+- **Date Found:** 2025-12-30
+
+#### [SI-002] EU Blue Card Salary Threshold Clarification
+- **Country:** SI
+- **Program:** EU Blue Card (`si_eu_blue_card`)
+- **Severity:** 🟡 Medium
+- **Field:** salaryThreshold
+- **Current Value:** €30,000/year (€2,500/month)
+- **Expected Value:** 1.5× average gross annual salary (formula-based)
+- **Source:** EU Immigration Portal - Slovenia
+- **Recommendation:** Clarify salary is 1.5× avg gross annual salary
+- **Date Found:** 2025-12-30
+
+#### [SI-003] EU Blue Card In-Country Fee Option
+- **Country:** SI
+- **Program:** EU Blue Card (`si_eu_blue_card`)
+- **Severity:** 🔵 Low
+- **Field:** applicationFee
+- **Current Value:** €102
+- **Expected Value:** €102 (abroad) / €70 (in-country)
+- **Source:** EU Immigration Portal - Slovenia
+- **Recommendation:** Add note about in-country fee option
+- **Date Found:** 2025-12-30
+
+#### [SI-004] AJPES Registration Reference
+- **Country:** SI
+- **Program:** All Programs
+- **Severity:** 🔵 Low
+- **Field:** notes
+- **Current Value:** General notes
+- **Expected Value:** Add AJPES business registration reference
+- **Source:** GOV.SI
+- **Recommendation:** Add AJPES registration reference
+- **Date Found:** 2025-12-30
 
 ### Spain (ES)
 *Audit pending*
