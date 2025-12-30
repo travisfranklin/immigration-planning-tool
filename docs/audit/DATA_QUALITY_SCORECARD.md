@@ -14,7 +14,7 @@
 | **Consistency** | 96% | 95%+ |
 | **Overall** | 83% | 95%+ |
 
-*Based on 18/27 countries audited*
+*Based on 19/27 countries audited*
 
 ---
 
@@ -40,7 +40,7 @@
 | Latvia | LV | 92% | 95% | 95% | 92% | ✅ |
 | Lithuania | LT | 85% | 92% | 95% | 88% | ⚠️ |
 | Luxembourg | LU | 75% | 90% | 95% | 82% | ⚠️ |
-| Malta | MT | — | — | — | — | ⏳ |
+| Malta | MT | 85% | 80% | 95% | 85% | ⚠️ |
 | Netherlands | NL | — | — | — | — | ⏳ |
 | Poland | PL | — | — | — | — | ⏳ |
 | Portugal | PT | — | — | — | — | ⏳ |

@@ -10,10 +10,10 @@
 | Severity | Count |
 |----------|-------|
 | 🔴 Critical | 4 |
-| 🟠 High | 23 |
+| 🟠 High | 24 |
 | 🟡 Medium | 24 |
-| 🔵 Low | 29 |
-| **Total** | **80** |
+| 🔵 Low | 33 |
+| **Total** | **85** |
 
 ---
 
@@ -936,7 +936,61 @@
 - **Date Found:** 2025-12-30
 
 ### Malta (MT)
-*Audit pending*
+
+#### [MT-001] Missing EU Blue Card Program
+- **Country:** MT
+- **Program:** EU Blue Card
+- **Severity:** 🟠 High
+- **Field:** Program Missing
+- **Current Value:** Not in system
+- **Expected Value:** EU Blue Card (€34,956/year threshold, €300 fee, 90 days)
+- **Source:** https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-malta_en
+- **Recommendation:** Add EU Blue Card program to Malta
+- **Date Found:** 2025-12-30
+
+#### [MT-002] Highly Skilled Processing Time
+- **Country:** MT
+- **Program:** Highly Skilled Worker (`mt_highly_skilled`)
+- **Severity:** 🔵 Low
+- **Field:** processingTime
+- **Current Value:** 30-60 days
+- **Expected Value:** Max 90 days per official sources
+- **Source:** EU Immigration Portal
+- **Recommendation:** Update processing time reference
+- **Date Found:** 2025-12-30
+
+#### [MT-003] SIGMA 2025/26 Framework
+- **Country:** MT
+- **Program:** All Programs
+- **Severity:** 🔵 Low
+- **Field:** notes
+- **Current Value:** No SIGMA reference
+- **Expected Value:** Reference to SIGMA 2025/26 framework
+- **Source:** https://identita.gov.mt/wp-content/uploads/2025/09/FAQs-Highly-Qualified-1.pdf
+- **Recommendation:** Add SIGMA 2025/26 framework reference
+- **Date Found:** 2025-12-30
+
+#### [MT-004] Nomad Tax Benefits
+- **Country:** MT
+- **Program:** Nomad Residence Permit (`mt_nomad_residence`)
+- **Severity:** 🔵 Low
+- **Field:** notes
+- **Current Value:** General tax note
+- **Expected Value:** Clarify tax exemption on foreign earnings
+- **Source:** Global Citizen Solutions
+- **Recommendation:** Clarify nomad tax benefits
+- **Date Found:** 2025-12-30
+
+#### [MT-005] MPRP Donation Requirement
+- **Country:** MT
+- **Program:** MPRP (`mt_mprp`)
+- **Severity:** 🔵 Low
+- **Field:** requirements
+- **Current Value:** €2,000 donation mentioned
+- **Expected Value:** Confirm €2,000 donation to NGO
+- **Source:** Official MPRP guidelines
+- **Recommendation:** Verify donation requirement
+- **Date Found:** 2025-12-30
 
 ### Netherlands (NL)
 *Audit pending*
