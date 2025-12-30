@@ -10,10 +10,10 @@
 | Severity | Count |
 |----------|-------|
 | 🔴 Critical | 4 |
-| 🟠 High | 21 |
+| 🟠 High | 23 |
 | 🟡 Medium | 24 |
-| 🔵 Low | 27 |
-| **Total** | **76** |
+| 🔵 Low | 29 |
+| **Total** | **80** |
 
 ---
 
@@ -890,7 +890,50 @@
 - **Date Found:** 2025-12-30
 
 ### Luxembourg (LU)
-*Audit pending*
+
+#### [LU-001] EU Blue Card Salary Threshold
+- **Country:** LU
+- **Program:** EU Blue Card (`lu_eu_blue_card`)
+- **Severity:** 🟠 High
+- **Field:** salaryThreshold
+- **Current Value:** €54,000/year
+- **Expected Value:** €63,408/year (Jan 2025+)
+- **Source:** https://www.apply.eu/BlueCard/Luxembourg/
+- **Recommendation:** Update salary threshold to €63,408/year
+- **Date Found:** 2025-12-30
+
+#### [LU-002] Highly Qualified Worker Salary Threshold
+- **Country:** LU
+- **Program:** Highly Qualified Worker (`lu_highly_qualified`)
+- **Severity:** 🟠 High
+- **Field:** salaryThreshold
+- **Current Value:** €45,000/year
+- **Expected Value:** ~€58,968/year
+- **Source:** https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/hautement-qualifie/salarie-hautement-qualifie.html
+- **Recommendation:** Update salary threshold to ~€58,968/year
+- **Date Found:** 2025-12-30
+
+#### [LU-003] Luxembourgish Language Notes
+- **Country:** LU
+- **Program:** All Programs
+- **Severity:** 🔵 Low
+- **Field:** notes
+- **Current Value:** French/German mentioned
+- **Expected Value:** Add Luxembourgish language information
+- **Source:** General knowledge
+- **Recommendation:** Add Luxembourgish as official language
+- **Date Found:** 2025-12-30
+
+#### [LU-004] Investor Job Creation Requirements
+- **Country:** LU
+- **Program:** Investor Visa (`lu_investor`)
+- **Severity:** 🔵 Low
+- **Field:** requirements
+- **Current Value:** General job creation mentioned
+- **Expected Value:** Specific job creation requirements
+- **Source:** https://guichet.public.lu
+- **Recommendation:** Clarify specific job creation requirements
+- **Date Found:** 2025-12-30
 
 ### Malta (MT)
 *Audit pending*
