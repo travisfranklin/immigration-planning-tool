@@ -1,7 +1,7 @@
 # Exception Log
 
 **Last Updated:** 2025-12-30
-**Audit Phase:** Data Collection & Verification ✅ COMPLETE
+**Audit Phase:** Phase 4 - Content Review ✅ COMPLETE
 
 ---
 
@@ -10,10 +10,10 @@
 | Severity | Count |
 |----------|-------|
 | 🔴 Critical | 7 |
-| 🟠 High | 38 |
-| 🟡 Medium | 36 |
-| 🔵 Low | 49 |
-| **Total** | **130** |
+| 🟠 High | 41 |
+| 🟡 Medium | 42 |
+| 🔵 Low | 51 |
+| **Total** | **141** |
 
 ---
 
@@ -1500,6 +1500,89 @@
 - **Current Value:** Test expects `true`, receives `false`
 - **Expected Value:** Timeline calculation should match test expectations
 - **Recommendation:** Review timeline calculation logic and update test or implementation
+- **Date Found:** 2025-12-30
+
+---
+
+## Content Exceptions (Phase 4)
+
+### [CONTENT-001] Visa/Permit Terminology Inconsistency
+
+- **Severity:** 🟠 High
+- **Scope:** All 27 countries (135 programs)
+- **Current Value:** Terms "visa," "permit," "card," and "residence permit" used interchangeably
+- **Expected Value:** Consistent terminology with clear distinction
+- **Recommendation:** Standardize: "Visa" = entry document, "Permit/Card" = residence document
+- **Date Found:** 2025-12-30
+
+### [CONTENT-002] Registration Authority Naming Inconsistency
+
+- **Severity:** 🟡 Medium
+- **Scope:** AT, IE, PT, DE (and others)
+- **Current Value:** Inconsistent authority references (e.g., "MA35" vs "Immigration Authority")
+- **Expected Value:** Format: "Full Name (Abbreviation)" on first mention
+- **Recommendation:** Standardize all authority names
+- **Date Found:** 2025-12-30
+
+### [CONTENT-003] Salary Threshold Format Variations
+
+- **Severity:** 🟡 Medium
+- **Scope:** All countries with salary requirements
+- **Current Value:** Mix of annual, monthly, with/without decimals
+- **Expected Value:** Consistent format: "EUR X per year (EUR Y/month)"
+- **Recommendation:** Normalize all salary displays
+- **Date Found:** 2025-12-30
+
+### [CONTENT-004] Immigration Terms Used Without Definitions
+
+- **Severity:** 🟡 Medium
+- **Scope:** All programs
+- **Count:** 18 terms (Apostille, NIE, NIF, BSN, KVK, CPAM, etc.)
+- **Recommendation:** Create glossary or add in-line definitions
+- **Date Found:** 2025-12-30
+
+### [CONTENT-005] Abbreviations Without Full Form
+
+- **Severity:** 🔵 Low
+- **Scope:** All programs
+- **Examples:** PR, IRP, FBI, CV
+- **Recommendation:** Expand all abbreviations on first use
+- **Date Found:** 2025-12-30
+
+### [CONTENT-006] Vague Timeline References
+
+- **Severity:** 🟡 Medium
+- **Scope:** Multiple programs
+- **Current Value:** "Start early!", "Book well in advance", "ASAP"
+- **Expected Value:** Specific timeframes (e.g., "8 weeks before travel")
+- **Recommendation:** Replace vague terms with specific durations
+- **Date Found:** 2025-12-30
+
+### [CONTENT-007] Conditional Steps Without Clear Triggers
+
+- **Severity:** 🟡 Medium
+- **Programs:** FR Talent Passport, AT RWR Card, ES Golden Visa
+- **Current Value:** Options listed but no guidance on selection
+- **Expected Value:** Clear criteria for each path
+- **Recommendation:** Add decision guidance for conditional steps
+- **Date Found:** 2025-12-30
+
+### [CONTENT-008] Missing Appeal/Rejection Guidance
+
+- **Severity:** 🟠 High
+- **Scope:** 24 of 27 countries
+- **Current Value:** "Process Ended" with minimal guidance
+- **Expected Value:** Appeal timeline, required documents, common reasons
+- **Recommendation:** Expand rejection handling in all programs
+- **Date Found:** 2025-12-30
+
+### [CONTENT-009] Missing Cost Totals
+
+- **Severity:** 🟡 Medium
+- **Scope:** All programs
+- **Current Value:** Only application fee listed
+- **Expected Value:** Total cost estimate including translation, apostille, travel
+- **Recommendation:** Add estimated total costs per program
 - **Date Found:** 2025-12-30
 
 ---
