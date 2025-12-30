@@ -10,10 +10,10 @@
 | Severity | Count |
 |----------|-------|
 | 🔴 Critical | 4 |
-| 🟠 High | 17 |
-| 🟡 Medium | 20 |
-| 🔵 Low | 15 |
-| **Total** | **56** |
+| 🟠 High | 19 |
+| 🟡 Medium | 21 |
+| 🔵 Low | 17 |
+| **Total** | **61** |
 
 ---
 
@@ -660,7 +660,61 @@
 - **Date Found:** 2025-12-30
 
 ### Hungary (HU)
-*Audit pending*
+
+#### [HU-001] EU Blue Card Salary Threshold Outdated
+- **Country:** HU
+- **Program:** EU Blue Card (`hu_eu_blue_card`)
+- **Severity:** 🟠 High
+- **Field:** salaryThreshold
+- **Current Value:** €18,000/year (€1,500/month)
+- **Expected Value:** 883,671 HUF/month (~€26,400/year or €2,200/month)
+- **Source:** https://www.apply.eu/BlueCard/Hungary/
+- **Recommendation:** Update salary threshold to 883,671 HUF/month (2025)
+- **Date Found:** 2025-12-30
+
+#### [HU-002] White Card Program Type Changed
+- **Country:** HU
+- **Program:** White Card (`hu_white_card`)
+- **Severity:** 🟠 High
+- **Field:** programType
+- **Current Value:** Guest Worker program
+- **Expected Value:** Digital Nomad visa (as of July 15, 2025)
+- **Source:** https://www.oecd.org/en/publications/2025/11/international-migration-outlook-2025_355ae9fd/full-report/hungary_0717facf.html
+- **Recommendation:** Rebrand as Digital Nomad Visa with updated requirements
+- **Date Found:** 2025-12-30
+
+#### [HU-003] White Card Income Requirements Increased
+- **Country:** HU
+- **Program:** White Card (`hu_white_card`)
+- **Severity:** 🟡 Medium
+- **Field:** incomeThreshold
+- **Current Value:** €10,000/year
+- **Expected Value:** Increased income requirements (July 2025 rules)
+- **Source:** https://etias.com/articles/hungary-tightens-rules-on-guest-workers%E2%80%99-visas
+- **Recommendation:** Update income thresholds per July 2025 regulations
+- **Date Found:** 2025-12-30
+
+#### [HU-004] EU Blue Card Missing HUF Currency
+- **Country:** HU
+- **Program:** EU Blue Card (`hu_eu_blue_card`)
+- **Severity:** 🔵 Low
+- **Field:** notes
+- **Current Value:** EUR only
+- **Expected Value:** Include HUF amounts for local context
+- **Source:** https://www.oif.gov.hu/factsheets/eu-blue-card
+- **Recommendation:** Add HUF currency amounts alongside EUR
+- **Date Found:** 2025-12-30
+
+#### [HU-005] Registration Authority Name Verification
+- **Country:** HU
+- **Program:** All Programs
+- **Severity:** 🔵 Low
+- **Field:** registrationAuthority
+- **Current Value:** National Directorate-General for Aliens Policing
+- **Expected Value:** Verify current official name
+- **Source:** https://www.oif.gov.hu/
+- **Recommendation:** Verify and update authority name if changed
+- **Date Found:** 2025-12-30
 
 ### Ireland (IE)
 *Audit pending*
