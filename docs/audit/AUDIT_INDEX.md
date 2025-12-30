@@ -14,7 +14,7 @@
 | 2 | Belgium | BE | `belgium.ts` | ⚠️ Complete (Issues) | 2025-12-30 |
 | 3 | Bulgaria | BG | `bulgaria.ts` | ❌ Critical Issues | 2025-12-30 |
 | 4 | Croatia | HR | `croatia.ts` | ⚠️ Complete (Issues) | 2025-12-30 |
-| 5 | Cyprus | CY | `cyprus.ts` | ⏳ Pending | — |
+| 5 | Cyprus | CY | `cyprus.ts` | ❌ Critical Issues | 2025-12-30 |
 | 6 | Czech Republic | CZ | `czech-republic.ts` | ⏳ Pending | — |
 | 7 | Denmark | DK | `denmark.ts` | ⏳ Pending | — |
 | 8 | Estonia | EE | `estonia.ts` | ⏳ Pending | — |
@@ -69,6 +69,8 @@ Individual country audit reports are stored in `docs/audit/countries/`:
 - [Austria](./countries/AT_AUSTRIA.md)
 - [Belgium](./countries/BE_BELGIUM.md)
 - [Bulgaria](./countries/BG_BULGARIA.md)
+- [Croatia](./countries/HR_CROATIA.md)
+- [Cyprus](./countries/CY_CYPRUS.md)
 
 ---
 

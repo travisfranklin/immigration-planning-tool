@@ -9,11 +9,11 @@
 
 | Severity | Count |
 |----------|-------|
-| 🔴 Critical | 1 |
-| 🟠 High | 7 |
-| 🟡 Medium | 6 |
-| 🔵 Low | 5 |
-| **Total** | **19** |
+| 🔴 Critical | 2 |
+| 🟠 High | 8 |
+| 🟡 Medium | 7 |
+| 🔵 Low | 6 |
+| **Total** | **23** |
 
 ---
 
@@ -237,7 +237,50 @@
 - **Date Found:** 2025-12-30
 
 ### Cyprus (CY)
-*Audit pending*
+
+#### [CY-001] Digital Nomad Visa Program Potentially Suspended
+- **Country:** CY
+- **Program:** Digital Nomad Visa (`cy_digital_nomad`)
+- **Severity:** 🔴 Critical
+- **Field:** Program Status
+- **Current Value:** Active (implied)
+- **Expected Value:** SUSPENDED - Quota of 500 visas reached in early 2024
+- **Source:** https://immigrantinvest.com/blog/digital-nomad-visa-countries-en/
+- **Recommendation:** Add warning/notice to program indicating potential suspension; verify current status with Cyprus Civil Registry
+- **Date Found:** 2025-12-30
+
+#### [CY-002] Golden Visa Income Requirement Discrepancy
+- **Country:** CY
+- **Program:** Golden Visa (`cy_golden_visa`)
+- **Severity:** 🟠 High
+- **Field:** Income from abroad requirement
+- **Current Value:** €30,000/year (in notes)
+- **Expected Value:** €50,000/year (per citizenremote.com Nov 2025)
+- **Source:** https://citizenremote.com/visas/cyprus-golden-visa/
+- **Recommendation:** Verify income requirement with official Cyprus government sources; update if confirmed
+- **Date Found:** 2025-12-30
+
+#### [CY-003] Work Permit Salary Threshold Unverified
+- **Country:** CY
+- **Program:** Work Permit (`cy_work_permit`)
+- **Severity:** 🟡 Medium
+- **Field:** salaryThreshold
+- **Current Value:** €18,000/year
+- **Expected Value:** No specific threshold found in official sources
+- **Source:** Cyprus Civil Registry and Migration Department
+- **Recommendation:** Verify threshold or add note that Cyprus work permits are employer-sponsored without fixed salary threshold
+- **Date Found:** 2025-12-30
+
+#### [CY-004] All Programs Currency Consistency
+- **Country:** CY
+- **Program:** All Programs
+- **Severity:** 🔵 Low
+- **Field:** Currency
+- **Current Value:** EUR
+- **Expected Value:** EUR
+- **Source:** N/A
+- **Recommendation:** No action needed - consistent EUR usage
+- **Date Found:** 2025-12-30
 
 ### Czech Republic (CZ)
 *Audit pending*
