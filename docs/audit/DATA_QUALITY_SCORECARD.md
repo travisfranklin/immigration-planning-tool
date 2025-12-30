@@ -14,7 +14,7 @@
 | **Consistency** | 96% | 95%+ |
 | **Overall** | 83% | 95%+ |
 
-*Based on 13/27 countries audited*
+*Based on 14/27 countries audited*
 
 ---
 
@@ -35,7 +35,7 @@
 | Germany | DE | 78% | 92% | 95% | 84% | ⚠️ |
 | Greece | GR | 70% | 85% | 95% | 78% | ❌ |
 | Hungary | HU | 72% | 90% | 95% | 80% | ⚠️ |
-| Ireland | IE | — | — | — | — | ⏳ |
+| Ireland | IE | 85% | 92% | 95% | 88% | ⚠️ |
 | Italy | IT | — | — | — | — | ⏳ |
 | Latvia | LV | — | — | — | — | ⏳ |
 | Lithuania | LT | — | — | — | — | ⏳ |

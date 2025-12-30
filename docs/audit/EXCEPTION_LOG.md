@@ -10,10 +10,10 @@
 | Severity | Count |
 |----------|-------|
 | 🔴 Critical | 4 |
-| 🟠 High | 19 |
-| 🟡 Medium | 21 |
-| 🔵 Low | 17 |
-| **Total** | **61** |
+| 🟠 High | 20 |
+| 🟡 Medium | 22 |
+| 🔵 Low | 19 |
+| **Total** | **65** |
 
 ---
 
@@ -717,7 +717,50 @@
 - **Date Found:** 2025-12-30
 
 ### Ireland (IE)
-*Audit pending*
+
+#### [IE-001] General Employment Permit Salary Threshold Outdated
+- **Country:** IE
+- **Program:** General Employment Permit (`ie_general_employment`)
+- **Severity:** 🟠 High
+- **Field:** salaryThreshold
+- **Current Value:** €30,000/year
+- **Expected Value:** €34,000/year (effective January 2024)
+- **Source:** https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/permit-types/general-employment-permit/
+- **Recommendation:** Update salary threshold to €34,000/year
+- **Date Found:** 2025-12-30
+
+#### [IE-002] Critical Skills Future Threshold Increase
+- **Country:** IE
+- **Program:** Critical Skills Employment Permit (`ie_critical_skills`)
+- **Severity:** 🟡 Medium
+- **Field:** notes
+- **Current Value:** €44,000/year threshold
+- **Expected Value:** Add note about upcoming increase to €40,904
+- **Source:** https://enterprise.gov.ie/en/news-and-events/department-news/2025/december/20251202.html
+- **Recommendation:** Add note about December 2025 announced threshold increase
+- **Date Found:** 2025-12-30
+
+#### [IE-003] GNIB Terminology Update
+- **Country:** IE
+- **Program:** All Programs
+- **Severity:** 🔵 Low
+- **Field:** registrationAuthority
+- **Current Value:** GNIB/IRP
+- **Expected Value:** IRP (Irish Residence Permit)
+- **Source:** https://www.citizensinformation.ie/
+- **Recommendation:** Update GNIB references to IRP
+- **Date Found:** 2025-12-30
+
+#### [IE-004] Investor Programme Status Verification
+- **Country:** IE
+- **Program:** Investor Programme (`ie_investor`)
+- **Severity:** 🔵 Low
+- **Field:** programStatus
+- **Current Value:** Active
+- **Expected Value:** Verify still accepting applications
+- **Source:** https://www.irishimmigration.ie/
+- **Recommendation:** Verify Investor Programme status
+- **Date Found:** 2025-12-30
 
 ### Italy (IT)
 *Audit pending*
