@@ -521,19 +521,19 @@ flowchart TD
  successRate: '70%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> BusinessPlan[Develop Business Plan]
- BusinessPlan --> Funding{ EUR 50,000 Funding?}
+ Start([Start Process]) --> business-plan[Develop Business Plan]
+ business-plan --> Funding{ EUR 50,000 Funding?}
  Funding -->|From Approved Source| Approval[Get Approved Source Validation]
  Funding -->|No| End1([Not Eligible])
- Approval --> GatherDocs[Gather Required Documents]
- GatherDocs --> Submit[Submit Application]
- Submit --> Evaluation[Business Plan Evaluation]
- Evaluation --> Interview[Attend Interview]
- Interview --> Decision{Decision}
+ Approval --> gather-documents[Gather Required Documents]
+ gather-documents --> application-submission[Submit Application]
+ application-submission --> evaluation-interview[Business Plan Evaluation]
+ evaluation-interview --> evaluation-interview[Attend Interview]
+ evaluation-interview --> Decision{Decision}
  Decision -->|Approved| Permit[Receive STEP Approval]
  Decision -->|Rejected| Appeal[Consider Appeal]
- Permit --> Travel[Travel to Ireland]
- Travel --> Register[Register with GNIB/IRP]
+ Permit --> arrival[Travel to Ireland]
+ arrival --> Register[Register with GNIB/IRP]
  Register --> LaunchBusiness[Launch Business]
  LaunchBusiness --> Success([Process Complete])
  Appeal --> End2([Process Ended])`,

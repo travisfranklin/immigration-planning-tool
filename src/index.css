@@ -183,9 +183,9 @@ a:hover {
 /* Decision nodes (diamonds) - Chartreuse (High-energy)
    Principle: Decisions require attention - use high-energy accent color */
 .flowchart polygon {
-  fill: var(--color-white) !important;
-  stroke: var(--color-accent) !important;
-  stroke-width: 2.5px !important;
+  fill: var(--color-accent-light) !important;
+  stroke: var(--color-accent-dark) !important;
+  stroke-width: 1.5px !important;
 }
 
 /* Start/Success nodes - Aquamarine (Fresh, positive)
@@ -274,10 +274,11 @@ a:hover {
    ============================================================================ */
 
 /* Hover state - Functional feedback through stroke weight
-   Principle: No decorative effects, only functional indicators */
-.flowchart .node:hover rect,
-.flowchart .node:hover path,
-.flowchart .node:hover polygon {
+   Principle: No decorative effects, only functional indicators
+   Only applies to interactive nodes (those with matching steps) */
+.flowchart .node-interactive:hover rect,
+.flowchart .node-interactive:hover path,
+.flowchart .node-interactive:hover polygon {
   cursor: pointer;
   stroke-width: 3px !important;
   /* No opacity changes - maintains clarity */
@@ -285,19 +286,58 @@ a:hover {
 
 /* Selected state - Clear, bold indication
    Principle: Selection should be obvious and unambiguous
-   Note: Component uses 'node-selected' class */
-.flowchart .node-selected rect,
-.flowchart .node-selected polygon,
-.flowchart .node-selected path,
-.flowchart .node.selected rect,
-.flowchart .node.selected polygon,
-.flowchart .node.selected path {
+   Note: Component uses 'node-selected' class
+   Uses black stroke to differentiate from purple milestone nodes (cards, visas, permits)
+   Higher specificity to override important milestone node styling */
+.flowchart g.node-selected rect,
+.flowchart g.node-selected polygon,
+.flowchart g.node-selected path,
+.flowchart g.node.selected rect,
+.flowchart g.node.selected polygon,
+.flowchart g.node.selected path,
+.flowchart g[class*="node-selected"] rect,
+.flowchart g[class*="node-selected"] polygon,
+.flowchart g[class*="node-selected"] path {
   stroke-width: 4px !important;
-  stroke: var(--color-primary-dark) !important;
   /* No shadows - clean and functional */
 }
 
-/* Remove brightness filter - use stroke weight only for selection */
-.flowchart .node-selected {
-  filter: none !important;
+/* ============================================================================
+   NON-INTERACTIVE NODES - Subtle, Recessive Styling
+   ============================================================================ */
+
+/* Non-interactive nodes (Start, End, Decision without steps)
+   Principle: These are visual markers, not actionable items
+   Style: Small pill shape, grey background, no border, no hover effects */
+.flowchart .node-non-interactive rect,
+.flowchart .node-non-interactive path {
+  fill: var(--color-gray-100) !important;
+  stroke: none !important;
+  stroke-width: 0 !important;
+}
+
+/* Non-interactive decision nodes (diamonds) */
+/* .flowchart .node-non-interactive polygon {
+  fill: var(--color-gray-100) !important;
+  stroke: var(--color-gray-300) !important;
+  stroke-width: 0 !important;
+} */
+
+/* Non-interactive node text - lighter, smaller */
+.flowchart .node-non-interactive text {
+  fill: var(--color-gray-500) !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+}
+
+/* Ensure no cursor change on non-interactive nodes */
+.flowchart .node-non-interactive {
+  cursor: default !important;
+}
+
+/* Prevent hover effects on non-interactive nodes */
+.flowchart .node-non-interactive:hover rect,
+.flowchart .node-non-interactive:hover path,
+.flowchart .node-non-interactive:hover polygon {
+  cursor: default !important;
 }

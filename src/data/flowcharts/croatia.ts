@@ -340,14 +340,14 @@ flowchart TD
  successRate: '95%',
  mermaidDiagram: `
 flowchart TD
- Start([Start]) --> Remote[Remote Work/Freelance]
- Remote --> Income{ EUR 2,300/month<br/>Income?}
- Income -->|Yes| Docs[Gather Documents]
+ Start([Start]) --> remote[Remote Work/Freelance]
+ remote --> Income{ EUR 2,300/month<br/>Income?}
+ Income -->|Yes| docs[Gather Documents]
  Income -->|No| End1([Not Eligible])
- Docs --> Submit[Submit Application]
+ docs --> Submit[Submit Application]
  Submit --> Process[Processing 30 Days]
- Process --> Visa[Digital Nomad Visa<br/>1 Year]
- Visa --> Travel[Travel to Croatia]
+ Process --> visa[Digital Nomad Visa<br/>1 Year]
+ visa --> Travel[Travel to Croatia]
  Travel --> Success([Work from Paradise!])`,
  reactFlowData: {
       nodes: [

@@ -26,8 +26,8 @@ flowchart TD
  fast-processing --> Decision{Decision}
  Decision -->|Approved| Permit[Receive Residence Permit]
  Decision -->|Rejected| Appeal[Consider Appeal]
- Permit --> arrival[Travel to Denmark]
- arrival --> registration[Register at SIRI<br/>Get CPR Number]
+ Permit --> travel-register[Travel to Denmark]
+ travel-register --> registration[Register at SIRI<br/>Get CPR Number]
  registration --> Success([Process Complete])
  Appeal --> End3([Process Ended])`,
  reactFlowData: {
@@ -497,19 +497,18 @@ flowchart TD
  successRate: '90%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> JobOffer[Secure Job Offer]
- JobOffer --> CheckSalary{"Salary >=<br/>DKK 465,000/year?"}
- CheckSalary -->|Yes| GatherDocs[Gather Required Documents]
+ Start([Start Process]) --> job-offer[Secure Job Offer]
+ job-offer --> CheckSalary{"Salary >=<br/>DKK 465,000/year?"}
+ CheckSalary -->|Yes| gather-documents[Gather Required Documents]
  CheckSalary -->|No| End1([Not Eligible])
- GatherDocs --> Submit[Submit Application Online]
- Submit --> Processing[Standard Processing<br/>60-90 Days]
- Processing --> Decision{Decision}
- Decision -->|Approved| Permit[Receive Residence Permit]
- Decision -->|Rejected| Appeal[Consider Appeal]
- Permit --> Travel[Travel to Denmark]
- Travel --> Register[Register at SIRI<br/>Get CPR Number]
- Register --> Success([Process Complete])
- Appeal --> End2([Process Ended])`,
+ gather-documents --> submit-application[Submit Application Online]
+ submit-application --> processing[Standard Processing<br/>60-90 Days]
+ processing --> decision{Decision}
+ decision -->|Approved| receive-permit[Receive Residence Permit]
+ decision -->|Rejected| appeal[Consider Appeal]
+ receive-permit --> travel-register[Travel to Denmark<br/>and Register at SIRI]
+ travel-register --> Success([Process Complete])
+ appeal --> End2([Process Ended])`,
  reactFlowData: {
       nodes: [
         {
@@ -921,16 +920,43 @@ flowchart TD
  title: 'Receive Decision',
  description: 'Get approval or rejection notification',
  estimatedDuration: '1 week',
- documents: [
- 'Decision letter from SIRI',
- 'Residence permit card (if approved)',
- ],
+ documents: [],
  notes: [
  'Notification sent via email and online portal',
- 'If approved, receive residence permit card by mail',
- 'Permit typically valid for up to 4 years',
  'Can appeal if rejected within 8 weeks',
  'Success rate is high (~90%) if salary requirement met',
+ ],
+ },
+ {
+ id: 'receive-permit',
+ title: 'Receive Residence Permit',
+ description: 'Receive your approved residence permit card',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'Decision letter from SIRI',
+ 'Residence permit card',
+ ],
+ notes: [
+ 'Permit card sent by mail',
+ 'Permit typically valid for up to 4 years',
+ 'Keep permit card with you at all times',
+ ],
+ },
+ {
+ id: 'appeal',
+ title: 'Consider Appeal',
+ description: 'Review options if application is rejected',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'Rejection letter from SIRI',
+ 'Appeal form',
+ ],
+ notes: [
+ 'You have 8 weeks to appeal from date of decision',
+ 'Appeal to the Immigration Appeals Board',
+ 'Consider consulting an immigration lawyer',
+ 'Success rate for appeals is low',
+ 'Alternative: reapply with stronger application',
  ],
  },
  {

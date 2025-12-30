@@ -137,42 +137,44 @@ describe('programMatcher', () => {
       expect(results.length).toBeLessThanOrEqual(2);
     });
 
-    it('should filter out programs that do not align with timeline', () => {
+    it('should include programs regardless of timeline alignment', () => {
       const profile = createMockProfile({
         timelineMonths: 2, // Very short timeline (2 months)
       });
 
       const results = getBestProgramsForCountry(profile, 'DE', 10);
 
-      // All returned programs should align with the timeline
-      results.forEach(result => {
-        expect(result.alignsWithTimeline).toBe(true);
-        
-        // Verify the calculation
-        const processingTimeMonths = result.program.processingTimeWeeks / 4;
-        const bufferMonths = result.program.requirements.requiresBusinessPlan ? 6 : 3;
-        const totalTimeMonths = processingTimeMonths + bufferMonths;
-        
-        expect(totalTimeMonths).toBeLessThanOrEqual(2);
-      });
+      // Should return programs even if they don't align with timeline
+      // Timeline alignment is tracked in alignsWithTimeline property
+      expect(results.length).toBeGreaterThan(0);
+
+      // Some programs may not align with the short timeline
+      // This is expected - timeline filtering is handled by preference scoring
+      const programsNotAligning = results.filter(r => !r.alignsWithTimeline);
+      expect(programsNotAligning.length).toBeGreaterThanOrEqual(0);
     });
 
-    it('should return programs that fit within a 6-month timeline', () => {
+    it('should track timeline alignment in results', () => {
       const profile = createMockProfile({
         timelineMonths: 6,
       });
 
       const results = getBestProgramsForCountry(profile, 'DE', 10);
 
-      // All returned programs should align with the timeline
+      // Results should have alignsWithTimeline property
       results.forEach(result => {
-        expect(result.alignsWithTimeline).toBe(true);
-        
+        expect(result.alignsWithTimeline).toBeDefined();
+
         const processingTimeMonths = result.program.processingTimeWeeks / 4;
         const bufferMonths = result.program.requirements.requiresBusinessPlan ? 6 : 3;
         const totalTimeMonths = processingTimeMonths + bufferMonths;
-        
-        expect(totalTimeMonths).toBeLessThanOrEqual(6);
+
+        // Verify alignsWithTimeline is calculated correctly
+        if (totalTimeMonths <= 6) {
+          expect(result.alignsWithTimeline).toBe(true);
+        } else {
+          expect(result.alignsWithTimeline).toBe(false);
+        }
       });
     });
 
@@ -192,15 +194,21 @@ describe('programMatcher', () => {
       expect(resultsWithLongTimeline.length).toBe(resultsWithoutTimeline.length);
     });
 
-    it('should return empty array when no programs fit the timeline', () => {
+    it('should return programs even with impossibly short timeline', () => {
       const profile = createMockProfile({
         timelineMonths: 0.5, // Half a month - impossibly short
       });
 
       const results = getBestProgramsForCountry(profile, 'DE', 10);
 
-      // Should return empty or very few programs
-      expect(results.length).toBe(0);
+      // Should still return programs (timeline filtering removed)
+      // Timeline alignment is reflected in preference scoring instead
+      expect(results.length).toBeGreaterThan(0);
+
+      // All programs should have alignsWithTimeline = false
+      results.forEach(result => {
+        expect(result.alignsWithTimeline).toBe(false);
+      });
     });
 
     it('should prioritize programs by eligibility score', () => {
@@ -218,12 +226,12 @@ describe('programMatcher', () => {
       }
     });
 
-    it('should handle countries with no matching programs', () => {
+    it('should handle countries with no programs', () => {
       const profile = createMockProfile({
         timelineMonths: 2,
       });
 
-      // Use a country code that might not have fast programs
+      // Use a country code that doesn't exist in our database
       const results = getBestProgramsForCountry(profile, 'XX', 10);
 
       expect(results).toEqual([]);

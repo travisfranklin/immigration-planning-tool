@@ -15,9 +15,9 @@ export const greeceFlowcharts: Record<string, FlowchartDefinition> = {
  successRate: '95%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> Investment{Investment Type?}
- Investment -->|Real Estate EUR 250k| choose-property[Purchase Property<br/> EUR 250,000 minimum]
- Investment -->|Real Estate EUR 400k| Property2[Purchase Property<br/> EUR 400,000 in certain areas]
+ Start([Start Process]) --> investment{Investment Type?}
+ investment -->|Real Estate EUR 250k| choose-property[Purchase Property<br/> EUR 250,000 minimum]
+ investment -->|Real Estate EUR 400k| Property2[Purchase Property<br/> EUR 400,000 in certain areas]
  choose-property --> tax-number[Obtain Greek Tax Number<br/>AFM]
  Property2 --> tax-number
  tax-number -->gather-documents[Gather Required Documents]
@@ -340,7 +340,7 @@ flowchart TD
  ],
  },
  {
- id: 'obtain-afm',
+ id: 'tax-number',
  title: 'Obtain Greek Tax Number (AFM)',
  description: 'Get your Greek tax identification number',
  estimatedDuration: '1-2 weeks',
@@ -422,19 +422,19 @@ flowchart TD
  successRate: '90%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> Income[Verify Remote Income<br/>>= EUR 3,500/month]
- Income --> CheckIncome{Income Sufficient?}
- CheckIncome -->|Yes| Employment[Verify Employment/<br/>Self-Employment]
+ Start([Start Process]) --> verify-income-employment[Verify Remote Income<br/>>= EUR 3,500/month]
+ verify-income-employment --> CheckIncome{Income Sufficient?}
+ CheckIncome -->|Yes| verify-income-employment[Verify Employment/<br/>Self-Employment]
  CheckIncome -->|No| End1([Not Eligible])
- Employment --> GatherDocs[Gather Required Documents]
- GatherDocs --> Submit[Submit Application at<br/>Greek Consulate]
- Submit --> Processing[Processing<br/>30-60 Days]
- Processing --> Decision{Decision}
- Decision -->|Approved| Visa[Receive Digital Nomad Visa]
+ verify-income-employment --> gather-documents[Gather Required Documents]
+ gather-documents --> submit-application[Submit Application at<br/>Greek Consulate]
+ submit-application --> processing[Processing<br/>30-60 Days]
+ processing --> Decision{Decision}
+ Decision -->|Approved| receive-visa-register[Receive Digital Nomad Visa]
  Decision -->|Rejected| Appeal[Consider Appeal]
- Visa --> Travel[Travel to Greece]
- Travel --> Register[Register at Local<br/>Immigration Office]
- Register --> TaxBenefit[Enjoy 50% Tax Reduction<br/>First Year!]
+ receive-visa-register --> Travel[Travel to Greece]
+ Travel --> receive-visa-register[Register at Local<br/>Immigration Office]
+ receive-visa-register --> TaxBenefit[Enjoy 50% Tax Reduction<br/>First Year!]
  TaxBenefit --> Success([Process Complete])
  Appeal --> End2([Process Ended])`,
  reactFlowData: {

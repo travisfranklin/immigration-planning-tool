@@ -20,8 +20,8 @@ flowchart TD
  Income -->|No| End1([Not Eligible])
  docs --> submit-application[Submit Application]
  submit-application --> processing[Processing 30 Days]
- processing --> Visa[Digital Nomad Visa<br/>1 Year]
- Visa --> arrival[Travel to Estonia]
+ processing --> visa[Digital Nomad Visa<br/>1 Year]
+ visa --> arrival[Travel to Estonia]
  arrival --> Success([Work from Tallinn!])`,
  reactFlowData: {
       nodes: [
@@ -250,12 +250,36 @@ flowchart TD
  notes: ['Fast processing (30 days)'],
  },
  {
+ id: 'submit-application',
+ title: 'Submit Application',
+ description: 'Submit your digital nomad visa application online',
+ estimatedDuration: '1 week',
+ documents: ['Completed application form', 'All supporting documents', 'Application fee payment'],
+ notes: ['Apply online through Estonian e-services', 'Application fee: EUR 80-100'],
+ },
+ {
+ id: 'processing',
+ title: 'Processing',
+ description: 'Wait for application processing',
+ estimatedDuration: '30 days',
+ documents: [],
+ notes: ['Standard processing time is 30 days', 'May be contacted for additional information'],
+ },
+ {
  id: 'visa',
  title: 'Receive Visa & Travel',
  description: 'Get visa and travel to Estonia',
- estimatedDuration: '30 days',
- documents: ['All documents', 'Application fee'],
+ estimatedDuration: '1-2 weeks',
+ documents: ['Digital nomad visa', 'Passport'],
  notes: ['Valid for 1 year, renewable', 'Can convert to other visa for PR/citizenship path'],
+ },
+ {
+ id: 'arrival',
+ title: 'Travel to Estonia',
+ description: 'Travel to Estonia and start working remotely',
+ estimatedDuration: '1 week',
+ documents: ['Digital nomad visa', 'Passport', 'Proof of accommodation'],
+ notes: ['Register your address within 1 month', 'Enjoy Tallinn\'s startup ecosystem!'],
  },
  ],
  },
@@ -268,14 +292,14 @@ flowchart TD
  successRate: '90%',
  mermaidDiagram: `
 flowchart TD
- Start([Start]) --> ERes[Apply for E-Residency]
- ERes --> Card[Receive E-Residency Card]
- Card --> Company[Register Estonian Company]
- Company --> Operate[Operate Remotely]
+ Start([Start]) --> e-residency[Apply for E-Residency]
+ e-residency --> Card[Receive E-Residency Card]
+ Card --> company[Register Estonian Company]
+ company --> Operate[Operate Remotely]
  Operate --> Relocate{Want to<br/>Relocate?}
- Relocate -->|Yes| Visa[Apply for Business Visa]
+ Relocate -->|Yes| visa[Apply for Business Visa]
  Relocate -->|No| Remote([Stay Remote])
- Visa --> Docs[Gather Documents]
+ visa --> Docs[Gather Documents]
  Docs --> Submit[Submit Application]
  Submit --> Process[Processing 30-90 Days]
  Process --> Permit[Residence Permit<br/>1 Year]

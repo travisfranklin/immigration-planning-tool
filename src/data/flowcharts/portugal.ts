@@ -390,7 +390,7 @@ flowchart TD
  ],
  },
  {
- id: 'submit-application',
+ id: 'consulate-submission',
  title: 'Submit Application at Portuguese Consulate',
  description: 'Submit your D7 Visa application at the Portuguese Consulate in the US',
  estimatedDuration: '1 day',
@@ -453,13 +453,13 @@ flowchart TD
  Investment -->|Real Estate| Property[Purchase Property<br/> EUR 500k+ or EUR 400k in low-density]
  Investment -->|Capital Transfer| Capital[Transfer EUR 1.5M Capital]
  Investment -->|Business| Business[Invest EUR 500k in Business<br/>Create 5+ Jobs]
- Property --> NIF[Obtain NIF<br/>Portuguese Tax Number]
- Capital --> NIF
- Business --> NIF
- NIF --> GatherDocs[Gather Required Documents]
- GatherDocs --> Submit[Submit Application to SEF]
- Submit --> Processing[SEF Processing<br/>90-180 Days]
- Processing --> Decision{Decision}
+ Property --> obtain-nif[Obtain NIF<br/>Portuguese Tax Number]
+ Capital --> obtain-nif
+ Business --> obtain-nif
+ obtain-nif --> gather-documents[Gather Required Documents]
+ gather-documents --> submit-application[Submit Application to SEF]
+ submit-application --> sef-processing-decision[SEF Processing<br/>90-180 Days]
+ sef-processing-decision --> Decision{Decision}
  Decision -->|Approved| GoldenVisa[Receive Golden Visa]
  Decision -->|Rejected| Appeal[Consider Appeal]
  GoldenVisa --> Travel[Travel to Portugal<br/>7 days/year minimum]

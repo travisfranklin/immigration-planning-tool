@@ -340,17 +340,17 @@ flowchart TD
  successRate: '85%',
  mermaidDiagram: `
 flowchart TD
- Start([Start]) --> Idea[Business Idea]
- Idea --> Funds{ EUR 6,000<br/>Funds?}
- Funds -->|Yes| Program[Apply to Startup Lithuania]
+ Start([Start]) --> idea[Business Idea]
+ idea --> Funds{ EUR 6,000<br/>Funds?}
+ Funds -->|Yes| program[Apply to Startup Lithuania]
  Funds -->|No| End1([Not Eligible])
- Program --> Accept{Accepted?}
+ program --> Accept{Accepted?}
  Accept -->|Yes| Docs[Gather Documents]
  Accept -->|No| End2([Not Eligible])
  Docs --> Submit[Submit Application]
  Submit --> Process[Processing 30-60 Days]
- Process --> Visa[Startup Visa<br/>1 Year]
- Visa --> Register[Register Business]
+ Process --> visa[Startup Visa<br/>1 Year]
+ visa --> Register[Register Business]
  Register --> Success([Complete])`,
  reactFlowData: {
       nodes: [

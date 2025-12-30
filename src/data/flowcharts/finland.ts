@@ -25,8 +25,8 @@ flowchart TD
  Decision -->|Approved| Permit[Receive Residence Permit]
  Decision -->|Rejected| Appeal[Consider Appeal]
  Permit -->arrival-registration[Travel to Finland]
- arrival-registration --> registration[Register at Migri Office Get Finnish ID]
- registration --> Success([Process Complete])
+ arrival-registration --> arrival-registration[Register at Migri Office Get Finnish ID]
+ arrival-registration --> Success([Process Complete])
  Appeal --> End2([Process Ended])`,
  reactFlowData: {
       nodes: [
@@ -423,21 +423,20 @@ flowchart TD
  successRate: '85%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> JobOffer[Secure Highly Skilled Job Offer]
- JobOffer --> CheckSalary{"Salary >= 3827 EUR/month?"}
+ Start([Start Process]) --> job-offer[Secure Highly Skilled Job Offer]
+ job-offer --> CheckSalary{"Salary >= 3827 EUR/month?"}
  CheckSalary -->|Yes| CheckEducation{Bachelor Degree or 5 Years Experience?}
  CheckSalary -->|No| End1([Not Eligible])
- CheckEducation -->|Yes| GatherDocs[Gather Required Documents]
+ CheckEducation -->|Yes| gather-documents[Gather Required Documents]
  CheckEducation -->|No| End2([Not Eligible])
- GatherDocs --> Submit[Submit Application Online via Enter Finland]
- Submit --> Processing[Migri Processing 60-90 Days]
- Processing --> Decision{Decision}
- Decision -->|Approved| BlueCard[Receive EU Blue Card]
- Decision -->|Rejected| Appeal[Consider Appeal]
- BlueCard --> Travel[Travel to Finland]
- Travel --> Register[Register at Migri Office Get Finnish ID]
- Register --> Success([Process Complete])
- Appeal --> End3([Process Ended])`,
+ gather-documents --> submit-application[Submit Application Online via Enter Finland]
+ submit-application --> processing[Migri Processing 60-90 Days]
+ processing --> decision{Decision}
+ decision -->|Approved| blue-card[Receive EU Blue Card]
+ decision -->|Rejected| appeal[Consider Appeal]
+ blue-card --> arrival-registration[Travel to Finland and Register]
+ arrival-registration --> Success([Process Complete])
+ appeal --> End3([Process Ended])`,
  reactFlowData: {
       nodes: [
         {
@@ -914,6 +913,41 @@ flowchart TD
  'If rejected: appeal possible within 30 days',
  'EU Blue Card valid for up to 4 years',
  'Allows mobility to other EU countries after 18 months',
+ ],
+ },
+ {
+ id: 'blue-card',
+ title: 'Receive EU Blue Card',
+ description: 'Receive your approved EU Blue Card residence permit',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'EU Blue Card residence permit',
+ 'Decision letter from Migri',
+ ],
+ notes: [
+ 'EU Blue Card sent to Finnish address or embassy',
+ 'Valid for up to 4 years',
+ 'Allows mobility to other EU countries after 18 months',
+ 'Can work for any employer after 2 years',
+ 'Family members can join immediately',
+ ],
+ },
+ {
+ id: 'appeal',
+ title: 'Consider Appeal',
+ description: 'Information about appealing a rejected EU Blue Card application',
+ estimatedDuration: '30 days',
+ documents: [
+ 'Rejection letter from Migri',
+ 'Appeal form',
+ 'Additional supporting documents',
+ ],
+ notes: [
+ 'Appeal must be submitted within 30 days of decision',
+ 'Submit to Administrative Court',
+ 'Consider consulting immigration lawyer',
+ 'May need to provide additional evidence',
+ 'Alternative: reapply with stronger application',
  ],
  },
  {

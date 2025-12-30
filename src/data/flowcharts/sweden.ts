@@ -16,8 +16,8 @@ export const swedenFlowcharts: Record<string, FlowchartDefinition> = {
  mermaidDiagram: `
 flowchart TD
  Start([Start Process]) -->job-offer[Secure Job Offer]
- job-offer --> Advertise[Employer Advertises Position<br/>in EU for 10 Days]
- Advertise --> Salary{Salary Meets<br/>Collective Agreement?}
+ job-offer --> employer-advertises[Employer Advertises Position<br/>in EU for 10 Days]
+ employer-advertises --> Salary{Salary Meets<br/>Collective Agreement?}
  Salary -->|Yes| gather-documents[Gather Required Documents]
  Salary -->|No| End1([Not Eligible])
  gather-documents -->employer-advertises[Employer Submits Application]
@@ -25,8 +25,8 @@ flowchart TD
  processing --> Decision{Decision}
  Decision -->|Approved| Permit[Receive Work Permit]
  Decision -->|Rejected| Appeal[Consider Appeal]
- Permit --> arrival[Travel to Sweden]
- arrival --> registration[Register at Tax Agency<br/>Get Personal Number]
+ Permit --> travel-register[Travel to Sweden]
+ travel-register --> registration[Register at Tax Agency<br/>Get Personal Number]
  registration --> Success([Process Complete])
  Appeal --> End2([Process Ended])`,
  reactFlowData: {
@@ -488,19 +488,19 @@ flowchart TD
  successRate: '85%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> JobOffer[Secure Job Offer]
- JobOffer --> Check{"Salary >= EUR 56,400<br/>& Bachelor's Degree?"}
- Check -->|Yes| Advertise[Employer Advertises Position<br/>in EU for 10 Days]
+ Start([Start Process]) --> job-offer[Secure Job Offer]
+ job-offer --> Check{"Salary >= EUR 56,400<br/>& Bachelor's Degree?"}
+ Check -->|Yes| employer-advertises[Employer Advertises Position<br/>in EU for 10 Days]
  Check -->|No| End1([Not Eligible])
- Advertise --> GatherDocs[Gather Required Documents]
- GatherDocs --> EmployerApply[Employer Submits Application]
- EmployerApply --> Wait[Wait for Processing<br/>2-4 months]
- Wait --> Decision{Decision}
+ employer-advertises --> gather-documents[Gather Required Documents]
+ gather-documents --> EmployerApply[Employer Submits Application]
+ EmployerApply --> processing[Wait for Processing<br/>2-4 months]
+ processing --> Decision{Decision}
  Decision -->|Approved| BlueCard[Receive EU Blue Card]
  Decision -->|Rejected| Appeal[Consider Appeal]
- BlueCard --> Travel[Travel to Sweden]
- Travel --> Register[Register at Tax Agency<br/>Get Personal Number]
- Register --> Success([Process Complete])
+ BlueCard --> travel-register[Travel to Sweden]
+ travel-register --> travel-register[Register at Tax Agency<br/>Get Personal Number]
+ travel-register --> Success([Process Complete])
  Appeal --> End2([Process Ended])`,
  reactFlowData: {
       nodes: [

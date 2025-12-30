@@ -475,8 +475,8 @@ flowchart TD
  processing --> decision{Decision}
  decision -->|Approved| receive-permit[Receive Residence Permit]
  decision -->|Rejected| End3([Process Ended])
- receive-permit -->30-percent-ruling[Apply for 30% Ruling]
- 30-percent-ruling -->travel-register[Travel and Register]
+ receive-permit -->30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-percent-ruling[Apply for 30% Ruling]
+ 30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-30-percent-ruling -->travel-register[Travel and Register]
  travel-register --> Success([Process Complete])`,
  reactFlowData: {
       nodes: [

@@ -17,15 +17,15 @@ export const maltaFlowcharts: Record<string, FlowchartDefinition> = {
 flowchart TD
  Start([Start Process]) -->verify-income-employment[Verify Remote Income<br/>>= EUR 2,700/month]
  verify-income-employment --> CheckIncome{Income Sufficient?}
- CheckIncome -->|Yes| Employment[Verify Remote Employment/<br/>Self-Employment]
+ CheckIncome -->|Yes| verify-income-employment[Verify Remote Employment/<br/>Self-Employment]
  CheckIncome -->|No| End1([Not Eligible])
- Employment -->gather-documents[Gather Required Documents]
+ verify-income-employment -->gather-documents[Gather Required Documents]
  gather-documents -->submit-application[Submit Application to<br/>Residency Malta Agency]
  submit-application -->processing[Processing<br/>30-60 Days]
  processing --> Decision{Decision}
- Decision -->|Approved| Permit[Receive Nomad Residence Permit]
+ Decision -->|Approved| receive-permit-register[Receive Nomad Residence Permit]
  Decision -->|Rejected| Appeal[Consider Appeal]
- Permit --> arrival[Travel to Malta]
+ receive-permit-register --> arrival[Travel to Malta]
  arrival --> registration[Register at Identity Malta]
  registration --> TaxBenefit[Enjoy 15% Flat Tax Rate<br/>on Foreign Income!]
  TaxBenefit --> Success([Process Complete])
@@ -502,17 +502,17 @@ flowchart TD
  Property -->|Rent EUR 10k- EUR 12k/year| Rent[Rent Property]
  Buy --> GovContribution[Government Contribution<br/> EUR 68,000]
  Rent --> GovContribution2[Government Contribution<br/> EUR 28,000]
- GovContribution --> Income[Verify Income/Assets<br/> EUR 100k/year OR EUR 500k assets]
- GovContribution2 --> Income
- Income --> CheckIncome{Sufficient?}
- CheckIncome -->|Yes| GatherDocs[Gather Required Documents]
+ GovContribution --> verify-income-assets[Verify Income/Assets<br/> EUR 100k/year OR EUR 500k assets]
+ GovContribution2 --> verify-income-assets
+ verify-income-assets --> CheckIncome{Sufficient?}
+ CheckIncome -->|Yes| gather-documents[Gather Required Documents]
  CheckIncome -->|No| End1([Not Eligible])
- GatherDocs --> Submit[Submit Application to<br/>Residency Malta Agency]
- Submit --> Processing[Processing<br/>120-180 Days]
+ gather-documents --> submit-application[Submit Application to<br/>Residency Malta Agency]
+ submit-application --> Processing[Processing<br/>120-180 Days]
  Processing --> Decision{Decision}
- Decision -->|Approved| PR[Receive Permanent Residence<br/>Immediate PR!]
+ Decision -->|Approved| choose-property-option[Receive Permanent Residence<br/>Immediate PR!]
  Decision -->|Rejected| Appeal[Consider Appeal]
- PR --> Travel[Travel to Malta]
+ choose-property-option --> Travel[Travel to Malta]
  Travel --> Success([Process Complete])
  Appeal --> End2([Process Ended])`,
  reactFlowData: {

@@ -26,9 +26,9 @@ flowchart TD
  AuthDecision -->|No| End2([Application Denied])
  visa-application --> WaitVisa[Wait for Visa<br/>4-6 weeks]
  WaitVisa --> VisaDecision{Visa Approved?}
- VisaDecision -->|Approved| Visa[Receive Blue Card]
+ VisaDecision -->|Approved| visa-application[Receive Blue Card]
  VisaDecision -->|Rejected| Appeal[Consider Appeal]
- Visa -->arrival[Travel to Luxembourg]
+ visa-application -->arrival[Travel to Luxembourg]
  arrival --> registration[Register at Commune]
  registration --> Success([Process Complete])
  Appeal --> End2`,
@@ -526,19 +526,19 @@ flowchart TD
  successRate: '80%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> JobOffer[Secure Job Offer]
- JobOffer --> Salary{"Salary >= EUR 55,000?"}
+ Start([Start Process]) --> job-offer[Secure Job Offer]
+ job-offer --> Salary{"Salary >= EUR 55,000?"}
  Salary -->|Yes| Qualifications{Highly Qualified?}
  Salary -->|No| End1([Not Eligible])
- Qualifications -->|Yes| GatherDocs[Gather Required Documents]
+ Qualifications -->|Yes| gather-documents[Gather Required Documents]
  Qualifications -->|No| End1
- GatherDocs --> WorkAuth[Apply for Work Authorization]
- WorkAuth --> Wait[Wait for Processing<br/>4-6 weeks]
+ gather-documents --> work-authorization[Apply for Work Authorization]
+ work-authorization --> Wait[Wait for Processing<br/>4-6 weeks]
  Wait --> Decision{Decision}
  Decision -->|Approved| Visa[Receive Work Permit and Visa]
  Decision -->|Rejected| Appeal[Consider Appeal]
- Visa --> Travel[Travel to Luxembourg]
- Travel --> Register[Register at Commune]
+ Visa --> arrival[Travel to Luxembourg]
+ arrival --> Register[Register at Commune]
  Register --> Success([Process Complete])
  Appeal --> End2([Process Ended])`,
  reactFlowData: {

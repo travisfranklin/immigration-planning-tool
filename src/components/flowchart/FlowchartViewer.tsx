@@ -74,9 +74,12 @@ function FlowchartViewerComponent({ flowchart, onExport, selectedStepId, onStepS
                 step => step.id === extractedId
               );
 
+              const htmlElement = nodeGroup as HTMLElement;
+
               if (matchingStep) {
-                const htmlElement = nodeGroup as HTMLElement;
+                // Interactive node - has a matching step
                 htmlElement.style.cursor = 'pointer';
+                htmlElement.classList.add('node-interactive');
 
                 // Hover effect is handled by CSS - no inline styles needed
                 htmlElement.addEventListener('mouseenter', () => {
@@ -92,6 +95,9 @@ function FlowchartViewerComponent({ flowchart, onExport, selectedStepId, onStepS
                   e.stopPropagation();
                   onStepSelect(matchingStep.id);
                 });
+              } else {
+                // Non-interactive node - no matching step (Start, End, Decision, etc.)
+                htmlElement.classList.add('node-non-interactive');
               }
             });
           }

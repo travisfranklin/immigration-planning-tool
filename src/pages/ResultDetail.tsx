@@ -16,7 +16,6 @@ import { Button } from '../components/Button';
 import { LoadingSpinner } from '../components/LoadingSpinner';
 import { ErrorState } from '../components/ErrorState';
 import { InteractiveFlowchart } from '../components/flowchart/InteractiveFlowchart';
-import { ErrorBoundary } from '../components/ErrorBoundary';
 import { isValidCountryCode } from '../constants/countries';
 import {
   decodeResultsFromUrl,
@@ -264,52 +263,6 @@ export const ResultDetail: React.FC = () => {
         </div>
       )}
 
-      {/* Eligibility Receipt - Shows all requirements with checkmarks/X marks */}
-      {!selectedScore.meetsHardRequirements && selectedScore.missingRequirements.length > 0 && (
-        <div className="bg-white border-t-4 border-b-4 border-black">
-          <div className="max-w-3xl mx-auto px-8 py-8">
-            {/* Receipt Header */}
-            <div className="border-b-2 border-dashed border-gray-400 pb-4 mb-6">
-              <h2 className="text-h2 font-bold text-black uppercase tracking-tight mb-1">
-                Eligibility Check
-              </h2>
-              <p className="text-label-sm uppercase text-gray-600 font-mono">
-                {selectedScore.recommendedProgram?.programName || 'Visa Program'}
-              </p>
-            </div>
-
-            {/* Requirements List */}
-            <div className="space-y-3 mb-6">
-              {selectedScore.missingRequirements.map((req, index) => (
-                <div key={index} className="flex items-start gap-3 font-mono text-body">
-                  <span className="flex-shrink-0 text-danger font-bold text-xl leading-none">✗</span>
-                  <span className="text-gray-900 flex-1">{req}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Receipt Footer - Totals Section */}
-            <div className="border-t-2 border-dashed border-gray-400 pt-4 space-y-2">
-              <div className="flex justify-between items-baseline font-mono">
-                <span className="text-label uppercase text-gray-600">Status:</span>
-                <span className="text-body font-bold text-danger uppercase">Not Eligible</span>
-              </div>
-              <div className="flex justify-between items-baseline font-mono">
-                <span className="text-label uppercase text-gray-600">Current Score:</span>
-                <span className="text-body font-bold text-black">25/100</span>
-              </div>
-              <div className="flex justify-between items-baseline font-mono border-t-2 border-black pt-2 mt-2">
-                <span className="text-label uppercase text-gray-900 font-bold">Potential Score:</span>
-                <span className="text-h3 font-bold text-primary">{selectedScore.competitiveScore}/100</span>
-              </div>
-              <p className="text-body-sm text-gray-600 mt-3 pt-3 border-t border-gray-300">
-                Address the requirements above to unlock your potential score of {selectedScore.competitiveScore}/100
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* Main Content: Data-Driven Dashboard */}
       <div className="bg-gray-50 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
@@ -329,9 +282,7 @@ export const ResultDetail: React.FC = () => {
           {/* Interactive Flowchart - Center Section */}
           <div>
             {recommendedFlowchart ? (
-              <ErrorBoundary>
-                <InteractiveFlowchart flowchart={recommendedFlowchart} />
-              </ErrorBoundary>
+              <InteractiveFlowchart flowchart={recommendedFlowchart} />
             ) : (
               <div className="bg-white border-2 border-black p-12 text-center">
                 <p className="text-body text-gray-700">No flowchart available for this program yet.</p>

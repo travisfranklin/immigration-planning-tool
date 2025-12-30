@@ -216,7 +216,7 @@ function determineOverallRiskLevel(risks: RiskFactor[]): 'low' | 'medium' | 'hig
 
 /**
  * Calculate viability score for a specific country
- * Returns null if no programs match the user's timeline
+ * Returns null if no programs are available for this country
  */
 export async function calculateCountryViability(
   userId: string,
@@ -226,7 +226,7 @@ export async function calculateCountryViability(
   // Get best matching programs for this country
   const programMatches = getBestProgramsForCountry(profile, countryCode, 5);
 
-  // If no programs match the timeline, return null to exclude this country
+  // If no programs are available for this country, return null
   if (programMatches.length === 0) {
     return null;
   }
@@ -325,7 +325,7 @@ export async function calculateCountryViability(
 
 /**
  * Calculate viability scores for all countries
- * Excludes countries with no programs matching the user's timeline
+ * Excludes countries with no available visa programs
  */
 export async function calculateAllCountryViabilities(
   userId: string,
@@ -338,7 +338,7 @@ export async function calculateAllCountryViabilities(
 
   for (const countryCode of ALL_COUNTRIES) {
     const score = await calculateCountryViability(userId, profile, countryCode);
-    // Only include countries that have programs matching the user's timeline
+    // Only include countries that have visa programs available
     if (score !== null) {
       scores.push(score);
     }

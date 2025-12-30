@@ -15,10 +15,10 @@ export const cyprusFlowcharts: Record<string, FlowchartDefinition> = {
  successRate: '95%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> Investment{Investment Type?}
- Investment -->|Real Estate EUR 300k| choose-investment[Purchase Property<br/> EUR 300,000 minimum]
- Investment -->|Business EUR 300k| Business[Invest in Business<br/> EUR 300,000]
- Investment -->|Combination| Combo[Combination of Investments<br/> EUR 300,000 total]
+ Start([Start Process]) --> investment{Investment Type?}
+ investment -->|Real Estate EUR 300k| choose-investment[Purchase Property<br/> EUR 300,000 minimum]
+ investment -->|Business EUR 300k| Business[Invest in Business<br/> EUR 300,000]
+ investment -->|Combination| Combo[Combination of Investments<br/> EUR 300,000 total]
  choose-investment --> verify-income[Verify Annual Income<br/> EUR 50,000 minimum]
  Business -->verify-income
  Combo -->verify-income

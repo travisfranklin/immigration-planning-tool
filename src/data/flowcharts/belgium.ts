@@ -629,8 +629,8 @@ flowchart TD
  Salary -->|Yes| gather-documents[Gather Required Documents]
  Salary -->|No| End1([Not Eligible])
  gather-documents --> fast-track-application[Fast-Track Application]
- fast-track-application --> Wait[Wait for Processing<br/>4 weeks]
- Wait --> Decision{Decision}
+ fast-track-application --> processing[Wait for Processing<br/>4 weeks]
+ processing --> Decision{Decision}
  Decision -->|Approved| Visa[Receive Work Permit and Visa]
  Decision -->|Rejected| Appeal[Consider Appeal]
  Visa --> arrival[Travel to Belgium]

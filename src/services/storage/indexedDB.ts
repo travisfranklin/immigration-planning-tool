@@ -4,13 +4,12 @@
  */
 
 const DB_NAME = 'immigration-pipeline';
-const DB_VERSION = 2; // Incremented for flowchart progress store
+const DB_VERSION = 1;
 
 export const STORE_NAMES = {
   USER_PROFILES: 'userProfiles',
   VIABILITY_SCORES: 'viabilityScores',
   COUNTRY_RULES: 'countryRules',
-  FLOWCHART_PROGRESS: 'flowchartProgress',
 };
 
 let db: IDBDatabase | null = null;
@@ -47,12 +46,6 @@ export async function initializeDatabase(): Promise<IDBDatabase> {
 
       if (!database.objectStoreNames.contains(STORE_NAMES.COUNTRY_RULES)) {
         database.createObjectStore(STORE_NAMES.COUNTRY_RULES, { keyPath: 'countryCode' });
-      }
-
-      if (!database.objectStoreNames.contains(STORE_NAMES.FLOWCHART_PROGRESS)) {
-        const progressStore = database.createObjectStore(STORE_NAMES.FLOWCHART_PROGRESS, { keyPath: 'id' });
-        progressStore.createIndex('userId', 'userId', { unique: false });
-        progressStore.createIndex('programId', 'programId', { unique: false });
       }
     };
   });

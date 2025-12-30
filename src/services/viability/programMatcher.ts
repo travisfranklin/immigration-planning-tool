@@ -307,6 +307,7 @@ export function matchUserToPrograms(profile: UserProfile): ProgramMatchResult[] 
 
 /**
  * Get best matching programs for a specific country
+ * Note: Does not filter by timeline - timeline alignment is reflected in preference scoring
  */
 export function getBestProgramsForCountry(
   profile: UserProfile,
@@ -317,7 +318,6 @@ export function getBestProgramsForCountry(
 
   return allMatches
     .filter(match => match.program.countryCode === countryCode)
-    .filter(match => match.alignsWithTimeline) // Filter out programs that don't fit user's timeline
     .slice(0, limit);
 }
 

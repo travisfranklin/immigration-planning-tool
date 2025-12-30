@@ -460,23 +460,23 @@ flowchart TD
  successRate: '85%',
  mermaidDiagram: `
 flowchart TD
- Start([Start Process]) --> BusinessIdea[Develop Innovative<br/>Business Idea]
- BusinessIdea --> Funds[Verify Minimum Funds<br/>EUR 5,000 / HUF 2,000,000]
- Funds --> CheckFunds{Funds Sufficient?}
- CheckFunds -->|Yes| Program[Apply to Hungarian<br/>Startup Program]
+ Start([Start Process]) --> develop-business-idea[Develop Innovative<br/>Business Idea]
+ develop-business-idea --> verify-funds[Verify Minimum Funds<br/>EUR 5,000 / HUF 2,000,000]
+ verify-funds --> CheckFunds{Funds Sufficient?}
+ CheckFunds -->|Yes| apply-to-program[Apply to Hungarian<br/>Startup Program]
  CheckFunds -->|No| End1([Not Eligible])
- Program --> Acceptance{Accepted by<br/>Program?}
- Acceptance -->|Yes| GatherDocs[Gather Required Documents]
+ apply-to-program --> Acceptance{Accepted by<br/>Program?}
+ Acceptance -->|Yes| gather-documents[Gather Required Documents]
  Acceptance -->|No| End2([Not Eligible])
- GatherDocs --> Submit[Submit Application to<br/>Hungarian Consulate or in Hungary]
- Submit --> Processing[Processing<br/>30-60 Days]
- Processing --> Decision{Decision}
- Decision -->|Approved| Visa[Receive White Card<br/>1-Year Permit]
- Decision -->|Rejected| Appeal[Consider Appeal]
- Visa --> Travel[Travel to Hungary]
- Travel --> Register[Register Business and<br/>at Immigration Office]
- Register --> Success([Process Complete])
- Appeal --> End3([Process Ended])`,
+ gather-documents --> submit-application[Submit Application to<br/>Hungarian Consulate or in Hungary]
+ submit-application --> processing[Processing<br/>30-60 Days]
+ processing --> Decision{Decision}
+ Decision -->|Approved| receive-visa[Receive White Card<br/>1-Year Permit]
+ Decision -->|Rejected| consider-appeal[Consider Appeal]
+ receive-visa --> travel[Travel to Hungary]
+ travel --> register-business[Register Business and<br/>at Immigration Office]
+ register-business --> Success([Process Complete])
+ consider-appeal --> End3([Process Ended])`,
  reactFlowData: {
       nodes: [
         {
