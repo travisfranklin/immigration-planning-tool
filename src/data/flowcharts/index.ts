@@ -1,70 +1,78 @@
 /**
  * Centralized Flowcharts Index
  * Single source of truth for all country flowchart mappings
+ *
+ * Uses the template-based composition system for all 27 EU countries.
+ * See src/data/flowcharts/programs/ for individual country implementations.
  */
 
 import { CountryCode } from '../../constants/countries';
 import type { FlowchartDefinition } from '../../types/flowchart';
-import { germanyFlowcharts } from './germany';
-import { netherlandsFlowcharts } from './netherlands';
-import { franceFlowcharts } from './france';
-import { spainFlowcharts } from './spain';
-import { italyFlowcharts } from './italy';
-import { austriaFlowcharts } from './austria';
-import { belgiumFlowcharts } from './belgium';
-import { luxembourgFlowcharts } from './luxembourg';
-import { irelandFlowcharts } from './ireland';
-import { swedenFlowcharts } from './sweden';
-import { denmarkFlowcharts } from './denmark';
-import { finlandFlowcharts } from './finland';
-import { portugalFlowcharts } from './portugal';
-import { greeceFlowcharts } from './greece';
-import { cyprusFlowcharts } from './cyprus';
-import { maltaFlowcharts } from './malta';
-import { polandFlowcharts } from './poland';
-import { czechFlowcharts } from './czech-republic';
-import { hungaryFlowcharts } from './hungary';
-import { romaniaFlowcharts } from './romania';
-import { bulgariaFlowcharts } from './bulgaria';
-import { slovakiaFlowcharts } from './slovakia';
-import { sloveniaFlowcharts } from './slovenia';
-import { croatiaFlowcharts } from './croatia';
-import { estoniaFlowcharts } from './estonia';
-import { latviaFlowcharts } from './latvia';
-import { lithuaniaFlowcharts } from './lithuania';
+
+// Import from new template-based programs
+import { germanyFlowchartsNew } from './programs/germany';
+import { netherlandsFlowchartsNew } from './programs/netherlands';
+import { franceFlowchartsNew } from './programs/france';
+import { spainFlowchartsNew } from './programs/spain';
+import { italyFlowchartsNew } from './programs/italy';
+import { austriaFlowchartsNew } from './programs/austria';
+import { belgiumFlowchartsNew } from './programs/belgium';
+import { luxembourgFlowchartsNew } from './programs/luxembourg';
+import { irelandFlowchartsNew } from './programs/ireland';
+import { swedenFlowchartsNew } from './programs/sweden';
+import { denmarkFlowchartsNew } from './programs/denmark';
+import { finlandFlowchartsNew } from './programs/finland';
+import { portugalFlowchartsNew } from './programs/portugal';
+import { greeceFlowchartsNew } from './programs/greece';
+import { cyprusFlowchartsNew } from './programs/cyprus';
+import { maltaFlowchartsNew } from './programs/malta';
+import { polandFlowchartsNew } from './programs/poland';
+import { czechRepublicFlowchartsNew } from './programs/czech-republic';
+import { hungaryFlowchartsNew } from './programs/hungary';
+import { romaniaFlowchartsNew } from './programs/romania';
+import { bulgariaFlowchartsNew } from './programs/bulgaria';
+import { slovakiaFlowchartsNew } from './programs/slovakia';
+import { sloveniaFlowchartsNew } from './programs/slovenia';
+import { croatiaFlowchartsNew } from './programs/croatia';
+import { estoniaFlowchartsNew } from './programs/estonia';
+import { latviaFlowchartsNew } from './programs/latvia';
+import { lithuaniaFlowchartsNew } from './programs/lithuania';
 
 /**
  * Master mapping of all flowcharts by country code
  * This is the single source of truth for flowchart data
+ *
+ * All flowcharts are now built using the template-based composition system,
+ * which enables bulk updates to common steps while preserving country-specific overrides.
  */
 export const ALL_FLOWCHARTS: Record<CountryCode, Record<string, FlowchartDefinition>> = {
-  [CountryCode.DE]: germanyFlowcharts,
-  [CountryCode.NL]: netherlandsFlowcharts,
-  [CountryCode.FR]: franceFlowcharts,
-  [CountryCode.ES]: spainFlowcharts,
-  [CountryCode.IT]: italyFlowcharts,
-  [CountryCode.AT]: austriaFlowcharts,
-  [CountryCode.BE]: belgiumFlowcharts,
-  [CountryCode.LU]: luxembourgFlowcharts,
-  [CountryCode.IE]: irelandFlowcharts,
-  [CountryCode.SE]: swedenFlowcharts,
-  [CountryCode.DK]: denmarkFlowcharts,
-  [CountryCode.FI]: finlandFlowcharts,
-  [CountryCode.PT]: portugalFlowcharts,
-  [CountryCode.GR]: greeceFlowcharts,
-  [CountryCode.CY]: cyprusFlowcharts,
-  [CountryCode.MT]: maltaFlowcharts,
-  [CountryCode.PL]: polandFlowcharts,
-  [CountryCode.CZ]: czechFlowcharts,
-  [CountryCode.HU]: hungaryFlowcharts,
-  [CountryCode.RO]: romaniaFlowcharts,
-  [CountryCode.BG]: bulgariaFlowcharts,
-  [CountryCode.SK]: slovakiaFlowcharts,
-  [CountryCode.SI]: sloveniaFlowcharts,
-  [CountryCode.HR]: croatiaFlowcharts,
-  [CountryCode.EE]: estoniaFlowcharts,
-  [CountryCode.LV]: latviaFlowcharts,
-  [CountryCode.LT]: lithuaniaFlowcharts,
+  [CountryCode.DE]: germanyFlowchartsNew,
+  [CountryCode.NL]: netherlandsFlowchartsNew,
+  [CountryCode.FR]: franceFlowchartsNew,
+  [CountryCode.ES]: spainFlowchartsNew,
+  [CountryCode.IT]: italyFlowchartsNew,
+  [CountryCode.AT]: austriaFlowchartsNew,
+  [CountryCode.BE]: belgiumFlowchartsNew,
+  [CountryCode.LU]: luxembourgFlowchartsNew,
+  [CountryCode.IE]: irelandFlowchartsNew,
+  [CountryCode.SE]: swedenFlowchartsNew,
+  [CountryCode.DK]: denmarkFlowchartsNew,
+  [CountryCode.FI]: finlandFlowchartsNew,
+  [CountryCode.PT]: portugalFlowchartsNew,
+  [CountryCode.GR]: greeceFlowchartsNew,
+  [CountryCode.CY]: cyprusFlowchartsNew,
+  [CountryCode.MT]: maltaFlowchartsNew,
+  [CountryCode.PL]: polandFlowchartsNew,
+  [CountryCode.CZ]: czechRepublicFlowchartsNew,
+  [CountryCode.HU]: hungaryFlowchartsNew,
+  [CountryCode.RO]: romaniaFlowchartsNew,
+  [CountryCode.BG]: bulgariaFlowchartsNew,
+  [CountryCode.SK]: slovakiaFlowchartsNew,
+  [CountryCode.SI]: sloveniaFlowchartsNew,
+  [CountryCode.HR]: croatiaFlowchartsNew,
+  [CountryCode.EE]: estoniaFlowchartsNew,
+  [CountryCode.LV]: latviaFlowchartsNew,
+  [CountryCode.LT]: lithuaniaFlowchartsNew,
 };
 
 /**
