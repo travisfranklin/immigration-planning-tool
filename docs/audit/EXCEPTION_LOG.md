@@ -11,9 +11,9 @@
 |----------|-------|
 | 🔴 Critical | 4 |
 | 🟠 High | 21 |
-| 🟡 Medium | 23 |
-| 🔵 Low | 24 |
-| **Total** | **72** |
+| 🟡 Medium | 24 |
+| 🔵 Low | 27 |
+| **Total** | **76** |
 
 ---
 
@@ -844,7 +844,50 @@
 - **Date Found:** 2025-12-30
 
 ### Lithuania (LT)
-*Audit pending*
+
+#### [LT-001] EU Blue Card Salary Threshold Formula
+- **Country:** LT
+- **Program:** EU Blue Card (`lt_eu_blue_card`)
+- **Severity:** 🟡 Medium
+- **Field:** salaryThreshold
+- **Current Value:** €24,000/year
+- **Expected Value:** 1.5x average gross monthly wage (~€30,000+/year)
+- **Source:** https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-lithuania_en
+- **Recommendation:** Update to dynamic formula based on average wage
+- **Date Found:** 2025-12-30
+
+#### [LT-002] Work Permit Reform Information
+- **Country:** LT
+- **Program:** Work Permit (`lt_work_permit`)
+- **Severity:** 🔵 Low
+- **Field:** notes
+- **Current Value:** Standard information
+- **Expected Value:** Add March 2025 reform details
+- **Source:** https://corporateimmigrationpartners.com/lithuania-work-permit-process-simplified-with-key-reform/
+- **Recommendation:** Add March 2025 work permit reform information
+- **Date Found:** 2025-12-30
+
+#### [LT-003] VFS Center Closures
+- **Country:** LT
+- **Program:** All Programs
+- **Severity:** 🔵 Low
+- **Field:** applicationNotes
+- **Current Value:** No VFS information
+- **Expected Value:** Note VFS center closures in UAE/India
+- **Source:** https://newlandchase.com/lithuania-immigration-changes-for-2025/
+- **Recommendation:** Add VFS center closure information for Indian nationals
+- **Date Found:** 2025-12-30
+
+#### [LT-004] Shortage Occupation Threshold
+- **Country:** LT
+- **Program:** EU Blue Card (`lt_eu_blue_card`)
+- **Severity:** 🔵 Low
+- **Field:** shortageOccupationThreshold
+- **Current Value:** Not specified
+- **Expected Value:** 1.2x average wage for shortage occupations
+- **Source:** https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-lithuania_en
+- **Recommendation:** Add shortage occupation threshold (1.2x average wage)
+- **Date Found:** 2025-12-30
 
 ### Luxembourg (LU)
 *Audit pending*
