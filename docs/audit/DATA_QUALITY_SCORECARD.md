@@ -1,20 +1,35 @@
 # Data Quality Scorecard
 
 **Last Updated:** 2025-12-30
-**Audit Phase:** Data Collection & Verification ✅ COMPLETE
+**Audit Phase:** Phase 6 - Final Report ✅ COMPLETE
 
 ---
 
-## Overall Score
+## Overall Quality Metrics
 
-| Metric | Score | Target |
-|--------|-------|--------|
-| **Accuracy** | 78% | 95%+ |
-| **Completeness** | 87% | 95%+ |
-| **Consistency** | 96% | 95%+ |
-| **Overall** | 83% | 95%+ |
+| Dimension | Score | Target | Gap | Status |
+|-----------|-------|--------|-----|--------|
+| **Data Accuracy** | 78% | 95%+ | -17% | ❌ |
+| **Data Completeness** | 87% | 95%+ | -8% | ⚠️ |
+| **Data Consistency** | 96% | 95%+ | +1% | ✅ |
+| **Technical Quality** | 97.6% | 100% | -2.4% | ⚠️ |
+| **Content Quality** | 82% | 95%+ | -13% | ❌ |
+| **Legal Compliance** | 78% | 95%+ | -17% | ❌ |
+| **Overall** | 83% | 95%+ | -12% | ❌ |
 
-*Based on 27/27 countries audited*
+*Based on 27/27 countries, 135/135 programs audited*
+
+---
+
+## Exception Summary
+
+| Severity | Count | Percentage |
+|----------|-------|------------|
+| 🔴 Critical | 7 | 4.7% |
+| 🟠 High | 44 | 29.5% |
+| 🟡 Medium | 47 | 31.5% |
+| 🔵 Low | 51 | 34.2% |
+| **Total** | **149** | **100%** |
 
 ---
 
