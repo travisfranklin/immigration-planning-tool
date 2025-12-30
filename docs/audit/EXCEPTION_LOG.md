@@ -10,10 +10,10 @@
 | Severity | Count |
 |----------|-------|
 | 🔴 Critical | 3 |
-| 🟠 High | 14 |
-| 🟡 Medium | 15 |
-| 🔵 Low | 10 |
-| **Total** | **42** |
+| 🟠 High | 15 |
+| 🟡 Medium | 17 |
+| 🔵 Low | 11 |
+| **Total** | **46** |
 
 ---
 
@@ -500,7 +500,50 @@
 - **Date Found:** 2025-12-30
 
 ### France (FR)
-*Audit pending*
+
+#### [FR-001] Talent Passport Salary Threshold Outdated
+- **Country:** FR
+- **Program:** Talent Passport (`fr_talent_passport`)
+- **Severity:** 🟠 High
+- **Field:** salaryThreshold
+- **Current Value:** €53,836/year
+- **Expected Value:** €39,582/year — August 29, 2025 ministerial order (8% REDUCTION)
+- **Source:** https://www.welcometofrance.com/en/update-on-salary-thresholds-for-talent-residence-permits
+- **Recommendation:** Update salary threshold to €39,582/year — France REDUCED threshold to enhance attractiveness
+- **Date Found:** 2025-12-30
+
+#### [FR-002] EU Blue Card Salary Threshold Outdated
+- **Country:** FR
+- **Program:** EU Blue Card (implied in Talent Passport)
+- **Severity:** 🟡 Medium
+- **Field:** salaryThreshold
+- **Current Value:** €53,836/year (implied)
+- **Expected Value:** €59,373/year (1.5x €39,582) — August 29, 2025 ministerial order
+- **Source:** https://www.welcometofrance.com/en/update-on-salary-thresholds-for-talent-residence-permits
+- **Recommendation:** Update EU Blue Card salary threshold to €59,373/year
+- **Date Found:** 2025-12-30
+
+#### [FR-003] EU Blue Card Contract Duration Outdated
+- **Country:** FR
+- **Program:** EU Blue Card
+- **Severity:** 🟡 Medium
+- **Field:** contractDuration
+- **Current Value:** 12 months minimum
+- **Expected Value:** 6 months minimum (EU Blue Card Directive reform)
+- **Source:** EU Blue Card Directive 2021/1883
+- **Recommendation:** Update minimum contract duration to 6 months
+- **Date Found:** 2025-12-30
+
+#### [FR-004] Missing Reference to August 2025 Decree
+- **Country:** FR
+- **Program:** All Programs
+- **Severity:** 🔵 Low
+- **Field:** notes
+- **Current Value:** No reference to 2025 decree
+- **Expected Value:** Reference to August 29, 2025 ministerial order
+- **Source:** Légifrance, Welcome to France
+- **Recommendation:** Add note referencing the August 29, 2025 ministerial order for salary thresholds
+- **Date Found:** 2025-12-30
 
 ### Germany (DE)
 *Audit pending*

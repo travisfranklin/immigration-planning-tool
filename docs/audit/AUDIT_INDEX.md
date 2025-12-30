@@ -19,7 +19,7 @@
 | 7 | Denmark | DK | `denmark.ts` | ⚠️ Complete (Issues) | 2025-12-30 |
 | 8 | Estonia | EE | `estonia.ts` | ⚠️ Complete (Issues) | 2025-12-30 |
 | 9 | Finland | FI | `finland.ts` | ⚠️ Complete (Issues) | 2025-12-30 |
-| 10 | France | FR | `france.ts` | ⏳ Pending | — |
+| 10 | France | FR | `france.ts` | ⚠️ Complete (Issues) | 2025-12-30 |
 | 11 | Germany | DE | `germany.ts` | ⏳ Pending | — |
 | 12 | Greece | GR | `greece.ts` | ⏳ Pending | — |
 | 13 | Hungary | HU | `hungary.ts` | ⏳ Pending | — |
@@ -75,6 +75,7 @@ Individual country audit reports are stored in `docs/audit/countries/`:
 - [Denmark](./countries/DK_DENMARK.md)
 - [Estonia](./countries/EE_ESTONIA.md)
 - [Finland](./countries/FI_FINLAND.md)
+- [France](./countries/FR_FRANCE.md)
 
 ---
 

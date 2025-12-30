@@ -14,7 +14,7 @@
 | **Consistency** | 96% | 95%+ |
 | **Overall** | 83% | 95%+ |
 
-*Based on 9/27 countries audited*
+*Based on 10/27 countries audited*
 
 ---
 
@@ -31,7 +31,7 @@
 | Denmark | DK | 75% | 90% | 95% | 82% | ⚠️ |
 | Estonia | EE | 80% | 92% | 95% | 85% | ⚠️ |
 | Finland | FI | 78% | 92% | 95% | 84% | ⚠️ |
-| France | FR | — | — | — | — | ⏳ |
+| France | FR | 80% | 92% | 95% | 86% | ⚠️ |
 | Germany | DE | — | — | — | — | ⏳ |
 | Greece | GR | — | — | — | — | ⏳ |
 | Hungary | HU | — | — | — | — | ⏳ |
