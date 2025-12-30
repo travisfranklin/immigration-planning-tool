@@ -10,10 +10,10 @@
 | Severity | Count |
 |----------|-------|
 | 🔴 Critical | 3 |
-| 🟠 High | 13 |
-| 🟡 Medium | 12 |
-| 🔵 Low | 9 |
-| **Total** | **37** |
+| 🟠 High | 14 |
+| 🟡 Medium | 15 |
+| 🔵 Low | 10 |
+| **Total** | **42** |
 
 ---
 
@@ -443,7 +443,61 @@
 - **Date Found:** 2025-12-30
 
 ### Finland (FI)
-*Audit pending*
+
+#### [FI-001] Specialist Permit Salary Threshold Outdated
+- **Country:** FI
+- **Program:** Specialist Permit (`fi_specialist`)
+- **Severity:** 🟠 High
+- **Field:** salaryThreshold
+- **Current Value:** €36,000/year (€3,000/month)
+- **Expected Value:** €45,924/year (€3,827/month) — 2025 threshold
+- **Source:** KPMG Flash Alert 2025-009 (Jan 2025), Migri.fi
+- **Recommendation:** Update salary threshold to €45,924/year (€3,827/month)
+- **Date Found:** 2025-12-30
+
+#### [FI-002] Work Permit Application Fees Outdated
+- **Country:** FI
+- **Program:** Specialist, EU Blue Card
+- **Severity:** 🟡 Medium
+- **Field:** applicationFee
+- **Current Value:** €520
+- **Expected Value:** €380 (electronic) / €480 (paper) — 2025 fees
+- **Source:** Migri.fi Processing Fees 2025
+- **Recommendation:** Update application fees to reflect 2025 electronic/paper structure
+- **Date Found:** 2025-12-30
+
+#### [FI-003] Startup Entrepreneur Permit Fee Outdated
+- **Country:** FI
+- **Program:** Startup Entrepreneur Permit (`fi_startup`)
+- **Severity:** 🟡 Medium
+- **Field:** applicationFee
+- **Current Value:** €520
+- **Expected Value:** €450 (electronic) / €580 (paper) — 2025 fees
+- **Source:** Migri.fi Processing Fees 2025
+- **Recommendation:** Update startup permit fee to €450 (electronic) / €580 (paper)
+- **Date Found:** 2025-12-30
+
+#### [FI-004] Family Reunification Income Requirement Outdated
+- **Country:** FI
+- **Program:** Family Reunification (`fi_family_reunification`)
+- **Severity:** 🟡 Medium
+- **Field:** incomeThreshold
+- **Current Value:** €1,400/month
+- **Expected Value:** €1,600/month — new 2025 minimum (effective Jan 1, 2025)
+- **Source:** KPMG Flash Alert 2025-009, Migri.fi
+- **Recommendation:** Update income requirement to €1,600/month
+- **Date Found:** 2025-12-30
+
+#### [FI-005] Self-Employment Permit Fee Outdated
+- **Country:** FI
+- **Program:** Self-Employment Permit (`fi_self_employment`)
+- **Severity:** 🔵 Low
+- **Field:** applicationFee
+- **Current Value:** €520
+- **Expected Value:** €550 (electronic) / €700 (paper) — 2025 fees
+- **Source:** Migri.fi Processing Fees 2025
+- **Recommendation:** Update self-employment permit fee to €550 (electronic) / €700 (paper)
+- **Date Found:** 2025-12-30
 
 ### France (FR)
 *Audit pending*

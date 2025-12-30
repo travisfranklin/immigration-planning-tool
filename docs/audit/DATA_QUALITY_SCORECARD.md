@@ -10,11 +10,11 @@
 | Metric | Score | Target |
 |--------|-------|--------|
 | **Accuracy** | 75% | 95%+ |
-| **Completeness** | 87% | 95%+ |
+| **Completeness** | 88% | 95%+ |
 | **Consistency** | 96% | 95%+ |
 | **Overall** | 83% | 95%+ |
 
-*Based on 8/27 countries audited*
+*Based on 9/27 countries audited*
 
 ---
 
@@ -30,7 +30,7 @@
 | Czech Republic | CZ | 65% | 85% | 95% | 75% | ❌ |
 | Denmark | DK | 75% | 90% | 95% | 82% | ⚠️ |
 | Estonia | EE | 80% | 92% | 95% | 85% | ⚠️ |
-| Finland | FI | — | — | — | — | ⏳ |
+| Finland | FI | 78% | 92% | 95% | 84% | ⚠️ |
 | France | FR | — | — | — | — | ⏳ |
 | Germany | DE | — | — | — | — | ⏳ |
 | Greece | GR | — | — | — | — | ⏳ |
