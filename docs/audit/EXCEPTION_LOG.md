@@ -10,10 +10,10 @@
 | Severity | Count |
 |----------|-------|
 | 🔴 Critical | 3 |
-| 🟠 High | 15 |
-| 🟡 Medium | 17 |
-| 🔵 Low | 11 |
-| **Total** | **46** |
+| 🟠 High | 16 |
+| 🟡 Medium | 19 |
+| 🔵 Low | 13 |
+| **Total** | **51** |
 
 ---
 
@@ -546,7 +546,61 @@
 - **Date Found:** 2025-12-30
 
 ### Germany (DE)
-*Audit pending*
+
+#### [DE-001] EU Blue Card General Salary Threshold Outdated
+- **Country:** DE
+- **Program:** EU Blue Card (`de_eu_blue_card`)
+- **Severity:** 🟠 High
+- **Field:** salaryThreshold
+- **Current Value:** €45,300/year
+- **Expected Value:** €48,300/year (2025)
+- **Source:** https://www.jobbatical.com/blog/germany-latest-eu-blue-card-salaries-updated
+- **Recommendation:** Update salary threshold to €48,300/year for 2025
+- **Date Found:** 2025-12-30
+
+#### [DE-002] EU Blue Card Shortage Occupation Salary Threshold Outdated
+- **Country:** DE
+- **Program:** EU Blue Card (`de_eu_blue_card`)
+- **Severity:** 🟡 Medium
+- **Field:** shortageOccupationThreshold
+- **Current Value:** €41,041.80/year
+- **Expected Value:** €43,759.80/year (2025)
+- **Source:** https://www.germany.info/us-en/service/visa/residence-visa-922288
+- **Recommendation:** Update shortage occupation threshold to €43,759.80/year
+- **Date Found:** 2025-12-30
+
+#### [DE-003] EU Blue Card Contract Duration Outdated
+- **Country:** DE
+- **Program:** EU Blue Card (`de_eu_blue_card`)
+- **Severity:** 🟡 Medium
+- **Field:** contractDuration
+- **Current Value:** 12 months minimum
+- **Expected Value:** 6 months minimum (EU Blue Card Directive reform)
+- **Source:** https://www.jobbatical.com/blog/germany-latest-eu-blue-card-salaries-updated
+- **Recommendation:** Update minimum contract duration to 6 months
+- **Date Found:** 2025-12-30
+
+#### [DE-004] Visa Fee Not Specified
+- **Country:** DE
+- **Program:** All Programs
+- **Severity:** 🔵 Low
+- **Field:** applicationFee
+- **Current Value:** Not specified
+- **Expected Value:** €75 visa fee
+- **Source:** https://www.jobbatical.com/services/germany-skilled-worker-blue-collar-visa
+- **Recommendation:** Add €75 visa fee to all program data
+- **Date Found:** 2025-12-30
+
+#### [DE-005] Chancenkarte (Opportunity Card) Missing
+- **Country:** DE
+- **Program:** Missing Program
+- **Severity:** 🔵 Low
+- **Field:** N/A
+- **Current Value:** Program not in system
+- **Expected Value:** Chancenkarte (Opportunity Card) launched June 2024
+- **Source:** https://www.jobbatical.com/blog/germany-opportunity-card-chancenkarte
+- **Recommendation:** Add Chancenkarte as new program for Germany
+- **Date Found:** 2025-12-30
 
 ### Greece (GR)
 *Audit pending*
