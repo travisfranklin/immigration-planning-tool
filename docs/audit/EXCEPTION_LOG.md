@@ -1,7 +1,7 @@
 # Exception Log
 
 **Last Updated:** 2025-12-30
-**Audit Phase:** Phase 4 - Content Review ✅ COMPLETE
+**Audit Phase:** Phase 5 - Legal Review ✅ COMPLETE
 
 ---
 
@@ -10,10 +10,10 @@
 | Severity | Count |
 |----------|-------|
 | 🔴 Critical | 7 |
-| 🟠 High | 41 |
-| 🟡 Medium | 42 |
+| 🟠 High | 44 |
+| 🟡 Medium | 47 |
 | 🔵 Low | 51 |
-| **Total** | **141** |
+| **Total** | **149** |
 
 ---
 
@@ -1583,6 +1583,82 @@
 - **Current Value:** Only application fee listed
 - **Expected Value:** Total cost estimate including translation, apostille, travel
 - **Recommendation:** Add estimated total costs per program
+- **Date Found:** 2025-12-30
+
+---
+
+## Legal Exceptions (Phase 5)
+
+### [LEGAL-001] Disclaimer Not Visible on Result Pages
+
+- **Severity:** 🟠 High
+- **Pages Affected:** Results.tsx, ResultDetail.tsx, AllFlowcharts.tsx
+- **Current Value:** Disclaimer only on Home page
+- **Expected Value:** Disclaimer visible on all pages displaying immigration advice
+- **Recommendation:** Add persistent footer disclaimer to Layout component
+- **Date Found:** 2025-12-30
+
+### [LEGAL-002] Shared Results Lack Disclaimer
+
+- **Severity:** 🟠 High
+- **Feature:** Shareable URL results (?results= parameter)
+- **Current Value:** Recipients see immigration data with no disclaimer
+- **Expected Value:** Shared views should include disclaimer notice
+- **Recommendation:** Append disclaimer to shared result views
+- **Date Found:** 2025-12-30
+
+### [LEGAL-003] Unsubstantiated Success Rate Percentages
+
+- **Severity:** 🟠 High
+- **Scope:** All 135 programs
+- **Current Value:** Success rates (60%-95%) displayed without citation
+- **Expected Value:** Cited sources or methodology disclosure
+- **Recommendation:** Either cite official sources or remove success rate claims
+- **Date Found:** 2025-12-30
+
+### [LEGAL-004] Directive Language in Step Instructions
+
+- **Severity:** 🟡 Medium
+- **Files:** spain.ts, portugal.ts, italy.ts
+- **Current Value:** "Use Spanish lawyer for purchase"
+- **Expected Value:** "Consider using a Spanish lawyer for property transactions"
+- **Recommendation:** Reframe directive statements as suggestions
+- **Date Found:** 2025-12-30
+
+### [LEGAL-005] Definitive Eligibility Language
+
+- **Severity:** 🟡 Medium
+- **Scope:** All flowchart decision nodes
+- **Current Value:** "Not Eligible" / "Eligible"
+- **Expected Value:** "May not meet requirements" / "May meet basic requirements"
+- **Recommendation:** Add qualifier to eligibility determinations
+- **Date Found:** 2025-12-30
+
+### [LEGAL-006] Privacy Notice Placement
+
+- **Severity:** 🟡 Medium
+- **Pages Affected:** Profile.tsx, Results.tsx
+- **Current Value:** No privacy notice on data collection pages
+- **Expected Value:** Brief privacy statement on pages handling personal data
+- **Recommendation:** Add privacy notice to Profile and Results pages
+- **Date Found:** 2025-12-30
+
+### [LEGAL-007] No Terms of Service
+
+- **Severity:** 🟡 Medium
+- **Scope:** Application-wide
+- **Current Value:** No formal Terms of Service document
+- **Expected Value:** ToS page linked from footer/Settings
+- **Recommendation:** Create formal Terms of Service page
+- **Date Found:** 2025-12-30
+
+### [LEGAL-008] Viability Score Terminology
+
+- **Severity:** 🟡 Medium
+- **Scope:** Application-wide
+- **Current Value:** "Viability score" may imply professional assessment
+- **Expected Value:** Clarify scores are for informational purposes only
+- **Recommendation:** Add disclaimer near score display
 - **Date Found:** 2025-12-30
 
 ---
