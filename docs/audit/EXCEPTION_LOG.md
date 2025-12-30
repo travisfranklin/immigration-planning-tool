@@ -10,10 +10,10 @@
 | Severity | Count |
 |----------|-------|
 | 🔴 Critical | 3 |
-| 🟠 High | 9 |
-| 🟡 Medium | 9 |
-| 🔵 Low | 7 |
-| **Total** | **28** |
+| 🟠 High | 11 |
+| 🟡 Medium | 11 |
+| 🔵 Low | 8 |
+| **Total** | **33** |
 
 ---
 
@@ -340,7 +340,61 @@
 - **Date Found:** 2025-12-30
 
 ### Denmark (DK)
-*Audit pending*
+
+#### [DK-001] Salary Thresholds Outdated (2025 Update)
+- **Country:** DK
+- **Program:** Fast-Track, Pay Limit, EU Blue Card
+- **Severity:** 🟠 High
+- **Field:** salaryThreshold
+- **Current Value:** DKK 465,000/year (€62,400)
+- **Expected Value:** DKK 514,000/year (~€68,900) — effective January 1, 2025
+- **Source:** https://kpmg.com/dk/en/insights/mobility/danish-immigration-updates-new-fees-and-requirements.html
+- **Recommendation:** Update salary thresholds to DKK 514,000/year for all affected programs
+- **Date Found:** 2025-12-30
+
+#### [DK-002] Application Fees Outdated (2025 Update)
+- **Country:** DK
+- **Program:** All Programs (Main Applicant)
+- **Severity:** 🟠 High
+- **Field:** applicationFee
+- **Current Value:** €490
+- **Expected Value:** DKK 6,055 (~€810) — effective January 1, 2025
+- **Source:** https://kpmg.com/dk/en/insights/mobility/danish-immigration-updates-new-fees-and-requirements.html
+- **Recommendation:** Update application fee to DKK 6,055 (~€810) for main applicants
+- **Date Found:** 2025-12-30
+
+#### [DK-003] Family Reunification Fee Incorrect
+- **Country:** DK
+- **Program:** Family Reunification (`dk_family_reunification`)
+- **Severity:** 🟡 Medium
+- **Field:** applicationFee
+- **Current Value:** €490
+- **Expected Value:** DKK 2,380 (~€320) per family member — effective January 1, 2025
+- **Source:** https://kpmg.com/dk/en/insights/mobility/danish-immigration-updates-new-fees-and-requirements.html
+- **Recommendation:** Update family reunification fee to DKK 2,380 (~€320) per family member
+- **Date Found:** 2025-12-30
+
+#### [DK-004] Mermaid Diagrams Show Outdated Salary
+- **Country:** DK
+- **Program:** Fast-Track, Pay Limit, EU Blue Card
+- **Severity:** 🟡 Medium
+- **Field:** mermaidDiagram
+- **Current Value:** Shows DKK 465,000/year
+- **Expected Value:** Should show DKK 514,000/year
+- **Source:** KPMG Denmark (Jan 2025)
+- **Recommendation:** Update Mermaid diagrams to reflect new salary thresholds
+- **Date Found:** 2025-12-30
+
+#### [DK-005] Currency Display Inconsistency
+- **Country:** DK
+- **Program:** All Programs
+- **Severity:** 🔵 Low
+- **Field:** Currency
+- **Current Value:** EUR (€62,400)
+- **Expected Value:** DKK (official sources use Danish Kroner)
+- **Source:** Danish Immigration Authorities (nyidanmark.dk)
+- **Recommendation:** Consider adding DKK values alongside EUR for accuracy
+- **Date Found:** 2025-12-30
 
 ### Estonia (EE)
 *Audit pending*

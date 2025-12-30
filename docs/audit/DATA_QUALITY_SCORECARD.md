@@ -14,7 +14,7 @@
 | **Consistency** | 96% | 95%+ |
 | **Overall** | 83% | 95%+ |
 
-*Based on 6/27 countries audited*
+*Based on 7/27 countries audited*
 
 ---
 
@@ -28,7 +28,7 @@
 | Croatia | HR | 70% | 85% | 95% | 78% | ⚠️ |
 | Cyprus | CY | 75% | 85% | 95% | 80% | ❌ |
 | Czech Republic | CZ | 65% | 85% | 95% | 75% | ❌ |
-| Denmark | DK | — | — | — | — | ⏳ |
+| Denmark | DK | 75% | 90% | 95% | 82% | ⚠️ |
 | Estonia | EE | — | — | — | — | ⏳ |
 | Finland | FI | — | — | — | — | ⏳ |
 | France | FR | — | — | — | — | ⏳ |
