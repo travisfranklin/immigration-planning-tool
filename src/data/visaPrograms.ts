@@ -409,29 +409,30 @@ export const FRANCE_PROGRAMS: VisaProgram[] = [
  */
 export const SPAIN_PROGRAMS: VisaProgram[] = [
   {
-    id: 'es_golden_visa',
+    id: 'es_eu_blue_card',
     countryCode: 'ES',
     countryName: 'Spain',
-    name: 'Golden Visa (Investor Visa)',
-    type: 'investor',
+    name: 'EU Blue Card',
+    type: 'work',
     requirements: {
-      minInvestment: 500000, // EUR in real estate OR 1M in Spanish assets
-      requiresJobOffer: false,
+      minSalary: 38844, // EUR per year (1.5x average gross annual salary)
+      minEducationLevel: 'bachelor',
+      requiresJobOffer: true,
     },
     weights: {
-      career: 0.05,
-      financial: 0.80,
-      education: 0.05,
-      language: 0.05,
+      career: 0.35,
+      financial: 0.25,
+      education: 0.25,
+      language: 0.10,
       family: 0.05,
     },
     processingTimeWeeks: 8,
     validityYears: 3,
     pathToPermanentResidency: true,
     pathToCitizenship: true,
-    description: 'For high net worth individuals making significant investment in Spain',
+    description: 'For highly skilled workers with a job offer and higher education',
     officialUrl: 'https://www.exteriores.gob.es/en/ServiciosAlCiudadano/Paginas/Visados.aspx',
-    notes: 'Fast track residency for investors',
+    notes: 'EU-wide mobility after 18 months; can move to another EU country',
   },
   {
     id: 'es_non_lucrative',
@@ -1724,7 +1725,7 @@ export const GREECE_PROGRAMS: VisaProgram[] = [
     name: 'Golden Visa (Investment)',
     type: 'investor',
     requirements: {
-      minInvestment: 250000, // EUR (real estate) - LOWEST in EU!
+      minInvestment: 400000, // EUR (real estate) - tiered system: €800k Athens/Thessaloniki/Islands, €400k other areas
       requiresJobOffer: false,
     },
     weights: {
@@ -1738,9 +1739,9 @@ export const GREECE_PROGRAMS: VisaProgram[] = [
     validityYears: 5,
     pathToPermanentResidency: true,
     pathToCitizenship: true,
-    description: 'Golden Visa through real estate investment of €250,000 (LOWEST in EU!) or €400,000 in certain areas. No minimum stay requirement!',
+    description: 'Golden Visa through real estate investment. Tiered system: €800,000 in Athens/Thessaloniki/popular islands, €400,000 in other areas. No minimum stay requirement!',
     officialUrl: 'https://www.goldenvisa.gr/',
-    notes: 'Lowest Golden Visa threshold in EU (€250k)! No minimum stay required. Family members included. Can rent out property. PR in 5 years, citizenship in 7 years. Access to Schengen area. Very popular program.',
+    notes: 'Tiered investment thresholds (2024): €800k for Athens/Thessaloniki/Mykonos/Santorini, €400k for other areas. No minimum stay required. Family members included. Can rent out property. PR in 5 years, citizenship in 7 years. Access to Schengen area.',
   },
   {
     id: 'gr_digital_nomad',
@@ -1944,9 +1945,9 @@ export const CYPRUS_PROGRAMS: VisaProgram[] = [
     validityYears: 1, // 1 year, renewable for 2 more years
     pathToPermanentResidency: false, // Does not lead to PR
     pathToCitizenship: false,
-    description: 'Digital Nomad Visa for remote workers earning €3,500/month. English-speaking, warm climate year-round.',
+    description: 'Digital Nomad Visa for remote workers earning €3,500/month. English-speaking, warm climate year-round. ⚠️ LIMITED TO 500 VISAS PER YEAR.',
     officialUrl: 'https://www.moi.gov.cy/moi/crmd/',
-    notes: 'Launched in 2021. Tax benefits. English is official language. Warm climate year-round. Good internet infrastructure. Does NOT lead to PR (temporary program). Renewable for up to 3 years total.',
+    notes: '⚠️ LIMITED TO 500 VISAS PER YEAR - apply early! Launched in 2021. Tax benefits. English is official language. Warm climate year-round. Good internet infrastructure. Does NOT lead to PR (temporary program). Renewable for up to 3 years total.',
   },
   {
     id: 'cy_family_reunification',
@@ -2248,7 +2249,7 @@ export const CZECH_PROGRAMS: VisaProgram[] = [
     name: 'EU Blue Card',
     type: 'work',
     requirements: {
-      minSalary: 21600, // EUR per year (CZK 45,000/month ~€1,800/month)
+      minSalary: 33240, // EUR per year (1.5x average gross annual salary)
       requiresJobOffer: true,
       requiresEducation: true,
     },
@@ -2641,7 +2642,7 @@ export const BULGARIA_PROGRAMS: VisaProgram[] = [
     name: 'EU Blue Card',
     type: 'work',
     requirements: {
-      minSalary: 18000, // EUR per year (BGN 3,000/month ~€1,500/month)
+      minSalary: 9933, // EUR per year (LOWEST in EU - 1.5x average gross annual salary)
       requiresJobOffer: true,
       requiresEducation: true,
     },
@@ -2656,9 +2657,9 @@ export const BULGARIA_PROGRAMS: VisaProgram[] = [
     validityYears: 3,
     pathToPermanentResidency: true,
     pathToCitizenship: true,
-    description: 'EU Blue Card for highly skilled workers with higher education degree. Sofia has growing tech scene. LOWEST cost of living in EU! 10% flat tax rate.',
+    description: 'EU Blue Card for highly skilled workers with higher education degree. LOWEST salary threshold in EU! Sofia has growing tech scene. LOWEST cost of living in EU! 10% flat tax rate.',
     officialUrl: 'https://www.mvr.bg/en/eu-blue-card',
-    notes: 'Sofia has growing tech scene. LOWEST cost of living in EU! 10% flat tax rate. Black Sea coast. Family can join. Can work throughout EU after 18 months. PR in 5 years, citizenship in 5 years.',
+    notes: 'LOWEST salary threshold in EU! Sofia has growing tech scene. LOWEST cost of living in EU! 10% flat tax rate. Black Sea coast. Family can join. Can work throughout EU after 18 months. PR in 5 years, citizenship in 5 years.',
   },
   {
     id: 'bg_work_permit',

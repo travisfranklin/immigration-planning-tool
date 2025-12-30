@@ -27,23 +27,23 @@ export const euBlueCard: FlowchartDefinition = buildFlowchart({
   mermaidDiagram: `
 flowchart TD
   Start([Start Process]) -->job-offer[Secure Job Offer]
-  job-offer --> Salary{"Salary >= EUR 1,800/month?"}
-  Salary -->|Yes| gather-documents[Gather Required Documents]
-  Salary -->|No| End1([Not Eligible])
+  job-offer --> salary{Salary >= EUR 33,240/year?}
+  salary -->|Yes| gather-documents[Gather Required Documents]
+  salary -->|No| End1([Not Eligible])
   gather-documents --> submit-application[Submit Application]
   submit-application --> processing[Wait for Processing]
-  processing --> Decision{Decision}
-  Decision -->|Approved| Visa[Receive Blue Card]
-  Decision -->|Rejected| End2([Process Ended])
-  Visa --> arrival[Travel to Czech Republic]
-  arrival --> Register[Register with Foreign Police]
-  Register --> Success([Process Complete])`,
+  processing --> decision{Decision}
+  decision -->|Approved| visa[Receive Blue Card]
+  decision -->|Rejected| End2([Process Ended])
+  visa --> travel[Travel to Czech Republic]
+  travel --> register[Register with Foreign Police]
+  register --> Success([Process Complete])`,
   steps: [
     {
       template: COMMON_STEP_IDS.JOB_OFFER,
       options: {
-        salaryThreshold: 21600,
-        additionalNotes: ['Prague is major tech hub', 'English widely spoken in tech companies', 'Same salary threshold as Poland, lower than Western Europe'],
+        salaryThreshold: 33240,
+        additionalNotes: ['Prague is major tech hub', 'English widely spoken in tech companies', '1.5x average gross annual salary'],
       },
     },
     {

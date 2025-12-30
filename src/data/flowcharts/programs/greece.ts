@@ -16,6 +16,7 @@ import { COMMON_STEP_IDS } from '../templates/types';
 
 /**
  * Golden Visa - Residence by Investment
+ * Updated with tiered investment thresholds effective 2024
  */
 export const goldenVisa: FlowchartDefinition = buildFlowchart({
   programId: 'gr_golden_visa',
@@ -26,10 +27,14 @@ export const goldenVisa: FlowchartDefinition = buildFlowchart({
   totalEstimatedDuration: '2-3 months',
   mermaidDiagram: `
 flowchart TD
-  Start([Start Process]) -->investment[Purchase Property EUR 250,000]
+  Start([Start Process]) -->region{Choose Region}
+  region -->|Athens/Thessaloniki/Islands| tier1[EUR 800,000 Investment]
+  region -->|Other Areas| tier2[EUR 400,000 Investment]
+  tier1 -->investment[Complete Property Purchase]
+  tier2 -->investment
   investment -->gather-documents[Gather Required Documents]
-  gather-documents -->submit[Submit Application]
-  submit -->processing[Wait for Processing]
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Golden Visa]
   decision -->|Rejected| End2([Process Ended])
@@ -38,12 +43,32 @@ flowchart TD
   register --> Success([Process Complete])`,
   steps: [
     {
+      id: 'region',
+      title: 'Choose Investment Region',
+      description: 'Select the region where you want to purchase property - thresholds vary by location',
+      estimatedDuration: '1-2 weeks',
+      documents: ['Property search documentation'],
+      isConditional: true,
+      condition: 'Investment threshold depends on region',
+      notes: [
+        'Tier 1 (EUR 800,000): Athens, Thessaloniki, Mykonos, Santorini, and other popular islands',
+        'Tier 2 (EUR 400,000): Other mainland areas and less popular islands',
+        'Thresholds increased significantly in 2024',
+        'Consider location carefully - affects both investment and lifestyle',
+      ],
+    },
+    {
       id: 'investment',
-      title: 'Purchase Property',
-      description: 'Purchase real estate property in Greece worth EUR 250,000 minimum',
+      title: 'Complete Property Purchase',
+      description: 'Purchase real estate property meeting the threshold for your chosen region',
       estimatedDuration: '1-2 months',
-      documents: ['Property deed', 'Sale agreement', 'Proof of payment (EUR 250,000)', 'Property valuation report'],
-      notes: ['Minimum EUR 250,000 investment in real estate', 'Mediterranean lifestyle', 'Popular areas: Athens, Thessaloniki, islands'],
+      documents: ['Property deed', 'Sale agreement', 'Proof of payment', 'Property valuation report'],
+      notes: [
+        'Athens/Thessaloniki/Popular Islands: EUR 800,000 minimum',
+        'Other areas: EUR 400,000 minimum',
+        'Mediterranean lifestyle',
+        'Property can be rented out for income',
+      ],
     },
     {
       template: COMMON_STEP_IDS.GATHER_DOCUMENTS,

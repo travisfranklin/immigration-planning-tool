@@ -161,25 +161,36 @@ export const ResultDetail: React.FC = () => {
 
   return (
     <Layout currentPage="results">
-      {/* Shared View Banner */}
+      {/* Shared View Banner with Legal Disclaimer */}
       {isSharedView && (
-        <div className="bg-warning border-t-4 border-b-4 border-black">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-black flex items-center justify-center flex-shrink-0">
-                <svg className="w-5 h-5 text-warning" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z" />
-                </svg>
-              </div>
-              <div>
-                <p className="font-bold text-black uppercase text-label">Shared View</p>
-                <p className="text-body-sm text-black">
-                  This result was shared with you. To save your own results, create a profile and calculate your viability scores.
-                </p>
+        <>
+          <div className="bg-warning border-t-4 border-b-4 border-black">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-black flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 text-warning" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="font-bold text-black uppercase text-label">Shared View</p>
+                  <p className="text-body-sm text-black">
+                    This result was shared with you. To save your own results, create a profile and calculate your viability scores.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+          <div className="bg-neutral-100 border-b-2 border-black">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+              <p className="text-body-sm text-neutral-700 text-center">
+                <strong className="font-semibold">⚠️ Not Legal Advice.</strong> This shared result is for informational purposes only and does not constitute legal or immigration advice.
+                Immigration requirements change frequently and vary by individual circumstances.
+                Always consult a qualified immigration attorney before making any decisions.
+              </p>
+            </div>
+          </div>
+        </>
       )}
 
       {/* Header Section - Bold, Editorial */}

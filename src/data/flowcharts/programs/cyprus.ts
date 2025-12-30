@@ -273,6 +273,7 @@ flowchart TD
 
 /**
  * Digital Nomad Visa - For remote workers
+ * Note: Limited to 500 visas per year - apply early!
  */
 export const digitalNomadVisa: FlowchartDefinition = buildFlowchart({
   programId: 'cy_digital_nomad',
@@ -283,24 +284,39 @@ export const digitalNomadVisa: FlowchartDefinition = buildFlowchart({
   totalEstimatedDuration: '1-2 months',
   mermaidDiagram: `
 flowchart TD
-  Start([Start Process]) -->remote{Work Remotely?}
+  Start([Start Process]) -->quota{Check Quota Availability}
+  quota -->|Available| remote{Work Remotely?}
+  quota -->|Quota Full| End1([Not Eligible - Try Next Year])
   remote -->|Yes| income{Income >= EUR 3,500/month?}
-  remote -->|No| End1([Not Eligible])
+  remote -->|No| End2([Not Eligible])
   income -->|Yes| gather-documents[Gather Required Documents]
-  income -->|No| End1
-  gather-documents -->submit[Submit Application]
-  submit -->processing[Wait for Processing]
+  income -->|No| End2
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Digital Nomad Visa]
-  decision -->|Rejected| End2([Process Ended])
+  decision -->|Rejected| End3([Process Ended])
   visa -->travel[Travel to Cyprus]
   travel -->register[Register with Civil Registry]
   register --> Success([Process Complete])`,
   steps: [
     {
+      id: 'quota',
+      title: 'Check Quota Availability',
+      description: 'Verify that visas are still available for the current year',
+      estimatedDuration: '1 day',
+      documents: [],
+      notes: [
+        '⚠️ LIMITED TO 500 VISAS PER YEAR',
+        'Apply early in the year for best chances',
+        'Check with Cyprus Civil Registry for current availability',
+        'Quota resets annually',
+      ],
+    },
+    {
       id: 'check-eligibility',
       title: 'Check Eligibility',
-      description: 'Verify remote work and income',
+      description: 'Verify remote work and income requirements',
       estimatedDuration: '1 week',
       documents: ['Employment contract', 'Proof of income'],
       notes: ['EUR 3,500/month minimum', 'Work for non-Cyprus company', 'Mediterranean lifestyle'],

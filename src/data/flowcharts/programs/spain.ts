@@ -3,11 +3,13 @@
  *
  * Built using the template-based composition system.
  * Spain has 5 main programs:
- * 1. Golden Visa (Investor Visa)
+ * 1. EU Blue Card (for highly skilled workers)
  * 2. Non-Lucrative Visa
  * 3. Digital Nomad Visa
  * 4. Highly Qualified Professional Visa
  * 5. Family Reunification
+ *
+ * Note: Golden Visa was abolished in April 2025 and has been removed.
  */
 
 import type { FlowchartDefinition } from '../../../types/flowchart';
@@ -15,90 +17,82 @@ import { buildFlowchart } from '../builders';
 import { COMMON_STEP_IDS } from '../templates/types';
 
 /**
- * Golden Visa (Investor Visa) - For significant investors
+ * EU Blue Card - For highly skilled workers
+ * Added to replace abolished Golden Visa program
  */
-export const goldenVisa: FlowchartDefinition = buildFlowchart({
-  programId: 'es_golden_visa',
+export const euBlueCard: FlowchartDefinition = buildFlowchart({
+  programId: 'es_eu_blue_card',
   countryCode: 'ES',
-  programName: 'Golden Visa (Investor Visa)',
+  programName: 'EU Blue Card',
   complexity: 'medium',
-  successRate: '95%',
+  successRate: '85%',
   totalEstimatedDuration: '2-4 months',
   mermaidDiagram: `
 flowchart TD
-  Start([Start Process]) -->investment-type[Choose Investment Type]
-  investment-type --> investment{Investment Complete?}
-  investment -->|Yes| gather-documents[Gather Required Documents]
-  investment -->|No| End1([Not Eligible])
-  gather-documents -->submit[Submit Application]
-  submit -->processing[Wait for Processing]
+  Start([Start Process]) -->job-offer[Secure Job Offer]
+  job-offer --> salary{Salary >= EUR 38,844/year?}
+  salary -->|Yes| education{Higher Education?}
+  salary -->|No| End1([Not Eligible])
+  education -->|Yes| gather-documents[Gather Required Documents]
+  education -->|No| End1
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
-  decision -->|Approved| permit[Receive Golden Visa]
+  decision -->|Approved| visa[Receive Blue Card]
   decision -->|Rejected| End2([Process Ended])
-  permit -->travel[Travel to Spain]
+  visa -->travel[Travel to Spain]
   travel -->register[Register with Authorities]
   register --> Success([Process Complete])`,
   steps: [
     {
-      id: 'investment-type',
-      title: 'Choose Investment Type',
-      description: 'Determine which investment option you will pursue',
-      estimatedDuration: '1 week',
-      documents: ['Financial statements', 'Investment plan'],
-      isConditional: true,
-      condition: 'Different requirements for each investment type',
-      notes: [
-        'Option 1: EUR 500,000 in Spanish real estate',
-        'Option 2: EUR 1,000,000 in Spanish company shares',
-        'Option 3: EUR 2,000,000 in Spanish government bonds',
-        'Option 4: EUR 1,000,000 in Spanish bank deposit',
-      ],
+      template: COMMON_STEP_IDS.JOB_OFFER,
+      options: {
+        salaryThreshold: 38844,
+        additionalNotes: [
+          'Salary must be at least 1.5x average gross annual salary',
+          'Job must match your qualifications',
+          'Contract must be for at least 1 year',
+        ],
+      },
     },
     {
-      id: 'property-purchase',
-      title: 'Complete Investment',
-      description: 'Complete real estate or financial investment',
-      estimatedDuration: '4-12 weeks',
-      documents: ['Property deed or investment certificates', 'Proof of payment', 'Valuation documents'],
-      isConditional: true,
-      condition: 'Depends on investment type chosen',
-      notes: [
-        'Real estate: Can be one or multiple properties totaling EUR 500k+',
-        'Property must be debt-free',
-        'Use Spanish lawyer (abogado) for purchase',
-        'Register in Land Registry',
-      ],
+      id: 'verify-education',
+      title: 'Verify Higher Education Requirement',
+      description: "Ensure you have a higher education degree (Bachelor's or higher)",
+      estimatedDuration: '1-2 weeks',
+      documents: ["University degree (Bachelor's, Master's, or PhD)", 'Diploma translation (if not in Spanish)', 'Diploma apostille (Hague Convention)'],
+      notes: ["Bachelor's degree minimum", "Master's or PhD preferred", 'Degree must be recognized in Spain or EU'],
     },
     {
       template: COMMON_STEP_IDS.GATHER_DOCUMENTS,
       options: {
-        includeFinancial: true,
-        additionalDocuments: ['Investment proof', 'NIE (foreigner ID number)', 'Criminal background check (apostilled)'],
+        includeEmployment: true,
+        additionalDocuments: ['University degree (apostilled)', 'NIE (foreigner ID number)', 'Criminal background check (apostilled)'],
         additionalNotes: ['All documents must be apostilled and translated to Spanish', 'FBI check takes 8-12 weeks'],
       },
     },
-    { template: COMMON_STEP_IDS.SUBMIT_APPLICATION, options: { applicationFee: 1065 } },
-    { template: COMMON_STEP_IDS.PROCESSING, options: { processingTime: '3-6 weeks' } },
+    { template: COMMON_STEP_IDS.SUBMIT_APPLICATION, options: { applicationFee: 73.26 } },
+    { template: COMMON_STEP_IDS.PROCESSING, options: { processingTime: '4-8 weeks' } },
     {
-      id: 'permit',
-      title: 'Receive Golden Visa',
-      description: 'Collect your Golden Visa residence permit',
+      id: 'visa',
+      title: 'Receive EU Blue Card',
+      description: 'Collect your EU Blue Card residence permit',
       estimatedDuration: '1-2 weeks',
       documents: ['Approval letter', 'Passport'],
       notes: [
-        'Initial visa valid for 2 years',
-        'Renewable for 5-year periods',
-        'No minimum stay required',
+        'Initial Blue Card valid for 3 years',
+        'Renewable',
+        'Can move to another EU country after 18 months',
         'Can apply for PR after 5 years',
-        'Family included',
+        'Family can join',
       ],
     },
-    { template: COMMON_STEP_IDS.TRAVEL, options: { visaType: 'Golden Visa' } },
+    { template: COMMON_STEP_IDS.TRAVEL, options: { visaType: 'EU Blue Card' } },
     {
       template: COMMON_STEP_IDS.REGISTRATION,
       options: {
         registrationAuthority: 'Oficina de Extranjería',
-        additionalNotes: ['Get TIE (residence card)', 'Register at Empadronamiento (town hall)', 'Open Spanish bank account'],
+        additionalNotes: ['Get TIE (residence card)', 'Register at Empadronamiento (town hall)', 'Register with Social Security'],
       },
     },
   ],
@@ -431,7 +425,7 @@ flowchart TD
  * Export all Spain flowcharts as a record for compatibility with existing system
  */
 export const spainFlowchartsNew: Record<string, FlowchartDefinition> = {
-  golden_visa: goldenVisa,
+  eu_blue_card: euBlueCard,
   non_lucrative: nonLucrativeVisa,
   digital_nomad: digitalNomadVisa,
   highly_qualified: highlyQualifiedVisa,
