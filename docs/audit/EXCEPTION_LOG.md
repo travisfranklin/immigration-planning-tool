@@ -10,10 +10,10 @@
 | Severity | Count |
 |----------|-------|
 | 🔴 Critical | 4 |
-| 🟠 High | 24 |
+| 🟠 High | 27 |
 | 🟡 Medium | 24 |
-| 🔵 Low | 33 |
-| **Total** | **85** |
+| 🔵 Low | 35 |
+| **Total** | **90** |
 
 ---
 
@@ -993,7 +993,61 @@
 - **Date Found:** 2025-12-30
 
 ### Netherlands (NL)
-*Audit pending*
+
+#### [NL-001] Highly Skilled Migrant Salary (30+)
+- **Country:** NL
+- **Program:** Highly Skilled Migrant (`nl_highly_skilled`)
+- **Severity:** 🟠 High
+- **Field:** salaryThreshold (30+)
+- **Current Value:** €60,360/year
+- **Expected Value:** €68,256/year (€5,688/month)
+- **Source:** https://ind.nl/en/required-amounts-income-requirements
+- **Recommendation:** Update salary threshold for 30+ to €68,256/year
+- **Date Found:** 2025-12-30
+
+#### [NL-002] Highly Skilled Migrant Salary (<30)
+- **Country:** NL
+- **Program:** Highly Skilled Migrant (`nl_highly_skilled`)
+- **Severity:** 🟠 High
+- **Field:** salaryThreshold (<30)
+- **Current Value:** €44,208/year
+- **Expected Value:** €49,680/year (€4,140/month)
+- **Source:** https://ind.nl/en/required-amounts-income-requirements
+- **Recommendation:** Update salary threshold for <30 to €49,680/year
+- **Date Found:** 2025-12-30
+
+#### [NL-003] Missing EU Blue Card Program
+- **Country:** NL
+- **Program:** EU Blue Card
+- **Severity:** 🟠 High
+- **Field:** Program Missing
+- **Current Value:** Not in system
+- **Expected Value:** EU Blue Card (€68,256/year, reduced €54,612/year)
+- **Source:** https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-netherlands_en
+- **Recommendation:** Add EU Blue Card program to Netherlands
+- **Date Found:** 2025-12-30
+
+#### [NL-004] IND Fee Schedule Reference
+- **Country:** NL
+- **Program:** All Programs
+- **Severity:** 🔵 Low
+- **Field:** fees
+- **Current Value:** General fee information
+- **Expected Value:** Reference 2025 IND fee schedule
+- **Source:** https://ind.nl/en/news/fees-and-required-amounts-for-2025-known
+- **Recommendation:** Add reference to 2025 IND fee schedule
+- **Date Found:** 2025-12-30
+
+#### [NL-005] Orientation Year Age Limit
+- **Country:** NL
+- **Program:** Orientation Year (`nl_orientation_year`)
+- **Severity:** 🔵 Low
+- **Field:** ageRequirement
+- **Current Value:** Under 30
+- **Expected Value:** Clarify age limit requirements
+- **Source:** IND guidelines
+- **Recommendation:** Clarify orientation year age requirements
+- **Date Found:** 2025-12-30
 
 ### Poland (PL)
 *Audit pending*

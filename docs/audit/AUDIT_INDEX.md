@@ -29,7 +29,7 @@
 | 17 | Lithuania | LT | `lithuania.ts` | ⚠️ Complete (Issues) | 2025-12-30 |
 | 18 | Luxembourg | LU | `luxembourg.ts` | ⚠️ Complete (Issues) | 2025-12-30 |
 | 19 | Malta | MT | `malta.ts` | ⚠️ Complete (Issues) | 2025-12-30 |
-| 20 | Netherlands | NL | `netherlands.ts` | ⏳ Pending | — |
+| 20 | Netherlands | NL | `netherlands.ts` | ⚠️ Complete (Issues) | 2025-12-30 |
 | 21 | Poland | PL | `poland.ts` | ⏳ Pending | — |
 | 22 | Portugal | PT | `portugal.ts` | ⏳ Pending | — |
 | 23 | Romania | RO | `romania.ts` | ⏳ Pending | — |
@@ -85,6 +85,7 @@ Individual country audit reports are stored in `docs/audit/countries/`:
 - [Lithuania](./countries/LT_LITHUANIA.md)
 - [Luxembourg](./countries/LU_LUXEMBOURG.md)
 - [Malta](./countries/MT_MALTA.md)
+- [Netherlands](./countries/NL_NETHERLANDS.md)
 
 ---
 
