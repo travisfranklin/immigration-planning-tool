@@ -13,7 +13,7 @@
 | 1 | Austria | AT | `austria.ts` | ⚠️ Complete (Issues) | 2025-12-30 |
 | 2 | Belgium | BE | `belgium.ts` | ⚠️ Complete (Issues) | 2025-12-30 |
 | 3 | Bulgaria | BG | `bulgaria.ts` | ❌ Critical Issues | 2025-12-30 |
-| 4 | Croatia | HR | `croatia.ts` | ⏳ Pending | — |
+| 4 | Croatia | HR | `croatia.ts` | ⚠️ Complete (Issues) | 2025-12-30 |
 | 5 | Cyprus | CY | `cyprus.ts` | ⏳ Pending | — |
 | 6 | Czech Republic | CZ | `czech-republic.ts` | ⏳ Pending | — |
 | 7 | Denmark | DK | `denmark.ts` | ⏳ Pending | — |

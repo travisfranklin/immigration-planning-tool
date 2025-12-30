@@ -10,10 +10,10 @@
 | Severity | Count |
 |----------|-------|
 | 🔴 Critical | 1 |
-| 🟠 High | 4 |
-| 🟡 Medium | 5 |
-| 🔵 Low | 4 |
-| **Total** | **14** |
+| 🟠 High | 7 |
+| 🟡 Medium | 6 |
+| 🔵 Low | 5 |
+| **Total** | **19** |
 
 ---
 
@@ -180,7 +180,61 @@
 - **Date Found:** 2025-12-30
 
 ### Croatia (HR)
-*Audit pending*
+
+#### [HR-001] EU Blue Card Salary Threshold Outdated
+- **Country:** HR
+- **Program:** EU Blue Card (`hr_eu_blue_card`)
+- **Severity:** 🟠 High
+- **Field:** salaryThreshold
+- **Current Value:** €21,600/year (€1,800/month)
+- **Expected Value:** €24,845.64/year (~€2,070.47/month) — 2025 threshold
+- **Source:** https://citizenremote.com/visas/croatia-eu-blue-card/
+- **Recommendation:** Update to €24,845.64/year — Croatia increased threshold by 17% for 2025
+- **Date Found:** 2025-12-30
+
+#### [HR-002] Digital Nomad Visa Income Threshold Outdated
+- **Country:** HR
+- **Program:** Digital Nomad Visa (`hr_digital_nomad`)
+- **Severity:** 🟠 High
+- **Field:** incomeThreshold
+- **Current Value:** €2,300/month
+- **Expected Value:** €3,295/month (2025)
+- **Source:** https://citizenremote.com/visas/croatia-digital-nomad-visa/
+- **Recommendation:** Update income threshold to €3,295/month
+- **Date Found:** 2025-12-30
+
+#### [HR-003] Digital Nomad Visa Duration Extended
+- **Country:** HR
+- **Program:** Digital Nomad Visa (`hr_digital_nomad`)
+- **Severity:** 🟠 High
+- **Field:** validity
+- **Current Value:** 1 year
+- **Expected Value:** 18 months (extended in 2025)
+- **Source:** https://citizenremote.com/visas/croatia-digital-nomad-visa/
+- **Recommendation:** Update validity to 18 months and add savings option (€59,310)
+- **Date Found:** 2025-12-30
+
+#### [HR-004] EU Blue Card Fee Structure Incomplete
+- **Country:** HR
+- **Program:** EU Blue Card (`hr_eu_blue_card`)
+- **Severity:** 🟡 Medium
+- **Field:** applicationFee
+- **Current Value:** €80
+- **Expected Value:** €74.32 (application) + €31.85 (biometric card) = ~€106 total
+- **Source:** https://citizenremote.com/visas/croatia-eu-blue-card/
+- **Recommendation:** Update fee to include biometric card cost
+- **Date Found:** 2025-12-30
+
+#### [HR-005] Digital Nomad Visa Fee Outdated
+- **Country:** HR
+- **Program:** Digital Nomad Visa (`hr_digital_nomad`)
+- **Severity:** 🔵 Low
+- **Field:** applicationFee
+- **Current Value:** €70
+- **Expected Value:** €100-150
+- **Source:** https://citizenremote.com/visas/croatia-digital-nomad-visa/
+- **Recommendation:** Update fee to €100-150 range
+- **Date Found:** 2025-12-30
 
 ### Cyprus (CY)
 *Audit pending*
