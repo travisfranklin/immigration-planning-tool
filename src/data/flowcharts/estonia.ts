@@ -642,6 +642,16 @@ flowchart TD
  notes: ['Operate from anywhere', 'Digital signatures for contracts', 'E-banking', 'E-tax filing', 'No physical presence required'],
  },
  {
+ id: 'Remote',
+ title: 'Continue Operating Remotely',
+ description: 'Maintain your business operations remotely without relocating',
+ estimatedDuration: 'Ongoing',
+ documents: ['E-Residency card', 'Estonian bank account', 'Digital signature certificate'],
+ notes: ['No need to relocate to Estonia', 'Fully digital operations', 'Access to EU market', 'Lowest company tax in EU (0% until profits distributed)', 'Can scale globally'],
+ isConditional: true,
+ condition: 'Choose to operate remotely instead of relocating',
+ },
+ {
  id: 'visa',
  title: 'Apply for Business Visa (Optional)',
  description: 'If you want to relocate to Estonia, apply for residence permit',

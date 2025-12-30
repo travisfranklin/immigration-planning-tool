@@ -632,7 +632,7 @@ flowchart TD
           },
           data: {
             label: "Apply for 30% Ruling",
-            stepId: "ruling",
+            stepId: "30-percent-ruling",
             nodeType: "process"
           }
         },
