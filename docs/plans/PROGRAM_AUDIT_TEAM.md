@@ -2,7 +2,14 @@
 
 ## Overview
 
-This document outlines the team structure, roles, and responsibilities required to conduct a comprehensive audit of all immigration program data and flowcharts within the system. The audit covers **27 EU country programs** with multiple visa categories per country, including work visas, skilled worker permits, EU Blue Cards, freelance visas, family reunification, digital nomad visas, golden visas, and more.
+This team will be responsible for verifying the accuracy of all program
+information against official government sources, ensuring data consistency, and
+identifying any gaps or errors in the system. This document outlines the structure, roles, and
+responsibilities required to conduct a comprehensive audit of all immigration
+program data and flowcharts within the system. The audit covers **27 EU country
+programs** with multiple visa categories per country, including work visas,
+skilled worker permits, EU Blue Cards, freelance visas, family reunification,
+digital nomad visas, golden visas, and more.
 
 ---
 
@@ -134,28 +141,17 @@ This document outlines the team structure, roles, and responsibilities required 
 
 ---
 
-## Estimated Timeline
+## Phases of The Audit
 
-| Phase | Duration | Activities |
-|-------|----------|------------|
-| Planning | 1 week | Define scope, assign countries, gather source materials |
-| Data Collection | 2 weeks | Pull official government sources for all programs |
-| Verification | 3–4 weeks | Cross-reference program data against sources |
-| Technical Review | 1 week | Validate flowcharts, templates, and code structure |
-| Content Review | 1 week | UX and clarity review of all user-facing text |
-| Legal Review | 1 week | Compliance and liability review |
-| Reporting | 1 week | Compile findings, generate reports, present to stakeholders |
-
-**Total Estimated Duration:** 10–12 weeks
-
----
-
-## Budget Considerations
-
-- Immigration specialists may require country-specific consultants
-- Legal review may be billed hourly
-- Consider automated validation tooling to reduce manual effort
-- Translation services may be needed for non-English source materials
+| Phase | Activities |
+|-------|------------|
+| Planning | Define scope, assign countries, gather source materials |
+| Data Collection | Pull official government sources for all programs |
+| Verification | Cross-reference program data against sources |
+| Technical Review | Validate flowcharts, templates, and code structure |
+| Content Review | UX and clarity review of all user-facing text |
+| Legal Review | Compliance and liability review |
+| Reporting | Compile findings, generate reports, present to stakeholders |
 
 ---
 
@@ -166,4 +162,3 @@ This document outlines the team structure, roles, and responsibilities required 
 - Data quality score of 95%+ achieved
 - Legal sign-off obtained
 - Audit report approved by business leadership
-
