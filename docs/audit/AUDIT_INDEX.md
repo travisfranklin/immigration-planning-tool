@@ -1,8 +1,8 @@
 # Immigration Program Audit Index
 
-**Audit Start Date:** 2025-12-30  
-**Audit Lead:** Program Audit Team  
-**Status:** Phase 1 - Planning
+**Audit Start Date:** 2025-12-30
+**Audit Lead:** Program Audit Team
+**Status:** Phase 2 - Data Collection & Verification
 
 ---
 
@@ -10,7 +10,7 @@
 
 | # | Country | Code | File | Status | Audit Date |
 |---|---------|------|------|--------|------------|
-| 1 | Austria | AT | `austria.ts` | ⏳ Pending | — |
+| 1 | Austria | AT | `austria.ts` | ⚠️ Complete (Issues) | 2025-12-30 |
 | 2 | Belgium | BE | `belgium.ts` | ⏳ Pending | — |
 | 3 | Bulgaria | BG | `bulgaria.ts` | ⏳ Pending | — |
 | 4 | Croatia | HR | `croatia.ts` | ⏳ Pending | — |
@@ -44,8 +44,8 @@
 
 | Phase | Status | Start Date | End Date |
 |-------|--------|------------|----------|
-| Planning | 🔄 In Progress | 2025-12-30 | — |
-| Data Collection | ⏳ Pending | — | — |
+| Planning | ✅ Complete | 2025-12-30 | 2025-12-30 |
+| Data Collection | 🔄 In Progress | 2025-12-30 | — |
 | Verification | ⏳ Pending | — | — |
 | Technical Review | ⏳ Pending | — | — |
 | Content Review | ⏳ Pending | — | — |

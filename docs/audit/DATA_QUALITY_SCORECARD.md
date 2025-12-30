@@ -1,7 +1,7 @@
 # Data Quality Scorecard
 
-**Last Updated:** 2025-12-30  
-**Audit Phase:** Planning
+**Last Updated:** 2025-12-30
+**Audit Phase:** Data Collection & Verification
 
 ---
 
@@ -9,10 +9,12 @@
 
 | Metric | Score | Target |
 |--------|-------|--------|
-| **Accuracy** | — | 95%+ |
-| **Completeness** | — | 95%+ |
-| **Consistency** | — | 95%+ |
-| **Overall** | — | 95%+ |
+| **Accuracy** | 85% | 95%+ |
+| **Completeness** | 90% | 95%+ |
+| **Consistency** | 100% | 95%+ |
+| **Overall** | 92% | 95%+ |
+
+*Based on 1/27 countries audited*
 
 ---
 
@@ -20,7 +22,7 @@
 
 | Country | Code | Accuracy | Completeness | Consistency | Overall | Status |
 |---------|------|----------|--------------|-------------|---------|--------|
-| Austria | AT | — | — | — | — | ⏳ |
+| Austria | AT | 85% | 90% | 100% | 92% | ⚠️ |
 | Belgium | BE | — | — | — | — | ⏳ |
 | Bulgaria | BG | — | — | — | — | ⏳ |
 | Croatia | HR | — | — | — | — | ⏳ |

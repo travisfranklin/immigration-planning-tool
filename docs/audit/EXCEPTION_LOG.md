@@ -1,7 +1,7 @@
 # Exception Log
 
-**Last Updated:** 2025-12-30  
-**Audit Phase:** Planning
+**Last Updated:** 2025-12-30
+**Audit Phase:** Data Collection & Verification
 
 ---
 
@@ -10,17 +10,82 @@
 | Severity | Count |
 |----------|-------|
 | 🔴 Critical | 0 |
-| 🟠 High | 0 |
-| 🟡 Medium | 0 |
-| 🔵 Low | 0 |
-| **Total** | **0** |
+| 🟠 High | 2 |
+| 🟡 Medium | 3 |
+| 🔵 Low | 1 |
+| **Total** | **6** |
 
 ---
 
 ## Exceptions by Country
 
 ### Austria (AT)
-*Audit pending*
+
+#### [AT-001] Fee Structures Simplified/Incorrect
+- **Country:** AT
+- **Program:** All Programs
+- **Severity:** 🟡 Medium
+- **Field:** applicationFee
+- **Current Value:** €180 (all programs)
+- **Expected Value:** EU Blue Card: €202 (€156+€26+€20), Startup/Self-Employed: €160 (€120+€20+€20), Family: €120 (€80+€20+€20)
+- **Source:** https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/
+- **Recommendation:** Update fee values or add note explaining total cost breakdown
+- **Date Found:** 2025-12-30
+
+#### [AT-002] Startup Visa Capital Requirement Incorrect
+- **Country:** AT
+- **Program:** Startup Visa (`at_startup`)
+- **Severity:** 🟠 High
+- **Field:** funding (step)
+- **Current Value:** €50,000 minimum funding required
+- **Expected Value:** €30,000 minimum capital with 50% equity share. €50,000 is for BONUS POINTS (additional investment capital)
+- **Source:** https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/start-up-founders/
+- **Recommendation:** Change funding requirement to €30,000 and add note about €50,000 bonus points
+- **Date Found:** 2025-12-30
+
+#### [AT-003] Self-Employment Visa Capital Requirement Incorrect
+- **Country:** AT
+- **Program:** Self-Employment Visa (`at_self_employed`)
+- **Severity:** 🟠 High
+- **Field:** capital (step)
+- **Current Value:** €30,000 minimum capital
+- **Expected Value:** €100,000 minimum investment transfer (or job creation/know-how transfer)
+- **Source:** https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/self-employed-key-workers/
+- **Recommendation:** Update capital requirement to €100,000 and clarify macroeconomic benefit alternatives
+- **Date Found:** 2025-12-30
+
+#### [AT-004] Startup Visa Missing Points System
+- **Country:** AT
+- **Program:** Startup Visa (`at_startup`)
+- **Severity:** 🟡 Medium
+- **Field:** eligibility criteria
+- **Current Value:** No points system mentioned
+- **Expected Value:** 50 points minimum required (education, work experience, language, bonus points)
+- **Source:** https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/start-up-founders/
+- **Recommendation:** Add points calculation step similar to Red-White-Red Card
+- **Date Found:** 2025-12-30
+
+#### [AT-005] Family Reunification Missing German A1 Requirement
+- **Country:** AT
+- **Program:** Family Reunification (`at_family_reunification`)
+- **Severity:** 🟡 Medium
+- **Field:** language requirement
+- **Current Value:** Not specified
+- **Expected Value:** German A1 level required for most family members
+- **Source:** https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/family-reunification/
+- **Recommendation:** Add German A1 requirement step with exemptions noted
+- **Date Found:** 2025-12-30
+
+#### [AT-006] Family Reunification Missing Specific Income Thresholds
+- **Country:** AT
+- **Program:** Family Reunification (`at_family_reunification`)
+- **Severity:** 🔵 Low
+- **Field:** income requirement
+- **Current Value:** "Above minimum threshold"
+- **Expected Value:** €1,273.99 single / €2,009.85 couple + €196.57/child (2025 rates)
+- **Source:** https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/family-reunification/
+- **Recommendation:** Add specific 2025 income thresholds to notes
+- **Date Found:** 2025-12-30
 
 ### Belgium (BE)
 *Audit pending*
