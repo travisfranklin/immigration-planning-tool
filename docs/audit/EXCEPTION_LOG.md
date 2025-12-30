@@ -9,11 +9,11 @@
 
 | Severity | Count |
 |----------|-------|
-| 🔴 Critical | 0 |
+| 🔴 Critical | 1 |
 | 🟠 High | 4 |
 | 🟡 Medium | 5 |
-| 🔵 Low | 2 |
-| **Total** | **11** |
+| 🔵 Low | 4 |
+| **Total** | **14** |
 
 ---
 
@@ -145,7 +145,39 @@
 - **Date Found:** 2025-12-30
 
 ### Bulgaria (BG)
-*Audit pending*
+
+#### [BG-001] EU Blue Card Salary Threshold Critically Outdated
+- **Country:** BG
+- **Program:** EU Blue Card (`bg_eu_blue_card`)
+- **Severity:** 🔴 Critical
+- **Field:** salaryThreshold
+- **Current Value:** €18,000/year
+- **Expected Value:** €9,933/year (2025) — reduced from €21,132 in 2024
+- **Source:** https://www.gisma.com/blog/blue-card-regulations-2025-these-are-the-different-salary-requirements-for-skilled-migrant-workers-in-eu-countries
+- **Recommendation:** Update to €9,933 — Bulgaria now has the LOWEST Blue Card threshold in the EU (113% reduction)
+- **Date Found:** 2025-12-30
+
+#### [BG-002] Self-Employment Capital Requirement Unverified
+- **Country:** BG
+- **Program:** Self-Employment Visa (`bg_self_employment`)
+- **Severity:** 🔵 Low
+- **Field:** capital
+- **Current Value:** €30,000
+- **Expected Value:** Not officially specified; €30,000 is reasonable estimate
+- **Source:** Bulgarian Ministry of Foreign Affairs
+- **Recommendation:** Verify against official Bulgarian government source or add disclaimer
+- **Date Found:** 2025-12-30
+
+#### [BG-003] Family Reunification Missing Specific Income Thresholds
+- **Country:** BG
+- **Program:** Family Reunification (`bg_family_reunification`)
+- **Severity:** 🔵 Low
+- **Field:** incomeThreshold
+- **Current Value:** "Above minimum threshold"
+- **Expected Value:** Specific income thresholds by family size
+- **Source:** Bulgarian Ministry of Foreign Affairs
+- **Recommendation:** Add specific income thresholds for different family compositions
+- **Date Found:** 2025-12-30
 
 ### Croatia (HR)
 *Audit pending*

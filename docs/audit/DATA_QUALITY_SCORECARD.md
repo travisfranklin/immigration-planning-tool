@@ -9,12 +9,12 @@
 
 | Metric | Score | Target |
 |--------|-------|--------|
-| **Accuracy** | 84% | 95%+ |
+| **Accuracy** | 81% | 95%+ |
 | **Completeness** | 89% | 95%+ |
-| **Consistency** | 98% | 95%+ |
-| **Overall** | 90% | 95%+ |
+| **Consistency** | 97% | 95%+ |
+| **Overall** | 87% | 95%+ |
 
-*Based on 2/27 countries audited*
+*Based on 3/27 countries audited*
 
 ---
 
@@ -24,7 +24,7 @@
 |---------|------|----------|--------------|-------------|---------|--------|
 | Austria | AT | 85% | 90% | 100% | 92% | ⚠️ |
 | Belgium | BE | 82% | 88% | 95% | 88% | ⚠️ |
-| Bulgaria | BG | — | — | — | — | ⏳ |
+| Bulgaria | BG | 75% | 88% | 95% | 82% | ❌ |
 | Croatia | HR | — | — | — | — | ⏳ |
 | Cyprus | CY | — | — | — | — | ⏳ |
 | Czech Republic | CZ | — | — | — | — | ⏳ |
