@@ -9,11 +9,11 @@
 
 | Severity | Count |
 |----------|-------|
-| 🔴 Critical | 6 |
-| 🟠 High | 36 |
-| 🟡 Medium | 35 |
+| 🔴 Critical | 7 |
+| 🟠 High | 38 |
+| 🟡 Medium | 36 |
 | 🔵 Low | 49 |
-| **Total** | **126** |
+| **Total** | **130** |
 
 ---
 
@@ -1461,6 +1461,49 @@
 
 ---
 
+## Technical Review Exceptions
+
+### [TECH-001] Flowchart Node-Step ID Mismatch (131 Programs)
+
+- **Severity:** 🔴 Critical
+- **Component:** Flowchart Definitions
+- **Current Value:** 131 flowcharts have Mermaid node IDs that don't match step definitions
+- **Expected Value:** All Mermaid node IDs should have corresponding step definitions
+- **Impact:** Broken click handlers, missing step details, inconsistent UX
+- **Recommendation:** Update Mermaid diagrams to use existing step IDs (submit→submit-application, register→registration)
+- **Date Found:** 2025-12-30
+
+### [TECH-002] PascalCase Node IDs (7 Countries)
+
+- **Severity:** 🟠 High
+- **Component:** Flowchart Mermaid Diagrams
+- **Countries Affected:** AT, BE, LU, SE, DK, FI, IE
+- **Current Value:** Node IDs use PascalCase (Visa, Register, Permit, Category)
+- **Expected Value:** All node IDs should use kebab-case (visa, register, permit, category)
+- **Recommendation:** Convert all PascalCase node IDs to kebab-case
+- **Date Found:** 2025-12-30
+
+### [TECH-003] ScoreDisplay Color Constant Mismatch (5 Tests)
+
+- **Severity:** 🟠 High
+- **Component:** ScoreDisplay Component Tests
+- **Current Value:** Tests expect `text-primary`, `text-success`, `text-warning`
+- **Expected Value:** Component uses `text-success-dark`, `text-primary-dark`, `text-warning-dark`
+- **Recommendation:** Update test expectations to match current color scheme
+- **Date Found:** 2025-12-30
+
+### [TECH-004] Program Matcher Timeline Calculation
+
+- **Severity:** 🟡 Medium
+- **Component:** Program Matcher Service Tests
+- **Test:** `should calculate alignsWithTimeline correctly`
+- **Current Value:** Test expects `true`, receives `false`
+- **Expected Value:** Timeline calculation should match test expectations
+- **Recommendation:** Review timeline calculation logic and update test or implementation
+- **Date Found:** 2025-12-30
+
+---
+
 ## Exception Template
 
 When logging exceptions, use the following format:
@@ -1477,4 +1520,3 @@ When logging exceptions, use the following format:
 - **Recommendation:** Suggested fix
 - **Date Found:** YYYY-MM-DD
 ```
-
