@@ -10,10 +10,10 @@
 | Severity | Count |
 |----------|-------|
 | 🔴 Critical | 4 |
-| 🟠 High | 29 |
-| 🟡 Medium | 25 |
-| 🔵 Low | 37 |
-| **Total** | **95** |
+| 🟠 High | 31 |
+| 🟡 Medium | 26 |
+| 🔵 Low | 39 |
+| **Total** | **100** |
 
 ---
 
@@ -1107,7 +1107,61 @@
 - **Date Found:** 2025-12-30
 
 ### Portugal (PT)
-*Audit pending*
+
+#### [PT-001] Missing EU Blue Card Program
+- **Country:** PT
+- **Program:** EU Blue Card
+- **Severity:** 🟠 High
+- **Field:** Program Missing
+- **Current Value:** Not in system
+- **Expected Value:** EU Blue Card (€21,030/year threshold)
+- **Source:** https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-portugal_en
+- **Recommendation:** Add EU Blue Card program to Portugal
+- **Date Found:** 2025-12-30
+
+#### [PT-002] Missing Digital Nomad (D8) Visa
+- **Country:** PT
+- **Program:** Digital Nomad Visa (D8)
+- **Severity:** 🟠 High
+- **Field:** Program Missing
+- **Current Value:** Not in system
+- **Expected Value:** D8 visa (€3,480/month income, €36,480 savings)
+- **Source:** https://getgoldenvisa.com/portugal-digital-nomad-visa
+- **Recommendation:** Add Digital Nomad D8 visa to Portugal
+- **Date Found:** 2025-12-30
+
+#### [PT-003] Golden Visa Real Estate Restrictions
+- **Country:** PT
+- **Program:** Golden Visa (`pt_golden_visa`)
+- **Severity:** 🟡 Medium
+- **Field:** notes
+- **Current Value:** General real estate options
+- **Expected Value:** Add Lisbon/Porto real estate restrictions
+- **Source:** Official Portuguese government sources
+- **Recommendation:** Add Golden Visa real estate restrictions
+- **Date Found:** 2025-12-30
+
+#### [PT-004] SEF to AIMA Reference
+- **Country:** PT
+- **Program:** All Programs
+- **Severity:** 🔵 Low
+- **Field:** registrationAuthority
+- **Current Value:** SEF (Immigration Service)
+- **Expected Value:** AIMA (new agency name)
+- **Source:** Official Portuguese government sources
+- **Recommendation:** Update SEF references to AIMA
+- **Date Found:** 2025-12-30
+
+#### [PT-005] NHR Tax Regime Changes
+- **Country:** PT
+- **Program:** D7 Visa (`pt_d7_visa`)
+- **Severity:** 🔵 Low
+- **Field:** notes
+- **Current Value:** NHR tax regime may apply
+- **Expected Value:** Add NHR tax regime changes/end date
+- **Source:** Official Portuguese government sources
+- **Recommendation:** Add NHR tax regime changes
+- **Date Found:** 2025-12-30
 
 ### Romania (RO)
 *Audit pending*
