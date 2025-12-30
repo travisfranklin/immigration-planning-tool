@@ -1,0 +1,83 @@
+# Immigration Program Audit Index
+
+**Audit Start Date:** 2025-12-30  
+**Audit Lead:** Program Audit Team  
+**Status:** Phase 1 - Planning
+
+---
+
+## Countries to Audit (Alphabetical Order)
+
+| # | Country | Code | File | Status | Audit Date |
+|---|---------|------|------|--------|------------|
+| 1 | Austria | AT | `austria.ts` | ⏳ Pending | — |
+| 2 | Belgium | BE | `belgium.ts` | ⏳ Pending | — |
+| 3 | Bulgaria | BG | `bulgaria.ts` | ⏳ Pending | — |
+| 4 | Croatia | HR | `croatia.ts` | ⏳ Pending | — |
+| 5 | Cyprus | CY | `cyprus.ts` | ⏳ Pending | — |
+| 6 | Czech Republic | CZ | `czech-republic.ts` | ⏳ Pending | — |
+| 7 | Denmark | DK | `denmark.ts` | ⏳ Pending | — |
+| 8 | Estonia | EE | `estonia.ts` | ⏳ Pending | — |
+| 9 | Finland | FI | `finland.ts` | ⏳ Pending | — |
+| 10 | France | FR | `france.ts` | ⏳ Pending | — |
+| 11 | Germany | DE | `germany.ts` | ⏳ Pending | — |
+| 12 | Greece | GR | `greece.ts` | ⏳ Pending | — |
+| 13 | Hungary | HU | `hungary.ts` | ⏳ Pending | — |
+| 14 | Ireland | IE | `ireland.ts` | ⏳ Pending | — |
+| 15 | Italy | IT | `italy.ts` | ⏳ Pending | — |
+| 16 | Latvia | LV | `latvia.ts` | ⏳ Pending | — |
+| 17 | Lithuania | LT | `lithuania.ts` | ⏳ Pending | — |
+| 18 | Luxembourg | LU | `luxembourg.ts` | ⏳ Pending | — |
+| 19 | Malta | MT | `malta.ts` | ⏳ Pending | — |
+| 20 | Netherlands | NL | `netherlands.ts` | ⏳ Pending | — |
+| 21 | Poland | PL | `poland.ts` | ⏳ Pending | — |
+| 22 | Portugal | PT | `portugal.ts` | ⏳ Pending | — |
+| 23 | Romania | RO | `romania.ts` | ⏳ Pending | — |
+| 24 | Slovakia | SK | `slovakia.ts` | ⏳ Pending | — |
+| 25 | Slovenia | SI | `slovenia.ts` | ⏳ Pending | — |
+| 26 | Spain | ES | `spain.ts` | ⏳ Pending | — |
+| 27 | Sweden | SE | `sweden.ts` | ⏳ Pending | — |
+
+---
+
+## Audit Phases
+
+| Phase | Status | Start Date | End Date |
+|-------|--------|------------|----------|
+| Planning | 🔄 In Progress | 2025-12-30 | — |
+| Data Collection | ⏳ Pending | — | — |
+| Verification | ⏳ Pending | — | — |
+| Technical Review | ⏳ Pending | — | — |
+| Content Review | ⏳ Pending | — | — |
+| Legal Review | ⏳ Pending | — | — |
+| Reporting | ⏳ Pending | — | — |
+
+---
+
+## Quick Links
+
+- [Audit Team Roles](../plans/PROGRAM_AUDIT_TEAM.md)
+- [Exception Log](./EXCEPTION_LOG.md)
+- [Data Quality Scorecard](./DATA_QUALITY_SCORECARD.md)
+
+---
+
+## Country Audit Reports
+
+Individual country audit reports are stored in `docs/audit/countries/`:
+
+- [Austria](./countries/AT_AUSTRIA.md)
+- (Additional countries added as audits complete)
+
+---
+
+## Legend
+
+| Symbol | Meaning |
+|--------|---------|
+| ⏳ | Pending |
+| 🔄 | In Progress |
+| ✅ | Complete |
+| ⚠️ | Issues Found |
+| ❌ | Critical Issues |
+
