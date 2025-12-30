@@ -10,10 +10,10 @@
 | Severity | Count |
 |----------|-------|
 | 🔴 Critical | 4 |
-| 🟠 High | 27 |
-| 🟡 Medium | 24 |
-| 🔵 Low | 35 |
-| **Total** | **90** |
+| 🟠 High | 29 |
+| 🟡 Medium | 25 |
+| 🔵 Low | 37 |
+| **Total** | **95** |
 
 ---
 
@@ -1050,7 +1050,61 @@
 - **Date Found:** 2025-12-30
 
 ### Poland (PL)
-*Audit pending*
+
+#### [PL-001] EU Blue Card Salary Threshold
+- **Country:** PL
+- **Program:** EU Blue Card (`pl_eu_blue_card`)
+- **Severity:** 🟠 High
+- **Field:** salaryThreshold
+- **Current Value:** PLN 96,000/year (PLN 8,000/month)
+- **Expected Value:** PLN 114,231/year (PLN 9,519.23/month)
+- **Source:** https://crido.pl/en/blog-taxes/the-minimum-salary-threshold-for-blue-card-applicants-in-poland-in-2025-increases/
+- **Recommendation:** Update Blue Card salary to PLN 114,231/year
+- **Date Found:** 2025-12-30
+
+#### [PL-002] Application Fee Increase
+- **Country:** PL
+- **Program:** All Programs
+- **Severity:** 🟠 High
+- **Field:** applicationFee
+- **Current Value:** PLN 440
+- **Expected Value:** Fees quadrupled per Dec 2025 update
+- **Source:** https://www.visahq.com/news/2025-12-03/pl/work-permit-fees-quadruple-as-poland-harmonises-documentary-check-lists/
+- **Recommendation:** Update application fees per Dec 2025 schedule
+- **Date Found:** 2025-12-30
+
+#### [PL-003] Work Permit Salary Clarification
+- **Country:** PL
+- **Program:** Work Permit (`pl_work_permit`)
+- **Severity:** 🟡 Medium
+- **Field:** salaryThreshold
+- **Current Value:** PLN 36,000/year
+- **Expected Value:** Market rate (no fixed minimum)
+- **Source:** EU Immigration Portal
+- **Recommendation:** Clarify work permit salary requirements
+- **Date Found:** 2025-12-30
+
+#### [PL-004] Business Harbour Program Status
+- **Country:** PL
+- **Program:** Business Harbour (`pl_business_harbour`)
+- **Severity:** 🔵 Low
+- **Field:** notes
+- **Current Value:** General description
+- **Expected Value:** Add program status note
+- **Source:** Official Polish government sources
+- **Recommendation:** Add Business Harbour program status note
+- **Date Found:** 2025-12-30
+
+#### [PL-005] Voivodeship Processing Variations
+- **Country:** PL
+- **Program:** All Programs
+- **Severity:** 🔵 Low
+- **Field:** processingTime
+- **Current Value:** General processing times
+- **Expected Value:** Add Voivodeship-specific variations
+- **Source:** Official Polish government sources
+- **Recommendation:** Add Voivodeship processing time variations
+- **Date Found:** 2025-12-30
 
 ### Portugal (PT)
 *Audit pending*
