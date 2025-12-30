@@ -506,7 +506,7 @@ flowchart TD
  id: 'work-permit',
  title: 'Apply for Work Permit',
  description: 'Employer applies for work permit (Permis de Travail)',
- estimatedDuration: '4-6 weeks',
+ estimatedDuration: '1 week',
  documents: [
  'All gathered documents',
  'Employer application form',
@@ -521,10 +521,24 @@ flowchart TD
  ],
  },
  {
+ id: 'WaitPermit',
+ title: 'Wait for Work Permit Processing',
+ description: 'Wait for regional authority to process work permit application',
+ estimatedDuration: '4-6 weeks',
+ documents: [],
+ notes: [
+ 'Processing time varies by region',
+ 'Brussels typically fastest (4 weeks)',
+ 'Flanders and Wallonia may take up to 6 weeks',
+ 'May be contacted for additional information',
+ 'Employer receives notification of decision',
+ ],
+ },
+ {
  id: 'visa-application',
  title: 'Apply for Visa',
  description: 'Apply for long-stay visa (Type D)',
- estimatedDuration: '4-6 weeks',
+ estimatedDuration: '1 week',
  documents: [
  'Approved work permit',
  'Passport',
@@ -537,6 +551,20 @@ flowchart TD
  'Apply at Belgian embassy/consulate in home country',
  'Book appointment in advance',
  'Bring original documents',
+ ],
+ },
+ {
+ id: 'WaitVisa',
+ title: 'Wait for Visa Processing',
+ description: 'Wait for Belgian embassy/consulate to process visa application',
+ estimatedDuration: '4-6 weeks',
+ documents: [],
+ notes: [
+ 'Processing time varies by embassy',
+ 'Typically 4-6 weeks',
+ 'May be called for interview',
+ 'Passport will be held during processing',
+ 'Track application status online if available',
  ],
  },
  {

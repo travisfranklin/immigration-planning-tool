@@ -405,6 +405,22 @@ flowchart TD
  'No need to return home',
  ],
  },
+ {
+ id: 'Return',
+ title: 'Return Home',
+ description: 'If unable to find employment, return to home country before visa expires',
+ estimatedDuration: '1-2 weeks',
+ documents: [
+ 'Valid passport',
+ 'Travel arrangements',
+ ],
+ notes: [
+ 'Must leave Germany before visa expires',
+ 'Can reapply for job seeker visa after returning',
+ 'Consider applying for other visa types if eligible',
+ 'Ensure all obligations are settled before departure',
+ ],
+ },
  ],
  },
 
