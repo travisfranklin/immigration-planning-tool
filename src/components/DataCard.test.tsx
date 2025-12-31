@@ -51,9 +51,9 @@ describe('DataCard', () => {
 
     it('should apply success variant classes', () => {
       const { container } = render(<DataCard title="Score" value={70} variant="success" />);
-      
+
       const card = container.firstChild as HTMLElement;
-      expect(card).toHaveClass('border-success');
+      expect(card).toHaveClass('border-success-dark');
     });
 
     it('should apply warning variant classes', () => {

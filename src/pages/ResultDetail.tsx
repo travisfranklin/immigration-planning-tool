@@ -312,8 +312,6 @@ export const ResultDetail: React.FC = () => {
           {/* Score Breakdown */}
           <ScoreBreakdown componentScores={selectedScore.componentScores} />
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            
-
             {/* Risk Factors */}
             <RiskFactorsList
               riskFactors={selectedScore.riskFactors}

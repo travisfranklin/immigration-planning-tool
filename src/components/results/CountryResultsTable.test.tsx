@@ -253,8 +253,8 @@ describe('CountryResultsTable', () => {
       );
 
       // Score 85 (>=80) uses 'success' variant via getDataCardVariant
-      // DataCard applies 'text-success' class for success variant
-      const successElements = container.querySelectorAll('.text-success');
+      // DataCard applies 'text-success-dark' class for success variant
+      const successElements = container.querySelectorAll('.text-success-dark');
       expect(successElements.length).toBeGreaterThan(0);
     });
   });

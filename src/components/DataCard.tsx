@@ -43,7 +43,7 @@ function getVariantClasses(variant: DataCardProps['variant']): string {
       return 'text-primary border-primary';
     case 'success':
       // Aquamarine - Positive feedback, good scores
-      return 'text-success border-success';
+      return 'text-success-dark border-success-dark';
     case 'warning':
       // Orange Peel - Warnings, medium scores
       return 'text-warning border-warning';
