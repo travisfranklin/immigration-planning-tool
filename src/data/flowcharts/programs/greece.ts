@@ -359,6 +359,87 @@ flowchart TD
 });
 
 /**
+ * EU Blue Card - For highly skilled workers
+ * Added in Phase 3 data quality improvements
+ */
+export const euBlueCard: FlowchartDefinition = buildFlowchart({
+  programId: 'gr_eu_blue_card',
+  countryCode: 'GR',
+  programName: 'EU Blue Card',
+  complexity: 'medium',
+  successRate: '80%',
+  totalEstimatedDuration: '2-3 months',
+  mermaidDiagram: `
+flowchart TD
+  Start([Start Process]) -->job-offer[Secure Job Offer]
+  job-offer -->salary{Salary >= EUR 31,919/year?}
+  salary -->|Yes| gather-documents[Gather Required Documents]
+  salary -->|No| End1([Not Eligible])
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Wait for Processing]
+  processing --> decision{Decision}
+  decision -->|Approved| visa[Receive EU Blue Card]
+  decision -->|Rejected| End2([Process Ended])
+  visa -->travel[Travel to Greece]
+  travel -->registration[Register with Authorities]
+  registration --> Success([Process Complete])`,
+  steps: [
+    {
+      template: COMMON_STEP_IDS.JOB_OFFER,
+      options: {
+        salaryThreshold: 31919,
+        additionalNotes: [
+          'Must have university degree or 5+ years professional experience',
+          'Contract for minimum 1 year',
+          'Mediterranean lifestyle',
+        ],
+      },
+    },
+    {
+      id: 'salary',
+      title: 'Salary Verification',
+      description: 'Verify salary meets EU Blue Card threshold',
+      estimatedDuration: 'N/A',
+      documents: ['Employment contract showing salary'],
+      isConditional: true,
+      condition: 'Salary must be at least EUR 31,919/year (2025 threshold)',
+      notes: ['1.5x average gross annual salary in Greece'],
+    },
+    {
+      template: COMMON_STEP_IDS.GATHER_DOCUMENTS,
+      options: {
+        includeEmployment: true,
+        includeEducation: true,
+        additionalDocuments: ['University degree or proof of 5+ years experience', 'Employment contract'],
+        additionalNotes: ['Documents must be apostilled', 'Greek translations required'],
+      },
+    },
+    { template: COMMON_STEP_IDS.SUBMIT_APPLICATION, options: { applicationFee: 150 } },
+    { template: COMMON_STEP_IDS.PROCESSING, options: { processingTime: '60-90 days' } },
+    {
+      id: 'visa',
+      title: 'Receive EU Blue Card',
+      description: 'Collect your EU Blue Card residence permit',
+      estimatedDuration: '1-2 weeks',
+      documents: ['Passport'],
+      notes: [
+        'Valid for up to 4 years',
+        'Can work throughout EU after 18 months',
+        'Path to permanent residency after 5 years',
+      ],
+    },
+    { template: COMMON_STEP_IDS.TRAVEL, options: { visaType: 'EU Blue Card' } },
+    {
+      template: COMMON_STEP_IDS.REGISTRATION,
+      options: {
+        registrationAuthority: 'Decentralized Administration',
+        additionalNotes: ['Register within 7 days of arrival', 'Get AFM (tax number)', 'Register with EFKA (social security)'],
+      },
+    },
+  ],
+});
+
+/**
  * Export all Greece flowcharts as a record for compatibility with existing system
  */
 export const greeceFlowchartsNew: Record<string, FlowchartDefinition> = {
@@ -367,5 +448,6 @@ export const greeceFlowchartsNew: Record<string, FlowchartDefinition> = {
   work_permit: workPermit,
   family_reunification: familyReunification,
   independent_means: independentMeansVisa,
+  eu_blue_card: euBlueCard,
 };
 

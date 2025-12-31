@@ -413,10 +413,102 @@ flowchart TD
 /**
  * Export all Italy flowcharts as a record for compatibility with existing system
  */
+/**
+ * EU Blue Card - For highly skilled workers
+ * Added in Phase 3 data quality improvements
+ */
+export const euBlueCard: FlowchartDefinition = buildFlowchart({
+  programId: 'it_eu_blue_card',
+  countryCode: 'IT',
+  programName: 'EU Blue Card',
+  complexity: 'medium',
+  successRate: '80%',
+  totalEstimatedDuration: '2-4 months',
+  mermaidDiagram: `
+flowchart TD
+  Start([Start Process]) -->job-offer[Secure Job Offer]
+  job-offer -->salary{Salary >= EUR 33,500/year?}
+  salary -->|Yes| nulla-osta[Obtain Nulla Osta]
+  salary -->|No| End1([Not Eligible])
+  nulla-osta -->gather-documents[Gather Required Documents]
+  gather-documents -->submit-application[Submit at Consulate]
+  submit-application -->processing[Wait for Processing]
+  processing --> decision{Decision}
+  decision -->|Approved| visa[Receive EU Blue Card]
+  decision -->|Rejected| End2([Process Ended])
+  visa -->travel[Travel to Italy]
+  travel -->registration[Register with Questura]
+  registration --> Success([Process Complete])`,
+  steps: [
+    {
+      template: COMMON_STEP_IDS.JOB_OFFER,
+      options: {
+        salaryThreshold: 33500,
+        additionalNotes: [
+          'Must have university degree or 5+ years professional experience',
+          'Contract for minimum 1 year',
+          'Employer obtains Nulla Osta authorization',
+        ],
+      },
+    },
+    {
+      id: 'salary',
+      title: 'Salary Verification',
+      description: 'Verify salary meets EU Blue Card threshold',
+      estimatedDuration: 'N/A',
+      documents: ['Employment contract showing salary'],
+      isConditional: true,
+      condition: 'Salary must be at least EUR 33,500/year (2025 threshold)',
+      notes: ['1.5x average gross annual salary in Italy'],
+    },
+    {
+      id: 'nulla-osta',
+      title: 'Obtain Nulla Osta',
+      description: 'Employer obtains work authorization from immigration office',
+      estimatedDuration: '2-4 weeks',
+      documents: ['Employer application', 'Job offer details', 'Company registration'],
+      notes: ['Employer applies at local Sportello Unico', 'Required before visa application'],
+    },
+    {
+      template: COMMON_STEP_IDS.GATHER_DOCUMENTS,
+      options: {
+        includeEmployment: true,
+        includeEducation: true,
+        additionalDocuments: ['University degree or proof of 5+ years experience', 'Nulla Osta', 'Employment contract'],
+        additionalNotes: ['Documents must be apostilled', 'Italian translations required'],
+      },
+    },
+    { template: COMMON_STEP_IDS.SUBMIT_APPLICATION, options: { applicationFee: 116 } },
+    { template: COMMON_STEP_IDS.PROCESSING, options: { processingTime: '30-60 days' } },
+    {
+      id: 'visa',
+      title: 'Receive EU Blue Card',
+      description: 'Collect your EU Blue Card visa and travel to Italy',
+      estimatedDuration: '1-2 weeks',
+      documents: ['Passport'],
+      notes: [
+        'Valid for up to 2 years initially',
+        'Renewable',
+        'Can work throughout EU after 18 months',
+        'Path to permanent residency after 5 years',
+      ],
+    },
+    { template: COMMON_STEP_IDS.TRAVEL, options: { visaType: 'EU Blue Card' } },
+    {
+      template: COMMON_STEP_IDS.REGISTRATION,
+      options: {
+        registrationAuthority: 'Questura (Police)',
+        additionalNotes: ['Apply for Permesso di Soggiorno within 8 days', 'Get Codice Fiscale', 'Register with INPS'],
+      },
+    },
+  ],
+});
+
 export const italyFlowchartsNew: Record<string, FlowchartDefinition> = {
   golden_visa: goldenVisa,
   self_employment: selfEmploymentVisa,
   highly_skilled: highlySkilledVisa,
   digital_nomad: digitalNomadVisa,
   family_reunification: familyReunification,
+  eu_blue_card: euBlueCard,
 };

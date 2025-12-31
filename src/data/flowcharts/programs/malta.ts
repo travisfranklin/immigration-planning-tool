@@ -329,10 +329,93 @@ flowchart TD
 /**
  * Export all Malta flowcharts as a record for compatibility with existing system
  */
+/**
+ * EU Blue Card - For highly skilled workers
+ * Added in Phase 3 data quality improvements
+ */
+export const euBlueCard: FlowchartDefinition = buildFlowchart({
+  programId: 'mt_eu_blue_card',
+  countryCode: 'MT',
+  programName: 'EU Blue Card',
+  complexity: 'medium',
+  successRate: '80%',
+  totalEstimatedDuration: '2-3 months',
+  mermaidDiagram: `
+flowchart TD
+  Start([Start Process]) -->job-offer[Secure Job Offer]
+  job-offer -->salary{Salary >= EUR 34,956/year?}
+  salary -->|Yes| gather-documents[Gather Required Documents]
+  salary -->|No| End1([Not Eligible])
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Wait for Processing]
+  processing --> decision{Decision}
+  decision -->|Approved| visa[Receive EU Blue Card]
+  decision -->|Rejected| End2([Process Ended])
+  visa -->travel[Travel to Malta]
+  travel -->registration[Register with Identity Malta]
+  registration --> Success([Process Complete])`,
+  steps: [
+    {
+      template: COMMON_STEP_IDS.JOB_OFFER,
+      options: {
+        salaryThreshold: 34956,
+        additionalNotes: [
+          'Must have university degree or 5+ years professional experience',
+          'Contract for minimum 1 year',
+          'Mediterranean island lifestyle',
+          'English-speaking country',
+        ],
+      },
+    },
+    {
+      id: 'salary',
+      title: 'Salary Verification',
+      description: 'Verify salary meets EU Blue Card threshold',
+      estimatedDuration: 'N/A',
+      documents: ['Employment contract showing salary'],
+      isConditional: true,
+      condition: 'Salary must be at least EUR 34,956/year (2025 threshold)',
+      notes: ['1.5x average gross annual salary in Malta'],
+    },
+    {
+      template: COMMON_STEP_IDS.GATHER_DOCUMENTS,
+      options: {
+        includeEmployment: true,
+        includeEducation: true,
+        additionalDocuments: ['University degree or proof of 5+ years experience', 'Employment contract', 'Police clearance'],
+        additionalNotes: ['Documents must be apostilled', 'English is official language - no translation needed'],
+      },
+    },
+    { template: COMMON_STEP_IDS.SUBMIT_APPLICATION, options: { applicationFee: 300 } },
+    { template: COMMON_STEP_IDS.PROCESSING, options: { processingTime: '60-90 days' } },
+    {
+      id: 'visa',
+      title: 'Receive EU Blue Card',
+      description: 'Collect your EU Blue Card residence permit',
+      estimatedDuration: '1-2 weeks',
+      documents: ['Passport'],
+      notes: [
+        'Valid for up to 4 years',
+        'Can work throughout EU after 18 months',
+        'Path to permanent residency after 5 years',
+      ],
+    },
+    { template: COMMON_STEP_IDS.TRAVEL, options: { visaType: 'EU Blue Card' } },
+    {
+      template: COMMON_STEP_IDS.REGISTRATION,
+      options: {
+        registrationAuthority: 'Identity Malta Agency',
+        additionalNotes: ['Register within 3 months', 'Get eResidence card', 'Register for tax ID'],
+      },
+    },
+  ],
+});
+
 export const maltaFlowchartsNew: Record<string, FlowchartDefinition> = {
   nomad_residence: nomadResidence,
   mprp: mprp,
   startup_visa: startupVisa,
   family_reunification: familyReunification,
   highly_skilled: highlySkilled,
+  eu_blue_card: euBlueCard,
 };

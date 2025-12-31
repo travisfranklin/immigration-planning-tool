@@ -177,6 +177,9 @@ export interface VisaProgram {
   pathToPermanentResidency: boolean;
   pathToCitizenship: boolean;
 
+  // Cost Information
+  applicationFee?: number; // In EUR, represents total estimated cost
+
   // Metadata
   description: string;
   officialUrl?: string;

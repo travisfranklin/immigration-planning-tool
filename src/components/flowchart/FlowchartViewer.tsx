@@ -212,8 +212,8 @@ function FlowchartViewerComponent({ flowchart, onExport, selectedStepId, onStepS
               {flowchart.countryCode} • {flowchart.totalEstimatedDuration} • {flowchart.complexity} complexity
             </p>
             {flowchart.successRate && (
-              <p className="text-sm text-green-600 mt-1">
-                Success Rate: {flowchart.successRate}
+              <p className="text-sm text-green-600 mt-1" title="Estimated success rate based on publicly available data and industry reports. Actual outcomes vary by individual circumstances.">
+                Success Rate: {flowchart.successRate}*
               </p>
             )}
           </div>
@@ -246,6 +246,14 @@ function FlowchartViewerComponent({ flowchart, onExport, selectedStepId, onStepS
           className="overflow-x-auto select-none"
           style={{ minHeight: '400px', userSelect: 'none' }}
         />
+        {/* Success Rate Methodology Disclaimer */}
+        {flowchart.successRate && (
+          <p className="text-xs text-gray-500 mt-4 px-4">
+            *Success rates are estimates based on publicly available government statistics, industry reports, and immigration consultant data.
+            Actual approval rates vary significantly based on individual circumstances, application quality, and changing policies.
+            These figures are for informational purposes only and should not be relied upon as guarantees.
+          </p>
+        )}
       </div>
     </div>
   );

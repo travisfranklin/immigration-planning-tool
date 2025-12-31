@@ -399,10 +399,170 @@ flowchart TD
 /**
  * Export all Portugal flowcharts as a record for compatibility with existing system
  */
+/**
+ * EU Blue Card - For highly skilled workers
+ * Added in Phase 3 data quality improvements
+ */
+export const euBlueCard: FlowchartDefinition = buildFlowchart({
+  programId: 'pt_eu_blue_card',
+  countryCode: 'PT',
+  programName: 'EU Blue Card',
+  complexity: 'medium',
+  successRate: '80%',
+  totalEstimatedDuration: '2-3 months',
+  mermaidDiagram: `
+flowchart TD
+  Start([Start Process]) -->job-offer[Secure Job Offer]
+  job-offer -->salary{Salary >= EUR 21,030/year?}
+  salary -->|Yes| gather-documents[Gather Required Documents]
+  salary -->|No| End1([Not Eligible])
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Wait for Processing]
+  processing --> decision{Decision}
+  decision -->|Approved| visa[Receive EU Blue Card]
+  decision -->|Rejected| End2([Process Ended])
+  visa -->travel[Travel to Portugal]
+  travel -->registration[Register with SEF/AIMA]
+  registration --> Success([Process Complete])`,
+  steps: [
+    {
+      template: COMMON_STEP_IDS.JOB_OFFER,
+      options: {
+        salaryThreshold: 21030,
+        additionalNotes: [
+          'Must have university degree or 5+ years professional experience',
+          'Contract for minimum 1 year',
+          'Portugal has lowest EU Blue Card threshold in Western Europe',
+        ],
+      },
+    },
+    {
+      id: 'salary',
+      title: 'Salary Verification',
+      description: 'Verify salary meets EU Blue Card threshold',
+      estimatedDuration: 'N/A',
+      documents: ['Employment contract showing salary'],
+      isConditional: true,
+      condition: 'Salary must be at least EUR 21,030/year (2025 threshold)',
+      notes: ['1.5x average gross annual salary in Portugal'],
+    },
+    {
+      template: COMMON_STEP_IDS.GATHER_DOCUMENTS,
+      options: {
+        includeEmployment: true,
+        includeEducation: true,
+        additionalDocuments: ['University degree or proof of 5+ years experience', 'Employment contract', 'Criminal record'],
+        additionalNotes: ['Documents must be apostilled', 'Portuguese translations may be required'],
+      },
+    },
+    { template: COMMON_STEP_IDS.SUBMIT_APPLICATION, options: { applicationFee: 90 } },
+    { template: COMMON_STEP_IDS.PROCESSING, options: { processingTime: '60-90 days' } },
+    {
+      id: 'visa',
+      title: 'Receive EU Blue Card',
+      description: 'Collect your EU Blue Card residence permit',
+      estimatedDuration: '1-2 weeks',
+      documents: ['Passport'],
+      notes: [
+        'Valid for up to 4 years',
+        'Can work throughout EU after 18 months',
+        'Path to permanent residency after 5 years',
+        'Path to citizenship after 5 years',
+      ],
+    },
+    { template: COMMON_STEP_IDS.TRAVEL, options: { visaType: 'EU Blue Card' } },
+    {
+      template: COMMON_STEP_IDS.REGISTRATION,
+      options: {
+        registrationAuthority: 'SEF/AIMA (Immigration Service)',
+        additionalNotes: ['Get NIF (tax number)', 'Register with Social Security', 'Open Portuguese bank account'],
+      },
+    },
+  ],
+});
+
+/**
+ * Digital Nomad Visa (D8) - For remote workers
+ * Added in Phase 3 data quality improvements
+ */
+export const digitalNomadVisa: FlowchartDefinition = buildFlowchart({
+  programId: 'pt_digital_nomad',
+  countryCode: 'PT',
+  programName: 'Digital Nomad Visa (D8)',
+  complexity: 'low',
+  successRate: '85%',
+  totalEstimatedDuration: '1-2 months',
+  mermaidDiagram: `
+flowchart TD
+  Start([Start Process]) -->remote-work{Work Remotely?}
+  remote-work -->|Yes| income{Income >= EUR 3,480/month?}
+  remote-work -->|No| End1([Not Eligible])
+  income -->|Yes| gather-documents[Gather Required Documents]
+  income -->|No| savings{Savings >= EUR 36,480?}
+  savings -->|Yes| gather-documents
+  savings -->|No| End1
+  gather-documents -->submit-application[Submit at Consulate]
+  submit-application -->processing[Wait for Processing]
+  processing --> decision{Decision}
+  decision -->|Approved| visa[Receive D8 Visa]
+  decision -->|Rejected| End2([Process Ended])
+  visa -->travel[Travel to Portugal]
+  travel -->registration[Register with SEF/AIMA]
+  registration --> Success([Process Complete])`,
+  steps: [
+    {
+      id: 'remote-work',
+      title: 'Verify Remote Work Status',
+      description: 'Confirm remote employment or freelance work for non-Portuguese company',
+      estimatedDuration: '1 week',
+      documents: ['Employment contract or freelance contracts'],
+      notes: ['Must work for company outside Portugal', 'Popular among tech workers and creatives'],
+    },
+    {
+      id: 'income',
+      title: 'Verify Income Requirement',
+      description: 'Prove monthly income of at least EUR 3,480 (4x minimum wage)',
+      estimatedDuration: 'N/A',
+      documents: ['Bank statements (6 months)', 'Employment contract or invoices'],
+      isConditional: true,
+      condition: 'Monthly income >= EUR 3,480 OR savings >= EUR 36,480',
+      notes: ['Income from remote work outside Portugal', 'Can also qualify with savings'],
+    },
+    {
+      template: COMMON_STEP_IDS.GATHER_DOCUMENTS,
+      options: {
+        includeFinancial: true,
+        additionalDocuments: ['Proof of remote work', 'Proof of income', 'Health insurance', 'Criminal record'],
+        additionalNotes: ['Documents must be apostilled', 'Portuguese translations recommended'],
+      },
+    },
+    { template: COMMON_STEP_IDS.SUBMIT_APPLICATION, options: { applicationFee: 90 } },
+    { template: COMMON_STEP_IDS.PROCESSING, options: { processingTime: '30-60 days' } },
+    {
+      id: 'visa',
+      title: 'Receive D8 Digital Nomad Visa',
+      description: 'Collect your digital nomad visa',
+      estimatedDuration: '1-2 weeks',
+      documents: ['Passport'],
+      notes: ['Valid for 1 year', 'Renewable for 2 more years', 'Path to residency and citizenship'],
+    },
+    { template: COMMON_STEP_IDS.TRAVEL, options: { visaType: 'D8 Digital Nomad Visa' } },
+    {
+      template: COMMON_STEP_IDS.REGISTRATION,
+      options: {
+        registrationAuthority: 'SEF/AIMA (Immigration Service)',
+        additionalNotes: ['Get NIF (tax number)', 'Consider NHR tax regime', 'Open Portuguese bank account'],
+      },
+    },
+  ],
+});
+
 export const portugalFlowchartsNew: Record<string, FlowchartDefinition> = {
   d7_visa: d7Visa,
   golden_visa: goldenVisa,
   startup_visa: startupVisa,
   tech_visa: techVisa,
   family_reunification: familyReunification,
+  eu_blue_card: euBlueCard,
+  digital_nomad: digitalNomadVisa,
 };

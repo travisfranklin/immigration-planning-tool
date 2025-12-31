@@ -32,6 +32,7 @@ export const GERMANY_PROGRAMS: VisaProgram[] = [
     validityYears: 4,
     pathToPermanentResidency: true,
     pathToCitizenship: true,
+    applicationFee: 75,
     description: 'For highly skilled workers with a university degree and job offer in Germany',
     officialUrl: 'https://www.make-it-in-germany.com/en/visa-residence/types/eu-blue-card',
     notes: 'Fast track to permanent residency (21-33 months with language skills)',
@@ -58,6 +59,7 @@ export const GERMANY_PROGRAMS: VisaProgram[] = [
     validityYears: 0.5, // 6 months
     pathToPermanentResidency: false,
     pathToCitizenship: false,
+    applicationFee: 75,
     description: 'For qualified professionals to search for employment in Germany',
     officialUrl: 'https://www.make-it-in-germany.com/en/visa-residence/types/jobseekers',
     notes: 'Can be converted to work visa once job is found',
@@ -84,6 +86,7 @@ export const GERMANY_PROGRAMS: VisaProgram[] = [
     validityYears: 3,
     pathToPermanentResidency: true,
     pathToCitizenship: true,
+    applicationFee: 75,
     description: 'For self-employed professionals and freelancers',
     officialUrl: 'https://www.make-it-in-germany.com/en/visa-residence/types/self-employment',
     notes: 'Requires proof of clients or contracts',
@@ -109,6 +112,7 @@ export const GERMANY_PROGRAMS: VisaProgram[] = [
     validityYears: 2,
     pathToPermanentResidency: true,
     pathToCitizenship: true,
+    applicationFee: 75,
     description: 'Standard work permit for qualified workers with job offer',
     notes: 'May require labor market test',
   },
@@ -133,6 +137,7 @@ export const GERMANY_PROGRAMS: VisaProgram[] = [
     validityYears: 3,
     pathToPermanentResidency: true,
     pathToCitizenship: true,
+    applicationFee: 75,
     description: 'For family members of German residents',
     officialUrl: 'https://www.make-it-in-germany.com/en/living-in-germany/family-life/spouses-joining-citizens-non-eu',
     notes: 'Sponsor must have adequate housing and income',
@@ -165,6 +170,7 @@ export const NETHERLANDS_PROGRAMS: VisaProgram[] = [
     validityYears: 4,
     pathToPermanentResidency: true,
     pathToCitizenship: true,
+    applicationFee: 210, // 2025 IND fee schedule
     description: 'EU Blue Card for highly skilled workers with higher education degree. High salary threshold but excellent quality of life.',
     officialUrl: 'https://ind.nl/en/residence-permits/work/eu-blue-card',
     notes: 'Salary threshold: €68,256/year (30+), €54,612/year (reduced - 2025). Family can join. Can work throughout EU after 18 months. PR in 5 years, citizenship in 5 years.',
@@ -191,6 +197,7 @@ export const NETHERLANDS_PROGRAMS: VisaProgram[] = [
     validityYears: 2,
     pathToPermanentResidency: true,
     pathToCitizenship: true,
+    applicationFee: 350, // 2025 IND fee schedule
     description: 'Special visa for US citizens to start a business in the Netherlands',
     officialUrl: 'https://ind.nl/en/residence-permits/work/residence-permit-self-employed-person',
     notes: 'Unique to US citizens, very accessible',
@@ -217,6 +224,7 @@ export const NETHERLANDS_PROGRAMS: VisaProgram[] = [
     validityYears: 5,
     pathToPermanentResidency: true,
     pathToCitizenship: true,
+    applicationFee: 210, // 2025 IND fee schedule
     description: 'For highly skilled workers with job offer from recognized sponsor',
     officialUrl: 'https://ind.nl/en/residence-permits/work/residence-permit-highly-skilled-migrant',
     notes: 'Employer must be recognized sponsor',
@@ -243,6 +251,7 @@ export const NETHERLANDS_PROGRAMS: VisaProgram[] = [
     validityYears: 1,
     pathToPermanentResidency: false,
     pathToCitizenship: false,
+    applicationFee: 210, // 2025 IND fee schedule
     description: 'For recent graduates from top universities to find work',
     officialUrl: 'https://ind.nl/en/residence-permits/work/residence-permit-orientation-year',
     notes: 'Requires degree from top 200 university within last 3 years',
@@ -269,6 +278,7 @@ export const NETHERLANDS_PROGRAMS: VisaProgram[] = [
     validityYears: 2,
     pathToPermanentResidency: true,
     pathToCitizenship: true,
+    applicationFee: 350, // 2025 IND fee schedule
     description: 'For entrepreneurs starting a business in the Netherlands',
     officialUrl: 'https://ind.nl/en/residence-permits/work/residence-permit-self-employed-person',
     notes: 'Points-based system, requires business plan approval',
@@ -518,7 +528,7 @@ export const SPAIN_PROGRAMS: VisaProgram[] = [
     requirements: {
       requiresJobOffer: true,
       minEducationLevel: 'bachelor',
-      minSalary: 30000, // EUR per year (approximate)
+      minSalary: 40077, // EUR per year (2025 threshold)
     },
     weights: {
       career: 0.35,
@@ -532,7 +542,8 @@ export const SPAIN_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'For highly qualified professionals with job offer',
-    notes: 'Requires university degree and relevant experience',
+    officialUrl: 'https://www.exteriores.gob.es/',
+    notes: 'Requires university degree and relevant experience. €40,077/year salary threshold (2025). Reduced threshold (0.8×) available for young workers (<3 years since graduation).',
   },
   {
     id: 'es_family_reunification',
@@ -779,7 +790,7 @@ export const AUSTRIA_PROGRAMS: VisaProgram[] = [
     type: 'entrepreneur',
     requirements: {
       requiresBusinessPlan: true,
-      minInvestment: 50000, // EUR estimated
+      minInvestment: 30000, // EUR minimum capital with 50% equity share
     },
     weights: {
       career: 0.25,
@@ -794,7 +805,7 @@ export const AUSTRIA_PROGRAMS: VisaProgram[] = [
     pathToCitizenship: true,
     description: 'For entrepreneurs with innovative business ideas',
     officialUrl: 'https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/start-up-founders/',
-    notes: 'Requires innovative business plan and sufficient funding',
+    notes: 'Requires €30,000 minimum capital with 50% equity share. €50,000 additional investment capital earns bonus points. Points-based system (70+ points required).',
   },
   {
     id: 'at_self_employed',
@@ -804,7 +815,7 @@ export const AUSTRIA_PROGRAMS: VisaProgram[] = [
     type: 'entrepreneur',
     requirements: {
       requiresBusinessPlan: true,
-      minInvestment: 30000, // EUR estimated
+      minInvestment: 100000, // EUR minimum investment transfer
     },
     weights: {
       career: 0.30,
@@ -818,7 +829,7 @@ export const AUSTRIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'For self-employed individuals with relevant qualifications',
-    notes: 'Business plan must show economic benefit to Austria',
+    notes: 'Requires €100,000 minimum investment transfer OR job creation OR know-how transfer. Must demonstrate macroeconomic benefit to Austria.',
   },
   {
     id: 'at_family_reunification',
@@ -959,6 +970,7 @@ export const BELGIUM_PROGRAMS: VisaProgram[] = [
     type: 'family_reunification',
     requirements: {
       requiresFamilyInCountry: true,
+      minSalary: 60000, // EUR per year (€5,000/month gross - 2025 requirement effective August 2025)
     },
     weights: {
       career: 0.05,
@@ -973,7 +985,7 @@ export const BELGIUM_PROGRAMS: VisaProgram[] = [
     pathToCitizenship: true,
     description: 'For family members of Belgian residents',
     officialUrl: 'https://dofi.ibz.be/en',
-    notes: 'Sponsor must have stable, regular, and adequate income. Fast-track available for Single Permit holders earning €5,000+/month.',
+    notes: 'New 2025 requirement (effective August 2025): Sponsor must earn €5,000 gross/month minimum. Fast-track available for Single Permit holders.',
   },
 ];
 
@@ -1015,7 +1027,7 @@ export const LUXEMBOURG_PROGRAMS: VisaProgram[] = [
     name: 'Highly Qualified Worker Permit',
     type: 'work',
     requirements: {
-      minSalary: 55000, // EUR per year (estimated)
+      minSalary: 58968, // EUR per year (2025)
       minEducationLevel: 'bachelor',
       requiresJobOffer: true,
       minYearsExperience: 0,
@@ -1032,8 +1044,8 @@ export const LUXEMBOURG_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'For highly qualified workers with competitive salary',
-    officialUrl: 'https://guichet.public.lu/en/',
-    notes: 'Alternative to EU Blue Card with slightly lower salary requirements',
+    officialUrl: 'https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/hautement-qualifie/salarie-hautement-qualifie.html',
+    notes: 'Alternative to EU Blue Card. €58,968/year salary threshold (2025). Strong financial services sector.',
   },
   {
     id: 'lu_investor',

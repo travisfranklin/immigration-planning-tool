@@ -328,11 +328,86 @@ flowchart TD
 /**
  * Export all Slovenia flowcharts as a record for compatibility with existing system
  */
+/**
+ * Digital Nomad Visa - For remote workers
+ * Added in Phase 3 data quality improvements (launched November 2025)
+ */
+export const digitalNomadVisa: FlowchartDefinition = buildFlowchart({
+  programId: 'si_digital_nomad',
+  countryCode: 'SI',
+  programName: 'Digital Nomad Visa',
+  complexity: 'low',
+  successRate: '85%',
+  totalEstimatedDuration: '1-2 months',
+  mermaidDiagram: `
+flowchart TD
+  Start([Start Process]) -->remote-work{Work Remotely?}
+  remote-work -->|Yes| income{Income >= EUR 2,000/month?}
+  remote-work -->|No| End1([Not Eligible])
+  income -->|Yes| gather-documents[Gather Required Documents]
+  income -->|No| End1
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Wait for Processing]
+  processing --> decision{Decision}
+  decision -->|Approved| visa[Receive Digital Nomad Visa]
+  decision -->|Rejected| End2([Process Ended])
+  visa -->travel[Travel to Slovenia]
+  travel -->registration[Register with Authorities]
+  registration --> Success([Process Complete])`,
+  steps: [
+    {
+      id: 'remote-work',
+      title: 'Verify Remote Work Status',
+      description: 'Confirm remote employment or freelance work for non-Slovenian company',
+      estimatedDuration: '1 week',
+      documents: ['Employment contract or freelance contracts'],
+      notes: ['Must work for company outside Slovenia', 'New program launched November 2025'],
+    },
+    {
+      id: 'income',
+      title: 'Verify Income Requirement',
+      description: 'Prove monthly income of at least EUR 2,000',
+      estimatedDuration: 'N/A',
+      documents: ['Bank statements (3-6 months)', 'Employment contract or invoices'],
+      isConditional: true,
+      condition: 'Monthly income >= EUR 2,000',
+      notes: ['One of the lowest thresholds in EU', 'Beautiful Alpine country'],
+    },
+    {
+      template: COMMON_STEP_IDS.GATHER_DOCUMENTS,
+      options: {
+        includeFinancial: true,
+        additionalDocuments: ['Proof of remote work', 'Proof of income', 'Health insurance', 'Criminal record'],
+        additionalNotes: ['Documents must be apostilled', 'Slovenian or English accepted'],
+      },
+    },
+    { template: COMMON_STEP_IDS.SUBMIT_APPLICATION, options: { applicationFee: 102 } },
+    { template: COMMON_STEP_IDS.PROCESSING, options: { processingTime: '30-60 days' } },
+    {
+      id: 'visa',
+      title: 'Receive Digital Nomad Visa',
+      description: 'Collect your digital nomad visa',
+      estimatedDuration: '1-2 weeks',
+      documents: ['Passport'],
+      notes: ['Valid for 1 year', 'Renewable', 'Access to Alps and Mediterranean'],
+    },
+    { template: COMMON_STEP_IDS.TRAVEL, options: { visaType: 'Digital Nomad Visa' } },
+    {
+      template: COMMON_STEP_IDS.REGISTRATION,
+      options: {
+        registrationAuthority: 'Administrative Unit',
+        additionalNotes: ['Register within 3 days', 'Get tax number (davčna številka)'],
+      },
+    },
+  ],
+});
+
 export const sloveniaFlowchartsNew: Record<string, FlowchartDefinition> = {
   eu_blue_card: euBlueCard,
   startup_visa: startupVisa,
   work_permit: workPermit,
   self_employment: selfEmployment,
   family_reunification: familyReunification,
+  digital_nomad: digitalNomadVisa,
 };
 
