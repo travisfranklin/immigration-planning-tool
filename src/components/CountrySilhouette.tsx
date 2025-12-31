@@ -6,9 +6,27 @@
  *
  * Design Principles (German/Scandinavian):
  * - Minimalist, functional design
- * - Single color (inherits currentColor or uses specified fill)
+ * - Uses design tokens for all colors (no magic strings)
  * - Clean lines, no decorative effects
  * - Scales responsively
+ *
+ * Styling:
+ * - Default: primary/70 fill, primary stroke, 1px stroke width
+ * - Customizable via props using CSS custom properties or color values
+ * - All styling references centralized design token system
+ *
+ * @example
+ * // Default styling (primary/70 fill, primary stroke)
+ * <CountrySilhouette countryCode="DE" />
+ *
+ * @example
+ * // Custom styling using design tokens
+ * <CountrySilhouette
+ *   countryCode="FR"
+ *   fill="rgba(var(--color-success-rgb), 0.5)"
+ *   stroke="var(--color-success)"
+ *   strokeWidth={2}
+ * />
  *
  * SVG Source: djaiss/mapsicon (MIT-style license)
  * https://github.com/djaiss/mapsicon
