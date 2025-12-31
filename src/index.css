@@ -367,9 +367,11 @@ a:hover {
   --silhouette-stroke-width: 1px;
 }
 
-/* Apply styles to all path elements within the SVG */
-.country-silhouette path {
-  fill: var(--silhouette-fill);
-  stroke: var(--silhouette-stroke);
-  stroke-width: var(--silhouette-stroke-width);
+/* Apply styles to all path and g elements within the SVG
+   !important is required to override inline SVG attributes from mapsicon files */
+.country-silhouette path,
+.country-silhouette g {
+  fill: var(--silhouette-fill) !important;
+  stroke: var(--silhouette-stroke) !important;
+  stroke-width: var(--silhouette-stroke-width) !important;
 }
