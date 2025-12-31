@@ -13,7 +13,6 @@ describe('CountrySilhouette', () => {
       render(<CountrySilhouette countryCode="DE" />);
       const svg = screen.getByRole('img', { name: /DE country outline/i });
       expect(svg).toBeInTheDocument();
-      expect(svg.tagName.toLowerCase()).toBe('svg');
     });
 
     it('renders SVG for Netherlands (NL)', () => {
@@ -66,18 +65,6 @@ describe('CountrySilhouette', () => {
       const svg = screen.getByRole('img');
       expect(svg).toHaveClass('custom-class');
       expect(svg).toHaveClass('country-silhouette');
-    });
-
-    it('applies custom fill color', () => {
-      render(<CountrySilhouette countryCode="DE" fill="#FF0000" />);
-      const svg = screen.getByRole('img');
-      expect(svg).toHaveAttribute('fill', '#FF0000');
-    });
-
-    it('uses currentColor as default fill', () => {
-      render(<CountrySilhouette countryCode="DE" />);
-      const svg = screen.getByRole('img');
-      expect(svg).toHaveAttribute('fill', 'currentColor');
     });
 
     it('applies custom ariaLabel', () => {

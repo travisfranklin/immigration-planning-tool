@@ -19,7 +19,6 @@ import { LoadingSpinner } from '../components/LoadingSpinner';
 import { ErrorState } from '../components/ErrorState';
 import { InteractiveFlowchart } from '../components/flowchart/InteractiveFlowchart';
 import { isValidCountryCode } from '../constants/countries';
-import type { CountryCode } from '../constants/countries';
 import {
   decodeResultsFromUrl,
   isValidViabilityScore,
@@ -275,9 +274,9 @@ export const ResultDetail: React.FC = () => {
             {/* Large Score Display with Country Silhouette */}
             <div className="flex items-center gap-6">
               {/* Country Silhouette */}
-              {hasCountrySilhouette(selectedScore.countryCode as CountryCode) && (
+              {hasCountrySilhouette(selectedScore.countryCode) && (
                 <CountrySilhouette
-                  countryCode={selectedScore.countryCode as CountryCode}
+                  countryCode={selectedScore.countryCode}
                   size={80}
                   className="text-black opacity-80"
                   ariaLabel={`${selectedScore.countryName} country outline`}
