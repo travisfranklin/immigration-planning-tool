@@ -287,10 +287,12 @@ export const ResultDetail: React.FC = () => {
 
               {/* Score */}
               <div className="text-left sm:text-right relative z-10">
-                <div className="text-data-lg font-bold text-black leading-none">
-                  {selectedScore.overallScore}
+                <div>
+                  <div className="text-data-lg font-bold text-black leading-none">
+                    {selectedScore.overallScore}
+                  </div>
+                  <div className="text-h4 text-gray-700 uppercase tracking-wide">/100</div>
                 </div>
-                <div className="text-h4 text-gray-700 uppercase tracking-wide">/100</div>
               </div>
             </div>
           </div>
