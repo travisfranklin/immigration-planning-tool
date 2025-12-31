@@ -204,7 +204,7 @@ function FlowchartViewerComponent({ flowchart, onExport, selectedStepId, onStepS
   return (
     <div className="space-y-6">
       {/* Flowchart Header */}
-      <div className="bg-white rounded-lg shadow-sm p-6">
+      <div className="bg-white">
         <div className="flex items-start justify-between">
           <div>
             <h4 className="text-2xl font-bold text-gray-900">{flowchart.programName}</h4>

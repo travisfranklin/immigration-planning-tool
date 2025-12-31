@@ -364,11 +364,12 @@ flowchart TD
 
 /**
  * Export all Bulgaria flowcharts as a record for compatibility with existing system
+ * Keys must match the program IDs from visaPrograms.ts (e.g., 'bg_startup_visa')
  */
 export const bulgariaFlowchartsNew: Record<string, FlowchartDefinition> = {
-  eu_blue_card: euBlueCard,
-  startup_visa: startupVisa,
-  work_permit: workPermit,
-  self_employment: selfEmployment,
-  family_reunification: familyReunification,
+  bg_eu_blue_card: euBlueCard,
+  bg_startup_visa: startupVisa,
+  bg_work_permit: workPermit,
+  bg_self_employment: selfEmployment,
+  bg_family_reunification: familyReunification,
 };

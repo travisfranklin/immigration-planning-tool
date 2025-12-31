@@ -11,7 +11,7 @@ interface StepDetailsPanelProps {
 
 export function StepDetailsPanel({ step }: StepDetailsPanelProps) {
   return (
-    <div className="bg-white rounded-lg shadow-md border border-gray-200 p-6 sticky top-6">
+    <div className="bg-white border-2 border-black p-6 sticky top-6">
       {/* Step Title */}
       <h4 className="text-lg font-medium text-gray-900">{step.title}</h4>
 

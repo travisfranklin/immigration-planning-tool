@@ -95,52 +95,6 @@ function detectNodeRedefinitions(mermaidDiagram: string): Array<{ nodeId: string
   return redefinitions;
 }
 
-/**
- * Extract all edges from the Mermaid diagram
- */
-function extractEdges(mermaidDiagram: string): Array<{ source: string; target: string }> {
-  const edges: Array<{ source: string; target: string }> = [];
-  const lines = mermaidDiagram.split('\n');
-
-  for (const line of lines) {
-    // Match edge patterns: A --> B, A -->|label| B
-    const edgePattern = /\b([\w-]+)\s*--+>(?:\|[^|]*\|)?\s*([\w-]+)/g;
-    let match;
-
-    while ((match = edgePattern.exec(line)) !== null) {
-      edges.push({ source: match[1], target: match[2] });
-    }
-  }
-
-  return edges;
-}
-
-/**
- * Detect unreachable nodes (nodes with no incoming edges except Start)
- */
-function detectUnreachableNodes(mermaidDiagram: string): string[] {
-  const edges = extractEdges(mermaidDiagram);
-  const allNodes = new Set<string>();
-  const nodesWithIncoming = new Set<string>();
-
-  // Collect all nodes and track incoming edges
-  for (const { source, target } of edges) {
-    allNodes.add(source);
-    allNodes.add(target);
-    nodesWithIncoming.add(target);
-  }
-
-  // Find nodes with no incoming edges (except Start which is expected)
-  const unreachable: string[] = [];
-  for (const node of allNodes) {
-    if (!nodesWithIncoming.has(node) && !node.match(/^(Start|flowchart)$/i)) {
-      unreachable.push(node);
-    }
-  }
-
-  return unreachable;
-}
-
 describe('Flowchart Validation', () => {
   // Get all flowcharts from all countries
   const flowchartEntries = Object.entries(ALL_FLOWCHARTS).flatMap(([countryCode, programs]) =>

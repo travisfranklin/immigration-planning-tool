@@ -30,7 +30,7 @@ export function InteractiveFlowchart({ flowchart }: InteractiveFlowchartProps) {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Column: Flowchart */}
         <div className="lg:col-span-2">
-          <div className="bg-white rounded-lg shadow-md border border-gray-200 p-6">
+          <div className="bg-white border-2 border-black p-6">
             <FlowchartViewer
               flowchart={flowchart}
               selectedStepId={selectedStepId}
@@ -44,7 +44,7 @@ export function InteractiveFlowchart({ flowchart }: InteractiveFlowchartProps) {
           {selectedStep ? (
             <StepDetailsPanel step={selectedStep} />
           ) : (
-            <div className="bg-white rounded-lg shadow-md border border-gray-200 p-6 text-center">
+            <div className="bg-white border-2 border-black p-6 text-center">
               <p className="text-gray-500">Select a step to view details</p>
             </div>
           )}
