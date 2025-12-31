@@ -68,13 +68,13 @@ export const ContingenciesList: React.FC<ContingenciesListProps> = ({ contingenc
             className="border-2 border-black p-4"
           >
             {/* Contingency Header */}
-            <div className="flex items-start gap-2 sm:gap-3 mb-3">
+            <div className="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-3 mb-3">
               {/* Numbered Badge - Sharp, Bold, Responsive */}
               <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 border-2 border-black bg-white font-bold text-body-sm sm:text-body flex-shrink-0">
                 {String(index + 1).padStart(2, '0')}
               </div>
               <div className="flex-1 min-w-0">
-                <h4 className="font-bold text-black mb-2 uppercase tracking-wide text-body-sm sm:text-body">
+                <h4 className="font-bold text-black mb-2 uppercase tracking-wide">
                   {contingency.scenario}
                 </h4>
                 <p className="text-body-sm text-gray-700">{contingency.description}</p>
@@ -82,7 +82,7 @@ export const ContingenciesList: React.FC<ContingenciesListProps> = ({ contingenc
             </div>
 
             {/* Action Plan - Bold Highlight */}
-            <div className="ml-10 sm:ml-13 space-y-3">
+            <div className="space-y-3">
               <div className="bg-primary border-2 border-primary p-4">
                 <p className="text-label uppercase font-bold text-white mb-2">Action Plan</p>
                 <p className="text-body-sm text-white">{contingency.action}</p>
