@@ -204,10 +204,9 @@ flowchart TD
   job-search --> job-found{Job Offer?}
   job-found -->|Yes| conversion[Convert to Work Visa]
   job-found -->|No| extend-visa{Extend Visa?}
-  extend-visa -->|Yes| job-search[Continue Search]
+  extend-visa -->|Yes| job-search
   extend-visa -->|No| return-home[Return Home]
   conversion --> Success([Process Complete])
-  job-search --> job-search
   return-home --> End2`,
   steps: [
     {
