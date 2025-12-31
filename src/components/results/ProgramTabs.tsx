@@ -44,13 +44,12 @@ export const ProgramTabs: React.FC<ProgramTabsProps> = ({
   }, [selectedProgramId]);
 
   return (
-    <div className="bg-primary-dark border-t-4 border-b-4 border-black overflow-hidden">
-      <div className="w-full">
-        {/* Tabs Container - Touch swipeable on mobile, scrollable on desktop */}
-        <div
-          ref={scrollContainerRef}
-          className="flex overflow-x-auto overscroll-x-contain snap-x snap-mandatory touch-pan-x scrollbar-hide"
-        >
+    <div className="bg-primary-dark border-t-4 border-b-4 border-black w-full max-w-full overflow-hidden">
+      {/* Tabs Container - Touch swipeable on mobile, scrollable on desktop */}
+      <div
+        ref={scrollContainerRef}
+        className="flex w-full max-w-full overflow-x-scroll overscroll-x-contain snap-x snap-mandatory touch-pan-x scrollbar-hide"
+      >
           {allPrograms.map((program, index) => {
             const isSelected = program.programId === selectedProgramId;
             const isRecommended = index === 0;
@@ -86,7 +85,6 @@ export const ProgramTabs: React.FC<ProgramTabsProps> = ({
               </button>
             );
           })}
-        </div>
       </div>
     </div>
   );
