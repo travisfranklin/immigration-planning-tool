@@ -355,3 +355,21 @@ a:hover {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;  /* Chrome, Safari and Opera */
 }
+
+/* ============================================================================
+   COUNTRY SILHOUETTE COMPONENT
+   ============================================================================ */
+
+.country-silhouette {
+  /* Default styling using design tokens */
+  --silhouette-fill: rgba(var(--color-primary-rgb), 0.7);
+  --silhouette-stroke: var(--color-primary);
+  --silhouette-stroke-width: 1px;
+}
+
+/* Apply styles to all path elements within the SVG */
+.country-silhouette path {
+  fill: var(--silhouette-fill);
+  stroke: var(--silhouette-stroke);
+  stroke-width: var(--silhouette-stroke-width);
+}

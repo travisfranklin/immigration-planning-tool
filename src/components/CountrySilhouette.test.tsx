@@ -66,11 +66,11 @@ describe('CountrySilhouette', () => {
       expect(svg).toHaveAttribute('height', '100');
     });
 
-    it('applies default size of 64', () => {
+    it('applies default size of 128', () => {
       render(<CountrySilhouette countryCode="DE" />);
       const svg = screen.getByRole('img');
-      expect(svg).toHaveAttribute('width', '64');
-      expect(svg).toHaveAttribute('height', '64');
+      expect(svg).toHaveAttribute('width', '128');
+      expect(svg).toHaveAttribute('height', '128');
     });
 
     it('applies custom className', () => {
@@ -84,6 +84,36 @@ describe('CountrySilhouette', () => {
       render(<CountrySilhouette countryCode="DE" ariaLabel="Germany border" />);
       const svg = screen.getByRole('img', { name: 'Germany border' });
       expect(svg).toBeInTheDocument();
+    });
+
+    it('applies custom fill color via CSS custom property', () => {
+      render(<CountrySilhouette countryCode="DE" fill="var(--color-success)" />);
+      const svg = screen.getByRole('img');
+      const style = svg.getAttribute('style');
+      expect(style).toContain('--silhouette-fill');
+      expect(style).toContain('var(--color-success)');
+    });
+
+    it('applies custom stroke color via CSS custom property', () => {
+      render(<CountrySilhouette countryCode="DE" stroke="var(--color-danger)" />);
+      const svg = screen.getByRole('img');
+      const style = svg.getAttribute('style');
+      expect(style).toContain('--silhouette-stroke');
+      expect(style).toContain('var(--color-danger)');
+    });
+
+    it('applies custom stroke width', () => {
+      render(<CountrySilhouette countryCode="DE" strokeWidth={2} />);
+      const svg = screen.getByRole('img');
+      const style = svg.getAttribute('style');
+      expect(style).toContain('--silhouette-stroke-width');
+      expect(style).toContain('2px');
+    });
+
+    it('does not apply style attribute when no custom styles provided', () => {
+      render(<CountrySilhouette countryCode="DE" />);
+      const svg = screen.getByRole('img');
+      expect(svg).not.toHaveAttribute('style');
     });
   });
 

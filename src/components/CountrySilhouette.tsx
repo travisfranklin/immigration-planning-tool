@@ -55,6 +55,23 @@ export interface CountrySilhouetteProps {
   className?: string;
   /** Accessible label */
   ariaLabel?: string;
+  /**
+   * Fill color override (CSS color value or CSS custom property)
+   * @default 'rgba(var(--color-primary-rgb), 0.7)' (primary/70)
+   * @example 'var(--color-success)' or '#FF0000' or 'rgba(255, 0, 0, 0.5)'
+   */
+  fill?: string;
+  /**
+   * Stroke color override (CSS color value or CSS custom property)
+   * @default 'var(--color-primary)'
+   * @example 'var(--color-success)' or '#FF0000'
+   */
+  stroke?: string;
+  /**
+   * Stroke width override in pixels
+   * @default 1
+   */
+  strokeWidth?: number;
 }
 
 /**
@@ -95,9 +112,12 @@ const COUNTRY_SVG_MAP: Record<CountryCode, React.FC<React.SVGProps<SVGSVGElement
  */
 export const CountrySilhouette: React.FC<CountrySilhouetteProps> = ({
   countryCode,
-  size = 64,
+  size = 128,
   className = '',
   ariaLabel,
+  fill,
+  stroke,
+  strokeWidth,
 }) => {
   const SvgComponent = COUNTRY_SVG_MAP[countryCode];
 
@@ -106,6 +126,12 @@ export const CountrySilhouette: React.FC<CountrySilhouetteProps> = ({
     return null;
   }
 
+  // Build style object with CSS custom properties for overrides
+  const style: React.CSSProperties & Record<string, string> = {};
+  if (fill) style['--silhouette-fill'] = fill;
+  if (stroke) style['--silhouette-stroke'] = stroke;
+  if (strokeWidth !== undefined) style['--silhouette-stroke-width'] = `${strokeWidth}px`;
+
   return (
     <SvgComponent
       width={size}
@@ -113,6 +139,7 @@ export const CountrySilhouette: React.FC<CountrySilhouetteProps> = ({
       className={`country-silhouette ${className}`}
       role="img"
       aria-label={ariaLabel || `${countryCode} country outline`}
+      style={Object.keys(style).length > 0 ? style : undefined}
     />
   );
 };
