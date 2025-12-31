@@ -55,18 +55,22 @@ export const RiskFactorsList: React.FC<RiskFactorsListProps> = ({
 }) => {
   if (riskFactors.length === 0) {
     return (
-      <div className="">
+      <div>
         <h3 className="text-h3 font-bold text-black mb-4 uppercase tracking-wide">Risk Assessment</h3>
-        <div className="bg-success border-2 border-success p-6 text-center">
-          <div className="w-12 h-12 bg-black mx-auto mb-3 flex items-center justify-center">
-            <svg className="w-8 h-8 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-            </svg>
+        <div className="bg-success flex items-center">
+          <div className="flex-shrink-0 mr-2">
+            <div className="w-8 h-8 bg-black flex items-center justify-center">
+              <svg className="w-4 h-4 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
           </div>
-          <p className="text-black font-bold uppercase text-body">No significant risks identified</p>
-          <p className="text-body-sm text-black mt-2">
-            Your profile aligns well with this immigration path
-          </p>
+          <div className="flex-grow">
+            <p className="text-black font-bold uppercase text-body">No significant risks identified</p>
+            <p className="text-body-sm text-black">
+              Your profile aligns well with this immigration path
+            </p>
+          </div>
         </div>
       </div>
     );

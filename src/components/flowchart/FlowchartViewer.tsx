@@ -204,8 +204,8 @@ function FlowchartViewerComponent({ flowchart, onExport, selectedStepId, onStepS
   return (
     <div className="space-y-6">
       {/* Flowchart Header */}
-      <div className="bg-white">
-        <div className="flex items-start justify-between">
+      <div className="border-b-1 pb-4 border-black">
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
           <div>
             <h4 className="text-2xl font-bold text-gray-900">{flowchart.programName}</h4>
             <p className="text-sm text-gray-600 mt-1">
@@ -217,16 +217,16 @@ function FlowchartViewerComponent({ flowchart, onExport, selectedStepId, onStepS
               </p>
             )}
           </div>
-          <div className="flex gap-2">
+          <div className="flex flex-col sm:flex-row gap-2">
             <button
               onClick={() => handleExport('svg')}
-              className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"
+              className="font-bold uppercase tracking-wide disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-fast bg-white text-black border-2 border-black border-solid hover:bg-black hover:text-white px-4 py-2 w-full sm:w-auto"
             >
               Export SVG
             </button>
             <button
               onClick={() => handleExport('png')}
-              className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"
+              className="font-bold uppercase tracking-wide disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-fast bg-white text-black border-2 border-black border-solid hover:bg-black hover:text-white px-4 py-2 w-full sm:w-auto"
             >
               Export PNG
             </button>
@@ -235,7 +235,7 @@ function FlowchartViewerComponent({ flowchart, onExport, selectedStepId, onStepS
       </div>
 
       {/* Flowchart Diagram */}
-      <div className="bg-white rounded-lg shadow-sm p-6">
+      <div>
         {isLoading && (
           <div className="flex items-center justify-center h-64">
             <div className="text-gray-500">Loading flowchart...</div>
@@ -243,12 +243,12 @@ function FlowchartViewerComponent({ flowchart, onExport, selectedStepId, onStepS
         )}
         <div
           ref={containerRef}
-          className="overflow-x-auto select-none"
+          className="overflow-x-auto select-none border-b-1 pb-4 mb-4 border-black"
           style={{ minHeight: '400px', userSelect: 'none' }}
         />
         {/* Success Rate Methodology Disclaimer */}
         {flowchart.successRate && (
-          <p className="text-xs text-gray-500 mt-4 px-4">
+          <p className="text-xs text-gray-500">
             *Success rates are estimates based on publicly available government statistics, industry reports, and immigration consultant data.
             Actual approval rates vary significantly based on individual circumstances, application quality, and changing policies.
             These figures are for informational purposes only and should not be relied upon as guarantees.
