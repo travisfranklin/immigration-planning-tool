@@ -16,6 +16,7 @@ import { Button } from '../components/Button';
 import { LoadingSpinner } from '../components/LoadingSpinner';
 import { ErrorState } from '../components/ErrorState';
 import { InteractiveFlowchart } from '../components/flowchart/InteractiveFlowchart';
+import { AlternativeProgramsList } from '../components/results/AlternativeProgramsList';
 import { isValidCountryCode } from '../constants/countries';
 import {
   decodeResultsFromUrl,
@@ -34,6 +35,7 @@ export const ResultDetail: React.FC = () => {
   const [selectedScore, setSelectedScore] = useState<ViabilityScore | null>(null);
   const [isSharedView, setIsSharedView] = useState(false);
   const [copySuccess, setCopySuccess] = useState(false);
+  const [selectedProgramId, setSelectedProgramId] = useState<string | null>(null);
 
   useEffect(() => {
     loadResultDetail();
@@ -155,9 +157,37 @@ export const ResultDetail: React.FC = () => {
 
   const countryFlowcharts = countryCode && isValidCountryCode(countryCode) ? ALL_FLOWCHARTS[countryCode] : undefined;
 
-  const recommendedFlowchart = selectedScore.recommendedProgram && countryFlowcharts
-    ? countryFlowcharts[selectedScore.recommendedProgram.programId]
+  // Determine which program's flowchart to display
+  // If selectedProgramId is set, use that; otherwise use the recommended program
+  const activeProgramId = selectedProgramId || selectedScore.recommendedProgram?.programId;
+  const activeFlowchart = activeProgramId && countryFlowcharts
+    ? countryFlowcharts[activeProgramId]
     : null;
+
+  // Get the active program's name for display
+  const getActiveProgramName = (): string => {
+    if (selectedProgramId) {
+      // Check if it's an alternative program
+      const altProgram = selectedScore.alternativePrograms?.find(p => p.programId === selectedProgramId);
+      if (altProgram) return altProgram.programName;
+    }
+    return selectedScore.recommendedProgram?.programName || 'Unknown Program';
+  };
+
+  // Handler to switch flowchart to an alternative program
+  const handleViewAlternativeFlowchart = (programId: string) => {
+    setSelectedProgramId(programId);
+    // Scroll to the flowchart section
+    const flowchartSection = document.getElementById('flowchart-section');
+    if (flowchartSection) {
+      flowchartSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // Handler to switch back to recommended program
+  const handleBackToRecommended = () => {
+    setSelectedProgramId(null);
+  };
 
   return (
     <Layout currentPage="results">
@@ -292,9 +322,25 @@ export const ResultDetail: React.FC = () => {
           </div>
 
           {/* Interactive Flowchart - Center Section */}
-          <div>
-            {recommendedFlowchart ? (
-              <InteractiveFlowchart flowchart={recommendedFlowchart} />
+          <div id="flowchart-section">
+            {/* Flowchart Header - Shows current program */}
+            <div className="bg-white border-2 border-black border-b-0 p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+              <div>
+                <span className="text-label uppercase font-bold text-gray-700">Viewing Flowchart:</span>
+                <h4 className="text-h4 font-bold text-black uppercase break-words">{getActiveProgramName()}</h4>
+              </div>
+              {selectedProgramId && (
+                <button
+                  onClick={handleBackToRecommended}
+                  className="px-4 py-2 bg-gray-200 text-black border-2 border-black hover:bg-black hover:text-white transition-colors font-bold uppercase text-label"
+                >
+                  ← Back to Recommended
+                </button>
+              )}
+            </div>
+
+            {activeFlowchart ? (
+              <InteractiveFlowchart flowchart={activeFlowchart} />
             ) : (
               <div className="bg-white border-2 border-black p-12 text-center">
                 <p className="text-body text-gray-700">No flowchart available for this program yet.</p>
@@ -309,22 +355,11 @@ export const ResultDetail: React.FC = () => {
 
             {/* Alternative Programs Row */}
             {selectedScore.alternativePrograms && selectedScore.alternativePrograms.length > 0 && (
-              <div className="bg-white border-2 border-black p-6">
-                <h3 className="text-h3 font-bold text-black mb-4 uppercase tracking-wide">Alternative Programs</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {selectedScore.alternativePrograms.map((program) => (
-                    <div key={program.programId} className="border-2 border-gray-300 p-4">
-                      <div className="flex items-center justify-between mb-2">
-                        <h4 className="font-bold text-black uppercase text-body">{program.programName}</h4>
-                        <span className="text-body font-bold text-gray-700">
-                          {program.eligibilityScore}/100
-                        </span>
-                      </div>
-                      <p className="text-body-sm text-gray-700">{program.whyNotRecommended}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <AlternativeProgramsList
+                programs={selectedScore.alternativePrograms}
+                countryCode={countryCode || ''}
+                onViewFlowchart={handleViewAlternativeFlowchart}
+              />
             )}
           </div>
         </div>
