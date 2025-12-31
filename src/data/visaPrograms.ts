@@ -16,7 +16,7 @@ export const GERMANY_PROGRAMS: VisaProgram[] = [
     name: 'EU Blue Card',
     type: 'work',
     requirements: {
-      minSalary: 58400, // EUR per year (or 45,552 for shortage occupations)
+      minSalary: 48300, // EUR per year (2025) - €43,760 for shortage occupations
       minEducationLevel: 'bachelor',
       requiresJobOffer: true,
       minYearsExperience: 0,
@@ -144,6 +144,32 @@ export const GERMANY_PROGRAMS: VisaProgram[] = [
  */
 export const NETHERLANDS_PROGRAMS: VisaProgram[] = [
   {
+    id: 'nl_eu_blue_card',
+    countryCode: 'NL',
+    countryName: 'Netherlands',
+    name: 'EU Blue Card',
+    type: 'work',
+    requirements: {
+      minSalary: 68256, // EUR per year (30+) - reduced: €54,612/year (2025)
+      minEducationLevel: 'bachelor',
+      requiresJobOffer: true,
+    },
+    weights: {
+      career: 0.40,
+      financial: 0.25,
+      education: 0.20,
+      language: 0.05,
+      family: 0.10,
+    },
+    processingTimeWeeks: 4, // 2-4 weeks
+    validityYears: 4,
+    pathToPermanentResidency: true,
+    pathToCitizenship: true,
+    description: 'EU Blue Card for highly skilled workers with higher education degree. High salary threshold but excellent quality of life.',
+    officialUrl: 'https://ind.nl/en/residence-permits/work/eu-blue-card',
+    notes: 'Salary threshold: €68,256/year (30+), €54,612/year (reduced - 2025). Family can join. Can work throughout EU after 18 months. PR in 5 years, citizenship in 5 years.',
+  },
+  {
     id: 'nl_daft',
     countryCode: 'NL',
     countryName: 'Netherlands',
@@ -177,7 +203,7 @@ export const NETHERLANDS_PROGRAMS: VisaProgram[] = [
     type: 'work',
     requirements: {
       requiresJobOffer: true,
-      minSalary: 60360, // EUR per year (or 44208 for under 30)
+      minSalary: 68256, // EUR per year 30+ (€5,688/month) - under 30: €49,680/year (2025)
       minEducationLevel: 'bachelor',
     },
     weights: {
@@ -286,7 +312,7 @@ export const FRANCE_PROGRAMS: VisaProgram[] = [
     type: 'work',
     requirements: {
       requiresJobOffer: true,
-      minSalary: 53836, // EUR per year (1.5x minimum wage)
+      minSalary: 39582, // EUR per year (Aug 2025 ministerial order - 8% reduction)
       minEducationLevel: 'master',
     },
     weights: {
@@ -537,6 +563,32 @@ export const SPAIN_PROGRAMS: VisaProgram[] = [
  * Italy Visa Programs
  */
 export const ITALY_PROGRAMS: VisaProgram[] = [
+  {
+    id: 'it_eu_blue_card',
+    countryCode: 'IT',
+    countryName: 'Italy',
+    name: 'EU Blue Card',
+    type: 'work',
+    requirements: {
+      minSalary: 33500, // EUR per year (1.5x average gross annual salary - 2025)
+      minEducationLevel: 'bachelor',
+      requiresJobOffer: true,
+    },
+    weights: {
+      career: 0.40,
+      financial: 0.25,
+      education: 0.20,
+      language: 0.05,
+      family: 0.10,
+    },
+    processingTimeWeeks: 12, // 60-90 days (Nulla Osta + visa)
+    validityYears: 2,
+    pathToPermanentResidency: true,
+    pathToCitizenship: true,
+    description: 'EU Blue Card for highly skilled workers with higher education degree. Subject to Decreto Flussi quota system.',
+    officialUrl: 'https://www.esteri.it/en/servizi-consolari-e-visti/visti/',
+    notes: 'Salary threshold: €26,000-33,500/year depending on sector. Subject to annual quota (Decreto Flussi). Nulla Osta required. Family can join. Can work throughout EU after 18 months. PR in 5 years, citizenship in 10 years.',
+  },
   {
     id: 'it_golden_visa',
     countryCode: 'IT',
@@ -804,7 +856,7 @@ export const BELGIUM_PROGRAMS: VisaProgram[] = [
     name: 'EU Blue Card',
     type: 'work',
     requirements: {
-      minSalary: 66377, // EUR per year (Brussels 2025)
+      minSalary: 66738, // EUR per year (Brussels/Wallonia 2025) - Flanders: €63,586
       minEducationLevel: 'bachelor',
       requiresJobOffer: true,
       minYearsExperience: 0,
@@ -1094,7 +1146,7 @@ export const IRELAND_PROGRAMS: VisaProgram[] = [
     name: 'General Employment Permit',
     type: 'work',
     requirements: {
-      minSalary: 30000, // EUR per year (2024)
+      minSalary: 34000, // EUR per year (2025)
       requiresJobOffer: true,
       minYearsExperience: 0,
     },
@@ -1330,7 +1382,7 @@ export const DENMARK_PROGRAMS: VisaProgram[] = [
     name: 'EU Blue Card',
     type: 'work',
     requirements: {
-      minSalary: 62400, // EUR per year (DKK 465,000/year)
+      minSalary: 68900, // EUR per year (DKK 514,000/year - 2025)
       minEducationLevel: 'bachelor',
       requiresJobOffer: true,
     },
@@ -1347,7 +1399,7 @@ export const DENMARK_PROGRAMS: VisaProgram[] = [
     pathToCitizenship: true,
     description: 'EU Blue Card for highly skilled workers with high salary threshold. Fast-Track processing available.',
     officialUrl: 'https://www.nyidanmark.dk/en-GB/You-want-to-apply/Work/EU-Blue-Card',
-    notes: 'Denmark has one of the highest EU Blue Card salary thresholds (DKK 465,000/year). Fast-Track processing available. PR in 4 years, citizenship in 9 years.',
+    notes: 'Denmark has one of the highest EU Blue Card salary thresholds (DKK 514,000/year - 2025). Application fee: DKK 6,055 (~€810). PR in 4 years, citizenship in 9 years.',
   },
   {
     id: 'dk_fast_track',
@@ -1356,7 +1408,7 @@ export const DENMARK_PROGRAMS: VisaProgram[] = [
     name: 'Fast-Track Scheme',
     type: 'work',
     requirements: {
-      minSalary: 62400, // EUR per year (DKK 465,000/year) OR 50,300 for recent graduates
+      minSalary: 68900, // EUR per year (DKK 514,000/year - 2025) OR 50,300 for recent graduates
       requiresJobOffer: true,
     },
     weights: {
@@ -1372,7 +1424,7 @@ export const DENMARK_PROGRAMS: VisaProgram[] = [
     pathToCitizenship: true,
     description: 'Fastest work permit in Denmark for employees of certified Fast-Track companies. Processing in 30 days or less.',
     officialUrl: 'https://www.nyidanmark.dk/en-GB/You-want-to-apply/Work/Fast-track',
-    notes: 'Employer must be on certified Fast-Track list. Lower salary threshold (DKK 375,000/€50,300) for recent graduates (within 3 years). Very popular for tech companies.',
+    notes: 'Employer must be on certified Fast-Track list. Lower salary threshold (DKK 375,000/€50,300) for recent graduates (within 3 years). Application fee: DKK 6,055 (~€810).',
   },
   {
     id: 'dk_pay_limit',
@@ -1381,7 +1433,7 @@ export const DENMARK_PROGRAMS: VisaProgram[] = [
     name: 'Pay Limit Scheme',
     type: 'work',
     requirements: {
-      minSalary: 62400, // EUR per year (DKK 465,000/year)
+      minSalary: 68900, // EUR per year (DKK 514,000/year - 2025)
       requiresJobOffer: true,
     },
     weights: {
@@ -1397,7 +1449,7 @@ export const DENMARK_PROGRAMS: VisaProgram[] = [
     pathToCitizenship: true,
     description: 'Most flexible Danish work permit - only requirement is high salary. No education or occupation restrictions.',
     officialUrl: 'https://www.nyidanmark.dk/en-GB/You-want-to-apply/Work/Pay-limit-scheme',
-    notes: 'No education requirement. No occupation list. Only requirement is salary of DKK 465,000/year (€62,400). Popular for senior professionals and executives.',
+    notes: 'No education requirement. No occupation list. Only requirement is salary of DKK 514,000/year (€68,900 - 2025). Application fee: DKK 6,055 (~€810).',
   },
   {
     id: 'dk_startup',
@@ -1487,7 +1539,7 @@ export const FINLAND_PROGRAMS: VisaProgram[] = [
     name: 'Residence Permit for Specialists',
     type: 'work',
     requirements: {
-      minSalary: 36000, // EUR per year (€3,000/month in 2025)
+      minSalary: 45924, // EUR per year (€3,827/month - 2025)
       requiresJobOffer: true,
     },
     weights: {
@@ -1589,6 +1641,32 @@ export const FINLAND_PROGRAMS: VisaProgram[] = [
  */
 export const PORTUGAL_PROGRAMS: VisaProgram[] = [
   {
+    id: 'pt_eu_blue_card',
+    countryCode: 'PT',
+    countryName: 'Portugal',
+    name: 'EU Blue Card',
+    type: 'work',
+    requirements: {
+      minSalary: 21030, // EUR per year (1.5x average gross annual salary - 2025)
+      minEducationLevel: 'bachelor',
+      requiresJobOffer: true,
+    },
+    weights: {
+      career: 0.40,
+      financial: 0.25,
+      education: 0.20,
+      language: 0.05,
+      family: 0.10,
+    },
+    processingTimeWeeks: 8, // 30-60 days
+    validityYears: 2,
+    pathToPermanentResidency: true,
+    pathToCitizenship: true,
+    description: 'EU Blue Card for highly skilled workers with higher education degree. One of the lowest salary thresholds in the EU.',
+    officialUrl: 'https://www.sef.pt/en/pages/conteudo-detalhe.aspx?nID=21',
+    notes: 'Salary threshold: €21,030/year (2025) - one of the lowest in EU. Family can join. Can work throughout EU after 18 months. PR in 5 years, citizenship in 5 years.',
+  },
+  {
     id: 'pt_golden_visa',
     countryCode: 'PT',
     countryName: 'Portugal',
@@ -1637,6 +1715,32 @@ export const PORTUGAL_PROGRAMS: VisaProgram[] = [
     description: 'D7 Visa for those with passive income (pension, rental income, dividends, remote work). Minimum €760/month required. EXTREMELY popular with digital nomads and retirees.',
     officialUrl: 'https://www.portugal.gov.pt/',
     notes: 'Most popular visa for digital nomads and retirees. Very affordable (€760/month). Must spend 183+ days/year in Portugal. Can work remotely for foreign companies. PR in 5 years, citizenship in 5 years. Non-habitual resident tax regime available (0-10% tax for 10 years).',
+  },
+  {
+    id: 'pt_digital_nomad',
+    countryCode: 'PT',
+    countryName: 'Portugal',
+    name: 'Digital Nomad Visa (D8)',
+    type: 'digital_nomad',
+    requirements: {
+      minSalary: 41760, // EUR per year (€3,480/month - 4x minimum wage)
+      minSavings: 36480, // EUR (alternative to income)
+      requiresJobOffer: false,
+    },
+    weights: {
+      career: 0.30,
+      financial: 0.40,
+      education: 0.10,
+      language: 0.10,
+      family: 0.10,
+    },
+    processingTimeWeeks: 8, // 30-60 days
+    validityYears: 1, // Initially 1 year, renewable
+    pathToPermanentResidency: true,
+    pathToCitizenship: true,
+    description: 'D8 Digital Nomad Visa for remote workers. Higher income threshold than D7 but specifically designed for digital nomads.',
+    officialUrl: 'https://www.sef.pt/en/pages/conteudo-detalhe.aspx?nID=21',
+    notes: 'Income: €3,480/month OR €36,480 savings. Must work remotely for non-Portuguese company. Can bring family. PR in 5 years, citizenship in 5 years. Non-habitual resident tax regime available.',
   },
   {
     id: 'pt_tech_visa',
@@ -1718,6 +1822,32 @@ export const PORTUGAL_PROGRAMS: VisaProgram[] = [
  * Greece Visa Programs (Phase 10)
  */
 export const GREECE_PROGRAMS: VisaProgram[] = [
+  {
+    id: 'gr_eu_blue_card',
+    countryCode: 'GR',
+    countryName: 'Greece',
+    name: 'EU Blue Card',
+    type: 'work',
+    requirements: {
+      minSalary: 31919, // EUR per year (1.5x average gross annual salary - 2025)
+      minEducationLevel: 'bachelor',
+      requiresJobOffer: true,
+    },
+    weights: {
+      career: 0.40,
+      financial: 0.25,
+      education: 0.20,
+      language: 0.05,
+      family: 0.10,
+    },
+    processingTimeWeeks: 8, // 30-60 days
+    validityYears: 2,
+    pathToPermanentResidency: true,
+    pathToCitizenship: true,
+    description: 'EU Blue Card for highly skilled workers with higher education degree. Mediterranean lifestyle with lower cost of living.',
+    officialUrl: 'https://migration.gov.gr/en/eu-blue-card/',
+    notes: 'Salary threshold: €31,918.83/year (2025). Family can join. Can work throughout EU after 18 months. PR in 5 years, citizenship in 7 years.',
+  },
   {
     id: 'gr_golden_visa',
     countryCode: 'GR',
@@ -1981,6 +2111,32 @@ export const CYPRUS_PROGRAMS: VisaProgram[] = [
  */
 export const MALTA_PROGRAMS: VisaProgram[] = [
   {
+    id: 'mt_eu_blue_card',
+    countryCode: 'MT',
+    countryName: 'Malta',
+    name: 'EU Blue Card',
+    type: 'work',
+    requirements: {
+      minSalary: 34956, // EUR per year (1.5x average gross annual salary - 2025)
+      minEducationLevel: 'bachelor',
+      requiresJobOffer: true,
+    },
+    weights: {
+      career: 0.40,
+      financial: 0.25,
+      education: 0.20,
+      language: 0.05,
+      family: 0.10,
+    },
+    processingTimeWeeks: 13, // ~90 days
+    validityYears: 2,
+    pathToPermanentResidency: true,
+    pathToCitizenship: true,
+    description: 'EU Blue Card for highly skilled workers with higher education degree. English-speaking EU country with Mediterranean climate.',
+    officialUrl: 'https://identitymalta.com/eu-blue-card/',
+    notes: 'Salary threshold: €34,956/year (2025). Application fee: €300. Processing: ~90 days. Family can join. Can work throughout EU after 18 months. PR in 5 years, citizenship in 5 years.',
+  },
+  {
     id: 'mt_mprp',
     countryCode: 'MT',
     countryName: 'Malta',
@@ -2118,7 +2274,7 @@ export const POLAND_PROGRAMS: VisaProgram[] = [
     name: 'EU Blue Card',
     type: 'work',
     requirements: {
-      minSalary: 21600, // EUR per year (PLN 8,000/month ~€1,800/month)
+      minSalary: 27200, // EUR per year (PLN 114,231/year ~€2,270/month - 2025)
       requiresJobOffer: true,
       requiresEducation: true,
     },
@@ -2335,7 +2491,7 @@ export const CZECH_PROGRAMS: VisaProgram[] = [
       language: 0.10,
       family: 0.15,
     },
-    processingTimeWeeks: 10, // 60-90 days
+    processingTimeWeeks: 17, // 60-120 days (2025)
     validityYears: 2,
     pathToPermanentResidency: true,
     pathToCitizenship: true,
@@ -2380,7 +2536,7 @@ export const HUNGARY_PROGRAMS: VisaProgram[] = [
     name: 'EU Blue Card',
     type: 'work',
     requirements: {
-      minSalary: 18000, // EUR per year (HUF 600,000/month ~€1,500/month)
+      minSalary: 26400, // EUR per year (HUF 883,671/month ~€2,200/month - 2025)
       requiresJobOffer: true,
       requiresEducation: true,
     },
@@ -2511,7 +2667,7 @@ export const ROMANIA_PROGRAMS: VisaProgram[] = [
     name: 'EU Blue Card',
     type: 'work',
     requirements: {
-      minSalary: 19200, // EUR per year (RON 8,000/month ~€1,600/month)
+      minSalary: 32880, // EUR per year (RON 162,936/year ~€2,740/month - 2025)
       requiresJobOffer: true,
       requiresEducation: true,
     },
@@ -2604,6 +2760,31 @@ export const ROMANIA_PROGRAMS: VisaProgram[] = [
     description: 'Self-employment visa for freelancers and entrepreneurs. Business registration in Romania required. Very low cost of living. 16% flat tax.',
     officialUrl: 'https://igi.mai.gov.ro/en/self-employment/',
     notes: 'For freelancers and entrepreneurs. Very low cost of living. 16% flat tax. Family can join. PR in 5 years, citizenship in 8 years.',
+  },
+  {
+    id: 'ro_digital_nomad',
+    countryCode: 'RO',
+    countryName: 'Romania',
+    name: 'Digital Nomad Visa',
+    type: 'digital_nomad',
+    requirements: {
+      minSalary: 45600, // EUR per year (€3,800/month)
+      requiresJobOffer: false,
+    },
+    weights: {
+      career: 0.30,
+      financial: 0.40,
+      education: 0.10,
+      language: 0.05,
+      family: 0.15,
+    },
+    processingTimeWeeks: 4, // 30 days
+    validityYears: 1, // 12 months, renewable
+    pathToPermanentResidency: false, // Can convert to other visa
+    pathToCitizenship: false, // Can convert to other visa
+    description: 'Digital Nomad Visa for remote workers. Fastest internet in EU! Very low cost of living. Bucharest is major tech hub.',
+    officialUrl: 'https://igi.mai.gov.ro/en/digital-nomad/',
+    notes: 'Income: €3,800/month. Fastest internet in EU! Very low cost of living. 12-month validity, renewable. Can convert to other visa types for PR/citizenship path.',
   },
   {
     id: 'ro_family_reunification',
@@ -2773,7 +2954,7 @@ export const SLOVAKIA_PROGRAMS: VisaProgram[] = [
     name: 'EU Blue Card',
     type: 'work',
     requirements: {
-      minSalary: 18000, // EUR per year (€1,500/month)
+      minSalary: 20592, // EUR per year (€1,716/month - 1.2x avg wage 2025)
       requiresJobOffer: true,
       requiresEducation: true,
     },
@@ -2784,13 +2965,13 @@ export const SLOVAKIA_PROGRAMS: VisaProgram[] = [
       language: 0.05,
       family: 0.10,
     },
-    processingTimeWeeks: 6, // 30-60 days
-    validityYears: 2,
+    processingTimeWeeks: 4, // 30 days (2025)
+    validityYears: 3, // 3 years (2025)
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'EU Blue Card for highly skilled workers with higher education degree. Bratislava proximity to Vienna. Low cost of living. Central European location.',
     officialUrl: 'https://www.minv.sk/eu-blue-card/',
-    notes: 'Bratislava proximity to Vienna (Austria). Low cost of living. Central European location. Family can join. Can work throughout EU after 18 months. PR in 5 years, citizenship in 8 years.',
+    notes: 'Application fee: €250 (2025). Processing: 30 days. Validity: 3 years. Bratislava proximity to Vienna. Low cost of living. Family can join. Can work throughout EU after 18 months. PR in 5 years, citizenship in 8 years.',
   },
   {
     id: 'sk_work_permit',
@@ -2999,6 +3180,31 @@ export const SLOVENIA_PROGRAMS: VisaProgram[] = [
     notes: 'For freelancers and entrepreneurs. High quality of life. Alpine beauty. Small, manageable country. Family can join. PR in 5 years, citizenship in 10 years.',
   },
   {
+    id: 'si_digital_nomad',
+    countryCode: 'SI',
+    countryName: 'Slovenia',
+    name: 'Digital Nomad Visa',
+    type: 'digital_nomad',
+    requirements: {
+      minSalary: 24000, // EUR per year (€2,000/month - estimated)
+      requiresJobOffer: false,
+    },
+    weights: {
+      career: 0.30,
+      financial: 0.40,
+      education: 0.10,
+      language: 0.05,
+      family: 0.15,
+    },
+    processingTimeWeeks: 4, // 30 days
+    validityYears: 1, // 12 months
+    pathToPermanentResidency: false, // Can convert to other visa
+    pathToCitizenship: false, // Can convert to other visa
+    description: 'Digital Nomad Visa for remote workers. Launched November 21, 2025. Alpine beauty (Lake Bled!). High quality of life.',
+    officialUrl: 'https://www.gov.si/digital-nomad/',
+    notes: 'NEW: Launched November 21, 2025. 12-month permit. Alpine beauty (Lake Bled!). High quality of life. Small, manageable country. Can convert to other visa types for PR/citizenship path.',
+  },
+  {
     id: 'si_family_reunification',
     countryCode: 'SI',
     countryName: 'Slovenia',
@@ -3035,7 +3241,7 @@ export const CROATIA_PROGRAMS: VisaProgram[] = [
     name: 'EU Blue Card',
     type: 'work',
     requirements: {
-      minSalary: 21600, // EUR per year (€1,800/month)
+      minSalary: 24846, // EUR per year (€2,070/month - 2025)
       requiresJobOffer: true,
       requiresEducation: true,
     },
@@ -3086,7 +3292,7 @@ export const CROATIA_PROGRAMS: VisaProgram[] = [
     name: 'Digital Nomad Visa',
     type: 'work',
     requirements: {
-      minSalary: 27600, // EUR per year (€2,300/month) - remote work
+      minSalary: 39540, // EUR per year (€3,295/month - 2025) - remote work
       requiresJobOffer: false, // Remote work, not local job
     },
     weights: {
@@ -3097,12 +3303,12 @@ export const CROATIA_PROGRAMS: VisaProgram[] = [
       family: 0.15,
     },
     processingTimeWeeks: 4, // 30 days
-    validityYears: 1, // Renewable for 1 more year
+    validityYears: 1.5, // 18 months (extended in 2025)
     pathToPermanentResidency: false, // Can convert to other visa
     pathToCitizenship: false, // Can convert to other visa
     description: 'Digital Nomad Visa for remote workers. Adriatic Sea coastline! Mediterranean lifestyle. Work from paradise!',
     officialUrl: 'https://mup.gov.hr/digital-nomad/',
-    notes: 'For remote workers and freelancers. Adriatic Sea coastline! Mediterranean lifestyle. Work from paradise! Valid for 1 year, renewable for 1 more year. Can convert to other visa types for PR/citizenship path.',
+    notes: 'For remote workers and freelancers. 18-month validity (2025 extension). Alternative: €59,310 savings proof. Can convert to other visa types for PR/citizenship path.',
   },
   {
     id: 'hr_self_employment',
@@ -3166,7 +3372,7 @@ export const ESTONIA_PROGRAMS: VisaProgram[] = [
     name: 'EU Blue Card',
     type: 'work',
     requirements: {
-      minSalary: 24000, // EUR per year (€2,000/month)
+      minSalary: 30336, // EUR per year (€2,528/month - 1.5x avg gross salary 2025)
       requiresJobOffer: true,
       requiresEducation: true,
     },
@@ -3192,7 +3398,7 @@ export const ESTONIA_PROGRAMS: VisaProgram[] = [
     name: 'Digital Nomad Visa',
     type: 'work',
     requirements: {
-      minSalary: 42000, // EUR per year (€3,500/month) - remote work
+      minSalary: 54000, // EUR per year (€4,500/month - 2025) - remote work
       requiresJobOffer: false, // Remote work, not local job
     },
     weights: {
@@ -3297,7 +3503,7 @@ export const LATVIA_PROGRAMS: VisaProgram[] = [
     name: 'EU Blue Card',
     type: 'work',
     requirements: {
-      minSalary: 21600, // EUR per year (€1,800/month)
+      minSalary: 24720, // EUR per year (€2,060/month - 2025)
       requiresJobOffer: true,
       requiresEducation: true,
     },
@@ -3428,7 +3634,7 @@ export const LITHUANIA_PROGRAMS: VisaProgram[] = [
     name: 'EU Blue Card',
     type: 'work',
     requirements: {
-      minSalary: 21600, // EUR per year (€1,800/month)
+      minSalary: 30000, // EUR per year (1.5x avg gross monthly wage - 2025)
       requiresJobOffer: true,
       requiresEducation: true,
     },
