@@ -19,6 +19,7 @@ import { LoadingSpinner } from '../components/LoadingSpinner';
 import { ErrorState } from '../components/ErrorState';
 import { InteractiveFlowchart } from '../components/flowchart/InteractiveFlowchart';
 import { isValidCountryCode } from '../constants/countries';
+import type { CountryCode } from '../constants/countries';
 import {
   decodeResultsFromUrl,
   isValidViabilityScore,
@@ -26,6 +27,8 @@ import {
   copyToClipboard,
 } from '../utils/shareableResults';
 import { ALL_FLOWCHARTS } from '../data/flowcharts';
+import { CountrySilhouette } from '../components/CountrySilhouette';
+import { hasCountrySilhouette } from '../constants/countrySilhouettes';
 
 export const ResultDetail: React.FC = () => {
   const { countryCode } = useParams<{ countryCode: string }>();
@@ -269,12 +272,25 @@ export const ResultDetail: React.FC = () => {
               </p>
             </div>
 
-            {/* Large Score Display */}
-            <div className="text-right">
-              <div className="text-data-lg font-bold text-black leading-none">
-                {selectedScore.overallScore}
+            {/* Large Score Display with Country Silhouette */}
+            <div className="flex items-center gap-6">
+              {/* Country Silhouette */}
+              {hasCountrySilhouette(selectedScore.countryCode as CountryCode) && (
+                <CountrySilhouette
+                  countryCode={selectedScore.countryCode as CountryCode}
+                  size={80}
+                  className="text-black opacity-80"
+                  ariaLabel={`${selectedScore.countryName} country outline`}
+                />
+              )}
+
+              {/* Score */}
+              <div className="text-right">
+                <div className="text-data-lg font-bold text-black leading-none">
+                  {selectedScore.overallScore}
+                </div>
+                <div className="text-h4 text-gray-700 uppercase tracking-wide">/100</div>
               </div>
-              <div className="text-h4 text-gray-700 uppercase tracking-wide">/100</div>
             </div>
           </div>
         </div>
