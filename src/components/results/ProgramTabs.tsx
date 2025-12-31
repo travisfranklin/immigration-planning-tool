@@ -44,13 +44,12 @@ export const ProgramTabs: React.FC<ProgramTabsProps> = ({
   }, [selectedProgramId]);
 
   return (
-    <div className="bg-primary-dark border-t-4 border-b-4 border-black">
-      <div className="max-w-7xl mx-auto">
-        {/* Tabs Container - Horizontally scrollable */}
+    <div className="bg-primary-dark border-t-4 border-b-4 border-black overflow-hidden">
+      <div className="w-full">
+        {/* Tabs Container - Touch swipeable on mobile, scrollable on desktop */}
         <div
           ref={scrollContainerRef}
-          className="flex overflow-x-auto scrollbar-hide"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          className="flex overflow-x-auto overscroll-x-contain snap-x snap-mandatory touch-pan-x scrollbar-hide"
         >
           {allPrograms.map((program, index) => {
             const isSelected = program.programId === selectedProgramId;
@@ -62,26 +61,26 @@ export const ProgramTabs: React.FC<ProgramTabsProps> = ({
                 ref={isSelected ? selectedTabRef : null}
                 onClick={() => onSelectProgram(program.programId)}
                 className={`
-                  flex-shrink-0 px-6 py-4 font-bold uppercase text-label tracking-wide
-                  transition-colors whitespace-nowrap border-r-2 border-black/20
+                  flex-shrink-0 px-4 sm:px-6 py-3 sm:py-4 font-bold uppercase text-xs sm:text-label tracking-wide
+                  transition-colors whitespace-nowrap border-r-2 border-black/20 snap-start
                   ${isSelected
                     ? 'bg-white text-primary-dark'
                     : 'bg-primary-dark text-white hover:bg-primary-dark/80'
                   }
                 `}
               >
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1.5 sm:gap-2">
                   {/* Recommended badge */}
                   {isRecommended && (
-                    <span className={`text-xs px-2 py-0.5 ${
+                    <span className={`text-xs px-1.5 sm:px-2 py-0.5 ${
                       isSelected ? 'bg-primary-dark text-white' : 'bg-white/20 text-white'
                     }`}>
                       ★
                     </span>
                   )}
-                  <span className="break-words">{program.programName}</span>
-                  <span className={`text-sm ${isSelected ? 'text-gray-600' : 'text-white/70'}`}>
-                    {program.eligibilityScore}/100
+                  <span>{program.programName}</span>
+                  <span className={`text-xs sm:text-sm ${isSelected ? 'text-gray-600' : 'text-white/70'}`}>
+                    {program.eligibilityScore}
                   </span>
                 </div>
               </button>
