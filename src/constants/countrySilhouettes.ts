@@ -25,48 +25,43 @@ interface CountrySilhouetteData {
  * The paths are extracted from the mapsicon project.
  */
 export const COUNTRY_SILHOUETTES: Partial<Record<CountryCode, CountrySilhouetteData>> = {
-  // Germany - distinctive shape with clear borders
+  // Germany - rectangular shape representing central Europe
   DE: {
-    viewBox: '0 0 1024 1024',
+    viewBox: '0 0 100 100',
     paths: [
-      // Simplified Germany outline
-      'M512 80c-60 0-120 30-160 70l-40 60-80 20-60 80-40 100 20 80-40 60-20 120 40 80 60 40 20 80 60 60 80 20 60-20 80 40 60-20 40 60 80-20 60-60 20-80 60-40-20-80 40-60 20-120-40-80 60-60-20-80-60-40-40-100-80-20-60-80-40-60c-40-40-100-70-160-70z',
+      'M30,20 L70,15 L75,25 L80,35 L78,50 L75,65 L70,75 L60,80 L45,82 L30,80 L22,70 L18,55 L20,40 L25,28 Z',
     ],
   },
-  
-  // Netherlands - compact with distinctive coastline
+
+  // Netherlands - compact northern shape
   NL: {
-    viewBox: '0 0 1024 1024',
+    viewBox: '0 0 100 100',
     paths: [
-      // Simplified Netherlands outline
-      'M480 120c-80 20-140 80-180 140l-20 100 40 120-20 80 60 100 40 60 100 40 60-20 80 60 60-40 40-80-20-100 60-80-40-120 20-100-60-80-100-60-120-20z',
+      'M35,25 L55,20 L65,25 L70,35 L68,45 L60,55 L50,58 L38,56 L30,48 L28,38 L30,30 Z',
     ],
   },
-  
-  // France - hexagonal shape
+
+  // France - hexagonal shape (L'Hexagone)
   FR: {
-    viewBox: '0 0 1024 1024',
+    viewBox: '0 0 100 100',
     paths: [
-      // Simplified France outline (L'Hexagone)
-      'M512 60c-100 0-200 60-260 140l-80 160-20 200 80 180 140 120 140 40 140-40 140-120 80-180-20-200-80-160c-60-80-160-140-260-140z',
+      'M50,15 L70,25 L75,45 L70,65 L50,75 L30,65 L25,45 L30,25 Z',
     ],
   },
-  
-  // Spain - Iberian peninsula
+
+  // Spain - Iberian peninsula with squared edges
   ES: {
-    viewBox: '0 0 1024 1024',
+    viewBox: '0 0 100 100',
     paths: [
-      // Simplified Spain outline
-      'M200 200c-60 60-80 140-80 220l40 180 100 140 160 80 200 20 180-60 120-140 40-180-60-180-140-100-180-40-200 20-180 40z',
+      'M20,35 L45,30 L65,32 L75,40 L78,55 L72,68 L58,75 L40,78 L25,72 L18,58 L17,45 Z',
     ],
   },
-  
-  // Italy - boot shape
+
+  // Italy - distinctive boot shape
   IT: {
-    viewBox: '0 0 1024 1024',
+    viewBox: '0 0 100 100',
     paths: [
-      // Simplified Italy outline (boot shape)
-      'M480 60c-40 20-60 60-60 100l20 80-40 100 20 120 60 80 40 120 80 100 60 80 100 60 60 80-20 60 40 40 60-20 20-80-40-60 20-100-60-80 40-120-20-140-80-100-60-80-40-120-60-80c-40-40-80-60-140-60z',
+      'M45,15 L52,18 L55,25 L53,35 L50,45 L48,55 L46,65 L48,72 L52,78 L58,82 L62,80 L60,75 L56,70 L54,65 L52,58 L50,50 L48,42 L46,32 L44,22 Z',
     ],
   },
 };
