@@ -7,11 +7,12 @@
  */
 
 import type { CountryCode } from './countries';
+import { ALL_COUNTRY_CODES } from './countries';
 
 /**
- * Countries with available silhouettes (MVP countries)
+ * All EU countries have silhouettes available
  */
-const AVAILABLE_SILHOUETTES: CountryCode[] = ['DE', 'NL', 'FR', 'ES', 'IT'];
+const AVAILABLE_SILHOUETTES: CountryCode[] = ALL_COUNTRY_CODES;
 
 /**
  * Check if a country has a silhouette available

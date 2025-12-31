@@ -39,9 +39,22 @@ describe('CountrySilhouette', () => {
       expect(svg).toBeInTheDocument();
     });
 
-    it('renders nothing for unsupported country code', () => {
-      const { container } = render(<CountrySilhouette countryCode="AT" />);
-      expect(container.querySelector('svg')).toBeNull();
+    it('renders SVG for Austria (AT)', () => {
+      render(<CountrySilhouette countryCode="AT" />);
+      const svg = screen.getByRole('img', { name: /AT country outline/i });
+      expect(svg).toBeInTheDocument();
+    });
+
+    it('renders SVG for Poland (PL)', () => {
+      render(<CountrySilhouette countryCode="PL" />);
+      const svg = screen.getByRole('img', { name: /PL country outline/i });
+      expect(svg).toBeInTheDocument();
+    });
+
+    it('renders SVG for Sweden (SE)', () => {
+      render(<CountrySilhouette countryCode="SE" />);
+      const svg = screen.getByRole('img', { name: /SE country outline/i });
+      expect(svg).toBeInTheDocument();
     });
   });
 
@@ -75,18 +88,30 @@ describe('CountrySilhouette', () => {
   });
 
   describe('hasCountrySilhouette helper', () => {
-    it('returns true for supported MVP countries', () => {
+    it('returns true for all EU countries', () => {
+      // MVP countries
       expect(hasCountrySilhouette('DE')).toBe(true);
       expect(hasCountrySilhouette('NL')).toBe(true);
       expect(hasCountrySilhouette('FR')).toBe(true);
       expect(hasCountrySilhouette('ES')).toBe(true);
       expect(hasCountrySilhouette('IT')).toBe(true);
+
+      // Phase 2 countries
+      expect(hasCountrySilhouette('AT')).toBe(true);
+      expect(hasCountrySilhouette('BE')).toBe(true);
+      expect(hasCountrySilhouette('LU')).toBe(true);
+      expect(hasCountrySilhouette('IE')).toBe(true);
+
+      // Other EU countries
+      expect(hasCountrySilhouette('PL')).toBe(true);
+      expect(hasCountrySilhouette('SE')).toBe(true);
+      expect(hasCountrySilhouette('GR')).toBe(true);
     });
 
-    it('returns false for unsupported countries', () => {
-      expect(hasCountrySilhouette('AT')).toBe(false);
-      expect(hasCountrySilhouette('BE')).toBe(false);
-      expect(hasCountrySilhouette('PL')).toBe(false);
+    it('returns false for non-EU countries', () => {
+      expect(hasCountrySilhouette('US')).toBe(false);
+      expect(hasCountrySilhouette('GB')).toBe(false);
+      expect(hasCountrySilhouette('CH')).toBe(false);
     });
   });
 

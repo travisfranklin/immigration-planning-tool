@@ -17,12 +17,34 @@
 import React from 'react';
 import type { CountryCode } from '../constants/countries';
 
-// Import SVG files directly
-import DeSvg from '../assets/country-silhouettes/de.svg?react';
-import NlSvg from '../assets/country-silhouettes/nl.svg?react';
+// Import SVG files directly for all EU countries
+import AtSvg from '../assets/country-silhouettes/at.svg?react';
+import BeSvg from '../assets/country-silhouettes/be.svg?react';
+import BgSvg from '../assets/country-silhouettes/bg.svg?react';
+import HrSvg from '../assets/country-silhouettes/hr.svg?react';
+import CySvg from '../assets/country-silhouettes/cy.svg?react';
+import CzSvg from '../assets/country-silhouettes/cz.svg?react';
+import DkSvg from '../assets/country-silhouettes/dk.svg?react';
+import EeSvg from '../assets/country-silhouettes/ee.svg?react';
+import FiSvg from '../assets/country-silhouettes/fi.svg?react';
 import FrSvg from '../assets/country-silhouettes/fr.svg?react';
-import EsSvg from '../assets/country-silhouettes/es.svg?react';
+import DeSvg from '../assets/country-silhouettes/de.svg?react';
+import GrSvg from '../assets/country-silhouettes/gr.svg?react';
+import HuSvg from '../assets/country-silhouettes/hu.svg?react';
+import IeSvg from '../assets/country-silhouettes/ie.svg?react';
 import ItSvg from '../assets/country-silhouettes/it.svg?react';
+import LvSvg from '../assets/country-silhouettes/lv.svg?react';
+import LtSvg from '../assets/country-silhouettes/lt.svg?react';
+import LuSvg from '../assets/country-silhouettes/lu.svg?react';
+import MtSvg from '../assets/country-silhouettes/mt.svg?react';
+import NlSvg from '../assets/country-silhouettes/nl.svg?react';
+import PlSvg from '../assets/country-silhouettes/pl.svg?react';
+import PtSvg from '../assets/country-silhouettes/pt.svg?react';
+import RoSvg from '../assets/country-silhouettes/ro.svg?react';
+import SkSvg from '../assets/country-silhouettes/sk.svg?react';
+import SiSvg from '../assets/country-silhouettes/si.svg?react';
+import EsSvg from '../assets/country-silhouettes/es.svg?react';
+import SeSvg from '../assets/country-silhouettes/se.svg?react';
 
 export interface CountrySilhouetteProps {
   /** Two-letter ISO country code */
@@ -38,12 +60,34 @@ export interface CountrySilhouetteProps {
 /**
  * Map of country codes to their SVG components
  */
-const COUNTRY_SVG_MAP: Partial<Record<CountryCode, React.FC<React.SVGProps<SVGSVGElement>>>> = {
-  DE: DeSvg,
-  NL: NlSvg,
+const COUNTRY_SVG_MAP: Record<CountryCode, React.FC<React.SVGProps<SVGSVGElement>>> = {
+  AT: AtSvg,
+  BE: BeSvg,
+  BG: BgSvg,
+  HR: HrSvg,
+  CY: CySvg,
+  CZ: CzSvg,
+  DK: DkSvg,
+  EE: EeSvg,
+  FI: FiSvg,
   FR: FrSvg,
-  ES: EsSvg,
+  DE: DeSvg,
+  GR: GrSvg,
+  HU: HuSvg,
+  IE: IeSvg,
   IT: ItSvg,
+  LV: LvSvg,
+  LT: LtSvg,
+  LU: LuSvg,
+  MT: MtSvg,
+  NL: NlSvg,
+  PL: PlSvg,
+  PT: PtSvg,
+  RO: RoSvg,
+  SK: SkSvg,
+  SI: SiSvg,
+  ES: EsSvg,
+  SE: SeSvg,
 };
 
 /**
