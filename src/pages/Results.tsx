@@ -170,7 +170,7 @@ export const Results: React.FC = () => {
   return (
     <Layout currentPage="results">
       {/* Header Section - Bold, Editorial */}
-      <div className="bg-white border-b-4 border-black">
+      <div className="bg-white border-b-2 border-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <h1 className="text-h1 font-bold text-black mb-3 uppercase tracking-wide">
             Immigration Viability Results

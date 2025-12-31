@@ -194,13 +194,14 @@ export const ResultDetail: React.FC = () => {
       )}
 
       {/* Header Section - Bold, Editorial */}
-      <div className="bg-white border-b-4 border-black">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="bg-white border-black">
+        <div className="max-w-7xl mx-auto px-1 sm:px-6 lg:px-8 pb-12">
           <div className="flex items-center justify-between mb-6">
             <Button
               onClick={() => navigate('/results')}
               variant="ghost"
               size="md"
+              className="pl-0"
             >
               ← Back to Rankings
             </Button>
@@ -218,10 +219,10 @@ export const ResultDetail: React.FC = () => {
           </div>
 
           {/* Country Header with Large Score */}
-          <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div>
               <h1 className="text-display font-extrabold text-black mb-2 uppercase tracking-tight">
-                {selectedScore.countryCode} {selectedScore.countryName}
+                {selectedScore.countryName}
               </h1>
               <p className="text-body-lg text-gray-700 capitalize">
                 {selectedScore.viabilityLevel.replace('_', ' ')} Viability
@@ -242,7 +243,7 @@ export const ResultDetail: React.FC = () => {
       {/* Recommended Program - Bold Highlight */}
       {selectedScore.recommendedProgram && (
         <div className="bg-primary border-t-4 border-b-4 border-black">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="max-w-7xl mx-auto px-1 sm:px-6 lg:px-8 py-8">
             <h2 className="text-label uppercase font-bold text-white mb-2">Recommended Visa Program</h2>
             <h3 className="text-h1 font-bold text-white mb-3 uppercase tracking-wide break-words">
               {selectedScore.recommendedProgram.programName}
@@ -276,7 +277,7 @@ export const ResultDetail: React.FC = () => {
 
       {/* Main Content: Data-Driven Dashboard */}
       <div className="bg-gray-50 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div className="max-w-7xl mx-auto px-1 sm:px-6 lg:px-8 space-y-8">
           {/* Component Scores and Risk Assessment - Above Flowchart */}
           {/* Score Breakdown */}
           <ScoreBreakdown componentScores={selectedScore.componentScores} />

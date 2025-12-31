@@ -23,15 +23,15 @@ interface ContingenciesListProps {
  */
 const getTimeframeColor = (timeframe: string): string => {
   if (timeframe.toLowerCase().includes('before')) {
-    return 'bg-primary border-primary text-white';
+    return 'bg-primary text-white';
   }
   if (timeframe.toLowerCase().includes('during')) {
-    return 'bg-warning border-warning text-black';
+    return 'bg-warning text-black';
   }
   if (timeframe.toLowerCase().includes('after')) {
-    return 'bg-success border-success text-black';
+    return 'bg-success text-black';
   }
-  return 'bg-gray-200 border-gray-400 text-black';
+  return 'bg-gray-200 text-black';
 };
 
 export const ContingenciesList: React.FC<ContingenciesListProps> = ({ contingencies }) => {
@@ -65,50 +65,39 @@ export const ContingenciesList: React.FC<ContingenciesListProps> = ({ contingenc
         {contingencies.map((contingency, index) => (
           <div
             key={contingency.id}
-            className="border-2 border-black p-4"
+            className="border-2 border-black"
           >
-            {/* Contingency Header */}
-            <div className="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-3 mb-3">
+            <div className="w-full bg-black min-h-6 flex justify-start items-center">
               {/* Numbered Badge - Sharp, Bold, Responsive */}
-              <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 border-2 border-black bg-white font-bold text-body-sm sm:text-body flex-shrink-0">
+              <div className="flex items-center justify-center w-6 sm:w-10 sm:h-10 font-bold text-white flex-shrink-0">
                 {String(index + 1).padStart(2, '0')}
               </div>
-              <div className="flex-1 min-w-0">
-                <h4 className="font-bold text-black mb-2 uppercase tracking-wide">
-                  {contingency.scenario}
-                </h4>
-                <p className="text-body-sm text-gray-700">{contingency.description}</p>
+              <h4 className="font-medium text-white uppercase tracking-wide leading-none">
+                {contingency.scenario}
+              </h4>
+            </div>
+            <div className="p-4">
+              {/* Contingency Header */}
+              <div className="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-3 mb-3">
+                <div className="flex-1 min-w-0">
+                  <p className="text-body-sm text-gray-700">{contingency.description}</p>
+                </div>
+              </div>
+
+              {/* Action Plan - Bold Highlight */}
+              <div>
+                <p className="text-label uppercase font-bold">Action Plan</p>
+                <p className="text-body-sm">{contingency.action}</p>
               </div>
             </div>
-
-            {/* Action Plan - Bold Highlight */}
-            <div className="space-y-3">
-              <div className="bg-primary border-2 border-primary p-4">
-                <p className="text-label uppercase font-bold text-white mb-2">Action Plan</p>
-                <p className="text-body-sm text-white">{contingency.action}</p>
-              </div>
-
-              {/* Timeframe Badge */}
+            {/* Timeframe Badge */}
               {contingency.timeframe && (
-                <div className="flex items-center gap-3">
-                  <span className="text-label uppercase font-bold text-black">Timeline:</span>
-                  <span className={`text-label px-3 py-1 border-2 font-bold uppercase ${getTimeframeColor(contingency.timeframe)}`}>
-                    {contingency.timeframe}
-                  </span>
+                <div className={`border-t-2 border-black text-label p-1 font-bold uppercase w-full ${getTimeframeColor(contingency.timeframe)}`}>
+                  {contingency.timeframe}
                 </div>
               )}
-            </div>
           </div>
         ))}
-      </div>
-
-      {/* Summary - Bold Tip */}
-      <div className="mt-6 pt-6 border-t-2 border-black">
-        <div className="bg-accent border-2 border-accent p-4">
-          <p className="text-body-sm text-black">
-            <span className="font-bold uppercase">Tip:</span> Review these contingency plans regularly and update them as your situation changes.
-          </p>
-        </div>
       </div>
     </div>
   );
