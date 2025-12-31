@@ -45,7 +45,7 @@ export const ProgramDetails: React.FC<ProgramDetailsProps> = ({
         </div>
 
         {/* Program Name */}
-        <h3 className="text-h1 font-bold text-white mb-3 uppercase tracking-wide break-words">
+        <h3 className="text-h1 font-bold text-white mb-3 uppercase tracking-tight break-words">
           {program.programName}
         </h3>
 

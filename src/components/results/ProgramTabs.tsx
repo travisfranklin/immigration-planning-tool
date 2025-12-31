@@ -44,7 +44,7 @@ export const ProgramTabs: React.FC<ProgramTabsProps> = ({
   }, [selectedProgramId]);
 
   return (
-    <div className="bg-primary-dark border-t-4 border-b-4 border-black w-screen max-w-[100vw] overflow-hidden">
+    <div className="bg-black border-t-4 border-black w-screen max-w-[100vw] overflow-hidden">
       {/* Tabs Container - Touch swipeable on mobile, scrollable on desktop */}
       <div
         ref={scrollContainerRef}
@@ -61,7 +61,7 @@ export const ProgramTabs: React.FC<ProgramTabsProps> = ({
                 onClick={() => onSelectProgram(program.programId)}
                 className={`
                   flex-shrink-0 px-4 sm:px-6 py-3 sm:py-4 font-bold uppercase text-xs sm:text-label tracking-wide
-                  transition-colors whitespace-nowrap border-r-2 border-black/20 snap-start
+                  transition-colors whitespace-nowrap border-r-2 border-black/20 snap-start 
                   ${isSelected
                     ? 'bg-white text-primary-dark'
                     : 'bg-primary-dark text-white hover:bg-primary-dark/80'
@@ -85,6 +85,7 @@ export const ProgramTabs: React.FC<ProgramTabsProps> = ({
               </button>
             );
           })}
+          <div className="py-3 sm:py-4 bg-primary-dark/90 flex-grow"></div>
       </div>
     </div>
   );

@@ -241,7 +241,7 @@ export const ResultDetail: React.FC = () => {
               onClick={() => navigate('/results')}
               variant="ghost"
               size="md"
-              className="pl-0"
+              className="pl-1 text-left"
             >
               ← Back to Rankings
             </Button>
@@ -261,7 +261,7 @@ export const ResultDetail: React.FC = () => {
           {/* Country Header with Large Score */}
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div>
-              <h1 className="text-display font-extrabold text-black mb-2 uppercase tracking-tight">
+              <h1 className="text-5xl sm:text-display font-extrabold text-black mb-2 uppercase tracking-tight">
                 {selectedScore.countryName}
               </h1>
               <p className="text-body-lg text-gray-700 capitalize">
