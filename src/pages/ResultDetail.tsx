@@ -272,19 +272,21 @@ export const ResultDetail: React.FC = () => {
             </div>
 
             {/* Large Score Display with Country Silhouette */}
-            <div className="flex items-center gap-6">
-              {/* Country Silhouette */}
+            <div className="relative">
+              {/* Country Silhouette - Absolutely positioned behind score */}
               {hasCountrySilhouette(selectedScore.countryCode) && (
                 <CountrySilhouette
                   countryCode={selectedScore.countryCode}
-                  size={80}
-                  className="text-black opacity-80"
+                  size={200}
+                  className="absolute -z-10 opacity-30
+                    right-8 -top-12
+                    md:left-0 md:right-auto md:-top-16"
                   ariaLabel={`${selectedScore.countryName} country outline`}
                 />
               )}
 
               {/* Score */}
-              <div className="text-right">
+              <div className="text-right relative z-10">
                 <div className="text-data-lg font-bold text-black leading-none">
                   {selectedScore.overallScore}
                 </div>

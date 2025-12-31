@@ -364,7 +364,7 @@ a:hover {
   /* Default styling using design tokens */
   --silhouette-fill: rgba(var(--color-primary-rgb), 0.7);
   --silhouette-stroke: var(--color-primary);
-  --silhouette-stroke-width: 1px;
+  --silhouette-stroke-width: 30px;
 }
 
 /* Apply styles to all path and g elements within the SVG
