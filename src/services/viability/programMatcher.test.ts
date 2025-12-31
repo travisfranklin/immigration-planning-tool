@@ -88,17 +88,19 @@ describe('programMatcher', () => {
 
     it('should calculate alignsWithTimeline correctly', () => {
       const profile = createMockProfile({
-        timelineMonths: 2, // Very short timeline
+        timelineMonths: 6, // 6-month timeline
       });
 
       const results = matchUserToPrograms(profile);
 
-      // Some programs should not align with 2-month timeline
+      // Some programs should not align with 6-month timeline (those with long processing + buffer)
       const programsNotAligning = results.filter(r => !r.alignsWithTimeline);
       expect(programsNotAligning.length).toBeGreaterThan(0);
 
-      // Programs with short processing times should align
-      const fastPrograms = results.filter(r => 
+      // Programs with short processing times should align with 6-month timeline
+      // Timeline calculation: processingTimeWeeks/4 + bufferMonths (3 for non-business, 6 for business)
+      // For processingTimeWeeks <= 4 (1 month) + 3 month buffer = 4 months total, fits in 6 months
+      const fastPrograms = results.filter(r =>
         r.program.processingTimeWeeks <= 4 && // 1 month processing
         !r.program.requirements.requiresBusinessPlan // No business plan (adds 6 months buffer)
       );

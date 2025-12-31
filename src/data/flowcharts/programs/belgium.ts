@@ -26,19 +26,19 @@ export const euBlueCard: FlowchartDefinition = buildFlowchart({
   totalEstimatedDuration: '3-5 months',
   mermaidDiagram: `
 flowchart TD
-  Start([Start Process]) -->region[Determine Region]
-  region -->job-offer[Secure Job Offer]
-  job-offer --> Salary{"Salary >= Regional Threshold?"}
-  Salary -->|Yes| gather-documents[Gather Required Documents]
-  Salary -->|No| End1([Not Eligible])
+  Start([Start Process]) -->determine-region[Determine Region]
+  determine-region -->job-offer[Secure Job Offer]
+  job-offer --> salary{"Salary >= Regional Threshold?"}
+  salary -->|Yes| gather-documents[Gather Required Documents]
+  salary -->|No| End1([Not Eligible])
   gather-documents --> submit-application[Submit Application]
   submit-application --> processing[Wait for Processing]
-  processing --> Decision{Decision}
-  Decision -->|Approved| Visa[Receive Blue Card]
-  Decision -->|Rejected| End2([Process Ended])
-  Visa --> arrival[Travel to Belgium]
-  arrival --> Register[Register at Commune]
-  Register --> Success([Process Complete])`,
+  processing --> decision{Decision}
+  decision -->|Approved| visa[Receive Blue Card]
+  decision -->|Rejected| End2([Process Ended])
+  visa --> travel[Travel to Belgium]
+  travel --> registration[Register at Commune]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'determine-region',
@@ -102,17 +102,17 @@ export const highlySkilledWorker: FlowchartDefinition = buildFlowchart({
   mermaidDiagram: `
 flowchart TD
   Start([Start Process]) -->job-offer[Secure Job Offer]
-  job-offer --> Salary{"Salary >= EUR 51,613?"}
-  Salary -->|Yes| gather-documents[Gather Required Documents]
-  Salary -->|No| End1([Not Eligible])
-  gather-documents --> fast-track[Submit Fast-Track Application]
-  fast-track --> processing[Wait for Processing]
-  processing --> Decision{Decision}
-  Decision -->|Approved| Visa[Receive Single Permit]
-  Decision -->|Rejected| End2([Process Ended])
-  Visa --> arrival[Travel to Belgium]
-  arrival --> Register[Register at Commune]
-  Register --> Success([Process Complete])`,
+  job-offer --> salary{"Salary >= EUR 51,613?"}
+  salary -->|Yes| gather-documents[Gather Required Documents]
+  salary -->|No| End1([Not Eligible])
+  gather-documents --> fast-track-application[Submit Fast-Track Application]
+  fast-track-application --> processing[Wait for Processing]
+  processing --> decision{Decision}
+  decision -->|Approved| visa[Receive Single Permit]
+  decision -->|Rejected| End2([Process Ended])
+  visa --> travel[Travel to Belgium]
+  travel --> registration[Register at Commune]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       template: COMMON_STEP_IDS.JOB_OFFER,
@@ -172,14 +172,14 @@ flowchart TD
   Start([Start Process]) -->business-plan[Create Business Plan]
   business-plan -->capital[Secure Capital EUR 18,600]
   capital -->gather-documents[Gather Required Documents]
-  gather-documents -->submit[Submit Application]
-  submit -->processing[Wait for Processing]
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Professional Card]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Belgium]
-  travel -->register[Register at Commune]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register at Commune]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'business-plan',
@@ -240,18 +240,18 @@ export const startupVisa: FlowchartDefinition = buildFlowchart({
   mermaidDiagram: `
 flowchart TD
   Start([Start Process]) -->business-idea[Develop Business Idea]
-  business-idea -->accelerator[Find Approved Accelerator]
-  accelerator -->business-plan[Create Business Plan]
+  business-idea -->accelerator-search[Find Approved Accelerator]
+  accelerator-search -->business-plan[Create Business Plan]
   business-plan -->funding[Secure Funding EUR 25,000]
   funding -->gather-documents[Gather Required Documents]
-  gather-documents -->submit[Submit Application]
-  submit -->processing[Wait for Processing]
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Startup Visa]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Belgium]
-  travel -->register[Register at Commune]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register at Commune]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'business-idea',
@@ -326,21 +326,21 @@ export const familyReunification: FlowchartDefinition = buildFlowchart({
   totalEstimatedDuration: '4-6 months',
   mermaidDiagram: `
 flowchart TD
-  Start([Start Process]) -->sponsor{Sponsor Eligible?}
-  sponsor -->|Yes| income{Income Sufficient?}
-  sponsor -->|No| End1([Not Eligible])
-  income -->|Yes| housing{Housing Adequate?}
-  income -->|No| End1
-  housing -->|Yes| gather-documents[Gather Required Documents]
-  housing -->|No| End1
-  gather-documents -->submit[Submit at Consulate]
-  submit -->processing[Wait for Processing]
+  Start([Start Process]) -->sponsor-check{Sponsor Eligible?}
+  sponsor-check -->|Yes| income-check{Income Sufficient?}
+  sponsor-check -->|No| End1([Not Eligible])
+  income-check -->|Yes| housing-check{Housing Adequate?}
+  income-check -->|No| End1
+  housing-check -->|Yes| gather-documents[Gather Required Documents]
+  housing-check -->|No| End1
+  gather-documents -->submit-application[Submit at Consulate]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Visa]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Belgium]
-  travel -->register[Register at Commune]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register at Commune]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'sponsor-check',

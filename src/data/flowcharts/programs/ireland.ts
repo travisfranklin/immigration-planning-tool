@@ -27,21 +27,20 @@ export const criticalSkillsPermit: FlowchartDefinition = buildFlowchart({
   mermaidDiagram: `
 flowchart TD
   Start([Start Process]) -->job-offer[Secure Job Offer]
-  job-offer --> Salary{"Salary >= EUR 44,000?"}
-  Salary -->|Yes| CriticalSkills{Critical Skills List?}
-  Salary -->|No| End1([Not Eligible])
-  CriticalSkills -->|Yes| gather-documents[Gather Required Documents]
-  CriticalSkills -->|No| End1
+  job-offer --> salary{"Salary >= EUR 44,000?"}
+  salary -->|Yes| critical-skills-check{Critical Skills List?}
+  salary -->|No| End1([Not Eligible])
+  critical-skills-check -->|Yes| gather-documents[Gather Required Documents]
+  critical-skills-check -->|No| End1
   gather-documents -->employer-application[Employer Applies for Permit]
   employer-application -->processing[Wait for Processing<br/>8 weeks]
-  processing --> Decision{Decision}
-  Decision -->|Approved| Permit[Receive Employment Permit]
-  Decision -->|Rejected| Appeal[Consider Appeal]
-  Permit -->entry-visa[Apply for Entry Visa]
-  entry-visa -->arrival[Travel to Ireland]
-  arrival --> registration[Register with GNIB/IRP]
-  registration --> Success([Process Complete])
-  Appeal --> End2([Process Ended])`,
+  processing --> decision{Decision}
+  decision -->|Approved| permit[Receive Employment Permit]
+  decision -->|Rejected| End2([Process Ended])
+  permit -->entry-visa[Apply for Entry Visa]
+  entry-visa -->travel[Travel to Ireland]
+  travel --> registration[Register with GNIB/IRP]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       template: COMMON_STEP_IDS.JOB_OFFER,
@@ -157,9 +156,9 @@ export const generalEmploymentPermit: FlowchartDefinition = buildFlowchart({
   mermaidDiagram: `
 flowchart TD
   Start([Start Process]) -->job-offer[Secure Job Offer<br/>from Irish Employer]
-  job-offer --> check-salary{"Salary >= EUR 30,000/year?"}
-  check-salary -->|Yes| labor-market-test[Employer Conducts<br/>Labor Market Test]
-  check-salary -->|No| End1([Not Eligible])
+  job-offer --> salary{"Salary >= EUR 30,000/year?"}
+  salary -->|Yes| labor-market-test[Employer Conducts<br/>Labor Market Test]
+  salary -->|No| End1([Not Eligible])
   labor-market-test --> test-result{No Suitable<br/>EEA Worker?}
   test-result -->|Yes| gather-documents[Gather Required Documents]
   test-result -->|No| End2([Not Eligible])
@@ -167,12 +166,11 @@ flowchart TD
   employer-application -->processing[Processing<br/>8-12 Weeks]
   processing --> decision{Decision}
   decision -->|Approved| receive-permit[Receive Employment Permit]
-  decision -->|Rejected| consider-appeal[Consider Appeal]
+  decision -->|Rejected| End3([Process Ended])
   receive-permit -->entry-visa[Apply for Entry Visa]
-  entry-visa -->travel-to-ireland[Travel to Ireland]
-  travel-to-ireland -->register-gnib[Register with GNIB/IRP]
-  register-gnib --> Success([Process Complete])
-  consider-appeal --> End3([Process Ended])`,
+  entry-visa -->travel[Travel to Ireland]
+  travel -->registration[Register with GNIB/IRP]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       template: COMMON_STEP_IDS.JOB_OFFER,
@@ -284,20 +282,18 @@ export const stepProgramme: FlowchartDefinition = buildFlowchart({
   mermaidDiagram: `
 flowchart TD
   Start([Start Process]) --> business-plan[Develop Business Plan]
-  business-plan --> Funding{EUR 50,000 Funding?}
-  Funding -->|From Approved Source| Approval[Get Approved Source Validation]
-  Funding -->|No| End1([Not Eligible])
-  Approval --> gather-documents[Gather Required Documents]
-  gather-documents --> application-submission[Submit Application]
-  application-submission --> evaluation-interview[Business Plan Evaluation]
-  evaluation-interview --> Decision{Decision}
-  Decision -->|Approved| Permit[Receive STEP Approval]
-  Decision -->|Rejected| Appeal[Consider Appeal]
-  Permit --> arrival[Travel to Ireland]
-  arrival --> Register[Register with GNIB/IRP]
-  Register --> LaunchBusiness[Launch Business]
-  LaunchBusiness --> Success([Process Complete])
-  Appeal --> End2([Process Ended])`,
+  business-plan --> funding-source{EUR 50,000 Funding?}
+  funding-source -->|From Approved Source| gather-documents[Gather Required Documents]
+  funding-source -->|No| End1([Not Eligible])
+  gather-documents --> submit-application[Submit Application]
+  submit-application --> evaluation-interview[Business Plan Evaluation]
+  evaluation-interview --> decision{Decision}
+  decision -->|Approved| permit[Receive STEP Approval]
+  decision -->|Rejected| End2([Process Ended])
+  permit --> travel[Travel to Ireland]
+  travel --> registration[Register with GNIB/IRP]
+  registration --> launch-business[Launch Business]
+  launch-business --> Success([Process Complete])`,
   steps: [
     {
       id: 'business-plan',
@@ -420,17 +416,16 @@ flowchart TD
   Start([Start]) -->funds{EUR 2M Net Worth<br/>+ EUR 1M Investment?}
   funds -->|Yes| choose[Choose Investment Option]
   funds -->|No| End1([Not Eligible])
-  choose -->docs[Gather Documents]
-  docs -->submit[Submit Application]
-  submit -->process[Processing 4-6 Months]
-  process --> decision{Decision}
+  choose -->gather-documents[Gather Documents]
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Processing 4-6 Months]
+  processing --> decision{Decision}
   decision -->|Approved| invest[Make Investment]
-  decision -->|Rejected| appeal[Consider Appeal]
+  decision -->|Rejected| End2([Process Ended])
   invest -->permit[Receive Stamp 4 Permit]
   permit -->travel[Travel to Ireland]
-  travel -->register[Register with GNIB/IRP]
-  register --> Success([Complete])
-  appeal --> End2([Process Ended])`,
+  travel -->registration[Register with GNIB/IRP]
+  registration --> Success([Complete])`,
   steps: [
     {
       id: 'funds',
@@ -521,17 +516,16 @@ export const familyReunification: FlowchartDefinition = buildFlowchart({
 flowchart TD
   Start([Start]) -->check[Check Eligibility]
   check --> eligible{Sponsor<br/>Eligible?}
-  eligible -->|Yes| docs[Gather Documents]
+  eligible -->|Yes| gather-documents[Gather Documents]
   eligible -->|No| End1([Not Eligible])
-  docs -->submit[Submit Application]
-  submit -->process[Processing 6-12 Months]
-  process --> decision{Decision}
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Processing 6-12 Months]
+  processing --> decision{Decision}
   decision -->|Approved| permit[Receive Permit]
-  decision -->|Rejected| appeal[Consider Appeal]
+  decision -->|Rejected| End2([Process Ended])
   permit -->travel[Travel to Ireland]
-  travel -->register[Register at GNIB]
-  register --> Success([Complete])
-  appeal --> End2([Process Ended])`,
+  travel -->registration[Register at GNIB]
+  registration --> Success([Complete])`,
   steps: [
     {
       id: 'check',

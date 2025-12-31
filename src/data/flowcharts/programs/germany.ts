@@ -161,6 +161,19 @@ flowchart TD
     { template: COMMON_STEP_IDS.GATHER_DOCUMENTS, options: { includeEmployment: true } },
     { template: COMMON_STEP_IDS.SUBMIT_APPLICATION },
     { template: COMMON_STEP_IDS.PROCESSING },
+    {
+      id: 'decision',
+      title: 'Receive Decision',
+      description: 'Get notification of approval or rejection',
+      estimatedDuration: '1 week',
+      documents: [],
+      isConditional: true,
+      condition: 'Application approved',
+      notes: [
+        'If approved, passport will be stamped with visa',
+        'If rejected, you can appeal within 1 month',
+      ],
+    },
     { template: COMMON_STEP_IDS.TRAVEL },
     { template: COMMON_STEP_IDS.REGISTRATION },
   ],
@@ -188,14 +201,14 @@ flowchart TD
   decision -->|Approved| travel[Receive Job Seeker Visa]
   decision -->|Rejected| End2([Process Ended])
   travel --> job-search[Search for Job<br/>6 months]
-  job-search --> JobFound{Job Offer?}
-  JobFound -->|Yes| conversion[Convert to Work Visa]
-  JobFound -->|No| Extend{Extend Visa?}
-  Extend -->|Yes| job-search[Continue Search]
-  Extend -->|No| Return[Return Home]
+  job-search --> job-found{Job Offer?}
+  job-found -->|Yes| conversion[Convert to Work Visa]
+  job-found -->|No| extend-visa{Extend Visa?}
+  extend-visa -->|Yes| job-search[Continue Search]
+  extend-visa -->|No| return-home[Return Home]
   conversion --> Success([Process Complete])
   job-search --> job-search
-  Return --> End2`,
+  return-home --> End2`,
   steps: [
     {
       id: 'degree-recognition',
@@ -238,6 +251,19 @@ flowchart TD
     },
     { template: COMMON_STEP_IDS.SUBMIT_APPLICATION },
     { template: COMMON_STEP_IDS.PROCESSING, options: { processingTime: '4-8 weeks' } },
+    {
+      id: 'decision',
+      title: 'Receive Decision',
+      description: 'Get notification of approval or rejection',
+      estimatedDuration: '1 week',
+      documents: [],
+      isConditional: true,
+      condition: 'Application approved',
+      notes: [
+        'If approved, passport will be stamped with visa',
+        'If rejected, you can appeal within 1 month',
+      ],
+    },
     { template: COMMON_STEP_IDS.TRAVEL, options: { visaType: 'job seeker visa' } },
     {
       id: 'job-search',
@@ -253,6 +279,19 @@ flowchart TD
       ],
     },
     {
+      id: 'job-found',
+      title: 'Job Offer Decision',
+      description: 'Evaluate if you have received a job offer',
+      estimatedDuration: 'Ongoing',
+      documents: [],
+      isConditional: true,
+      condition: 'Job offer received',
+      notes: [
+        'Must find job matching your qualifications',
+        'Job must meet visa requirements',
+      ],
+    },
+    {
       id: 'conversion',
       title: 'Convert to Work Visa',
       description: 'Convert job seeker visa to work visa',
@@ -264,6 +303,30 @@ flowchart TD
         'Must convert before visa expires',
         'Can be done within Germany',
         'No need to return home',
+      ],
+    },
+    {
+      id: 'extend-visa',
+      title: 'Visa Extension Decision',
+      description: 'Decide whether to extend your job seeker visa',
+      estimatedDuration: '1-2 weeks',
+      documents: ['Extension application', 'Proof of job search efforts'],
+      isConditional: true,
+      condition: 'Extension approved',
+      notes: [
+        'Can extend once if good prospects',
+        'Must show active job search',
+      ],
+    },
+    {
+      id: 'return-home',
+      title: 'Return Home',
+      description: 'Return to home country if visa expires without job offer',
+      estimatedDuration: 'N/A',
+      documents: [],
+      notes: [
+        'Must leave Germany before visa expires',
+        'Can reapply after returning home',
       ],
     },
   ],
@@ -371,6 +434,19 @@ flowchart TD
       options: {
         additionalNotes: ['Freelance visas are discretionary'],
       },
+    },
+    {
+      id: 'decision',
+      title: 'Receive Decision',
+      description: 'Get notification of approval or rejection',
+      estimatedDuration: '1 week',
+      documents: [],
+      isConditional: true,
+      condition: 'Application approved',
+      notes: [
+        'If approved, passport will be stamped with visa',
+        'If rejected, you can appeal within 1 month',
+      ],
     },
     { template: COMMON_STEP_IDS.TRAVEL, options: { visaType: 'freelance visa' } },
     {
@@ -520,6 +596,19 @@ flowchart TD
       },
     },
     { template: COMMON_STEP_IDS.PROCESSING },
+    {
+      id: 'decision',
+      title: 'Receive Decision',
+      description: 'Get notification of approval or rejection',
+      estimatedDuration: '1 week',
+      documents: [],
+      isConditional: true,
+      condition: 'Application approved',
+      notes: [
+        'If approved, passport will be stamped with visa',
+        'If rejected, you can appeal within 1 month',
+      ],
+    },
     { template: COMMON_STEP_IDS.TRAVEL, options: { visaType: 'family reunification visa' } },
     {
       template: COMMON_STEP_IDS.REGISTRATION,

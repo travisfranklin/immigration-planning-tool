@@ -27,17 +27,17 @@ export const workPermit: FlowchartDefinition = buildFlowchart({
   mermaidDiagram: `
 flowchart TD
   Start([Start Process]) -->job-offer[Secure Job Offer]
-  job-offer --> Salary{"Salary >= SEK 27,360/month?"}
-  Salary -->|Yes| gather-documents[Gather Required Documents]
-  Salary -->|No| End1([Not Eligible])
+  job-offer --> salary{"Salary >= SEK 27,360/month?"}
+  salary -->|Yes| gather-documents[Gather Required Documents]
+  salary -->|No| End1([Not Eligible])
   gather-documents --> submit-application[Submit Application]
   submit-application --> processing[Wait for Processing]
-  processing --> Decision{Decision}
-  Decision -->|Approved| Visa[Receive Work Permit]
-  Decision -->|Rejected| End2([Process Ended])
-  Visa --> arrival[Travel to Sweden]
-  arrival --> Register[Register with Migration Agency]
-  Register --> Success([Process Complete])`,
+  processing --> decision{Decision}
+  decision -->|Approved| visa[Receive Work Permit]
+  decision -->|Rejected| End2([Process Ended])
+  visa --> travel[Travel to Sweden]
+  travel --> registration[Register with Migration Agency]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       template: COMMON_STEP_IDS.JOB_OFFER,
@@ -88,17 +88,17 @@ export const euBlueCard: FlowchartDefinition = buildFlowchart({
   mermaidDiagram: `
 flowchart TD
   Start([Start Process]) -->job-offer[Secure Job Offer]
-  job-offer --> Salary{"Salary >= SEK 54,000/month?"}
-  Salary -->|Yes| gather-documents[Gather Required Documents]
-  Salary -->|No| End1([Not Eligible])
+  job-offer --> salary{"Salary >= SEK 54,000/month?"}
+  salary -->|Yes| gather-documents[Gather Required Documents]
+  salary -->|No| End1([Not Eligible])
   gather-documents --> submit-application[Submit Application]
   submit-application --> processing[Wait for Processing]
-  processing --> Decision{Decision}
-  Decision -->|Approved| Visa[Receive Blue Card]
-  Decision -->|Rejected| End2([Process Ended])
-  Visa --> arrival[Travel to Sweden]
-  arrival --> Register[Register with Migration Agency]
-  Register --> Success([Process Complete])`,
+  processing --> decision{Decision}
+  decision -->|Approved| visa[Receive Blue Card]
+  decision -->|Rejected| End2([Process Ended])
+  visa --> travel[Travel to Sweden]
+  travel --> registration[Register with Migration Agency]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       template: COMMON_STEP_IDS.JOB_OFFER,
@@ -150,14 +150,14 @@ export const selfEmployment: FlowchartDefinition = buildFlowchart({
 flowchart TD
   Start([Start Process]) -->business-plan[Create Business Plan]
   business-plan -->gather-documents[Gather Required Documents]
-  gather-documents -->submit[Submit Application]
-  submit -->processing[Wait for Processing]
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Self-Employment Visa]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Sweden]
-  travel -->register[Register with Migration Agency]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Migration Agency]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'business-plan',
@@ -209,17 +209,17 @@ export const familyReunification: FlowchartDefinition = buildFlowchart({
   totalEstimatedDuration: '6-12 months',
   mermaidDiagram: `
 flowchart TD
-  Start([Start Process]) -->sponsor{Sponsor Eligible?}
-  sponsor -->|Yes| gather-documents[Gather Required Documents]
-  sponsor -->|No| End1([Not Eligible])
-  gather-documents -->submit[Submit at Consulate]
-  submit -->processing[Wait for Processing]
+  Start([Start Process]) -->sponsor-check{Sponsor Eligible?}
+  sponsor-check -->|Yes| gather-documents[Gather Required Documents]
+  sponsor-check -->|No| End1([Not Eligible])
+  gather-documents -->submit-application[Submit at Consulate]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Visa]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Sweden]
-  travel -->register[Register with Migration Agency]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Migration Agency]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'sponsor-check',
@@ -269,16 +269,16 @@ export const researcher: FlowchartDefinition = buildFlowchart({
   totalEstimatedDuration: '2-4 months',
   mermaidDiagram: `
 flowchart TD
-  Start([Start Process]) -->hosting[Secure Hosting Agreement]
-  hosting -->gather-documents[Gather Required Documents]
-  gather-documents -->submit[Submit Application]
-  submit -->processing[Wait for Processing]
+  Start([Start Process]) -->hosting-agreement[Secure Hosting Agreement]
+  hosting-agreement -->gather-documents[Gather Required Documents]
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Researcher Visa]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Sweden]
-  travel -->register[Register with Migration Agency]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Migration Agency]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'hosting-agreement',

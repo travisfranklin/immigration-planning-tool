@@ -58,19 +58,21 @@ describe('ScoreDisplay', () => {
   describe('Progress Bar', () => {
     it('renders progress bar by default', () => {
       const { container } = render(<ScoreDisplay score={85} />);
-      const progressBar = container.querySelector('.bg-primary');
+      // Score 85 (>=80) uses bg-success per viability constants
+      const progressBar = container.querySelector('.bg-success');
       expect(progressBar).toBeInTheDocument();
     });
 
     it('does not render progress bar when showProgress is false', () => {
       const { container } = render(<ScoreDisplay score={85} showProgress={false} />);
-      const progressBar = container.querySelector('.bg-primary');
+      const progressBar = container.querySelector('.bg-success');
       expect(progressBar).not.toBeInTheDocument();
     });
 
     it('sets correct width for progress bar', () => {
       const { container } = render(<ScoreDisplay score={75} />);
-      const progressBar = container.querySelector('.bg-success');
+      // Score 75 (>=60) uses bg-primary per viability constants
+      const progressBar = container.querySelector('.bg-primary');
       expect(progressBar).toHaveStyle({ width: '75%' });
     });
 
@@ -82,31 +84,38 @@ describe('ScoreDisplay', () => {
   });
 
   describe('Color Coding', () => {
-    it('uses primary color for excellent scores (80-100)', () => {
+    // Color scheme per viability constants:
+    // >=80: text-success-dark, bg-success (Excellent)
+    // >=60: text-primary-dark, bg-primary (Good)
+    // >=40: text-warning-dark, bg-warning (Moderate)
+    // >=20: text-danger, bg-danger (Low)
+    // <20: text-danger-dark, bg-danger-dark (Very Low)
+
+    it('uses success color for excellent scores (80-100)', () => {
       const { container } = render(<ScoreDisplay score={85} />);
       const scoreElement = screen.getByText('85');
-      expect(scoreElement).toHaveClass('text-primary');
-      const progressBar = container.querySelector('.bg-primary');
+      expect(scoreElement).toHaveClass('text-success-dark');
+      const progressBar = container.querySelector('.bg-success');
       expect(progressBar).toBeInTheDocument();
     });
 
-    it('uses success color for good scores (60-79)', () => {
+    it('uses primary color for good scores (60-79)', () => {
       const { container } = render(<ScoreDisplay score={65} />);
       const scoreElement = screen.getByText('65');
-      expect(scoreElement).toHaveClass('text-success');
-      const progressBar = container.querySelector('.bg-success');
+      expect(scoreElement).toHaveClass('text-primary-dark');
+      const progressBar = container.querySelector('.bg-primary');
       expect(progressBar).toBeInTheDocument();
     });
 
     it('uses warning color for moderate scores (40-59)', () => {
       const { container } = render(<ScoreDisplay score={45} />);
       const scoreElement = screen.getByText('45');
-      expect(scoreElement).toHaveClass('text-warning');
+      expect(scoreElement).toHaveClass('text-warning-dark');
       const progressBar = container.querySelector('.bg-warning');
       expect(progressBar).toBeInTheDocument();
     });
 
-    it('uses danger color for low scores (0-39)', () => {
+    it('uses danger color for low scores (20-39)', () => {
       const { container } = render(<ScoreDisplay score={25} />);
       const scoreElement = screen.getByText('25');
       expect(scoreElement).toHaveClass('text-danger');

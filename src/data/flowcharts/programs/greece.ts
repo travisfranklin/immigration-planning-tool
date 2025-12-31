@@ -39,8 +39,8 @@ flowchart TD
   decision -->|Approved| visa[Receive Golden Visa]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Greece]
-  travel -->register[Register with Authorities]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Authorities]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'region',
@@ -56,6 +56,22 @@ flowchart TD
         'Thresholds increased significantly in 2024',
         'Consider location carefully - affects both investment and lifestyle',
       ],
+    },
+    {
+      id: 'tier1',
+      title: 'Tier 1 Investment (EUR 800,000)',
+      description: 'High-demand areas: Athens, Thessaloniki, Mykonos, Santorini, and popular islands',
+      estimatedDuration: 'N/A',
+      documents: [],
+      notes: ['Premium locations', 'Higher investment threshold'],
+    },
+    {
+      id: 'tier2',
+      title: 'Tier 2 Investment (EUR 400,000)',
+      description: 'Other mainland areas and less popular islands',
+      estimatedDuration: 'N/A',
+      documents: [],
+      notes: ['Lower investment threshold', 'More affordable options'],
     },
     {
       id: 'investment',
@@ -111,19 +127,19 @@ export const digitalNomadVisa: FlowchartDefinition = buildFlowchart({
   totalEstimatedDuration: '1-2 months',
   mermaidDiagram: `
 flowchart TD
-  Start([Start Process]) -->remote{Work Remotely?}
-  remote -->|Yes| income{Income >= EUR 3,500/month?}
-  remote -->|No| End1([Not Eligible])
+  Start([Start Process]) -->remote-work-verification{Work Remotely?}
+  remote-work-verification -->|Yes| income{Income >= EUR 3,500/month?}
+  remote-work-verification -->|No| End1([Not Eligible])
   income -->|Yes| gather-documents[Gather Required Documents]
   income -->|No| End1
-  gather-documents -->submit[Submit Application]
-  submit -->processing[Wait for Processing]
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Digital Nomad Visa]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Greece]
-  travel -->register[Register with Authorities]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Authorities]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'remote-work-verification',
@@ -176,14 +192,14 @@ export const workPermit: FlowchartDefinition = buildFlowchart({
 flowchart TD
   Start([Start Process]) -->job-offer[Secure Job Offer]
   job-offer -->gather-documents[Gather Required Documents]
-  gather-documents -->submit[Submit Application]
-  submit -->processing[Wait for Processing]
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Work Permit]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Greece]
-  travel -->register[Register with Authorities]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Authorities]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       template: COMMON_STEP_IDS.JOB_OFFER,
@@ -233,17 +249,17 @@ export const familyReunification: FlowchartDefinition = buildFlowchart({
   totalEstimatedDuration: '3-5 months',
   mermaidDiagram: `
 flowchart TD
-  Start([Start Process]) -->sponsor{Sponsor Eligible?}
-  sponsor -->|Yes| gather-documents[Gather Required Documents]
-  sponsor -->|No| End1([Not Eligible])
-  gather-documents -->submit[Submit at Consulate]
-  submit -->processing[Wait for Processing]
+  Start([Start Process]) -->sponsor-check{Sponsor Eligible?}
+  sponsor-check -->|Yes| gather-documents[Gather Required Documents]
+  sponsor-check -->|No| End1([Not Eligible])
+  gather-documents -->submit-application[Submit at Consulate]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Visa]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Greece]
-  travel -->register[Register with Authorities]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Authorities]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'sponsor-check',
@@ -293,17 +309,17 @@ export const independentMeansVisa: FlowchartDefinition = buildFlowchart({
   totalEstimatedDuration: '2-3 months',
   mermaidDiagram: `
 flowchart TD
-  Start([Start Process]) -->income{Passive Income >= EUR 2,000/month?}
-  income -->|Yes| gather-documents[Gather Required Documents]
-  income -->|No| End1([Not Eligible])
-  gather-documents -->submit[Submit Application]
-  submit -->processing[Wait for Processing]
+  Start([Start Process]) -->income-verification{Passive Income >= EUR 2,000/month?}
+  income-verification -->|Yes| gather-documents[Gather Required Documents]
+  income-verification -->|No| End1([Not Eligible])
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Visa]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Greece]
-  travel -->register[Register with Authorities]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Authorities]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'income-verification',

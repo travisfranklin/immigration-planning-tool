@@ -252,9 +252,10 @@ describe('CountryResultsTable', () => {
         />
       );
 
-      // Score 85 should use primary color (excellent range)
-      const primaryElements = container.querySelectorAll('.text-primary');
-      expect(primaryElements.length).toBeGreaterThan(0);
+      // Score 85 (>=80) uses 'success' variant via getDataCardVariant
+      // DataCard applies 'text-success' class for success variant
+      const successElements = container.querySelectorAll('.text-success');
+      expect(successElements.length).toBeGreaterThan(0);
     });
   });
 

@@ -31,18 +31,18 @@ export const euBlueCard: FlowchartDefinition = buildFlowchart({
 flowchart TD
   Start([Start Process]) -->job-offer[Secure Job Offer]
   job-offer --> salary{Salary >= EUR 38,844/year?}
-  salary -->|Yes| education{Higher Education?}
+  salary -->|Yes| verify-education{Higher Education?}
   salary -->|No| End1([Not Eligible])
-  education -->|Yes| gather-documents[Gather Required Documents]
-  education -->|No| End1
+  verify-education -->|Yes| gather-documents[Gather Required Documents]
+  verify-education -->|No| End1
   gather-documents -->submit-application[Submit Application]
   submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Blue Card]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Spain]
-  travel -->register[Register with Authorities]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Authorities]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       template: COMMON_STEP_IDS.JOB_OFFER,
@@ -110,19 +110,19 @@ export const nonLucrativeVisa: FlowchartDefinition = buildFlowchart({
   totalEstimatedDuration: '3-5 months',
   mermaidDiagram: `
 flowchart TD
-  Start([Start Process]) -->income{Passive Income >= EUR 28,800/year?}
-  income -->|Yes| savings{Sufficient Savings?}
-  income -->|No| End1([Not Eligible])
-  savings -->|Yes| gather-documents[Gather Required Documents]
-  savings -->|No| End1
-  gather-documents -->submit[Submit at Consulate]
-  submit -->processing[Wait for Processing]
+  Start([Start Process]) -->income-verification{Passive Income >= EUR 28,800/year?}
+  income-verification -->|Yes| savings-verification{Sufficient Savings?}
+  income-verification -->|No| End1([Not Eligible])
+  savings-verification -->|Yes| gather-documents[Gather Required Documents]
+  savings-verification -->|No| End1
+  gather-documents -->submit-application[Submit at Consulate]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Visa]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Spain]
-  travel -->register[Register with Authorities]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Authorities]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'income-verification',
@@ -186,19 +186,19 @@ export const digitalNomadVisa: FlowchartDefinition = buildFlowchart({
   totalEstimatedDuration: '2-3 months',
   mermaidDiagram: `
 flowchart TD
-  Start([Start Process]) -->remote{Work Remotely?}
-  remote -->|Yes| income{Income >= EUR 28,800/year?}
-  remote -->|No| End1([Not Eligible])
-  income -->|Yes| gather-documents[Gather Required Documents]
-  income -->|No| End1
-  gather-documents -->submit[Submit Application]
-  submit -->processing[Wait for Processing]
+  Start([Start Process]) -->remote-work-verification{Work Remotely?}
+  remote-work-verification -->|Yes| income-verification{Income >= EUR 28,800/year?}
+  remote-work-verification -->|No| End1([Not Eligible])
+  income-verification -->|Yes| gather-documents[Gather Required Documents]
+  income-verification -->|No| End1
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Visa]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Spain]
-  travel -->register[Register with Authorities]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Authorities]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'remote-work-verification',
@@ -266,19 +266,19 @@ export const highlyQualifiedVisa: FlowchartDefinition = buildFlowchart({
   mermaidDiagram: `
 flowchart TD
   Start([Start Process]) -->job-offer[Secure Job Offer]
-  job-offer --> degree{Relevant Degree?}
-  degree -->|Yes| salary{Salary >= EUR 30,000?}
-  degree -->|No| End1([Not Eligible])
+  job-offer --> degree-verification{Relevant Degree?}
+  degree-verification -->|Yes| salary{Salary >= EUR 30,000?}
+  degree-verification -->|No| End1([Not Eligible])
   salary -->|Yes| gather-documents[Gather Required Documents]
   salary -->|No| End1
-  gather-documents -->submit[Submit Application]
-  submit -->processing[Wait for Processing]
+  gather-documents -->employer-application[Submit Application]
+  employer-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| permit[Receive Permit]
   decision -->|Rejected| End2([Process Ended])
   permit -->travel[Travel to Spain]
-  travel -->register[Register with Authorities]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Authorities]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       template: COMMON_STEP_IDS.JOB_OFFER,
@@ -343,20 +343,20 @@ export const familyReunification: FlowchartDefinition = buildFlowchart({
   totalEstimatedDuration: '4-6 months',
   mermaidDiagram: `
 flowchart TD
-  Start([Start Process]) -->sponsor{Sponsor Eligible?}
-  sponsor -->|Yes| income{Income Sufficient?}
-  sponsor -->|No| End1([Not Eligible])
-  income -->|Yes| relationship[Prove Relationship]
-  income -->|No| End1
-  relationship -->gather-documents[Gather Required Documents]
-  gather-documents -->submit[Submit Application]
-  submit -->processing[Wait for Processing]
+  Start([Start Process]) -->sponsor-eligibility{Sponsor Eligible?}
+  sponsor-eligibility -->|Yes| income-housing{Income Sufficient?}
+  sponsor-eligibility -->|No| End1([Not Eligible])
+  income-housing -->|Yes| relationship-proof[Prove Relationship]
+  income-housing -->|No| End1
+  relationship-proof -->gather-documents[Gather Required Documents]
+  gather-documents -->sponsor-application[Submit Application]
+  sponsor-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Visa]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Spain]
-  travel -->register[Register with Authorities]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Authorities]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'sponsor-eligibility',

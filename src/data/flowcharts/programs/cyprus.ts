@@ -26,16 +26,16 @@ export const goldenVisa: FlowchartDefinition = buildFlowchart({
   totalEstimatedDuration: '2-3 months',
   mermaidDiagram: `
 flowchart TD
-  Start([Start Process]) -->investment[Purchase Property EUR 300,000]
-  investment -->gather-documents[Gather Required Documents]
-  gather-documents -->submit[Submit Application]
-  submit -->processing[Wait for Processing]
+  Start([Start Process]) -->choose-investment[Purchase Property EUR 300,000]
+  choose-investment -->gather-documents[Gather Required Documents]
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Permanent Residence]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Cyprus]
-  travel -->register[Register with Civil Registry]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Civil Registry]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'choose-investment',
@@ -88,14 +88,14 @@ export const workPermit: FlowchartDefinition = buildFlowchart({
 flowchart TD
   Start([Start Process]) -->job-offer[Secure Job Offer]
   job-offer -->gather-documents[Gather Required Documents]
-  gather-documents -->submit[Submit Application]
-  submit -->processing[Wait for Processing]
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Work Permit]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Cyprus]
-  travel -->register[Register with Civil Registry]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Civil Registry]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       template: COMMON_STEP_IDS.JOB_OFFER,
@@ -149,14 +149,14 @@ flowchart TD
   business-idea -->business-plan[Create Business Plan]
   business-plan -->funding[Secure Funding EUR 20,000]
   funding -->gather-documents[Gather Required Documents]
-  gather-documents -->submit[Submit Application]
-  submit -->processing[Wait for Processing]
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Startup Visa]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Cyprus]
-  travel -->register[Register with Civil Registry]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Civil Registry]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'business-idea',
@@ -223,17 +223,17 @@ export const familyReunification: FlowchartDefinition = buildFlowchart({
   totalEstimatedDuration: '3-5 months',
   mermaidDiagram: `
 flowchart TD
-  Start([Start Process]) -->sponsor{Sponsor Eligible?}
-  sponsor -->|Yes| gather-documents[Gather Required Documents]
-  sponsor -->|No| End1([Not Eligible])
-  gather-documents -->submit[Submit at Consulate]
-  submit -->processing[Wait for Processing]
+  Start([Start Process]) -->sponsor-check{Sponsor Eligible?}
+  sponsor-check -->|Yes| gather-documents[Gather Required Documents]
+  sponsor-check -->|No| End1([Not Eligible])
+  gather-documents -->submit-application[Submit at Consulate]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Visa]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Cyprus]
-  travel -->register[Register with Civil Registry]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Civil Registry]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'sponsor-check',
@@ -297,8 +297,8 @@ flowchart TD
   decision -->|Approved| visa[Receive Digital Nomad Visa]
   decision -->|Rejected| End3([Process Ended])
   visa -->travel[Travel to Cyprus]
-  travel -->register[Register with Civil Registry]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Civil Registry]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'quota',

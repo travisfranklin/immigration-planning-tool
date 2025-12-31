@@ -38,8 +38,9 @@ flowchart TD
   processing --> decision{Decision}
   decision -->|Approved| receive-permit[Receive Residence Permit]
   decision -->|Rejected| End2([Process Ended])
-  receive-permit -->travel-register[Travel and Register]
-  travel-register --> Success([Process Complete])`,
+  receive-permit -->travel[Travel to Netherlands]
+  travel -->registration[Register at Municipality]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'citizenship-check',
@@ -138,14 +139,14 @@ flowchart TD
   job-offer --> salary{Meets Salary Threshold?}
   salary -->|Yes| gather-documents[Gather Required Documents]
   salary -->|No| End1([Not Eligible])
-  gather-documents -->employer-submit[Employer Submits Application]
-  employer-submit -->processing[Wait for IND Processing<br/>2-4 weeks]
+  gather-documents -->employer-submission[Employer Submits Application]
+  employer-submission -->processing[Wait for IND Processing<br/>2-4 weeks]
   processing --> decision{Decision}
   decision -->|Approved| permit[Receive Residence Permit]
   decision -->|Rejected| End2([Process Ended])
   permit -->travel[Travel to Netherlands]
-  travel -->register[Register at Municipality]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register at Municipality]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       template: COMMON_STEP_IDS.JOB_OFFER,
@@ -218,21 +219,21 @@ export const orientationYear: FlowchartDefinition = buildFlowchart({
   totalEstimatedDuration: '2-3 months',
   mermaidDiagram: `
 flowchart TD
-  Start([Start Process]) -->university{Top 200 University?}
-  university -->|Yes| timeline{Graduated within 3 Years?}
-  university -->|No| End1([Not Eligible])
-  timeline -->|Yes| age{Under 30?}
-  timeline -->|No| End1
-  age -->|Yes| gather-documents[Gather Required Documents]
-  age -->|No| End1
-  gather-documents -->submit[Submit Application]
-  submit -->processing[Wait for Processing]
+  Start([Start Process]) -->university-verification{Top 200 University?}
+  university-verification -->|Yes| timeline-check{Graduated within 3 Years?}
+  university-verification -->|No| End1([Not Eligible])
+  timeline-check -->|Yes| age-verification{Under 30?}
+  timeline-check -->|No| End1
+  age-verification -->|Yes| gather-documents[Gather Required Documents]
+  age-verification -->|No| End1
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| permit[Receive Permit]
   decision -->|Rejected| End2([Process Ended])
   permit -->travel[Travel to Netherlands]
-  travel -->search[Search for Job<br/>1 Year]
-  search --> Success([Process Complete])`,
+  travel -->job-search[Search for Job<br/>1 Year]
+  job-search --> Success([Process Complete])`,
   steps: [
     {
       id: 'university-verification',
@@ -317,19 +318,19 @@ export const selfEmploymentVisa: FlowchartDefinition = buildFlowchart({
   mermaidDiagram: `
 flowchart TD
   Start([Start Process]) -->business-plan[Develop Business Plan]
-  business-plan -->points{30+ Points?}
-  points -->|Yes| capital[Secure Startup Capital]
-  points -->|No| End1([Not Eligible])
-  capital -->kvk[Register with KVK]
-  kvk -->gather-documents[Gather Required Documents]
-  gather-documents -->submit[Submit Application]
-  submit -->processing[Wait for Processing]
+  business-plan -->points-calculation{30+ Points?}
+  points-calculation -->|Yes| capital[Secure Startup Capital]
+  points-calculation -->|No| End1([Not Eligible])
+  capital -->kvk-registration[Register with KVK]
+  kvk-registration -->gather-documents[Gather Required Documents]
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| permit[Receive Permit]
   decision -->|Rejected| End2([Process Ended])
   permit -->travel[Travel to Netherlands]
-  travel -->register[Register and Start Business]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register and Start Business]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'business-plan',
@@ -415,20 +416,20 @@ export const familyReunification: FlowchartDefinition = buildFlowchart({
   totalEstimatedDuration: '3-6 months',
   mermaidDiagram: `
 flowchart TD
-  Start([Start Process]) -->sponsor{Sponsor Eligible?}
-  sponsor -->|Yes| income{Income Requirement Met?}
-  sponsor -->|No| End1([Not Eligible])
-  income -->|Yes| relationship[Prove Relationship]
-  income -->|No| End1
-  relationship -->gather-documents[Gather Required Documents]
-  gather-documents -->submit[Submit MVV Application]
-  submit -->processing[Wait for Processing]
+  Start([Start Process]) -->sponsor-eligibility{Sponsor Eligible?}
+  sponsor-eligibility -->|Yes| income-verification{Income Requirement Met?}
+  sponsor-eligibility -->|No| End1([Not Eligible])
+  income-verification -->|Yes| relationship-proof[Prove Relationship]
+  income-verification -->|No| End1
+  relationship-proof -->gather-documents[Gather Required Documents]
+  gather-documents -->submit-mvv[Submit MVV Application]
+  submit-mvv -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| mvv[Receive MVV]
   decision -->|Rejected| End2([Process Ended])
   mvv -->travel[Travel to Netherlands]
-  travel -->register[Register and Integration]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register and Integration]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'sponsor-eligibility',

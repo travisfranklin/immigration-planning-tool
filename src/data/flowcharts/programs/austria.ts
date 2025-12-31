@@ -27,17 +27,17 @@ export const euBlueCard: FlowchartDefinition = buildFlowchart({
   mermaidDiagram: `
 flowchart TD
   Start([Start Process]) -->job-offer[Secure Job Offer]
-  job-offer --> Salary{"Salary >= EUR 51,500?"}
-  Salary -->|Yes| gather-documents[Gather Required Documents]
-  Salary -->|No| End1([Not Eligible])
+  job-offer --> salary{"Salary >= EUR 51,500?"}
+  salary -->|Yes| gather-documents[Gather Required Documents]
+  salary -->|No| End1([Not Eligible])
   gather-documents --> submit-application[Submit Application]
   submit-application --> processing[Wait for Processing]
-  processing --> Decision{Decision}
-  Decision -->|Approved| Visa[Receive Blue Card]
-  Decision -->|Rejected| End2([Process Ended])
-  Visa --> arrival[Travel to Austria]
-  arrival --> Register[Register at MA35]
-  Register --> Success([Process Complete])`,
+  processing --> decision{Decision}
+  decision -->|Approved| visa[Receive Blue Card]
+  decision -->|Rejected| End2([Process Ended])
+  visa --> travel[Travel to Austria]
+  travel --> registration[Register at MA35]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       template: COMMON_STEP_IDS.JOB_OFFER,
@@ -87,21 +87,21 @@ export const redWhiteRedCard: FlowchartDefinition = buildFlowchart({
   totalEstimatedDuration: '3-5 months',
   mermaidDiagram: `
 flowchart TD
-  Start([Start Process]) --> Category[Choose Category]
-  Category -->points-calculation{Calculate Points}
+  Start([Start Process]) --> category[Choose Category]
+  category -->points-calculation{Calculate Points}
   points-calculation -->|>= 70 points| job-offer[Secure Job Offer]
   points-calculation -->|< 70 points| End1([Not Eligible])
-  job-offer --> Salary{"Salary >= EUR 38,700?"}
-  Salary -->|Yes| gather-documents[Gather Required Documents]
-  Salary -->|No| End1
+  job-offer --> salary{"Salary >= EUR 38,700?"}
+  salary -->|Yes| gather-documents[Gather Required Documents]
+  salary -->|No| End1
   gather-documents --> submit-application[Submit Application]
   submit-application --> processing[Wait for Processing]
-  processing --> Decision{Decision}
-  Decision -->|Approved| Visa[Receive RWR Card]
-  Decision -->|Rejected| End2([Process Ended])
-  Visa --> arrival[Travel to Austria]
-  arrival --> Register[Register at MA35]
-  Register --> Success([Process Complete])`,
+  processing --> decision{Decision}
+  decision -->|Approved| visa[Receive RWR Card]
+  decision -->|Rejected| End2([Process Ended])
+  visa --> travel[Travel to Austria]
+  travel --> registration[Register at MA35]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'category',
@@ -183,14 +183,14 @@ flowchart TD
   business-idea -->business-plan[Create Business Plan]
   business-plan -->funding[Secure Funding EUR 50,000]
   funding -->gather-documents[Gather Required Documents]
-  gather-documents -->submit[Submit Application]
-  submit -->processing[Wait for Processing]
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Startup Visa]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Austria]
-  travel -->register[Register at MA35]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register at MA35]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'business-idea',
@@ -262,14 +262,14 @@ flowchart TD
   business-plan -->capital[Secure Capital EUR 30,000]
   capital -->qualifications[Verify Qualifications]
   qualifications -->gather-documents[Gather Required Documents]
-  gather-documents -->submit[Submit Application]
-  submit -->processing[Wait for Processing]
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Self-Employment Visa]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Austria]
-  travel -->register[Register at MA35]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register at MA35]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'business-plan',
@@ -337,21 +337,21 @@ export const familyReunification: FlowchartDefinition = buildFlowchart({
   totalEstimatedDuration: '4-6 months',
   mermaidDiagram: `
 flowchart TD
-  Start([Start Process]) -->sponsor{Sponsor Eligible?}
-  sponsor -->|Yes| income{Income Sufficient?}
-  sponsor -->|No| End1([Not Eligible])
-  income -->|Yes| housing{Housing Adequate?}
-  income -->|No| End1
-  housing -->|Yes| gather-documents[Gather Required Documents]
-  housing -->|No| End1
-  gather-documents -->submit[Submit at Consulate]
-  submit -->processing[Wait for Processing]
+  Start([Start Process]) -->sponsor-check{Sponsor Eligible?}
+  sponsor-check -->|Yes| income-check{Income Sufficient?}
+  sponsor-check -->|No| End1([Not Eligible])
+  income-check -->|Yes| housing-check{Housing Adequate?}
+  income-check -->|No| End1
+  housing-check -->|Yes| gather-documents[Gather Required Documents]
+  housing-check -->|No| End1
+  gather-documents -->submit-application[Submit at Consulate]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Visa]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Austria]
-  travel -->register[Register at MA35]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register at MA35]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'sponsor-check',

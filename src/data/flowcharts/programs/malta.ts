@@ -26,19 +26,19 @@ export const nomadResidence: FlowchartDefinition = buildFlowchart({
   totalEstimatedDuration: '1-2 months',
   mermaidDiagram: `
 flowchart TD
-  Start([Start Process]) -->remote{Work Remotely?}
-  remote -->|Yes| income{Income >= EUR 2,700/month?}
-  remote -->|No| End1([Not Eligible])
+  Start([Start Process]) -->remote-work-verification{Work Remotely?}
+  remote-work-verification -->|Yes| income{Income >= EUR 2,700/month?}
+  remote-work-verification -->|No| End1([Not Eligible])
   income -->|Yes| gather-documents[Gather Required Documents]
   income -->|No| End1
-  gather-documents -->submit[Submit Application]
-  submit -->processing[Wait for Processing]
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Nomad Permit]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Malta]
-  travel -->register[Register with Identity Malta]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Identity Malta]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'remote-work-verification',
@@ -91,14 +91,14 @@ export const mprp: FlowchartDefinition = buildFlowchart({
 flowchart TD
   Start([Start Process]) -->investment[Make Investment]
   investment -->gather-documents[Gather Required Documents]
-  gather-documents -->submit[Submit Application]
-  submit -->processing[Wait for Processing]
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive MPRP Certificate]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Malta]
-  travel -->register[Register with Identity Malta]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Identity Malta]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'investment',
@@ -152,14 +152,14 @@ flowchart TD
   Start([Start Process]) -->business-idea[Develop Business Idea]
   business-idea -->business-plan[Create Business Plan]
   business-plan -->gather-documents[Gather Required Documents]
-  gather-documents -->submit[Submit Application]
-  submit -->processing[Wait for Processing]
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Startup Visa]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Malta]
-  travel -->register[Register with Identity Malta]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Identity Malta]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'business-idea',
@@ -219,17 +219,17 @@ export const familyReunification: FlowchartDefinition = buildFlowchart({
   totalEstimatedDuration: '2-4 months',
   mermaidDiagram: `
 flowchart TD
-  Start([Start Process]) -->sponsor{Sponsor Eligible?}
-  sponsor -->|Yes| gather-documents[Gather Required Documents]
-  sponsor -->|No| End1([Not Eligible])
-  gather-documents -->submit[Submit Application]
-  submit -->processing[Wait for Processing]
+  Start([Start Process]) -->sponsor-check{Sponsor Eligible?}
+  sponsor-check -->|Yes| gather-documents[Gather Required Documents]
+  sponsor-check -->|No| End1([Not Eligible])
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Visa]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Malta]
-  travel -->register[Register with Identity Malta]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Identity Malta]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'sponsor-check',
@@ -281,14 +281,14 @@ export const highlySkilled: FlowchartDefinition = buildFlowchart({
 flowchart TD
   Start([Start Process]) -->job-offer[Secure Job Offer]
   job-offer -->gather-documents[Gather Required Documents]
-  gather-documents -->submit[Submit Application]
-  submit -->processing[Wait for Processing]
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Work Permit]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Malta]
-  travel -->register[Register with Identity Malta]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Identity Malta]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       template: COMMON_STEP_IDS.JOB_OFFER,

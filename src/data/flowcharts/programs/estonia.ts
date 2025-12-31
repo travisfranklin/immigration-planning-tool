@@ -26,19 +26,19 @@ export const digitalNomadVisa: FlowchartDefinition = buildFlowchart({
   totalEstimatedDuration: '1-2 months',
   mermaidDiagram: `
 flowchart TD
-  Start([Start Process]) -->remote{Work Remotely?}
-  remote -->|Yes| income{Income >= EUR 3,500/month?}
-  remote -->|No| End1([Not Eligible])
-  income -->|Yes| gather-documents[Gather Required Documents]
-  income -->|No| End1
-  gather-documents -->submit[Submit Application]
-  submit -->processing[Wait for Processing]
+  Start([Start Process]) -->remote-work-verification{Work Remotely?}
+  remote-work-verification -->|Yes| income-verification{Income >= EUR 3,500/month?}
+  remote-work-verification -->|No| End1([Not Eligible])
+  income-verification -->|Yes| gather-documents[Gather Required Documents]
+  income-verification -->|No| End1
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Digital Nomad Visa]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Estonia]
-  travel -->register[Register with Police and Border Guard]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Police and Border Guard]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'remote-work-verification',
@@ -47,6 +47,14 @@ flowchart TD
       estimatedDuration: '1 week',
       documents: ['Employment contract or freelance contracts', 'Proof of income (EUR 3,500/month)'],
       notes: ['Most tech-forward country in EU!', 'E-government services', 'Tallinn startup ecosystem'],
+    },
+    {
+      id: 'income-verification',
+      title: 'Verify Income Requirement',
+      description: 'Confirm monthly income of at least EUR 3,500',
+      estimatedDuration: '1 week',
+      documents: ['Bank statements', 'Pay stubs', 'Tax returns'],
+      notes: ['Minimum EUR 3,500/month required', 'Must be from non-Estonian sources'],
     },
     {
       template: COMMON_STEP_IDS.GATHER_DOCUMENTS,
@@ -89,8 +97,8 @@ export const eResidencyBusiness: FlowchartDefinition = buildFlowchart({
   totalEstimatedDuration: '2-3 months',
   mermaidDiagram: `
 flowchart TD
-  Start([Start Process]) -->apply[Apply for E-Residency]
-  apply -->card[Receive E-Residency Card]
+  Start([Start Process]) -->e-residency[Apply for E-Residency]
+  e-residency -->card[Receive E-Residency Card]
   card -->company[Register Estonian Company]
   company -->bank[Open Business Bank Account]
   bank --> Success([Process Complete])`,
@@ -146,14 +154,14 @@ flowchart TD
   business-idea -->business-plan[Create Business Plan]
   business-plan -->startup-estonia[Apply to Startup Estonia]
   startup-estonia -->gather-documents[Gather Required Documents]
-  gather-documents -->submit[Submit Application]
-  submit -->processing[Wait for Processing]
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Startup Visa]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Estonia]
-  travel -->register[Register with Police and Border Guard]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Police and Border Guard]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'business-idea',
@@ -221,17 +229,17 @@ export const euBlueCard: FlowchartDefinition = buildFlowchart({
   mermaidDiagram: `
 flowchart TD
   Start([Start Process]) -->job-offer[Secure Job Offer]
-  job-offer --> Salary{"Salary >= EUR 2,000/month?"}
-  Salary -->|Yes| gather-documents[Gather Required Documents]
-  Salary -->|No| End1([Not Eligible])
+  job-offer --> salary{"Salary >= EUR 2,000/month?"}
+  salary -->|Yes| gather-documents[Gather Required Documents]
+  salary -->|No| End1([Not Eligible])
   gather-documents --> submit-application[Submit Application]
   submit-application --> processing[Wait for Processing]
-  processing --> Decision{Decision}
-  Decision -->|Approved| Visa[Receive Blue Card]
-  Decision -->|Rejected| End2([Process Ended])
-  Visa --> arrival[Travel to Estonia]
-  arrival --> Register[Register with Police and Border Guard]
-  Register --> Success([Process Complete])`,
+  processing --> decision{Decision}
+  decision -->|Approved| visa[Receive Blue Card]
+  decision -->|Rejected| End2([Process Ended])
+  visa --> travel[Travel to Estonia]
+  travel --> registration[Register with Police and Border Guard]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       template: COMMON_STEP_IDS.JOB_OFFER,
@@ -281,17 +289,17 @@ export const familyReunification: FlowchartDefinition = buildFlowchart({
   totalEstimatedDuration: '2-3 months',
   mermaidDiagram: `
 flowchart TD
-  Start([Start Process]) -->sponsor{Sponsor Eligible?}
-  sponsor -->|Yes| gather-documents[Gather Required Documents]
-  sponsor -->|No| End1([Not Eligible])
-  gather-documents -->submit[Submit at Embassy]
-  submit -->processing[Wait for Processing]
+  Start([Start Process]) -->sponsor-check{Sponsor Eligible?}
+  sponsor-check -->|Yes| gather-documents[Gather Required Documents]
+  sponsor-check -->|No| End1([Not Eligible])
+  gather-documents -->submit-application[Submit at Embassy]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Visa]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Estonia]
-  travel -->register[Register with Police and Border Guard]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Police and Border Guard]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'sponsor-check',

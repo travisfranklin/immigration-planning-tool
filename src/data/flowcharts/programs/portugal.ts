@@ -26,18 +26,18 @@ export const d7Visa: FlowchartDefinition = buildFlowchart({
   totalEstimatedDuration: '3-5 months',
   mermaidDiagram: `
 flowchart TD
-  Start([Start Process]) -->income{Passive Income >= EUR 760/month?}
-  income -->|Yes| accommodation[Secure Accommodation]
-  income -->|No| End1([Not Eligible])
-  accommodation -->gather-documents[Gather Required Documents]
-  gather-documents -->submit[Submit at Consulate]
-  submit -->processing[Wait for Processing]
+  Start([Start Process]) -->verify-income{Passive Income >= EUR 760/month?}
+  verify-income -->|Yes| secure-accommodation[Secure Accommodation]
+  verify-income -->|No| End1([Not Eligible])
+  secure-accommodation -->gather-documents[Gather Required Documents]
+  gather-documents -->submit-application[Submit at Consulate]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive D7 Visa]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Portugal]
-  travel -->register[Register with SEF]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with SEF]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'verify-income',
@@ -100,18 +100,18 @@ export const goldenVisa: FlowchartDefinition = buildFlowchart({
   totalEstimatedDuration: '4-8 months',
   mermaidDiagram: `
 flowchart TD
-  Start([Start Process]) -->investment-type[Choose Investment Type]
-  investment-type -->nif[Obtain NIF]
-  nif -->investment[Complete Investment]
-  investment -->gather-documents[Gather Required Documents]
-  gather-documents -->submit[Submit Application]
-  submit -->processing[Wait for Processing]
+  Start([Start Process]) -->choose-investment[Choose Investment Type]
+  choose-investment -->obtain-nif[Obtain NIF]
+  obtain-nif -->make-investment[Complete Investment]
+  make-investment -->gather-documents[Gather Required Documents]
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| permit[Receive Golden Visa]
   decision -->|Rejected| End2([Process Ended])
   permit -->travel[Travel to Portugal]
-  travel -->register[Register with Authorities]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Authorities]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'choose-investment',
@@ -183,20 +183,20 @@ export const startupVisa: FlowchartDefinition = buildFlowchart({
   totalEstimatedDuration: '3-5 months',
   mermaidDiagram: `
 flowchart TD
-  Start([Start Process]) -->idea[Develop Innovative Startup Idea]
-  idea -->business-plan[Prepare Business Plan]
-  business-plan -->incubator[Apply to IAPMEI-Certified Incubator]
-  incubator --> approval{Incubator Approval?}
-  approval -->|Yes| gather-documents[Gather Required Documents]
-  approval -->|No| End1([Not Eligible])
-  gather-documents -->submit[Submit Visa Application]
-  submit -->processing[Wait for Processing]
+  Start([Start Process]) -->business-idea[Develop Innovative Startup Idea]
+  business-idea -->prepare-business-plan[Prepare Business Plan]
+  prepare-business-plan -->submit-to-incubator[Apply to IAPMEI-Certified Incubator]
+  submit-to-incubator --> incubator-approval{Incubator Approval?}
+  incubator-approval -->|Yes| gather-documents[Gather Required Documents]
+  incubator-approval -->|No| End1([Not Eligible])
+  gather-documents -->submit-application[Submit Visa Application]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Startup Visa]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Portugal]
-  travel -->register[Register and Launch]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register and Launch]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'business-idea',
@@ -277,14 +277,14 @@ export const techVisa: FlowchartDefinition = buildFlowchart({
 flowchart TD
   Start([Start Process]) -->job-offer[Get Job Offer from IAPMEI-Certified Company]
   job-offer -->gather-documents[Gather Required Documents]
-  gather-documents -->submit[Submit Visa Application]
-  submit -->processing[Wait for Processing]
+  gather-documents -->submit-application[Submit Visa Application]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Tech Visa]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Portugal]
-  travel -->register[Register with Authorities]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Authorities]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       template: COMMON_STEP_IDS.JOB_OFFER,
@@ -339,18 +339,18 @@ export const familyReunification: FlowchartDefinition = buildFlowchart({
   totalEstimatedDuration: '3-6 months',
   mermaidDiagram: `
 flowchart TD
-  Start([Start Process]) -->sponsor{Sponsor Eligible?}
-  sponsor -->|Yes| relationship[Prove Relationship]
-  sponsor -->|No| End1([Not Eligible])
-  relationship -->gather-documents[Gather Required Documents]
-  gather-documents -->submit[Submit Application]
-  submit -->processing[Wait for Processing]
+  Start([Start Process]) -->check-eligibility{Sponsor Eligible?}
+  check-eligibility -->|Yes| relationship-proof[Prove Relationship]
+  check-eligibility -->|No| End1([Not Eligible])
+  relationship-proof -->gather-documents[Gather Required Documents]
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| permit[Receive Permit]
   decision -->|Rejected| End2([Process Ended])
   permit -->travel[Travel to Portugal]
-  travel -->register[Register with SEF]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with SEF]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'check-eligibility',

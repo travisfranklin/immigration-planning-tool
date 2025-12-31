@@ -36,8 +36,8 @@ flowchart TD
   decision -->|Approved| visa[Receive Blue Card]
   decision -->|Rejected| End2([Process Ended])
   visa --> travel[Travel to Czech Republic]
-  travel --> register[Register with Foreign Police]
-  register --> Success([Process Complete])`,
+  travel --> registration[Register with Foreign Police]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       template: COMMON_STEP_IDS.JOB_OFFER,
@@ -89,14 +89,14 @@ export const employeeCard: FlowchartDefinition = buildFlowchart({
 flowchart TD
   Start([Start Process]) -->job-offer[Secure Job Offer]
   job-offer -->gather-documents[Gather Required Documents]
-  gather-documents -->submit[Submit Application]
-  submit -->processing[Wait for Processing]
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Employee Card]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Czech Republic]
-  travel -->register[Register with Foreign Police]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Foreign Police]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       template: COMMON_STEP_IDS.JOB_OFFER,
@@ -150,14 +150,14 @@ flowchart TD
   business-idea -->business-plan[Create Business Plan]
   business-plan -->czechinvest[Apply to CzechInvest]
   czechinvest -->gather-documents[Gather Required Documents]
-  gather-documents -->submit[Submit Application]
-  submit -->processing[Wait for Processing]
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Startup Visa]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Czech Republic]
-  travel -->register[Register with Foreign Police]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Foreign Police]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'business-idea',
@@ -227,14 +227,14 @@ flowchart TD
   Start([Start Process]) -->business-plan[Create Business Plan]
   business-plan -->capital[Secure Capital EUR 10,000]
   capital -->gather-documents[Gather Required Documents]
-  gather-documents -->submit[Submit Application]
-  submit -->processing[Wait for Processing]
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Self-Employment Visa]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Czech Republic]
-  travel -->register[Register with Foreign Police]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Foreign Police]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'business-plan',
@@ -294,17 +294,17 @@ export const familyReunification: FlowchartDefinition = buildFlowchart({
   totalEstimatedDuration: '3-5 months',
   mermaidDiagram: `
 flowchart TD
-  Start([Start Process]) -->sponsor{Sponsor Eligible?}
-  sponsor -->|Yes| gather-documents[Gather Required Documents]
-  sponsor -->|No| End1([Not Eligible])
-  gather-documents -->submit[Submit at Embassy]
-  submit -->processing[Wait for Processing]
+  Start([Start Process]) -->sponsor-check{Sponsor Eligible?}
+  sponsor-check -->|Yes| gather-documents[Gather Required Documents]
+  sponsor-check -->|No| End1([Not Eligible])
+  gather-documents -->submit-application[Submit at Embassy]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Visa]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Czech Republic]
-  travel -->register[Register with Foreign Police]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Foreign Police]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'sponsor-check',

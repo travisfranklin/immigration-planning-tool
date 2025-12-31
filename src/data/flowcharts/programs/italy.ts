@@ -27,17 +27,17 @@ export const goldenVisa: FlowchartDefinition = buildFlowchart({
   mermaidDiagram: `
 flowchart TD
   Start([Start Process]) -->investment-type[Choose Investment Type]
-  investment-type -->investment[Complete Investment]
-  investment -->nulla-osta[Obtain Nulla Osta]
+  investment-type -->make-investment[Complete Investment]
+  make-investment -->nulla-osta[Obtain Nulla Osta]
   nulla-osta -->gather-documents[Gather Required Documents]
-  gather-documents -->submit[Submit at Consulate]
-  submit -->processing[Wait for Processing]
+  gather-documents -->submit-application[Submit at Consulate]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Investor Visa]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Italy]
-  travel -->register[Register with Questura]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Questura]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'investment-type',
@@ -115,14 +115,14 @@ flowchart TD
   business-plan -->capital[Secure Startup Capital]
   capital -->nulla-osta[Obtain Nulla Osta]
   nulla-osta -->gather-documents[Gather Required Documents]
-  gather-documents -->submit[Submit at Consulate]
-  submit -->processing[Wait for Processing]
+  gather-documents -->submit-application[Submit at Consulate]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Self-Employment Visa]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Italy]
-  travel -->register[Register with Questura]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Questura]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'business-plan',
@@ -190,18 +190,18 @@ export const highlySkilledVisa: FlowchartDefinition = buildFlowchart({
   totalEstimatedDuration: '3-5 months',
   mermaidDiagram: `
 flowchart TD
-  Start([Start Process]) -->quota[Check Quota Availability]
-  quota -->job-offer[Secure Job Offer]
+  Start([Start Process]) -->quota-check[Check Quota Availability]
+  quota-check -->job-offer[Secure Job Offer]
   job-offer -->nulla-osta[Employer Obtains Nulla Osta]
   nulla-osta -->gather-documents[Gather Required Documents]
-  gather-documents -->submit[Submit at Consulate]
-  submit -->processing[Wait for Processing]
+  gather-documents -->submit-application[Submit at Consulate]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Work Visa]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Italy]
-  travel -->register[Register with Questura]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Questura]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'quota-check',
@@ -272,19 +272,19 @@ export const digitalNomadVisa: FlowchartDefinition = buildFlowchart({
   totalEstimatedDuration: '2-3 months',
   mermaidDiagram: `
 flowchart TD
-  Start([Start Process]) -->remote{Work Remotely?}
-  remote -->|Yes| income{Income >= EUR 28,000/year?}
-  remote -->|No| End1([Not Eligible])
-  income -->|Yes| gather-documents[Gather Required Documents]
-  income -->|No| End1
-  gather-documents -->submit[Submit Application]
-  submit -->processing[Wait for Processing]
+  Start([Start Process]) -->remote-work-verification{Work Remotely?}
+  remote-work-verification -->|Yes| income-verification{Income >= EUR 28,000/year?}
+  remote-work-verification -->|No| End1([Not Eligible])
+  income-verification -->|Yes| gather-documents[Gather Required Documents]
+  income-verification -->|No| End1
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Digital Nomad Visa]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Italy]
-  travel -->register[Register with Questura]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Questura]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'remote-work-verification',
@@ -343,20 +343,20 @@ export const familyReunification: FlowchartDefinition = buildFlowchart({
   totalEstimatedDuration: '5-8 months',
   mermaidDiagram: `
 flowchart TD
-  Start([Start Process]) -->sponsor{Sponsor Eligible?}
-  sponsor -->|Yes| income{Income Sufficient?}
-  sponsor -->|No| End1([Not Eligible])
-  income -->|Yes| nulla-osta[Sponsor Obtains Nulla Osta]
-  income -->|No| End1
+  Start([Start Process]) -->sponsor-eligibility{Sponsor Eligible?}
+  sponsor-eligibility -->|Yes| income-housing{Income Sufficient?}
+  sponsor-eligibility -->|No| End1([Not Eligible])
+  income-housing -->|Yes| nulla-osta[Sponsor Obtains Nulla Osta]
+  income-housing -->|No| End1
   nulla-osta -->gather-documents[Gather Required Documents]
-  gather-documents -->submit[Submit at Consulate]
-  submit -->processing[Wait for Processing]
+  gather-documents -->submit-application[Submit at Consulate]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Visa]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Italy]
-  travel -->register[Register with Questura]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Questura]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'sponsor-eligibility',

@@ -26,17 +26,17 @@ export const talentPassport: FlowchartDefinition = buildFlowchart({
   totalEstimatedDuration: '2-4 months',
   mermaidDiagram: `
 flowchart TD
-  Start([Start Process]) -->category[Choose Talent Passport Category]
-  category -->job-offer[Secure Job Offer]
+  Start([Start Process]) -->choose-category[Choose Talent Passport Category]
+  choose-category -->job-offer[Secure Job Offer]
   job-offer -->gather-documents[Gather Required Documents]
-  gather-documents -->submit[Submit at Consulate]
-  submit -->processing[Wait for Processing]
+  gather-documents -->submit-application[Submit at Consulate]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Talent Passport]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to France]
-  travel -->register[Register with Prefecture]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Prefecture]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'choose-category',
@@ -101,18 +101,18 @@ export const skillsTalentsVisa: FlowchartDefinition = buildFlowchart({
   mermaidDiagram: `
 flowchart TD
   Start([Start Process]) -->achievements[Document Exceptional Achievements]
-  achievements -->project[Develop Project Plan]
-  project -->experience{5+ Years Experience?}
-  experience -->|Yes| gather-documents[Gather Required Documents]
-  experience -->|No| End1([Not Eligible])
-  gather-documents -->submit[Submit Application]
-  submit -->processing[Wait for Processing]
+  achievements -->project-plan[Develop Project Plan]
+  project-plan -->experience-verification{5+ Years Experience?}
+  experience-verification -->|Yes| gather-documents[Gather Required Documents]
+  experience-verification -->|No| End1([Not Eligible])
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Visa]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to France]
-  travel -->register[Register with Prefecture]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Prefecture]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'achievements',
@@ -179,17 +179,17 @@ export const frenchTechVisa: FlowchartDefinition = buildFlowchart({
   mermaidDiagram: `
 flowchart TD
   Start([Start Process]) -->ecosystem[Join French Tech Ecosystem]
-  ecosystem -->path[Determine Your Path]
-  path -->incubator[Get Incubator Support]
-  incubator -->gather-documents[Gather Required Documents]
-  gather-documents -->submit[Submit Application]
-  submit -->processing[Wait for Processing]
+  ecosystem -->founder-or-employee[Determine Your Path]
+  founder-or-employee -->incubator-support[Get Incubator Support]
+  incubator-support -->gather-documents[Gather Required Documents]
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive French Tech Visa]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to France]
-  travel -->register[Register with Prefecture]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Prefecture]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'ecosystem',
@@ -259,17 +259,17 @@ export const workVisa: FlowchartDefinition = buildFlowchart({
   mermaidDiagram: `
 flowchart TD
   Start([Start Process]) -->job-offer[Secure Job Offer]
-  job-offer -->labor-test[Labor Market Test]
-  labor-test -->direccte[DIRECCTE Approval]
-  direccte -->gather-documents[Gather Required Documents]
-  gather-documents -->submit[Submit at Consulate]
-  submit -->processing[Wait for Processing]
+  job-offer -->labor-market-test[Labor Market Test]
+  labor-market-test -->direccte-approval[DIRECCTE Approval]
+  direccte-approval -->gather-documents[Gather Required Documents]
+  gather-documents -->submit-application[Submit at Consulate]
+  submit-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Work Visa]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to France]
-  travel -->register[Register with Prefecture]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Prefecture]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       template: COMMON_STEP_IDS.JOB_OFFER,
@@ -334,20 +334,20 @@ export const familyReunification: FlowchartDefinition = buildFlowchart({
   totalEstimatedDuration: '4-8 months',
   mermaidDiagram: `
 flowchart TD
-  Start([Start Process]) -->sponsor{Sponsor Eligible?}
-  sponsor -->|Yes| income{Income Sufficient?}
-  sponsor -->|No| End1([Not Eligible])
-  income -->|Yes| language[Pass French Language Test]
-  income -->|No| End1
-  language -->gather-documents[Gather Required Documents]
-  gather-documents -->submit[Submit Application]
-  submit -->processing[Wait for Processing]
+  Start([Start Process]) -->sponsor-eligibility{Sponsor Eligible?}
+  sponsor-eligibility -->|Yes| income-housing{Income Sufficient?}
+  sponsor-eligibility -->|No| End1([Not Eligible])
+  income-housing -->|Yes| language-test[Pass French Language Test]
+  income-housing -->|No| End1
+  language-test -->gather-documents[Gather Required Documents]
+  gather-documents -->ofii-application[Submit Application]
+  ofii-application -->processing[Wait for Processing]
   processing --> decision{Decision}
   decision -->|Approved| visa[Receive Visa]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to France]
-  travel -->register[Register with Prefecture]
-  register --> Success([Process Complete])`,
+  travel -->registration[Register with Prefecture]
+  registration --> Success([Process Complete])`,
   steps: [
     {
       id: 'sponsor-eligibility',
