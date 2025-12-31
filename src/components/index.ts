@@ -6,7 +6,7 @@
 export { Layout } from './Layout';
 export { Button } from './Button';
 export { Card } from './Card';
-export { DataCard, getVariantFromScore } from './DataCard';
+export { DataCard } from './DataCard';
 export type { DataCardProps } from './DataCard';
 export { ProgressBar } from './ProgressBar';
 export type { ProgressBarProps } from './ProgressBar';

@@ -37,11 +37,11 @@ interface BadgeProps {
 const variantStyles: Record<BadgeVariant, string> = {
   // Viability score variants
   'not-eligible': 'bg-danger text-white border-danger',
-  'excellent': 'bg-primary text-white border-primary',      // Electric Indigo (80-100)
-  'good': 'bg-success text-black border-success',           // Aquamarine (60-79)
-  'moderate': 'bg-warning text-black border-warning',       // Orange Peel (40-59)
-  'low': 'bg-danger text-white border-danger',              // Red-Orange (20-39)
-  'very-low': 'bg-danger text-white border-danger',         // Red-Orange (0-19)
+  'excellent': 'bg-success-dark text-black border-success-dark',  // Aquamarine (80-100)
+  'good': 'bg-primary text-white border-primary',                 // Electric Indigo (60-79)
+  'moderate': 'bg-warning text-black border-warning',             // Orange Peel (40-59)
+  'low': 'bg-danger text-white border-danger',                    // Red-Orange (20-39)
+  'very-low': 'bg-danger text-white border-danger',               // Red-Orange (0-19)
 
   // Generic status variants
   'success': 'bg-success text-black border-success',        // Aquamarine

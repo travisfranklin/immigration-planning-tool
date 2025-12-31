@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { DataCard, getVariantFromScore } from './DataCard';
+import { DataCard } from './DataCard';
+import { getDataCardVariant } from '@/constants/viability';
 
 describe('DataCard', () => {
   describe('Basic Rendering', () => {
@@ -89,7 +90,7 @@ describe('DataCard', () => {
 
     it('should apply custom className', () => {
       const { container } = render(<DataCard title="Score" value={85} className="custom-class" />);
-      
+
       const card = container.firstChild as HTMLElement;
       expect(card).toHaveClass('custom-class');
     });
@@ -102,34 +103,34 @@ describe('DataCard', () => {
     });
   });
 
-  describe('getVariantFromScore', () => {
-    it('should return primary for high scores (80-100)', () => {
-      expect(getVariantFromScore(100)).toBe('primary');
-      expect(getVariantFromScore(85)).toBe('primary');
-      expect(getVariantFromScore(80)).toBe('primary');
+  describe('getDataCardVariant', () => {
+    it('should return secondary for high scores (80-100)', () => {
+      expect(getDataCardVariant(100)).toBe('success');
+      expect(getDataCardVariant(85)).toBe('success');
+      expect(getDataCardVariant(80)).toBe('success');
     });
 
     it('should return success for good scores (60-79)', () => {
-      expect(getVariantFromScore(79)).toBe('success');
-      expect(getVariantFromScore(70)).toBe('success');
-      expect(getVariantFromScore(60)).toBe('success');
+      expect(getDataCardVariant(79)).toBe('primary');
+      expect(getDataCardVariant(70)).toBe('primary');
+      expect(getDataCardVariant(60)).toBe('primary');
     });
 
     it('should return warning for medium scores (40-59)', () => {
-      expect(getVariantFromScore(59)).toBe('warning');
-      expect(getVariantFromScore(50)).toBe('warning');
-      expect(getVariantFromScore(40)).toBe('warning');
+      expect(getDataCardVariant(59)).toBe('warning');
+      expect(getDataCardVariant(50)).toBe('warning');
+      expect(getDataCardVariant(40)).toBe('warning');
     });
 
     it('should return danger for low scores (0-39)', () => {
-      expect(getVariantFromScore(39)).toBe('danger');
-      expect(getVariantFromScore(20)).toBe('danger');
-      expect(getVariantFromScore(0)).toBe('danger');
+      expect(getDataCardVariant(39)).toBe('danger');
+      expect(getDataCardVariant(20)).toBe('danger');
+      expect(getDataCardVariant(0)).toBe('danger');
     });
 
     it('should return neutral for negative scores', () => {
-      expect(getVariantFromScore(-1)).toBe('neutral');
-      expect(getVariantFromScore(-10)).toBe('neutral');
+      expect(getDataCardVariant(-1)).toBe('neutral');
+      expect(getDataCardVariant(-10)).toBe('neutral');
     });
   });
 

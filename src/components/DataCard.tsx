@@ -61,15 +61,6 @@ function getVariantClasses(variant: DataCardProps['variant']): string {
  * @deprecated Use getDataCardVariant from '../../constants/viability' instead
  * This function has incorrect color mapping and will be removed in a future version
  */
-// eslint-disable-next-line react-refresh/only-export-components
-export function getVariantFromScore(score: number): DataCardProps['variant'] {
-  if (score >= 80) return 'primary';  // High scores (80-100) - INCORRECT MAPPING
-  if (score >= 60) return 'success';  // Good scores (60-79) - INCORRECT MAPPING
-  if (score >= 40) return 'warning';  // Medium scores (40-59)
-  if (score >= 0) return 'danger';    // Low scores (0-39)
-  return 'neutral';
-}
-
 export function DataCard({
   title,
   value,
@@ -88,7 +79,7 @@ export function DataCard({
         {title}
       </h3>
 
-      {/* Main Value - Oversized, monospace */}
+      {/* Main Value */}
       <div className="flex items-baseline gap-1 mb-2">
         <span className={`text-data-lg font-bold font-mono ${variantClasses.split(' ')[0]}`}>
           {value}

@@ -42,7 +42,7 @@ export const CountryResultsTable: React.FC<CountryResultsTableProps> = ({
         return (
           <div key={score.id} className="relative">
             <DataCard
-              title={`#${rank} ${score.countryCode} ${score.countryName}`}
+              title={`#${rank} ${score.countryName}`}
               value={score.overallScore}
               unit="/100"
               subtitle={score.recommendedProgram?.programName || 'No program available'}
@@ -78,7 +78,7 @@ export const CountryResultsTable: React.FC<CountryResultsTableProps> = ({
                 e.stopPropagation();
                 onViewDetails(score.countryCode);
               }}
-              className="w-full px-4 py-2 bg-primary text-white border-2 border-primary hover:bg-white hover:text-primary transition-colors font-bold uppercase text-label"
+              className="w-full px-4 py-2 bg-white text-black border-2 border-solid border-black hover:bg-black hover:text-white transition-colors font-bold uppercase text-label"
             >
               View Details →
             </button>

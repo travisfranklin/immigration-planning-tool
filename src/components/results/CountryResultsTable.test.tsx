@@ -71,8 +71,8 @@ describe('CountryResultsTable', () => {
       );
 
       // Check both countries are rendered in DataCard titles
-      expect(screen.getByText(/#1 DE Germany/)).toBeInTheDocument();
-      expect(screen.getByText(/#2 FR France/)).toBeInTheDocument();
+      expect(screen.getByText(/#1 Germany/)).toBeInTheDocument();
+      expect(screen.getByText(/#2 France/)).toBeInTheDocument();
     });
 
     it('renders rank badges correctly in DataCard titles', () => {
@@ -85,8 +85,8 @@ describe('CountryResultsTable', () => {
       );
 
       // Check ranks in titles
-      expect(screen.getByText(/#1 DE Germany/)).toBeInTheDocument();
-      expect(screen.getByText(/#2 FR France/)).toBeInTheDocument();
+      expect(screen.getByText(/#1 Germany/)).toBeInTheDocument();
+      expect(screen.getByText(/#2 France/)).toBeInTheDocument();
     });
 
     it('renders scores with correct values', () => {
