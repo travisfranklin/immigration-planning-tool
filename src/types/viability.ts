@@ -32,6 +32,45 @@ export interface Contingency {
   timeframe?: string;
 }
 
+/**
+ * Full viability data for a specific visa program
+ * Used for both recommended and alternative programs
+ */
+export interface ProgramViabilityData {
+  // Program identification
+  programId: string;
+  programName: string;
+  programType: VisaProgramType;
+
+  // Scoring
+  eligibilityScore: number; // 0-100
+  componentScores: ComponentScore;
+  overallScore: number; // Computed from componentScores with program weights
+
+  // Match information
+  matchReason: string;
+  alignsWithUserPath: boolean;
+  alignsWithTimeline: boolean;
+  requiresJobOffer: boolean;
+
+  // Risk assessment (program-specific)
+  riskFactors: RiskFactor[];
+  overallRiskLevel: 'low' | 'medium' | 'high';
+
+  // Contingencies (program-specific)
+  contingencies: Contingency[];
+
+  // Eligibility details
+  meetsHardRequirements: boolean;
+  missingRequirements: string[];
+
+  // Timeline
+  estimatedTimelineMonths: number;
+
+  // For alternatives: why this isn't the recommended program
+  whyNotRecommended?: string;
+}
+
 export interface ViabilityScore {
   id: string;
   userId: string;
@@ -59,26 +98,11 @@ export interface ViabilityScore {
   // Contingencies
   contingencies: Contingency[];
 
-  // Program-specific info
-  recommendedProgram?: {
-    programId: string;
-    programName: string;
-    programType: VisaProgramType;
-    eligibilityScore: number; // 0-100
-    matchReason: string;
-    alignsWithUserPath: boolean;
-    alignsWithTimeline: boolean;
-    requiresJobOffer: boolean;
-  };
+  // Program-specific info (recommended program)
+  recommendedProgram?: ProgramViabilityData;
 
-  // Alternative programs
-  alternativePrograms?: Array<{
-    programId: string;
-    programName: string;
-    programType: VisaProgramType;
-    eligibilityScore: number;
-    whyNotRecommended: string;
-  }>;
+  // Alternative programs (with full viability data)
+  alternativePrograms?: ProgramViabilityData[];
 
   // User preference alignment
   userPreferenceBoost: number; // Points added based on target countries, timeline, etc.

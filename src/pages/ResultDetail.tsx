@@ -3,20 +3,21 @@
  * Displays detailed country information with interactive flowchart
  */
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import { getUserViabilityScores } from '../services/storage/viabilityScoreStore';
 import { getAllUserProfiles } from '../services/storage/userProfileStore';
-import type { ViabilityScore } from '../types/viability';
+import type { ViabilityScore, ProgramViabilityData } from '../types/viability';
 import { ScoreBreakdown } from '../components/results/ScoreBreakdown';
 import { RiskFactorsList } from '../components/results/RiskFactorsList';
 import { ContingenciesList } from '../components/results/ContingenciesList';
+import { ProgramTabs } from '../components/results/ProgramTabs';
+import { ProgramDetails } from '../components/results/ProgramDetails';
 import { Layout } from '../components/Layout';
 import { Button } from '../components/Button';
 import { LoadingSpinner } from '../components/LoadingSpinner';
 import { ErrorState } from '../components/ErrorState';
 import { InteractiveFlowchart } from '../components/flowchart/InteractiveFlowchart';
-import { AlternativeProgramsList } from '../components/results/AlternativeProgramsList';
 import { isValidCountryCode } from '../constants/countries';
 import {
   decodeResultsFromUrl,
@@ -124,6 +125,42 @@ export const ResultDetail: React.FC = () => {
     }
   };
 
+  // Combine all programs for easy lookup (must be before early returns)
+  const allPrograms = useMemo((): ProgramViabilityData[] => {
+    if (!selectedScore) return [];
+    const programs: ProgramViabilityData[] = [];
+    if (selectedScore.recommendedProgram) {
+      programs.push(selectedScore.recommendedProgram);
+    }
+    if (selectedScore.alternativePrograms) {
+      programs.push(...selectedScore.alternativePrograms);
+    }
+    return programs;
+  }, [selectedScore]);
+
+  // Determine which program is currently selected (must be before early returns)
+  const activeProgramId = useMemo(() => {
+    if (!selectedScore) return '';
+    return selectedProgramId || selectedScore.recommendedProgram?.programId || '';
+  }, [selectedProgramId, selectedScore]);
+
+  // Get the active program's full data (must be before early returns)
+  const activeProgram = useMemo(() => {
+    if (!selectedScore) return null;
+    return allPrograms.find(p => p.programId === activeProgramId) || selectedScore.recommendedProgram || null;
+  }, [allPrograms, activeProgramId, selectedScore]);
+
+  // Check if the active program is the recommended one
+  const isRecommendedSelected = useMemo(() => {
+    if (!selectedScore) return true;
+    return activeProgramId === selectedScore.recommendedProgram?.programId;
+  }, [activeProgramId, selectedScore]);
+
+  // Handler to switch programs via tab
+  const handleSelectProgram = (programId: string) => {
+    setSelectedProgramId(programId);
+  };
+
   if (isLoading) {
     return <LoadingSpinner fullScreen size="lg" message="Loading result details..." />;
   }
@@ -138,7 +175,7 @@ export const ResultDetail: React.FC = () => {
     );
   }
 
-  if (!selectedScore) {
+  if (!selectedScore || !selectedScore.recommendedProgram) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
         <div className="bg-white rounded-lg shadow-md border border-gray-200 p-8 max-w-md">
@@ -157,37 +194,10 @@ export const ResultDetail: React.FC = () => {
 
   const countryFlowcharts = countryCode && isValidCountryCode(countryCode) ? ALL_FLOWCHARTS[countryCode] : undefined;
 
-  // Determine which program's flowchart to display
-  // If selectedProgramId is set, use that; otherwise use the recommended program
-  const activeProgramId = selectedProgramId || selectedScore.recommendedProgram?.programId;
+  // Get the active flowchart
   const activeFlowchart = activeProgramId && countryFlowcharts
     ? countryFlowcharts[activeProgramId]
     : null;
-
-  // Get the active program's name for display
-  const getActiveProgramName = (): string => {
-    if (selectedProgramId) {
-      // Check if it's an alternative program
-      const altProgram = selectedScore.alternativePrograms?.find(p => p.programId === selectedProgramId);
-      if (altProgram) return altProgram.programName;
-    }
-    return selectedScore.recommendedProgram?.programName || 'Unknown Program';
-  };
-
-  // Handler to switch flowchart to an alternative program
-  const handleViewAlternativeFlowchart = (programId: string) => {
-    setSelectedProgramId(programId);
-    // Scroll to the flowchart section
-    const flowchartSection = document.getElementById('flowchart-section');
-    if (flowchartSection) {
-      flowchartSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  // Handler to switch back to recommended program
-  const handleBackToRecommended = () => {
-    setSelectedProgramId(null);
-  };
 
   return (
     <Layout currentPage="results">
@@ -270,73 +280,44 @@ export const ResultDetail: React.FC = () => {
         </div>
       </div>
 
-      {/* Recommended Program - Bold Highlight */}
-      {selectedScore.recommendedProgram && (
-        <div className="bg-primary border-t-4 border-b-4 border-black">
-          <div className="max-w-7xl mx-auto px-1 sm:px-6 lg:px-8 py-8">
-            <h2 className="text-label uppercase font-bold text-white mb-2">Recommended Visa Program</h2>
-            <h3 className="text-h1 font-bold text-white mb-3 uppercase tracking-wide break-words">
-              {selectedScore.recommendedProgram.programName}
-            </h3>
-            <p className="text-body-lg text-white mb-6">{selectedScore.recommendedProgram.matchReason}</p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              <div>
-                <div className="text-label-sm uppercase font-bold text-primary-200 mb-1">Type</div>
-                <div className="text-body font-bold text-white capitalize">
-                  {selectedScore.recommendedProgram.programType.replace('_', ' ')}
-                </div>
-              </div>
-              <div>
-                <div className="text-label-sm uppercase font-bold text-primary-200 mb-1">Eligibility Score</div>
-                <div className="text-body font-bold text-white">{selectedScore.recommendedProgram.eligibilityScore}/100</div>
-              </div>
-              <div>
-                <div className="text-label-sm uppercase font-bold text-primary-200 mb-1">Job Offer Required</div>
-                <div className="text-body font-bold text-white">
-                  {selectedScore.recommendedProgram.requiresJobOffer ? 'Yes' : 'No'}
-                </div>
-              </div>
-              <div>
-                <div className="text-label-sm uppercase font-bold text-primary-200 mb-1">Timeline</div>
-                <div className="text-body font-bold text-white">{selectedScore.estimatedTimelineMonths} months</div>
-              </div>
-            </div>
-          </div>
-        </div>
+      {/* Program Tabs - Select between recommended and alternative programs */}
+      {allPrograms.length > 1 && (
+        <ProgramTabs
+          recommendedProgram={selectedScore.recommendedProgram}
+          alternativePrograms={selectedScore.alternativePrograms || []}
+          selectedProgramId={activeProgramId}
+          onSelectProgram={handleSelectProgram}
+        />
+      )}
+
+      {/* Selected Program Details */}
+      {activeProgram && (
+        <ProgramDetails
+          program={activeProgram}
+          isRecommended={isRecommendedSelected}
+        />
       )}
 
       {/* Main Content: Data-Driven Dashboard */}
       <div className="bg-gray-50 py-12">
         <div className="max-w-7xl mx-auto px-1 sm:px-6 lg:px-8 space-y-8">
-          {/* Component Scores and Risk Assessment - Above Flowchart */}
-          {/* Score Breakdown */}
-          <ScoreBreakdown componentScores={selectedScore.componentScores} />
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Risk Factors */}
-            <RiskFactorsList
-              riskFactors={selectedScore.riskFactors}
-              overallRiskLevel={selectedScore.overallRiskLevel}
-            />
-          </div>
+          {/* Component Scores - Uses active program's scores */}
+          {activeProgram && (
+            <ScoreBreakdown componentScores={activeProgram.componentScores} />
+          )}
+
+          {/* Risk Factors - Uses active program's risk factors */}
+          {activeProgram && (
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <RiskFactorsList
+                riskFactors={activeProgram.riskFactors}
+                overallRiskLevel={activeProgram.overallRiskLevel}
+              />
+            </div>
+          )}
 
           {/* Interactive Flowchart - Center Section */}
           <div id="flowchart-section">
-            {/* Flowchart Header - Shows current program */}
-            <div className="bg-white border-2 border-black border-b-0 p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-              <div>
-                <span className="text-label uppercase font-bold text-gray-700">Viewing Flowchart:</span>
-                <h4 className="text-h4 font-bold text-black uppercase break-words">{getActiveProgramName()}</h4>
-              </div>
-              {selectedProgramId && (
-                <button
-                  onClick={handleBackToRecommended}
-                  className="px-4 py-2 bg-gray-200 text-black border-2 border-black hover:bg-black hover:text-white transition-colors font-bold uppercase text-label"
-                >
-                  ← Back to Recommended
-                </button>
-              )}
-            </div>
-
             {activeFlowchart ? (
               <InteractiveFlowchart flowchart={activeFlowchart} />
             ) : (
@@ -346,20 +327,10 @@ export const ResultDetail: React.FC = () => {
             )}
           </div>
 
-          {/* Contingencies and Alternatives - Below Flowchart */}
-          <div className="space-y-8">
-            {/* Contingencies Row */}
-            <ContingenciesList contingencies={selectedScore.contingencies} />
-
-            {/* Alternative Programs Row */}
-            {selectedScore.alternativePrograms && selectedScore.alternativePrograms.length > 0 && (
-              <AlternativeProgramsList
-                programs={selectedScore.alternativePrograms}
-                countryCode={countryCode || ''}
-                onViewFlowchart={handleViewAlternativeFlowchart}
-              />
-            )}
-          </div>
+          {/* Contingencies - Uses active program's contingencies */}
+          {activeProgram && (
+            <ContingenciesList contingencies={activeProgram.contingencies} />
+          )}
         </div>
       </div>
     </Layout>

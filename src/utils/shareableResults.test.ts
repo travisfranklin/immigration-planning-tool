@@ -56,10 +56,18 @@ const mockScore: ViabilityScore = {
     programName: 'Red-White-Red Card',
     programType: 'work',
     eligibilityScore: 85,
+    componentScores: { career: 90, financial: 85, education: 80, language: 75, family: 70 },
+    overallScore: 85,
     matchReason: 'Good match',
     alignsWithUserPath: true,
     alignsWithTimeline: true,
     requiresJobOffer: true,
+    riskFactors: [],
+    overallRiskLevel: 'low',
+    contingencies: [],
+    meetsHardRequirements: true,
+    missingRequirements: [],
+    estimatedTimelineMonths: 6,
   },
 };
 

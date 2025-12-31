@@ -4,9 +4,10 @@
  */
 
 import type { UserProfile } from '../../types/user';
-import type { ViabilityScore, ComponentScore, RiskFactor, Contingency } from '../../types/viability';
+import type { ViabilityScore, ComponentScore, RiskFactor, Contingency, ProgramViabilityData } from '../../types/viability';
 import type { VisaProgram } from '../../types/viability';
 import { getViabilityLevel } from '../../types/viability';
+import type { ProgramMatchResult } from '../../types/viability';
 import { COUNTRY_NAMES } from '../../types/country';
 import { getBestProgramsForCountry } from './programMatcher';
 import { applyPreferenceAdjustments, calculateTotalPreferenceBoost } from './preferenceScorer';
@@ -208,10 +209,80 @@ export function generateContingencies(
 function determineOverallRiskLevel(risks: RiskFactor[]): 'low' | 'medium' | 'high' {
   const highRisks = risks.filter(r => r.severity === 'high').length;
   const mediumRisks = risks.filter(r => r.severity === 'medium').length;
-  
+
   if (highRisks >= 2) return 'high';
   if (highRisks >= 1 || mediumRisks >= 3) return 'medium';
   return 'low';
+}
+
+/**
+ * Calculate full viability data for a single program
+ */
+function calculateProgramViabilityData(
+  profile: UserProfile,
+  match: ProgramMatchResult,
+  bestMatch: ProgramMatchResult | null
+): ProgramViabilityData {
+  const program = match.program;
+
+  // Calculate component scores for this program
+  const componentScores = calculateComponentScores(profile, program);
+
+  // Prepare eligibility check data
+  const eligibilityCheck = {
+    isEligible: match.isEligible,
+    score: match.eligibilityScore,
+  };
+
+  // Calculate overall score using program-specific weights
+  const scoreResult = calculateOverallScore(
+    componentScores,
+    program.weights,
+    eligibilityCheck
+  );
+
+  // Calculate preference boost
+  const preferenceBoost = calculateTotalPreferenceBoost(program, profile);
+
+  // Apply preference boost only if eligible
+  const overallScore = scoreResult.meetsHardRequirements
+    ? Math.max(0, Math.min(100, scoreResult.overallScore + preferenceBoost))
+    : scoreResult.overallScore;
+
+  // Generate risk factors and contingencies for this program
+  const riskFactors = generateRiskFactors(profile, program, componentScores);
+  const contingencies = generateContingencies(profile, program, riskFactors);
+  const overallRiskLevel = determineOverallRiskLevel(riskFactors);
+
+  // Determine why this isn't recommended (for alternatives)
+  let whyNotRecommended: string | undefined;
+  if (bestMatch && match.program.id !== bestMatch.program.id) {
+    if (match.eligibilityScore < bestMatch.eligibilityScore) {
+      whyNotRecommended = `Lower overall score (${Math.round(match.eligibilityScore)} vs ${Math.round(bestMatch.eligibilityScore)})`;
+    } else {
+      whyNotRecommended = 'Alternative option';
+    }
+  }
+
+  return {
+    programId: program.id,
+    programName: program.name,
+    programType: program.type,
+    eligibilityScore: Math.round(match.eligibilityScore),
+    componentScores,
+    overallScore,
+    matchReason: match.matchReason,
+    alignsWithUserPath: match.alignsWithUserPath,
+    alignsWithTimeline: match.alignsWithTimeline,
+    requiresJobOffer: program.requirements.requiresJobOffer || false,
+    riskFactors,
+    overallRiskLevel,
+    contingencies,
+    meetsHardRequirements: scoreResult.meetsHardRequirements,
+    missingRequirements: match.missingRequirements,
+    estimatedTimelineMonths: Math.ceil(program.processingTimeWeeks / 4),
+    whyNotRecommended,
+  };
 }
 
 /**
@@ -243,50 +314,18 @@ export async function calculateCountryViability(
   if (!bestMatch) {
     return null;
   }
-  
-  const bestProgram = bestMatch.program;
 
-  // Calculate component scores using the best program
-  const componentScores = calculateComponentScores(profile, bestProgram);
+  // Calculate full viability data for recommended program
+  const recommendedProgram = calculateProgramViabilityData(profile, bestMatch, null);
 
-  // Prepare eligibility check data
-  const eligibilityCheck = {
-    isEligible: bestMatch.isEligible,
-    score: bestMatch.eligibilityScore,
-  };
-
-  // Calculate overall score using program-specific weights and eligibility
-  const scoreResult = calculateOverallScore(
-    componentScores,
-    bestProgram.weights,
-    eligibilityCheck
+  // Calculate full viability data for alternative programs (next 3)
+  const alternativePrograms = sortedMatches.slice(1, 4).map(match =>
+    calculateProgramViabilityData(profile, match, bestMatch)
   );
 
-  // Calculate user preference boost
-  const preferenceBoost = calculateTotalPreferenceBoost(bestProgram, profile);
+  // Calculate user preference boost for the recommended program
+  const preferenceBoost = calculateTotalPreferenceBoost(bestMatch.program, profile);
 
-  // Apply preference boost to overall score (only if eligible)
-  // If not eligible, score is already capped at 25
-  const overallScore = scoreResult.meetsHardRequirements
-    ? Math.max(0, Math.min(100, scoreResult.overallScore + preferenceBoost))
-    : scoreResult.overallScore; // Don't boost ineligible programs
-  
-  // Generate risk factors and contingencies
-  const riskFactors = generateRiskFactors(profile, bestProgram, componentScores);
-  const contingencies = generateContingencies(profile, bestProgram, riskFactors);
-  const overallRiskLevel = determineOverallRiskLevel(riskFactors);
-  
-  // Get alternative programs
-  const alternativePrograms = sortedMatches.slice(1, 4).map(match => ({
-    programId: match.program.id,
-    programName: match.program.name,
-    programType: match.program.type,
-    eligibilityScore: Math.round(match.eligibilityScore),
-    whyNotRecommended: match.eligibilityScore < bestMatch.eligibilityScore
-      ? `Lower overall score (${Math.round(match.eligibilityScore)} vs ${Math.round(bestMatch.eligibilityScore)})`
-      : 'Alternative option',
-  }));
-  
   const now = Date.now();
 
   return {
@@ -296,30 +335,23 @@ export async function calculateCountryViability(
     countryName: COUNTRY_NAMES[countryCode] || countryCode,
     createdAt: now,
     updatedAt: now,
-    componentScores,
-    overallScore,
-    viabilityLevel: getViabilityLevel(overallScore),
-    // Eligibility information (NEW)
-    meetsHardRequirements: scoreResult.meetsHardRequirements,
-    missingRequirements: bestMatch.missingRequirements,
-    competitiveScore: scoreResult.competitiveScore,
-    // Risk assessment
-    riskFactors,
-    overallRiskLevel,
-    contingencies,
-    recommendedProgram: {
-      programId: bestProgram.id,
-      programName: bestProgram.name,
-      programType: bestProgram.type,
-      eligibilityScore: Math.round(bestMatch.eligibilityScore),
-      matchReason: bestMatch.matchReason,
-      alignsWithUserPath: bestMatch.alignsWithUserPath,
-      alignsWithTimeline: bestMatch.alignsWithTimeline,
-      requiresJobOffer: bestProgram.requirements.requiresJobOffer || false,
-    },
+    // Use the recommended program's component scores at the top level for backwards compatibility
+    componentScores: recommendedProgram.componentScores,
+    overallScore: recommendedProgram.overallScore,
+    viabilityLevel: getViabilityLevel(recommendedProgram.overallScore),
+    // Eligibility information
+    meetsHardRequirements: recommendedProgram.meetsHardRequirements,
+    missingRequirements: recommendedProgram.missingRequirements,
+    competitiveScore: recommendedProgram.overallScore, // Use program's score
+    // Risk assessment (from recommended program)
+    riskFactors: recommendedProgram.riskFactors,
+    overallRiskLevel: recommendedProgram.overallRiskLevel,
+    contingencies: recommendedProgram.contingencies,
+    // Programs with full viability data
+    recommendedProgram,
     alternativePrograms,
     userPreferenceBoost: preferenceBoost,
-    estimatedTimelineMonths: Math.ceil(bestProgram.processingTimeWeeks / 4),
+    estimatedTimelineMonths: recommendedProgram.estimatedTimelineMonths,
   };
 }
 
