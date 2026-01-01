@@ -366,6 +366,8 @@ a:hover {
   --silhouette-stroke: var(--color-primary);
   --silhouette-stroke-width: 30px;
   top: -128px;
+  /* Allow clicks to pass through to elements below */
+  pointer-events: none;
 }
 
 /* Apply styles to all path and g elements within the SVG
