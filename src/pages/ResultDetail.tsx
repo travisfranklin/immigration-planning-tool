@@ -11,6 +11,7 @@ import type { ViabilityScore, ProgramViabilityData } from '../types/viability';
 import { ScoreBreakdown } from '../components/results/ScoreBreakdown';
 import { RiskFactorsList } from '../components/results/RiskFactorsList';
 import { ContingenciesList } from '../components/results/ContingenciesList';
+import { SourcesCitation } from '../components/results/SourcesCitation';
 import { ProgramTabs } from '../components/results/ProgramTabs';
 import { ProgramDetails } from '../components/results/ProgramDetails';
 import { Layout } from '../components/Layout';
@@ -347,6 +348,11 @@ export const ResultDetail: React.FC = () => {
           {/* Contingencies - Uses active program's contingencies */}
           {activeProgram && (
             <ContingenciesList contingencies={activeProgram.contingencies} />
+          )}
+
+          {/* Sources - Uses active program's official URL */}
+          {activeProgramId && (
+            <SourcesCitation programId={activeProgramId} />
           )}
         </div>
       </div>

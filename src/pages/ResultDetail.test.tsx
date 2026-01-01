@@ -221,11 +221,11 @@ describe('ResultDetail Page', () => {
       });
     });
 
-    it('should render back to rankings button', async () => {
+    it('should render back button', async () => {
       renderWithRouter(<ResultDetail />);
 
       await waitFor(() => {
-        expect(screen.getByText(/Back to Rankings/i)).toBeInTheDocument();
+        expect(screen.getByText(/← Back/i)).toBeInTheDocument();
       });
     });
 
@@ -272,7 +272,7 @@ describe('ResultDetail Page', () => {
       renderWithRouter(<ResultDetail />);
 
       await waitFor(() => {
-        const backButton = screen.getByText(/Back to Rankings/i);
+        const backButton = screen.getByText(/← Back/i);
         expect(backButton).toBeInTheDocument();
       });
     });
