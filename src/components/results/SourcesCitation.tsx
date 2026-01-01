@@ -47,14 +47,12 @@ export const SourcesCitation: React.FC<SourcesCitationProps> = ({ programId }) =
   // No sources available
   if (sources.length === 0) {
     return (
-      <div className="bg-white border-2 border-black p-6">
-        <h3 className="text-h3 font-bold text-black mb-4 uppercase tracking-wide">Sources</h3>
-        <div className="bg-neutral-100 border-2 border-neutral-300 p-6 text-center">
-          <p className="text-body text-neutral-600">
-            No official source available for this program.
-          </p>
-          <p className="text-body-sm text-neutral-500 mt-2">
-            We recommend searching for official government immigration portals for the most accurate information.
+      <div className="bg-white border-2 border-black p-4">
+        <div className="flex items-center gap-3">
+          <h3 className="text-label font-bold text-black uppercase tracking-wide">Sources</h3>
+          <span className="text-body-sm text-neutral-500">—</span>
+          <p className="text-body-sm text-neutral-500">
+            No official source available for this program
           </p>
         </div>
       </div>
@@ -62,55 +60,38 @@ export const SourcesCitation: React.FC<SourcesCitationProps> = ({ programId }) =
   }
 
   return (
-    <div className="bg-white border-2 border-black p-6">
-      <h3 className="text-h3 font-bold text-black mb-4 uppercase tracking-wide">Sources</h3>
-      <p className="text-body-sm text-gray-700 mb-6">
-        Official government information for this program
-      </p>
-
-      <div className="space-y-4">
-        {sources.map((source, index) => (
-          <div key={source.url} className="border-2 border-black">
-            {/* Source Header */}
-            <div className="w-full bg-black min-h-6 flex justify-start items-center">
-              {/* Numbered Badge */}
-              <div className="flex items-center justify-center w-6 sm:w-10 sm:h-10 font-bold text-white flex-shrink-0">
-                {String(index + 1).padStart(2, '0')}
-              </div>
-              <h4 className="font-medium text-white uppercase tracking-wide leading-none pr-4">
-                {source.label}
-              </h4>
-            </div>
-
-            {/* Source Link */}
-            <div className="p-4">
-              <a
-                href={source.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-primary hover:text-primary-700 font-medium transition-colors"
+    <div className="bg-white border-2 border-black p-4">
+      <div className="flex items-start gap-3">
+        <h3 className="text-label font-bold text-black uppercase tracking-wide flex-shrink-0">Sources</h3>
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+          {sources.map((source, index) => (
+            <a
+              key={source.url}
+              href={source.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-body-sm text-primary hover:text-primary-700 transition-colors group"
+            >
+              <span className="font-medium text-black">{String(index + 1)}.</span>
+              <span className="group-hover:underline">{source.label}</span>
+              {/* External Link Icon */}
+              <svg
+                className="w-3.5 h-3.5 flex-shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
               >
-                <span>Visit Official Source</span>
-                {/* External Link Icon */}
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                  />
-                </svg>
-              </a>
-              <p className="text-body-sm text-gray-500 mt-2 break-all">{source.url}</p>
-            </div>
-          </div>
-        ))}
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                />
+              </svg>
+            </a>
+          ))}
+        </div>
       </div>
     </div>
   );
