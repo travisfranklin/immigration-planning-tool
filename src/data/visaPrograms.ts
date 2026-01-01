@@ -386,7 +386,7 @@ export const FRANCE_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'For tech startup founders, employees, and investors',
-    officialUrl: 'https://www.lafrenchtech.com/en/how-france-helps-startups/french-tech-visa/',
+    officialUrl: 'https://lafrenchtech.gouv.fr/en/come-work-in-france/french-tech-visa/',
     notes: 'Startup must be part of French Tech ecosystem',
   },
   {
@@ -1199,7 +1199,7 @@ export const IRELAND_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'For entrepreneurs with innovative business ideas',
-    officialUrl: 'https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/permit-types/startup-entrepreneur-programme/',
+    officialUrl: 'https://www.irishimmigration.ie/coming-to-work-in-ireland/what-are-my-options-for-working-in-ireland/coming-to-work-for-more-than-90-days/start-up-entrepreneur-programme-step/',
     notes: '€50,000 must be from approved source (not personal funds). High-potential startups. Approval from evaluation committee required.',
   },
   {
@@ -1700,7 +1700,7 @@ export const PORTUGAL_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Golden Visa through investment in real estate (€500k), capital transfer (€1.5M), or business (€500k creating 5+ jobs). Very flexible residency requirements (7 days/year).',
-    officialUrl: 'https://www.goldenvisa.pt/',
+    officialUrl: 'https://www.sef.pt/en/pages/conteudo-detalhe.aspx?nID=62',
     notes: 'One of most popular Golden Visa programs in EU. Only 7 days/year minimum stay required. Family members included. PR in 5 years, citizenship in 5 years with A2 Portuguese. Access to Schengen area.',
   },
   {
@@ -1801,7 +1801,7 @@ export const PORTUGAL_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Startup Visa for entrepreneurs with innovative business idea approved by certified incubator. Growing startup ecosystem in Lisbon.',
-    officialUrl: 'https://startupportugal.com/',
+    officialUrl: 'https://www.iapmei.pt/PRODUTOS-E-SERVICOS/Empreendedorismo-Inovacao/Empreendedorismo/Apoios-e-Incentivos/Startup-Visa.aspx',
     notes: 'Must be accepted by IAPMEI-certified incubator. Growing startup ecosystem in Lisbon and Porto. Can bring co-founders. Family members included. PR in 5 years, citizenship in 5 years.',
   },
   {
@@ -1882,7 +1882,7 @@ export const GREECE_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Golden Visa through real estate investment. Tiered system: €800,000 in Athens/Thessaloniki/popular islands, €400,000 in other areas. No minimum stay requirement!',
-    officialUrl: 'https://www.goldenvisa.gr/',
+    officialUrl: 'https://migration.gov.gr/en/golden-visa/',
     notes: 'Tiered investment thresholds (2024): €800k for Athens/Thessaloniki/Mykonos/Santorini, €400k for other areas. No minimum stay required. Family members included. Can rent out property. PR in 5 years, citizenship in 7 years. Access to Schengen area.',
   },
   {
@@ -2013,7 +2013,7 @@ export const CYPRUS_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true, // This IS permanent residence
     pathToCitizenship: true,
     description: 'Golden Visa through €300k investment in real estate or business. Immediate permanent residence! English is official language.',
-    officialUrl: 'https://www.cyprusisland.net/',
+    officialUrl: 'https://www.mip.gov.cy/dmmip/md.nsf/immigrationpfi_en/immigrationpfi_en?OpenDocument',
     notes: 'One of fastest PR programs in EU - immediate permanent residence! English is official language. Low corporate tax (12.5%). Requires €50k annual income. Family included. Citizenship in 7 years.',
   },
   {
@@ -2352,7 +2352,7 @@ export const POLAND_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Fast-track startup visa for entrepreneurs with innovative business idea. Acceptance by Polish startup accelerator required. Growing startup ecosystem.',
-    officialUrl: 'https://polandbusinessharbour.pl/',
+    officialUrl: 'https://www.gov.pl/web/poland-businessharbour-en',
     notes: 'Fast-track program for startups. Growing startup ecosystem in Warsaw, Kraków. Access to accelerators and mentorship. Can bring co-founders. PR in 5 years, citizenship in 5 years.',
   },
   {
@@ -2483,7 +2483,7 @@ export const CZECH_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Startup visa for entrepreneurs with innovative business idea. Prague has vibrant startup scene. Acceptance by CzechInvest or startup accelerator required.',
-    officialUrl: 'https://www.czechstartups.org/startup-visa',
+    officialUrl: 'https://czechstartups.gov.cz/en/start-up-visa/',
     notes: 'Prague has vibrant startup scene. Access to EU market. English widely spoken in business. Can bring co-founders. PR in 5 years, citizenship in 5 years.',
   },
   {
