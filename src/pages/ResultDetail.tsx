@@ -279,7 +279,7 @@ export const ResultDetail: React.FC = () => {
                 <CountrySilhouette
                   countryCode={selectedScore.countryCode}
                   size={400}
-                  className="absolute -z-10 opacity-30 -top-8 w-full ml-auto"
+                  className="absolute z-0 opacity-30 -top-8 w-full ml-auto"
                   ariaLabel={`${selectedScore.countryName} country outline`}
                 />
               )}
@@ -300,12 +300,14 @@ export const ResultDetail: React.FC = () => {
 
       {/* Program Tabs - Select between recommended and alternative programs */}
       {allPrograms.length > 1 && (
-        <ProgramTabs
-          recommendedProgram={selectedScore.recommendedProgram}
-          alternativePrograms={selectedScore.alternativePrograms || []}
-          selectedProgramId={activeProgramId}
-          onSelectProgram={handleSelectProgram}
-        />
+        <div className="relative z-10">
+          <ProgramTabs
+            recommendedProgram={selectedScore.recommendedProgram}
+            alternativePrograms={selectedScore.alternativePrograms || []}
+            selectedProgramId={activeProgramId}
+            onSelectProgram={handleSelectProgram}
+          />
+        </div>
       )}
 
       {/* Selected Program Details */}
