@@ -786,7 +786,7 @@ export const AUSTRIA_PROGRAMS: VisaProgram[] = [
     id: 'at_startup',
     countryCode: 'AT',
     countryName: 'Austria',
-    name: 'Startup Visa (Start-up Founders)',
+    name: 'Startup Visa',
     type: 'entrepreneur',
     requirements: {
       requiresBusinessPlan: true,
