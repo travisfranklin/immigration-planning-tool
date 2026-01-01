@@ -2,12 +2,13 @@
  * France Immigration Programs
  *
  * Built using the template-based composition system.
- * France has 5 main programs:
- * 1. Talent Passport (Passeport Talent)
- * 2. Skills and Talents Visa
- * 3. French Tech Visa
- * 4. Standard Work Visa
- * 5. Family Reunification
+ * France has 6 main programs:
+ * 1. EU Blue Card (Carte Bleue Européenne)
+ * 2. Talent Passport – Qualified Employee (Passeport Talent)
+ * 3. Skills and Talents Visa
+ * 4. French Tech Visa
+ * 5. Standard Work Visa
+ * 6. Family Reunification
  */
 
 import type { FlowchartDefinition } from '../../../types/flowchart';
@@ -15,7 +16,100 @@ import { buildFlowchart } from '../builders';
 import { COMMON_STEP_IDS } from '../templates/types';
 
 /**
- * Talent Passport (Passeport Talent) - For skilled workers, researchers, investors
+ * EU Blue Card - For highly skilled workers with higher salary threshold and EU mobility
+ */
+export const euBlueCard: FlowchartDefinition = buildFlowchart({
+  programId: 'fr_blue_card',
+  countryCode: 'FR',
+  programName: 'EU Blue Card',
+  complexity: 'medium',
+  successRate: '85%',
+  totalEstimatedDuration: '2-4 months',
+  mermaidDiagram: `
+flowchart TD
+  Start([Start Process]) -->job-offer[Secure Job Offer]
+  job-offer --> CheckSalary{"Salary >= €59,373?"}
+  CheckSalary -->|Yes| gather-documents[Gather Required Documents]
+  CheckSalary -->|No| End1([Consider Talent Passport])
+  gather-documents -->submit-application[Submit at Consulate]
+  submit-application -->processing[Wait for Processing]
+  processing --> decision{Decision}
+  decision -->|Approved| visa[Receive EU Blue Card]
+  decision -->|Rejected| End2([Process Ended])
+  visa -->travel[Travel to France]
+  travel -->registration[Register with Prefecture]
+  registration --> Success([Process Complete])`,
+  steps: [
+    {
+      template: COMMON_STEP_IDS.JOB_OFFER,
+      options: {
+        salaryThreshold: 59373,
+        additionalNotes: [
+          'Salary must be at least €59,373/year (1.5x average gross salary)',
+          'Contract must be for at least 12 months',
+          'Job must match your qualifications',
+        ],
+      },
+    },
+    {
+      template: COMMON_STEP_IDS.GATHER_DOCUMENTS,
+      options: {
+        includeEmployment: true,
+        includeDegree: true,
+        additionalDocuments: [
+          'University degree (3+ years higher education) or proof of 5 years professional experience',
+          'Proof of accommodation in France',
+          'CV/Resume',
+          'Criminal background check',
+        ],
+        additionalNotes: [
+          'All documents must be translated to French by certified translator',
+          'Degree must be recognized or equivalent to French qualification',
+        ],
+      },
+    },
+    {
+      template: COMMON_STEP_IDS.SUBMIT_APPLICATION,
+      options: {
+        applicationFee: 225,
+        additionalNotes: [
+          'Apply at French consulate in your country of residence',
+          'Book appointment well in advance',
+        ],
+      },
+    },
+    { template: COMMON_STEP_IDS.PROCESSING, options: { processingTime: '4-8 weeks' } },
+    {
+      id: 'visa',
+      title: 'Receive EU Blue Card',
+      description: 'Collect your EU Blue Card visa',
+      estimatedDuration: '1-2 weeks',
+      documents: ['Passport'],
+      notes: [
+        'Valid for up to 4 years',
+        'Includes work authorization',
+        'Family can join with Talent-Family permit',
+        'EU mobility after 12 months (can move to another EU country)',
+        'Can apply for PR after 5 years',
+      ],
+    },
+    { template: COMMON_STEP_IDS.TRAVEL, options: { visaType: 'EU Blue Card' } },
+    {
+      template: COMMON_STEP_IDS.REGISTRATION,
+      options: {
+        registrationAuthority: 'Prefecture',
+        additionalNotes: [
+          'Register within 3 months of arrival',
+          'Get titre de séjour (residence permit)',
+          'Register with CPAM for health insurance',
+        ],
+      },
+    },
+  ],
+});
+
+/**
+ * Talent Passport – Qualified Employee - For skilled workers with master's degree
  */
 export const talentPassport: FlowchartDefinition = buildFlowchart({
   programId: 'fr_talent_passport',
@@ -412,6 +506,7 @@ flowchart TD
  * Export all France flowcharts as a record for compatibility with existing system
  */
 export const franceFlowchartsNew: Record<string, FlowchartDefinition> = {
+  eu_blue_card: euBlueCard,
   talent_passport: talentPassport,
   skills_talents: skillsTalentsVisa,
   french_tech: frenchTechVisa,
