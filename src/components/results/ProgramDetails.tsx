@@ -34,7 +34,7 @@ export const ProgramDetails: React.FC<ProgramDetailsProps> = ({
       <div className="max-w-7xl mx-auto px-1 sm:px-6 lg:px-8 py-8">
         {/* Program Header */}
         <div className="flex flex-wrap items-center gap-3 mb-2">
-          <h2 className="text-label uppercase font-bold text-white">
+          <h2 className="py-2 text-label uppercase font-bold text-white">
             {isRecommended ? 'Recommended Visa Program' : 'Alternative Visa Program'}
           </h2>
           {!isRecommended && program.whyNotRecommended && (

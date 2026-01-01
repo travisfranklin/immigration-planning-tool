@@ -279,7 +279,7 @@ export const ResultDetail: React.FC = () => {
                 <CountrySilhouette
                   countryCode={selectedScore.countryCode}
                   size={400}
-                  className="absolute z-0 opacity-30 -top-8 w-full ml-auto"
+                  className="absolute -z-10 opacity-30 -top-8 w-full ml-auto"
                   ariaLabel={`${selectedScore.countryName} country outline`}
                 />
               )}
