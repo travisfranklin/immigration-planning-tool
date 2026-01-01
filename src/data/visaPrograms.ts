@@ -172,7 +172,7 @@ export const NETHERLANDS_PROGRAMS: VisaProgram[] = [
     pathToCitizenship: true,
     applicationFee: 210, // 2025 IND fee schedule
     description: 'EU Blue Card for highly skilled workers with higher education degree. High salary threshold but excellent quality of life.',
-    officialUrl: 'https://ind.nl/en/residence-permits/work/eu-blue-card',
+    officialUrl: 'https://ind.nl/en/work/eu-blue-card',
     notes: 'Salary threshold: €68,256/year (30+), €54,612/year (reduced - 2025). Family can join. Can work throughout EU after 18 months. PR in 5 years, citizenship in 5 years.',
   },
   {
@@ -199,7 +199,7 @@ export const NETHERLANDS_PROGRAMS: VisaProgram[] = [
     pathToCitizenship: true,
     applicationFee: 350, // 2025 IND fee schedule
     description: 'Special visa for US citizens to start a business in the Netherlands',
-    officialUrl: 'https://ind.nl/en/residence-permits/work/residence-permit-self-employed-person',
+    officialUrl: 'https://ind.nl/en/work/self-employed-person',
     notes: 'Unique to US citizens, very accessible',
   },
   {
@@ -226,7 +226,7 @@ export const NETHERLANDS_PROGRAMS: VisaProgram[] = [
     pathToCitizenship: true,
     applicationFee: 210, // 2025 IND fee schedule
     description: 'For highly skilled workers with job offer from recognized sponsor',
-    officialUrl: 'https://ind.nl/en/residence-permits/work/residence-permit-highly-skilled-migrant',
+    officialUrl: 'https://ind.nl/en/residence-permits/work/highly-skilled-migrant',
     notes: 'Employer must be recognized sponsor',
   },
   {
@@ -253,7 +253,7 @@ export const NETHERLANDS_PROGRAMS: VisaProgram[] = [
     pathToCitizenship: false,
     applicationFee: 210, // 2025 IND fee schedule
     description: 'For recent graduates from top universities to find work',
-    officialUrl: 'https://ind.nl/en/residence-permits/work/residence-permit-orientation-year',
+    officialUrl: 'https://ind.nl/en/residence-permits/work/residence-permit-for-orientation-year',
     notes: 'Requires degree from top 200 university within last 3 years',
   },
   {
@@ -280,7 +280,7 @@ export const NETHERLANDS_PROGRAMS: VisaProgram[] = [
     pathToCitizenship: true,
     applicationFee: 350, // 2025 IND fee schedule
     description: 'For entrepreneurs starting a business in the Netherlands',
-    officialUrl: 'https://ind.nl/en/residence-permits/work/residence-permit-self-employed-person',
+    officialUrl: 'https://ind.nl/en/work/self-employed-person',
     notes: 'Points-based system, requires business plan approval',
   },
   {
@@ -467,7 +467,7 @@ export const SPAIN_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'For highly skilled workers with a job offer and higher education',
-    officialUrl: 'https://www.exteriores.gob.es/en/ServiciosAlCiudadano/Paginas/Visados.aspx',
+    officialUrl: 'https://www.exteriores.gob.es/',
     notes: 'EU-wide mobility after 18 months; can move to another EU country',
   },
   {
@@ -597,7 +597,7 @@ export const ITALY_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'EU Blue Card for highly skilled workers with higher education degree. Subject to Decreto Flussi quota system.',
-    officialUrl: 'https://www.esteri.it/en/servizi-consolari-e-visti/visti/',
+    officialUrl: 'https://vistoperitalia.esteri.it/',
     notes: 'Salary threshold: €26,000-33,500/year depending on sector. Subject to annual quota (Decreto Flussi). Nulla Osta required. Family can join. Can work throughout EU after 18 months. PR in 5 years, citizenship in 10 years.',
   },
   {
@@ -1304,7 +1304,7 @@ export const SWEDEN_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'For highly skilled workers with university degree and high-salary job offer in Sweden.',
-    officialUrl: 'https://www.migrationsverket.se/English/Private-individuals/Working-in-Sweden/Employed/EU-Blue-Card.html',
+    officialUrl: 'https://www.migrationsverket.se/en/you-want-to-apply/work/employee-or-self-employed/eu-blue-cards.html',
     notes: 'Higher salary threshold than regular work permit. EU-wide mobility after 18 months. Fast track to PR in 4 years.',
   },
   {
@@ -1354,7 +1354,7 @@ export const SWEDEN_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'For researchers and academics with PhD or equivalent conducting research at Swedish universities or research institutions.',
-    officialUrl: 'https://www.migrationsverket.se/English/Private-individuals/Working-in-Sweden/Employed/Special-rules-for-certain-occupations/Researchers.html',
+    officialUrl: 'https://www.migrationsverket.se/en/you-want-to-apply/work.html',
     notes: 'Faster processing than regular work permit. Strong academic sector in Sweden. English widely used in research.',
   },
   {
@@ -1410,7 +1410,7 @@ export const DENMARK_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'EU Blue Card for highly skilled workers with high salary threshold. Fast-Track processing available.',
-    officialUrl: 'https://www.nyidanmark.dk/en-GB/You-want-to-apply/Work/EU-Blue-Card',
+    officialUrl: 'https://nyidanmark.dk/en-GB/You-want-to-apply',
     notes: 'Denmark has one of the highest EU Blue Card salary thresholds (DKK 514,000/year - 2025). Application fee: DKK 6,055 (~€810). PR in 4 years, citizenship in 9 years.',
   },
   {
@@ -1616,7 +1616,7 @@ export const FINLAND_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'For freelancers, consultants, and traditional business owners. Must demonstrate business viability and sufficient income.',
-    officialUrl: 'https://migri.fi/en/self-employed-person',
+    officialUrl: 'https://migri.fi/en/entrepreneur',
     notes: 'For freelancers, consultants, traditional businesses. Must demonstrate business viability. Income must meet minimum threshold (€1,000/month). Relevant experience or education required. Can be extended. PR in 4 years, citizenship in 5 years.',
   },
   {
@@ -1640,7 +1640,7 @@ export const FINLAND_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Join family members in Finland. Sponsor must have A permit (continuous) or P permit (permanent) with adequate income and housing.',
-    officialUrl: 'https://migri.fi/en/family-ties',
+    officialUrl: 'https://migri.fi/en/moving-to-finland-to-be-with-family',
     notes: 'Same-sex partnerships recognized. Family members can work immediately. Sponsor must have adequate housing (minimum 10m² per person). Income requirement varies by family size. PR in 4 years, citizenship in 5 years.',
   },
 ];
@@ -1857,7 +1857,7 @@ export const GREECE_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'EU Blue Card for highly skilled workers with higher education degree. Mediterranean lifestyle with lower cost of living.',
-    officialUrl: 'https://migration.gov.gr/en/eu-blue-card/',
+    officialUrl: 'https://migration.gov.gr/en/',
     notes: 'Salary threshold: €31,918.83/year (2025). Family can join. Can work throughout EU after 18 months. PR in 5 years, citizenship in 7 years.',
   },
   {
@@ -1882,7 +1882,7 @@ export const GREECE_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Golden Visa through real estate investment. Tiered system: €800,000 in Athens/Thessaloniki/popular islands, €400,000 in other areas. No minimum stay requirement!',
-    officialUrl: 'https://migration.gov.gr/en/golden-visa/',
+    officialUrl: 'https://migration.gov.gr/en/',
     notes: 'Tiered investment thresholds (2024): €800k for Athens/Thessaloniki/Mykonos/Santorini, €400k for other areas. No minimum stay required. Family members included. Can rent out property. PR in 5 years, citizenship in 7 years. Access to Schengen area.',
   },
   {
@@ -2302,7 +2302,7 @@ export const POLAND_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'EU Blue Card for highly skilled workers with higher education degree. Lower salary threshold (€1,800/month) than Western Europe. Growing tech sector in Warsaw, Kraków, Wrocław.',
-    officialUrl: 'https://www.gov.pl/web/uw-mazowiecki/eu-blue-card',
+    officialUrl: 'https://www.gov.pl/web/uw-mazowiecki/en',
     notes: 'Lower salary threshold than Western Europe. Growing tech sector in Warsaw, Kraków, Wrocław. Family can join. Can work throughout EU after 18 months. PR in 5 years, citizenship in 5 years (with Polish language B1).',
   },
   {
@@ -2327,7 +2327,7 @@ export const POLAND_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Standard work permit with job offer from Polish employer. Very low salary threshold (€900/month). Most common work visa.',
-    officialUrl: 'https://www.gov.pl/web/uw-mazowiecki/work-permit',
+    officialUrl: 'https://www.gov.pl/web/uw-mazowiecki/en',
     notes: 'Most common work visa. Very low salary threshold. Employer must prove no suitable Polish/EU candidate. Family can join. Renewable. PR in 5 years, citizenship in 5 years.',
   },
   {
@@ -2352,7 +2352,7 @@ export const POLAND_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Fast-track startup visa for entrepreneurs with innovative business idea. Acceptance by Polish startup accelerator required. Growing startup ecosystem.',
-    officialUrl: 'https://www.gov.pl/web/poland-businessharbour-en',
+    officialUrl: 'https://www.gov.pl/web/uw-mazowiecki/en',
     notes: 'Fast-track program for startups. Growing startup ecosystem in Warsaw, Kraków. Access to accelerators and mentorship. Can bring co-founders. PR in 5 years, citizenship in 5 years.',
   },
   {
@@ -2377,7 +2377,7 @@ export const POLAND_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Self-employment visa for freelancers and entrepreneurs. Business registration in Poland required. Low cost of living, large market (38M people).',
-    officialUrl: 'https://www.gov.pl/web/uw-mazowiecki/self-employment',
+    officialUrl: 'https://www.gov.pl/web/uw-mazowiecki/en',
     notes: 'For freelancers and entrepreneurs. Low cost of living. Growing market (38M people). Family can join. PR in 5 years, citizenship in 5 years.',
   },
   {
@@ -2401,7 +2401,7 @@ export const POLAND_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Join family members who have valid Polish residence permit. Includes spouse, children, and parents.',
-    officialUrl: 'https://www.gov.pl/web/uw-mazowiecki/family-reunification',
+    officialUrl: 'https://www.gov.pl/web/uw-mazowiecki/en',
     notes: 'Includes spouse, children, parents. Family members can work and study. Same-sex partnerships recognized. Validity tied to sponsor\'s permit. PR in 5 years, citizenship in 5 years.',
   },
 ];
@@ -2433,7 +2433,7 @@ export const CZECH_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'EU Blue Card for highly skilled workers with higher education degree. Prague is major tech hub with high quality of life. Central European location.',
-    officialUrl: 'https://www.mvcr.cz/mvcren/article/eu-blue-card.aspx',
+    officialUrl: 'https://mv.gov.cz/mvcren/article/third-country-nationals-third-country-nationals.aspx',
     notes: 'Prague is major tech hub. High quality of life. Central European location. Family can join. Can work throughout EU after 18 months. PR in 5 years, citizenship in 5 years.',
   },
   {
@@ -2458,7 +2458,7 @@ export const CZECH_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Combined work permit and residence permit in one card. Faster than separate applications. Moderate salary threshold (€1,000/month).',
-    officialUrl: 'https://www.mvcr.cz/mvcren/article/employee-card.aspx',
+    officialUrl: 'https://ipc.gov.cz/en/visa-and-residence-permit-types/third-country-nationals/long-term-residence-permits/employee-card/',
     notes: 'Combines work permit and residence permit. Faster than separate applications. Family can join. Renewable. PR in 5 years, citizenship in 5 years.',
   },
   {
@@ -2508,7 +2508,7 @@ export const CZECH_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Self-employment visa for freelancers and entrepreneurs. Trade license (živnostenský list) required. Low bureaucracy, easy to obtain.',
-    officialUrl: 'https://www.mvcr.cz/mvcren/article/long-term-residence-for-the-purpose-of-business.aspx',
+    officialUrl: 'https://ipc.gov.cz/en/',
     notes: 'For freelancers and entrepreneurs. Trade license easy to obtain. Low bureaucracy. Family can join. PR in 5 years, citizenship in 5 years.',
   },
   {
@@ -2532,7 +2532,7 @@ export const CZECH_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Join family members who have valid Czech residence permit. Includes spouse, children, and parents.',
-    officialUrl: 'https://www.mvcr.cz/mvcren/article/family-reunification.aspx',
+    officialUrl: 'https://ipc.gov.cz/en/',
     notes: 'Includes spouse, children, parents. Family members can work and study. Same-sex partnerships recognized. Validity tied to sponsor\'s permit. PR in 5 years, citizenship in 5 years.',
   },
 ];
@@ -2564,7 +2564,7 @@ export const HUNGARY_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'EU Blue Card for highly skilled workers with higher education degree. Budapest has growing tech scene. Very low cost of living. Lower salary threshold (€1,500/month).',
-    officialUrl: 'https://www.bmbah.hu/eu-blue-card',
+    officialUrl: 'https://oif.gov.hu/en/',
     notes: 'Budapest has growing tech scene. Very low cost of living. Central European location. Family can join. Can work throughout EU after 18 months. PR in 5 years, citizenship in 8 years.',
   },
   {
@@ -2589,7 +2589,7 @@ export const HUNGARY_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Standard work permit with job offer from Hungarian employer. Very low salary threshold (€750/month). Very low cost of living.',
-    officialUrl: 'https://www.bmbah.hu/work-permit',
+    officialUrl: 'https://oif.gov.hu/en/',
     notes: 'Very low salary threshold. Very low cost of living. Employer must prove no suitable Hungarian/EU candidate. Family can join. Renewable. PR in 5 years, citizenship in 8 years.',
   },
   {
@@ -2614,7 +2614,7 @@ export const HUNGARY_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'White Card startup visa for entrepreneurs with innovative business idea. Budapest startup scene growing. Very low operating costs. 9% corporate tax.',
-    officialUrl: 'https://www.bmbah.hu/white-card',
+    officialUrl: 'https://oif.gov.hu/en/',
     notes: 'Budapest startup scene growing. Very low operating costs. 9% corporate tax (one of lowest in EU). Access to EU market. Can bring co-founders. PR in 5 years, citizenship in 8 years.',
   },
   {
@@ -2639,7 +2639,7 @@ export const HUNGARY_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Self-employment visa for freelancers and entrepreneurs. Business registration in Hungary required. Very low cost of living. 9% corporate tax.',
-    officialUrl: 'https://www.bmbah.hu/self-employment',
+    officialUrl: 'https://oif.gov.hu/en/',
     notes: 'For freelancers and entrepreneurs. Very low cost of living. 9% corporate tax (one of lowest in EU). Family can join. PR in 5 years, citizenship in 8 years.',
   },
   {
@@ -2663,7 +2663,7 @@ export const HUNGARY_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Join family members who have valid Hungarian residence permit. Includes spouse, children, and parents.',
-    officialUrl: 'https://www.bmbah.hu/family-reunification',
+    officialUrl: 'https://oif.gov.hu/en/',
     notes: 'Includes spouse, children, parents. Family members can work and study. Same-sex partnerships recognized. Validity tied to sponsor\'s permit. PR in 5 years, citizenship in 8 years.',
   },
 ];
@@ -2695,7 +2695,7 @@ export const ROMANIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'EU Blue Card for highly skilled workers with higher education degree. Bucharest is major tech hub. Very low cost of living. Fastest internet in EU!',
-    officialUrl: 'https://igi.mai.gov.ro/en/eu-blue-card/',
+    officialUrl: 'https://igi.mai.gov.ro/en/residence-permit/',
     notes: 'Bucharest is major tech hub. Very low cost of living. Fastest internet in EU! Family can join. Can work throughout EU after 18 months. PR in 5 years, citizenship in 8 years.',
   },
   {
@@ -2720,7 +2720,7 @@ export const ROMANIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Standard work permit with job offer from Romanian employer. Very low salary threshold (€800/month). Very low cost of living. Growing tech sector.',
-    officialUrl: 'https://igi.mai.gov.ro/en/work-permit/',
+    officialUrl: 'https://igi.mai.gov.ro/en/employment-and-posting/',
     notes: 'Very low salary threshold. Very low cost of living. Growing tech sector. Employer must prove no suitable Romanian/EU candidate. Family can join. PR in 5 years, citizenship in 8 years.',
   },
   {
@@ -2745,7 +2745,7 @@ export const ROMANIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Startup visa for entrepreneurs with innovative business idea. Bucharest startup ecosystem growing. Very low operating costs. Fastest internet in EU!',
-    officialUrl: 'https://www.startupvisa.ro/',
+    officialUrl: 'https://igi.mai.gov.ro/en/residence-permit/',
     notes: 'Bucharest startup ecosystem growing. Very low operating costs. Fastest internet in EU (great for tech!). Can bring co-founders. PR in 5 years, citizenship in 8 years.',
   },
   {
@@ -2770,7 +2770,7 @@ export const ROMANIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Self-employment visa for freelancers and entrepreneurs. Business registration in Romania required. Very low cost of living. 16% flat tax.',
-    officialUrl: 'https://igi.mai.gov.ro/en/self-employment/',
+    officialUrl: 'https://igi.mai.gov.ro/en/residence-permit/',
     notes: 'For freelancers and entrepreneurs. Very low cost of living. 16% flat tax. Family can join. PR in 5 years, citizenship in 8 years.',
   },
   {
@@ -2795,7 +2795,7 @@ export const ROMANIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: false, // Can convert to other visa
     pathToCitizenship: false, // Can convert to other visa
     description: 'Digital Nomad Visa for remote workers. Fastest internet in EU! Very low cost of living. Bucharest is major tech hub.',
-    officialUrl: 'https://igi.mai.gov.ro/en/digital-nomad/',
+    officialUrl: 'https://igi.mai.gov.ro/en/residence-permit/',
     notes: 'Income: €3,800/month. Fastest internet in EU! Very low cost of living. 12-month validity, renewable. Can convert to other visa types for PR/citizenship path.',
   },
   {
@@ -2819,7 +2819,7 @@ export const ROMANIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Join family members who have valid Romanian residence permit. Includes spouse, children, and parents.',
-    officialUrl: 'https://igi.mai.gov.ro/en/family-reunification/',
+    officialUrl: 'https://igi.mai.gov.ro/en/residence-permit/',
     notes: 'Includes spouse, children, parents. Family members can work and study. Same-sex partnerships recognized. Validity tied to sponsor\'s permit. PR in 5 years, citizenship in 8 years.',
   },
 ];
@@ -2851,7 +2851,7 @@ export const BULGARIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'EU Blue Card for highly skilled workers with higher education degree. LOWEST salary threshold in EU! Sofia has growing tech scene. LOWEST cost of living in EU! 10% flat tax rate.',
-    officialUrl: 'https://www.mvr.bg/en/eu-blue-card',
+    officialUrl: 'https://www.mvr.bg/en/migration',
     notes: 'LOWEST salary threshold in EU! Sofia has growing tech scene. LOWEST cost of living in EU! 10% flat tax rate. Black Sea coast. Family can join. Can work throughout EU after 18 months. PR in 5 years, citizenship in 5 years.',
   },
   {
@@ -2876,7 +2876,7 @@ export const BULGARIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Standard work permit with job offer from Bulgarian employer. Very low salary threshold (€750/month). LOWEST cost of living in EU! 10% flat tax.',
-    officialUrl: 'https://www.mvr.bg/en/work-permit',
+    officialUrl: 'https://www.mvr.bg/en/migration',
     notes: 'Very low salary threshold. LOWEST cost of living in EU! 10% flat tax rate. Employer must prove no suitable Bulgarian/EU candidate. Family can join. PR in 5 years, citizenship in 5 years.',
   },
   {
@@ -2901,7 +2901,7 @@ export const BULGARIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Startup visa for entrepreneurs with innovative business idea. Sofia startup scene growing. LOWEST operating costs in EU! 10% flat tax.',
-    officialUrl: 'https://www.startupvisa.bg/',
+    officialUrl: 'https://www.mvr.bg/en/migration',
     notes: 'Sofia startup scene growing. LOWEST operating costs in EU! 10% flat tax. Can bring co-founders. PR in 5 years, citizenship in 5 years.',
   },
   {
@@ -2926,7 +2926,7 @@ export const BULGARIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Self-employment visa for freelancers and entrepreneurs. Business registration in Bulgaria required. LOWEST cost of living in EU! 10% flat tax (lowest in EU!).',
-    officialUrl: 'https://www.mvr.bg/en/self-employment',
+    officialUrl: 'https://www.mvr.bg/en/migration',
     notes: 'For freelancers and entrepreneurs. LOWEST cost of living in EU! 10% flat tax (lowest in EU!). Family can join. PR in 5 years, citizenship in 5 years.',
   },
   {
@@ -2950,7 +2950,7 @@ export const BULGARIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Join family members who have valid Bulgarian residence permit. Includes spouse, children, and parents.',
-    officialUrl: 'https://www.mvr.bg/en/family-reunification',
+    officialUrl: 'https://www.mvr.bg/en/migration',
     notes: 'Includes spouse, children, parents. Family members can work and study. Same-sex partnerships recognized. Validity tied to sponsor\'s permit. PR in 5 years, citizenship in 5 years.',
   },
 ];
@@ -2982,7 +2982,7 @@ export const SLOVAKIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'EU Blue Card for highly skilled workers with higher education degree. Bratislava proximity to Vienna. Low cost of living. Central European location.',
-    officialUrl: 'https://www.minv.sk/eu-blue-card/',
+    officialUrl: 'https://www.minv.sk/?residencies',
     notes: 'Application fee: €250 (2025). Processing: 30 days. Validity: 3 years. Bratislava proximity to Vienna. Low cost of living. Family can join. Can work throughout EU after 18 months. PR in 5 years, citizenship in 8 years.',
   },
   {
@@ -3007,7 +3007,7 @@ export const SLOVAKIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Standard work permit with job offer from Slovak employer. Very low salary threshold (€800/month). Low cost of living. Bratislava tech scene.',
-    officialUrl: 'https://www.minv.sk/work-permit/',
+    officialUrl: 'https://www.minv.sk/?residencies',
     notes: 'Very low salary threshold. Low cost of living. Bratislava tech scene. Employer must prove no suitable Slovak/EU candidate. Family can join. PR in 5 years, citizenship in 8 years.',
   },
   {
@@ -3032,7 +3032,7 @@ export const SLOVAKIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Startup visa for entrepreneurs with innovative business idea. Bratislava startup ecosystem. Low operating costs. Proximity to Vienna.',
-    officialUrl: 'https://www.startupvisa.sk/',
+    officialUrl: 'https://www.minv.sk/?residencies',
     notes: 'Bratislava startup ecosystem. Low operating costs. Proximity to Vienna. Can bring co-founders. PR in 5 years, citizenship in 8 years.',
   },
   {
@@ -3057,7 +3057,7 @@ export const SLOVAKIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Self-employment visa for freelancers and entrepreneurs. Trade license (živnostenský list) required. Low cost of living. Central European location.',
-    officialUrl: 'https://www.minv.sk/self-employment/',
+    officialUrl: 'https://www.minv.sk/?residencies',
     notes: 'For freelancers and entrepreneurs. Trade license (živnostenský list) required. Low cost of living. Family can join. PR in 5 years, citizenship in 8 years.',
   },
   {
@@ -3081,7 +3081,7 @@ export const SLOVAKIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Join family members who have valid Slovak residence permit. Includes spouse, children, and parents.',
-    officialUrl: 'https://www.minv.sk/family-reunification/',
+    officialUrl: 'https://www.minv.sk/?residencies',
     notes: 'Includes spouse, children, parents. Family members can work and study. Same-sex partnerships recognized. Validity tied to sponsor\'s permit. PR in 5 years, citizenship in 8 years.',
   },
 ];
@@ -3113,7 +3113,7 @@ export const SLOVENIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'EU Blue Card for highly skilled workers. Highest quality of life in Eastern Europe. Alpine beauty (Lake Bled!). Ljubljana charm.',
-    officialUrl: 'https://www.gov.si/eu-blue-card/',
+    officialUrl: 'https://www.gov.si/en/topics/entry-and-residence/',
     notes: 'Highest quality of life in Eastern Europe. Alpine beauty (Lake Bled!). Ljubljana charm. Small, manageable country. Family can join. Can work throughout EU after 18 months. PR in 5 years, citizenship in 10 years.',
   },
   {
@@ -3138,7 +3138,7 @@ export const SLOVENIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Single permit combining work and residence permit. Highest quality of life in Eastern Europe. Alpine beauty. Ljubljana charm.',
-    officialUrl: 'https://www.gov.si/work-permit/',
+    officialUrl: 'https://www.gov.si/en/topics/entry-and-residence/',
     notes: 'Single permit (work + residence). Highest quality of life in Eastern Europe. Alpine beauty. Employer must prove no suitable Slovenian/EU candidate. Family can join. PR in 5 years, citizenship in 10 years.',
   },
   {
@@ -3188,7 +3188,7 @@ export const SLOVENIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Self-employment visa for freelancers and entrepreneurs. Business registration in Slovenia required. High quality of life. Alpine beauty.',
-    officialUrl: 'https://www.gov.si/self-employment/',
+    officialUrl: 'https://www.gov.si/en/topics/entry-and-residence/',
     notes: 'For freelancers and entrepreneurs. High quality of life. Alpine beauty. Small, manageable country. Family can join. PR in 5 years, citizenship in 10 years.',
   },
   {
@@ -3213,7 +3213,7 @@ export const SLOVENIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: false, // Can convert to other visa
     pathToCitizenship: false, // Can convert to other visa
     description: 'Digital Nomad Visa for remote workers. Launched November 21, 2025. Alpine beauty (Lake Bled!). High quality of life.',
-    officialUrl: 'https://www.gov.si/digital-nomad/',
+    officialUrl: 'https://www.gov.si/en/topics/entry-and-residence/',
     notes: 'NEW: Launched November 21, 2025. 12-month permit. Alpine beauty (Lake Bled!). High quality of life. Small, manageable country. Can convert to other visa types for PR/citizenship path.',
   },
   {
@@ -3237,7 +3237,7 @@ export const SLOVENIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Join family members who have valid Slovenian residence permit. Includes spouse, children, and parents.',
-    officialUrl: 'https://www.gov.si/family-reunification/',
+    officialUrl: 'https://www.gov.si/en/topics/entry-and-residence/',
     notes: 'Includes spouse, children, parents. Family members can work and study. Same-sex partnerships recognized. Validity tied to sponsor\'s permit. PR in 5 years, citizenship in 10 years.',
   },
 ];
@@ -3269,7 +3269,7 @@ export const CROATIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'EU Blue Card for highly skilled workers. Adriatic Sea coastline! Mediterranean lifestyle. Growing tech scene (Zagreb, Split).',
-    officialUrl: 'https://mup.gov.hr/eu-blue-card/',
+    officialUrl: 'https://mup.gov.hr/aliens-281621/281621',
     notes: 'Adriatic Sea coastline! Mediterranean lifestyle. Growing tech scene (Zagreb, Split). EU\'s newest member (2013). Family can join. Can work throughout EU after 18 months. PR in 5 years, citizenship in 8 years.',
   },
   {
@@ -3294,7 +3294,7 @@ export const CROATIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Standard work permit with job offer from Croatian employer. Adriatic Sea coastline! Mediterranean lifestyle. Growing tech scene.',
-    officialUrl: 'https://mup.gov.hr/work-permit/',
+    officialUrl: 'https://mup.gov.hr/aliens-281621/281621',
     notes: 'Adriatic Sea coastline! Mediterranean lifestyle. Growing tech scene. Employer must prove no suitable Croatian/EU candidate. Family can join. PR in 5 years, citizenship in 8 years.',
   },
   {
@@ -3319,7 +3319,7 @@ export const CROATIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: false, // Can convert to other visa
     pathToCitizenship: false, // Can convert to other visa
     description: 'Digital Nomad Visa for remote workers. Adriatic Sea coastline! Mediterranean lifestyle. Work from paradise!',
-    officialUrl: 'https://mup.gov.hr/digital-nomad/',
+    officialUrl: 'https://mup.gov.hr/aliens-281621/temporary-stay-of-digital-nomads-286853/286853',
     notes: 'For remote workers and freelancers. 18-month validity (2025 extension). Alternative: €59,310 savings proof. Can convert to other visa types for PR/citizenship path.',
   },
   {
@@ -3344,7 +3344,7 @@ export const CROATIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Self-employment visa for freelancers and entrepreneurs. Business registration in Croatia required. Adriatic Sea coastline!',
-    officialUrl: 'https://mup.gov.hr/self-employment/',
+    officialUrl: 'https://mup.gov.hr/aliens-281621/281621',
     notes: 'For freelancers and entrepreneurs. Adriatic Sea coastline! Mediterranean lifestyle. Family can join. PR in 5 years, citizenship in 8 years.',
   },
   {
@@ -3368,7 +3368,7 @@ export const CROATIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Join family members who have valid Croatian residence permit. Includes spouse, children, and parents.',
-    officialUrl: 'https://mup.gov.hr/family-reunification/',
+    officialUrl: 'https://mup.gov.hr/aliens-281621/281621',
     notes: 'Includes spouse, children, parents. Family members can work and study. Same-sex partnerships recognized. Validity tied to sponsor\'s permit. PR in 5 years, citizenship in 8 years.',
   },
 ];
@@ -3400,7 +3400,7 @@ export const ESTONIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'EU Blue Card for highly skilled workers. Most tech-forward country in EU! E-government services. Tallinn startup ecosystem.',
-    officialUrl: 'https://www.politsei.ee/eu-blue-card/',
+    officialUrl: 'https://www.politsei.ee/en',
     notes: 'Most tech-forward country in EU! E-government services. Tallinn startup ecosystem. Family can join. Can work throughout EU after 18 months. PR in 5 years, citizenship in 8 years.',
   },
   {
@@ -3425,7 +3425,7 @@ export const ESTONIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: false, // Can convert to other visa
     pathToCitizenship: false, // Can convert to other visa
     description: 'Digital Nomad Visa for remote workers. Most tech-forward country! E-government services. Work from Tallinn!',
-    officialUrl: 'https://www.politsei.ee/digital-nomad/',
+    officialUrl: 'https://www.politsei.ee/en',
     notes: 'For remote workers and freelancers. Most tech-forward country! E-government services. Tallinn startup ecosystem. Valid for 1 year, renewable. Can convert to other visa types for PR/citizenship path.',
   },
   {
@@ -3450,7 +3450,7 @@ export const ESTONIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Startup visa for entrepreneurs. Acceptance by Startup Estonia committee required. Most tech-forward country! Tallinn startup ecosystem.',
-    officialUrl: 'https://www.startupestonia.ee/visa',
+    officialUrl: 'https://startupestonia.ee/startup-visa',
     notes: 'Acceptance by Startup Estonia committee required. Most tech-forward country! Tallinn startup ecosystem. E-government services. Can bring co-founders. PR in 5 years, citizenship in 8 years.',
   },
   {
@@ -3499,7 +3499,7 @@ export const ESTONIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Join family members who have valid Estonian residence permit. Includes spouse, children, and parents.',
-    officialUrl: 'https://www.politsei.ee/family-reunification/',
+    officialUrl: 'https://www.politsei.ee/en',
     notes: 'Includes spouse, children, parents. Family members can work and study. Same-sex partnerships recognized. Validity tied to sponsor\'s permit. PR in 5 years, citizenship in 8 years.',
   },
 ];
@@ -3531,7 +3531,7 @@ export const LATVIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'EU Blue Card for highly skilled workers. Riga tech scene. Low cost of living. Baltic Sea coast. Art Nouveau architecture.',
-    officialUrl: 'https://www.pmlp.gov.lv/eu-blue-card/',
+    officialUrl: 'https://www.pmlp.gov.lv/en',
     notes: 'Riga tech scene. Low cost of living. Baltic Sea coast. Art Nouveau architecture. Family can join. Can work throughout EU after 18 months. PR in 5 years, citizenship in 10 years.',
   },
   {
@@ -3556,7 +3556,7 @@ export const LATVIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Standard work permit with job offer from Latvian employer. Riga tech scene. Low cost of living. Baltic Sea coast.',
-    officialUrl: 'https://www.pmlp.gov.lv/work-permit/',
+    officialUrl: 'https://www.pmlp.gov.lv/en',
     notes: 'Riga tech scene. Low cost of living. Baltic Sea coast. Employer must prove no suitable Latvian/EU candidate. Family can join. PR in 5 years, citizenship in 10 years.',
   },
   {
@@ -3581,7 +3581,7 @@ export const LATVIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Startup visa for entrepreneurs with innovative business idea. Riga tech scene. Low operating costs. Baltic Sea coast.',
-    officialUrl: 'https://www.startupvisa.lv/',
+    officialUrl: 'https://www.pmlp.gov.lv/en',
     notes: 'Riga tech scene. Low operating costs. Baltic Sea coast. Can bring co-founders. PR in 5 years, citizenship in 10 years.',
   },
   {
@@ -3606,7 +3606,7 @@ export const LATVIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Self-employment visa for freelancers and entrepreneurs. Business registration in Latvia required. Low cost of living. Baltic Sea coast.',
-    officialUrl: 'https://www.pmlp.gov.lv/self-employment/',
+    officialUrl: 'https://www.pmlp.gov.lv/en',
     notes: 'For freelancers and entrepreneurs. Low cost of living. Baltic Sea coast. Family can join. PR in 5 years, citizenship in 10 years.',
   },
   {
@@ -3630,7 +3630,7 @@ export const LATVIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Join family members who have valid Latvian residence permit. Includes spouse, children, and parents.',
-    officialUrl: 'https://www.pmlp.gov.lv/family-reunification/',
+    officialUrl: 'https://www.pmlp.gov.lv/en',
     notes: 'Includes spouse, children, parents. Family members can work and study. Same-sex partnerships recognized. Validity tied to sponsor\'s permit. PR in 5 years, citizenship in 10 years.',
   },
 ];
@@ -3662,7 +3662,7 @@ export const LITHUANIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'EU Blue Card for highly skilled workers. Vilnius tech hub. Low cost of living. Fast-growing economy.',
-    officialUrl: 'https://www.migracija.lt/eu-blue-card/',
+    officialUrl: 'https://www.migracija.lt/en/as-esu-aukstos-kvalifikacijos-darbuotojas',
     notes: 'Vilnius tech hub. Low cost of living. Fast-growing economy. Family can join. Can work throughout EU after 18 months. PR in 5 years, citizenship in 10 years.',
   },
   {
@@ -3687,7 +3687,7 @@ export const LITHUANIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Standard work permit with job offer from Lithuanian employer. Vilnius tech hub. Low cost of living. Fast-growing economy.',
-    officialUrl: 'https://www.migracija.lt/work-permit/',
+    officialUrl: 'https://www.migracija.lt/en',
     notes: 'Vilnius tech hub. Low cost of living. Fast-growing economy. Employer must prove no suitable Lithuanian/EU candidate. Family can join. PR in 5 years, citizenship in 10 years.',
   },
   {
@@ -3712,7 +3712,7 @@ export const LITHUANIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Startup visa for entrepreneurs. Acceptance by Startup Lithuania required. Vilnius tech hub. Low operating costs.',
-    officialUrl: 'https://www.startupvisa.lt/',
+    officialUrl: 'https://www.migracija.lt/en',
     notes: 'Acceptance by Startup Lithuania required. Vilnius tech hub. Low operating costs. Can bring co-founders. PR in 5 years, citizenship in 10 years.',
   },
   {
@@ -3737,7 +3737,7 @@ export const LITHUANIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Self-employment visa for freelancers and entrepreneurs. Business registration in Lithuania required. Low cost of living.',
-    officialUrl: 'https://www.migracija.lt/self-employment/',
+    officialUrl: 'https://www.migracija.lt/en',
     notes: 'For freelancers and entrepreneurs. Low cost of living. Fast-growing economy. Family can join. PR in 5 years, citizenship in 10 years.',
   },
   {
@@ -3761,7 +3761,7 @@ export const LITHUANIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Join family members who have valid Lithuanian residence permit. Includes spouse, children, and parents.',
-    officialUrl: 'https://www.migracija.lt/family-reunification/',
+    officialUrl: 'https://www.migracija.lt/en',
     notes: 'Includes spouse, children, parents. Family members can work and study. Same-sex partnerships recognized. Validity tied to sponsor\'s permit. PR in 5 years, citizenship in 10 years.',
   },
 ];
