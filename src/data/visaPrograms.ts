@@ -172,7 +172,7 @@ export const NETHERLANDS_PROGRAMS: VisaProgram[] = [
     pathToCitizenship: true,
     applicationFee: 210, // 2025 IND fee schedule
     description: 'EU Blue Card for highly skilled workers with higher education degree. High salary threshold but excellent quality of life.',
-    officialUrl: 'https://ind.nl/en/work/eu-blue-card',
+    officialUrl: 'https://ind.nl/en/residence-permits/work/european-blue-card-residence-permit',
     notes: 'Salary threshold: €68,256/year (30+), €54,612/year (reduced - 2025). Family can join. Can work throughout EU after 18 months. PR in 5 years, citizenship in 5 years.',
   },
   {
@@ -199,7 +199,7 @@ export const NETHERLANDS_PROGRAMS: VisaProgram[] = [
     pathToCitizenship: true,
     applicationFee: 350, // 2025 IND fee schedule
     description: 'Special visa for US citizens to start a business in the Netherlands',
-    officialUrl: 'https://ind.nl/en/work/self-employed-person',
+    officialUrl: 'https://ind.nl/en/residence-permits/work/residence-permit-self-employed-person',
     notes: 'Unique to US citizens, very accessible',
   },
   {
@@ -280,7 +280,7 @@ export const NETHERLANDS_PROGRAMS: VisaProgram[] = [
     pathToCitizenship: true,
     applicationFee: 350, // 2025 IND fee schedule
     description: 'For entrepreneurs starting a business in the Netherlands',
-    officialUrl: 'https://ind.nl/en/work/self-employed-person',
+    officialUrl: 'https://ind.nl/en/residence-permits/work/residence-permit-self-employed-person',
     notes: 'Points-based system, requires business plan approval',
   },
   {
@@ -337,7 +337,7 @@ export const FRANCE_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'For highly skilled workers, researchers, and investors',
-    officialUrl: 'https://www.service-public.fr/particuliers/vosdroits/F16922',
+    officialUrl: 'https://www.service-public.gouv.fr/particuliers/vosdroits/F16922?lang=en',
     notes: 'Multiple categories available (skilled worker, investor, researcher, etc.)',
   },
   {
@@ -362,6 +362,7 @@ export const FRANCE_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'For individuals with exceptional talent in their field',
+    officialUrl: 'https://france-visas.gouv.fr/en/france-visas/international-talents-and-economic-attractiveness',
     notes: 'Requires proof of exceptional achievements or recognition',
   },
   {
@@ -411,6 +412,7 @@ export const FRANCE_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Standard work permit for qualified workers',
+    officialUrl: 'https://france-visas.gouv.fr/en/professional-purpose',
     notes: 'Requires labor market test in most cases',
   },
   {
@@ -435,7 +437,7 @@ export const FRANCE_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'For family members of French residents',
-    officialUrl: 'https://www.service-public.fr/particuliers/vosdroits/F11166',
+    officialUrl: 'https://france-visas.gouv.fr/en/family-of-foreign-national-residing-in-france',
     notes: 'Sponsor must have stable income and adequate housing',
   },
 ];
