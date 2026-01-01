@@ -107,13 +107,13 @@
   --text-body-sm-weight: 400;
   
   /* Data - Numbers, metrics */
-  --text-data-lg-size: 64px;
+  --text-data-lg-size: 128px;
   --text-data-lg-line-height: 1.0;
   --text-data-lg-weight: 700;
 
   --text-data-xl-size: 2.25rem;
   --text-data-xl-line-height: 1.0;
-  --text-data-xl-weight: 700;
+  --text-data-xl-weight: 900;
   
   --text-data-size: 32px;
   --text-data-line-height: 1.2;

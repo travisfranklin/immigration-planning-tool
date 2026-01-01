@@ -20,7 +20,7 @@ import { COMMON_STEP_IDS } from '../templates/types';
 export const talentPassport: FlowchartDefinition = buildFlowchart({
   programId: 'fr_talent_passport',
   countryCode: 'FR',
-  programName: 'Talent Passport (Passeport Talent)',
+  programName: 'Talent Passport',
   complexity: 'medium',
   successRate: '85%',
   totalEstimatedDuration: '2-4 months',

@@ -20,7 +20,7 @@ import { COMMON_STEP_IDS } from '../templates/types';
 export const d7Visa: FlowchartDefinition = buildFlowchart({
   programId: 'pt_d7_visa',
   countryCode: 'PT',
-  programName: 'D7 Visa (Passive Income)',
+  programName: 'D7 Visa',
   complexity: 'low',
   successRate: '95%',
   totalEstimatedDuration: '3-5 months',
@@ -94,7 +94,7 @@ flowchart TD
 export const goldenVisa: FlowchartDefinition = buildFlowchart({
   programId: 'pt_golden_visa',
   countryCode: 'PT',
-  programName: 'Golden Visa (Investment)',
+  programName: 'Golden Visa',
   complexity: 'medium',
   successRate: '90%',
   totalEstimatedDuration: '4-8 months',

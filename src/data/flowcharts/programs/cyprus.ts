@@ -20,7 +20,7 @@ import { COMMON_STEP_IDS } from '../templates/types';
 export const goldenVisa: FlowchartDefinition = buildFlowchart({
   programId: 'cy_golden_visa',
   countryCode: 'CY',
-  programName: 'Golden Visa (Permanent Residence by Investment)',
+  programName: 'Golden Visa',
   complexity: 'medium',
   successRate: '95%',
   totalEstimatedDuration: '2-3 months',

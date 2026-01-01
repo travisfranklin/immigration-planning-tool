@@ -16,8 +16,6 @@ A **local-first web application** that helps US citizens determine their immigra
 
 ## 🎯 Quick Navigation
 
-### 👤 I'm a...
-
 #### **New Team Member**
 
 1. Read [README.md](../README.md) (5 min)
@@ -127,9 +125,6 @@ Help US citizens determine their immigration viability to EU countries using a l
 11. ✅ Reusable component library (LoadingSpinner, ErrorState, EmptyState, Toast)
 12. ✅ Centralized constants and utilities
 
-### Target Countries (MVP)
-
-🇩🇪 Germany | 🇳🇱 Netherlands | 🇫🇷 France | 🇪🇸 Spain | 🇮🇹 Italy
 
 ### Technology Stack
 
@@ -198,32 +193,6 @@ Overall Score = (
 - ✅ Zero TypeScript errors
 - ✅ Reusable component library
 - ✅ Centralized constants and utilities
-
----
-
-## ✅ Major Achievements
-
-### All Phases Complete
-
-- ✅ Complete architecture designed
-- ✅ Data model fully specified
-- ✅ UI wireframes created
-- ✅ IndexedDB integration complete
-- ✅ All 7 forms implemented with validation
-- ✅ Multi-step form navigation working
-- ✅ Auto-save functionality robust
-- ✅ Viability algorithm complete (27 visa programs)
-- ✅ Results dashboard with rankings
-- ✅ Risk factor analysis
-- ✅ Contingency planning
-- ✅ Interactive flowcharts for all 5 countries (25 programs)
-- ✅ Export/import service (JSON, CSV, Text)
-- ✅ Settings page with data management
-- ✅ Reusable component library
-- ✅ Centralized constants and utilities
-- ✅ 3,206/3,207 tests passing
-- ✅ Zero linting errors
-- ✅ Zero TypeScript errors
 
 ---
 

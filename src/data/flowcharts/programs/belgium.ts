@@ -95,7 +95,7 @@ flowchart TD
 export const highlySkilledWorker: FlowchartDefinition = buildFlowchart({
   programId: 'be_highly_skilled',
   countryCode: 'BE',
-  programName: 'Highly Skilled Worker (Single Permit)',
+  programName: 'Highly Skilled Worker',
   complexity: 'medium',
   successRate: '80%',
   totalEstimatedDuration: '2-4 months',
@@ -163,7 +163,7 @@ flowchart TD
 export const professionalCard: FlowchartDefinition = buildFlowchart({
   programId: 'be_professional_card',
   countryCode: 'BE',
-  programName: 'Professional Card (Self-Employment)',
+  programName: 'Professional Card',
   complexity: 'high',
   successRate: '65%',
   totalEstimatedDuration: '4-6 months',

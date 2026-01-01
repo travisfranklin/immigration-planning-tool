@@ -245,7 +245,7 @@ export const ResultDetail: React.FC = () => {
               size="md"
               className="pl-1 text-left"
             >
-              ← Back to Rankings
+              ← Back
             </Button>
 
             {/* Share Button (only show in non-shared view) */}
@@ -253,7 +253,7 @@ export const ResultDetail: React.FC = () => {
               <Button
                 onClick={handleShareResults}
                 variant="secondary"
-                size="md"
+                size="sm"
               >
                 {copySuccess ? 'Link Copied!' : 'Share Results'}
               </Button>
@@ -277,10 +277,8 @@ export const ResultDetail: React.FC = () => {
               {hasCountrySilhouette(selectedScore.countryCode) && (
                 <CountrySilhouette
                   countryCode={selectedScore.countryCode}
-                  size={200}
-                  className="absolute z-0 opacity-30
-                    right-0 -top-8
-                    sm:right-16 sm:-top-6"
+                  size={400}
+                  className="absolute z-0 opacity-30 -top-8 w-full ml-auto"
                   ariaLabel={`${selectedScore.countryName} country outline`}
                 />
               )}
@@ -288,7 +286,7 @@ export const ResultDetail: React.FC = () => {
               {/* Score */}
               <div className="text-left sm:text-right relative z-10">
                 <div>
-                  <div className="text-data-lg font-bold text-black leading-none">
+                  <div className="text-data-lg tracking-tighter">
                     {selectedScore.overallScore}
                   </div>
                   <div className="text-h4 text-gray-700 uppercase tracking-wide">/100</div>

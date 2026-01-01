@@ -811,7 +811,7 @@ export const AUSTRIA_PROGRAMS: VisaProgram[] = [
     id: 'at_self_employed',
     countryCode: 'AT',
     countryName: 'Austria',
-    name: 'Self-Employment Visa (Self-employed Key Workers)',
+    name: 'Self-Employment Visa',
     type: 'entrepreneur',
     requirements: {
       requiresBusinessPlan: true,
