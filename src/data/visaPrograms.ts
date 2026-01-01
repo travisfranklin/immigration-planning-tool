@@ -315,10 +315,36 @@ export const NETHERLANDS_PROGRAMS: VisaProgram[] = [
  */
 export const FRANCE_PROGRAMS: VisaProgram[] = [
   {
+    id: 'fr_blue_card',
+    countryCode: 'FR',
+    countryName: 'France',
+    name: 'EU Blue Card (Carte Bleue Européenne)',
+    type: 'work',
+    requirements: {
+      requiresJobOffer: true,
+      minSalary: 59373, // EUR per year (1.5x average gross salary - Aug 2025)
+      minEducationLevel: 'bachelor',
+    },
+    weights: {
+      career: 0.35,
+      financial: 0.30,
+      education: 0.25,
+      language: 0.05,
+      family: 0.05,
+    },
+    processingTimeWeeks: 8,
+    validityYears: 4,
+    pathToPermanentResidency: true,
+    pathToCitizenship: true,
+    description: 'EU Blue Card for highly skilled workers with higher education degree. Provides EU-wide mobility after 12 months.',
+    officialUrl: 'https://www.welcometofrance.com/en/fiche/talent-passport',
+    notes: 'Salary threshold: €59,373/year (2025). Requires 3+ years higher education or 5 years experience. Family can join with Talent-Family permit. EU mobility after 12 months. PR in 5 years, citizenship in 5 years.',
+  },
+  {
     id: 'fr_talent_passport',
     countryCode: 'FR',
     countryName: 'France',
-    name: 'Talent Passport (Passeport Talent)',
+    name: 'Talent Passport – Qualified Employee',
     type: 'work',
     requirements: {
       requiresJobOffer: true,
@@ -336,9 +362,9 @@ export const FRANCE_PROGRAMS: VisaProgram[] = [
     validityYears: 4,
     pathToPermanentResidency: true,
     pathToCitizenship: true,
-    description: 'For highly skilled workers, researchers, and investors',
+    description: 'For qualified employees with master\'s degree and job offer. Lower salary threshold than EU Blue Card but without EU-wide mobility.',
     officialUrl: 'https://www.service-public.gouv.fr/particuliers/vosdroits/F16922?lang=en',
-    notes: 'Multiple categories available (skilled worker, investor, researcher, etc.)',
+    notes: 'Salary threshold: €39,582/year (2025). Requires master\'s degree. Part of Passeport Talent categories. Family can join. PR in 5 years, citizenship in 5 years.',
   },
   {
     id: 'fr_skills_talents',
