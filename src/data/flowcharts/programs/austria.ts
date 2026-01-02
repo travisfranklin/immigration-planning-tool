@@ -409,10 +409,10 @@ flowchart TD
  * Export all Austria flowcharts as a record for compatibility with existing system
  */
 export const austriaFlowchartsNew: Record<string, FlowchartDefinition> = {
-  eu_blue_card: euBlueCard,
-  red_white_red: redWhiteRedCard,
-  startup: startupVisa,
-  self_employed: selfEmploymentVisa,
-  family_reunification: familyReunification,
+  at_eu_blue_card: euBlueCard,
+  at_red_white_red: redWhiteRedCard,
+  at_startup: startupVisa,
+  at_self_employed: selfEmploymentVisa,
+  at_family_reunification: familyReunification,
 };
 

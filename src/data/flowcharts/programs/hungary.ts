@@ -318,9 +318,9 @@ flowchart TD
  * Export all Hungary flowcharts as a record for compatibility with existing system
  */
 export const hungaryFlowchartsNew: Record<string, FlowchartDefinition> = {
-  eu_blue_card: euBlueCard,
-  white_card: whiteCard,
-  work_permit: workPermit,
-  self_employment: selfEmployment,
-  family_reunification: familyReunification,
+  hu_eu_blue_card: euBlueCard,
+  hu_white_card: whiteCard,
+  hu_work_permit: workPermit,
+  hu_self_employment: selfEmployment,
+  hu_family_reunification: familyReunification,
 };

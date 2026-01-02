@@ -341,10 +341,10 @@ flowchart TD
  * Export all Estonia flowcharts as a record for compatibility with existing system
  */
 export const estoniaFlowchartsNew: Record<string, FlowchartDefinition> = {
-  digital_nomad: digitalNomadVisa,
-  e_residency_business: eResidencyBusiness,
-  startup_visa: startupVisa,
-  eu_blue_card: euBlueCard,
-  family_reunification: familyReunification,
+  ee_digital_nomad: digitalNomadVisa,
+  ee_e_residency_business: eResidencyBusiness,
+  ee_startup_visa: startupVisa,
+  ee_eu_blue_card: euBlueCard,
+  ee_family_reunification: familyReunification,
 };
 

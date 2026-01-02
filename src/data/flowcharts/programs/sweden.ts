@@ -321,10 +321,10 @@ flowchart TD
  * Export all Sweden flowcharts as a record for compatibility with existing system
  */
 export const swedenFlowchartsNew: Record<string, FlowchartDefinition> = {
-  work_permit: workPermit,
-  eu_blue_card: euBlueCard,
-  self_employment: selfEmployment,
-  family_reunification: familyReunification,
-  researcher: researcher,
+  se_work_permit: workPermit,
+  se_eu_blue_card: euBlueCard,
+  se_self_employment: selfEmployment,
+  se_family_reunification: familyReunification,
+  se_researcher: researcher,
 };
 

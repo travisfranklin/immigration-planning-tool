@@ -329,10 +329,10 @@ flowchart TD
  * Export all Slovakia flowcharts as a record for compatibility with existing system
  */
 export const slovakiaFlowchartsNew: Record<string, FlowchartDefinition> = {
-  eu_blue_card: euBlueCard,
-  startup_visa: startupVisa,
-  work_permit: workPermit,
-  self_employment: selfEmployment,
-  family_reunification: familyReunification,
+  sk_eu_blue_card: euBlueCard,
+  sk_startup_visa: startupVisa,
+  sk_work_permit: workPermit,
+  sk_self_employment: selfEmployment,
+  sk_family_reunification: familyReunification,
 };
 

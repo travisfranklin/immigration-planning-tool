@@ -425,9 +425,9 @@ flowchart TD
  * Export all Spain flowcharts as a record for compatibility with existing system
  */
 export const spainFlowchartsNew: Record<string, FlowchartDefinition> = {
-  eu_blue_card: euBlueCard,
-  non_lucrative: nonLucrativeVisa,
-  digital_nomad: digitalNomadVisa,
-  highly_qualified: highlyQualifiedVisa,
-  family_reunification: familyReunification,
+  es_eu_blue_card: euBlueCard,
+  es_non_lucrative: nonLucrativeVisa,
+  es_digital_nomad: digitalNomadVisa,
+  es_highly_qualified: highlyQualifiedVisa,
+  es_family_reunification: familyReunification,
 };

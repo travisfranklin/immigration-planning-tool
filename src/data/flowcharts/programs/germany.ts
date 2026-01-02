@@ -627,9 +627,9 @@ flowchart TD
  * Export all Germany flowcharts as a record for compatibility with existing system
  */
 export const germanyFlowchartsNew: Record<string, FlowchartDefinition> = {
-  eu_blue_card: euBlueCard,
-  work_visa: skilledWorkerVisa,
-  job_seeker: jobSeekerVisa,
-  freelance: freelanceVisa,
-  family_reunification: familyReunificationVisa,
+  de_eu_blue_card: euBlueCard,
+  de_work_visa: skilledWorkerVisa,
+  de_job_seeker: jobSeekerVisa,
+  de_freelance: freelanceVisa,
+  de_family_reunification: familyReunificationVisa,
 };

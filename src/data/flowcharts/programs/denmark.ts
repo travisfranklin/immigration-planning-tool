@@ -342,10 +342,10 @@ flowchart TD
  * Export all Denmark flowcharts as a record for compatibility with existing system
  */
 export const denmarkFlowchartsNew: Record<string, FlowchartDefinition> = {
-  fast_track: fastTrack,
-  pay_limit: payLimit,
-  startup_visa: startupVisa,
-  highly_skilled_worker: highlySkilledWorker,
-  family_reunification: familyReunification,
+  dk_fast_track: fastTrack,
+  dk_pay_limit: payLimit,
+  dk_startup: startupVisa,
+  dk_highly_skilled_worker: highlySkilledWorker,
+  dk_family_reunification: familyReunification,
 };
 

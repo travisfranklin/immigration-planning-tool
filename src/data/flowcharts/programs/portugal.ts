@@ -558,11 +558,11 @@ flowchart TD
 });
 
 export const portugalFlowchartsNew: Record<string, FlowchartDefinition> = {
-  d7_visa: d7Visa,
-  golden_visa: goldenVisa,
-  startup_visa: startupVisa,
-  tech_visa: techVisa,
-  family_reunification: familyReunification,
-  eu_blue_card: euBlueCard,
-  digital_nomad: digitalNomadVisa,
+  pt_d7_visa: d7Visa,
+  pt_golden_visa: goldenVisa,
+  pt_startup_visa: startupVisa,
+  pt_tech_visa: techVisa,
+  pt_family_reunification: familyReunification,
+  pt_eu_blue_card: euBlueCard,
+  pt_digital_nomad: digitalNomadVisa,
 };

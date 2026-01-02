@@ -510,9 +510,9 @@ flowchart TD
  * Export all Netherlands flowcharts as a record for compatibility with existing system
  */
 export const netherlandsFlowchartsNew: Record<string, FlowchartDefinition> = {
-  daft: daftVisa,
-  highly_skilled: highlySkilledMigrant,
-  orientation_year: orientationYear,
-  self_employment: selfEmploymentVisa,
-  family_reunification: familyReunification,
+  nl_daft: daftVisa,
+  nl_highly_skilled: highlySkilledMigrant,
+  nl_orientation_year: orientationYear,
+  nl_self_employment: selfEmploymentVisa,
+  nl_family_reunification: familyReunification,
 };

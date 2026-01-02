@@ -261,9 +261,9 @@ flowchart TD
  * Export all Luxembourg flowcharts as a record for compatibility with existing system
  */
 export const luxembourgFlowchartsNew: Record<string, FlowchartDefinition> = {
-  eu_blue_card: euBlueCard,
-  investor: investorVisa,
-  self_employed: selfEmployed,
-  family_reunification: familyReunification,
+  lu_eu_blue_card: euBlueCard,
+  lu_investor: investorVisa,
+  lu_self_employed: selfEmployed,
+  lu_family_reunification: familyReunification,
 };
 

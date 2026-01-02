@@ -506,10 +506,10 @@ flowchart TD
  * Export all France flowcharts as a record for compatibility with existing system
  */
 export const franceFlowchartsNew: Record<string, FlowchartDefinition> = {
-  eu_blue_card: euBlueCard,
-  talent_passport: talentPassport,
-  skills_talents: skillsTalentsVisa,
-  french_tech: frenchTechVisa,
-  work_visa: workVisa,
-  family_reunification: familyReunification,
+  fr_blue_card: euBlueCard,
+  fr_talent_passport: talentPassport,
+  fr_skills_talents: skillsTalentsVisa,
+  fr_french_tech: frenchTechVisa,
+  fr_work_visa: workVisa,
+  fr_family_reunification: familyReunification,
 };

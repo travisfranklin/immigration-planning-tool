@@ -348,10 +348,10 @@ flowchart TD
  * Export all Finland flowcharts as a record for compatibility with existing system
  */
 export const finlandFlowchartsNew: Record<string, FlowchartDefinition> = {
-  specialist: specialistPermit,
-  eu_blue_card: euBlueCard,
-  startup: startupPermit,
-  self_employment: selfEmploymentPermit,
-  family_reunification: familyReunification,
+  fi_specialist: specialistPermit,
+  fi_eu_blue_card: euBlueCard,
+  fi_startup: startupPermit,
+  fi_self_employment: selfEmploymentPermit,
+  fi_family_reunification: familyReunification,
 };
 

@@ -320,10 +320,10 @@ flowchart TD
  * Export all Poland flowcharts as a record for compatibility with existing system
  */
 export const polandFlowchartsNew: Record<string, FlowchartDefinition> = {
-  eu_blue_card: euBlueCard,
-  business_harbour: businessHarbour,
-  work_permit: workPermit,
-  self_employment: selfEmployment,
-  family_reunification: familyReunification,
+  pl_eu_blue_card: euBlueCard,
+  pl_business_harbour: businessHarbour,
+  pl_work_permit: workPermit,
+  pl_self_employment: selfEmployment,
+  pl_family_reunification: familyReunification,
 };
 

@@ -329,10 +329,10 @@ flowchart TD
  * Export all Lithuania flowcharts as a record for compatibility with existing system
  */
 export const lithuaniaFlowchartsNew: Record<string, FlowchartDefinition> = {
-  eu_blue_card: euBlueCard,
-  startup_visa: startupVisa,
-  work_permit: workPermit,
-  self_employment: selfEmployment,
-  family_reunification: familyReunification,
+  lt_eu_blue_card: euBlueCard,
+  lt_startup_visa: startupVisa,
+  lt_work_permit: workPermit,
+  lt_self_employment: selfEmployment,
+  lt_family_reunification: familyReunification,
 };
 

@@ -403,11 +403,11 @@ flowchart TD
 });
 
 export const romaniaFlowchartsNew: Record<string, FlowchartDefinition> = {
-  eu_blue_card: euBlueCard,
-  startup_visa: startupVisa,
-  work_permit: workPermit,
-  self_employment: selfEmployment,
-  family_reunification: familyReunification,
-  digital_nomad: digitalNomadVisa,
+  ro_eu_blue_card: euBlueCard,
+  ro_startup_visa: startupVisa,
+  ro_work_permit: workPermit,
+  ro_self_employment: selfEmployment,
+  ro_family_reunification: familyReunification,
+  ro_digital_nomad: digitalNomadVisa,
 };
 

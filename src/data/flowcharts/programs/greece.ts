@@ -443,11 +443,11 @@ flowchart TD
  * Export all Greece flowcharts as a record for compatibility with existing system
  */
 export const greeceFlowchartsNew: Record<string, FlowchartDefinition> = {
-  golden_visa: goldenVisa,
-  digital_nomad: digitalNomadVisa,
-  work_permit: workPermit,
-  family_reunification: familyReunification,
-  independent_means: independentMeansVisa,
-  eu_blue_card: euBlueCard,
+  gr_golden_visa: goldenVisa,
+  gr_digital_nomad: digitalNomadVisa,
+  gr_work_permit: workPermit,
+  gr_family_reunification: familyReunification,
+  gr_fip: independentMeansVisa,
+  gr_eu_blue_card: euBlueCard,
 };
 

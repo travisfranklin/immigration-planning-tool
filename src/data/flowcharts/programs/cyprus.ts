@@ -354,10 +354,10 @@ flowchart TD
  * Export all Cyprus flowcharts as a record for compatibility with existing system
  */
 export const cyprusFlowchartsNew: Record<string, FlowchartDefinition> = {
-  golden_visa: goldenVisa,
-  work_permit: workPermit,
-  startup_visa: startupVisa,
-  family_reunification: familyReunification,
-  digital_nomad: digitalNomadVisa,
+  cy_golden_visa: goldenVisa,
+  cy_work_permit: workPermit,
+  cy_startup_visa: startupVisa,
+  cy_family_reunification: familyReunification,
+  cy_digital_nomad: digitalNomadVisa,
 };
 

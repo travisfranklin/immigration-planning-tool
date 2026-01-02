@@ -398,10 +398,10 @@ flowchart TD
  * Export all Belgium flowcharts as a record for compatibility with existing system
  */
 export const belgiumFlowchartsNew: Record<string, FlowchartDefinition> = {
-  eu_blue_card: euBlueCard,
-  highly_skilled: highlySkilledWorker,
-  professional_card: professionalCard,
-  startup: startupVisa,
-  family_reunification: familyReunification,
+  be_eu_blue_card: euBlueCard,
+  be_highly_skilled: highlySkilledWorker,
+  be_professional_card: professionalCard,
+  be_startup: startupVisa,
+  be_family_reunification: familyReunification,
 };
 

@@ -505,10 +505,10 @@ flowchart TD
 });
 
 export const italyFlowchartsNew: Record<string, FlowchartDefinition> = {
-  golden_visa: goldenVisa,
-  self_employment: selfEmploymentVisa,
-  highly_skilled: highlySkilledVisa,
-  digital_nomad: digitalNomadVisa,
-  family_reunification: familyReunification,
-  eu_blue_card: euBlueCard,
+  it_golden_visa: goldenVisa,
+  it_self_employment: selfEmploymentVisa,
+  it_highly_skilled: highlySkilledVisa,
+  it_digital_nomad: digitalNomadVisa,
+  it_family_reunification: familyReunification,
+  it_eu_blue_card: euBlueCard,
 };

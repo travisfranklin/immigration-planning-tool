@@ -403,11 +403,11 @@ flowchart TD
 });
 
 export const sloveniaFlowchartsNew: Record<string, FlowchartDefinition> = {
-  eu_blue_card: euBlueCard,
-  startup_visa: startupVisa,
-  work_permit: workPermit,
-  self_employment: selfEmployment,
-  family_reunification: familyReunification,
-  digital_nomad: digitalNomadVisa,
+  si_eu_blue_card: euBlueCard,
+  si_startup_visa: startupVisa,
+  si_work_permit: workPermit,
+  si_self_employment: selfEmployment,
+  si_family_reunification: familyReunification,
+  si_digital_nomad: digitalNomadVisa,
 };
 

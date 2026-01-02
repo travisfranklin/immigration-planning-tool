@@ -339,10 +339,10 @@ flowchart TD
  * Export all Croatia flowcharts as a record for compatibility with existing system
  */
 export const croatiaFlowchartsNew: Record<string, FlowchartDefinition> = {
-  eu_blue_card: euBlueCard,
-  digital_nomad: digitalNomadVisa,
-  work_permit: workPermit,
-  self_employment: selfEmployment,
-  family_reunification: familyReunification,
+  hr_eu_blue_card: euBlueCard,
+  hr_digital_nomad: digitalNomadVisa,
+  hr_work_permit: workPermit,
+  hr_self_employment: selfEmployment,
+  hr_family_reunification: familyReunification,
 };
 

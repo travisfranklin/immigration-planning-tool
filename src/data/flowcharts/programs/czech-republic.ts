@@ -346,10 +346,10 @@ flowchart TD
  * Export all Czech Republic flowcharts as a record for compatibility with existing system
  */
 export const czechRepublicFlowchartsNew: Record<string, FlowchartDefinition> = {
-  eu_blue_card: euBlueCard,
-  employee_card: employeeCard,
-  startup_visa: startupVisa,
-  self_employment: selfEmployment,
-  family_reunification: familyReunification,
+  cz_eu_blue_card: euBlueCard,
+  cz_employee_card: employeeCard,
+  cz_startup_visa: startupVisa,
+  cz_self_employment: selfEmployment,
+  cz_family_reunification: familyReunification,
 };
 
