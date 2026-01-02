@@ -16,6 +16,7 @@ import { calculateFinancialScore } from './scorers/financialScorer';
 import { calculateEducationScore } from './scorers/educationScorer';
 import { calculateLanguageScore } from './scorers/languageScorer';
 import { calculateFamilyScore } from './scorers/familyScorer';
+import { convertProfileToEur } from '../currency';
 
 /**
  * Calculate component scores for a specific program
@@ -286,25 +287,25 @@ function calculateProgramViabilityData(
 }
 
 /**
- * Calculate viability score for a specific country
- * Returns null if no programs are available for this country
+ * Internal function that calculates viability with a pre-converted EUR profile.
+ * Used by both calculateCountryViability and calculateAllCountryViabilities.
  */
-export async function calculateCountryViability(
+function calculateCountryViabilityWithEurProfile(
   userId: string,
-  profile: UserProfile,
+  profileInEur: UserProfile,
   countryCode: string
-): Promise<ViabilityScore | null> {
+): ViabilityScore | null {
   // Get best matching programs for this country
   // Increased limit to 10 to show all programs for countries with many visa options
-  const programMatches = getBestProgramsForCountry(profile, countryCode, 10);
+  const programMatches = getBestProgramsForCountry(profileInEur, countryCode, 10);
 
   // If no programs are available for this country, return null
   if (programMatches.length === 0) {
     return null;
   }
 
-  // Apply user preference adjustments
-  const adjustedMatches = applyPreferenceAdjustments(programMatches, profile);
+  // Apply user preference adjustments (uses profileInEur for financial comparisons)
+  const adjustedMatches = applyPreferenceAdjustments(programMatches, profileInEur);
 
   // Sort by adjusted score
   const sortedMatches = adjustedMatches.sort((a, b) => b.eligibilityScore - a.eligibilityScore);
@@ -316,16 +317,16 @@ export async function calculateCountryViability(
     return null;
   }
 
-  // Calculate full viability data for recommended program
-  const recommendedProgram = calculateProgramViabilityData(profile, bestMatch, null);
+  // Calculate full viability data for recommended program (using EUR-converted profile)
+  const recommendedProgram = calculateProgramViabilityData(profileInEur, bestMatch, null);
 
   // Calculate full viability data for alternative programs (all remaining)
   const alternativePrograms = sortedMatches.slice(1).map(match =>
-    calculateProgramViabilityData(profile, match, bestMatch)
+    calculateProgramViabilityData(profileInEur, match, bestMatch)
   );
 
   // Calculate user preference boost for the recommended program
-  const preferenceBoost = calculateTotalPreferenceBoost(bestMatch.program, profile);
+  const preferenceBoost = calculateTotalPreferenceBoost(bestMatch.program, profileInEur);
 
   const now = Date.now();
 
@@ -357,8 +358,30 @@ export async function calculateCountryViability(
 }
 
 /**
+ * Calculate viability score for a specific country
+ * Returns null if no programs are available for this country
+ *
+ * Note: Profile financial data (annualIncome, savingsAmount) is converted from USD to EUR
+ * before comparison with program requirements, which are specified in EUR.
+ */
+export async function calculateCountryViability(
+  userId: string,
+  profile: UserProfile,
+  countryCode: string
+): Promise<ViabilityScore | null> {
+  // Convert profile financial data from USD to EUR for accurate comparison
+  // with program requirements (which are specified in EUR)
+  const profileInEur = await convertProfileToEur(profile);
+
+  return calculateCountryViabilityWithEurProfile(userId, profileInEur, countryCode);
+}
+
+/**
  * Calculate viability scores for all countries
  * Excludes countries with no available visa programs
+ *
+ * Note: Profile financial data is converted from USD to EUR once at the start,
+ * then reused for all country calculations for efficiency.
  */
 export async function calculateAllCountryViabilities(
   userId: string,
@@ -369,8 +392,12 @@ export async function calculateAllCountryViabilities(
   // Import ALL_COUNTRIES instead of MVP_COUNTRIES to calculate for all 27 EU countries
   const { ALL_COUNTRIES } = await import('../../types/country');
 
+  // Convert profile to EUR once upfront (the rate is cached, so subsequent calls are fast)
+  // This ensures consistent exchange rate across all country calculations
+  const profileInEur = await convertProfileToEur(profile);
+
   for (const countryCode of ALL_COUNTRIES) {
-    const score = await calculateCountryViability(userId, profile, countryCode);
+    const score = calculateCountryViabilityWithEurProfile(userId, profileInEur, countryCode);
     // Only include countries that have visa programs available
     if (score !== null) {
       scores.push(score);
