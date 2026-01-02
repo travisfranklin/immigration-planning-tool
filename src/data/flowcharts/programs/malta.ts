@@ -541,11 +541,11 @@ flowchart TD
 });
 
 export const maltaFlowchartsNew: Record<string, FlowchartDefinition> = {
-  nomad_residence: nomadResidence,
-  mprp: mprp,
-  startup_visa: startupVisa,
-  family_reunification: familyReunification,
-  kei: keyEmployeeInitiative,
-  sei: specialistEmployeeInitiative,
-  eu_blue_card: euBlueCard,
+  mt_nomad_residence: nomadResidence,
+  mt_mprp: mprp,
+  mt_startup_visa: startupVisa,
+  mt_family_reunification: familyReunification,
+  mt_kei: keyEmployeeInitiative,
+  mt_sei: specialistEmployeeInitiative,
+  mt_eu_blue_card: euBlueCard,
 };
