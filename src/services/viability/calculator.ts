@@ -295,7 +295,8 @@ export async function calculateCountryViability(
   countryCode: string
 ): Promise<ViabilityScore | null> {
   // Get best matching programs for this country
-  const programMatches = getBestProgramsForCountry(profile, countryCode, 5);
+  // Increased limit to 10 to show all programs for countries with many visa options
+  const programMatches = getBestProgramsForCountry(profile, countryCode, 10);
 
   // If no programs are available for this country, return null
   if (programMatches.length === 0) {
@@ -318,8 +319,8 @@ export async function calculateCountryViability(
   // Calculate full viability data for recommended program
   const recommendedProgram = calculateProgramViabilityData(profile, bestMatch, null);
 
-  // Calculate full viability data for alternative programs (next 3)
-  const alternativePrograms = sortedMatches.slice(1, 4).map(match =>
+  // Calculate full viability data for alternative programs (all remaining)
+  const alternativePrograms = sortedMatches.slice(1).map(match =>
     calculateProgramViabilityData(profile, match, bestMatch)
   );
 
