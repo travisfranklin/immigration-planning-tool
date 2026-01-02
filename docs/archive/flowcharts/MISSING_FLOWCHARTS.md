@@ -20,7 +20,7 @@
 - `cz_self_employment` - Self-Employment
 
 ### Denmark (DK) - 2 missing
-- `dk_eu_blue_card` - EU Blue Card
+- `dk_highly_skilled_worker` - EU Blue Card
 - `dk_family_reunification` - Family Reunification
 
 ### Estonia (EE) - 3 missing
@@ -115,7 +115,7 @@ These are likely to be frequently requested by users:
 
 ### Medium Priority (Work Permits & EU Blue Cards)
 Common visa types for skilled workers:
-1. `dk_eu_blue_card` - Denmark EU Blue Card
+1. `dk_highly_skilled_worker` - Denmark EU Blue Card
 2. `ee_eu_blue_card` - Estonia EU Blue Card
 3. `ie_general_employment` - Ireland General Employment
 4. `gr_work_permit` - Greece Work Permit

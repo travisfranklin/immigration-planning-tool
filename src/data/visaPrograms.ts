@@ -495,7 +495,7 @@ export const SPAIN_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'For highly skilled workers with a job offer and higher education',
-    officialUrl: 'https://www.exteriores.gob.es/',
+    officialUrl: 'https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-spain_en',
     notes: 'EU-wide mobility after 18 months; can move to another EU country',
   },
   {
@@ -521,6 +521,7 @@ export const SPAIN_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'For retirees and remote workers with passive income',
+    officialUrl: 'https://www.exteriores.gob.es/Consulados/losangeles/en/ServiciosConsulares/Paginas/Consular/Visado-de-residencia-no-lucrativa.aspx',
     notes: 'Cannot work in Spain, but can receive foreign income',
   },
   {
@@ -545,6 +546,7 @@ export const SPAIN_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'For remote workers employed by non-Spanish companies',
+    officialUrl: 'https://www.exteriores.gob.es/Consulados/londres/en/ServiciosConsulares/Paginas/Consular/Digital-Nomad-Visa.aspx',
     notes: 'Must work remotely for company outside Spain',
   },
   {
@@ -570,7 +572,7 @@ export const SPAIN_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'For highly qualified professionals with job offer',
-    officialUrl: 'https://www.exteriores.gob.es/',
+    officialUrl: 'https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/highly-qualified-worker-spain_en',
     notes: 'Requires university degree and relevant experience. €40,077/year salary threshold (2025). Reduced threshold (0.8×) available for young workers (<3 years since graduation).',
   },
   {
@@ -594,6 +596,7 @@ export const SPAIN_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'For family members of Spanish residents',
+    officialUrl: 'https://www.exteriores.gob.es/Consulados/washington/en/ServiciosConsulares/Paginas/Consular/Visado-de-reagrupacion-familiar-en-regimen-general.aspx',
     notes: 'Sponsor must have adequate income and housing',
   },
 ];
@@ -625,7 +628,7 @@ export const ITALY_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'EU Blue Card for highly skilled workers with higher education degree. Subject to Decreto Flussi quota system.',
-    officialUrl: 'https://vistoperitalia.esteri.it/',
+    officialUrl: 'https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-italy_en',
     notes: 'Salary threshold: €26,000-33,500/year depending on sector. Subject to annual quota (Decreto Flussi). Nulla Osta required. Family can join. Can work throughout EU after 18 months. PR in 5 years, citizenship in 10 years.',
   },
   {
@@ -650,6 +653,7 @@ export const ITALY_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'For investors making significant investment in Italy',
+    officialUrl: 'https://investorvisa.mise.gov.it/index.php/en/information-resources-en',
     notes: 'Multiple investment options available',
   },
   {
@@ -675,6 +679,7 @@ export const ITALY_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'For entrepreneurs and freelancers',
+    officialUrl: 'https://consboston.esteri.it/en/servizi-consolari-e-visti/servizi-per-il-cittadino-straniero/visti/self-employment-visa/',
     notes: 'Requires proof of business viability',
   },
   {
@@ -700,6 +705,7 @@ export const ITALY_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'For skilled workers with job offer',
+    officialUrl: 'https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/highly-qualified-worker-italy_en',
     notes: 'Subject to annual quota system',
   },
   {
@@ -724,6 +730,7 @@ export const ITALY_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'For remote workers (new 2024)',
+    officialUrl: "https://consnewyork.esteri.it/en/servizi-consolari-e-visti/servizi-per-il-cittadino-straniero/visti/visas-to-enter-italy/digital-nomad-remote-worker-visa/",
     notes: 'Must work remotely for company outside Italy',
   },
   {
@@ -747,6 +754,7 @@ export const ITALY_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'For family members of Italian residents',
+    officialUrl: 'https://consboston.esteri.it/en/servizi-consolari-e-visti/servizi-per-il-cittadino-straniero/visti/family-visa-requirements/',
     notes: 'Sponsor must have adequate income and housing',
   },
 ];
@@ -857,6 +865,7 @@ export const AUSTRIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'For self-employed individuals with relevant qualifications',
+    officialUrl: 'https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/self-employedkeyworkers/',
     notes: 'Requires €100,000 minimum investment transfer OR job creation OR know-how transfer. Must demonstrate macroeconomic benefit to Austria.',
   },
   {
@@ -880,6 +889,7 @@ export const AUSTRIA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'For family members of Austrian residents',
+    officialUrl: 'https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/family-reunification/',
     notes: 'Sponsor must have adequate income and housing',
   },
 ];
@@ -912,7 +922,7 @@ export const BELGIUM_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'For highly skilled workers with university degree and job offer in Belgium',
-    officialUrl: 'https://dofi.ibz.be/en',
+    officialUrl: 'https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-belgium_en',
     notes: 'Regional salary differences: Brussels €66,377, Flanders €61,011, Wallonia €56,112. Multilingual country (Dutch, French, German).',
   },
   {
@@ -938,7 +948,7 @@ export const BELGIUM_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Single Permit combining work and residence permit for skilled workers',
-    officialUrl: 'https://dofi.ibz.be/en',
+    officialUrl: 'https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/highly-qualified-worker-belgium_en',
     notes: 'Lower salary for under 30: €41,290/year. Fast-track family reunification available (€5,000/month income).',
   },
   {
@@ -963,7 +973,7 @@ export const BELGIUM_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'For self-employed individuals and freelancers',
-    officialUrl: 'https://dofi.ibz.be/en',
+    officialUrl: 'https://dofi.ibz.be/en/themes/ressortissants-dun-pays-tiers/travail/professional-card',
     notes: 'Business plan must show economic benefit to Belgium. Regional approval required.',
   },
   {
@@ -988,6 +998,7 @@ export const BELGIUM_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'For innovative startups recognized by approved accelerator/incubator',
+    officialUrl: 'https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/self-employed-worker-belgium_en',
     notes: 'Requires recognition by approved Belgian accelerator or incubator',
   },
   {
@@ -1012,7 +1023,7 @@ export const BELGIUM_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'For family members of Belgian residents',
-    officialUrl: 'https://dofi.ibz.be/en',
+    officialUrl: 'https://dofi.ibz.be/en/themes/ressortissants-dun-pays-tiers/regroupement-familial/visa-d-application-family-reunification',
     notes: 'New 2025 requirement (effective August 2025): Sponsor must earn €5,000 gross/month minimum. Fast-track available for Single Permit holders.',
   },
 ];
@@ -1049,33 +1060,6 @@ export const LUXEMBOURG_PROGRAMS: VisaProgram[] = [
     notes: 'One of the highest salaries in EU. Strong financial services sector. Job offer must be minimum 6 months. First 12 months: valid for specific profession/sector. PR in 5 years, citizenship in 10 years.',
   },
   {
-    id: 'lu_highly_qualified',
-    countryCode: 'LU',
-    countryName: 'Luxembourg',
-    name: 'Highly Qualified Worker Permit',
-    type: 'work',
-    requirements: {
-      minSalary: 58968, // EUR per year (2025)
-      minEducationLevel: 'bachelor',
-      requiresJobOffer: true,
-      minYearsExperience: 0,
-    },
-    weights: {
-      career: 0.35,
-      financial: 0.30,
-      education: 0.25,
-      language: 0.05,
-      family: 0.05,
-    },
-    processingTimeWeeks: 10,
-    validityYears: 2,
-    pathToPermanentResidency: true,
-    pathToCitizenship: true,
-    description: 'For highly qualified workers with competitive salary',
-    officialUrl: 'https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/hautement-qualifie/salarie-hautement-qualifie.html',
-    notes: 'Alternative to EU Blue Card. €58,968/year salary threshold (2025). Strong financial services sector.',
-  },
-  {
     id: 'lu_investor',
     countryCode: 'LU',
     countryName: 'Luxembourg',
@@ -1096,6 +1080,7 @@ export const LUXEMBOURG_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'For investors making significant investment in Luxembourg business',
+    officialUrl: 'https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/investisseur/investisseur-pays-tiers.html',
     notes: 'Often referred to as "Golden Visa". Requires significant capital investment in Luxembourg economy.',
   },
   {
@@ -1120,7 +1105,7 @@ export const LUXEMBOURG_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'For self-employed individuals with business plan',
-    officialUrl: 'https://guichet.public.lu/en/',
+    officialUrl: 'https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/travailleur-independant/independant.html',
     notes: 'Business plan must demonstrate economic benefit to Luxembourg',
   },
   {
@@ -1231,30 +1216,6 @@ export const IRELAND_PROGRAMS: VisaProgram[] = [
     notes: '€50,000 must be from approved source (not personal funds). High-potential startups. Approval from evaluation committee required.',
   },
   {
-    id: 'ie_investor',
-    countryCode: 'IE',
-    countryName: 'Ireland',
-    name: 'Investor Programme',
-    type: 'investor',
-    requirements: {
-      minInvestment: 1000000, // EUR in Irish enterprise
-      minSavings: 2000000, // EUR net worth
-    },
-    weights: {
-      career: 0.05,
-      financial: 0.80,
-      education: 0.05,
-      language: 0.05,
-      family: 0.05,
-    },
-    processingTimeWeeks: 14,
-    validityYears: 2,
-    pathToPermanentResidency: true,
-    pathToCitizenship: true,
-    description: 'For high-net-worth individuals making significant investment',
-    notes: '€1,000,000 investment in Irish enterprise OR €500,000 in approved fund (minimum 3 years). €2,000,000 net worth required. Good character required.',
-  },
-  {
     id: 'ie_family_reunification',
     countryCode: 'IE',
     countryName: 'Ireland',
@@ -1275,7 +1236,7 @@ export const IRELAND_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'For family members of Irish residents',
-    officialUrl: 'https://www.irishimmigration.ie/',
+    officialUrl: 'https://www.irishimmigration.ie/coming-to-join-family-in-ireland/joining-an-irish-national/join-family-visa/',
     notes: 'Sponsor must have adequate income, accommodation, and health insurance',
   },
 ];
@@ -1382,7 +1343,7 @@ export const SWEDEN_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'For researchers and academics with PhD or equivalent conducting research at Swedish universities or research institutions.',
-    officialUrl: 'https://www.migrationsverket.se/en/you-want-to-apply/work.html',
+    officialUrl: 'https://www.migrationsverket.se/en/you-want-to-apply/work/employee-or-self-employed/researchers.html',
     notes: 'Faster processing than regular work permit. Strong academic sector in Sweden. English widely used in research.',
   },
   {
@@ -1406,7 +1367,7 @@ export const SWEDEN_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'For family members of Swedish residents or citizens. Includes spouses, partners, and children.',
-    officialUrl: 'https://www.migrationsverket.se/English/Private-individuals/Moving-to-someone-in-Sweden.html',
+    officialUrl: 'https://www.migrationsverket.se/en/you-want-to-apply/live-with-someone/live-with-a-partner-child-or-other-relative.html',
     notes: 'Sponsor must have adequate housing and income. Same-sex partnerships recognized. Family members can work immediately upon arrival.',
   },
 ];
@@ -1416,10 +1377,10 @@ export const SWEDEN_PROGRAMS: VisaProgram[] = [
  */
 export const DENMARK_PROGRAMS: VisaProgram[] = [
   {
-    id: 'dk_eu_blue_card',
+    id: 'dk_highly_skilled_worker',
     countryCode: 'DK',
     countryName: 'Denmark',
-    name: 'EU Blue Card',
+    name: 'Highly Skilled Worker',
     type: 'work',
     requirements: {
       minSalary: 68900, // EUR per year (DKK 514,000/year - 2025)

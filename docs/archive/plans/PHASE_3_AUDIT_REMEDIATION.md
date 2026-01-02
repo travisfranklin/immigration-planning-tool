@@ -40,7 +40,7 @@ Updated salary thresholds for 12 EU Blue Card programs to 2025 values:
 | Germany | `de_eu_blue_card` | €58,400 | €48,300 | DE-001 |
 | Belgium | `be_eu_blue_card` | €66,377 | €66,738 | BE-001 |
 | Croatia | `hr_eu_blue_card` | €21,600 | €24,846 | HR-001 |
-| Denmark | `dk_eu_blue_card` | €62,400 | €68,900 | DK-001 |
+| Denmark | `dk_highly_skilled_worker` | €62,400 | €68,900 | DK-001 |
 | Estonia | `ee_eu_blue_card` | €24,000 | €30,336 | EE-002 |
 | Hungary | `hu_eu_blue_card` | €18,000 | €26,400 | HU-001 |
 | Latvia | `lv_eu_blue_card` | €21,600 | €24,720 | LV-001 |

@@ -402,107 +402,6 @@ flowchart TD
 });
 
 /**
- * Investor Programme - For high-net-worth investors
- */
-export const investorProgramme: FlowchartDefinition = buildFlowchart({
-  programId: 'ie_investor',
-  countryCode: 'IE',
-  programName: 'Investor Programme',
-  complexity: 'high',
-  successRate: '80%',
-  totalEstimatedDuration: '4-6 months',
-  mermaidDiagram: `
-flowchart TD
-  Start([Start]) -->funds{EUR 2M Net Worth<br/>+ EUR 1M Investment?}
-  funds -->|Yes| choose[Choose Investment Option]
-  funds -->|No| End1([Not Eligible])
-  choose -->gather-documents[Gather Documents]
-  gather-documents -->submit-application[Submit Application]
-  submit-application -->processing[Processing 4-6 Months]
-  processing --> decision{Decision}
-  decision -->|Approved| invest[Make Investment]
-  decision -->|Rejected| End2([Process Ended])
-  invest -->permit[Receive Stamp 4 Permit]
-  permit -->travel[Travel to Ireland]
-  travel -->registration[Register with GNIB/IRP]
-  registration --> Success([Complete])`,
-  steps: [
-    {
-      id: 'funds',
-      title: 'Verify Financial Requirements',
-      description: 'Confirm EUR 2M net worth and EUR 1M investment funds',
-      estimatedDuration: '2-4 weeks',
-      documents: ['Bank statements', 'Asset valuations', 'Source of funds documentation'],
-      notes: [
-        'EUR 2M net worth required',
-        'EUR 1M investment in Irish enterprise',
-        'Fastest path to PR in EU (immediate Stamp 4!)',
-        'Citizenship in 5 years',
-      ],
-    },
-    {
-      id: 'choose',
-      title: 'Choose Investment Option',
-      description: 'Select investment type',
-      estimatedDuration: '2-4 weeks',
-      documents: ['Investment proposal', 'Due diligence reports'],
-      notes: [
-        'Enterprise Investment: EUR 1M in Irish business (3+ years)',
-        'Investment Fund: EUR 1M in approved fund',
-        'REIT: EUR 2M in Irish REIT',
-        'Endowment: EUR 500K donation (arts/sports/culture)',
-      ],
-    },
-    {
-      template: COMMON_STEP_IDS.GATHER_DOCUMENTS,
-      options: {
-        includeFinancial: true,
-        additionalDocuments: ['Investment plan', 'Criminal background check', 'Source of funds documentation'],
-        additionalNotes: ['Comprehensive due diligence required', 'All funds must be legally sourced'],
-      },
-    },
-    {
-      template: COMMON_STEP_IDS.SUBMIT_APPLICATION,
-      options: {
-        applicationFee: 1500,
-        additionalNotes: ['Submit to Irish Naturalisation and Immigration Service', 'Applications reviewed quarterly', 'Competitive process'],
-      },
-    },
-    { template: COMMON_STEP_IDS.PROCESSING, options: { processingTime: '4-6 months' } },
-    {
-      id: 'invest',
-      title: 'Make Investment',
-      description: 'Complete approved investment',
-      estimatedDuration: '4-8 weeks',
-      documents: ['Investment confirmation', 'Transfer documentation'],
-      notes: ['Must complete investment before permit issued', 'Investment held for minimum 3 years'],
-    },
-    {
-      id: 'permit',
-      title: 'Receive Stamp 4 Permit',
-      description: 'Receive residence permit',
-      estimatedDuration: '2-4 weeks',
-      documents: ['Stamp 4 approval'],
-      notes: [
-        'Immediate Stamp 4 (equivalent to PR!)',
-        'Can work without restriction',
-        'Family included',
-        'Citizenship in 5 years',
-      ],
-    },
-    { template: COMMON_STEP_IDS.TRAVEL, options: { visaType: 'Stamp 4 permit' } },
-    {
-      template: COMMON_STEP_IDS.REGISTRATION,
-      options: {
-        registrationAuthority: 'GNIB/IRP',
-        additionalDocuments: ['Investment confirmation'],
-        additionalNotes: ['Get IRP card', 'Immediate work rights', 'Citizenship in 5 years', 'English-speaking!'],
-      },
-    },
-  ],
-});
-
-/**
  * Family Reunification - For family members of residents
  */
 export const familyReunification: FlowchartDefinition = buildFlowchart({
@@ -587,6 +486,5 @@ export const irelandFlowchartsNew: Record<string, FlowchartDefinition> = {
   ie_critical_skills: criticalSkillsPermit,
   ie_general_employment: generalEmploymentPermit,
   ie_step: stepProgramme,
-  ie_investor: investorProgramme,
   ie_family_reunification: familyReunification,
 };

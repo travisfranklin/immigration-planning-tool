@@ -6,8 +6,11 @@
  * 1. Fast-Track Scheme
  * 2. Pay Limit Scheme
  * 3. Startup Visa
- * 4. EU Blue Card
+ * 4. Highly Skilled Worker (EU Blue Card equivalent)
  * 5. Family Reunification
+ *
+ * Note: Denmark uses national schemes (Fast-Track, Pay Limit) more than the EU Blue Card.
+ * The Highly Skilled Worker visa is the EU Blue Card equivalent in Denmark.
  */
 
 import type { FlowchartDefinition } from '../../../types/flowchart';
@@ -215,25 +218,25 @@ flowchart TD
 });
 
 /**
- * EU Blue Card - For highly skilled workers
+ * Highly Skilled Worker Visa
  */
-export const euBlueCard: FlowchartDefinition = buildFlowchart({
-  programId: 'dk_eu_blue_card',
+export const highlySkilledWorker: FlowchartDefinition = buildFlowchart({
+  programId: 'dk_highly_skilled_worker',
   countryCode: 'DK',
-  programName: 'EU Blue Card',
+  programName: 'Highly Skilled Worker Visa',
   complexity: 'medium',
   successRate: '85%',
   totalEstimatedDuration: '2-3 months',
   mermaidDiagram: `
 flowchart TD
   Start([Start Process]) -->job-offer[Secure Job Offer]
-  job-offer --> salary{"Salary >= DKK 465,000/year?"}
+  job-offer --> salary{"Salary >= DKK 514,000/year?"}
   salary -->|Yes| gather-documents[Gather Required Documents]
   salary -->|No| End1([Not Eligible])
   gather-documents --> submit-application[Submit Application]
   submit-application --> processing[Wait for Processing]
   processing --> decision{Decision}
-  decision -->|Approved| visa[Receive Blue Card]
+  decision -->|Approved| visa[Receive Highly Skilled Worker Permit]
   decision -->|Rejected| End2([Process Ended])
   visa --> travel[Travel to Denmark]
   travel --> registration[Register with CPR]
@@ -242,8 +245,8 @@ flowchart TD
     {
       template: COMMON_STEP_IDS.JOB_OFFER,
       options: {
-        salaryThreshold: 62400,
-        additionalNotes: ['Denmark has one of the highest EU Blue Card salary thresholds', 'Fast-Track processing available for certified companies', 'Popular sectors: IT, engineering, healthcare, finance'],
+        salaryThreshold: 68900,
+        additionalNotes: ['Salary threshold: DKK 514,000/year (€68,900)', 'Fast-Track processing available for certified companies', 'Popular sectors: IT, engineering, healthcare, finance'],
       },
     },
     {
@@ -258,13 +261,13 @@ flowchart TD
     { template: COMMON_STEP_IDS.PROCESSING, options: { processingTime: '30-60 days' } },
     {
       id: 'visa',
-      title: 'Receive Blue Card',
-      description: 'Collect your EU Blue Card',
+      title: 'Receive Highly Skilled Worker Permit',
+      description: 'Collect your Highly Skilled Worker residence permit',
       estimatedDuration: '1-2 weeks',
       documents: ['Passport'],
-      notes: ['Initial Blue Card valid for 2 years', 'Renewable', 'Can apply for permanent residence after 5 years'],
+      notes: ['Initial permit valid for up to 4 years', 'Renewable', 'Can apply for permanent residence after 5 years'],
     },
-    { template: COMMON_STEP_IDS.TRAVEL, options: { visaType: 'EU Blue Card' } },
+    { template: COMMON_STEP_IDS.TRAVEL, options: { visaType: 'Highly Skilled Worker Permit' } },
     {
       template: COMMON_STEP_IDS.REGISTRATION,
       options: {
@@ -342,7 +345,7 @@ export const denmarkFlowchartsNew: Record<string, FlowchartDefinition> = {
   fast_track: fastTrack,
   pay_limit: payLimit,
   startup_visa: startupVisa,
-  eu_blue_card: euBlueCard,
+  highly_skilled_worker: highlySkilledWorker,
   family_reunification: familyReunification,
 };
 

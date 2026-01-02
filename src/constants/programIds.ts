@@ -70,7 +70,6 @@ export const BelgiumProgramId = {
 // Luxembourg Program IDs
 export const LuxembourgProgramId = {
   EU_BLUE_CARD: 'lu_eu_blue_card',
-  HIGHLY_SKILLED: 'lu_highly_skilled',
   STARTUP: 'lu_startup',
   FAMILY_REUNIFICATION: 'lu_family_reunification',
 } as const;

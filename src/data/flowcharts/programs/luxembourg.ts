@@ -76,65 +76,6 @@ flowchart TD
 });
 
 /**
- * Highly Qualified Worker
- */
-export const highlyQualified: FlowchartDefinition = buildFlowchart({
-  programId: 'lu_highly_qualified',
-  countryCode: 'LU',
-  programName: 'Highly Qualified Worker',
-  complexity: 'medium',
-  successRate: '85%',
-  totalEstimatedDuration: '2-3 months',
-  mermaidDiagram: `
-flowchart TD
-  Start([Start Process]) -->job-offer[Secure Job Offer]
-  job-offer -->gather-documents[Gather Required Documents]
-  gather-documents -->submit-application[Submit Application]
-  submit-application -->processing[Wait for Processing]
-  processing --> decision{Decision}
-  decision -->|Approved| visa[Receive Work Permit]
-  decision -->|Rejected| End2([Process Ended])
-  visa -->travel[Travel to Luxembourg]
-  travel -->registration[Register with Commune]
-  registration --> Success([Process Complete])`,
-  steps: [
-    {
-      template: COMMON_STEP_IDS.JOB_OFFER,
-      options: {
-        salaryThreshold: 45000,
-        additionalNotes: ['Financial hub of Europe', 'Multilingual environment', 'High quality of life'],
-      },
-    },
-    {
-      template: COMMON_STEP_IDS.GATHER_DOCUMENTS,
-      options: {
-        includeEmployment: true,
-        additionalDocuments: ['University degree (apostilled)', 'Criminal background check', 'Accommodation proof'],
-        additionalNotes: ['All documents must be apostilled', 'Translations to French or German required'],
-      },
-    },
-    { template: COMMON_STEP_IDS.SUBMIT_APPLICATION, options: { applicationFee: 80 } },
-    { template: COMMON_STEP_IDS.PROCESSING, options: { processingTime: '30-90 days' } },
-    {
-      id: 'visa',
-      title: 'Receive Work Permit',
-      description: 'Collect your work permit',
-      estimatedDuration: '1-2 weeks',
-      documents: ['Passport'],
-      notes: ['Valid for 3 years', 'Renewable', 'Tied to employer initially'],
-    },
-    { template: COMMON_STEP_IDS.TRAVEL, options: { visaType: 'work permit' } },
-    {
-      template: COMMON_STEP_IDS.REGISTRATION,
-      options: {
-        registrationAuthority: 'Commune (Municipality)',
-        additionalNotes: ['Register within 3 days of arrival', 'Get residence permit card'],
-      },
-    },
-  ],
-});
-
-/**
  * Investor Visa
  */
 export const investorVisa: FlowchartDefinition = buildFlowchart({
@@ -321,7 +262,6 @@ flowchart TD
  */
 export const luxembourgFlowchartsNew: Record<string, FlowchartDefinition> = {
   eu_blue_card: euBlueCard,
-  highly_qualified: highlyQualified,
   investor: investorVisa,
   self_employed: selfEmployed,
   family_reunification: familyReunification,

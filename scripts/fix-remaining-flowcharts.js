@@ -176,7 +176,7 @@ console.log('🔧 Fixing remaining failing flowcharts...\n');
 console.log('\n=== EU Blue Cards ===');
 fixEUBlueCard(path.join(FLOWCHART_DIR, 'slovakia.ts'), 'sk_eu_blue_card');
 fixEUBlueCard(path.join(FLOWCHART_DIR, 'czech-republic.ts'), 'cz_eu_blue_card');
-fixEUBlueCard(path.join(FLOWCHART_DIR, 'denmark.ts'), 'dk_eu_blue_card');
+fixEUBlueCard(path.join(FLOWCHART_DIR, 'denmark.ts'), 'dk_highly_skilled_worker');
 fixEUBlueCard(path.join(FLOWCHART_DIR, 'estonia.ts'), 'ee_eu_blue_card');
 fixEUBlueCard(path.join(FLOWCHART_DIR, 'hungary.ts'), 'hu_eu_blue_card');
 fixEUBlueCard(path.join(FLOWCHART_DIR, 'poland.ts'), 'pl_eu_blue_card');

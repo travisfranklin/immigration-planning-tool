@@ -3047,7 +3047,7 @@ Missing 11 step(s):
       ],
     },
 
-## denmark.ts - dk_eu_blue_card
+## denmark.ts - dk_highly_skilled_worker
 Missing 7 step(s):
 
     {
