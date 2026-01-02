@@ -65,7 +65,7 @@ Greece has **5 immigration programs** in the system. The audit identified **5 ex
 | Processing time | 60-90 days | 60-90 days | ✅ MATCH |
 | Application fee | €150 | €150 | ✅ MATCH |
 
-### 5. Independent Means Visa ✅
+### 5. Financially Independent Person (FIP) Visa ✅
 
 | Field | System Value | Official 2025 Value | Status |
 |-------|--------------|---------------------|--------|

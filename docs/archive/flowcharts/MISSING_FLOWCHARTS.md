@@ -35,7 +35,7 @@
 
 ### Greece (GR) - 3 missing
 - `gr_family_reunification` - Family Reunification
-- `gr_independent_means` - Independent Means (Financially Independent)
+- `gr_fip` - Independent Means (Financially Independent)
 - `gr_work_permit` - Work Permit
 
 ### Croatia (HR) - 3 missing
@@ -154,7 +154,7 @@ Important but often dependent on primary visa holder:
 
 ### Lower Priority (Other Programs)
 1. `cy_digital_nomad` - Cyprus Digital Nomad
-2. `gr_independent_means` - Greece Independent Means
+2. `gr_fip` - Greece Independent Means
 3. `se_researcher` - Sweden Researcher
 4. `mt_highly_skilled` - Malta Highly Skilled
 

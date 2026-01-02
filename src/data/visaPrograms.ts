@@ -1399,7 +1399,7 @@ export const DENMARK_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'EU Blue Card for highly skilled workers with high salary threshold. Fast-Track processing available.',
-    officialUrl: 'https://nyidanmark.dk/en-GB/You-want-to-apply',
+    officialUrl: 'https://www.nyidanmark.dk/uk-UA/You-want-to-apply/Work/The-Positive-Lists/Positive-List-for-skilled-work',
     notes: 'Denmark has one of the highest EU Blue Card salary thresholds (DKK 514,000/year - 2025). Application fee: DKK 6,055 (~€810). PR in 4 years, citizenship in 9 years.',
   },
   {
@@ -1498,7 +1498,7 @@ export const DENMARK_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Join family members who have residence permits in Denmark. Requirements vary based on sponsor\'s permit type.',
-    officialUrl: 'https://www.nyidanmark.dk/en-GB/You-want-to-apply/Family',
+    officialUrl: 'https://www.nyidanmark.dk/en-GB/You-want-to-apply/Family/Family-reunification',
     notes: 'Requirements vary based on sponsor\'s permit type. Fast-Track/EU Blue Card holders have easier family reunification. Language requirements may apply. Housing requirements must be met.',
   },
 ];
@@ -1555,7 +1555,7 @@ export const FINLAND_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Most popular Finnish work permit for specialists. Lower salary requirement (€36,000/year) and flexible education requirements.',
-    officialUrl: 'https://migri.fi/en/working-in-finland/income-requirement',
+    officialUrl: 'https://migri.fi/en/specialist',
     notes: 'More flexible than EU Blue Card. No specific education requirement if sufficient experience. Popular for tech workers. Can be extended. PR in 4 years, citizenship in 5 years.',
   },
   {
@@ -1629,16 +1629,13 @@ export const FINLAND_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Join family members in Finland. Sponsor must have A permit (continuous) or P permit (permanent) with adequate income and housing.',
-    officialUrl: 'https://migri.fi/en/moving-to-finland-to-be-with-family',
+    officialUrl: 'https://migri.fi/en/moving-to-finland-to-be-with-a-family-member',
     notes: 'Same-sex partnerships recognized. Family members can work immediately. Sponsor must have adequate housing (minimum 10m² per person). Income requirement varies by family size. PR in 4 years, citizenship in 5 years.',
   },
 ];
 
 /**
- * All Visa Programs
- */
-/**
- * Portugal Visa Programs (Phase 10)
+ * Portugal Visa Programs
  */
 export const PORTUGAL_PROGRAMS: VisaProgram[] = [
   {
@@ -1664,7 +1661,7 @@ export const PORTUGAL_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'EU Blue Card for highly skilled workers with higher education degree. One of the lowest salary thresholds in the EU.',
-    officialUrl: 'https://www.sef.pt/en/pages/conteudo-detalhe.aspx?nID=21',
+    officialUrl: 'https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-portugal_en',
     notes: 'Salary threshold: €21,030/year (2025) - one of the lowest in EU. Family can join. Can work throughout EU after 18 months. PR in 5 years, citizenship in 5 years.',
   },
   {
@@ -1689,7 +1686,7 @@ export const PORTUGAL_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Golden Visa through investment in real estate (€500k), capital transfer (€1.5M), or business (€500k creating 5+ jobs). Very flexible residency requirements (7 days/year).',
-    officialUrl: 'https://www.sef.pt/en/pages/conteudo-detalhe.aspx?nID=62',
+    officialUrl: 'https://vistos.mne.gov.pt/en/ari-residency-permit-for-investors',
     notes: 'One of most popular Golden Visa programs in EU. Only 7 days/year minimum stay required. Family members included. PR in 5 years, citizenship in 5 years with A2 Portuguese. Access to Schengen area.',
   },
   {
@@ -1714,7 +1711,7 @@ export const PORTUGAL_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'D7 Visa for those with passive income (pension, rental income, dividends, remote work). Minimum €760/month required. EXTREMELY popular with digital nomads and retirees.',
-    officialUrl: 'https://www.portugal.gov.pt/',
+    officialUrl: 'https://vistos.mne.gov.pt/en/national-visas/necessary-documentation/residency',
     notes: 'Most popular visa for digital nomads and retirees. Very affordable (€760/month). Must spend 183+ days/year in Portugal. Can work remotely for foreign companies. PR in 5 years, citizenship in 5 years. Non-habitual resident tax regime available (0-10% tax for 10 years).',
   },
   {
@@ -1740,7 +1737,7 @@ export const PORTUGAL_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'D8 Digital Nomad Visa for remote workers. Higher income threshold than D7 but specifically designed for digital nomads.',
-    officialUrl: 'https://www.sef.pt/en/pages/conteudo-detalhe.aspx?nID=21',
+    officialUrl: 'https://vistos.mne.gov.pt/en/national-visas/necessary-documentation/residency',
     notes: 'Income: €3,480/month OR €36,480 savings. Must work remotely for non-Portuguese company. Can bring family. PR in 5 years, citizenship in 5 years. Non-habitual resident tax regime available.',
   },
   {
@@ -1765,7 +1762,7 @@ export const PORTUGAL_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Fast-track visa for tech workers with job offer from certified Portuguese tech company. Lower salary requirement (€1,330/month) than most EU countries.',
-    officialUrl: 'https://www.iapmei.pt/techvisa',
+    officialUrl: 'https://vistos.mne.gov.pt/en/national-visas/necessary-documentation/residency#teaching-purposes-highly-qualified-or-cultural-activity-or-highly-qualified-subordinate-activity',
     notes: 'Fast processing (30-60 days). Company must be certified by IAPMEI. Growing tech scene in Lisbon and Porto. Lower salary threshold than most EU tech visas. Family can join. PR in 5 years, citizenship in 5 years.',
   },
   {
@@ -1790,7 +1787,7 @@ export const PORTUGAL_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Startup Visa for entrepreneurs with innovative business idea approved by certified incubator. Growing startup ecosystem in Lisbon.',
-    officialUrl: 'https://www.iapmei.pt/PRODUTOS-E-SERVICOS/Empreendedorismo-Inovacao/Empreendedorismo/Apoios-e-Incentivos/Startup-Visa.aspx',
+    officialUrl: 'https://startupportugal.com/programs/startup-visa/',
     notes: 'Must be accepted by IAPMEI-certified incubator. Growing startup ecosystem in Lisbon and Porto. Can bring co-founders. Family members included. PR in 5 years, citizenship in 5 years.',
   },
   {
@@ -1814,7 +1811,7 @@ export const PORTUGAL_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Join family members who have valid Portuguese residence permit. Includes spouse, children, and parents.',
-    officialUrl: 'https://imigrante.sef.pt/en/',
+    officialUrl: 'https://vistos.mne.gov.pt/en/national-visas/general-information/family-reunification',
     notes: 'Same-sex marriages recognized. Family members can work and study. Validity tied to sponsor\'s permit. PR in 5 years, citizenship in 5 years.',
   },
 ];
@@ -1846,7 +1843,7 @@ export const GREECE_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'EU Blue Card for highly skilled workers with higher education degree. Mediterranean lifestyle with lower cost of living.',
-    officialUrl: 'https://migration.gov.gr/en/',
+    officialUrl: 'https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-greece_en',
     notes: 'Salary threshold: €31,918.83/year (2025). Family can join. Can work throughout EU after 18 months. PR in 5 years, citizenship in 7 years.',
   },
   {
@@ -1871,7 +1868,7 @@ export const GREECE_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Golden Visa through real estate investment. Tiered system: €800,000 in Athens/Thessaloniki/popular islands, €400,000 in other areas. No minimum stay requirement!',
-    officialUrl: 'https://migration.gov.gr/en/',
+    officialUrl: 'https://migration.gov.gr/en/golden-visa/',
     notes: 'Tiered investment thresholds (2024): €800k for Athens/Thessaloniki/Mykonos/Santorini, €400k for other areas. No minimum stay required. Family members included. Can rent out property. PR in 5 years, citizenship in 7 years. Access to Schengen area.',
   },
   {
@@ -1896,14 +1893,14 @@ export const GREECE_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Digital Nomad Visa for remote workers earning €3,500/month. 50% income tax reduction for first year! Can work from Greek islands.',
-    officialUrl: 'https://www.gov.gr/en/',
+    officialUrl: 'https://workfromgreece.gr/',
     notes: 'Launched in 2021. 50% income tax reduction for first year! Can work from Greek islands. Growing digital nomad community. PR in 5 years, citizenship in 7 years.',
   },
   {
-    id: 'gr_independent_means',
+    id: 'gr_fip',
     countryCode: 'GR',
     countryName: 'Greece',
-    name: 'Independent Means Visa',
+    name: 'Financially Independent Person (FIP) Visa',
     type: 'passive-income',
     requirements: {
       minSalary: 24000, // EUR per year (€2,000/month)
@@ -1920,8 +1917,8 @@ export const GREECE_PROGRAMS: VisaProgram[] = [
     validityYears: 2,
     pathToPermanentResidency: true,
     pathToCitizenship: true,
-    description: 'Independent Means Visa for those with passive income (€2,000/month). Perfect for retirees. Very low cost of living in Greece.',
-    officialUrl: 'https://migration.gov.gr/en/',
+    description: 'Financially Independent Person (FIP) Visa for those with passive income (€2,000/month). Perfect for retirees. Very low cost of living in Greece.',
+    officialUrl: 'https://www.globalcitizensolutions.com/fip-visa-greece/',
     notes: 'For retirees and those with passive income. €2,000/month (+20% for spouse, +15% per child). Must spend 183+ days/year in Greece. Very low cost of living. PR in 5 years, citizenship in 7 years.',
   },
   {
@@ -1946,7 +1943,7 @@ export const GREECE_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Standard work permit with job offer from Greek employer. Growing tech sector in Athens and Thessaloniki.',
-    officialUrl: 'https://migration.gov.gr/en/',
+    officialUrl: 'https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-greece_en',
     notes: 'Employer must prove no suitable Greek/EU candidate. Growing tech sector in Athens and Thessaloniki. Family members can join. PR in 5 years, citizenship in 7 years.',
   },
   {
@@ -1970,7 +1967,7 @@ export const GREECE_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Join family members who have valid Greek residence permit. Includes spouse, children, and parents.',
-    officialUrl: 'https://migration.gov.gr/en/',
+    officialUrl: 'https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-greece_en',
     notes: 'Family members can work and study. Validity tied to sponsor\'s permit. PR in 5 years, citizenship in 7 years.',
   },
 ];
@@ -2027,7 +2024,7 @@ export const CYPRUS_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Startup Visa for entrepreneurs with innovative business idea. English-speaking environment, EU market access.',
-    officialUrl: 'https://www.investcyprus.org.cy/',
+    officialUrl: 'https://www.gov.cy/en/service/apply-for-a-cyprus-startup-visa/',
     notes: 'Must be approved by Cyprus Deputy Ministry of Research. Growing startup ecosystem. English is official language. Tax benefits for startups. PR in 5 years, citizenship in 7 years.',
   },
   {
@@ -2052,7 +2049,7 @@ export const CYPRUS_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Work permit with job offer from Cypriot employer. English is official language - major advantage!',
-    officialUrl: 'https://www.moi.gov.cy/moi/crmd/',
+    officialUrl: 'https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-cyprus_en',
     notes: 'English is official language (huge advantage!). Growing tech and finance sectors. Family can join. PR in 5 years, citizenship in 7 years.',
   },
   {
@@ -2077,7 +2074,7 @@ export const CYPRUS_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: false, // Does not lead to PR
     pathToCitizenship: false,
     description: 'Digital Nomad Visa for remote workers earning €3,500/month. English-speaking, warm climate year-round. ⚠️ LIMITED TO 500 VISAS PER YEAR.',
-    officialUrl: 'https://www.moi.gov.cy/moi/crmd/',
+    officialUrl: 'https://www.mip.gov.cy/dmmip/md.nsf/All/BF9908B541BFF7D3C22587EA003CD306?OpenDocument',
     notes: '⚠️ LIMITED TO 500 VISAS PER YEAR - apply early! Launched in 2021. Tax benefits. English is official language. Warm climate year-round. Good internet infrastructure. Does NOT lead to PR (temporary program). Renewable for up to 3 years total.',
   },
   {
@@ -2102,7 +2099,7 @@ export const CYPRUS_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'Join family members who have valid Cyprus residence permit. English-speaking environment.',
-    officialUrl: 'https://www.moi.gov.cy/moi/crmd/',
+    officialUrl: 'https://www.mip.gov.cy/dmmip/md.nsf/All/CF16F990BDDCF4C4C22588EF0038FF80?OpenDocument',
     notes: 'English-speaking environment. Family members can work and study. Same-sex partnerships recognized. Validity tied to sponsor\'s permit. PR in 5 years, citizenship in 7 years.',
   },
 ];
@@ -2134,7 +2131,7 @@ export const MALTA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true,
     pathToCitizenship: true,
     description: 'EU Blue Card for highly skilled workers with higher education degree. English-speaking EU country with Mediterranean climate.',
-    officialUrl: 'https://identitymalta.com/eu-blue-card/',
+    officialUrl: 'https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-malta_en',
     notes: 'Salary threshold: €34,956/year (2025). Application fee: €300. Processing: ~90 days. Family can join. Can work throughout EU after 18 months. PR in 5 years, citizenship in 5 years.',
   },
   {
@@ -2160,7 +2157,7 @@ export const MALTA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: true, // This IS permanent residence
     pathToCitizenship: true,
     description: 'Malta Permanent Residence Programme through property investment or rental. English is official language. Immediate PR!',
-    officialUrl: 'https://residencymalta.gov.mt/',
+    officialUrl: 'https://www.gov.mt/en/Life%20Events/Pages/Moving%20to%20Malta/Moving-to-Malta.aspx',
     notes: 'English is official language! Immediate permanent residence. Options: Buy (€300k-€350k) or Rent (€10k-€12k/year). Government contribution: €28k (rent) or €68k (buy). Requires €100k annual income OR €500k assets. No minimum stay. Citizenship in 5 years.',
   },
   {
@@ -2185,17 +2182,17 @@ export const MALTA_PROGRAMS: VisaProgram[] = [
     pathToPermanentResidency: false, // Does not lead to PR
     pathToCitizenship: false,
     description: 'Nomad Residence Permit for remote workers earning €2,700/month. Flat 15% tax rate on foreign income! English is official language.',
-    officialUrl: 'https://nomad.residencymalta.gov.mt/',
+    officialUrl: 'https://nomad.residencymalta.gov.mt/nomad-eligibility/',
     notes: 'Launched in 2021. Flat 15% tax rate on foreign income! English is official language. EU member. Good internet. Warm climate. Does NOT lead to PR (temporary program). Renewable for up to 3 years total.',
   },
   {
-    id: 'mt_highly_skilled',
+    id: 'mt_kei',
     countryCode: 'MT',
     countryName: 'Malta',
-    name: 'Highly Skilled Worker Permit',
+    name: 'Key Employee Initiative (KEI)',
     type: 'work',
     requirements: {
-      minSalary: 30000, // EUR per year
+      minSalary: 45000, // EUR per year gross
       requiresJobOffer: true,
     },
     weights: {
@@ -2205,13 +2202,38 @@ export const MALTA_PROGRAMS: VisaProgram[] = [
       language: 0.05,
       family: 0.10,
     },
-    processingTimeWeeks: 10, // 60-90 days
+    processingTimeWeeks: 2, // Fast-track: 5-10 business days
     validityYears: 3, // 1-3 years, renewable
     pathToPermanentResidency: true,
     pathToCitizenship: true,
-    description: 'Highly Skilled Worker Permit with job offer from Maltese employer. English is official language. Strong finance, gaming, and tech sectors.',
+    description: 'Fast-track work permit for managerial or highly technical roles. Accepts proven experience or professional warrants instead of degree. 5-10 business day processing!',
     officialUrl: 'https://jobsplus.gov.mt/',
-    notes: 'English is official language! Growing tech, gaming (iGaming hub of Europe), and finance sectors. Family can join. PR in 5 years, citizenship in 5 years. Small but well-connected business community.',
+    notes: 'Fast-track Single Permit (5-10 days). €45,000/year minimum salary. For managerial/technical roles. Degree OR 5+ years experience OR professional warrant accepted. English-speaking. iGaming, fintech, tech hub. Family can join. PR in 5 years.',
+  },
+  {
+    id: 'mt_sei',
+    countryCode: 'MT',
+    countryName: 'Malta',
+    name: 'Specialist Employee Initiative (SEI)',
+    type: 'work',
+    requirements: {
+      minSalary: 25000, // EUR per year gross
+      requiresJobOffer: true,
+    },
+    weights: {
+      career: 0.40,
+      financial: 0.25,
+      education: 0.15,
+      language: 0.05,
+      family: 0.15,
+    },
+    processingTimeWeeks: 2, // Fast-track: 5-10 business days
+    validityYears: 3, // 1-3 years, renewable
+    pathToPermanentResidency: true,
+    pathToCitizenship: true,
+    description: 'Simplified fast-track work permit for professionals with lower salary threshold. Accepts professional qualifications or 3+ years experience. 5-10 business day processing!',
+    officialUrl: 'https://jobsplus.gov.mt/',
+    notes: 'Fast-track Single Permit (5-10 days). €25,000/year minimum salary. For skilled professionals. Professional qualification OR 3+ years experience. English-speaking. Growing sectors: iGaming, finance, tech. Family can join. PR in 5 years.',
   },
   {
     id: 'mt_startup_visa',

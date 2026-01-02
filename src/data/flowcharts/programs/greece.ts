@@ -7,7 +7,7 @@
  * 2. Digital Nomad Visa
  * 3. Work Permit
  * 4. Family Reunification
- * 5. Independent Means Visa
+ * 5. Financially Independent Person (FIP) Visa
  */
 
 import type { FlowchartDefinition } from '../../../types/flowchart';
@@ -298,12 +298,12 @@ flowchart TD
 });
 
 /**
- * Independent Means Visa - For financially independent individuals
+ * Financially Independent Person (FIP) Visa - For financially independent individuals
  */
 export const independentMeansVisa: FlowchartDefinition = buildFlowchart({
-  programId: 'gr_independent_means',
+  programId: 'gr_fip',
   countryCode: 'GR',
-  programName: 'Independent Means Visa',
+  programName: 'Financially Independent Person (FIP) Visa',
   complexity: 'low',
   successRate: '85%',
   totalEstimatedDuration: '2-3 months',
@@ -341,13 +341,13 @@ flowchart TD
     { template: COMMON_STEP_IDS.PROCESSING, options: { processingTime: '30-60 days' } },
     {
       id: 'visa',
-      title: 'Receive Independent Means Visa',
+      title: 'Receive Financially Independent Person (FIP) Visa',
       description: 'Collect your visa',
       estimatedDuration: '1-2 weeks',
       documents: ['Passport'],
       notes: ['Valid for 1 year', 'Renewable', 'No work permitted'],
     },
-    { template: COMMON_STEP_IDS.TRAVEL, options: { visaType: 'Independent Means Visa' } },
+    { template: COMMON_STEP_IDS.TRAVEL, options: { visaType: 'Financially Independent Person (FIP) Visa' } },
     {
       template: COMMON_STEP_IDS.REGISTRATION,
       options: {

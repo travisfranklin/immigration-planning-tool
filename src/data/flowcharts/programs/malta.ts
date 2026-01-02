@@ -2,12 +2,18 @@
  * Malta Immigration Programs
  *
  * Built using the template-based composition system.
- * Malta has 5 main programs:
+ * Malta has 7 main programs:
  * 1. Nomad Residence Permit
  * 2. MPRP (Malta Permanent Residence Programme)
  * 3. Startup Visa
  * 4. Family Reunification
- * 5. Highly Skilled Worker
+ * 5. EU Blue Card
+ * 6. Key Employee Initiative (KEI) - Fast-track for managerial/technical roles
+ * 7. Specialist Employee Initiative (SEI) - Fast-track for skilled professionals
+ *
+ * Note: Malta uses KEI and SEI as national fast-track schemes alongside the EU Blue Card.
+ * KEI requires €45,000/year salary for managerial/technical roles.
+ * SEI requires €25,000/year salary for other skilled professionals.
  */
 
 import type { FlowchartDefinition } from '../../../types/flowchart';
@@ -268,23 +274,27 @@ flowchart TD
 });
 
 /**
- * Highly Skilled Worker
+ * Key Employee Initiative (KEI) - Fast-track for managerial/technical roles
  */
-export const highlySkilled: FlowchartDefinition = buildFlowchart({
-  programId: 'mt_highly_skilled',
+export const keyEmployeeInitiative: FlowchartDefinition = buildFlowchart({
+  programId: 'mt_kei',
   countryCode: 'MT',
-  programName: 'Highly Skilled Worker',
-  complexity: 'medium',
-  successRate: '85%',
-  totalEstimatedDuration: '2-3 months',
+  programName: 'Key Employee Initiative (KEI)',
+  complexity: 'low',
+  successRate: '90%',
+  totalEstimatedDuration: '2-3 weeks',
   mermaidDiagram: `
 flowchart TD
   Start([Start Process]) -->job-offer[Secure Job Offer]
-  job-offer -->gather-documents[Gather Required Documents]
+  job-offer -->salary{"Salary >= EUR 45,000/year?"}
+  salary -->|Yes| role{"Managerial/Technical Role?"}
+  salary -->|No| consider-sei[Consider SEI instead]
+  role -->|Yes| gather-documents[Gather Required Documents]
+  role -->|No| consider-sei
   gather-documents -->submit-application[Submit Application]
-  submit-application -->processing[Wait for Processing]
+  submit-application -->processing[Fast-Track Processing: 5-10 days]
   processing --> decision{Decision}
-  decision -->|Approved| visa[Receive Work Permit]
+  decision -->|Approved| visa[Receive Single Permit]
   decision -->|Rejected| End2([Process Ended])
   visa -->travel[Travel to Malta]
   travel -->registration[Register with Identity Malta]
@@ -293,29 +303,148 @@ flowchart TD
     {
       template: COMMON_STEP_IDS.JOB_OFFER,
       options: {
-        salaryThreshold: 30000,
-        additionalNotes: ['Mediterranean lifestyle', 'English-speaking', 'Growing tech and gaming industry'],
+        salaryThreshold: 45000,
+        additionalNotes: [
+          'Managerial or highly technical role required',
+          'Degree OR 5+ years experience OR professional warrant accepted',
+          'English-speaking country',
+          'iGaming, fintech, and tech hub of Mediterranean',
+        ],
       },
+    },
+    {
+      id: 'salary',
+      title: 'Salary Verification',
+      description: 'Verify salary meets KEI threshold',
+      estimatedDuration: 'N/A',
+      documents: ['Employment contract showing salary'],
+      isConditional: true,
+      condition: 'Salary must be at least EUR 45,000/year',
+      notes: ['If salary is lower, consider SEI (EUR 25,000 threshold)'],
+    },
+    {
+      id: 'role',
+      title: 'Role Verification',
+      description: 'Verify role is managerial or highly technical',
+      estimatedDuration: 'N/A',
+      documents: ['Job description', 'Employment contract'],
+      isConditional: true,
+      condition: 'Role must be managerial or highly technical',
+      notes: ['If not managerial/technical, consider SEI instead'],
+    },
+    {
+      id: 'consider-sei',
+      title: 'Consider SEI Instead',
+      description: 'If salary or role does not meet KEI requirements, consider SEI',
+      estimatedDuration: 'N/A',
+      documents: [],
+      notes: ['SEI has lower salary threshold (EUR 25,000)', 'SEI accepts broader range of professional roles'],
     },
     {
       template: COMMON_STEP_IDS.GATHER_DOCUMENTS,
       options: {
         includeEmployment: true,
-        additionalDocuments: ['University degree', 'Criminal background check', 'Accommodation proof'],
-        additionalNotes: ['Documents in English accepted'],
+        additionalDocuments: [
+          'University degree OR proof of 5+ years experience OR professional warrant',
+          'Employment contract',
+          'Criminal background check',
+        ],
+        additionalNotes: ['Documents in English accepted - no translation needed'],
       },
     },
     { template: COMMON_STEP_IDS.SUBMIT_APPLICATION, options: { applicationFee: 280 } },
-    { template: COMMON_STEP_IDS.PROCESSING, options: { processingTime: '30-60 days' } },
+    { template: COMMON_STEP_IDS.PROCESSING, options: { processingTime: '5-10 business days' } },
     {
       id: 'visa',
-      title: 'Receive Work Permit',
-      description: 'Collect your work permit',
-      estimatedDuration: '1-2 weeks',
+      title: 'Receive Single Permit',
+      description: 'Collect your KEI Single Permit',
+      estimatedDuration: '1-2 days',
       documents: ['Passport'],
-      notes: ['Valid for 1 year', 'Renewable', 'Tied to employer initially'],
+      notes: ['Valid for 1-3 years', 'Renewable', 'Family can join', 'Path to PR after 5 years'],
     },
-    { template: COMMON_STEP_IDS.TRAVEL, options: { visaType: 'work permit' } },
+    { template: COMMON_STEP_IDS.TRAVEL, options: { visaType: 'KEI Single Permit' } },
+    {
+      template: COMMON_STEP_IDS.REGISTRATION,
+      options: {
+        registrationAuthority: 'Identity Malta',
+        additionalNotes: ['Register within 7 days of arrival', 'Get e-Residence card'],
+      },
+    },
+  ],
+});
+
+/**
+ * Specialist Employee Initiative (SEI) - Fast-track for skilled professionals
+ */
+export const specialistEmployeeInitiative: FlowchartDefinition = buildFlowchart({
+  programId: 'mt_sei',
+  countryCode: 'MT',
+  programName: 'Specialist Employee Initiative (SEI)',
+  complexity: 'low',
+  successRate: '90%',
+  totalEstimatedDuration: '2-3 weeks',
+  mermaidDiagram: `
+flowchart TD
+  Start([Start Process]) -->job-offer[Secure Job Offer]
+  job-offer -->salary{"Salary >= EUR 25,000/year?"}
+  salary -->|Yes| qualifications{"Professional Qualification or 3+ Years Experience?"}
+  salary -->|No| End1([Not Eligible])
+  qualifications -->|Yes| gather-documents[Gather Required Documents]
+  qualifications -->|No| End1
+  gather-documents -->submit-application[Submit Application]
+  submit-application -->processing[Fast-Track Processing: 5-10 days]
+  processing --> decision{Decision}
+  decision -->|Approved| visa[Receive Single Permit]
+  decision -->|Rejected| End2([Process Ended])
+  visa -->travel[Travel to Malta]
+  travel -->registration[Register with Identity Malta]
+  registration --> Success([Process Complete])`,
+  steps: [
+    {
+      template: COMMON_STEP_IDS.JOB_OFFER,
+      options: {
+        salaryThreshold: 25000,
+        additionalNotes: [
+          'Lower salary threshold than KEI',
+          'Professional qualification OR 3+ years experience required',
+          'English-speaking country',
+          'Growing sectors: iGaming, finance, tech',
+        ],
+      },
+    },
+    {
+      id: 'qualifications',
+      title: 'Qualifications Verification',
+      description: 'Verify professional qualification or work experience',
+      estimatedDuration: 'N/A',
+      documents: ['Professional qualification OR proof of 3+ years relevant experience'],
+      isConditional: true,
+      condition: 'Must have professional qualification or at least 3 years of relevant experience',
+      notes: ['More flexible than EU Blue Card requirements'],
+    },
+    {
+      template: COMMON_STEP_IDS.GATHER_DOCUMENTS,
+      options: {
+        includeEmployment: true,
+        additionalDocuments: [
+          'Professional qualification OR proof of 3+ years experience',
+          'Employment contract',
+          'Criminal background check',
+        ],
+        additionalNotes: ['Documents in English accepted - no translation needed'],
+      },
+    },
+    { template: COMMON_STEP_IDS.SUBMIT_APPLICATION, options: { applicationFee: 280 } },
+    { template: COMMON_STEP_IDS.PROCESSING, options: { processingTime: '5-10 business days' } },
+    {
+      id: 'visa',
+      title: 'Receive Single Permit',
+      description: 'Collect your SEI Single Permit',
+      estimatedDuration: '1-2 days',
+      documents: ['Passport'],
+      notes: ['Valid for 1-3 years', 'Renewable', 'Family can join', 'Path to PR after 5 years'],
+    },
+    { template: COMMON_STEP_IDS.TRAVEL, options: { visaType: 'SEI Single Permit' } },
     {
       template: COMMON_STEP_IDS.REGISTRATION,
       options: {
@@ -416,6 +545,7 @@ export const maltaFlowchartsNew: Record<string, FlowchartDefinition> = {
   mprp: mprp,
   startup_visa: startupVisa,
   family_reunification: familyReunification,
-  highly_skilled: highlySkilled,
+  kei: keyEmployeeInitiative,
+  sei: specialistEmployeeInitiative,
   eu_blue_card: euBlueCard,
 };

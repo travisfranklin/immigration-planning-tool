@@ -132,9 +132,12 @@ export const CyprusProgramId = {
 
 // Malta Program IDs
 export const MaltaProgramId = {
-  STARTUP: 'mt_startup',
-  INVESTOR: 'mt_investor',
-  STUDENT: 'mt_student',
+  EU_BLUE_CARD: 'mt_eu_blue_card',
+  MPRP: 'mt_mprp',
+  NOMAD_RESIDENCE: 'mt_nomad_residence',
+  KEY_EMPLOYEE_INITIATIVE: 'mt_kei',
+  SPECIALIST_EMPLOYEE_INITIATIVE: 'mt_sei',
+  STARTUP: 'mt_startup_visa',
   FAMILY_REUNIFICATION: 'mt_family_reunification',
 } as const;
 
