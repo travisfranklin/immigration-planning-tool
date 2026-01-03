@@ -27,7 +27,7 @@ describe('Form State Utilities', () => {
     languages: [{ language: 'English', proficiency: 'C2' }],
     immigrationPath: 'work_visa',
     timelineMonths: 12,
-    hasJobOffer: false,
+    targetCountries: [{ countryCode: 'DE', hasJobOffer: false }],
   };
 
   describe('mergeFormData', () => {
@@ -105,7 +105,7 @@ describe('Form State Utilities', () => {
         occupationCode: '2511',
         maritalStatus: 'single',
         languages: [{ language: 'English', proficiency: 'C2' }],
-        targetCountries: ['Germany'],
+        targetCountries: [{ countryCode: 'DE', hasJobOffer: false }],
         immigrationPath: 'work_visa',
         timelineMonths: 12,
       };
@@ -152,7 +152,7 @@ describe('Form State Utilities', () => {
         occupationCode: '2511',
         maritalStatus: 'single',
         languages: [{ language: 'English', proficiency: 'C2' }],
-        targetCountries: ['Germany'],
+        targetCountries: [{ countryCode: 'DE', hasJobOffer: false }],
         immigrationPath: 'work_visa',
         timelineMonths: 0, // Zero should not be counted as filled
       };
@@ -215,7 +215,7 @@ describe('Form State Utilities', () => {
 
       expect(data.immigrationPath).toBe('work_visa');
       expect(data.timelineMonths).toBe(12);
-      expect(data.hasJobOffer).toBe(false);
+      expect(data.targetCountries).toEqual([{ countryCode: 'DE', hasJobOffer: false }]);
     });
 
     it('should return empty object for invalid step', () => {

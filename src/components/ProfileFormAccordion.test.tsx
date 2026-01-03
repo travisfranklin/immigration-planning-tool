@@ -221,7 +221,10 @@ describe('ProfileFormAccordion', () => {
         occupationCode: '2512',
         maritalStatus: 'single',
         languages: [{ language: 'English', proficiency: 'C2' }],
-        targetCountries: ['Germany', 'Netherlands'],
+        targetCountries: [
+          { countryCode: 'DE', hasJobOffer: false },
+          { countryCode: 'NL', hasJobOffer: false }
+        ],
         immigrationPath: 'work_visa',
         timelineMonths: 12,
       };
@@ -347,7 +350,10 @@ describe('ProfileFormAccordion', () => {
         occupationCode: '2512',
         maritalStatus: 'single',
         languages: [{ language: 'English', proficiency: 'C2' }],
-        targetCountries: ['Germany', 'Netherlands'],
+        targetCountries: [
+          { countryCode: 'DE', hasJobOffer: false },
+          { countryCode: 'NL', hasJobOffer: false }
+        ],
         immigrationPath: 'work_visa',
         timelineMonths: 12,
       };

@@ -17,8 +17,6 @@ describe('CountrySelectionForm', () => {
     targetCountries: [],
     immigrationPath: 'work_visa',
     timelineMonths: 12,
-    hasJobOffer: false,
-    jobOfferCountry: '',
   };
 
   const getDefaultProps = () => ({
@@ -33,7 +31,6 @@ describe('CountrySelectionForm', () => {
 
     expect(screen.getByLabelText(/immigration path/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/timeline/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/job offer/i)).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /add country/i })).toBeInTheDocument();
   });
 
@@ -50,14 +47,16 @@ describe('CountrySelectionForm', () => {
     const addButton = screen.getByRole('button', { name: /add country/i });
     await user.click(addButton);
 
-    expect(mockOnChange).toHaveBeenCalledWith('targetCountries', expect.arrayContaining(['']));
+    expect(mockOnChange).toHaveBeenCalledWith('targetCountries', expect.arrayContaining([
+      expect.objectContaining({ countryCode: '', hasJobOffer: false })
+    ]));
   });
 
   it('should remove a country when remove button is clicked', async () => {
     const user = userEvent.setup();
     const filledData: Partial<UserProfile> = {
       ...mockData,
-      targetCountries: ['Germany'],
+      targetCountries: [{ countryCode: 'DE', hasJobOffer: false }],
     };
 
     render(<CountrySelectionForm {...getDefaultProps()} data={filledData} />);
@@ -99,14 +98,20 @@ describe('CountrySelectionForm', () => {
     expect(mockOnChange).toHaveBeenCalledWith('timelineMonths', expect.any(Number));
   });
 
-  it('should call onChange when job offer checkbox is toggled', async () => {
+  it('should call onChange when job offer checkbox is toggled for a country', async () => {
     const user = userEvent.setup();
-    render(<CountrySelectionForm {...getDefaultProps()} />);
+    const filledData: Partial<UserProfile> = {
+      ...mockData,
+      targetCountries: [{ countryCode: 'DE', hasJobOffer: false }],
+    };
+    render(<CountrySelectionForm {...getDefaultProps()} data={filledData} />);
 
     const jobOfferCheckbox = screen.getByLabelText(/job offer/i);
     await user.click(jobOfferCheckbox);
 
-    expect(mockOnChange).toHaveBeenCalledWith('hasJobOffer', true);
+    expect(mockOnChange).toHaveBeenCalledWith('targetCountries', [
+      { countryCode: 'DE', hasJobOffer: true }
+    ]);
   });
 
   it('should call onBlur when field loses focus', async () => {
@@ -124,8 +129,7 @@ describe('CountrySelectionForm', () => {
     const filledData: Partial<UserProfile> = {
       immigrationPath: 'work_visa',
       timelineMonths: 24,
-      hasJobOffer: true,
-      jobOfferCountry: 'Germany',
+      targetCountries: [{ countryCode: 'DE', hasJobOffer: true }],
     };
 
     render(<CountrySelectionForm {...getDefaultProps()} data={filledData} />);

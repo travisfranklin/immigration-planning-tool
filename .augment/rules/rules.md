@@ -12,6 +12,7 @@ Commit any of this code before you begin your task (using conventional commits).
 
 When working on your task:
 1. Avoid magic strings to reduce errors and keep your code DRY.
+2. Avoid using type assertion to solve your problems as it is an anti-pattern that will cause codebase problems. Instead follow typescript best practices.
 2. Write tests for your work if none exist already (following test-driven development best practices).
 3. If building UI, maintain German design principles (like those of Braun and Dieter Rams and the Ulm School of Design), which emphasize minimalism and functionality, and Scandinavian design with its clean lines and bold colors
 

@@ -10,7 +10,7 @@ import { getViabilityLevel } from '../../types/viability';
 import type { ProgramMatchResult } from '../../types/viability';
 import { COUNTRY_NAMES } from '../../types/country';
 import { getBestProgramsForCountry } from './programMatcher';
-import { applyPreferenceAdjustments, calculateTotalPreferenceBoost } from './preferenceScorer';
+import { applyPreferenceAdjustments, calculateTotalPreferenceBoost, hasJobOfferInCountry, hasAnyJobOffer } from './preferenceScorer';
 import { calculateCareerScore } from './scorers/careerScorer';
 import { calculateFinancialScore } from './scorers/financialScorer';
 import { calculateEducationScore } from './scorers/educationScorer';
@@ -113,13 +113,13 @@ export function generateRiskFactors(
     });
   }
   
-  // Employment risks
-  if (!profile.hasJobOffer && program.requirements.requiresJobOffer) {
+  // Employment risks - check for job offer in the specific program's country
+  if (!hasJobOfferInCountry(profile, program.countryCode) && program.requirements.requiresJobOffer) {
     risks.push({
       id: `risk_employment_${Date.now()}`,
       category: 'employment',
       severity: 'high',
-      description: 'No job offer (required for this visa program)',
+      description: `No job offer in ${COUNTRY_NAMES[program.countryCode]} (required for this visa program)`,
       mitigation: 'Apply for jobs or consider alternative visa programs',
     });
   }
@@ -159,8 +159,8 @@ export function generateContingencies(
 ): Contingency[] {
   const contingencies: Contingency[] = [];
   
-  // Job loss contingency
-  if (profile.hasJobOffer) {
+  // Job loss contingency - check if user has any job offer
+  if (hasAnyJobOffer(profile)) {
     contingencies.push({
       id: `contingency_job_loss_${Date.now()}`,
       scenario: 'Job offer falls through or job loss after arrival',

@@ -29,11 +29,9 @@ const createMockProfile = (overrides: Partial<UserProfile> = {}): UserProfile =>
     { language: 'German', proficiency: 'B1' },
   ],
   familyMembers: [],
-  targetCountries: ['DE'],
+  targetCountries: [{ countryCode: 'DE', hasJobOffer: true }],
   immigrationPath: 'work_visa',
   timelineMonths: 12,
-  hasJobOffer: true,
-  jobOfferCountry: 'Germany',
   createdAt: Date.now(),
   updatedAt: Date.now(),
   ...overrides,
@@ -45,7 +43,7 @@ describe('programMatcher', () => {
       const profile = createMockProfile({
         annualIncome: 60000,
         educationLevel: 'bachelor',
-        hasJobOffer: true,
+        targetCountries: [{ countryCode: 'DE', hasJobOffer: true }],
       });
 
       const program = GERMANY_PROGRAMS[0]; // EU Blue Card
@@ -60,7 +58,7 @@ describe('programMatcher', () => {
       const profile = createMockProfile({
         annualIncome: 30000, // Below minimum for EU Blue Card
         educationLevel: 'high_school',
-        hasJobOffer: false,
+        targetCountries: [{ countryCode: 'DE', hasJobOffer: false }],
       });
 
       const program = GERMANY_PROGRAMS[0]; // EU Blue Card

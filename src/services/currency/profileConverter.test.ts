@@ -16,25 +16,29 @@ global.fetch = mockFetch;
 function createMockProfile(overrides: Partial<UserProfile> = {}): UserProfile {
   return {
     id: 'test-id',
-    fullName: 'Test User',
-    email: 'test@example.com',
+    createdAt: Date.now(),
+    updatedAt: Date.now(),
+    firstName: 'Test',
+    lastName: 'User',
     dateOfBirth: '1990-01-01',
-    citizenshipCountries: ['US'],
-    hasValidPassport: true,
-    educationLevel: 'bachelors',
+    citizenship: 'US',
+    educationLevel: 'bachelor',
     fieldOfStudy: 'Computer Science',
     yearsOfExperience: 5,
-    occupation: 'Software Developer',
-    hasJobOffer: false,
+    currentOccupation: 'Software Developer',
+    occupationCode: '2511',
+    employmentStatus: 'employed',
     annualIncome: 100000, // $100,000 USD
     savingsAmount: 50000, // $50,000 USD
-    hasCriminalRecord: false,
-    hasHealthConditions: false,
     maritalStatus: 'single',
-    hasChildren: false,
-    targetCountries: ['DE', 'NL'],
-    immigrationGoals: ['work'],
-    preferredTimeframe: '1-2-years',
+    familyMembers: [],
+    languages: [{ language: 'English', proficiency: 'C2' }],
+    targetCountries: [
+      { countryCode: 'DE', hasJobOffer: false },
+      { countryCode: 'NL', hasJobOffer: false }
+    ],
+    immigrationPath: 'work_visa',
+    timelineMonths: 12,
     ...overrides,
   };
 }
@@ -107,15 +111,17 @@ EXR.D.USD.EUR.SP00.A,D,USD,EUR,SP00,A,2024-01-15,1.10`),
       });
 
       const profile = createMockProfile({
-        fullName: 'John Doe',
-        educationLevel: 'masters',
+        firstName: 'John',
+        lastName: 'Doe',
+        educationLevel: 'master',
         yearsOfExperience: 10,
       });
 
       const convertedProfile = await convertProfileToEur(profile);
 
-      expect(convertedProfile.fullName).toBe('John Doe');
-      expect(convertedProfile.educationLevel).toBe('masters');
+      expect(convertedProfile.firstName).toBe('John');
+      expect(convertedProfile.lastName).toBe('Doe');
+      expect(convertedProfile.educationLevel).toBe('master');
       expect(convertedProfile.yearsOfExperience).toBe(10);
     });
 

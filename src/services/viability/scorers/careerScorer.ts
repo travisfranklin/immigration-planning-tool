@@ -5,6 +5,7 @@
 
 import type { UserProfile } from '../../../types/user';
 import type { VisaProgram } from '../../../types/viability';
+import { hasJobOfferInCountry } from '../preferenceScorer';
 
 /**
  * Score based on years of experience
@@ -100,13 +101,15 @@ function scoreOccupationDemand(occupation: string): number {
 }
 
 /**
- * Score based on job offer status
+ * Score based on job offer status for the specific program's country
  */
-function scoreJobOffer(hasJobOffer: boolean, program: VisaProgram): number {
+function scoreJobOffer(profile: UserProfile, program: VisaProgram): number {
+  const hasJobOffer = hasJobOfferInCountry(profile, program.countryCode);
+
   if (program.requirements.requiresJobOffer) {
     return hasJobOffer ? 100 : 0; // Critical requirement
   }
-  
+
   // For programs that don't require job offer, it's still a bonus
   return hasJobOffer ? 80 : 60;
 }
@@ -144,9 +147,9 @@ export function calculateCareerScore(profile: UserProfile, program: VisaProgram)
   const experienceScore = scoreExperience(profile.yearsOfExperience, program);
   const employmentScore = scoreEmploymentStatus(profile.employmentStatus, program);
   const occupationScore = scoreOccupationDemand(profile.currentOccupation);
-  const jobOfferScore = scoreJobOffer(profile.hasJobOffer, program);
+  const jobOfferScore = scoreJobOffer(profile, program);
   const salaryScore = scoreSalary(profile.annualIncome, program);
-  
+
   // Weight the sub-components
   const weights = {
     experience: 0.20,
@@ -155,14 +158,14 @@ export function calculateCareerScore(profile: UserProfile, program: VisaProgram)
     jobOffer: 0.25,
     salary: 0.20,
   };
-  
-  const totalScore = 
+
+  const totalScore =
     experienceScore * weights.experience +
     employmentScore * weights.employment +
     occupationScore * weights.occupation +
     jobOfferScore * weights.jobOffer +
     salaryScore * weights.salary;
-  
+
   return Math.round(Math.max(0, Math.min(100, totalScore)));
 }
 
@@ -176,9 +179,9 @@ export function getCareerScoreBreakdown(profile: UserProfile, program: VisaProgr
   const experienceScore = scoreExperience(profile.yearsOfExperience, program);
   const employmentScore = scoreEmploymentStatus(profile.employmentStatus, program);
   const occupationScore = scoreOccupationDemand(profile.currentOccupation);
-  const jobOfferScore = scoreJobOffer(profile.hasJobOffer, program);
+  const jobOfferScore = scoreJobOffer(profile, program);
   const salaryScore = scoreSalary(profile.annualIncome, program);
-  
+
   return {
     totalScore: calculateCareerScore(profile, program),
     components: [

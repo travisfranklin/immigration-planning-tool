@@ -6,6 +6,7 @@
 import type { UserProfile } from '../../types/user';
 import type { VisaProgram, ProgramMatchResult } from '../../types/viability';
 import { ALL_VISA_PROGRAMS } from '../../data/visaPrograms';
+import { hasJobOfferInCountry } from './preferenceScorer';
 
 /**
  * Calculate age from date of birth
@@ -204,9 +205,9 @@ export function checkEligibility(
     }
   }
   
-  // Check job offer requirement
-  if (req.requiresJobOffer && !profile.hasJobOffer) {
-    missing.push('Requires job offer');
+  // Check job offer requirement - now checks for job offer in this specific country
+  if (req.requiresJobOffer && !hasJobOfferInCountry(profile, program.countryCode)) {
+    missing.push(`Requires job offer in ${program.countryCode}`);
     score -= 50;
   }
   

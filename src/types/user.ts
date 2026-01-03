@@ -21,6 +21,15 @@ export interface FamilyMember {
   immigrationStatus?: string;
 }
 
+/**
+ * Target country selection with per-country job offer status
+ * This allows users to indicate if they have a job offer in each specific country
+ */
+export interface TargetCountry {
+  countryCode: string;
+  hasJobOffer: boolean;
+}
+
 export interface UserProfile {
   id: string;
   createdAt: number;
@@ -54,13 +63,9 @@ export interface UserProfile {
   familyMembers: FamilyMember[];
 
   // Immigration Goals
-  targetCountries: string[];
+  targetCountries: TargetCountry[];
   immigrationPath: ImmigrationPath;
   timelineMonths?: number;
-
-  // Additional Information
-  hasJobOffer: boolean;
-  jobOfferCountry?: string;
 }
 
 export interface UserProfileFormData {
@@ -88,7 +93,7 @@ export interface UserProfileFormData {
     familyMembers: FamilyMember[];
   };
   immigrationGoals?: {
-    targetCountries: string[];
+    targetCountries: TargetCountry[];
     immigrationPath: ImmigrationPath;
     timelineMonths?: number;
   };

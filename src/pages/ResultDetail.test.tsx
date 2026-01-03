@@ -48,10 +48,12 @@ const mockUserProfile: UserProfile = {
   ],
   maritalStatus: 'single',
   familyMembers: [],
-  targetCountries: ['DE', 'NL'],
+  targetCountries: [
+    { countryCode: 'DE', hasJobOffer: false },
+    { countryCode: 'NL', hasJobOffer: false }
+  ],
   immigrationPath: 'work_visa',
   timelineMonths: 12,
-  hasJobOffer: false,
 };
 
 const mockViabilityScore: ViabilityScore = {

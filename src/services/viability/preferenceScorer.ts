@@ -17,11 +17,42 @@ export function calculateTargetCountryBoost(
   if (!profile.targetCountries || profile.targetCountries.length === 0) {
     return 0;
   }
-  
-  const isTargetCountry = profile.targetCountries.includes(program.countryCode);
-  
+
+  const isTargetCountry = profile.targetCountries.some(
+    tc => tc.countryCode === program.countryCode
+  );
+
   // Boost by 15 points if this is a target country
   return isTargetCountry ? 15 : 0;
+}
+
+/**
+ * Helper function to check if user has a job offer in a specific country
+ */
+export function hasJobOfferInCountry(
+  profile: UserProfile,
+  countryCode: string
+): boolean {
+  if (!profile.targetCountries || profile.targetCountries.length === 0) {
+    return false;
+  }
+
+  const targetCountry = profile.targetCountries.find(
+    tc => tc.countryCode === countryCode
+  );
+
+  return targetCountry?.hasJobOffer ?? false;
+}
+
+/**
+ * Helper function to check if user has any job offer
+ */
+export function hasAnyJobOffer(profile: UserProfile): boolean {
+  if (!profile.targetCountries || profile.targetCountries.length === 0) {
+    return false;
+  }
+
+  return profile.targetCountries.some(tc => tc.hasJobOffer);
 }
 
 /**
@@ -109,56 +140,63 @@ export function calculateTimelineBoost(
 }
 
 /**
- * Calculate boost based on job offer status
+ * Calculate boost based on job offer status for a specific program's country
+ * Now uses per-country job offer status from targetCountries
  */
 export function calculateJobOfferBoost(
   program: VisaProgram,
   profile: UserProfile
 ): number {
-  if (!profile.hasJobOffer) {
-    // No job offer - penalize programs that require one
+  // Check if user has a job offer in this specific country
+  const hasJobOfferInThisCountry = hasJobOfferInCountry(profile, program.countryCode);
+  // Check if user has any job offer at all
+  const hasAnyOffer = hasAnyJobOffer(profile);
+
+  if (!hasJobOfferInThisCountry) {
+    // No job offer in this country - penalize programs that require one
     if (program.requirements.requiresJobOffer) {
       return -40; // Heavy penalty for programs requiring job offer
     }
-    
-    // Boost job seeker and entrepreneur programs
-    if (program.type === 'job_seeker' || program.type === 'entrepreneur') {
+
+    // If user has no job offers at all, boost job seeker and entrepreneur programs
+    if (!hasAnyOffer && (program.type === 'job_seeker' || program.type === 'entrepreneur')) {
       return 10;
     }
-    
+
     return 0;
   }
-  
-  // Has job offer
+
+  // Has job offer in this country
   if (program.requirements.requiresJobOffer) {
     return 35; // Massive boost for programs requiring job offer
   }
-  
-  // Penalize job seeker visas (redundant if you already have a job)
+
+  // Penalize job seeker visas (redundant if you already have a job in this country)
   if (program.type === 'job_seeker') {
     return -25;
   }
-  
+
   return 0;
 }
 
 /**
  * Calculate boost if job offer is in the same country as the program
+ * This is now integrated into calculateJobOfferBoost, but kept for backwards compatibility
+ * and for additional boost when job offer matches program country
  */
 export function calculateJobOfferCountryBoost(
   program: VisaProgram,
   profile: UserProfile
 ): number {
-  if (!profile.hasJobOffer || !profile.jobOfferCountry) {
+  // Check if user has a job offer specifically in this program's country
+  const hasOfferInThisCountry = hasJobOfferInCountry(profile, program.countryCode);
+
+  if (!hasOfferInThisCountry) {
     return 0;
   }
-  
-  // Massive boost if job offer is in this country
-  if (profile.jobOfferCountry === program.countryCode) {
-    return 25;
-  }
-  
-  return 0;
+
+  // Boost if job offer is in this country (on top of the general job offer boost)
+  return 25;
 }
 
 /**

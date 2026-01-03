@@ -109,8 +109,7 @@ export function getFormStepData(
       return {
         immigrationPath: profile.immigrationPath,
         timelineMonths: profile.timelineMonths,
-        hasJobOffer: profile.hasJobOffer,
-        jobOfferCountry: profile.jobOfferCountry,
+        targetCountries: profile.targetCountries,
       };
 
     default:
@@ -181,10 +180,9 @@ export function getEmptyUserProfile(): UserProfile {
     languages: [],
     maritalStatus: '' as 'single', // Empty string to track user selection
     familyMembers: [],
-    targetCountries: [],
+    targetCountries: [], // Array of TargetCountry with per-country job offer status
     immigrationPath: '' as 'work_visa', // Empty string to track user selection
     timelineMonths: undefined,
-    hasJobOffer: false,
   };
 }
 

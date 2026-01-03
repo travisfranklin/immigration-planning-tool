@@ -1,24 +1,20 @@
-import type { UserProfile } from '../../types/user';
-import { Input, Select, Button, Combobox } from '../index';
+import type { UserProfile, TargetCountry } from '../../types/user';
+import { Input, Select, Button } from '../index';
+import { CountryCode, COUNTRY_DISPLAY_NAMES } from '../../constants/countries';
 
 interface CountrySelectionFormProps {
   data: Partial<UserProfile>;
   errors: Record<string, string>;
-  onChange: (field: string, value: string | string[] | number | boolean) => void;
+  onChange: (field: string, value: TargetCountry[] | string | number | boolean) => void;
   onBlur: (field: string) => void;
 }
 
-const EU_COUNTRIES = [
-  'Austria', 'Belgium', 'Bulgaria', 'Croatia', 'Cyprus', 'Czech Republic',
-  'Denmark', 'Estonia', 'Finland', 'France', 'Germany', 'Greece',
-  'Hungary', 'Ireland', 'Italy', 'Latvia', 'Lithuania', 'Luxembourg',
-  'Malta', 'Netherlands', 'Poland', 'Portugal', 'Romania', 'Slovakia',
-  'Slovenia', 'Spain', 'Sweden'
-];
-
-const EU_COUNTRY_OPTIONS = EU_COUNTRIES.map(country => ({
-  value: country,
-  label: country
+/**
+ * Country options for the dropdown, using country codes as values
+ */
+const EU_COUNTRY_OPTIONS = Object.entries(COUNTRY_DISPLAY_NAMES).map(([code, name]) => ({
+  value: code,
+  label: name,
 }));
 
 export function CountrySelectionForm({
@@ -27,10 +23,13 @@ export function CountrySelectionForm({
   onChange,
   onBlur,
 }: CountrySelectionFormProps) {
-  const targetCountries = Array.isArray(data.targetCountries) ? data.targetCountries : [];
+  const targetCountries: TargetCountry[] = Array.isArray(data.targetCountries)
+    ? data.targetCountries
+    : [];
 
   const handleAddCountry = () => {
-    onChange('targetCountries', [...targetCountries, '']);
+    const newCountry: TargetCountry = { countryCode: '', hasJobOffer: false };
+    onChange('targetCountries', [...targetCountries, newCountry]);
   };
 
   const handleRemoveCountry = (index: number) => {
@@ -38,10 +37,23 @@ export function CountrySelectionForm({
     onChange('targetCountries', updated);
   };
 
-  const handleUpdateCountry = (index: number, value: string) => {
+  const handleUpdateCountryCode = (index: number, countryCode: string) => {
     const updated = [...targetCountries];
-    updated[index] = value;
+    updated[index] = { ...updated[index], countryCode };
     onChange('targetCountries', updated);
+  };
+
+  const handleToggleJobOffer = (index: number) => {
+    const updated = [...targetCountries];
+    updated[index] = { ...updated[index], hasJobOffer: !updated[index].hasJobOffer };
+    onChange('targetCountries', updated);
+  };
+
+  /**
+   * Get display name for a country code
+   */
+  const getCountryName = (code: string): string => {
+    return COUNTRY_DISPLAY_NAMES[code as CountryCode] || code;
   };
 
   return (
@@ -78,24 +90,52 @@ export function CountrySelectionForm({
         {targetCountries.length === 0 ? (
           <p className="text-sm text-gray-500 italic">No target countries selected yet. Click "Add Country" to select EU countries.</p>
         ) : (
-          <div className="space-y-3">
-            {targetCountries.map((country, index) => (
-              <div key={index} className="flex gap-2 items-end">
-                <Select
-                  label={index === 0 ? 'Country' : ''}
-                  value={country || ''}
-                  onChange={(e) => handleUpdateCountry(index, e.target.value)}
-                  options={EU_COUNTRIES.map(c => ({ value: c, label: c }))}
-                  required
-                />
-                <Button
-                  variant="danger"
-                  size="sm"
-                  onClick={() => handleRemoveCountry(index)}
-                  className="mb-2"
-                >
-                  Remove
-                </Button>
+          <div className="space-y-4">
+            {targetCountries.map((targetCountry, index) => (
+              <div
+                key={index}
+                className="border border-gray-200 rounded-lg p-4 bg-gray-50"
+              >
+                <div className="flex gap-2 items-end mb-3">
+                  <div className="flex-1">
+                    <Select
+                      label={`Country ${index + 1}`}
+                      value={targetCountry.countryCode || ''}
+                      onChange={(e) => handleUpdateCountryCode(index, e.target.value)}
+                      options={[
+                        { value: '', label: 'Select a country...' },
+                        ...EU_COUNTRY_OPTIONS
+                      ]}
+                      required
+                    />
+                  </div>
+                  <Button
+                    variant="danger"
+                    size="sm"
+                    onClick={() => handleRemoveCountry(index)}
+                    className="mb-2"
+                  >
+                    Remove
+                  </Button>
+                </div>
+
+                {targetCountry.countryCode && (
+                  <div className="flex items-center mt-2">
+                    <input
+                      type="checkbox"
+                      id={`job-offer-${index}`}
+                      checked={targetCountry.hasJobOffer}
+                      onChange={() => handleToggleJobOffer(index)}
+                      className="w-4 h-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500"
+                    />
+                    <label
+                      htmlFor={`job-offer-${index}`}
+                      className="ml-2 text-sm font-medium text-gray-700"
+                    >
+                      I have a job offer in {getCountryName(targetCountry.countryCode)}
+                    </label>
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -118,36 +158,9 @@ export function CountrySelectionForm({
         max="120"
       />
 
-      <div className="flex items-center">
-        <input
-          type="checkbox"
-          id="job-offer"
-          checked={data.hasJobOffer || false}
-          onChange={(e) => onChange('hasJobOffer', e.target.checked)}
-          onBlur={() => onBlur('hasJobOffer')}
-          className="w-4 h-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500"
-        />
-        <label htmlFor="job-offer" className="ml-2 text-sm font-medium text-gray-700">
-          I have a job offer
-        </label>
-      </div>
-
-      {data.hasJobOffer && (
-        <Combobox
-          label="Job Offer Country"
-          value={data.jobOfferCountry || ''}
-          onChange={(value) => onChange('jobOfferCountry', value)}
-          onBlur={() => onBlur('jobOfferCountry')}
-          options={EU_COUNTRY_OPTIONS}
-          error={errors.jobOfferCountry}
-          placeholder="Type to search countries..."
-          helperText="Select the EU country where you have a job offer"
-        />
-      )}
-
       <div className="bg-green-50 border border-green-200 rounded-lg p-4">
         <p className="text-sm text-green-800">
-          <strong>Tip:</strong> Having a job offer significantly increases your chances of visa approval. Most EU countries prioritize skilled workers with confirmed employment.
+          <strong>Tip:</strong> Having a job offer significantly increases your chances of visa approval. Check the box for each country where you have confirmed employment.
         </p>
       </div>
 
