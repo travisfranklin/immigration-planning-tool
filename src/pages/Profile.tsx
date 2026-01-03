@@ -111,7 +111,7 @@ export function Profile() {
       </div>
 
       {/* Page Header - Bold, Clean */}
-      <div className="bg-white">
+      <div className="bg-white border-b-8 border-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
           <div className="max-w-4xl">
             <h1 className="text-7xl font-extrabold text-black mb-6 leading-tight uppercase tracking-tight">
